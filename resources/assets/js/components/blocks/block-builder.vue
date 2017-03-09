@@ -1,0 +1,101 @@
+<template>
+    <div>
+        <p><i>Afegeix un bloc nou</i></p>
+
+
+        <label for="Tipus">Tipus de bloc</label>
+        <div class="form-group">
+            <select class="form-control" v-model='new_block.type'>
+                <option value="basic-color">Bloc de color bàsic</option>
+                <option value="raw-html">Bloc HTML pur</option>
+                <option value="fpca-llista">Bloc tipus llista</option>
+                <option value="simple-title">Títol</option>
+                <option value="twitter-timeline">Twitter</option>
+            </select>
+        </div>
+
+        <component :is="'builder-' + new_block.type" :info="new_block"></component>
+
+        <p>
+            <button type="submit" class="btn btn-primary"
+                    :disabled = "new_block.type=='basic-color' && new_block.color == 'new'" @click.prevent="create_block">
+            Afegeix nou bloc
+            </button>
+    </p>
+
+</div>
+
+</template>
+
+<script>
+
+import BuilderBasicColor from './builder/basic-color.vue';
+import BuilderRawHtml from './builder/raw-html.vue';
+import BuilderTwitterTimeline from './builder/twitter-timeline.vue';
+import BuilderSimpleTitle from './builder/simple-title.vue';
+import BuilderFpcaLlista from './builder/fpca-llista.vue';
+
+export default {
+
+    components: {
+        BuilderBasicColor,
+        BuilderRawHtml,
+        BuilderTwitterTimeline,
+        BuilderSimpleTitle,
+        BuilderFpcaLlista
+    },
+
+    data: function () {
+        return {
+            new_block: {
+                'title': 'Bloc nou',
+                'content': 'Defineix el bloc nou i afegeix. Després pots moure el bloc nou a la posició desitjada',
+                'type': 'basic-color',
+                'color': 'new',
+                'url': 'http://',
+                'options': '{"color":"new","url":"http://"}'
+            }
+        }
+    },
+
+    created: function(){
+        bus.$on('new_block_updated', function(new_block){
+            this.new_block = new_block;
+        }.bind(this));
+    },
+
+    methods: {
+
+        create_block: function () {
+            
+            var new_block = {
+                id: Date.now(), /* Hack: Necessary key for block loop*/ 
+                title: this.new_block.title,
+                content: this.new_block.content,
+                type: this.new_block.type,
+                options: this.new_block.options,
+                scope: this.scope,
+                scope_id: this.scope_id,
+                order: 0
+            }
+            
+            // Send new block event (component "blocks" gets)
+            bus.$emit('new_block', new_block);
+
+            // Reset new_block
+            this.new_block = {
+                'title': 'Bloc nou',
+                'content': 'Defineix el bloc nou i afegeix. Després pots moure el bloc nou a la posició desitjada',
+                'type': 'basic-color',
+                'color': 'new',
+                'url': 'http://',
+                'options': '{"color":"new","url":"http://"}'
+            }
+
+        },
+
+    }
+
+}
+
+</script>
