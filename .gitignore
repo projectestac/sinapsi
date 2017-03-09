@@ -1,0 +1,8 @@
+.DS_Store
+/node_modules
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.php_cs.cache
+
