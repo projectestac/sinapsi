@@ -58,7 +58,7 @@ class LoginController extends Controller
             'nickname' => explode("@", $google_user->getEmail())[0],
             'avatar'   => $google_user->getAvatar(),
             'role'     => 'subscriptor',
-            'school_id'=> 1,
+            'entity_id'=> 1,
             'email'    => $google_user->getEmail()
         ]);
     }
