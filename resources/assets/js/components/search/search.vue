@@ -86,8 +86,10 @@ export default {
             }
         }
     },
-    mounted: function () {
+    beforeMount: function(){
         this.get_posts('');
+    },
+    mounted: function () {
         bus.$on('get_posts', function (filters) {
             this.get_posts(filters);
         }.bind(this));
