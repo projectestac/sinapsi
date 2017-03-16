@@ -6,7 +6,7 @@
         </div>
         <p></p>
         <span v-if="edit" class="glyphicon glyphicon-trash sns-block-trash" aria-hidden="true" @click="remove(block)"></span>
-    <div>
+    </div>
 </template>
 
 <script>

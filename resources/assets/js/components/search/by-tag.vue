@@ -10,7 +10,6 @@ s<template>
             :multiple="true"
             :taggable="true"
             :close-on-select="false"
-            deselectlabel="Tria per deseleccionar"
         >
     </multiselect>
 

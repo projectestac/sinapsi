@@ -69,10 +69,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    .multiselect__tag {
-    color: #666;
-    background: #eee;
-    }
-</style>

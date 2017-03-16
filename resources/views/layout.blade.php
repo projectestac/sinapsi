@@ -13,9 +13,10 @@
     @include ('navbar')
     @yield('search_box')
     @yield('content')
+</div>
     @include('footer')
     @yield('footer-append')
-</div>
+
 </body>
 
 </html>

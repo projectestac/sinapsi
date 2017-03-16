@@ -7,8 +7,8 @@
             No s'han trobat resultats.<br><br>
             Pots fer servir l'operador * per ampliar la cerca:<br>
             <ul>
-                <li>alumne : trobarà només els articles amb la paraula "alumne"
-                <li>alumn* : trobarà articles amb "alumne", "alumna", "alumnat", "alumnes", etc.
+                <li>alumne : trobarà només els articles amb la paraula "alumne"</li>
+                <li>alumn* : trobarà articles amb "alumne", "alumna", "alumnat", "alumnes", etc.</li>
             </ul>
         </div>
     </ul>

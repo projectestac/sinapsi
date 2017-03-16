@@ -1,8 +1,6 @@
 @extends('layout')
 @section('content')
 
-    <input type="hidden" v-model="pagetype" value="user">
-
     <br>
     <div class="container">
 
@@ -140,3 +138,4 @@
         </div>
     </div>
 @endsection
+
