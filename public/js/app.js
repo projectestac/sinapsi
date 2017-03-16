@@ -7116,9 +7116,6 @@ text: "Servei Educatiu Sarrià-Sant Gervasi"
             }
         }
     },
-    beforeMount: function(){
-        console.log("beforeMount");
-    },
     mounted: function () {
         this.get_posts('');
         bus.$on('get_posts', function (filters) {
@@ -7534,7 +7531,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.filter-info{\n   color: #666;\n   font-style: italic;\n}\n\n", ""]);
+exports.push([module.i, "\n.filter-info{\n   color: #666;\n   font-style: italic;\n}\n\n\n", ""]);
 
 // exports
 
@@ -50052,7 +50049,6 @@ Vue.component('tags-list',    __webpack_require__(13));
 Vue.component('post-head', __webpack_require__(4));
 Vue.component('post-foot', __webpack_require__(3));
 Vue.component('post-tags', __webpack_require__(14));
-
 /*
  |--------------------------------------------------------------------------
  | Global filters

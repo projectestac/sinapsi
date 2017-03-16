@@ -86,9 +86,6 @@ export default {
             }
         }
     },
-    beforeMount: function(){
-        console.log("beforeMount");
-    },
     mounted: function () {
         this.get_posts('');
         bus.$on('get_posts', function (filters) {
@@ -251,5 +248,6 @@ export default {
    color: #666;
    font-style: italic;
 }
+
 
 </style>

@@ -17,6 +17,7 @@
 {{-- Styles --}}
 <link href="{{ asset('css/fpca_subcapcalera.css') }}" rel="stylesheet">
 <link href="{{ asset('css/grafic_destacat.css') }}" rel="stylesheet">
+<link href="{{ asset('css/vue-multiselect.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

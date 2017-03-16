@@ -1,5 +1,5 @@
 1. Install php dependencies
-composer update
+composer install
 
 2. Install js modules
 npm install
