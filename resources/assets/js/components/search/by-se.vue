@@ -60,7 +60,7 @@ export default {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/ssee',
+                url: shared.baseUrl + '/api/v1/ssee',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {

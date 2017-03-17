@@ -16,7 +16,7 @@
 	<div class="collapse" :id="'comments-' + post.id">
 		<ul class="sns-list-comments">
 			<li class="sns-comment" v-for='comment in comments' :key="comment.id">
-	            <sns-comment :c="comment"></sns-comment>
+              <sns-comment :c="comment"></sns-comment>
 			</li>
 		</ul>
 		

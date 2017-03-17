@@ -5806,22 +5806,25 @@ if (typeof jQuery === 'undefined') {
         errors: this.errors,
         baseurl: shared.baseUrl,
         user: shared.user.logged ? JSON.parse(shared.user.data) : '',
-        user_can_post_edit: shared.user.can_post_edit
+        user_can_post_edit: shared.user.can_post_edit,
     }
   },
   computed:{
-        cache: false,
-        user_can_delete: function(){
-            if (this.user_can_post_edit || this.user.id == this.c.user_id){
-                return true;
-            }
-            return false;
+
+     user_can_delete: function(){
+       
+        if (this.user_can_post_edit || this.user.id == this.c.user_id){
+            return true;
         }
-  },
+        return false;
+    }
+  },  
   methods:{
+
         edit_comment: function(event){
             //TODO
         },
+
         delete_comment: function(event){
 
             var btn = event.currentTarget.childNodes[0];
@@ -6013,7 +6016,7 @@ if (typeof jQuery === 'undefined') {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/cities',
+                url: shared.baseUrl + '/api/v1/cities',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -6192,7 +6195,7 @@ if (typeof jQuery === 'undefined') {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/projects',
+                url: shared.baseUrl + '/api/v1/projects',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -6287,7 +6290,7 @@ if (typeof jQuery === 'undefined') {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/schools',
+                url: shared.baseUrl + '/api/v1/schools',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -6389,7 +6392,7 @@ if (typeof jQuery === 'undefined') {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/ssee',
+                url: shared.baseUrl + '/api/v1/ssee',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -6903,7 +6906,7 @@ text: "Servei Educatiu Sarrià-Sant Gervasi"
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/tags',
+                url: shared.baseUrl + '/api/v1/tags',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -6987,7 +6990,6 @@ text: "Servei Educatiu Sarrià-Sant Gervasi"
         compose_terms: function compose_terms () {
             var that = this;
             $.each(this.from_UI, function( index, term ) {
-                console.log(term);
                 that.terms_UI.push({ 'ID': term ,'text': term });
             });
         },

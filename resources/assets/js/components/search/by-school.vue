@@ -52,7 +52,7 @@ export default {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: location.protocol + "//" + location.host + '/api/v1/schools',
+                url: shared.baseUrl + '/api/v1/schools',
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {

@@ -1,7 +1,7 @@
 <template>
 
     <form method="POST" class="cercador_vermell form">
-
+   
         <div class="form-group">
             
             <div class="form-group sns-search-field">

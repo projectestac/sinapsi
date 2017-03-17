@@ -41,7 +41,6 @@ export default {
         compose_terms () {
             var that = this;
             $.each(this.from_UI, function( index, term ) {
-                console.log(term);
                 that.terms_UI.push({ 'ID': term ,'text': term });
             });
         },
