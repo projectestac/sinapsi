@@ -12,26 +12,26 @@
                  :aria-valuenow="completed"
                  :aria-valuemin="start"
                  :aria-valuemax="end" :style="'width:'+ percentil + '%'">
-                <span class="sr-only">Nom del centre fetched</span>
+                <span class="sr-only">{{ trans('messages.name_of_center') }}</span>
             </div>
         </div>
         <div class="well">
-            <h3>Per adreça dels articles: </h3>
+            <h3>{{ trans('messages.to_address_items') }}</h3>
             <textarea class="form-control" type="text" v-model.sync="urls"></textarea>
             <br>
             <input type="button" class="btn btn-primary" value="Obté articles" @@click="get_posts(urls)">
         </div>
 
         <div class="well">
-            <h3>Per rang de canals:</h3>
+            <h3>{{ trans('messages.for_range_of_channels') }}</h3>
 
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="inici">Inici:</label>
+                    <label for="inici">{{ trans('messages.start') }}</label>
                     <input class="form-control" type="text" v-model.sync="start">
                 </div>
                 <div class="form-group">
-                    <label for="final">Final:</label>
+                    <label for="final">{{ trans('messages.end') }}</label>
                     <input class="form-control" type="text" v-model.sync="end">
                 </div>
             </form>
@@ -39,13 +39,13 @@
             <input type="button" class="btn btn-primary" value="Obté articles" @@click="get_posts_by_channels(start,end)">
         </div>
 
-        <h3>Resultats de la extracció:</h3>
+        <h3>{{ trans('messages.extraction_results') }}</h3>
 
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Centre</th>
-                <th>Article</th>
+                <th>{{ trans('messages.center') }}</th>
+                <th>{{ trans('messages.post') }}</th>
             </tr>
             </thead>
 

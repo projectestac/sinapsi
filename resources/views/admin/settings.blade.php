@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Editant Inici</title>
+    <title>{{ trans('messages.edit_home') }}</title>
 @stop
 
 @section('content')
@@ -11,13 +11,13 @@
             <div class="col-md-9">
 
                 <br><br>
-                <h2>Configuració general</h2>
+                <h2>{{ trans('messages.general_settings') }}</h2>
 
                 {!! Form::open(['edit','method'=>'POST','files'=>true]) !!}
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#config-basic">Pàgina d'inici</a></li>
-                    <li><a data-toggle="tab" href="#config-users">Usuaris</a></li>
+                    <li class="active"><a data-toggle="tab" href="#config-basic">{{ trans('messages.homepage') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-users">{{ trans('messages.users') }}</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -33,7 +33,7 @@
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
-                                               data-parent="#acordio_distribuidora" href="#logo">Logotip</a>
+                                               data-parent="#acordio_distribuidora" href="#logo">{{ trans('messages.logo') }}</a>
                                         </h2>
                                     </div>
 
@@ -41,19 +41,18 @@
 
                                         @if (!empty($home['logo']))
                                             <img alt="sinapsi_logo" src="{{ asset($home['logo']) }}">
-                                            <a href="#">Elimina imatge</a>
+                                            <a href="#">{{ trans('messages.remove_image') }}</a>
                                             <br>
 
                                         @else
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6">
-                                                    <h1 class="sns-home-title">sinapsi<span
+                                                    <h1 class="sns-home-title">{{ trans('messages.sinapsi') }}<span
                                                                 class="sns-domain">.xtec.cat</span></h1>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6">
-                                                    <p style="margin:0;margin-top:6px"><strong>Escoles i instituts de
-                                                            Catalunya</strong><br>
-                                                        compartint el que fan</p>
+                                                    <p style="margin:0;margin-top:6px"><strong>{{ trans('messages.schools_and_colleges_in_catalonia') }}</strong><br>
+                                                        {{ trans('messages.sharing_what_they_do') }}</p>
                                                 </div>
                                             </div>
                                         @endif
@@ -67,7 +66,7 @@
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
-                                               data-parent="#acordio_distribuidora" href="#description">Descripció</a>
+                                               data-parent="#acordio_distribuidora" href="#description">{{ trans('messages.description') }}</a>
                                         </h2>
                                     </div>
 
@@ -79,7 +78,7 @@
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
-                                               data-parent="#acordio_distribuidora" href="#blocs">Blocs</a>
+                                               data-parent="#acordio_distribuidora" href="#blocs">{{ trans('messages.blocks') }}</a>
                                         </h2>
                                     </div>
                                     <div class="row">
@@ -90,7 +89,7 @@
 
                                         <div class="col-xs-12 col-sm-6">
                                             <p>
-                                                <i>Previsualitació dels blocs</i>
+                                                <i>{{ trans('messages.preview_blocks') }}</i>
                                             </p>
                                             <sns-blocks-list :pagetype="pagetype" :info="info"
                                                              edit="true"></sns-blocks-list>
@@ -115,7 +114,7 @@
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
                                                data-parent="#acordio_distribuidora"
-                                               href="#administrators">Administradors
+                                               href="#administrators">{{ trans('messages.administrators') }}
                                             </a>
                                         </h2>
                                     </div>
@@ -131,7 +130,7 @@
                     </div>
                     <p class="pull-right">
                         <button type="submit" class="btn btn-primary sns-btn-save">
-                            Desa
+                            {{ trans('messages.save') }}
                         </button>
                     </p>
                 </div>

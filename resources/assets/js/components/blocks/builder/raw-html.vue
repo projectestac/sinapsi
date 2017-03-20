@@ -7,7 +7,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="content">Contingut</label>
+            <label for="content">{{ trans('messages.content') }}</label>
             <textarea id="content" name="content" class="form-control" v-model="new_block.content" ></textarea>
         </div>
     </div>

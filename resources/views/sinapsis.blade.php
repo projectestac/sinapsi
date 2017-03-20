@@ -19,8 +19,8 @@
                             <div class="capcelera_basica col-sm-8">
                                 <div class="capcelera_basica_cont">
 
-                                    <h1 class="title-subpage">Sinapsis</h1>
-                                    <input type="input" class="form-control" id="input-search" placeholder="Cerca..."
+                                    <h1 class="title-subpage">{{ trans('messages.sinapsis') }}</h1>
+                                    <input type="input" class="form-control" id="input-search" :placeholder="[ trans('messages.search_1') ]"
                                            value="" style="border-radius:0">
                                     <br>
                                     <br>
@@ -63,7 +63,7 @@
                                                 <a href="#t_sinapsis" id='t_sinapsis-tab' aria-controls="sinapsis"
                                                    role="tab" data-toggle="tab" aria-expanded="true">
                                                     <div class="titol-tab">
-                                                        <span>Sinapsis</span>
+                                                        <span>{{ trans('messages.sinapsis') }}</span>
                                                     </div>
                                                 </a>
                                             </li>
@@ -72,7 +72,7 @@
                                                 <a href="#t_tags" id='t_tags-tab' aria-controls="tags" role="tab"
                                                    data-toggle="tab" aria-expanded="true">
                                                     <div class="titol-tab">
-                                                        <span>Descriptors</span>
+                                                        <span>{{ trans('messages.descriptors') }}</span>
                                                     </div>
                                                 </a>
                                             </li>
@@ -94,9 +94,9 @@
                                         <div v-show="!show_tree" id="sinapsi-list">
                                             <table class="table" id="tbl_sinapsis">
                                                 <thead>
-                                                <th>Nom</th>
-                                                <th>Descripció</th>
-                                                <th>Tipus</th>
+                                                <th>{{ trans('messages.name') }}</th>
+                                                <th>{{ trans('messages.description') }}</th>
+                                                <th>{{ trans('messages.type') }}</th>
                                                 </thead>
                                                 @foreach ( $sinapsis as $sinapsi )
                                                     <tr>
@@ -115,10 +115,10 @@
 
                                         <table class="table" id="tbl_tags">
                                             <thead>
-                                            <th>Nom</th>
-                                            <th>Descripció</th>
-                                            <th>Etiqueta</th>
-                                            <th>Articles</th>
+                                            <th>{{ trans('messages.name') }}</th>
+                                            <th>{{ trans('messages.description') }}</th>
+                                            <th>{{ trans('messages.tag') }}</th>
+                                            <th>{{ trans('messages.post_1') }}</th>
                                             </thead>
 
                                             @foreach ( $tags as $tag )
@@ -149,9 +149,9 @@
 
                     <br>
                     @if ( Auth::check() and Gate::allows('sinapsi-add') )
-                        <p class="text-right"><a href="{{ url('sinapsi/create') }}">Afegeix sinapsi</a></p>
-                        <p class="text-right"><a href="{{ url('sinapsi-tree') }}">Actualitza arbre de sinapsis</a></p>
-                        <p class="text-right"><a href="{{ url('sinapsis-settings') }}">Edita</a></p>
+                        <p class="text-right"><a href="{{ url('sinapsi/create') }}">{{ trans('messages.add_sinapsi') }}</a></p>
+                        <p class="text-right"><a href="{{ url('sinapsi-tree') }}">{{ trans('messages.update_sinapsis_tree') }}</a></p>
+                        <p class="text-right"><a href="{{ url('sinapsis-settings') }}">{{ trans('messages.edit') }}</a></p>
                     @endif
 
                 </div> {{-- row --}}
@@ -177,6 +177,8 @@
 
         var bus = new Vue();
 
+        var messages = _.get(window.trans, 'messages');
+
         var vm_sinapsi = new Vue({
             el: "#root",
             data: {
@@ -193,16 +195,16 @@
                 "pageLength": 25,
                 "dom": '<"top"i>rt<"bottom"p><"clear">',
                 "language": {
-                    "zeroRecords": "No hi ha resultats",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
+                    "zeroRecords": messages['no_results'],
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
                     "infoFiltered": "(filtrat de _MAX_ registres)",
                     "thousands": "",
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last": messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });
@@ -211,16 +213,16 @@
                 "pageLength": 25,
                 "dom": '<"top"i>rt<"bottom"p><"clear">',
                 "language": {
-                    "zeroRecords": "No hi ha resultats",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
+                    "zeroRecords": messages['no_results'],
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
                     "infoFiltered": "(filtrat de _MAX_ registres)",
                     "thousands": ".",
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last": messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });

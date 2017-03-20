@@ -16,7 +16,7 @@
                             <div class="capcelera_basica_cont">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <h1 class="title-subpage">Projectes</h1>
+                                        <h1 class="title-subpage">{{ trans('messages.projects_1') }}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -33,12 +33,12 @@
         <br>
         <table class="table" id="tbl_projects">
             <thead>
-            <th>Projecte</th>
-            <th>Centre</th>
-            <th>Localitat</th>
-            <th>Més informació</th>
-            <th>Articles</th>
-            <th>Darrer</th>
+            <th>{{ trans('messages.project') }}</th>
+            <th>{{ trans('messages.center') }}</th>
+            <th>{{ trans('messages.city') }}</th>
+            <th>{{ trans('messages.more_information') }}</th>
+            <th>{{ trans('messages.posts') }}</th>
+            <th>{{ trans('messages.latest') }}</th>
             </thead>
             @foreach ( $projects as $project )
                 <tr>
@@ -70,21 +70,24 @@
         });
 
         $(document).ready(function () {
+
+            var messages = _.get(window.trans, 'messages');
+            
             $('#tbl_projects').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
                 "language": {
-                    "search": "Cercar:",
-                    "zeroRecords": "No hi ha resultats",
+                    "search": messages['search'],
+                    "zeroRecords": messages['no_results'],
                     "thousands": ".",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
-                    "infoFiltered": "(filtrat de _MAX_ registres)",
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
+                    "infoFiltered": messages['filter_register'] + " _MAX_ " + messages['registers'],
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last": messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });

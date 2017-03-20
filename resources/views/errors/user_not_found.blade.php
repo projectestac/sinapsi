@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Sinapsi - Error</title>
+    <title>{{ trans('messages.sinapsi') }} - {{ trans('messages.error') }}</title>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
                         <div class="capcelera_basica_cont">
                             <br>
                             <h1 class="titulo-capcalera">
-                                    No s'ha trobat l'usuari
+                                    {{ trans('messages.user_not_found') }}
                             </h1>
                             <br> <br> <br>
                         </div>
@@ -51,11 +51,11 @@
                                         <div class="basic_text_descarregar">
 
                                             <a class="tit" title="Entra a sinapsi" href="{{url('auth')}}">
-                                                Entra a sinapsi
+                                               {{ trans('messages.enter_to_sinapsi') }}
 
                                             </a>
 
-                                            <p>Si teniu qualsevol dubte o incidència, envieu un correu electrònic a agora@xtec.cat</p>
+                                            <p>{{ trans('messages.if_you_have_any_question') }}</p>
 
 
                                         </div>
@@ -73,7 +73,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc1">A qui s'adreça</a>
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc1">{{ trans('messages.who_is') }}</a>
                                         </h2>
                                     </div>
                                     <div id="bloc1" class="panel-collapse collapse">
@@ -83,8 +83,8 @@
                                             <div class="cos_bloc basic_text_peq pd-15">
 
                                                 <ul>
-                                                    <li>A usuaris de la Generalitat de Catalunya: responsables dels webs a la Generalitat, redactors,&nbsp; <em>webmasters</em>, àrees de comunicació, gabinets tècnics, àrees TIC.&nbsp;</li>
-                                                    <li>A proveïdors que desenvolupen webs de la Generalitat: conceptualitzadors, arquitectes de la informació, dissenyadors, experts en metodologies d’experiència d’usuari, desenvolupadors, maquetadors, i altres perfils que intervinguin en la definició i creació de la interfície d'un projecte web adreçat a la ciutadania.</li>
+                                                    <li>{{ trans('messages.government_users') }}</li>
+                                                    <li>{{ trans('messages.government_providers') }}</li>
                                                 </ul>
 
                                             </div>
@@ -96,7 +96,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc2">Per què s'ha fet</a>
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc2">{{ trans('messages.why_has_been') }}</a>
                                         </h2>
                                     </div>
                                     <div id="bloc2" class="panel-collapse collapse">
@@ -106,11 +106,11 @@
                                             <div class="cos_bloc basic_text_peq pd-15">
 
                                                 <ul>
-                                                    <li>Construir correctament webs i aplicacions web de la Generalitat adreçats a la ciutadania amb l'estil gencat responsiu.</li>
-                                                    <li>Focalitzar l'experiència d'usuari com a principi bàsic per a la creació de webs a la Generalitat.</li>
-                                                    <li>Tenir un marc normatiu per seguir estàndards i procediments.</li>
-                                                    <li>Oferir bones pràctiques en l'ús de les peces i pàgines.</li>
-                                                    <li>Apoderar les persones responsables del web amb recursos i coneixements per a l'edició de continguts web.</li>
+                                                    <li>{{ trans('messages.message_government_1') }}</li>
+                                                    <li>{{ trans('messages.message_government_2') }}</li>
+                                                    <li>{{ trans('messages.message_government_3') }}</li>
+                                                    <li>{{ trans('messages.message_government_4') }}</li>
+                                                    <li>{{ trans('messages.message_government_5') }}</li>
                                                 </ul>
 
                                             </div>
@@ -122,7 +122,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc3">Què conté</a>
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#acordio_distribuidora" href="#bloc3">{{ trans('messages.what_does') }}</a>
                                         </h2>
                                     </div>
                                     <div id="bloc3" class="panel-collapse collapse">
@@ -131,13 +131,13 @@
 
                                             <div class="cos_bloc basic_text_peq pd-15">
 
-                                                <p>La Guia està formada per la documentació i eines següents:</p>
+                                                <p>{{ trans('messages.message_government_6') }}</p>
                                                 <ul>
-                                                    <li>Marc teòric i metodològic per emmarcar una iniciativa web a la Generalitat de Catalunya.</li>
-                                                    <li>Plantilles PNG amb la base del disseny i les peces que formen el catàleg (disseny).</li>
-                                                    <li>Inventari de models de plantilles/pàgines, components i ús que se n'ha de fer. Bones i males pràctiques (catàleg).</li>
-                                                    <li>Recursos i bones pràctiques per a l’edició i gestió de continguts web (imatges i textos).</li>
-                                                    <li>Suport als usuaris a través de la bústia webs@gencat.cat.</li>
+                                                    <li>{{ trans('messages.message_government_7') }}</li>
+                                                    <li>{{ trans('messages.message_government_8') }}</li>
+                                                    <li>{{ trans('messages.message_government_9') }}</li>
+                                                    <li>{{ trans('messages.message_government_10') }}</li>
+                                                    <li>{{ trans('messages.message_government_11') }}</li>
                                                 </ul>
 
                                             </div>

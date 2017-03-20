@@ -16,8 +16,8 @@
                             <div class="capcelera_basica_cont">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <h1 class="title-subpage">Centres educatius</h1>
-                                        <p>Escoles, Instituts, Serveis Educatius, Serveis Territorials i CREDAs</p>
+                                        <h1 class="title-subpage">{{ trans('messages.schools') }}</h1>
+                                        <p>{{ trans('messages.types_schools') }}</p>
                                     </div>
                                 </div>
                                 <br>
@@ -38,12 +38,12 @@
         <table class="table" id="tbl_schools">
             <thead>
             <th></th>
-            <th>Centre educatiu</th>
-            <th>Localitat</th>
-            <th>Servei educatiu</th>
-            <th>Servei territorial</th>
-            <th>Tipus</th>
-            <th>Articles</th>
+            <th>{{ trans('messages.schools') }}</th>
+            <th>{{ trans('messages.cities') }}</th>
+            <th>{{ trans('messages.educational_service') }}</th>
+            <th>{{ trans('messages.territorial_service') }}</th>
+            <th>{{ trans('messages.type') }}</th>
+            <th>{{ trans('messages.posts') }}</th>
             </thead>
 
             @foreach ( $entities as $entity )
@@ -69,6 +69,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            var messages = _.get(window.trans, 'messages');
+
             var vm = new Vue({
                 el: "#root",
                 data: {
@@ -80,17 +82,17 @@
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
                 "language": {
-                    "search": "Cercar:",
-                    "zeroRecords": "No hi ha resultats",
+                    "search": messages['search'],
+                    "zeroRecords": messages['no_results'],
                     "thousands": ".",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
-                    "infoFiltered": "(filtrat de _MAX_ registres)",
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
+                    "infoFiltered": messages['filter_register'] + " _MAX_ " + messages['registers'],
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last":  messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });

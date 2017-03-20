@@ -1,9 +1,9 @@
 <template>
         <a v-if="post.tsticky" :href="unstick_url">
-            <span class="glyphicon glyphicon glyphicon-download"></span> Desfixa {{ text }}
+            <span class="glyphicon glyphicon glyphicon-download"></span> {{ trans('messages.unfixed') }} {{ text }}
         </a>
         <a v-else :href="stick_url">
-            <span class="glyphicon glyphicon glyphicon-upload"></span> Fixa a dalt {{ text }}
+            <span class="glyphicon glyphicon glyphicon-upload"></span> {{ trans('messages.fix_at_top') }} {{ text }}
         </a>
 
 </template>

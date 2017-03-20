@@ -53,30 +53,29 @@
 
                                 <div class="panel-heading fons_blanc">
                                     <h2 class="panel-title fb_no-separador titol-pd-btm">
-                                        Dades {{strtolower($entity->type)}}</h2>
+                                        {{ trans('messages.data') }} {{strtolower($entity->type)}}</h2>
                                 </div>
 
                                 <div class="panel-body fons_gris">
                                     <ul class="llistat_enllacos_filet_cont list-group">
 
-                                        <li v-if="pagetype=='school'" class="list-group-item llista-col-1">Ubicat a
+                                        <li v-if="pagetype=='school'" class="list-group-item llista-col-1">{{ trans('messages.located') }}
                                             <strong>{{ $entity->location }}</strong>
-                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">Centre:
+                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.center') }}:
                                             <strong>{{ $entity->parent_name }} </strong> ({{ $entity->parent_location }}
                                             )
                                         <li v-if="pagetype=='school'" class="list-group-item llista-col-1">
-                                            Correu: {{ $entity->codeid }}@xtec.cat
+                                            {{ trans('messages.mail') }} {{ $entity->codeid }}@xtec.cat
                                         <li class="list-group-item llista-col-1">Adreça web: <a target="_blank"
                                                                                                 href="{{ $entity->url }}">{{ $entity->url }}</a>
-                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">Forma part
-                                            de <strong>{!! $entity->codename !!}</strong>
+                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.it_is_part_of') }}<strong>{!! $entity->codename !!}</strong>
 
                                         {{--
 
                                         <li class="list-group-item llista-col-1"><a target="_blank" href="{{ url('se') }}/{{ $school->servei_educatiu->codeid }}">{{ $school->servei_educatiu->name }}</a>
                                         <li class="list-group-item llista-col-1"><a target="_blank" href="{{ url('st') }}/{{ $school->servei_educatiu->servei_territorial->id }}">{{ $school->servei_educatiu->servei_territorial->name }}
 
-                                        <li class="list-group-item llista-col-1">Twitter:<a target="_blank" href="http://twitter.com/{{ $school->twitter }}">{{ $school->twitter }}</a>
+                                        <li class="list-group-item llista-col-1">{{ trans('messages.twitter') }}:<a target="_blank" href="http://twitter.com/{{ $school->twitter }}">{{ $school->twitter }}</a>
 
                                         --}}
 

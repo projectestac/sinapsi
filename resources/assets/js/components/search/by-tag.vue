@@ -1,9 +1,9 @@
 s<template>
     <div class="dropdown">
-        <p><strong>Descriptors:</strong><span style="font-style:italic">{{tags_DB.join(", ")}}</span></p>
+        <p><strong>{{ trans('messages.descriptors') }}</strong><span style="font-style:italic">{{tags_DB.join(", ")}}</span></p>
         <multiselect v-model="tags_UI"
-             placeholder="Filtra per un o més descriptors"
-             deselect-label="Treu de la selecció"
+            :placeholder="trans('messages.filter_by_one_or_more_descriptors')"
+            :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
             :options="options"

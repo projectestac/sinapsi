@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Sinapsi - Nou article</title>
+    <title>{{ trans('messages.sinapsi') }} - {{ trans('messages.new_post') }}</title>
 @endsection
 
 @section('content')
@@ -10,22 +10,22 @@
         <div class="row">
 
 
-            <h3>Nou article</h3>
+            <h3>{{ trans('messages.new_post') }}</h3>
 
             {!! Form::open( ['route' => 'posts.store', 'method'=>'POST', 'files'=>true ]) !!}
             <div class="col-md-8">
                 <div class="form-group">
-                    {!! Form::label('title', 'Títol' ) !!}:
+                    {!! Form::label('title', trans('messages.title') ) !!}:
                     {!! Form::text('title',null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('description','Descripció breu:') !!}
+                    {!! Form::label('description', trans('messages.short_description' )) !!}
                     {!! Form::textarea ('description', null, ['class'=>'form-control','rows'=>'3']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('content', 'Contingut:') !!}
+                    {!! Form::label('content', trans('messages.content_1') ) !!}
                     {!! Form::textarea ('content',null, ['class'=>'form-control tinymce']) !!}
                 </div>
 
@@ -36,32 +36,32 @@
                 <br><br><br>
 
                 <div class="form-group">
-                    {!! Form::label('fullcontent', 'A la llista de notícies mostra:') !!}<br>
-                    {!! Form::radio('fullcontent', 0, true);!!} Només la descripció
-                    {!! Form::radio('fullcontent', 1 ,false);!!} Tot el contingut
+                    {!! Form::label('fullcontent', trans('messages.at_new_list_show') ) !!}<br>
+                    {!! Form::radio('fullcontent', 0, true);!!} {{ trans('messages.only_description') }}
+                    {!! Form::radio('fullcontent', 1 ,false);!!} {{ trans('messages.all_content') }}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('thumb', 'Imatge (opcional)') !!}
+                    {!! Form::label('thumb', trans('messages.optional_image') ) !!}
                     {!! Form::file('thumb') !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('tags', 'Descriptors') !!}
+                    {!! Form::label('tags', trans('messages.descriptors') ) !!}
                     <tags-list :options="tags"></tags-list>
                 </div>
                 <div class="form-group">
-                    {!! Form::label('parent_id', 'Article pare' ) !!}:
+                    {!! Form::label('parent_id', trans('messages.parent_post') ) !!}:
                     {!! Form::text('parent_id',null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('order', 'Ordre relatiu' ) !!}:
+                    {!! Form::label('order', trans('messages.relative_order') ) !!}:
                     {!! Form::text('order',null, ['class'=>'form-control']) !!}
                 </div>
 
                 <br><br>
                 <button type="submit" class="btn btn-primary">
-                    Publica
+                    {{ trans('messages.publish') }}
                 </button>
 
                 {!! Form::close() !!}

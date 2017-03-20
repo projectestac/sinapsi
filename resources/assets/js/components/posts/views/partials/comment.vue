@@ -4,7 +4,7 @@
 
         <div class="col-md-12">
             <img class="sns-avatar" :src="comment.user_avatar">&nbsp;&nbsp;
-            <a class="user_link" target="_blank" :href="baseurl + '/user/' + comment.user_id">{{ comment.user_name }}</a> diu:
+            <a class="user_link" target="_blank" :href="baseurl + '/user/' + comment.user_id">{{ comment.user_name }}</a> {{ trans('messages.say') }}
             <span class="sns-date pull-right">
                 <span :title="comment.created_at">{{ comment.created_at | timeago }}</span>
             </span>
@@ -74,13 +74,13 @@ export default {
                 error: function (jqXHR, textStatus, message) {
                     switch (message){
                         case 'Unauthorized':
-                            this.errors.push("Has d'entrar per poder fer aquesta acció");
+                            this.errors.push( trans('messages.you_need_log_in_to_do_this_action') );
                             break;
                         case 'Internal Server Error':
-                            this.errors.push("S'ha produit un error processant la vostra petició. Torna a prova en una estona");
+                            this.errors.push( trans('messages.there_was_an_error') );
                             break;
                         default:
-                            this.errors.push("El servidor no respón, torna a provar en una estona");
+                            this.errors.push( trans('messages.the_server_not_respond') );
                     }
                     $(btn).removeClass('gly-spin');
 

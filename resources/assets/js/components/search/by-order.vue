@@ -1,12 +1,12 @@
 <template>
     <div class="dropdown">
-        <p><strong>Ordre:</strong></p>
+        <p><strong>{{ trans('messages.order') }}</strong></p>
         <div class="dropdown">
             <multiselect v-model="orderby"
-                deselect-label="Treu de la selecció"
+                :deselect-label="trans('messages.remove_to_selection')"
                 track-by="ID"
                 label="text"
-                placeholder="Ordenat per"
+                :placeholder="trans('messages.order_by')"
                 :options="options"
                 :searchable="false"
                 :allow-empty="false">
@@ -20,16 +20,18 @@
 
 import Multiselect from 'vue-multiselect'
 
+var messages = _.get(window.trans, 'messages');
+
 export default {
   components: {
     Multiselect
   },
   data () {
     return {
-      orderby: { ID: 'n', text: 'Nous primer' },
+      orderby: { ID: 'n', text: messages['newest_first'] },
       options: [
-        { ID: 'n', text: 'Nous primer' },
-        { ID: 'o', text: 'Antics primer' },
+        { ID: 'n', text: messages['newest_first'] },
+        { ID: 'o', text: messages['oldest_first'] },
       ]
     }
   },

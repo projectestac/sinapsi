@@ -10,44 +10,44 @@
             <ul class="dropdown-menu">
 
                 <li><a :href="baseurl  + '/post/' + post.id + '/edit'">
-                        <span class="glyphicon glyphicon glyphicon-pencil"></span> Edita
+                        <span class="glyphicon glyphicon glyphicon-pencil"></span> {{ trans('messages.edit') }}
                     </a>
                 </li>
 
                 <li><a :href="baseurl  + '/post/' + post.id + '/refresh'">
-                        <span class="glyphicon glyphicon glyphicon-refresh"></span> Recarrega
+                        <span class="glyphicon glyphicon glyphicon-refresh"></span> {{ trans('messages.reload') }}
                     </a>
                 </li>
 
                 <li v-if="!post.hidden">
                     <a :href="baseurl + '/post/' + post.id +'/hide'">
-                        <span class="glyphicon glyphicon glyphicon-eye-close"></span> Amaga
+                        <span class="glyphicon glyphicon glyphicon-eye-close"></span> {{ trans('messages.hide') }}
                     </a>
                 </li>
                 <li v-else>
                     <a :href="baseurl  + '/post/' + post.id + '/unhide'">
-                        <span class="glyphicon glyphicon glyphicon-eye-open"></span> Mostra
+                        <span class="glyphicon glyphicon glyphicon-eye-open"></span> {{ trans('messages.show') }}
                     </a>
                 </li>
 
                 <li>
                     <a class="red" :href="baseurl  + '/post/' + post.id +'/destroy'">
-                        <span class="glyphicon glyphicon glyphicon-trash"></span> Esborra
+                        <span class="glyphicon glyphicon glyphicon-trash"></span> {{ trans('messages.delete') }}
                     </a>
                 </li>
 
-                <li>    
+                <li>
                     <sticky :p="post"></sticky>
                 </li>
 
                 <li v-if="user.sinapsi_dst">
                     <a :href="baseurl+'/post/'+post.id+'/in/sinapsi/'+user.sinapsi_dst">
-                        <span class="glyphicon glyphicon glyphicon-log-in"></span> Inclou a {{ user.sinapsi_dst }}
+                        <span class="glyphicon glyphicon glyphicon-log-in"></span> {{ trans('messages.include_to') }} {{ user.sinapsi_dst }}
                     </a>
                 </li>
                 <li v-if="user.sinapsi_dst">
                     <a :href="baseurl+'/post/'+post.id+'/out/sinapsi/'+user.sinapsi_dst">
-                        <span class="glyphicon glyphicon glyphicon-log-out"></span> Treu de {{ user.sinapsi_dst }}
+                        <span class="glyphicon glyphicon glyphicon-log-out"></span> {{ trans('messages.remove_to') }} {{ user.sinapsi_dst }}
                     </a>
                 </li>
 

@@ -17,7 +17,7 @@
                                 <div class="capcelera_basica_cont">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <h1 class="title-subpage">Docents </h1>
+                                            <h1 class="title-subpage">{{ trans('messages.teachers') }} </h1>
                                             <br>
                                         </div>
                                     </div>
@@ -36,9 +36,9 @@
             <table class="table" id="tbl_users">
                 <thead>
                 <th></th>
-                <th>Nom</th>
-                <th>Lloc de treball</th>
-                <th>Localitat</th>
+                <th>{{ trans('messages.names') }}</th>
+                <th>{{ trans('messages.work_placement') }}</th>
+                <th>{{ trans('messages.city') }}</th>
                 {{--<th>Neurones</th>--}}
                 </thead>
                 @foreach ( $users as $user )
@@ -74,21 +74,23 @@
 
         $(document).ready(function () {
 
+            var messages = _.get(window.trans, 'messages');
+
             $('#tbl_users').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
                 "language": {
-                    "search": "Cercar:",
-                    "zeroRecords": "No hi ha resultats",
+                    "search": messages['search'],
+                    "zeroRecords": messages['no_results'],
                     "thousands": ".",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
-                    "infoFiltered": "(filtrat de _MAX_ registres)",
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
+                    "infoFiltered": messages['filter_register'] + " _MAX_ " + messages['registers'],
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last": messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });

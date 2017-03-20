@@ -9,8 +9,8 @@
         </div>
         <hr>
         <div class="form-group">
-            <label for="title">Títol</label>
-            <input name="title"  type="text" class="form-control" v-model="new_block.title" placeholder="Títol">
+            <label for="title">{{ trans('messages.title') }}</label>
+            <input name="title"  type="text" class="form-control" v-model="new_block.title" :placeholder="[ trans('messages.title') ]">
         </div>
     </div>
 

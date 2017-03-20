@@ -1,6 +1,6 @@
 @if (! $errors->isEmpty())
     <div class="alert alert-danger">
-        <p><strong>Oops!</strong> Corrige los siguientes errores:</p>
+        <p><strong>{{ trans('messages.oops') }}</strong> {{ trans('messages.please_correct_the_following_errors') }}</p>
         <ul>
             @foreach($errors->all() as $error)
                 <li>{{ $error }}</li>

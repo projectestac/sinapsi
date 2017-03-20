@@ -11,7 +11,7 @@
             <post_head :p="post"></post_head>
             <h2>
                 <a v-if="post.title" @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >{{ post.title }}</a>
-                <a v-else @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >Sense títol</a>
+                <a v-else @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >{{ trans('messages.without_title') }}</a>
             </h2>
 
 

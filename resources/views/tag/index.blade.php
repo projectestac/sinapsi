@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Etiqueta {{ $tag->name }}</title>
+    <title>{{ trans('messages.tag') }} {{ $tag->name }}</title>
 @endsection
 
 @section('content')

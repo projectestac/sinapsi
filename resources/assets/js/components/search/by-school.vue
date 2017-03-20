@@ -1,10 +1,10 @@
 <template>
     <div class="dropdown">
 
-        <p><strong>Centres educatius:</strong> {{ schools_DB.join(", ") }}</p>
+        <p><strong>{{ trans('messages.schools') }}</strong> {{ schools_DB.join(", ") }}</p>
         <multiselect v-model="schools_UI"
-                     placeholder="Filtra per un o més centres educatius"
-                     deselect-label="Treu de la selecció"
+                    :placeholder="trans('messages.filter_by_one_or_more_schools')"
+                    :deselect-label="trans('messages.remove_to_selection')"
                      label="text"
                      track-by="ID"
                     :options="options"

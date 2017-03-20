@@ -1,9 +1,9 @@
 <template>
     <div class="dropdown">
-        <p><strong>Localitats:</strong>{{ cities_DB }}</p>
+        <p><strong>{{ trans('messages.cities') }} </strong>{{ cities_DB }}</p>
         <multiselect v-model="cities_UI"
-             placeholder="Filtra per una o més localitats"
-             deselect-label="Treu de la selecció"
+            :placeholder="trans('messages.filter_by_one_or_more_cities')"
+            :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
             :options="options"

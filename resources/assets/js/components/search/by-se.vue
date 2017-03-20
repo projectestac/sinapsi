@@ -1,9 +1,9 @@
 <template>
     <div class="dropdown">
-        <p><strong>Serveis Educatius:</strong>{{ ssee_DB.join() }}</p>
+        <p><strong>{{ trans('messages.educational_services') }}</strong>{{ ssee_DB.join() }}</p>
         <multiselect v-model="ssee_UI"
-             placeholder="Filtra per un o més Serveis Educatius"
-             deselect-label="Treu de la selecció"
+            :placeholder="trans('messages.filter_by_one_or_more_educational_services')"
+            :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
             :options="options"

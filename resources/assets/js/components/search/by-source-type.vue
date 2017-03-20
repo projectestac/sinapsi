@@ -1,10 +1,10 @@
 <template>
     <div class="dropdown">
 
-        <p><strong>Tipus de font:</strong> {{ sources_type_DB }}</p>
+        <p><strong>{{ trans('messages.source_type') }}</strong> {{ sources_type_DB }}</p>
         <multiselect v-model="sources_type_UI"
-             placeholder="Filtra per un o més tipus de font"
-             deselect-label="Treu de la selecció"
+            :placeholder="trans('messages.filter_by_one_or_more_source_type')"
+            :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
             :options="options"
@@ -20,6 +20,8 @@
 
 import Multiselect from 'vue-multiselect'
 
+var messages = _.get(window.trans, 'messages');
+
 export default {
     props:['from_UI','from_DB'],
     components: {
@@ -30,15 +32,15 @@ export default {
             sources_type_UI: this.from_UI ? this.from_UI : "",
             sources_type_DB: this.from_DB ? this.from_DB : "",
             options: [
-                {'ID':'Escola','text':'Escola'},
-                {'ID':'Institut','text':'Institut'},
-                {'ID':'IE','text':'Institut Escola'},
-                {'ID':'SEZ','text':'Serveis Educatius'},
-                {'ID':'Blog','text':'Blog personal o de projecte'},
-                {'ID':'ZER','text':'ZER'},
-                {'ID':'CFA','text':'Adults'},
-                {'ID':'CdA','text':'Camps d\'aprenentatge'},
-                {'ID':'CREDA','text':'CREDA'},
+                {'ID':'Escola','text': messages['school']},
+                {'ID':'Institut','text': messages['high_school']},
+                {'ID':'IE','text': messages['institute_school']},
+                {'ID':'SEZ','text': messages['educational_services']},
+                {'ID':'Blog','text': messages['personal_blog']},
+                {'ID':'ZER','text': messages['zer']},
+                {'ID':'CFA','text': messages['adults']},
+                {'ID':'CdA','text': messages['fields_leraning']},
+                {'ID':'CREDA','text': messages['creda']},
             ]
         }
     },
