@@ -63,6 +63,7 @@ Route::group(['middleware' => 'role:admin'], function () {
     });
 
     Route::get('getrss/post', 'ReaderController@getPostByUrl');
-    Route::post('getrss/list', 'ReaderController@getPostsByUrlList');
-    Route::get('getrss/{channel_id}', 'ReaderController@getPostsByRss');
+    Route::post('getrss/list', 'ReaderController@getPostsByUrlsList');
+    Route::get('getrss/{channel_id}', 'ReaderController@getPostsByChannel');
+    
 });

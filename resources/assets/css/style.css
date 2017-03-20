@@ -643,3 +643,15 @@ span.label a{
     color: #666;
     background: #eee;
 }
+
+.new_post td{
+    background-color: #bf0000;
+}
+
+.new_post a{
+    color:white;
+}
+
+.separator td{
+    background-color: #b1b1b1;
+}
