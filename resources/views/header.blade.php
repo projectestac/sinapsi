@@ -56,7 +56,7 @@
 
             tinyMCE.activeEditor.windowManager.open({
                 file: cmsURL,
-                title: 'Filemanager',
+                title: 'Gestor de fitxers',
                 width: x * 0.8,
                 height: y * 0.8,
                 resizable: "yes",

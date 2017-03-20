@@ -3,7 +3,7 @@ namespace Sinapsi\Http\Controllers;
 
 use File;
 use DB;
-use Request;
+use Illuminate\Http\Request;
 use Cache;
 use Session;
 use Sunra\PhpSimple\HtmlDomParser;
@@ -22,6 +22,140 @@ class ReaderController extends Controller
     }
 
 
+    /**
+     * savePost
+     * Try to save post into database. If post already exists,
+     * @param $post
+     * @return array
+     **/
+
+    public function savePost($post){
+
+        $tags = $post['tags'];
+        unset($post['tags']);
+
+        // Post already exists if permalink is in the database
+        $__post = Post::firstOrCreate(
+            ["permalink" => $post['permalink']],
+            $post
+        );
+
+        $isNew = $__post->wasRecentlyCreated ? true : false;
+
+        foreach ($tags as $tag) {
+            $__tag = $this->tagRepository->newOrAlias($tag);
+
+            PostTag::firstOrCreate([
+                "post_id" => $__post->id,
+                "tag_id" => $__tag->id
+            ]);
+        }
+
+        $log_post= [
+            "title" => $__post->title,
+            "link" => $__post->link,
+            "new" => $isNew
+        ];
+
+        return $log_post;
+
+    }
+
+
+    public function getPostByUrl($url){
+
+        try {
+
+            $codename = explode("/", $url)[3];
+            $entity = Entity::where('codename', $codename)->first();
+            $channel = Channel::where('obj_id', $entity->id)->where('type', 'Entity')->first();
+
+            $post = $channel->fetchPost($url);
+            $post_info = $this->savePost($post);
+
+            $log_fetch = [
+                "entity"=>[
+                    "nom"=>$entity->name,
+                    "url"=>$entity->url
+                ],
+                "post"=>$post_info
+            ];
+
+            return $log_fetch;
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
+
+    public function getPostsByUrlsList(Request $request){
+
+        $log_posts = collect([]);
+
+        $urlList = explode(PHP_EOL, $request->list);
+
+        foreach ($urlList as $url) {
+            $post = $this->getPostByUrl($url);
+            $log_posts->push($post);
+        }
+
+        return $log_posts;
+
+    }
+
+    //getPostsByChannel
+    public function getPostsByChannel($channel_id){
+
+        $separator = [
+            "entity"=>["nom"=>"","url"=>""],
+            "post"=>["title" =>"", "link" => "","new" => false]
+        ];
+
+        try {
+            $log_posts = collect([]);
+
+            $channel = Channel::findOrFail($channel_id);
+            $entity = Entity::findOrFail($channel->obj_id);
+
+            // Get posts and tags
+            $posts = $channel->fetchPosts();
+
+            // Save new posts and associated tags into database
+            foreach ($posts as $post) {
+
+                $post_info = $this->savePost($post);
+
+                $log_fetch = [
+                    "entity"=>[
+                        "nom"=>$entity->name,
+                        "url"=>$entity->url
+                    ],
+                    "post"=>$post_info
+                ];
+                $log_posts->push($log_fetch);
+            }
+
+            $log_posts->push($separator);
+            return $log_posts;
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+
+    }
+
+    //getPostByEntity
+    public function getPostByEntity($codename){
+    //TODO
+    }
+
+    //getPostsListByEntities
+    public function getPostByEntitiesList($request){
+    //TODO
+    }
+
     public function getLogos()
     {
         $schools = Entity::where('url', 'like', '%agora.xtec.cat%')
@@ -29,7 +163,7 @@ class ReaderController extends Controller
 
         $logos = collect([]);
 
-        
+
         foreach ($schools as $school) {
             $name = $school->name;
 
@@ -42,7 +176,7 @@ class ReaderController extends Controller
                     } else {
                         $src = "";
                     }
-                            
+
                     $e = Entity::find($school->id);
                     $e->image = $src;
                     $e->save();
@@ -53,175 +187,11 @@ class ReaderController extends Controller
                 $src = $school->image;
             }
 
-
             $logos->push(array('name'=>$name,'src'=>$src));
         }
 
+        dd($logos);
 
-
-        echo "<table>";
-
-        foreach ($logos as $logo) {
-            echo "<tr>";
-            echo "<td>";
-            echo $logo['name'];
-            echo "</td>";
-            echo "<td>";
-            echo "<img width='200px' src='".$logo['src']."'>";
-            echo "</td>";
-            echo "<tr>";
-        }
-        echo "</table>";
-
-        //return $logos;
-    }
-
-
-    /**
-     * getPostByUrl
-     * Get post from url
-     *
-     * @return array
-     */
-    public function getPostByUrl(Request $request)
-    {
-        try {
-            $log_posts = collect([]);
-
-            $codename = explode("/", $request->url)[3];
-            $entity = Entity::where('codename', $codename)->first();
-            $channel = Channel::where('obj_id', $entity->id)->where('type', 'Entity')->first();
-
-            $post = $channel->fetchPost($request->url);
-
-            $log_posts->push(["entity"=>["nom"=>$request->url,"url"=>$request->url],"post"=>[],"tag"=>""]);
-            $log_posts->push($this->savePost($post));
-
-            Cache::pull('posts');
-            return $log_posts->toArray();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-
-    // TODO: Not working
-    public function getPostsByUrlList(Request $request)
-    {
-        try {
-            $log_posts = collect([]);
-            //$pList = explode(',', $request->list);
-            preg_match_all('~(["\'])([^"\']+)\1~', $request->list, $pList);
-
-            foreach ($pList[2] as $p) {
-                $codename = explode("/", $p)[3];
-
-                $entity = Entity::where('codename', $codename)->first();
-                $channel = Channel::where('obj_id', $entity->id)->where('type', 'School')->first();
-
-                $posts = $channel->fetchPost($p);
-
-                $log_posts->push(["entity" => ["nom" => $entity->name, "url" => $entity->url], "post" => [], "tag" => ""]);
-
-                foreach ($posts as $post) {
-                    $__post = Post::firstOrCreate($post['post']);
-                    if ($__post->wasRecentlyCreated) {
-                        $log_posts->push(["entity" => [], "post" => ["title" => $__post->title, "link" => $__post->link, "bgcolor" => 'green'], "tag" => ""]);
-                    } else {
-                        $log_posts->push(["entity" => [], "post" => ["title" => $__post->title, "link" => $__post->link, "bgcolor" => ''], "tag" => ""]);
-                    }
-
-                    foreach ($post['tags'] as $tag) {
-                        $__tag = $this->tagRepository->addOrReturn($tag);
-
-                        PostTag::firstOrCreate([
-                            "post_id" => $__post->id,
-                            "tag_id" => $__tag->id
-                        ]);
-                    }
-                }
-            }
-            Cache::pull('posts');
-            return $log_posts->toArray();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-
-    /**
-     * getPostByRss
-     * Get posts from rss sources
-     *
-     * @return array
-     */
-    public function getPostsByRss($channel_id)
-    {
-        try {
-            $log_posts = collect([]);
-
-            $channel = Channel::findOrFail($channel_id);
-            $entity = Entity::findOrFail($channel->obj_id);
-
-            $log_posts->push([
-                "entity"=>[
-                    "nom"=>$entity->name,
-                    "url"=>$entity->url
-                ],
-                "post"=>[]
-            ]);
-
-            // Get posts and tags
-            $posts = $channel->fetchPosts();
-
-            // Save new posts and associated tags into database
-            foreach ($posts as $post) {
-                $log_posts->push($this->savePost($post));
-            }
-
-            Cache::pull('posts');
-            return $log_posts->toArray();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function savePost($post)
-    {
-        $tags = $post['tags'];
-        unset($post['tags']);
-
-        // Post already exists if permalink is in the database
-        $__post = Post::firstOrCreate(
-            ["permalink" => $post['permalink']],
-            $post
-        );
-
-        if ($__post->wasRecentlyCreated) {
-            $bgcolor = 'green';
-        } else {
-            $bgcolor = '';
-        }
-
-        $log_post= [
-            "entity"=>[],
-            "post"=>[
-                "title" => $__post->title,
-                "link" => $__post->link,
-                "bgcolor" => $bgcolor
-            ]
-        ];
-
-        foreach ($tags as $tag) {
-            $__tag = $this->tagRepository->newOrAlias($tag);
-
-            PostTag::firstOrCreate([
-                "post_id" => $__post->id,
-                "tag_id" => $__tag->id
-            ]);
-        }
-
-        return $log_post;
     }
 
     /**
@@ -267,8 +237,10 @@ class ReaderController extends Controller
                 Session::flash('message', "No hi ha canvis a l'article \"$__post->title\"");
             }
             return back();
+
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
+
 }

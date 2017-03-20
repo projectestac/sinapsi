@@ -15,42 +15,48 @@
                 <span class="sr-only">Nom del centre fetched</span>
             </div>
         </div>
-
-
-        <div id="content">
-
-            {{--
-            Post: <input class="form-control" type="text" v-model.sync="url">
-            <input type="button" class="btn btn-primary" value="Get RSS" @@click="get_post(url)">
+        <div class="well">
+            <h3>Per adreça dels articles: </h3>
+            <textarea class="form-control" type="text" v-model.sync="urls"></textarea>
             <br>
-
-            Posts: <textarea class="form-control" type="text" v-model.sync="urls"></textarea>
-            <input type="button" class="btn btn-primary" value="Get RSS" @@click="get_posts(urls)">
-            <br>
-            --}}
-
-
-            Inici: <input class="form-control" type="text" v-model.sync="start">
-            Final: <input class="form-control" type="text" v-model.sync="end">
-
-            <input type="button" class="btn btn-primary" value="Get RSS" @@click="get_rss(start,end)">
-
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Centre</th>
-                    <th>Article</th>
-                </tr>
-                </thead>
-
-                <tr v-for="log in logs">
-                    <td :style="'background-color:'+log.post['bgcolor']"><a
-                                :href="log.entity['url']">@{{log.entity['nom']}}</a></td>
-                    <td><a :href="log.post['link']">@{{log.post['title']}}</a></td>
-                </tr>
-
-            </table>
+            <input type="button" class="btn btn-primary" value="Obté articles" @@click="get_posts(urls)">
         </div>
+
+        <div class="well">
+            <h3>Per rang de canals:</h3>
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="inici">Inici:</label>
+                    <input class="form-control" type="text" v-model.sync="start">
+                </div>
+                <div class="form-group">
+                    <label for="final">Final:</label>
+                    <input class="form-control" type="text" v-model.sync="end">
+                </div>
+            </form>
+            <br>
+            <input type="button" class="btn btn-primary" value="Obté articles" @@click="get_posts_by_channels(start,end)">
+        </div>
+
+        <h3>Resultats de la extracció:</h3>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Centre</th>
+                <th>Article</th>
+            </tr>
+            </thead>
+
+            <tr v-for="log in logs" :class="{'new_post':log.post['new'],'separator':log.entity['nom']==''}">
+                <td><a :href="log.entity['url']">@{{log.entity['nom']}}</a></td>
+                <td><a :href="log.post['link']">@{{log.post['title']}}</a></td>
+            </tr>
+
+        </table>
+        </div>
+
     </div>
 
 @stop
@@ -63,9 +69,11 @@
         var vm = new Vue({
             el: "#root",
             data: {
+                pagetype:"admin",
+                urls:"",
                 logs: [],
                 start: 1,
-                end: 10,
+                end: 300,
                 completed: 0,
                 percentil: 0
             },
@@ -75,7 +83,7 @@
                 }
             },
             methods: {
-                get_rss: function (start, end) {
+                get_posts_by_channels: function (start, end) {
                     vm.logs = [];
                     vm.percentil = 0;
                     vm.completed = 0;

@@ -667,6 +667,17 @@ span.label a{
     background: #eee;
 }
 
+.new_post td{
+    background-color: #bf0000;
+}
+
+.new_post a{
+    color:white;
+}
+
+.separator td{
+    background-color: #b1b1b1;
+}
 .basic_color.xar-socials.sns-gris{
     background-color: #ececec;
 }
