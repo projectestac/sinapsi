@@ -23,17 +23,16 @@ class CreateEntitiesTable extends Migration
             );
             $table->string('name',250);
             $table->string('codeid');
-            //TODO: unique
-            //$table->string('codename')->unique();
             $table->string('codename');
             $table->string('location');
             $table->string('image',500);
             $table->string('url',500);
+
             $table->integer('parent_id')->unsigned()->nullable();
-            /*$table->foreign('parent_id')
+            $table->foreign('parent_id')
                 ->references('id')
                 ->on('entities');
-            */
+
             $table->timestamps();
             $table->index(['id','codename']);
         });

@@ -23,21 +23,19 @@ class CreateUsersTable extends Migration
             $table->enum('role',['admin','subscriptor'])->default('subscriptor');
 
             $table->integer('entity_id')->unsigned()->nullable();
-            /*$table->foreign('school_id')
+            $table->foreign('entity_id')
                 ->references('id')
-                ->on('schools')
-                ->onDelete('cascade');
-            */    
+                ->on('entities');
 
             $table->string('email')->unique();
             $table->string('description')->nullable();
             $table->integer('reputation')->default(1);
             
-            $table->integer('sinapsi_dst')->nullable();
-            /*$table->foreign('sinapsi_dst_k')
+            $table->integer('sinapsi_dst')->unsigned()->nullable();
+            $table->foreign('sinapsi_dst')
                 ->references('id')
                 ->on('sinapsis');
-              */
+
             $table->string('wp_dst')->nullable();
 
             $table->rememberToken();

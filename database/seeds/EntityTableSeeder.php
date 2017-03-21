@@ -20,9 +20,9 @@ class EntityTableSeeder extends Seeder
             "name" => "Departament d'Ensenyament",
             "codeid" => "0000000",
             "codename" => "dep-ensenyament",
-            "image" => "no-image",
+            "image" => "",
             "location" => "Barcelona",
-            "parent_id" => 0,
+            "parent_id" => NULL,
             "type" => "ST",
             "url" => "http://ensenyament.gencat.cat/"
         ]);

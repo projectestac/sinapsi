@@ -27,10 +27,10 @@ class CreatePostsTable extends Migration
             $table->string('author',200);
             $table->string('thumb',1000);
 
-            $table->mediumInteger('channel_id')->unsigned();
-            /*$table->foreign('channel_id')
+            $table->Integer('channel_id')->unsigned()->nullable();
+            $table->foreign('channel_id')
                 ->references('id')
-                ->on('channels');*/
+                ->on('channels');
 
             $table->timestamp('pub_date');
 
