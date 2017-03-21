@@ -111,6 +111,11 @@ class Channel extends Model
 
 
         foreach ($feed->get_items() as $item) {
+
+            if (starts_with($item->get_title(),"Protegit:")){
+                continue;
+            }
+
             $str_tags = '';
             $tags = collect([]);
 
