@@ -109,7 +109,6 @@ class Channel extends Model
 
         $posts = collect([]);
 
-
         foreach ($feed->get_items() as $item) {
 
             if (starts_with($item->get_title(),"Protegit:")){

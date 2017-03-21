@@ -53,28 +53,24 @@
                         <li :class="{'active':pagetype=='sinapsi'}">
                             <a target="_self" href="{{ url('sinapsis')}}" title="Menú&nbsp;Sinapsis">
                                 Sinapsis
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='school'}">
                             <a target="_self" href="{{ url('centres')}}" title="Menú&nbsp;Centres">
                                 Centres
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='project'}">
                             <a target="_self" href="{{ url('projectes')}}" title="Menú&nbsp;Projectes">
                                 Projectes
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='user'}">
                             <a target="_self" href="{{ url('docents')}}" title="Menú&nbsp;Docents">
                                 Docents
-                                <div class="caret"></div>
                             </a>
                         </li>
 
@@ -82,7 +78,6 @@
                             <li class="">
                                 <a target="_self" href="{{ url('post/create')}}" title="Afegeix contingut">
                                     +
-                                    <div class="caret"></div>
                                 </a>
                             </li>
                         @endif

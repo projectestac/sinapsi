@@ -21,13 +21,13 @@ class CreateOptionsTable extends Migration
             $table->string('option')->default('');
             $table->string('scope_info')->default('');
             $table->mediumText('value')->default('');
+            
             $table->integer('post_id')->unsigned()->nullable();
-            /*
             $table->foreign('post_id')
                   ->references('id')
                   ->on('posts')
                   ->onDelete('cascade');
-            */
+
             $table->timestamps();
             $table->index(['id','post_id']);
 

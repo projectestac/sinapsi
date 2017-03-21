@@ -24,10 +24,12 @@ class CreateSinapsisTable extends Migration
             $table->enum('type',['auto', 'manual']);
             $table->enum('postview',['sns-medium-card', 'sns-full-card','sns-list','sns-gallery']);
             $table->string('querystring')->default('');
+            
             $table->integer('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')
                 ->references('id')
                 ->on('sinapsis');
+            
             $table->timestamps();
             $table->index(['id','slug']);
         });

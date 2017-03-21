@@ -16,14 +16,12 @@ class CreatePostLikesTable extends Migration
 
             $table->increments('id');
 
-            // foreign key user_id
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
 
-            // foreign key post_id
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')
                 ->references('id')
