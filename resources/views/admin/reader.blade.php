@@ -72,8 +72,8 @@
                 pagetype:"admin",
                 urls:"",
                 logs: [],
-                start: 1,
-                end: 300,
+                start: {{ $start }},
+                end: {{ $end }},
                 completed: 0,
                 percentil: 0
             },

@@ -21,6 +21,11 @@ class ReaderController extends Controller
         $this->tagRepository = $TagRepository;
     }
 
+    public function index (){    
+        $start = Channel::min('id'); 
+        $end =  Channel::max('id'); 
+        return view('admin/reader', compact('start','end'));
+    }
 
     /**
      * savePost
@@ -158,7 +163,7 @@ class ReaderController extends Controller
 
     public function getLogos()
     {
-        $schools = Entity::where('url', 'like', '%agora.xtec.cat%')
+        $schools = Entity::where('web', 'like', '%agora.xtec.cat%')
             ->get();
 
         $logos = collect([]);
@@ -169,7 +174,7 @@ class ReaderController extends Controller
 
             if (!$school->image) {
                 try {
-                    $dom = HtmlDomParser::str_get_html(file_get_contents('http://agora.xtec.cat/' . $school->codename));
+                    $dom = HtmlDomParser::str_get_html(file_get_contents('http://agora.xtec.cat/' . $school->slug));
 
                     if ($dom) {
                         $src = ($dom->find('#logo_entity')[0]->src);
@@ -189,8 +194,6 @@ class ReaderController extends Controller
 
             $logos->push(array('name'=>$name,'src'=>$src));
         }
-
-        dd($logos);
 
     }
 

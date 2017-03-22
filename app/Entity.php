@@ -63,7 +63,7 @@ class Entity extends Model
                 $keyField = $this->codeid;
                 break;
             default:
-                $keyField = $this->codename;
+                $keyField = $this->slug;
         }
 
         return $keyField;

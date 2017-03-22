@@ -8,6 +8,7 @@ use Sinapsi\Sinapsi;
 use Sinapsi\User;
 use Sinapsi\Channel;
 use Illuminate\Support\Facades\Session;
+use Yajra\Datatables\Facades\Datatables;
 
 function getSSEE()
 {
@@ -34,9 +35,19 @@ function getChannels()
                 ->get();
 }
 
+function getSchoolsTable()
+{
+    $schools = Entity::select(['image', 'name', 'municipi','slug','phone' ])->whereNotIn('type', ['Projecte'])->orderBy('name')->get();
+
+    //return Datatables::queryBuilder(DB::table('entities')->select('image','name','municipi'))->make(true);
+
+    return Datatables::of($schools)->make();
+
+}
+
 function getSchools()
 {
-    $schools =  Entity::selectRaw('id AS ID, CONCAT(name," (",location,")") AS text')
+    $schools =  Entity::selectRaw('id AS ID, CONCAT(name," (",municipi,")") AS text')
         ->whereNotIn('type', ['SEZ','ST','CdA','CLIC','CREDA','Projecte'])->get();
     Session::put('schools', $schools);
     return  $schools;
@@ -44,7 +55,7 @@ function getSchools()
 
 function getProjects()
 {
-    $projects =  Entity::selectRaw('channels.id AS ID, CONCAT(name," (",location,")") AS text')
+    $projects =  Entity::selectRaw('channels.id AS ID, CONCAT(name," (",municipi,")") AS text')
         ->join('channels', 'channels.obj_id', '=', 'entities.id')
         ->where('entities.type', 'Projecte')->get();
     Session::put('projects', $projects);
@@ -54,7 +65,7 @@ function getProjects()
 
 function getCities()
 {
-    $cities =  Entity::selectRaw('location AS ID, location AS text')->groupBy('location')->get();
+    $cities =  Entity::selectRaw('municipi AS ID, municipi AS text')->groupBy('municipi')->get();
     Session::put('cities', $cities);
     return  $cities;
 }

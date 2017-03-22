@@ -26,7 +26,7 @@ class CreateChannelsTable extends Migration
             $table->boolean('active');
             $table->timestamps();
 
-            $table->index(['id','obj_id']);
+            $table->index(['id']);
         });
     }
 

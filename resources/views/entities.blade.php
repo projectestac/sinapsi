@@ -40,23 +40,9 @@
             <th></th>
             <th>{{ trans('messages.schools') }}</th>
             <th>{{ trans('messages.cities') }}</th>
-            <th>{{ trans('messages.educational_service') }}</th>
-            <th>{{ trans('messages.territorial_service') }}</th>
-            <th>{{ trans('messages.type') }}</th>
-            <th>{{ trans('messages.posts') }}</th>
+            <th>{{ trans('messages.slug') }}</th>
+            <th>{{ trans('messages.phone') }}</th>
             </thead>
-
-            @foreach ( $entities as $entity )
-                <tr>
-                    <td><img width="50px" max-height="50px" src="{{ $entity->e1_logo }}"></a></td>
-                    <td><a href="s/{{ $entity->e1_codename }}">{{ $entity->e1_name }}</a></td>
-                    <td>{{ $entity->e1_location }}</td>
-                    <td><a href="se/{{ $entity->e2_codeid }}">{{ $entity->e2_name }}</td>
-                    <td><a href="st/{{ $entity->e3_id }}">{{ $entity->e3_name }}</td>
-                    <td>{{ $entity->e1_type }}</td>
-                    <td>-</td>
-                </tr>
-            @endforeach
         </table>
 
     </div>
@@ -81,9 +67,34 @@
             $('#tbl_schools').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
+                "processing": true,
+                "serverSide": true,
+                "searchDelay": 500,
+                "ajax": shared.baseUrl + "/api/v1/schools/table",
+                "columns": [
+                    {data: 0, name: 'image'},
+                    {data: 1, name: 'name'},
+                    {data: 2, name: 'municipi'},
+                    {data: 3, name: 'slug'},
+                    {data: 4, name: 'phone'}
+                ],
+                "columnDefs": [
+                    {
+                        "render": function ( data, type, row ) {
+                            if (row[3]) {
+                                return '<a href=' + shared.baseUrl + '/s/' + row[3] + '>' + data + '</a>';
+                            } else {
+                                return data;
+                            }
+                        },
+                        "targets": 1
+                    },
+                    { "visible": false,  "targets": [ 3 ] }
+                ],
                 "language": {
                     "search": messages['search'],
                     "zeroRecords": messages['no_results'],
+                    "processing": messages['processing_1'],
                     "thousands": ".",
                     "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
                     "infoEmpty": messages['no_records'],

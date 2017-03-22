@@ -73,7 +73,7 @@ class PostRepository
             $where .= $where == '' ? ' WHERE ' : ' AND ';
             $l = explode(",", $params['l']);
             $locations = implode(",", array_map("sns_quote", $l));
-            $where .= " entities.location IN (" . $locations . ")";
+            $where .= " entities.municipi IN (" . $locations . ")";
         }
 
         // By Servei educatiu
@@ -115,6 +115,11 @@ class PostRepository
             $where .= ' entities.id IN (' . $params['s'] . ')';
         }
 
+        if (!empty($params['school'])) {
+            $where .= $where == '' ? ' WHERE ' : ' AND ';
+            $where .= ' entities.slug = "' . $params['school'] . '"';
+        }
+
         // By Channels
         if (!empty($params['channels'])) {
             $where .= $where == '' ? ' WHERE ' : ' AND ';
@@ -127,15 +132,9 @@ class PostRepository
             $where .= ' posts.channel_id IN (' . $params['p'] . ')';
         }
 
-         // By school
-        if (!empty($params['school'])) {
-            $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' entities.codename = "' . $params['school'] . '"';
-        }
-
         if (!empty($params['codename'])) {
             $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' entities.codename = "' . $params['codename'] . '"';
+            $where .= ' entities.slug = "' . $params['codename'] . '"';
         }
 
         if (!empty($params['project'])) {
@@ -309,15 +308,15 @@ class PostRepository
                     CASE WHEN channels.type = "User" 
                          THEN parent_user.name
                          WHEN channels.type = "Project"
-                         THEN CONCAT(e2.name,", ",e2.location) 
-                         ELSE entities.location
+                         THEN CONCAT(e2.name,", ",e2.municipi) 
+                         ELSE entities.municipi
                     END as source_location,
                    
                     CASE WHEN channels.type = "User" 
                               THEN CONCAT("user/",users.id) 
                          WHEN channels.type = "Project" 
                               THEN CONCAT("p/",entities.id)
-                         ELSE CONCAT("s/",entities.codename)
+                         ELSE CONCAT("s/",entities.slug)
                     END as source_url';
 
         $query .= ',GROUP_CONCAT(tags.slug SEPARATOR \', \') as tags';
@@ -504,11 +503,11 @@ class PostRepository
                     END AS source_name,
                     CASE WHEN channels.type = "User" THEN parent_user.name 
                          WHEN channels.type = "Project" THEN e2.name
-                         ELSE entities.location
+                         ELSE entities.municipi
                     END AS source_location,
                     CASE WHEN channels.type = "User" THEN CONCAT("user/",users.id) 
                          WHEN channels.type = "Project" THEN CONCAT("p/",entities.id)
-                         ELSE CONCAT("s/",entities.codename)
+                         ELSE CONCAT("s/",entities.slug)
                     END AS source_url';
 
         $query .= ',GROUP_CONCAT(tags.slug SEPARATOR \', \') AS tags';

@@ -14,9 +14,6 @@
 require('api.php');
 require('admin.php');
 
-
-Route::get('logos', 'ReaderController@getLogos');
-
 Route::get('embed', 'AppController@embed');
 
 Route::get('sinapsis', 'AppController@showSinapsis');

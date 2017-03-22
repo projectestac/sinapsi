@@ -134,10 +134,10 @@ class User extends Authenticatable
                     CASE WHEN channels.type = "School" THEN entities.name
                         WHEN channels.type = "User" THEN users.name
                     END as source_name,
-                    CASE WHEN channels.type = "School" THEN entities.location
+                    CASE WHEN channels.type = "School" THEN entities.municipi
                          WHEN channels.type = "User" THEN entities.name
                     END as source_location,
-                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.codename)
+                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.slug)
                          WHEN channels.type = "User" THEN CONCAT("user/",users.id)
                     END as source_url';
 
@@ -158,10 +158,10 @@ class User extends Authenticatable
                     CASE WHEN channels.type = "School" THEN entities.name
                         WHEN channels.type = "User" THEN entities.name
                     END as source_name,
-                    CASE WHEN channels.type = "School" THEN entities.location
+                    CASE WHEN channels.type = "School" THEN entities.municipi
                          WHEN channels.type = "User" THEN entities.name
                     END as source_location,
-                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.codename)
+                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.slug)
                          WHEN channels.type = "User" THEN CONCAT("user/",users.id)
                     END as source_url';
 
@@ -182,10 +182,10 @@ class User extends Authenticatable
                     CASE WHEN channels.type = "School" THEN entities.name
                         WHEN channels.type = "User" THEN users.name
                     END as source_name,
-                    CASE WHEN channels.type = "School" THEN entities.location
+                    CASE WHEN channels.type = "School" THEN entities.municipi
                          WHEN channels.type = "User" THEN entities.name
                     END as source_location,
-                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.codename)
+                    CASE WHEN channels.type = "School" THEN CONCAT("s/",entities.slug)
                          WHEN channels.type = "User" THEN CONCAT("user/",users.id)
                     END as source_url';
 

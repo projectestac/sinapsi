@@ -190,6 +190,10 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         // Debugbar
         Barryvdh\Debugbar\ServiceProvider::class,
+        // Datatable
+        Yajra\Datatables\DatatablesServiceProvider::class
+
+
 
     ],
 

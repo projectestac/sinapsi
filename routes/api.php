@@ -43,6 +43,11 @@ Route::any('api/v1/ssee', function () {
 Route::any('api/v1/tags', function () {
     return getTags();
 });
+
+Route::any('api/v1/schools/table', function () {
+    return getSchoolsTable();
+});
+
 Route::any('api/v1/schools', function () {
     return getSchools();
 });

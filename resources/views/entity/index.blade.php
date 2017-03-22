@@ -59,30 +59,27 @@
                                 <div class="panel-body fons_gris">
                                     <ul class="llistat_enllacos_filet_cont list-group">
 
-                                        <li v-if="pagetype=='school'" class="list-group-item llista-col-1">{{ trans('messages.located') }}
+                                        <li v-if="pagetype=='school'" class="list-group-item llista-col-1">Ubicat a
                                             <strong>{{ $entity->location }}</strong>
-                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.center') }}:
+                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">Centre:
                                             <strong>{{ $entity->parent_name }} </strong> ({{ $entity->parent_location }}
                                             )
                                         <li v-if="pagetype=='school'" class="list-group-item llista-col-1">
-                                            {{ trans('messages.mail') }} {{ $entity->codeid }}@xtec.cat
-                                        <li class="list-group-item llista-col-1">Adreça web: <a target="_blank"
-                                                                                                href="{{ $entity->url }}">{{ $entity->url }}</a>
-                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.it_is_part_of') }}<strong>{!! $entity->codename !!}</strong>
-
-                                        {{--
-
-                                        <li class="list-group-item llista-col-1"><a target="_blank" href="{{ url('se') }}/{{ $school->servei_educatiu->codeid }}">{{ $school->servei_educatiu->name }}</a>
-                                        <li class="list-group-item llista-col-1"><a target="_blank" href="{{ url('st') }}/{{ $school->servei_educatiu->servei_territorial->id }}">{{ $school->servei_educatiu->servei_territorial->name }}
-
-                                        <li class="list-group-item llista-col-1">{{ trans('messages.twitter') }}:<a target="_blank" href="http://twitter.com/{{ $school->twitter }}">{{ $school->twitter }}</a>
-
-                                        --}}
-
+                                            {{ trans('messages.mail') }} {{ $entity->email }}
+                                        <li class="list-group-item llista-col-1">Adreça web: 
+                                        <a target="_blank" href="{{ $entity->web }}">{{ $entity->web }}</a>
+                                        
+                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.it_is_part_of') }}<strong>{!! $entity->slug !!}</strong>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                         
+                         <iframe width="350px" height="380px"
+                                 frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                                 src="http://www.instamaps.cat/geocatweb/visor.html?appname=Localització del centre&text={{ $entity->name }}&link={{ $entity->web }}&fons=ortoMap#15/{{ $entity->geo_y }}/{{ $entity->geo_x }}">
+                         </iframe>
+
                     </div>
                 </div>
             </div>

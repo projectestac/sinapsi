@@ -15,16 +15,13 @@ class ChannelTableSeeder extends Seeder
     {
     
        //Schools
-       for ($i=120; $i<=1110; $i++) {
+        $schools = Entity::where('web','<>','')->whereNotIn('type',array('SEZ'))->get();
 
-            $school_codename = \DB::table('entities')
-                    ->where('id',$i)
-                    ->first()->codename;
-
+        foreach ($schools as $school) {
             Channel::create([
                 'type'=>'Entity',
-                'obj_id'=>$i,
-                'rss'=>'https://agora.xtec.cat/'.$school_codename.'/feed',
+                'obj_id'=>$school->id,
+                'rss'=>'http:'.$school->web.'/feed',
                 'active'=>true,
                 ]);
         }
@@ -33,31 +30,26 @@ class ChannelTableSeeder extends Seeder
         $sezs = Entity::where('type','SEZ')->get();
 
         foreach ($sezs as $sez) {
-
-            $url = ltrim($sez->codename,"se-");
-
             Channel::create([
                 'type'=>'Entity',
                 'obj_id'=>$sez->id,
-                'rss'=> 'https://serveiseducatius.xtec.cat/'.$url.'/feed',
+                'rss'=> $sez->web.'/feed',
                 'active'=>true,
             ]);
         }
 
         //CREDAS
-
         $credas = Entity::where('type','CREDA')->get();
 
         foreach ($credas as $creda) {
             Channel::create([
                 'type'=>'Entity',
                 'obj_id'=>$creda->id,
-                'rss'=> $creda->url.'/feed',
+                'rss'=> $creda->web.'/feed',
                 'active'=>true,
             ]);
         }
 
-
-
     }
+
 }

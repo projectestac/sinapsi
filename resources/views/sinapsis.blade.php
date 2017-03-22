@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="capcelera_basica col-sm-4">
-                                {!!  $sns_tags_info['description']  !!}
+                                {!! $sns_tags_info['description'] !!}
                             </div>
                         </div>
                     </div>
