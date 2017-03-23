@@ -78,17 +78,6 @@ div.basic_text_peq ul li:before {
     color: #8899a6 !important;
 }
 
-div.fons_gris li{
-    list-style-type: none;
-}
-
-div.fons_gris li:before {
-    content: "\2022";
-    font-size: 1.05em;
-    left: 0;
-    color: #bf0000;
-}
-
 .llistat_enllacos_filet_cont {
     padding: 0em 0.875em .875em 0.875em;
 }
