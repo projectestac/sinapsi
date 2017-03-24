@@ -324,7 +324,10 @@ class PostRepository
         $query .= ',GROUP_CONCAT(tags.id SEPARATOR \', \') as tags_ids';
 
         if ($is_sinapsi) {
-            $query .= ', sinapsi_posts_stickies.sticky AS tsticky';
+            $query .= ', CASE WHEN sinapsi_posts_stickies.sinapsi_id = ' . $params['sinapsi']['id'];
+            $query .= ' THEN sinapsi_posts_stickies.sticky
+                        ELSE NULL
+                        END AS tsticky';
         } else {
             $query .= ', posts.sticky AS tsticky';
         }
