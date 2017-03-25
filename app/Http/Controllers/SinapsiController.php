@@ -179,7 +179,7 @@ class SinapsiController extends Controller
     public function store(Request $request)
     {
         // TODO: rols
-        $querystring = getQueryString($request);
+        $querystring = $request->querystring; // VALID WHEN combos implemented! $querystring = getQueryString($request);
         $params = sns_parse_str($querystring);
 
         $request->flash();
@@ -337,7 +337,7 @@ class SinapsiController extends Controller
             $sinapsi->logo = url('/').'/'.$sinapsi->saveLogo($request->file('sns_logo'));
         }
 
-        $sinapsi->querystring = $request->querystring; //getQueryString($request);
+        $sinapsi->querystring = $request->querystring; 
         $sinapsi->save();
 
         // USERS

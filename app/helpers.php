@@ -292,16 +292,28 @@ function uniformTag($tag)
 
 function getQueryString($request)
 {
+
     if ($request->isMethod('post')) {
         $querystring ="";
         $exclude_fields = [
-            'sinapsi_id','_token',
-            'name','description','slug',
-            'serveis_educatius','schools',
-            'sns_logo','parent_id',
-            'title','content','block_type','url',
-            'admins','blocks','type',
-            'postview', 'parent_sinapsi'
+            'sinapsi_id',
+            '_token',
+            'name',
+            'description',
+            'slug',
+            'serveis_educatius',
+            'schools',
+            'sns_logo',
+            'parent_id',
+            'title',
+            'content',
+            'block_type',
+            'url',
+            'admins',
+            'blocks',
+            'type',
+            'postview',
+            'parent_sinapsi'
         ];
         $params = $request->except($exclude_fields);
 
