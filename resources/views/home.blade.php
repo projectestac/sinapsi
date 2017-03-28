@@ -60,6 +60,8 @@
 
                 <div :class="{'col-xs-12':true,'col-sm-4':fulltabs==false }">
 
+                   <sns-blocks-sinapsis></sns-blocks-sinapsis>
+
                     @foreach ($blocks as $block)
                         <sns-block :info="{{ $block }}"></sns-block>
                     @endforeach

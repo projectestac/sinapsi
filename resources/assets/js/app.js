@@ -16,7 +16,7 @@ require('./bootstrap');
 Vue.component('sns-search', require('./components/search/search.vue'));
 Vue.component('sns-posts-container', require('./components/posts/container.vue'));
 Vue.component('sns-blocks-list', require('./components/blocks/list.vue'));
-Vue.component('sns-blocks-sinapsis-list', require('./components/blocks/sinapsis.vue'));
+Vue.component('sns-blocks-sinapsis', require('./components/blocks/sinapsis.vue'));
 Vue.component('sns-block', require('./components/blocks/block.vue'));
 Vue.component('by-school', require('./components/user/by-school.vue'));
 Vue.component('block-builder', require('./components/blocks/block-builder.vue'));

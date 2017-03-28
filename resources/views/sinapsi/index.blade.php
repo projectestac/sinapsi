@@ -84,6 +84,8 @@
 
                     <div id="center_2_2R">
 
+                        <sns-blocks-sinapsis></sns-blocks-sinapsis>
+
                         @foreach ($blocks as $block)
                             <sns-block :info="{{ $block }}"></sns-block>
                         @endforeach

@@ -330,4 +330,5 @@ return [
     'send'                              => 'Envia',                                 /* comments.vue */
     'filter_register'                   => '(filtrat de',                           /* entities.blade.php, projects.blade.php, users.blade.php */
     'registers'                         => 'registres)',                            /* entities.blade.php, projects.blade.php, users.blade.php */
+    'phone'                             => 'Telèfon',                               /*entities.blade.php */
 ];
