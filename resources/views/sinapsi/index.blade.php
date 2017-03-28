@@ -89,7 +89,7 @@
                         @endforeach
 
                         @can('sinapsi-manage',$sinapsi->id)
-                            <a href="{{url($sinapsi->slug).'/edit'}}">Edita</a>
+                            <a href="{{url($sinapsi->slug).'/edit'}}">{{ trans('messages.edit') }}</a>
                         @endcan
                     </div>
 

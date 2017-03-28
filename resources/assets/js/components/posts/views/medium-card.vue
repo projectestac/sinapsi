@@ -21,7 +21,7 @@
                     <h3>
                         <a v-if="post.title" @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >{{ post.title }}</a>
 
-                        <a v-else @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >Sense títol</a>
+                        <a v-else @click.prevent="post.fullcontent=(post.fullcontent)?false:true" >{{ trans('messages.without_title') }}</a>
 
                         <a class="sns_link_icon" :href="post.link" target="_blank">
                             <span class="glyphicon glyphicon glyphicon-link"></span>
@@ -46,7 +46,7 @@
         </div>
 
         <div  v-if="!post.fullcontent" class="col-md-3 col-sm-4">
-            <img v-if="post.thumb" class="sns-post-thumb" :src="post_thumb" :alt="imatge">
+            <img v-if="post.thumb" class="sns-post-thumb" :src="post_thumb" :alt="[ trans('messages.image') ]">
         </div>
 
     </div>

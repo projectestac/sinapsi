@@ -1,8 +1,8 @@
 <template>
     <div>
         <multiselect v-model="terms_UI"
-             placeholder="Filtra per una o més paraules clau"
-             deselect-label="Treu de la selecció"
+             :placeholder="trans('messages.filter_by_one_or_more_keywords')"
+             :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
              :options="options"

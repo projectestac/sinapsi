@@ -5,20 +5,20 @@
         <ul class="pagination hidden-xs ">
 
             <li>
-                <a v-if="prev" href="#" class="anterior" @click="get_prev">anterior</a>
-                <a v-else class="desactivat">anterior</a>
+                <a v-if="prev" href="#" class="anterior" @click="get_prev">{{ trans('messages.previous') }}</a>
+                <a v-else class="desactivat">{{ trans('messages.previous') }}</a>
             </li>
 
             <li v-for="link in links" track-by="$index">
                 <a  :class="{ 'actiu2': current_page == link, disabled: isNaN(link)}"
-                    href="#" :title="link" :data-page="link" @click="get_posts">
+                    href="#" :title="[ trans('messages.link') ]" :data-page="link" @click="get_posts">
                     {{ link }}
                 </a>
             </li>
 
             <li>
-                <a v-if="next" href="#" class="seguent"  @click="get_next">següent</a>
-                <a v-else class="desactivat">següent</a>
+                <a v-if="next" href="#" class="seguent"  @click="get_next">{{ trans('messages.next') }}</a>
+                <a v-else class="desactivat">{{ trans('messages.next') }}</a>
             </li>
 
         </ul>

@@ -48,5 +48,6 @@ $(function(){
     })
 })
 
-
-
+Vue.prototype.trans = (key) => {
+    return _.get(window.trans, key, key);
+};

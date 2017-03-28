@@ -14,31 +14,31 @@
                                 <div class="fpca_peu_faldoLlista">
                                     <div class="hidden-xs">
                                         <ul class="list-group llistat_peu col-md-12">
-                                            <li class="list-group-item"><p class="title_list">Portals</p></li>
+                                            <li class="list-group-item"><p class="title_list">{{ trans('messages.portals') }}</p></li>
                                             <li class="list-group-item bullet">
-                                                <a title="ensenyament" href="http://ensenyament.gencat.cat/ca/inici/"
-                                                   target="_blank">Departament d'Ensenyament</a>
+                                                <a :title="[ trans('messages.educational_department') ]" href="http://ensenyament.gencat.cat/ca/inici/"
+                                                   target="_blank">{{ trans('messages.educational_department') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="XTEC" href="http://xtec.gencat.cat/" target="_blank">XTEC</a>
+                                                <a :title="[ trans('messages.xtec') ]" href="http://xtec.gencat.cat/" target="_blank">{{ trans('messages.xtec') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Edu365" href="http://www.edu365.cat/"
-                                                   target="_blank">Edu365</a>
+                                                <a :title="[ trans('messages.edu365') ]" href="http://www.edu365.cat/"
+                                                   target="_blank">{{ trans('messages.edu365') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Edu3" href="http://www.edu3.cat/" target="_blank">Edu3</a>
+                                                <a :title="[ trans('messages.edu3') ]" href="http://www.edu3.cat/" target="_blank">{{ trans('messages.edu3') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="ARC" href="http://apliense.xtec.cat/arc/"
-                                                   target="_blank">ARC</a>
+                                                <a :title="[ trans('messages.arc') ]" href="http://apliense.xtec.cat/arc/"
+                                                   target="_blank">{{ trans('messages.arc') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Alexandria" href="http://alexandria.xtec.cat/"
-                                                   target="_blank">Alexandria</a>
+                                                <a :title="[ trans('messages.alexandria') ]" href="http://alexandria.xtec.cat/"
+                                                   target="_blank">{{ trans('messages.alexandria') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Edumet" href="http://edumet.cat/" target="_blank">Edumet</a>
+                                                <a :title="[ trans('messages.edumet') ]" href="http://edumet.cat/" target="_blank">{{ trans('messages.edumet') }}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -53,24 +53,22 @@
 
                                     <div class="hidden-xs">
                                         <ul class="list-group llistat_peu col-md-12">
-                                            <li class="list-group-item"><p class="title_list">Serveis web i
-                                                    programari</p></li>
+                                            <li class="list-group-item"><p class="title_list">{{ trans('messages.web_services') }}</p></li>
                                             <li class="list-group-item bullet">
-                                                <a title="Àgora Moodle" href="http://agora.xtec.cat" target="_blank">Àgora
-                                                    Moodle</a>
+                                                <a :title="[ trans('messages.agora_moodle') ]" href="http://agora.xtec.cat" target="_blank">{{ trans('messages.agora_moodle') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Nodes" href="http://agora.xtec.cat/nodes" target="_blank">Nodes</a>
+                                                <a :title="{{ trans('messages.nodes') }}" href="http://agora.xtec.cat/nodes" target="_blank">{{ trans('messages.nodes') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="XTECBlocs" href="http://blocs.xtec.cat/" target="_blank">XTECBlocs</a>
+                                                <a :title="[ trans('messages.xtecblocs') ]" href="http://blocs.xtec.cat/" target="_blank">{{ trans('messages.xtecblocs') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="Linkat" href="http://linkat.xtec.cat/"
-                                                   target="_blank">Linkat</a>
+                                                <a :title="[ trans('messages.linkat') ]" href="http://linkat.xtec.cat/"
+                                                   target="_blank">{{ trans('messages.linkat') }}</a>
                                             </li>
                                             <li class="list-group-item bullet">
-                                                <a title="JClic" href="http://clic.xtec.cat/" target="_blank">JClic</a>
+                                                <a :title="[ trans('messages.jclic') ]" href="http://clic.xtec.cat/" target="_blank">{{ trans('messages.jclic') }}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -89,10 +87,10 @@
                                     <div class="hidden-xs">
                                         <ul class="list-group llistat_peu col-md-12">
 
-                                            <li class="list-group-item"><p class="title_list">Ajuda</p></li>
+                                            <li class="list-group-item"><p class="title_list">{{ trans('messages.help') }}</p></li>
 
                                             <li class="list-group-item bullet">
-                                                <a title="Item 1" href="#" target="_self">Sobre Sinapsi</a>
+                                                <a title="Item 1" href="#" target="_self">{{ trans('messages.about_sinapsi') }}</a>
                                             </li>
 
                                         </ul>
@@ -107,7 +105,7 @@
 										<a data-toggle="collapse"
                                            data-parent="#accordionFoot_06f2b6a3-f70a-11e3-b8a5-000c291c88e0"
                                            class="collapsed acc-peu"
-                                           href="#collapseFoot_06f2b6a3-f70a-11e3-b8a5-000c291c88e0">Ajuda</a>
+                                           href="#collapseFoot_06f2b6a3-f70a-11e3-b8a5-000c291c88e0">{{ trans('messages.help') }}</a>
 							 		 </span>
 
                                             </div>
@@ -115,16 +113,15 @@
                                                  class="panel-collapse collapse">
                                                 <div class="panel-body">
                                                     <ul>
-                                                        <li><a title="Mapa web" href="/ca/menu-ajuda/ajuda/mapaweb/"
-                                                               target="_self">Mapa web</a></li>
-                                                        <li><a title="Webs A-Z" href="/ca/menu-ajuda/ajuda/websaz/"
-                                                               target="_self">Webs A-Z</a></li>
-                                                        <li><a title="Accessibilitat"
+                                                        <li><a :title="[ trans('messages.web_map') ]" href="/ca/menu-ajuda/ajuda/mapaweb/"
+                                                               target="_self">{{ trans('messages.web_map') }}</a></li>
+                                                        <li><a :title="[ trans('messages.web_a_z') ]" href="/ca/menu-ajuda/ajuda/websaz/"
+                                                               target="_self">{{ trans('messages.web_a_z') }}</a></li>
+                                                        <li><a :title="[ trans('messages.accessibility') ]"
                                                                href="/ca/menu-ajuda/ajuda/accessibilitat/"
-                                                               target="_self">Accessibilitat</a></li>
-                                                        <li><a title="Sobre gencat"
-                                                               href="/ca/menu-ajuda/ajuda/sobre_gencat/" target="_self">Sobre
-                                                                gencat</a></li>
+                                                               target="_self">{{ trans('messages.accessibility') }}</a></li>
+                                                        <li><a :title="[ trans('messages.about_gencat') ]"
+                                                               href="/ca/menu-ajuda/ajuda/sobre_gencat/" target="_self">{{ trans('messages.about_gencat') }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -153,17 +150,11 @@
                                              alt="www.gencat.cat" class="adaptImage"></a>
                                 </div>
                                 <div class="col-sm-9 col-md-9 col-lg-9" id="peuAvis">
-                                    <p><a title="Avís legal" href="/ca/menu-ajuda/ajuda/avis_legal/" target="_self">Avís
-                                            legal</a>: La ©Generalitat de Catalunya permet la reutilització dels
-                                        continguts i de les dades sempre que se citi la font i la data d'actualització,
-                                        que no es desnaturalitzi la informació i que no es contradigui amb una llicència
-                                        específica.</p></div>
+                                    <p><a :title="[ trans('messages.legal_notice') ]" href="/ca/menu-ajuda/ajuda/avis_legal/" target="_self">{{ trans('messages.legal_notice') }}</a>: 
+                                        {{ trans('messages.footer_1') }}</p></div>
                             </div>
                             <div class="visible-xs avis_legal">
-                                <p><a title="Avís legal" href="/ca/menu-ajuda/ajuda/avis_legal/" target="_self">Avís
-                                        legal</a>: La ©Generalitat de Catalunya permet la reutilització dels continguts
-                                    i de les dades sempre que se citi la font i la data d'actualització, que no es
-                                    desnaturalitzi la informació i que no es contradigui amb una llicència específica.
+                                <p><a :title="[ trans('messages.legal_notice') ]" href="/ca/menu-ajuda/ajuda/avis_legal/" target="_self">{{ trans('messages.legal_notice') }}</a>: {{ trans('messages.footer_2') }}
                                 </p>
                             </div>
                             <div class="col-sm-1 col-md-1 col-lg-1" id="peuImatge">
@@ -176,7 +167,7 @@
                                     <img src="{{ asset('img/logo_generalitat_gris.png')}}" width="101" height="27"
                                          alt="www.gencat.cat" class="checkImage"></a>
                                 <p><a class="torna_amunt pull-right" href="javascript:tornarAmunt();"
-                                      title="Torna amunt">Torna amunt</a></p>
+                                      :title="[ trans('messages.back_to_top') ]">{{ trans('messages.back_to_top') }}</a></p>
                             </div>
                         </div>
                     </div>

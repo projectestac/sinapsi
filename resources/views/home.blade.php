@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Sinapsi - Inici</title>
+    <title>{{ trans('messages.sinapsi') }} - {{ trans('messages.home') }}</title>
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
                                         @else
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6">
-                                                    <h1 class="sns-home-title">sinapsi<span
+                                                    <h1 class="sns-home-title">{{ trans('messages.sinapsi') }}<span
                                                                 class="sns-domain">.xtec.cat</span></h1>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6">
@@ -65,7 +65,7 @@
                     @endforeach
 
                     @if ( Auth::check() && Gate::allows('manage-settings') )
-                        <a href="{{url('settings')}}">Edita</a>
+                        <a href="{{url('settings')}}">{{ trans('messages.edit') }}</a>
                     @endif
 
                 </div>

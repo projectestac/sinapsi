@@ -1,16 +1,16 @@
 <template>
     <div>
-        <p><i>Afegeix un bloc nou</i></p>
+        <p><i>{{ trans('messages.add_a_new_block') }}</i></p>
 
 
-        <label for="Tipus">Tipus de bloc</label>
+        <label for="Tipus">{{ trans('messages.type_block') }}</label>
         <div class="form-group">
             <select class="form-control" v-model='new_block.type'>
-                <option value="basic-color">Bloc de color bàsic</option>
-                <option value="raw-html">Bloc HTML pur</option>
-                <option value="fpca-llista">Bloc tipus llista</option>
-                <option value="simple-title">Títol</option>
-                <option value="twitter-timeline">Twitter</option>
+                <option value="basic-color">{{ trans('messages.basic_color_block') }}</option>
+                <option value="raw-html">{{ trans('messages.block_pure_html') }}</option>
+                <option value="fpca-llista">{{ trans('messages.list_block') }}</option>
+                <option value="simple-title">{{ trans('messages.title') }}</option>
+                <option value="twitter-timeline">{{ trans('messages.twitter') }}</option>
             </select>
         </div>
 
@@ -19,7 +19,7 @@
         <p>
             <button type="submit" class="btn btn-primary"
                     :disabled = "new_block.type=='basic-color' && new_block.color == 'new'" @click.prevent="create_block">
-            Afegeix nou bloc
+            {{ trans('messages.add_a_new_block') }}
             </button>
     </p>
 
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+
+var messages = _.get(window.trans, 'messages');
 
 import BuilderBasicColor from './builder/basic-color.vue';
 import BuilderRawHtml from './builder/raw-html.vue';
@@ -48,8 +50,8 @@ export default {
     data: function () {
         return {
             new_block: {
-                'title': 'Bloc nou',
-                'content': 'Defineix el bloc nou i afegeix. Després pots moure el bloc nou a la posició desitjada',
+                'title': messages['new_block'],
+                'content': messages['set_the_new_block_added'],
                 'type': 'basic-color',
                 'color': 'new',
                 'url': 'http://',
@@ -84,8 +86,8 @@ export default {
 
             // Reset new_block
             this.new_block = {
-                'title': 'Bloc nou',
-                'content': 'Defineix el bloc nou i afegeix. Després pots moure el bloc nou a la posició desitjada',
+                'title': messages['new_block'],
+                'content': messages['set_the_new_block_added'],
                 'type': 'basic-color',
                 'color': 'new',
                 'url': 'http://',

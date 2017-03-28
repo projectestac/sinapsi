@@ -10,7 +10,7 @@
 					 }">
 		</span>
 		<span v-if='post.num_comments'>{{ post.num_comments }}</span>
-		<span v-else>Comenta</span>
+		<span v-else>{{ trans('messages.comment') }}</span>
 	</button>
 
 	<div class="collapse" :id="'comments-' + post.id">
@@ -21,13 +21,13 @@
 		</ul>
 		
 		<form v-if="user_logged" method="POST">
-			<textarea v-model="new_comment.text" class="form-control" placeholder="Afegeix un comentari..." rows=2></textarea>
+			<textarea v-model="new_comment.text" class="form-control" :placeholder="[ trans('messages.add_a_comment') ]" rows=2></textarea>
 			<button type="submit" class="btn btn-primary" :post="post" @click.prevent='doComment(new_comment, $event)'>
-				Envia
+				{{ trans('messages.send') }}
 			</button>
 		</form>
 		<div v-else>
-			<a href="#" :onclick="'popupwindow(\'' + baseurl + '/auth\',\'Validant...\',600,600)'">Entra</a> per afegir un comentari
+			<a href="#" :onclick="'popupwindow(\'' + baseurl + '/auth\',\'Validant...\',600,600)'">{{ trans('messages.log_in') }}</a> {{ trans('messages.to_add_a_comment') }}
 		</div>
 	</div>
 </div>	
@@ -85,13 +85,13 @@ export default {
                 error: function (jqXHR, textStatus, message) {
                     switch (message) {
                         case 'Unauthorized':
-                            this.errors.push("Has d'entrar per poder fer aquesta acció");
+                            this.errors.push( trans('messages.you_need_log_in_to_do_this_action') );
                             break;
                         case 'Internal Server Error':
-                            this.errors.push("S'ha produit un error processant la vostra petició. Torna a prova en una estona");
+                            this.errors.push( trans('messages.there_was_an_error') );
                             break;
                         default:
-                            this.errors.push("El servidor no respón, torna a provar en una estona");
+                            this.errors.push( trans('messages.the_server_not_respond') );
                     }
                     $(btn).removeClass('gly-spin');
                 }.bind(this)
@@ -123,13 +123,13 @@ export default {
                 error: function (jqXHR, textStatus, message) {
                     switch (message){
                         case 'Unauthorized':
-                            this.errors.push("Has d'entrar per poder fer aquesta acció");
+                            this.errors.push( trans('messages.you_need_log_in_to_do_this_action') );
                             break;
                         case 'Internal Server Error':
-                            this.errors.push("S'ha produit un error processant la vostra petició. Torna a prova en una estona");
+                            this.errors.push( trans('messages.there_was_an_error') );
                             break;
                         default:
-                            this.errors.push("El servidor no respón, torna a provar en una estona");
+                            this.errors.push( trans('messages.the_server_not_respond') );
                     }
       					    $("#comments-icon").removeClass('gly-spin');
                 }.bind(this),

@@ -3,7 +3,7 @@
 <div class="dropdown">
 
     <multiselect v-model="sinapsi"
-                placeholder="Tria una sinapsi"
+                :placeholder="trans('messages.choose_a_sinapsi')"
                 label="text"
                 track-by="ID"
                 :options="opt"

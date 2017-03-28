@@ -6,11 +6,11 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="sns-account">
             <br>
-            <li><a href="{{ url('/user') }}/{{ Auth::user()->id }}">Perfil</a></li>
+            <li><a href="{{ url('/user') }}/{{ Auth::user()->id }}">{{ trans('messages.profile') }}</a></li>
             @if (Auth::user()->isAdmin())
-                <li><a href="{{ url('/settings') }}">Administració</a></li>
+                <li><a href="{{ url('/settings') }}">{{ trans('messages.administration') }}</a></li>
             @endif
-            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Tancar sessió</a></li>
+            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('messages.log_out') }}</a></li>
             <br>
         </ul>
     </li>

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Editant Sinapsis i descriptors</title>
+    <title>{{ trans('messages.edit_sinapsis_and_descriptors') }}</title>
 @stop
 
 @section('content')
@@ -11,16 +11,16 @@
             <div class="col-md-8">
 
                 <br><br>
-                <h2>Sinapsis i descriptors</h2>
+                <h2>{{ trans('messages.sinapsi_and_descriptors') }}</h2>
 
                 {!! Form::open(['edit','method'=>'POST','files'=>true]) !!}
 
                 @include('partials.errors')
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#config-basic">Configuració general</a></li>
-                    <li><a data-toggle="tab" href="#config-tags">Descriptors</a></li>
-                    <li><a data-toggle="tab" href="#config-users">Usuaris</a></li>
+                    <li class="active"><a data-toggle="tab" href="#config-basic">{{ trans('messages.general_settings') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-tags">{{ trans('messages.descriptors') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-users">{{ trans('messages.users') }}</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -36,7 +36,7 @@
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
-                                               data-parent="#acordio_distribuidora" href="#description">Descripció</a>
+                                               data-parent="#acordio_distribuidora" href="#description">{{ trans('messages.description') }}</a>
                                         </h2>
                                     </div>
 
@@ -48,7 +48,7 @@
                                     <div class="panel-heading">
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
-                                               data-parent="#acordio_distribuidora" href="#blocs">Blocs</a>
+                                               data-parent="#acordio_distribuidora" href="#blocs">{{ trans('messages.blocks') }}</a>
                                         </h2>
                                     </div>
                                     <div class="row">
@@ -59,7 +59,7 @@
 
                                         <div class="col-xs-12 col-sm-6">
                                             <p>
-                                                <i>Previsualitació dels blocs</i>
+                                                <i>{{ trans('messages.preview_blocks') }}</i>
                                             </p>
                                             <sns-blocks :pagetype="pagetype" :info="info"></sns-blocks>
                                         </div>
@@ -84,21 +84,21 @@
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
                                                data-parent="#acordio_distribuidora"
-                                               href="#addAlias">Afegir alias</a>
+                                               href="#addAlias">{{ trans('messages.add_alias') }}</a>
                                         </h2>
                                         <div id="addAlias" class="panel-collapse collapse" style="height: 0px;">
                                             <br>
                                             <div class="form-group">
-                                                <label for="slug">Descriptor a substituir</label>
+                                                <label for="slug">{{ trans('messages.descriptor_to_replace') }}</label>
                                                 <input type="text" class="form-control" v-model="slug"
-                                                       placeholder="Pot ser una expressió regular">
+                                                       :placeholder="[ trans('messages.it_can_be_a_regular_expression') ]">
                                             </div>
                                             <div class="form-group">
-                                                <label for="slug_alias">Descriptor alias</label>
+                                                <label for="slug_alias">{{ trans('messages.alias_descriptor') }}</label>
                                                 <input type="text" class="form-control" v-model="slug_alias">
                                             </div>
                                             <div class="form-group">
-                                                <label for="name_alias">Nom alias</label>
+                                                <label for="name_alias">{{ trans('messages.alias_name') }}</label>
                                                 <input type="text" class="form-control" v-model="name_alias">
                                             </div>
 
@@ -117,7 +117,7 @@
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
                                                data-parent="#acordio_distribuidora"
-                                               href="#alias">Llista d'alias</a>
+                                               href="#alias">{{ trans('messages.alias_list') }}</a>
                                         </h2>
 
                                         <div id="alias" class="panel-collapse collapse" style="height: 0px;">
@@ -125,9 +125,9 @@
                                             <br><br>
                                             <table class="table" id="tbl_alias">
                                                 <thead>
-                                                <th>Descriptor</th>
-                                                <th>Descriptor alias</th>
-                                                <th>Nom alias</th>
+                                                <th>{{ trans('messages.descriptor') }}</th>
+                                                <th>{{ trans('messages.alias_descriptor') }}</th>
+                                                <th>{{ trans('messages.alias_name') }}</th>
                                                 <th></th>
                                                 </thead>
 
@@ -137,7 +137,7 @@
                                                         <td>{{ $alias['slug_alias'] }}</td>
                                                         <td>{{ $alias['name_alias'] }}</td>
                                                         <td><a href="#"
-                                                               @@click.prevent="destroyAlias({{ $alias['id'] }})">Esborrar</a>
+                                                               @@click.prevent="destroyAlias({{ $alias['id'] }})">{{ trans('messages.remove') }}</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -165,7 +165,7 @@
                                         <h2 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse"
                                                data-parent="#acordio_distribuidora"
-                                               href="#administrators">Administradors</a>
+                                               href="#administrators">{{ trans('messages.administrator') }}</a>
                                         </h2>
                                     </div>
 
@@ -176,7 +176,7 @@
                     </div>
                     <p class="pull-right">
                         <button type="submit" class="btn btn-primary sns-btn-save">
-                            Desa
+                            {{ trans('messages.save') }}
                         </button>
                     </p>
                 </div>
@@ -193,6 +193,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
 
     <script>
+
+        var messages = _.get(window.trans, 'messages');
 
         var mixin = {};
         var bus = new Vue();
@@ -247,10 +249,10 @@
                             name_alias: this.name_alias
                         },
                         success: function (data) {
-                            this.message = {'type': 'success', 'text': "S'ha afegit el nou alias"};
+                            this.message = {'type': 'success', 'text': messages['added_new_alias']};
                             //Add into datatable
                             $('#tbl_alias').dataTable().fnAddData([
-                                this.slug, this.slug_alias, this.name_alias, 'Refresca per esborrar'
+                                this.slug, this.slug_alias, this.name_alias, messages['refresh_to_delete']
                             ]);
                             this.slug = "";
                             this.slug_alias = "";
@@ -258,7 +260,7 @@
                         }.bind(this),
 
                         error: function (jqXHR, textStatus, message) {
-                            this.message = {'type': 'danger', 'text': "S'ha produit un error: " + message};
+                            this.message = {'type': 'danger', 'text': messages['an_error_ocurred'] + ' ' + message};
                         }.bind(this)
                     });
                 },
@@ -280,7 +282,7 @@
                         }.bind(this),
 
                         error: function (jqXHR, textStatus, message) {
-                            this.message = {'type': 'danger', 'text': "S'ha produit un error: " + message};
+                            this.message = {'type': 'danger', 'text': messages['an_error_ocurred'] + ' ' + message};
                         }.bind(this)
                     });
                 }
@@ -300,17 +302,17 @@
                 "pageLength": 25,
                 "dom": '<"top"f>rt<"bottom"ip><"clear">',
                 "language": {
-                    "search": "Cercar:",
-                    "zeroRecords": "No hi ha resultats",
+                    "search": messages['search'],
+                    "zeroRecords": messages['no_results'],
                     "thousands": ".",
-                    "info": "Mostrant _START_-_END_ de _TOTAL_",
-                    "infoEmpty": "No hi ha registres",
+                    "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
+                    "infoEmpty": messages['no_records'],
                     "infoFiltered": "(filtrat de _MAX_ registres)",
                     "paginate": {
-                        "first": "Primer",
-                        "last": "Últim",
-                        "next": "Següent",
-                        "previous": "Anterior"
+                        "first": messages['first'],
+                        "last": messages['last'],
+                        "next": messages['next'],
+                        "previous": messages['previous']
                     },
                 }
             });

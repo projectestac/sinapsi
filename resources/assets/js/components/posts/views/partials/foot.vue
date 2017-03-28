@@ -13,7 +13,7 @@
         <sns-comments :p="post"></sns-comments>
 
         <div v-if="post.fullcontent" class="pull-right">
-        <a :href="'#post-' + post.id" title="Torna amunt">
+        <a :href="'#post-' + post.id" :title="[ trans('messages.back_to_top') ]">
             <img :src="baseurl + '/img/NG_tornar_enrere.png'">
         </a>
         </div>

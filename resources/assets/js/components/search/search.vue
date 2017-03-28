@@ -18,13 +18,13 @@
 
                 <div class="cerca-av col-md-3">
                     <a data-toggle="collapse" href="#advanced-search" title="Cerca avançada">
-                        Cerca avançada
+                        {{ trans('messages.advanced_search') }}
                     </a>
                 </div>
             </div>
 
             <div class="collapse row" id="advanced-search">
-                <p v-if="f_db.q"><strong>Paraules clau:</strong> {{ f_db.q }}</p>
+                <p v-if="f_db.q"><strong> {{ trans('messages.keywords') }}</strong> {{ f_db.q }}</p>
                 <br>
                 <by-order   v-on:filters_changed="filters_changed"      :from_UI="f_ui.o"     :from_DB="f_db.o"></by-order>
                 <by-tag     v-on:filters_changed="filters_changed"      :from_UI="f_ui.t"     :from_DB="f_db.t"></by-tag>
@@ -98,7 +98,7 @@ export default {
         filters: function(){
             var num_filters = Object.keys(this.filters).length;
             if (num_filters){
-                this.filters_warning  = num_filters ==1 ? "S'està aplicant <strong>1</strong> filtre" : "S'estan aplicant <strong>" + num_filters + "</strong> filtres";
+                this.filters_warning  = num_filters ==1 ? trans('messages.applying') + " <strong>1</strong> " + trans('messages.filter') : trans('messages.applyings') + " <strong>" + num_filters + "</strong> " +  trans('messages.filter');
             } else {
                 this.filters_warning = "";
             }

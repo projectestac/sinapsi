@@ -1,10 +1,10 @@
 <template>
     <div class="dropdown">
 
-        <p><strong>Projectes:</strong> {{ projects_DB.join(", ") }}</p>
+        <p><strong>{{ trans('messages.project') }}</strong> {{ projects_DB.join(", ") }}</p>
         <multiselect v-model="projects_UI"
-                     placeholder="Filtra per un o més projectes"
-                     deselect-label="Treu de la selecció"
+                    :placeholder="trans('messages.filter_by_one_or_more_projects')"
+                    :deselect-label="trans('messages.remove_to_selection')"
                      label="text"
                      track-by="ID"
                     :options="options"

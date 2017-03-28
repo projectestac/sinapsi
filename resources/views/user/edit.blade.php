@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Editant {{ $user->name}}</title>
+    <title>{{ trans('messages.editing') }} {{ $user->name}}</title>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
             <div class="media">
 
                 <div class="media-left media-top">
-                    <img class="thumbnail avatar" src="{{ $user->avatar }}" alt="foto">
+                    <img class="thumbnail avatar" src="{{ $user->avatar }}" :alt="[ trans('messages.photo') ]">
                     {!! Form::file('avatar') !!}
                 </div>
 
@@ -32,15 +32,15 @@
 
                     </div>
                     <div class="form-group">
-                        {{ Form::text('email', $user->email, ['id'=>'email','class' => 'form-control','readonly', 'placeholder' => 'Correu electrònic'])}}
+                        {{ Form::text('email', $user->email, ['id'=>'email','class' => 'form-control','readonly', 'placeholder' => trans('messages.email')])}}
                     </div>
 
                     <div class="form-group">
-                        {{ Form::textarea('description', $user->description, ['id'=>'description','rows'=>4, 'class' => 'form-control tinymce','placeholder' => 'Explica\'ns alguna cosa de tu (aficions, projectes...)'])}}
+                        {{ Form::textarea('description', $user->description, ['id'=>'description','rows'=>4, 'class' => 'form-control tinymce','placeholder' => trans('messages.user_hobbies') ])}}
                     </div>
 
                     <div class="form-group">
-                        {{ Form::text('wp_dst', $user->wp_dst, ['id'=>'wp_dst','class' => 'form-control', 'placeholder' => 'Nodes, XTECBlocs o web WordPress de destí'])}}
+                        {{ Form::text('wp_dst', $user->wp_dst, ['id'=>'wp_dst','class' => 'form-control', 'placeholder' => trans('messages.sites_destination')])}}
                     </div>
 
                     <user-sinapsi :options="sinapsis" :s="sinapsi"></user-sinapsi>
@@ -49,7 +49,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">
-                Actualitza
+                {{ trans('messages.update') }}
             </button>
 
             {!! Form::close() !!}

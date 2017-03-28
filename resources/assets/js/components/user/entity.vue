@@ -3,7 +3,7 @@
     <div class="dropdown">
 
         <multiselect v-model="entity"
-                     placeholder="(Opcional) Tria un centre educatiu"
+                    :placeholder="trans('messages.optional_choose_a_school')"
                      label="text"
                      track-by="ID"
                     :options="opt"

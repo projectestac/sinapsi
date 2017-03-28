@@ -4,7 +4,7 @@
 
     <div class="container well sns-error">
         <h3>{{  $err_message }}</h3>
-        <p>Si penseu que haurieu de tenir aquest permís, envieu un correu a <strong>agora@xtec.cat</strong></p>
+        <p>{{ trans('messages.not_access') }} <strong>{{ trans('messages.mail_gencat') }}</strong></p>
     </div>
 
 @endsection

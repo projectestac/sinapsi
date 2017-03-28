@@ -8,17 +8,17 @@
         <ul class="dropdown-menu">
 
             <li>
-                <a target="_blank" :href="twitter_link">Twitter</a>
+                <a target="_blank" :href="twitter_link">{{ trans('messages.twitter') }}</a>
             </li>
             <li>
-                <a target="_blank" :href="facebook_link">Facebook</a>
+                <a target="_blank" :href="facebook_link">{{ trans('messages.facebook') }}</a>
             </li>
             <li>
-                <a target="_blank" :href="email_link">Envia per correu</a>
+                <a target="_blank" :href="email_link">{{ trans('messages.send_to_email') }}</a>
             </li>
 
             <li v-if="user">
-                <a :href="user.wp_dst + wp_link"> Envia al meu NODES
+                <a :href="user.wp_dst + wp_link"> {{ trans('messages.send_my_nodes') }}
                 </a>
             </li>
 

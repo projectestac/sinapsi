@@ -3,7 +3,7 @@
     <div class="collapse row" id="share" style="padding:2em">
         <div class="form-group">
             <div class="col-md-3">
-                <label for="share-link">Enllaç</label>
+                <label for="share-link">{{ trans('messages.link') }}</label>
             </div>
             <div class="col-md-9">
                 <input type="text" class="form-control" id="share-link" :value="shareUrl">
@@ -13,18 +13,18 @@
             <br>
                 <div class="form-group">
                     <div class="col-md-3">
-                        <label for="embed">Inserir al web</label>
+                        <label for="embed">{{ trans('messages.insert_the_web') }}</label>
                     </div>
                     <div class="col-md-9">
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="h">Alçada (en px)</label>
+                                <label for="h">{{ trans('messages.height') }}</label>
                                 <input type="text" style="width:70px" class="form-control" id="h" v-model="embedHeight">
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" v-model="embedSearch"> Inclou cercador
+                                    <input type="checkbox" v-model="embedSearch"> {{ trans('messages.include_searcher') }}
                                 </label>
                             </div>
                         </form>

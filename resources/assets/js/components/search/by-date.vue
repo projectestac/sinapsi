@@ -1,10 +1,10 @@
 <template>
     <div class="form-group">
-        <p><strong>Interval de dates:</strong>{{ sd_DB }} a {{ ed_DB }}</p>
+        <p><strong>{{ trans('messages.date_range') }}</strong>{{ sd_DB }} {{ trans('messages.to') }} {{ ed_DB }}</p>
         <div class="row">
             <div class="col-md-12">
                 <input v-model="sd_UI" type="date" class="sns-date">
-                    &nbsp;&nbsp; a &nbsp;&nbsp;
+                    &nbsp;&nbsp; {{ trans('messages.to') }} &nbsp;&nbsp;
                 <input  v-model="ed_UI" type="date" class="sns-date">
             </div>
         </div>

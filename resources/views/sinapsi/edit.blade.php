@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <title>Editant {{ $sinapsi->name }}</title>
+    <title>{{ trans('messages.editing') }} {{ $sinapsi->name }}</title>
 @stop
 
 @section('content')
@@ -10,15 +10,15 @@
         <div class="row">
             <div class="col-md-8">
                 <br><br>
-                <h2> Editant Sinapsi {{ $sinapsi->name }}</h2>
+                <h2> {{ trans('messages.sinapsi_edit') }} {{ $sinapsi->name }}</h2>
 
                 {!! Form::open(['url'=>$sinapsi->slug.'/edit','method'=>'POST','files'=>true]) !!}
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#config-basic">Dades bàsiques</a></li>
-                    <li><a data-toggle="tab" href="#config-filters">Filtres</a></li>
-                    <li><a data-toggle="tab" href="#config-blocks">Blocs a la barra lateral</a></li>
-                    <li><a data-toggle="tab" href="#config-users">Usuaris</a></li>
+                    <li class="active"><a data-toggle="tab" href="#config-basic">{{ trans('messages.basic_data') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-filters">{{ trans('messages.filters_1') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-blocks">{{ trans('messages.sidebar_blocks') }}</a></li>
+                    <li><a data-toggle="tab" href="#config-users">{{ trans('messages.users') }}</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -27,20 +27,20 @@
 
                         <div class="row">
                             <div class="media-left media-top col-md-3">
-                                <img class="thumbnail avatar" src="{{ $sinapsi->logo }}" alt="logo"
+                                <img class="thumbnail avatar" src="{{ $sinapsi->logo }}" :alt="[ trans('messages.logo_1') ]"
                                      onclick="document.getElementById('sns_logo').click();">
                                 <input type="file" id="sns_logo" name="sns_logo" style="display: none;"/>
-                                <a href="#">Esborra logo</a>
+                                <a href="#">{{ trans('messages.remove_logo') }}</a>
                             </div>
 
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <label class="col-xs-12 pad_left_0" for="name">Nom</label>
+                                    <label class="col-xs-12 pad_left_0" for="name">{{ trans('messages.name') }}</label>
                                     <input name="name" type="text" class="form-control" v-model="name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-12 pad_left_0" for="slug">Adreça web</label>
+                                    <label class="col-xs-12 pad_left_0" for="slug">{{ trans('messages.web_address') }}</label>
                                     <input name="slug" type="text" class="form-control" v-model="slug">
                                     <p>{{url('/')}}/@{{ slug }}<p>
                                 </div>
@@ -48,39 +48,37 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('sinapsi', 'Sinapsi Mare:') !!}
+                            {!! Form::label('sinapsi', trans('messages.parent_sinapsi')) !!}
                             <sinapsis-list :options="sinapsis" :s="parent_id"></sinapsis-list>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('type', 'Tipus de sinapsi') !!}
                             <br>
-                            {!! Form::radio('type', 'auto' , ( $sinapsi->type  == 'auto') ) !!} Automàtica (segons
-                            filtres)
-                            {!! Form::radio('type', 'manual' , ( $sinapsi->type  == 'manual') ) !!} Manual (selecció
-                            d'articles un per un)
+                            {!! Form::radio('type', 'auto' , ( $sinapsi->type  == 'auto') ) !!} {{ trans('messages.automatic') }}
+                            {!! Form::radio('type', 'manual' , ( $sinapsi->type  == 'manual') ) !!} {{ trans('messages.manual') }}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('type', 'Visualització dels articles per defecte') !!}
+                            {!! Form::label('type', trans('messages.default_view_articles') ) !!}
                             <br>
                             {!! Form::radio('postview', 'sns-medium-card' ,  ( $sinapsi->postview  == 'sns-medium-card') ) !!}
-                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; Òptim &nbsp;
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; {{ trans('messages.optimal') }} &nbsp;
                             {!! Form::radio('postview', 'sns-list' ,    ( $sinapsi->postview  == 'sns-list') ) !!} <span
-                                    class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>&nbsp; Llista
+                                    class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>&nbsp;  {{ trans('messages.list') }}
                             &nbsp;
                             {!! Form::radio('postview', 'sns-gallery' , ( $sinapsi->postview  == 'sns-gallery') ) !!}
-                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>&nbsp; Galeria &nbsp;
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>&nbsp;  {{ trans('messages.gallery') }} &nbsp;
                         </div>
 
 
                         <div class="form-group">
-                            {!! Form::label('description', 'Descripció') !!}
+                            {!! Form::label('description', trans('messages.description') ) !!}
                             {!! Form::textarea('description', $sinapsi->description, ['class' => 'form-control tinymce']) !!}
                         </div>
 
                         <div class="alert alert-danger" role="alert">
-                            <a href="{{ url($sinapsi->slug) }}/destroy">Elimina sinapsi</a>
+                            <a href="{{ url($sinapsi->slug) }}/destroy">{{ trans('messages.remove_sinapsi') }}</a>
                         </div>
 
                     </div>
@@ -102,22 +100,21 @@
                     </div>
 
                     <div id="config-users" class="tab-pane fade in">
-                        <h3>Administradors</h3>
-                        <p><i>Poden renombrar la sinapsi, modificar la descripció i gestionar els blocs de la barra
-                                lateral</i></p>
-                        select admins
+                        <h3>{{ trans('messages.administrators') }}</h3>
+                        <p><i>{{ trans('messages.rename_sinapsi') }}</i></p>
+                        {{ trans('messages.select_admins') }}
 
 
-                        <h3>Editors</h3>
-                        <p><i>Poden incloure i treure articles a la sinapsi (si la sinapsi és de tipus manual)</i></p>
-                        select editors
+                        <h3>{{ trans('messages.publishers') }}</h3>
+                        <p><i>{{ trans('messages.manage_posts') }}</i></p>
+                        {{ trans('messages.select_publishers') }}
                     </div>
 
                 </div>
 
                 <p class="pull-right">
                     <button type="submit" class="btn btn-primary sns-btn-save">
-                        Desa
+                        {{ trans('messages.save') }}
                     </button>
                 </p>
 

@@ -1,9 +1,9 @@
 <template>
     <div class="dropdown">
-        <p><strong>Serveis Territorials:</strong> <span v-html="sstt_DB.join()"></span></p>
+        <p><strong>{{ trans('messages.regionals_services') }}</strong> <span v-html="sstt_DB.join()"></span></p>
         <multiselect v-model="sstt_UI"
-             placeholder="Filtra per un o més Serveis Territorials"
-             deselect-label="Treu de la selecció"
+            :placeholder="trans('messages.filter_by_one_or_more_regional_services')"
+            :deselect-label="trans('messages.remove_to_selection')"
              label="text"
              track-by="ID"
             :options="options"
@@ -21,6 +21,8 @@
 
 import Multiselect from 'vue-multiselect'
 
+var messages = _.get(window.trans, 'messages');
+
 export default {
     props:['from_UI','from_DB'],
     components: {
@@ -31,16 +33,16 @@ export default {
             sstt_UI: [],
             sstt_DB: [],
             options: [
-                {'ID':1,'text':'Girona'},
-                {'ID':2,'text':'Baix Llobregat'},
-                {'ID':3,'text':'Tarragona'},
-                {'ID':4,'text':'Consorci d\'educació de Barcelona'},
-                {'ID':5,'text':'Lleida'},
-                {'ID':6,'text':'Terres de l\'Ebre'},
-                {'ID':7,'text':'Barcelona Comarques'},
-                {'ID':8,'text':'Maresme/Vallès Oriental'},
-                {'ID':9,'text':'Vallès Occidental'},
-                {'ID':10,'text':'Catalunya central'},
+                {'ID':1,'text': messages['girona'] },
+                {'ID':2,'text': messages['baix_llobregat'] },
+                {'ID':3,'text': messages['tarragona'] },
+                {'ID':4,'text': messages['barcelona_education'] },
+                {'ID':5,'text': messages['lleida'] },
+                {'ID':6,'text': messages['terres_ebre']},
+                {'ID':7,'text': messages['comarques_barcelona'] },
+                {'ID':8,'text': messages['voriental_maresma']},
+                {'ID':9,'text': messages['voccidental']},
+                {'ID':10,'text': messages['central_catalonia']},
             ]
         }
     },

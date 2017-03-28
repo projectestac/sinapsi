@@ -17,9 +17,9 @@
                                 :class="{'btn':true,
                                          'btn-default':true,
                                          'sns-selected-postview': postview=='medium-card'}"
-                                aria-label="Optim" @click.prevent="postview='medium-card'">
+                                :aria-label="[ trans('messages.optimal') ]" @click.prevent="postview='medium-card'">
 
-                            <span class="glyphicon glyphicon-th-list" aria-hidden="true" title="Òptim"></span>
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true" :title="[ trans('messages.optimal') ]"></span>
                         </button>
 
                         <!--
@@ -31,8 +31,8 @@
                                 :class="{'btn':true,
                                                  'btn-default':true,
                                                  'sns-selected-postview': postview=='gallery'}"
-                                  aria-label="Galeria" @click.prevent="postview='gallery'">
-                            <span class="glyphicon glyphicon-picture" aria-hidden="true" title="Galeria"></span>
+                                  :aria-label="[ trans('messages.gallery') ]" @click.prevent="postview='gallery'">
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true" :title="[ trans('messages.gallery') ]"></span>
                         </button>
 
                         <!--
@@ -44,8 +44,8 @@
                                 :class="{'btn':true,
                                          'btn-default':true,
                                          'sns-selected-postview': postview=='list'}"
-                                aria-label="Llista" @click.prevent="postview='list'">
-                            <span class="glyphicon glyphicon-align-justify" aria-hidden="true" title="Llista"></span>
+                                :aria-label="[ trans('messages.list') ]" @click.prevent="postview='list'">
+                            <span class="glyphicon glyphicon-align-justify" aria-hidden="true" :title="[ trans('messages.list') ]"></span>
                         </button>
 
                         <!--
@@ -58,7 +58,7 @@
                                 :class="{'btn':true,
                                          'btn-default':true,
                                          'sns-selected-embed': embed==true}"
-                                aria-label="Embed" @click.prevent="embed==true?embed=false:embed=true" title="Compartir">
+                                :aria-label="[ trans('messages.share') ]" @click.prevent="embed==true?embed=false:embed=true" :title="[ trans('messages.share') ]">
                             <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
                         </button>
 
@@ -70,7 +70,7 @@
                         <button type="button"
                                 :class="{'btn':true,
                                          'btn-default':true}"
-                                v-on:click="toogle_ft" title="Expandir">
+                                v-on:click="toogle_ft" :title="[ trans('messages.expand') ]">
                             <span :class="{'glyphicon':true,
                                            'glyphicon-triangle-right':fulltabs==false,
                                            'glyphicon-triangle-left': fulltabs==true}"
@@ -94,7 +94,7 @@
                             <a href="#all" aria-controls="home" role="tab" data-toggle="tab">
                                 <div id="tab_all">
                                     <div class="titol-tab">
-                                        <span @click="orderby='n'">Tots</span>
+                                        <span @click="orderby='n'">{{ trans('messages.all') }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -110,7 +110,7 @@
                             <a href="#featured" aria-controls="home" role="tab" data-toggle="tab">
                                 <div id="tab_featured">
                                     <div class="titol-tab">
-                                        <span @click="orderby='f'">Destacats</span>
+                                        <span @click="orderby='f'">{{ trans('messages.featured') }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -126,7 +126,7 @@
                             <a href="#liked" aria-controls="home" role="tab" data-toggle="tab">
                                 <div id="tab_liked">
                                     <div class="titol-tab">
-                                        <span @click="orderby='v'">Més votats</span>
+                                        <span @click="orderby='v'">{{ trans('messages.top_rated') }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -142,7 +142,7 @@
                             <a href="#commented" aria-controls="home" role="tab" data-toggle="tab">
                                 <div id="tab_commented" style="float:left">
                                     <div class="titol-tab">
-                                        <span @click="orderby='c'">Més comentats</span>
+                                        <span @click="orderby='c'">{{ trans('messages.most_discussed') }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -165,8 +165,8 @@
                 <sns-pagination-top></sns-pagination-top>
 
                 <div class="query-animation" v-if="spin_animation">
-                    <p>Consultant...&nbsp;&nbsp;
-                        <img :src="spin_image" alt="Obtenint resultats...">
+                    <p>{{ trans('messages.processing') }}&nbsp;&nbsp;
+                        <img :src="spin_image" :alt="[ trans('messages.getting_results') ]">
                     </p>
                 </div>
 
