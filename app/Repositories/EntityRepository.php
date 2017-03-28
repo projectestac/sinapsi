@@ -8,7 +8,7 @@ use Sinapsi\Entity;
 
 class EntityRepository
 {
-    // TODO: convert to Eloquent
+    /* TODO: convert to Eloquent
     public function getEduEntities($type = null)
     {
         $query = 'SELECT e1.name AS e1_name,
@@ -31,6 +31,22 @@ class EntityRepository
         $entities = DB::select($query);
 
         return $entities;
+    }*/
+
+    public function getEduEntities($type = null)
+    {
+        $query = 'SELECT e1.name AS e1_name,
+                         e1.type AS e1_type, 
+                         e1.id AS e1_id, 
+                         e1.slug AS e1_codename,
+                         e1.municipi AS e1_location,
+                         e1.image AS e1_logo
+                  FROM entities AS e1
+                  WHERE e1.type NOT IN ("Projecte")';
+
+        $entities = DB::select($query);
+
+        return $entities;
     }
 
     /**
@@ -40,7 +56,6 @@ class EntityRepository
      * @return mixed
      */
 
-    //TODO: Not working
     public function getProjects()
     {
         /* Jerarchy example: e1 is a project, e2 is a school, e3 is SE*/
@@ -49,11 +64,11 @@ class EntityRepository
             'e1.name AS name, 
              e1.id AS id,
              e1.codeid AS codeid,
-             e1.codename AS codename,
+             e1.slug AS codename,
              e1.image AS logo,
              e2.name AS parent_name,
              e2.codeid AS parent_codeid, 
-             e2.location AS parent_location, 
+             e2.municipi AS parent_location, 
              e3.name AS grandpa_name,
              e3.id AS grandpa_id,
              COUNT(posts.id) AS num_posts, 
@@ -78,8 +93,8 @@ class EntityRepository
         $users = Entity::select(
             'users.name', 'users.id', 'users.avatar',
             'entities.name AS school_name', 'users.reputation',
-            'entities.codename AS school_codename',
-            'entities.location AS school_location')
+            'entities.slug AS school_codename',
+            'entities.municipi AS school_location')
             ->rightJoin('users', 'users.entity_id', '=', 'entities.id')
             ->orderBy('users.reputation', 'DESC')->get();
         return $users;

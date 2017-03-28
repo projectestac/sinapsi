@@ -2,6 +2,7 @@
 <?php 
 
 Route::group(['middleware' => 'role:admin'], function () {
+    
     Route::get('settings', 'AppController@editAppSettings');
     Route::post('settings', 'AppController@updateAppSettings');
     Route::get('sinapsi-tree', 'AppController@updateSinapsisTree');
@@ -58,9 +59,8 @@ Route::group(['middleware' => 'role:admin'], function () {
     ]);
 
     // Reader
-    Route::get('reader', function () {
-        return view('admin/reader');
-    });
+    Route::get('reader', 'ReaderController@index');
+    Route::get('logos', 'ReaderController@getLogos');
 
     Route::get('getrss/post', 'ReaderController@getPostByUrl');
     Route::post('getrss/list', 'ReaderController@getPostsByUrlsList');

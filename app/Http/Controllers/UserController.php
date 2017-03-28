@@ -30,7 +30,7 @@ class UserController extends Controller
         $user = User::select(
             'users.*',
             'entities.name AS entity_name',
-            'entities.location AS entity_location')
+            'entities.municipi AS entity_location')
             ->leftJoin('entities', 'users.entity_id', '=', 'entities.id')
             ->where('users.id', $user_id)
             ->first();
@@ -58,7 +58,7 @@ class UserController extends Controller
         $user = User::select('users.*',
             'entities.id AS entity_id',
             'entities.name AS entity_name',
-            'entities.location AS entity_location')
+            'entities.municipi AS entity_location')
             ->leftJoin('entities', 'users.entity_id', '=', 'entities.id')
             ->where('users.id', $user_id)
             ->first();
@@ -79,7 +79,7 @@ class UserController extends Controller
             function ($entity_option) {
                 return [
                     "ID" => $entity_option->id,
-                    "text" => $entity_option->name. " (". $entity_option->location . ")"
+                    "text" => $entity_option->name. " (". $entity_option->municipi . ")"
                 ];
             }
         );

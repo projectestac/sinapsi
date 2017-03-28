@@ -13,7 +13,8 @@
         "sunra/php-simple-html-dom-parser": "^1.5",
         "intervention/image": "^2.3",
         "unisharp/laravel-filemanager": "^1.6",
-        "barryvdh/laravel-debugbar": "^2.3"
+        "barryvdh/laravel-debugbar": "^2.3",
+        "yajra/laravel-datatables-oracle": "~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
