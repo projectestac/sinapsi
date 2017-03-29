@@ -67,6 +67,9 @@ Route::any('api/v1/schools', function () {
 });
 
 // Projects
+Route::any('api/v1/projects/table', function () {
+    return getProjectsTable();
+});
 
 Route::any('api/v1/project/name/{name}', function ($name) {
     return getProjectByName($name);

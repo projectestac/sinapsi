@@ -37,11 +37,24 @@ function getChannels()
 
 function getSchoolsTable()
 {
-    $schools = Entity::select(['image', 'name', 'municipi','slug','phone' ])->whereNotIn('type', ['Projecte'])->orderBy('name')->get();
+    $schools = Entity::select(['image', 'name', 'municipi','slug','phone','id','active'])->whereNotIn('type', ['Projecte'])->orderBy('name')->get();
 
     //return Datatables::queryBuilder(DB::table('entities')->select('image','name','municipi'))->make(true);
 
     return Datatables::of($schools)->make();
+
+}
+
+function getProjectsTable()
+{
+    /*$projects = Entity::select(['image', 'name', 'municipi','parent_id','id','active'])->whereIn('type', ['Projecte'])->orderBy('name')->get();*/
+
+    $projects =  Entity::selectRaw('entities.image, entities.name, e2.name AS parent_name, e2.municipi AS parent_municipi, entities.id, entities.active')
+        ->join('entities AS e2', 'entities.parent_id', '=', 'e2.id')
+        ->where('entities.type', 'Projecte')->orderBy('entities.name')->get();
+    Session::put('projects', $projects);
+
+    return Datatables::of($projects)->make();
 
 }
 
@@ -121,6 +134,53 @@ function getCity($city)
     return  $cities;
 }
 
+function getCounties()
+{
+    $counties =  Entity::distinct()->select('comarca')->orderBy('comarca')->get();
+    return  $counties;
+}
+
+function getCenterTypes()
+{
+    $centerTypes =  Entity::distinct()->select('naturalesa')->whereRaw('naturalesa != ""')->orderBy('naturalesa')->get();
+    return  $centerTypes;
+}
+
+function getTitularity()
+{
+    $centerTypes =  Entity::distinct()->select('titularitat')->orderBy('titularitat')->get();
+    return  $centerTypes;
+}
+
+function getDelegations()
+{
+    $delegations =  Entity::distinct()->select('delegacio')->orderBy('delegacio')->get();
+    return  $delegations;
+}
+
+function getEntitiesTypes()
+{
+    $delegations =  Entity::distinct()->select('type')->whereRaw('type != ""')->orderBy('type')->get();
+    return  $delegations;
+}
+
+function getEntitiesParent()
+{
+    $entitiesParent =  Entity::selectRaw('id AS ID, name AS text')->orderBy('name')->get(); // TREURE EL LIMIT
+    return  $entitiesParent;
+}
+
+function getEntity($entity_id){
+
+    $entity = Entity::where('id', $entity_id)->get();
+    return $entity;
+
+}
+
+function getChannelsEntities($entity_id){
+    $channels = Channel::whereRaw('obj_id ='.$entity_id.' and active = 1')->get();
+    return $channels;
+}
 
 function getUsers()
 {

@@ -32,24 +32,12 @@
         <br>
         <table class="table" id="tbl_projects">
             <thead>
+            <th></th>
             <th>{{ trans('messages.project') }}</th>
-            <th>{{ trans('messages.center') }}</th>
+            <th>{{ trans('messages.entity') }}</th>
             <th>{{ trans('messages.city') }}</th>
-            <th>{{ trans('messages.more_information') }}</th>
-            <th>{{ trans('messages.posts') }}</th>
-            <th>{{ trans('messages.latest') }}</th>
+            <th>{{ trans('messages.actions') }}</th>
             </thead>
-            @foreach ( $projects as $project )
-                <tr>
-                    <td><a href="{{ url('p')."/".$project->slug }}">{{ $project->name }}</a></td>
-                    <td>{{ $project->parent_name }}</td>
-                    <td>{{ $project->parent_location }}</td>
-                    <td>{!!$project->codename!!}</td>
-                    <td>{{ $project->num_posts }}</td>
-                    <td>{{ $project->last_post }}</td>
-
-                </tr>
-            @endforeach
         </table>
     </div>
 
@@ -71,14 +59,52 @@
 
         $(document).ready(function () {
 
+            if(!shared.user.logged){
+                notVisible = [ 4,5 ];
+            }else{
+                notVisible = [ 5 ];
+            }
+
             var messages = _.get(window.trans, 'messages');
             
             $('#tbl_projects').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
+                "processing": true,
+                "serverSide": true,
+                "searchDelay": 500,
+                "ajax": shared.baseUrl + "/api/v1/projects/table",
+                "columns": [
+                    {data: 0, name: 'image'},
+                    {data: 1, name: 'name'},
+                    {data: 2, name: 'municipi'},
+                    {data: 3, name: 'id'},
+                    {data: 4, name: 'active'},
+                ],
+                "columnDefs": [
+                    {
+                        "render": function ( data, type, row ) {
+                            return '<img src="'+data+'" class="imageTable"/>';
+                        },
+                        "targets": 0
+                    },
+                    {
+                        "render": function ( data, type, row ) {
+                            console.log(row);
+                            if( row[5] == 1 ){
+                                return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off"></a></center>';
+                            }else{
+                                return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off" style="color:#dddddd"></a></center>';
+                            }
+                        },
+                        "targets": 4
+                    },
+                    { "visible": false,  "targets": notVisible }
+                ],
                 "language": {
                     "search": messages['search'],
                     "zeroRecords": messages['no_results'],
+                    "processing": messages['processing_1'],
                     "thousands": ".",
                     "info": messages['showing'] + " _START_-_END_ " + messages['by'] + " _TOTAL_",
                     "infoEmpty": messages['no_records'],

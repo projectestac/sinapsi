@@ -3,8 +3,12 @@
 namespace Sinapsi\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gate;
+
 use Sinapsi\Repositories\PostRepository;
 use Sinapsi\Entity;
+use Sinapsi\Channel;
+use Sinapsi\Block;
 
 class EntityController extends Controller
 {
@@ -114,26 +118,296 @@ class EntityController extends Controller
 
     public function create()
     {
-        //TODO
+
+        $entities = Entity::all();
+        $cities = getCities();
+        $counties = getCounties();
+        $centerTypes = getCenterTypes();
+        $titularities = getTitularity();
+        $delegations = getDelegations();
+        $entitiesParent = getEntitiesParent();
+        $entitiesTypes = getEntitiesTypes();
+
+        return view('entity/create',
+                compact([
+                    'entities',
+                    'cities',
+                    'counties',
+                    'centerTypes',
+                    'titularities',
+                    'delegations',
+                    'entitiesParent',
+                    'entitiesTypes'
+                ]));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //TODO
+        // TODO: rols
+        $params = $request->all();
+
+        $entity = Entity::firstOrCreate([
+            'codeid' => $request->codeid,
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'naturalesa' => $request->naturalesa,
+            'titularitat' => $request->titularitat,
+            'address' => $request->address,
+            'cp' => $request->cp,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'delegacio' => $request->delegacio,
+            'comarca' => $request->comarca,
+            'municipi' => $request->city,
+            'geo_x' => $request->geo_x,
+            'geo_y' => $request->geo_y,
+            'nivells' => $request->nivells,
+            'email' => $request->email,
+            'web' => $request->web_address,
+            'type' => $request->entity_type,
+            'agora_services' => $request->agora_services,
+            'agora_managers' => $request->agora_managers,
+            'twitter' => $request->twitter,
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
+            'parent_id' => $request->parentid,
+            'active' => $request->activation,
+            'info' => $request->info,
+        ]);
+
+        if ($request->file('sns_logo')) {
+            $entity->image = url('/').'/'.$entity->saveLogo($request->file('sns_logo'));
+        }
+        
+        $entity->save();
+
+        if( $entity->type == 'Projecte' ){
+            $entityType = 'Project';
+        } else {
+            $entityType = 'Entity';
+        }
+
+        // CHANNELS
+        if(!empty($request->rss_channels)){
+            $rssChannels = explode(PHP_EOL, $request->rss_channels);
+            foreach ($rssChannels as $rssChannel) {
+                $trim_fet = trim($rssChannel);
+                Channel::create([
+                    'type' => $entityType,
+                    'obj_id' => $entity->id,
+                    'rss' => $trim_fet,
+                    'active' => $entity->active,
+                ]);
+            }
+        }
+        
+        // BLOCKS
+        $blocks = json_decode($request->blocks);
+
+        if (!empty($blocks)) {
+            foreach ($blocks as $block) {
+                Block::create([
+                        'type' => $block->type,
+                        'options' => $block->options,
+                        'title' => $block->title,
+                        'content' => $block->content,
+                        'scope' => "entity",
+                        'scope_id' => $entity->id,
+                        'order' => $block->order]
+                );
+            }
+        }
+
+        if( $entity->type == 'Projecte' ){
+            return redirect()->to('projectes');
+        }else{
+            return redirect()->to('centres');
+        }
     }
 
-    public function edit()
+    public function edit($entity_codename)
     {
-        //TODO
+
+        $entity = getEntity($entity_codename);
+
+        if (count($entity)) {
+            $entity = $entity[0];
+        }
+
+        if (Gate::denies('manage', $entity->id)) {
+            return view('error',
+                ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
+        }
+
+        $blocks = Block::where('scope', 'entity')
+            ->where('scope_id', $entity->id)
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $entities = Entity::all();
+        $cities = getCities();
+        $counties = getCounties();
+        $centerTypes = getCenterTypes();
+        $titularities = getTitularity();
+        $delegations = getDelegations();
+        $entitiesParent = getEntitiesParent();
+        $entitiesTypes = getEntitiesTypes();
+        $channels = getChannelsEntities($entity_codename);
+
+        return view('entity/edit',
+                compact([
+                    'entity',
+                    'entities',
+                    'cities',
+                    'counties',
+                    'centerTypes',
+                    'titularities',
+                    'delegations',
+                    'entitiesParent',
+                    'entitiesTypes',
+                    'channels',
+                ]));
     }
 
-    public function update()
+    /**
+     * Update entity in database
+     *
+     * @return Response
+     */
+    public function update(Request $request)
     {
-        //TODO
+
+        $entity = Entity::where('id', $request->id)->first();
+
+        if (Gate::denies('manage', $entity->id)) {
+            return view('error',
+                ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
+        }
+
+        $entity->codeid = $request->codeid;
+        $entity->name = $request->name;
+        $entity->slug = $request->slug;
+        $entity->naturalesa = $request->naturalesa;
+        $entity->titularitat = $request->titularitat;
+        $entity->address = $request->address;
+        $entity->cp = $request->cp;
+        $entity->phone = $request->phone;
+        $entity->fax = $request->fax;
+        $entity->delegacio = $request->delegacio;
+        $entity->comarca = $request->comarca;
+        $entity->municipi = $request->city;
+        $entity->geo_x = $request->geo_x;
+        $entity->geo_y = $request->geo_y;
+        $entity->nivells = $request->nivells;
+        $entity->email = $request->email;
+        $entity->web = $request->web_address;
+        $entity->type = $request->entity_type;
+        $entity->agora_services = $request->agora_services;
+        $entity->agora_managers = $request->agora_managers;
+        $entity->twitter = $request->twitter;
+        $entity->facebook = $request->facebook;
+        $entity->instagram = $request->instagram;
+        $entity->parent_id = $request->parentid;
+        $entity->active = $request->activation;
+        $entity->info = $request->info;
+
+        if ($request->file('sns_logo')) {
+            $entity->image = url('/').'/'.$entity->saveLogo($request->file('sns_logo'));
+        }else{
+            $entity->image = "";
+        }
+
+        $entity->save();
+
+        // CHANNELS
+        if( $entity->type == 'Projecte' ){
+            $entityType = 'Project';
+        } else {
+            $entityType = 'Entity';
+        }
+
+        $countChannels = count(getChannelsEntities($request->id));
+        $channels = Channel::where('obj_id', $entity->id)->update(['active' => 0]);
+
+        if(!empty($request->rss_channels)){
+
+            $rssChannels = explode(PHP_EOL, $request->rss_channels);
+            foreach ($rssChannels as $rssChannel) {
+                $trim_fet = trim($rssChannel);
+
+                if( $countChannels == 1 ){
+                    $channelActive = Channel::where('id', $channels->id)->update(['active' => $entity->active,'rss' => $trim_fet]);
+                } else {
+                    $channels = Channel::where('rss',$trim_fet)->first();
+                    if($channels){
+                        $channelActive = Channel::where('id', $channels->id)->update(['active' => $entity->active]);
+                    } else {
+                        if( ! empty($trim_fet) ){
+                            Channel::create([
+                                'type' => $entityType,
+                                'obj_id' => $entity->id,
+                                'rss' => $trim_fet,
+                                'active' => $entity->active,
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+
+        // BLOCKS
+        // Initially, all blocks can be deleted
+        $blocks_to_delete = Block::where('scope', 'entity')->where('scope_id', $entity->id)->pluck('id')->flip();
+        $blocks = json_decode($request->blocks);
+
+        foreach ($blocks as $block) {
+            if ($block->id > 9999999) { // It's a new block, hack
+                Block::create([
+                    'type' => $block->type,
+                    'options' => $block->options,
+                    'title' => $block->title,
+                    'content' => $block->content,
+                    'scope' => 'entity',
+                    'scope_id' => $entity->id,
+                    'order' => $block->order]
+                );
+            } else { // Update
+                $b = Block::findOrFail($block->id);
+                $b->order = $block->order;
+                $b->save();
+                $blocks_to_delete->pull($block->id);
+            }
+        }
+
+        // Delete blocks
+        foreach ($blocks_to_delete as $block_id=>$value) {
+            Block::findOrFail($block_id)->delete();
+        }
+
+        if( $entity->type == 'Projecte' ){
+            return redirect()->to('projectes');
+        }else{
+            return redirect()->to('centres');
+        }
     }
 
-    public function destroy()
+    /**
+     * Delete sinapsi
+     *
+     * @return Response
+     */
+    public function destroy($entity_id)
     {
-        //TODO
+        //TODO: control if not exists
+        //TODO: roles
+        $entity = Entity::where('id', $entity_id)->update(['active' => 0]);
+        $channels = Channel::where('obj_id', $entity_id)->update(['active' => 0]);
+        $entityGet = Entity::where('id', $entity_id)->get();
+
+        if( $entityGet[0]->type == 'Projecte' ){
+            return redirect()->to('projectes');
+        }else{
+            return redirect()->to('centres');
+        }
     }
 }

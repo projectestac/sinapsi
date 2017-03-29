@@ -7,7 +7,7 @@ use Sunra\PhpSimple\HtmlDomParser;
 
 class Entity extends Model
 {
-    protected $fillable = ['type', 'name', 'codeid', 'location', 'image', 'url', 'parent_id'];
+    protected $fillable = ['codeid','name','slug','naturalesa','titularitat','address','cp','phone','fax','delegacio','comarca','municipi','utm_x','utm_y','geo_x','geo_y','nivells','email','web','type','agora_services','agora_managers','image','twitter','facebook','instagram','parent_id','active','info'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function getLogo()
@@ -26,6 +26,17 @@ class Entity extends Model
         }
 
         return $this->image;
+    }
+
+    public function saveLogo($file)
+    {
+        //TODO: control extension and size
+
+        $folder = 'storage/public';
+        $filename = 'entity_' . $this->id . "." . $file->getClientOriginalExtension();
+
+        $file->move($folder, $filename);
+        return $folder . "/" . $filename;
     }
 
     public function getMainClass()

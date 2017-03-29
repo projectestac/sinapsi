@@ -56,6 +56,8 @@ class CreateEntitiesTable extends Migration
             $table->string('instagram',30)->nullable();
 
             $table->integer('parent_id')->unsigned()->nullable();
+            $table->text('info')->nullable();
+            $table->boolean('active')->default(1);
             /*$table->foreign('parent_id')
                 ->references('id')
                 ->on('entities2');*/

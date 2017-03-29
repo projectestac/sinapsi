@@ -7,7 +7,7 @@ use SimplePie;
 
 class Channel extends Model
 {
-    protected $fillable = ['type', 'obj_id', 'rss'];
+    protected $fillable = ['type', 'obj_id', 'rss', 'active'];
 
     /**
      *
