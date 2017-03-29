@@ -5801,7 +5801,6 @@ var messages = _.get(window.trans, 'messages');
 //
 //
 //
-//
 
 
 /* harmony default export */ exports["default"] = {
@@ -6011,7 +6010,7 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         cities_UI: function () {
-            this.$emit('filters_changed','l',this.cities_UI);
+            bus.$emit('filters_changed','l',this.cities_UI);
         }
     },
     mounted: function(){
@@ -6079,10 +6078,10 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         sd_UI: function () {
-            this.$emit('filters_changed','sd',this.sd_UI);
+            bus.$emit('filters_changed','sd',this.sd_UI);
         },
         ed_UI: function () {
-            this.$emit('filters_changed','ed',this.ed_UI);
+            bus.$emit('filters_changed','ed',this.ed_UI);
         },
 
     }
@@ -6136,7 +6135,7 @@ var messages = _.get(window.trans, 'messages');
   watch: {
       orderby: function ()
       {
-        this.$emit('filters_changed','o',this.orderby.ID);
+        bus.$emit('filters_changed','o',this.orderby.ID);
       }
   },
 };
@@ -6189,7 +6188,7 @@ var messages = _.get(window.trans, 'messages');
 
     watch: {
         projects_UI: function () {
-            this.$emit('filters_changed','p',this.projects_UI);
+            bus.$emit('filters_changed','p',this.projects_UI);
         }
     },
 
@@ -6284,7 +6283,7 @@ var messages = _.get(window.trans, 'messages');
 
     watch: {
         schools_UI: function () {
-            this.$emit('filters_changed','s',this.schools_UI);
+            bus.$emit('filters_changed','s',this.schools_UI);
         }
     },
 
@@ -6376,7 +6375,7 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         ssee_UI: function () {
-            this.$emit('filters_changed','se',this.ssee_UI);
+            bus.$emit('filters_changed','se',this.ssee_UI);
         }
     },
     mounted: function(){
@@ -6771,7 +6770,7 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         sources_type_UI: function () {
-            this.$emit('filters_changed','y',this.sources_type_UI);
+            bus.$emit('filters_changed','y',this.sources_type_UI);
         }
     },
 };
@@ -6855,7 +6854,7 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         sstt_UI: function () {
-            this.$emit('filters_changed','st',this.sstt_UI);
+            bus.$emit('filters_changed','st',this.sstt_UI);
         }
     }
 };
@@ -6906,14 +6905,15 @@ var messages = _.get(window.trans, 'messages');
         }
     },
     watch: {
-        tags_UI: function () {
-            this.$emit('filters_changed','t',this.tags_UI);
+        'tags_UI': function () {
+           bus.$emit('filters_changed','t',this.tags_UI);
         }
     },
     mounted: function(){
          this.get_tags();
     },
     methods: {
+ 
       get_tags: function(){
             $.ajax({
                 headers: {
@@ -6996,7 +6996,7 @@ var messages = _.get(window.trans, 'messages');
     },
     watch: {
         terms_UI: function () {
-            this.$emit('filters_changed','q', this.terms_UI);
+            bus.$emit('filters_changed','q', this.terms_UI);
         }
     },
     methods: {
@@ -7135,29 +7135,43 @@ var messages = _.get(window.trans, 'messages');
         this.get_posts('');
     },
     mounted: function () {
+
+        this.build_filter_info();
+        
         bus.$on('get_posts', function (filters) {
             this.get_posts(filters);
         }.bind(this));
-    },
-    watch:{
-        filters: function(){
-            var num_filters = Object.keys(this.filters).length;
-            if (num_filters){
-                this.filters_warning  = num_filters ==1 ? trans('messages.applying') + " <strong>1</strong> " + trans('messages.filter') : trans('messages.applyings') + " <strong>" + num_filters + "</strong> " +  trans('messages.filter');
-            } else {
-                this.filters_warning = "";
-            }
-        }
-    },
-    methods: {
-        filters_changed: function(variable, data) {
+
+        bus.$on('filters_changed', function (variable, data) {
+
+            var messages = _.get(window.trans, 'messages');
+
             if (data!=""){
                 this.filters[variable] = data;
             } else {
                 delete(this.filters[variable]);
             }
-        },
+            this.build_filter_info();
+           
+            
+        }.bind(this));
+    },
+    
+    methods: {
 
+        build_filter_info: function(){
+
+            var messages = _.get(window.trans, 'messages');
+
+            var num_filters = Object.keys(this.filters).length;
+            if (num_filters){
+                this.filters_warning  = num_filters ==1 ? messages.applying + " <strong>1</strong> " + messages.filter : messages.applyings + " <strong>" + num_filters + "</strong> " +  messages.filters;
+            } else {
+                this.filters_warning = "";
+            }
+            
+        },
+        
         build_url: function (pagetype, info) {
             if ( pagetype === void 0 ) pagetype='home';
             if ( info === void 0 ) info='0';
@@ -7548,7 +7562,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.filter-info{\n   color: #666;\n   font-style: italic;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.filter-info{\n   color: #666;\n   font-style: italic;\n   font-size: 0.9em;\n}\n\n\n", ""]);
 
 // exports
 
@@ -38001,9 +38015,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "from_UI": _vm.f_ui.q,
       "from_DB": _vm.f_db.q
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('input', {
     staticClass: "btn btn-default",
@@ -38043,73 +38054,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "from_UI": _vm.f_ui.o,
       "from_DB": _vm.f_db.o
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-tag', {
     attrs: {
       "from_UI": _vm.f_ui.t,
       "from_DB": _vm.f_db.t
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-st', {
     attrs: {
       "from_UI": _vm.f_ui.st,
       "from_DB": _vm.f_db.st
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-se', {
     attrs: {
       "from_UI": _vm.f_ui.se,
       "from_DB": _vm.f_db.se
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-city', {
     attrs: {
       "from_UI": _vm.f_ui.l,
       "from_DB": _vm.f_db.l
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-source-type', {
     attrs: {
       "from_UI": _vm.f_ui.y,
       "from_DB": _vm.f_db.y
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-school', {
     attrs: {
       "from_UI": _vm.f_ui.s,
       "from_DB": _vm.f_db.s
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-project', {
     attrs: {
       "from_UI": _vm.f_ui.p,
       "from_DB": _vm.f_db.p
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   }), _vm._v(" "), _c('by-date', {
     attrs: {
       "from_UI": _vm.filters_ui_date,
       "from_DB": _vm.filters_db_date
-    },
-    on: {
-      "filters_changed": _vm.filters_changed
     }
   })], 1)])])
 },staticRenderFns: []}

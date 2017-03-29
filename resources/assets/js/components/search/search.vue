@@ -6,7 +6,7 @@
             
             <div class="form-group sns-search-field">
                 <div>
-                    <by-term v-on:filters_changed="filters_changed" :from_UI="f_ui.q" :from_DB="f_db.q"></by-term>
+                    <by-term :from_UI="f_ui.q" :from_DB="f_db.q"></by-term>
                     <input class="btn btn-default" value="" type="submit" @click.prevent="get_posts('')">
                 </div>
             </div>
@@ -26,15 +26,15 @@
             <div class="collapse row" id="advanced-search">
                 <p v-if="f_db.q"><strong> {{ trans('messages.keywords') }}</strong> {{ f_db.q }}</p>
                 <br>
-                <by-order   v-on:filters_changed="filters_changed"      :from_UI="f_ui.o"     :from_DB="f_db.o"></by-order>
-                <by-tag     v-on:filters_changed="filters_changed"      :from_UI="f_ui.t"     :from_DB="f_db.t"></by-tag>
-                <by-st      v-on:filters_changed="filters_changed"      :from_UI="f_ui.st"    :from_DB="f_db.st"></by-st>
-                <by-se      v-on:filters_changed="filters_changed"      :from_UI="f_ui.se"    :from_DB="f_db.se"></by-se>
-                <by-city    v-on:filters_changed="filters_changed"      :from_UI="f_ui.l"     :from_DB="f_db.l"></by-city>
-                <by-source-type v-on:filters_changed="filters_changed"  :from_UI="f_ui.y"     :from_DB="f_db.y"></by-source-type>
-                <by-school  v-on:filters_changed="filters_changed"      :from_UI="f_ui.s"     :from_DB="f_db.s"></by-school>
-                <by-project  v-on:filters_changed="filters_changed"     :from_UI="f_ui.p"     :from_DB="f_db.p"></by-project>
-                <by-date    v-on:filters_changed="filters_changed"      :from_UI="filters_ui_date"  :from_DB="filters_db_date"></by-date>
+                <by-order   :from_UI="f_ui.o"     :from_DB="f_db.o"></by-order>
+                <by-tag     :from_UI="f_ui.t"     :from_DB="f_db.t"></by-tag>
+                <by-st      :from_UI="f_ui.st"    :from_DB="f_db.st"></by-st>
+                <by-se      :from_UI="f_ui.se"    :from_DB="f_db.se"></by-se>
+                <by-city    :from_UI="f_ui.l"     :from_DB="f_db.l"></by-city>
+                <by-source-type :from_UI="f_ui.y"     :from_DB="f_db.y"></by-source-type>
+                <by-school  :from_UI="f_ui.s"     :from_DB="f_db.s"></by-school>
+                <by-project :from_UI="f_ui.p"     :from_DB="f_db.p"></by-project>
+                <by-date    :from_UI="filters_ui_date"  :from_DB="filters_db_date"></by-date>
             </div>
 
         </div>
@@ -90,29 +90,43 @@ export default {
         this.get_posts('');
     },
     mounted: function () {
+
+        this.build_filter_info();
+        
         bus.$on('get_posts', function (filters) {
             this.get_posts(filters);
         }.bind(this));
-    },
-    watch:{
-        filters: function(){
-            var num_filters = Object.keys(this.filters).length;
-            if (num_filters){
-                this.filters_warning  = num_filters ==1 ? trans('messages.applying') + " <strong>1</strong> " + trans('messages.filter') : trans('messages.applyings') + " <strong>" + num_filters + "</strong> " +  trans('messages.filter');
-            } else {
-                this.filters_warning = "";
-            }
-        }
-    },
-    methods: {
-        filters_changed: function(variable, data) {
+
+        bus.$on('filters_changed', function (variable, data) {
+
+            var messages = _.get(window.trans, 'messages');
+
             if (data!=""){
                 this.filters[variable] = data;
             } else {
                 delete(this.filters[variable]);
             }
-        },
+            this.build_filter_info();
+           
+            
+        }.bind(this));
+    },
+    
+    methods: {
 
+        build_filter_info: function(){
+
+            var messages = _.get(window.trans, 'messages');
+
+            var num_filters = Object.keys(this.filters).length;
+            if (num_filters){
+                this.filters_warning  = num_filters ==1 ? messages.applying + " <strong>1</strong> " + messages.filter : messages.applyings + " <strong>" + num_filters + "</strong> " +  messages.filters;
+            } else {
+                this.filters_warning = "";
+            }
+            
+        },
+        
         build_url: function (pagetype='home', info='0') {
             var url = "";
             switch (pagetype) {
@@ -249,6 +263,7 @@ export default {
 .filter-info{
    color: #666;
    font-style: italic;
+   font-size: 0.9em;
 }
 
 

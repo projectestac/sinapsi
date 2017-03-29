@@ -35,7 +35,7 @@ export default {
     },
     watch: {
         ssee_UI: function () {
-            this.$emit('filters_changed','se',this.ssee_UI);
+            bus.$emit('filters_changed','se',this.ssee_UI);
         }
     },
     mounted: function(){

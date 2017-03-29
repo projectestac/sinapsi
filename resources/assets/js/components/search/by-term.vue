@@ -34,7 +34,7 @@ export default {
     },
     watch: {
         terms_UI: function () {
-            this.$emit('filters_changed','q', this.terms_UI);
+            bus.$emit('filters_changed','q', this.terms_UI);
         }
     },
     methods: {

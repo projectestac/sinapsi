@@ -70,6 +70,8 @@
 
 <script>
 
+    var bus = new Vue();
+
     var shared = {
         baseUrl: location.protocol + "//" + location.host,
         page: {

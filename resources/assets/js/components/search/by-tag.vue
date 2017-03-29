@@ -36,14 +36,15 @@ export default {
         }
     },
     watch: {
-        tags_UI: function () {
-            this.$emit('filters_changed','t',this.tags_UI);
+        'tags_UI': function () {
+           bus.$emit('filters_changed','t',this.tags_UI);
         }
     },
     mounted: function(){
          this.get_tags();
     },
     methods: {
+ 
       get_tags: function(){
             $.ajax({
                 headers: {

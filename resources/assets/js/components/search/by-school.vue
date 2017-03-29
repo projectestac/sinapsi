@@ -37,7 +37,7 @@ export default {
 
     watch: {
         schools_UI: function () {
-            this.$emit('filters_changed','s',this.schools_UI);
+            bus.$emit('filters_changed','s',this.schools_UI);
         }
     },
 

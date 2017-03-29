@@ -65,8 +65,6 @@
         shared.page.type = 'tag';
         shared.page.info = {"id": "{{ $tag->id }}", "name": "{{ $tag->name }}"};
 
-        var bus = new Vue();
-
         var vm = new Vue({
             el: "#root",
             data: {

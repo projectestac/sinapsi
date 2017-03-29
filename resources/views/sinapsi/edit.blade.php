@@ -132,8 +132,6 @@
 
     <script>
 
-        var bus = new Vue();
-
         var vm = new Vue({
             el: "#root",
             data: {

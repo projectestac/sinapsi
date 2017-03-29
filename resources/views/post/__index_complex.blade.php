@@ -71,8 +71,6 @@
 
      <script>
 
-        var bus = new Vue();
-
         var vm = new Vue({
             el: "body",
             data: {

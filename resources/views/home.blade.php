@@ -60,7 +60,7 @@
 
                 <div :class="{'col-xs-12':true,'col-sm-4':fulltabs==false }">
 
-                   <sns-blocks-sinapsis></sns-blocks-sinapsis>
+                    <sns-blocks-sinapsis></sns-blocks-sinapsis>
 
                     @foreach ($blocks as $block)
                         <sns-block :info="{{ $block }}"></sns-block>
@@ -83,11 +83,8 @@
     <script src="{{asset('js/jquery.timeago.js')}}"></script>
 
     <script>
-
         shared.page.type = 'home';
         shared.page.info = {"id": "", "name": ""};
-
-        var bus = new Vue();
 
         var vm = new Vue({
             el: "#root",
@@ -104,9 +101,7 @@
                     this.fulltabs = (this.fulltabs == false) ? true : false;
                 },
             },
-
         });
-
     </script>
 
 @stop

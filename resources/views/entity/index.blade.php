@@ -96,7 +96,6 @@
         shared.page.type = "{{ $entity->getMainClass() }}";
         shared.page.info = {"id": "{{ $entity->getKeyField() }}", "name": "{{ $entity->name }}"};
 
-        var bus = new Vue();
         var vm = new Vue({
             el: "#root",
             data: {

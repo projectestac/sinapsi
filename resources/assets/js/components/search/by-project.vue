@@ -37,7 +37,7 @@ export default {
 
     watch: {
         projects_UI: function () {
-            this.$emit('filters_changed','p',this.projects_UI);
+            bus.$emit('filters_changed','p',this.projects_UI);
         }
     },
 

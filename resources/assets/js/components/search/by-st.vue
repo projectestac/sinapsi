@@ -69,7 +69,7 @@ export default {
     },
     watch: {
         sstt_UI: function () {
-            this.$emit('filters_changed','st',this.sstt_UI);
+            bus.$emit('filters_changed','st',this.sstt_UI);
         }
     }
 }

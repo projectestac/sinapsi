@@ -31,10 +31,10 @@ export default {
     },
     watch: {
         sd_UI: function () {
-            this.$emit('filters_changed','sd',this.sd_UI);
+            bus.$emit('filters_changed','sd',this.sd_UI);
         },
         ed_UI: function () {
-            this.$emit('filters_changed','ed',this.ed_UI);
+            bus.$emit('filters_changed','ed',this.ed_UI);
         },
 
     }

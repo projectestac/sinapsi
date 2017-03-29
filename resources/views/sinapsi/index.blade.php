@@ -112,9 +112,6 @@
         shared.page.type = 'sinapsi';
         shared.page.info = {"id": "{{ $sinapsi->id }}", "name": "{{ $sinapsi->name }}"};
 
-        var bus = new Vue();
-
-
         var vm = new Vue({
             el: "#root",
             data: {

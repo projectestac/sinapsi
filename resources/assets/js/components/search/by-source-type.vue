@@ -46,7 +46,7 @@ export default {
     },
     watch: {
         sources_type_UI: function () {
-            this.$emit('filters_changed','y',this.sources_type_UI);
+            bus.$emit('filters_changed','y',this.sources_type_UI);
         }
     },
 }

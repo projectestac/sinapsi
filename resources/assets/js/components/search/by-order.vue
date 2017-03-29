@@ -38,7 +38,7 @@ export default {
   watch: {
       orderby: function ()
       {
-        this.$emit('filters_changed','o',this.orderby.ID);
+        bus.$emit('filters_changed','o',this.orderby.ID);
       }
   },
 }

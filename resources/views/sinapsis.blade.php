@@ -175,8 +175,6 @@
 
     <script type="text/javascript">
 
-        var bus = new Vue();
-
         var messages = _.get(window.trans, 'messages');
 
         var vm_sinapsi = new Vue({

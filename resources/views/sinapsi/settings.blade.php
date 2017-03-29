@@ -197,8 +197,7 @@
         var messages = _.get(window.trans, 'messages');
 
         var mixin = {};
-        var bus = new Vue();
-
+       
         var vm = new Vue({
             el: "body",
             data: {

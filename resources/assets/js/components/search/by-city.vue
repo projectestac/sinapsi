@@ -35,7 +35,7 @@ export default {
     },
     watch: {
         cities_UI: function () {
-            this.$emit('filters_changed','l',this.cities_UI);
+            bus.$emit('filters_changed','l',this.cities_UI);
         }
     },
     mounted: function(){
