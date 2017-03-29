@@ -17,6 +17,7 @@
                                     <div class="col-sm-8">
                                         <h1 class="title-subpage">{{ trans('messages.schools') }}</h1>
                                         <p>{{ trans('messages.types_schools') }}</p>
+                                        <a href="/entity/create">{{ trans('messages.new_entity') }}</a>
                                     </div>
                                 </div>
                                 <br>
@@ -41,6 +42,7 @@
             <th>{{ trans('messages.cities') }}</th>
             <th>{{ trans('messages.slug') }}</th>
             <th>{{ trans('messages.phone') }}</th>
+            <th>{{ trans('messages.actions') }}</th>
             </thead>
         </table>
 
@@ -63,6 +65,12 @@
                 }
             });
 
+            if(!shared.user.logged){
+                notVisible = [ 3,5,6 ];
+            }else{
+                notVisible = [ 3,6 ];
+            }
+
             $('#tbl_schools').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
@@ -75,9 +83,17 @@
                     {data: 1, name: 'name'},
                     {data: 2, name: 'municipi'},
                     {data: 3, name: 'slug'},
-                    {data: 4, name: 'phone'}
+                    {data: 4, name: 'phone'},
+                    {data: 5, name: 'id'},
+                    {data: 6, name: 'active'},
                 ],
                 "columnDefs": [
+                    {
+                        "render": function ( data, type, row ) {
+                            return '<img src="'+data+'" class="imageTable"/>';
+                        },
+                        "targets": 0
+                    },
                     {
                         "render": function ( data, type, row ) {
                             if (row[3]) {
@@ -90,15 +106,15 @@
                     },
                     {
                         "render": function ( data, type, row ) {
-                            if (row[0]) {
-                                return '<img width="100px" src=' + row[0] + '>';
-                            } else {
-                                return data;
+                            if( row[6] == 1 ){
+                                return '<center><a href="/entity/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/entity/'+ data +'/destroy" class="glyphicon glyphicon-off"></a></center>';
+                            }else{
+                                return '<center><a href="/entity/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/entity/'+ data +'/destroy" class="glyphicon glyphicon-off" style="color:#dddddd"></a></center>';
                             }
                         },
-                        "targets": 0
+                        "targets": 5
                     },
-                    { "visible": false,  "targets": [ 3 ] }
+                    { "visible": false,  "targets": notVisible }
                 ],
                 "language": {
                     "search": messages['search'],

@@ -32,3 +32,7 @@ div.sinapsi_description img {
     padding: 0.5em;
     padding-top: 0;
 }
+
+img.imageTable{
+    max-width: 30px;
+}

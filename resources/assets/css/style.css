@@ -219,6 +219,7 @@ img.avatar{
 	width: 100px;
 	height:100px;
 	border-radius: 0px;
+    cursor: pointer;
 }
 
 .sns-post-thumb{
@@ -431,3 +432,6 @@ Reader
     background-color: #b1b1b1;
 }
 
+img.imageTable{
+    max-width: 30px;
+}

@@ -173,6 +173,58 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'SinapsiController@destroy'
     ]);
 
+    //Entity
+    Route::get('/entity/create', [
+        'as' => 'entity.create',
+        'uses' => 'EntityController@create'
+    ]);
+
+    Route::post('/entity/create', [
+        'as' => 'entity.store',
+        'uses' => 'EntityController@store'
+    ]);
+
+    Route::get('/entity/{entity_codename}/edit', [
+        'as' => 'entity.edit',
+        'uses' => 'EntityController@edit'
+    ]);
+
+    Route::post('/entity/{entity_codename}/edit', [
+        'as' => 'entity.update',
+        'uses' => 'EntityController@update'
+    ]);
+
+    Route::get('/entity/{entity_codename}/destroy', [
+        'as' => 'entity.destroy',
+        'uses' => 'EntityController@destroy'
+    ]);
+
+    //Projectes
+    Route::get('/project/create', [
+        'as' => 'entity.create',
+        'uses' => 'EntityController@create'
+    ]);
+
+    Route::post('/project/create', [
+        'as' => 'entity.store',
+        'uses' => 'EntityController@store'
+    ]);
+
+    Route::get('/project/{entity_codename}/edit', [
+        'as' => 'entity.edit',
+        'uses' => 'EntityController@edit'
+    ]);
+
+    Route::post('/project/{entity_codename}/edit', [
+        'as' => 'entity.update',
+        'uses' => 'EntityController@update'
+    ]);
+
+    Route::get('/project/{entity_codename}/destroy', [
+        'as' => 'entity.destroy',
+        'uses' => 'EntityController@destroy'
+    ]);
+
     // Posts related operations on sinapsi
     Route::get("/post/{id}/stick/sinapsi/{sinapsi_id}", [
         'as' => 'post.stick.sinapsi',
