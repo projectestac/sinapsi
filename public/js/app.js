@@ -6818,16 +6818,16 @@ var messages = _.get(window.trans, 'messages');
             sstt_UI: [],
             sstt_DB: [],
             options: [
-                {'ID':1,'text': messages['girona'] },
-                {'ID':2,'text': messages['baix_llobregat'] },
-                {'ID':3,'text': messages['tarragona'] },
-                {'ID':4,'text': messages['barcelona_education'] },
-                {'ID':5,'text': messages['lleida'] },
-                {'ID':6,'text': messages['terres_ebre']},
-                {'ID':7,'text': messages['comarques_barcelona'] },
-                {'ID':8,'text': messages['voriental_maresma']},
-                {'ID':9,'text': messages['voccidental']},
-                {'ID':10,'text': messages['central_catalonia']},
+                {'ID':'GIR','text': messages['girona'] },
+                {'ID':'BLL','text': messages['baix_llobregat'] },
+                {'ID':'TAR','text': messages['tarragona'] },
+                {'ID':'CEB','text': messages['barcelona_education'] },
+                {'ID':'LLE','text': messages['lleida'] },
+                {'ID':'TEB','text': messages['terres_ebre']},
+                {'ID':'BCO','text': messages['comarques_barcelona'] },
+                {'ID':'MVO','text': messages['voriental_maresme']},
+                {'ID':'VOC','text': messages['voccidental']},
+                {'ID':'CCE','text': messages['central_catalonia']},
             ]
         }
     },
@@ -7153,7 +7153,6 @@ var messages = _.get(window.trans, 'messages');
             }
             this.build_filter_info();
            
-            
         }.bind(this));
     },
     

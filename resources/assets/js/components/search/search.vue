@@ -108,7 +108,6 @@ export default {
             }
             this.build_filter_info();
            
-            
         }.bind(this));
     },
     

@@ -40,7 +40,7 @@ class CreateEntitiesTable extends Migration
             $table->string('geo_y',20)->nullable();
             $table->string('nivells',60)->nullable();
             $table->string('email',50)->nullable();
-            $table->string('web',50)->nullable();
+            $table->string('web',500)->nullable();
             $table->string('type',30)->nullable();
             /*$table->enum('type',
                 ['Escola','Institut','Institut Escola','CFA',

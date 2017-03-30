@@ -78,27 +78,40 @@ class PostRepository
 
         // By Servei educatiu
         if (!empty($params['se'])) {
+
             $se_arr = array();
             $arr = explode(",", $params['se']);
-            foreach ($arr as $se_codeid) {
+
+            foreach ($arr as $se_codeid) {                
                 $se_codeid = (strlen($se_codeid) < 8) ? "0" . $se_codeid : $se_codeid;
                 $__se = Entity::select('id')->where('codeid', $se_codeid)->first();
                 array_push($se_arr, $__se->id);
             }
+
             $where .= $where == '' ? ' WHERE ' : ' AND ';
             $where .= ' entities.parent_id IN (' . implode(',', $se_arr) . ')';
         }
 
         // By Servei territorial
         if (!empty($params['st'])) {
+            $st = array('VOC'=> trans('messages.voccidental'),
+                        'BLL'=> trans('messages.baix_llobregat'),
+                        'TAR'=> trans('messages.tarragona'),
+                        'CEB'=> trans('messages.barcelona_education'),
+                        'MVO'=> trans('messages.voriental_maresme'),
+                        'BCO'=> trans('messages.comarques_barcelona'),
+                        'CCE'=> trans('messages.central_catalonia'),
+                        'TEB'=> trans('messages.terres_ebre'),
+                        'GIR'=> trans('messages.girona'),
+                        'LLE'=> trans('messages.lleida')
+                        );
             $st_arr = array();
             $arr = explode(",", $params['st']);
-            foreach ($arr as $st_id) {
-                $sstt = Entity::select('id')->where('parent_id', $st_id)->get()->pluck('id')->toArray();
-                array_push($st_arr, $sstt);
+            foreach ($arr as $st_code) {
+                array_push($st_arr, '"'.$st[$st_code].'"');
             }
             $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' entities.parent_id IN (' . implode(",", array_values($sstt)) . ')';
+            $where .= ' entities.delegacio IN (' . implode(',',$st_arr) . ')';
         }
 
         // By School type
