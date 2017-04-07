@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+        'client_id' => '',
+        'client_secret' => '',
+        'redirect' => env('APP_SINAPSI_URL').'/auth/callback',
+    ]
+
 ];

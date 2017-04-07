@@ -5,4 +5,5 @@
 Homestead.json
 Homestead.yaml
 .php_cs.cache
-
+.env
+config/services.php
