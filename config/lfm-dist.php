@@ -29,10 +29,10 @@ return [
     'shared_folder_name'    => 'shares',
     'thumb_folder_name'     => 'thumbs',
 
-    'images_dir'            => 'public/storage/photos/',
+    'images_dir'            => 'public/photos/',
     'images_url'            => '/photos/',
 
-    'files_dir'             => 'public/storage/files/',
+    'files_dir'             => 'public/files/',
     'files_url'             => '/files/',
 
     // available since v1.3.0
