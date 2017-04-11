@@ -14,6 +14,21 @@ class ChannelTableSeeder extends Seeder
     public function run()
     {
     
+        $schools = Entity::all();
+
+        foreach ($schools as $school) {
+            Channel::create([
+                'type'=>'Entity',
+                'obj_id'=>$school->id,
+                'rss'=>'http:'.$school->web.'/feed',
+                'active'=>true,
+                ]);
+        }
+
+
+
+       /*
+
        //Schools
         $schools = Entity::where('web','<>','')->whereNotIn('type',array('SEZ'))->get();
 
@@ -49,6 +64,8 @@ class ChannelTableSeeder extends Seeder
                 'active'=>true,
             ]);
         }
+
+        */
 
     }
 

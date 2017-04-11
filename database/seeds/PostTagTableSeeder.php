@@ -12,7 +12,7 @@ class PostTagTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i<=200000 ;$i++) {
+        for ($i=1; $i<=2000 ;$i++) {
             PostTag::create([
                 'post_id' => $i,
                 'tag_id' => rand(1,1000)

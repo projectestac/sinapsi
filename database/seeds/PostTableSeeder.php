@@ -12,7 +12,7 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i<=180000; $i++) {
+        for ($i=1; $i<=1000; $i++) {
             factory(Post::class)->times(1)->create(['id' => $i]);
         }
 
