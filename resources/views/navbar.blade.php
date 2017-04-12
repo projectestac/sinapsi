@@ -16,9 +16,9 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
-                    <div class="col-md-3 col-xs-8 col-offset-2 column visible-xs">
+                    <div class="col-md-3 col-xs-6 column visible-xs">
                         <a href="/ca/" class="mvlogo" :title="[ trans('messages.sinapsi_1') ] - [ trans('messages.schools_and_colleges_in_catalonia') ] [ trans('messages.sharing_what_they_do') ]">
-                            {{ trans('messages.sinapsi_1') }} - {{ trans('messages.schools_and_colleges_in_catalonia') }} {{ trans('messages.sharing_what_they_do') }}
+                           {{ trans('messages.sinapsi_1') }}.{{ trans('messages.xtec_cat') }}
                         </a>
                     </div>
                     <div class="col-md-3 col-xs-2 column visible-xs coloca1">
@@ -29,7 +29,11 @@
                 <div class="visible-xs pt_capcalera">&nbsp;</div>
 
                 <div class="collapse dos">
-                    {{ trans('messages.search') }}
+                
+                @if ( is_mobile() )
+                       <sns-search :filters_ui="f_ui" :filters_all="f_ui"></sns-search> 
+                @endif
+
                 </div>
 
                 <nav class="navbar-collapse navbar-ex1-collapse collapse" id="topRight">
@@ -46,35 +50,31 @@
                     <ul class="nav navbar-nav">
 
                         <li :class="{'active':pagetype=='home'}">
-                            <a target="_self" href="{{ url('/')}}" :title="[ trans('messages.menu_home') ]">
+                            <a target="_self" :class="{'actiu':pagetype=='home'}" href="{{ url('/')}}" :title="[ trans('messages.menu_home') ]">
                                 {{ trans('messages.home_1') }}</a>
                         </li>
 
                         <li :class="{'active':pagetype=='sinapsi'}">
-                            <a target="_self" href="{{ url('sinapsis')}}" :title="[ trans('messages.menu_sinapsi') ]">
+                            <a target="_self" :class="{'actiu':pagetype=='sinapsi'}" href="{{ url('sinapsis')}}" :title="[ trans('messages.menu_sinapsi') ]">
                                 {{ trans('messages.sinapsi_2') }}
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='school'}">
-                            <a target="_self" href="{{ url('centres')}}" :title="[ trans('messages.menu_center') ]">
+                            <a target="_self" :class="{'actiu':pagetype=='school'}" href="{{ url('centres')}}" :title="[ trans('messages.menu_center') ]">
                                 {{ trans('messages.centers') }}
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='project'}">
-                            <a target="_self" href="{{ url('projectes')}}" :title="[ trans('messages.menu_projects') ]">
+                            <a target="_self" :class="{'actiu':pagetype=='project'}" href="{{ url('projectes')}}" :title="[ trans('messages.menu_projects') ]">
                                 {{ trans('messages.projects_1') }}
-                                <div class="caret"></div>
                             </a>
                         </li>
 
                         <li :class="{'active':pagetype=='user'}">
-                            <a target="_self" href="{{ url('docents')}}" :title="[ trans('messages.menu_teachers') ]">
+                            <a target="_self" :class="{'actiu':pagetype=='user'}" href="{{ url('docents')}}" :title="[ trans('messages.menu_teachers') ]">
                                 {{ trans('messages.teachers') }}
-                                <div class="caret"></div>
                             </a>
                         </li>
 
@@ -82,7 +82,6 @@
                             <li class="">
                                 <a target="_self" href="{{ url('post/create')}}" :title="[ trans('messages.add_content') ]">
                                     +
-                                    <div class="caret"></div>
                                 </a>
                             </li>
                         @endif
@@ -108,4 +107,3 @@
 
     </header>
 </div>
-
