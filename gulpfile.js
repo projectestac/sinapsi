@@ -21,7 +21,7 @@ elixir(mix => {
         'block.css',
         'pagination.css',
         'sinapsi.css',
-    ], 'public/css/style.css');
+    ], 'public/css/style.min.css');
 
     mix.webpack('app.js');
 

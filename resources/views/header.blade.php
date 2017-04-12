@@ -7,7 +7,6 @@
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('css/master.min.css')}}">
 
 {{-- Fonts --}}
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,700' rel='stylesheet'
@@ -15,10 +14,11 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 {{-- Styles --}}
+<link href="{{ asset('css/master.min.css')}}" rel="stylesheet">
 <link href="{{ asset('css/fpca_subcapcalera.css') }}" rel="stylesheet">
 <link href="{{ asset('css/grafic_destacat.css') }}" rel="stylesheet">
 <link href="{{ asset('css/vue-multiselect.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +27,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<script src="{{ asset('js/vue.js') }}"></script>
+<script src="{{ asset('js/vue.min.js') }}"></script>
 <script src="{{asset('js/tinymce')}}/tinymce.min.js"></script>
 
 <script>
