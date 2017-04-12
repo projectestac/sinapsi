@@ -8,3 +8,4 @@ Homestead.yaml
 .env
 config/services.php
 config/lfm.php
+/public/storage
