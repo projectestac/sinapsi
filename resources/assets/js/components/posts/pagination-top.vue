@@ -1,6 +1,6 @@
 <template>
 
-    <ul class="pagination sns-pagination-mini hidden-xs">
+    <ul class="pagination sns-pagination-mini">
         <span v-if="total_posts!=0" class="sns-total-results" v-html="msg_results"></span>
 
         <div v-if="total_posts==0" class="sns-total-results-void">

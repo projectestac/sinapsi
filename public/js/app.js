@@ -36618,7 +36618,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "column paginacio"
   }, [_c('ul', {
-    staticClass: "pagination hidden-xs "
+    staticClass: "pagination"
   }, [_c('li', [(_vm.prev) ? _c('a', {
     staticClass: "anterior",
     attrs: {
@@ -36783,7 +36783,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
-    staticClass: "pagination sns-pagination-mini hidden-xs"
+    staticClass: "pagination sns-pagination-mini"
   }, [(_vm.total_posts != 0) ? _c('span', {
     staticClass: "sns-total-results",
     domProps: {

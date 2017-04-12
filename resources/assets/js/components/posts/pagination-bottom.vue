@@ -2,7 +2,7 @@
 
     <div class="column paginacio">
 
-        <ul class="pagination hidden-xs ">
+        <ul class="pagination">
 
             <li>
                 <a v-if="prev" href="#" class="anterior" @click="get_prev">{{ trans('messages.previous') }}</a>

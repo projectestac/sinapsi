@@ -15,13 +15,15 @@ class UsersTableSeeder extends Seeder
     {
         
     	$school = Entity::first();
+        $default_avatar = "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50";
+
 
 		User::create ([
             'name'=>'Sinapsi',
             'nickname' =>'sinapsi',
             'entity_id' => $school->id,
             'email' => 'agora@xtec.cat',
-            'avatar' => '',
+            'avatar' => $default_avatar,
             'role' =>'admin'
         ]);
 
@@ -39,7 +41,7 @@ class UsersTableSeeder extends Seeder
             'nickname' =>'aginard',
             'entity_id' => $school->id,
             'email' => 'aginard@xtec.cat',
-            'avatar' => '',
+            'avatar' => $default_avatar,
             'role' =>'admin'
         ]);
 
@@ -48,7 +50,7 @@ class UsersTableSeeder extends Seeder
             'nickname' =>'xnieto2',
             'entity_id' => $school->id,
             'email' => 'xnieto2@xtec.cat',
-            'avatar' => '',
+            'avatar' => $default_avatar,
             'role' =>'admin'
         ]);
 
@@ -57,7 +59,7 @@ class UsersTableSeeder extends Seeder
             'nickname' =>'sarjona',
             'entity_id' => $school->id,
             'email' => 'sarjona@xtec.cat',
-            'avatar' => '',
+            'avatar' => $default_avatar,
             'role' =>'admin'
         ]);
 
@@ -66,7 +68,7 @@ class UsersTableSeeder extends Seeder
             'nickname' =>'mgrau226',
             'entity_id' => $school->id,
             'email' => 'mgrau226@xtec.cat',
-            'avatar' => '',
+            'avatar' => $default_avatar,
             'role' =>'admin'
         ]);
 

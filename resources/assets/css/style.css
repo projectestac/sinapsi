@@ -152,11 +152,6 @@ nav ul.nav.sns-account li {
 nav ul.nav.sns-account li > a {
     font-family: 'OpenSans',Helvetica,Arial,sans-serif;
 }
-nav ul.nav.sns-account .dropdown-menu{
-    margin-right: 8%;
-}
-
-
 
 .sns-entity-logo {
     object-fit: cover;
