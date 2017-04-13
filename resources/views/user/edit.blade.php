@@ -43,7 +43,9 @@
                         {{ Form::text('wp_dst', $user->wp_dst, ['id'=>'wp_dst','class' => 'form-control', 'placeholder' => trans('messages.sites_destination')])}}
                     </div>
 
-                    <user-sinapsi :options="sinapsis" :s="sinapsi"></user-sinapsi>
+                    @if (Auth()->user()->isAdmin())
+                        <user-sinapsi :options="sinapsis" :s="sinapsi"></user-sinapsi>
+                    @endif    
 
                 </div>
             </div>
