@@ -170,15 +170,13 @@ export default {
         build_querystring: function (noSearchFormFilters="") {
 
             var filters = this.f_ui;
+            // reset page
+            delete filters.page;
 
             // Get params from page or orderby (no search form). If collision, this params overwrite existing params
             if (noSearchFormFilters){
                 var f = noSearchFormFilters.split("="); // f[0] = 'page', f[1] = 4
                 filters[f[0]] = f[1];
-                if (f[0] == 'o'){
-                    // reset page if user change posts order (clicking tab)
-                    delete filters.page;
-                }
             }
 
             var queryString="";
