@@ -28,7 +28,7 @@ class SinapsiTableSeeder extends Seeder
         $imatges = Sinapsi::create([
             'name'      => "Galeria d'imatges",
             'slug'  => 'imatges',
-            'postview'  => 'sns-gallery',
+            'postview'  => 'gallery',
             'description'    => "Recull d'imatges lliures amb temàtica escolar",
             'type' => 'manual',
             'querystring' =>'',
@@ -37,7 +37,7 @@ class SinapsiTableSeeder extends Seeder
                 Sinapsi::create([
                     'name'      => "Il·lustracio",
                     'slug'  => 'il-lustracio',
-                    'postview'  => 'sns-gallery',
+                    'postview'  => 'gallery',
                     'description'    => "Recull d'il·lustracions lliures amb temàtica escolar",
                     'type' => 'manual',
                     'parent_id' => $imatges->id,
@@ -47,7 +47,7 @@ class SinapsiTableSeeder extends Seeder
                 Sinapsi::create([
                     'name'      => "Senyalètica",
                     'slug'  => 'senyaletica',
-                    'postview'  => 'sns-gallery',
+                    'postview'  => 'gallery',
                     'description'    => "Recull d'icones lliures amb temàtica escolar",
                     'type' => 'manual',
                     'parent_id' => $imatges->id,
@@ -57,7 +57,7 @@ class SinapsiTableSeeder extends Seeder
                 Sinapsi::create([
                     'name'      => "Fotografia",
                     'slug'  => 'fotografia',
-                    'postview'  => 'sns-gallery',
+                    'postview'  => 'gallery',
                     'description'    => "Recull de fotografies lliures amb temàtica escolar",
                     'type' => 'manual',
                     'parent_id' => $imatges->id,
@@ -67,7 +67,7 @@ class SinapsiTableSeeder extends Seeder
         Sinapsi::create([
             'name'      => 'Serveis educatius',
             'slug'  => 'serveis-educatius',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'Sinapsi dels serveis educatius',
             'type' => 'auto',
             'querystring' =>'',
@@ -85,7 +85,7 @@ class SinapsiTableSeeder extends Seeder
         $tac = Sinapsi::create([
             'name'      => 'TAC',
             'slug'  => 'tac',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Tecnologia per l'aprenentage i el coneixement (Àgora Moodle, Nodes, Linkat, Robótica, Scratch, CodeWeek, Chromebooks ...",
             'type' => 'auto',
             'querystring' =>'q=linkat,chromebooks,nodes,scratch,codeweek,app inventor'
@@ -94,7 +94,7 @@ class SinapsiTableSeeder extends Seeder
         $programacio = Sinapsi::create([
             'name'      => 'Programació',
             'slug'  => 'programacio',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'Llenguatges de programació molt didàctics',
             'type' => 'auto',
             'querystring' =>'q=scratch,codeweek,app inventor',
@@ -104,7 +104,7 @@ class SinapsiTableSeeder extends Seeder
         $scratch = Sinapsi::create([
             'name'      => 'Scratch',
             'slug'  => 'scratch',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'Programació per a ments incipients',
             'type' => 'auto',
             'querystring' =>'q=scratch',
@@ -114,7 +114,7 @@ class SinapsiTableSeeder extends Seeder
         $appinventor = Sinapsi::create([
             'name'      => 'App Inventor',
             'slug'  => 'app-inventor',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Programació d'aplicions per els mòbils",
             'type' => 'auto',
             'querystring' =>'q=app inventor, appinventor',
@@ -124,7 +124,7 @@ class SinapsiTableSeeder extends Seeder
         $serveis = Sinapsi::create([
             'name'      => 'Serveis web i programari',
             'slug'  => 'serveis-i-programari',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Serveis web i programari per els centres educatius",
             'type' => 'auto',
             'querystring' =>'moodle,nodes,linkat',
@@ -134,7 +134,7 @@ class SinapsiTableSeeder extends Seeder
         $codeweek = Sinapsi::create([
             'name'      => 'CodeWeek',
             'slug'  => 'codeweek',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'La setmana de programació a tot Europa',
             'type' => 'auto',
             'querystring' =>'q=codeweek',
@@ -144,7 +144,7 @@ class SinapsiTableSeeder extends Seeder
         $robotica = Sinapsi::create([
             'name'      => 'Robòtica educativa',
             'slug'  => 'robótica',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'Sistema d’aprenentatge interdisciplinar que fa ús de robots com a fil conductor transversal per potenciar el desenvolupament d’habilitats i competències en l\'alumnat',
             'type' => 'auto',
             'querystring' =>'q=robotica,beebots,bee-boots',
@@ -154,7 +154,7 @@ class SinapsiTableSeeder extends Seeder
         Sinapsi::create([
             'name'      => 'Bee-bots',
             'slug'  => 'bee-bots',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => 'Educatiu i programable amb una intuitiva interficie per nens i nenes de 3 anys a 7 anys',
             'type' => 'auto',
             'querystring' =>'q=bee-boots,beebots',
@@ -170,7 +170,7 @@ class SinapsiTableSeeder extends Seeder
         $agora = Sinapsi::create([
             'name'      => 'Àgora Moodle',
             'slug'  => 'agora',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "L'aula virtual més utilitzada del món adaptada per els centres educatius",
             'type' => 'manual',
             'querystring' =>'q=moodle',
@@ -180,7 +180,7 @@ class SinapsiTableSeeder extends Seeder
         $nodes = Sinapsi::create([
             'name'      => 'Nodes',
             'slug'  => 'nodes',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Plataforma que permet construir la web del teu centre",
             'type' => 'manual',
             'querystring' =>'q=nodes',
@@ -190,7 +190,7 @@ class SinapsiTableSeeder extends Seeder
         $xtecblocs = Sinapsi::create([
             'name'      => 'XTEC Blocs',
             'slug'  => 'xtec-blocs',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Blogs",
             'type' => 'manual',
             'querystring' =>'',
@@ -200,7 +200,7 @@ class SinapsiTableSeeder extends Seeder
         $linkat = Sinapsi::create([
             'name'      => 'Linkat',
             'slug'  => 'linkat',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Linux per els centres educatius de Catalunya",
             'type' => 'auto',
             'querystring' =>'q=linkat',                 
@@ -210,7 +210,7 @@ class SinapsiTableSeeder extends Seeder
         $jclic = Sinapsi::create([
             'name'      => 'JClic',
             'slug'  => 'jclic',
-            'postview'  => 'sns-medium-card',
+            'postview'  => 'medium-card',
             'description'    => "Entorn per a la creació, realització i avaluació d'activitats educatives multimèdia, ara també en HTML5!. Molts educadors i educadores l'han fet servir per crear activitat
             s interactives on es treballen aspectes procedimentals de diverses àrees del currículum, des d'educació infantil fins a secundària.",
             'type' => 'auto',

@@ -62,12 +62,12 @@
                         <div class="form-group">
                             {!! Form::label('type', trans('messages.default_view_articles') ) !!}
                             <br>
-                            {!! Form::radio('postview', 'sns-medium-card' ,  true ) !!} <span
+                            {!! Form::radio('postview', 'medium-card' ,  true ) !!} <span
                                     class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; {{ trans('messages.optimal') }} &nbsp;
-                            {{-- Form::radio('postview', 'sns-full-card' ,  false )!!}  <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>{{ trans('messages.complete') }} &nbsp; --}}
-                            {!! Form::radio('postview', 'sns-gallery' , false ) !!} <span
+                            {{-- Form::radio('postview', 'full-card' ,  false )!!}  <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>{{ trans('messages.complete') }} &nbsp; --}}
+                            {!! Form::radio('postview', 'gallery' , false ) !!} <span
                                     class="glyphicon glyphicon-picture" aria-hidden="true"></span>&nbsp; {{ trans('messages.gallery') }} &nbsp;
-                            {!! Form::radio('postview', 'sns-list' ,  false   ) !!} <span
+                            {!! Form::radio('postview', 'list' ,  false   ) !!} <span
                                     class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>&nbsp; {{ trans('messages.list') }}
                             &nbsp;
                         </div>

@@ -25,10 +25,10 @@ export default {
         build_url: function (url)
         {
             if (!url){
-                return location.protocol + "//" + location.host +"/img/nophoto.jpg";
+                return shared.baseUrl +"/img/nophoto.jpg";
             }
             if ( !url.startsWith('http') ){
-                url = location.protocol + "//" + location.host +"/" + url;
+                url = shared.baseUrl +"/" + url;
             }
             return url;
         },
@@ -37,7 +37,7 @@ export default {
     data () {
 
         return {
-            base_url : location.protocol + "//" + location.host,
+            base_url : shared.baseUrl ,
             post_thumb :  this.build_url(this.p.thumb),
             post: this.p
         }

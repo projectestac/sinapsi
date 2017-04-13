@@ -78,7 +78,7 @@
                     @if (Session::has('message'))
                         <div class="alert alert-danger">{{ Session::get('message') }}</div>
                     @endif
-                    <sns-posts-container :ft="fulltabs" v-on:toogle_ft="toogle_fulltabs"></sns-posts-container>
+                    <sns-posts-container pv="{{ $sinapsi->postview }}" :ft="fulltabs" v-on:toogle_ft="toogle_fulltabs"></sns-posts-container>
                 </div>
                 <div :class="{'col-xs-12':true,'col-sm-4': fulltabs==false }">
 

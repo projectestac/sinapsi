@@ -22,7 +22,7 @@ class CreateSinapsisTable extends Migration
             $table->string('description',500);
             $table->string('logo',2000)->default('');
             $table->enum('type',['auto', 'manual']);
-            $table->enum('postview',['sns-medium-card', 'sns-full-card','sns-list','sns-gallery']);
+            $table->enum('postview',['medium-card', 'full-card','list','gallery']);
             $table->string('querystring')->default('');
             
             $table->integer('parent_id')->unsigned()->nullable();
