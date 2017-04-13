@@ -6,7 +6,5 @@ Homestead.json
 Homestead.yaml
 .php_cs.cache
 .env
-config/services.php
-config/lfm.php
 /public/storage
 /public/js/vue.js
