@@ -1,0 +1,146 @@
+
+/* ==========================================================================
+Post
+========================================================================== */
+
+a.sns-source,
+span.sns-date{
+    font-size:0.9em;
+    color:#666;
+}
+
+.sns_link_icon{
+    font-size: 0.6em;
+    color:#5e5e5e;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.sns-post h3{
+    margin-top:0px;
+    font-size:1.3em;
+}
+
+.sns-post h3 a {
+    cursor:pointer;
+}
+
+div.sns-post{
+    margin-bottom:40px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+div.sns-post-small{
+    margin-bottom:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+div.sns-post-small h2{
+    font-size:1.3em;
+    margin-bottom: 0;
+}
+
+.sns-post-small h2 a {
+    cursor: pointer;
+}
+
+.sns-post span.location *{
+    color: #eeeeee;
+}
+
+.sns-post span.date *{
+    color: #db5757;
+}
+
+.sns-post-content{
+    background-color:#F5F5F5;
+}
+
+.sns-post img{
+    max-width:100%;
+    height: auto;
+    margin:10px 0;
+}
+
+div.post-tags{
+    text-align: right;
+    margin-top:5px;
+}
+
+.post-tags span{
+    word-wrap: break-word;
+    display: inline-block;
+    margin:0 5px;
+    font-size:0.7em;
+
+}
+
+
+/* ==========================================================================
+Buttons
+========================================================================== */
+
+/* Heart (Like, Vote) */
+span.glyphicon-heart{
+    color:#BD0000;
+}
+
+span.glyphicon-heart.sns-grey{
+    color:#888;
+}
+
+/* Star (Favorite, Featured) */
+span.glyphicon-star {
+    color:#fcbe00;
+}
+
+span.glyphicon-star.sns-grey{
+    color:#888;
+}
+
+/* Share */
+span.glyphicon-send {
+    color:#888/*#019DCE*/;
+}
+
+#share-link,
+#share-embed {
+    color: #8899a6 !important;
+}
+
+/* Settings */
+span.glyphicon-cog {
+    color:#888;
+}
+
+/* Comments */
+ul.sns-list-comments{
+    list-style-type: none;
+}
+
+li.sns-comment{
+    padding:0 1em;
+}
+
+.sns-metacomment{
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: right;
+}
+
+span.glyphicon-comment.void {
+    color:#888;
+}
+
+span.glyphicon-comment {
+    color:#4CAF50;
+}
+
+.sns-btn-post-options{
+    padding: 1em;
+    border:0px;
+    background-color: transparent;
+}
+

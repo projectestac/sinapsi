@@ -101,3 +101,42 @@ export default {
 }
 
 </script>
+
+<style>
+
+    .basic_color.xar-socials.new {
+    background-color:white;
+    border:3px dotted black;
+    }
+
+    .basic_color.xar-socials.new h3 {
+    color:#333333;
+    }
+    .basic_color.xar-socials.new p {
+    color:#555555;
+    }
+
+    .sortable{
+    cursor:move;
+    }
+    
+    .sns-block-trash-white {
+    color:white;
+    position:absolute;
+    top:5px;
+    right: 5px;
+    cursor: pointer;
+    z-index: 9999;
+    }
+
+    .sns-block-trash {
+    color:grey;
+    position:absolute;
+    top:5px;
+    right: 5px;
+    cursor: pointer;
+    z-index: 9999;
+    }
+
+
+</style>

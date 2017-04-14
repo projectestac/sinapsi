@@ -85,9 +85,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    .sns-post-small h2 a {
-        cursor: pointer;
-    }
-</style>

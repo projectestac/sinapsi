@@ -1,8 +1,7 @@
 @extends('layout')
 
 @section('header-append')
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.css"/>
+    <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-treeview.min.css')}}" rel="stylesheet">
     <title>Sinapsis</title>
 @stop
@@ -45,7 +44,7 @@
                                 <div class="pestanyes_top hidden-xs box">
                                     <div>
 
-                                        <div class="btn-group sns-postview">
+                                        <div class="btn-group sns-btn-selector">
 
                                             <button type="button" @@click="show_tree=true">
                                             <span class="glyphicon glyphicon glyphicon-indent-left"

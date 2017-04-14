@@ -6,7 +6,7 @@
         <div class="pestanyes shadowBox-sm pd-15 pd-30">
             <div class="pestanyes_top hidden-xs box">
                 <div>
-                    <div class="btn-group sns-postview">
+                    <div class="btn-group sns-btn-selector">
 
                         <!--
                         |--------------------------------------------------------------------------
@@ -71,10 +71,7 @@
                                 :class="{'btn':true,
                                          'btn-default':true}"
                                 v-on:click="toogle_ft" :title="[ trans('messages.expand') ]">
-                            <span :class="{'glyphicon':true,
-                                           'glyphicon-triangle-right':fulltabs==false,
-                                           'glyphicon-triangle-left': fulltabs==true}"
-                                  aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
                         </button>
                     </div>
 
@@ -251,5 +248,93 @@ export default {
     },
 
 }
-
 </script>
+
+<style>
+
+    .tab-content{
+        padding:10px;
+    }
+
+    .pestanyes_top li.tab span{
+        color: #BF0000;
+    }
+
+    .pestanyes_top li.tab.active span{
+        color: #000;
+    }
+
+    .sns-btn-selector{
+        float:right;
+        top: 6px;
+        right: 10px;
+    }
+
+    .sns-btn-selector button{
+        background-color:transparent;
+        border:0;
+        padding:5px;
+    }
+
+    .sns-btn-selector button span {
+        color:#a7a7a7;
+        font-size:12px;
+        padding: 0;
+    }
+
+    button.sns-selected-postview  span{
+        color:#666;
+    }
+
+    button.sns-selected-embed span{
+        color:#BF0000;
+    }
+
+    div.query-animation{
+        text-align:center;
+        margin:5em;
+    }
+
+    .gly-spin {
+        -webkit-animation: spin 2s infinite linear;
+        -moz-animation: spin 2s infinite linear;
+        -o-animation: spin 2s infinite linear;
+        animation: spin 2s infinite linear;
+    }
+    @-moz-keyframes spin {
+        0% {
+            -moz-transform: rotate(0deg);
+        }
+        100% {
+            -moz-transform: rotate(359deg);
+        }
+    }
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+        }
+    }
+    @-o-keyframes spin {
+        0% {
+            -o-transform: rotate(0deg);
+        }
+        100% {
+            -o-transform: rotate(359deg);
+        }
+    }
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+
+
+</style>

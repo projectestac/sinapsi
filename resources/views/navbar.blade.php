@@ -55,8 +55,8 @@
                         </li>
 
                         <li :class="{'active':pagetype=='sinapsi'}">
-                            <a target="_self" :class="{'actiu':pagetype=='sinapsi'}" href="{{ url('sinapsis')}}" :title="[ trans('messages.menu_sinapsi') ]">
-                                {{ trans('messages.sinapsi_2') }}
+                            <a target="_self" :class="{'actiu':pagetype=='sinapsi'}" href="{{ url('sinapsis')}}" :title="[ trans('messages.menu_sinapsis') ]">
+                                {{ trans('messages.sinapsis') }}
                             </a>
                         </li>
 

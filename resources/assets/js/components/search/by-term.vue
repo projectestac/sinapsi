@@ -58,6 +58,6 @@ export default {
 
 <style>
     .cercador_vermell .btn, header .container .in form .form-group .buttonG.btn {
-        z-index: 9999999;
+        z-index: 999;
     }
 </style>

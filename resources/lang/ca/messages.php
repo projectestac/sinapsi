@@ -279,7 +279,7 @@ return [
     'government_catalonia'              => 'Generalitat de Catalunya',              /* navbar.blade.php */
     'close'                             => 'Tanca',                                 /* navbar.blade.php */
     'menu_home'                         => 'Menú Inici',                            /* navbar.blade.php */
-    'menu_sinapsi'                      => 'Menú Sinapsis',                         /* navbar.blade.php */
+    'menu_sinapsis'                     => 'Menú Sinapsis',                         /* navbar.blade.php */
     'menu_center'                       => 'Menú Centres',                          /* navbar.blade.php */
     'centers'                           => 'Centres',                               /* navbar.blade.php */
     'menu_projects'                     => 'Menú Projectes',                        /* navbar.blade.php */

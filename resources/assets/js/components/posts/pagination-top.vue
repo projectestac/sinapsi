@@ -1,6 +1,6 @@
 <template>
 
-    <ul class="pagination sns-pagination-mini">
+    <ul class="pagination sns-pagination-top">
         <span v-if="total_posts!=0" class="sns-total-results" v-html="msg_results"></span>
 
         <div v-if="total_posts==0" class="sns-total-results-void">
@@ -45,3 +45,28 @@
         },
     }
 </script>
+
+<style>
+    
+    .sns-pagination-top{
+        font-size:0.8em;
+        border:0px;
+        padding:0px;
+        text-align: right;
+        margin:1em;
+        margin-right: 30px;
+    }
+    .sns-total-results{
+        font-style: italic;
+        font-size:1.2em;
+        color:#666;
+    }
+
+    .sns-total-results-void {
+        font-style: italic;
+        font-size:1.2em;
+        color:#666;
+        text-align: left;
+    }
+
+</style>

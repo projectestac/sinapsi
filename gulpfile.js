@@ -16,12 +16,16 @@ elixir.config.sourcemaps = false;
 
 elixir(mix => {
     mix.styles([
-        'search_box.css',
+        'app.css',
+        'gencat/bootstrap.css',
+        'gencat/styles.css',
+        'gencat/leaflet.css',
+        'vue-multiselect.min.css',
+        'posts.css',
+        'search.css',
         'style.css',
-        'block.css',
-        'pagination.css',
-        'sinapsi.css',
-    ], 'public/css/style.min.css');
+        'sinapsi.css'
+], 'public/css/styles.min.css');
 
     mix.webpack('app.js');
 

@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="capcelera_basica col-sm-4">
-                                <div class="sns-description">
+                                <div class="sns-sinapsi-description">
 
                                     @if ( !empty($sinapsi['tag']) and !empty($sinapsi['tag']->description))
                                         {!! $sinapsi['tag']->description !!}

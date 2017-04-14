@@ -37,11 +37,19 @@ export default {
     data () {
 
         return {
-            base_url : shared.baseUrl ,
-            post_thumb :  this.build_url(this.p.thumb),
+            base_url: shared.baseUrl ,
+            post_thumb: this.build_url(this.p.thumb),
             post: this.p
         }
 
     }
 }
 </script>
+
+<style>
+    figcaption{
+        color: #666666;
+        font-style: italic;
+        margin-top: 5px;
+    }
+</style>

@@ -1,8 +1,7 @@
 @extends('layout')
 
 @section('header')
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.css"/>
+    <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')

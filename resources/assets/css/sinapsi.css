@@ -20,3 +20,15 @@ a.sns-sinapsi-title .sns-sinapsi-title-tag {
     width: 100px;
     margin: 0 10px;
 }
+
+div.sinapsi_description img {
+    padding: 0 10px 10px 0;
+}
+
+.sns-sinapsi-description
+{
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    padding-top: 0;
+}

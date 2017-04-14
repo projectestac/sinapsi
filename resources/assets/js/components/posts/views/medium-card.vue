@@ -108,10 +108,7 @@ export default {
 </script>
 
 <style>
-
     .post-foot {
         padding: 0 0 1em 1em;
     }
-
-
 </style>

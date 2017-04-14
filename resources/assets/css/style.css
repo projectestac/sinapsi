@@ -1,50 +1,22 @@
 
-
-
-.scrolltop {
-    display:none;
-}
-.scroll {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    right: 15px;
-    bottom: 15px;
-    cursor: pointer;
-    z-index: 9990;
-    background: url(../img/SNS_NG_backtop_up.png) no-repeat center center rgba(0,0,0,0.8);
-    border: none;
-    border-radius: 50%;
-    padding:20px;
-    text-align: center;
-    margin: 0 0 0 0;
-    transition: 0.5s;
-    -moz-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
+h1.sns-home-title{
+    font-size: 3em !important;
+    color: #BF0000;
+    padding:0;
+    font-family: 'Helvetica','OpenSansRegular',sans-serif;
+    font-weight: 600;
 }
 
-#appliedFilters{
-    margin:0;
+span.sns-domain{
+    font-weight: 100;
+    color:#BF0000;
 }
 
-.sns-description
-{
-    display: flex;
-    align-items: center;
-    padding: 0.5em;
-    padding-top: 0;
+.pagination>li>a,
+.pagination>li>span{
+    border:0;
 }
 
-.form .sns-date{
-    border:1px solid #CFCFCF;
-    color: #B3B1A9 !important;
-    height: 35px;
-}
-
-.sortable{
-    cursor:move;
-}
 
 div.basic_text_peq ul li:before {
     content: "";
@@ -55,13 +27,6 @@ div.basic_text_peq ul li:before {
     font-size: 18px !important;
 }
 
-
-
-.tab-content{
-    padding:10px;
-
-}
-
 .fade-transition{
     transition: all 1s ease;
     opacity:100;
@@ -69,13 +34,6 @@ div.basic_text_peq ul li:before {
 
 .fade-enter, .fade-leave{
     opacity: 0;
-}
-
-/* Sinapsi */
-
-#share-link,
-#share-embed {
-    color: #8899a6 !important;
 }
 
 .llistat_enllacos_filet_cont {
@@ -93,56 +51,6 @@ div.sns-error{
 .filariana.sns-breadcrumbs a{
     color:#555 !important;
     background-color: transparent !important;
-}
-
-.sns-postview{
-    float:right;
-    top: 6px;
-    right: 10px;
-}
-
-.sns-postview button{
-    background-color:transparent;
-    border:0;
-    padding:5px;
-}
-
-.sns-postview button span {
-    color:#a7a7a7;
-    font-size:12px;
-    padding: 0;
-}
-
-button.sns-selected-postview  span{
-    color:#666;
-}
-
-button.sns-selected-embed span{
-
-    color:#BF0000;
-
-}
-
-figcaption{
-    color:#666666;
-    font-style: italic;
-    margin-top:5px;
-}
-
-
-
-
-h1.sns-home-title{
-    font-size: 3em !important;
-    color: #BF0000;
-    padding:0;
-    font-family: 'Helvetica','OpenSansRegular',sans-serif;
-    font-weight: 600;
-}
-
-span.sns-domain{
-    font-weight: 100;
-    color:#BF0000;
 }
 
 nav ul.nav.sns-account li {
@@ -165,20 +73,6 @@ nav ul.nav.sns-account li > a {
     background-color: #ddd;
     padding:0px 3px;
     border-radius: 3px;
-}
-
-ul.sns-list-comments{
-    list-style-type: none;
-}
-
-li.sns-comment{
-   padding:0 1em;
-}
-
-.sns-metacomment{
-    font-size: 0.9em;
-    font-style: italic;
-    text-align: right;
 }
 
 .navbar-default .navbar-nav>.active>a,
@@ -209,173 +103,9 @@ li.sns-comment{
     width:100px;
 }
 
-.select2-selection--multiple {
-    border: solid #ddd 1px !important; 
-    border-radius: 0 !important;
-}
-
-div.query-animation{
-    text-align:center;
-    margin:5em;
-}
-
-
-
-.sns-icon{
-  color:#666;
-}
-
-div.post-tags{
-    text-align: right;
-    margin-top:5px;   
-}
-
-.post-tags span{
-   word-wrap: break-word;
-   display: inline-block;
-   margin:0 5px;
-   font-size:0.7em;
-
-}
-
 ul.sns-stats{
     list-style-type: none;
     margin-top:20px;
-}
-
-a.sns-source,
-span.sns-date{
-    font-size:0.9em;
-    color:#666;
-}
-
-
-span.glyphicon-heart{
-    color:#BD0000;
-}
-
-span.glyphicon-star {
-    color:#fcbe00;
-}
-
-span.glyphicon-heart.sns-grey,
-span.glyphicon-star.sns-grey{
-    color:#888;
-}
-
-span.glyphicon-send {
-    color:#888/*#019DCE*/;
-}
-
-span.glyphicon-comment.void {
-    color:#888;
-}
-
-span.glyphicon-comment {
-    color:#4CAF50;
-}
-
-/*settings icons*/
-span.glyphicon-cog {
-    color:#888;
-}
-
-
-.sns-btn-post-options{
-    padding: 1em;
-    border:0px;
-    background-color: transparent;
-}
-
-.sns-post h3{
-    margin-top:0px;
-    font-size:1.3em;
-}
-
-.sns-post h3 a {
-    cursor:pointer;    
-}
-
-div.sns-post{
-    margin-bottom:40px;
-    margin-left:20px;
-    margin-right:20px;
-}
-
-div.sns-post-small{
-    margin-bottom:10px;
-    margin-left:10px; 
-    margin-right:10px;
-}
-
-div.sns-post-small h2{
-    font-size:1.3em;
-    margin-bottom: 0;
-}
-
-
-.sns-post span.location *{
-    color: #eeeeee;
-}
-
-.sns-post span.date *{
-    color: #db5757;
-}
-
-.sns-post-content{
-    background-color:#F5F5F5;
-    /*padding:15px;*/
-}
-.sns-post img{
-    max-width:100%;
-    height: auto;
-    margin:10px 0;
-}
-.sns_link_icon{
-    font-size: 0.6em;
-    color:#5e5e5e;
-    margin-left:5px;
-    margin-right:5px;
-}
-.gly-spin {
-    -webkit-animation: spin 2s infinite linear;
-    -moz-animation: spin 2s infinite linear;
-    -o-animation: spin 2s infinite linear;
-    animation: spin 2s infinite linear;
-}
-@-moz-keyframes spin {
-    0% {
-        -moz-transform: rotate(0deg);
-    }
-    100% {
-        -moz-transform: rotate(359deg);
-    }
-}
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-    }
-}
-@-o-keyframes spin {
-    0% {
-        -o-transform: rotate(0deg);
-    }
-    100% {
-        -o-transform: rotate(359deg);
-    }
-}
-@keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg);
-    }
 }
 
 ul {
@@ -387,10 +117,6 @@ ul {
 
 .contest-btn{
     margin:1em;
-}
-
-div.sinapsi_description img {
-	padding: 0 10px 10px 0;
 }
 
 h1.title-subpage{
@@ -416,7 +142,6 @@ h1.title-subpage{
     padding-top: 0px;
 }
 
-
 .fpca_capcalera a.mvlogo {
     background: none;
     text-align: center;
@@ -432,28 +157,12 @@ h1.title-subpage{
     display: block;
 }
 
-.cercador_vermell .form-group {
-    clear: both;
-}
-
-.pestanyes_top li.tab span{
-    color: #BF0000;
-}
-
-.pestanyes_top li.tab.active span{
-    color: #000;
-}
-
 .capcelera_basica h1 {
     padding-top: 0.2em;
     padding-bottom: 0.500em;
     font-size: 2.188em;
     padding-left: 0;
     font-family: 'OpenSansRegular';
-}
-
-ul.dropdown-menu {
-    background: white;
 }
 
 .form-control {
@@ -463,27 +172,6 @@ ul.dropdown-menu {
 
 select.form-control{
 	-webkit-appearance:menulist;
-}
-
-.div-search-info{
-    margin-top: 5px;
-    margin-left: -10px;
-}
-.adv-control{
-	margin-bottom:2px;
-	padding:2px;
-}
-
-#advanced-search{
-	margin: 0;
-}
-
-.cerca-av{
-    text-align: right;
-}
-
-.cerca-av a{
-    color:#888;
 }
 
 @media (min-width: 768px)
@@ -598,6 +286,11 @@ img.avatar{
     padding-right:10px;
 }
 
+ul.dropdown-menu {
+    background: white;
+    font-size: 14px;
+}
+
 .dropdown-menu>li>a.red{
 	color:red;
 }
@@ -628,6 +321,79 @@ span.label a{
     background: #eee;
 }
 
+
+
+
+
+.sns-btn-selector{
+    float:right;
+    top: 6px;
+    right: 10px;
+}
+
+.sns-btn-selector button{
+    background-color:transparent;
+    border:0;
+    padding:5px;
+}
+
+.sns-btn-selector button span {
+    color:#a7a7a7;
+    font-size:12px;
+    padding: 0;
+}
+
+/* ==========================================================================
+Block
+========================================================================== */
+.sns-block-container{
+    padding:0;
+    border:0px;
+    position:relative;
+    margin:5px 0;
+}
+
+.basic_color.xar-socials.sns-gris{
+    background-color: #ececec;
+}
+
+.basic_color.xar-socials.sns-gris h3 {
+    color:#333333;
+}
+.basic_color.xar-socials.sns-gris p {
+    color:#555555;
+}
+
+/* ==========================================================================
+Scroll top button
+========================================================================== */
+
+.scrolltop {
+    display:none;
+}
+.scroll {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+    z-index: 9990;
+    background: url(../img/SNS_NG_backtop_up.png) no-repeat center center rgba(0,0,0,0.8);
+    border: none;
+    border-radius: 50%;
+    padding:20px;
+    text-align: center;
+    margin: 0 0 0 0;
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+/* ==========================================================================
+Reader
+========================================================================== */
 .new_post td{
     background-color: #bf0000;
 }
