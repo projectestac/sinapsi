@@ -56,3 +56,7 @@ header .container .dos form .form-group .btn {
 .cerca-av a{
     color:#888;
 }
+
+.advanced-search.row{
+    margin-top:5px;
+}

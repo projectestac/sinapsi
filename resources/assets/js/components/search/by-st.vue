@@ -1,18 +1,24 @@
 <template>
-    <div class="dropdown">
-        <p><strong>{{ trans('messages.regionals_services') }}</strong> <span v-html="sstt_DB.join()"></span></p>
-        <multiselect v-model="sstt_UI"
-            :placeholder="trans('messages.filter_by_one_or_more_regional_services')"
-            :deselect-label="trans('messages.remove_to_selection')"
-             label="text"
-             track-by="ID"
-            :options="options"
-            :multiple="true"
-            :taggable="true"
-            :close-on-select="false"
-        >
-    </multiselect>
 
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            <label for="orderby">{{ trans('messages.regionals_services') }}:</label>
+        </div>
+        <div class="col-md-9">
+            <div class="dropdown">
+                <multiselect v-model="sstt_UI"
+                    :placeholder="trans('messages.filter_by_one_or_more_regional_services')"
+                    :deselect-label="trans('messages.remove_to_selection')"
+                     label="text"
+                     track-by="ID"
+                    :options="options"
+                    :multiple="true"
+                    :taggable="true"
+                    :close-on-select="false"
+                >
+                </multiselect>
+            </div>
+        </div>
     </div>
 
 </template>

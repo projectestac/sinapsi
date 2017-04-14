@@ -1,19 +1,29 @@
-s<template>
-    <div class="dropdown">
-        <p><strong>{{ trans('messages.descriptors') }}</strong><span style="font-style:italic">{{tags_DB.join(", ")}}</span></p>
-        <multiselect v-model="tags_UI"
-            :placeholder="trans('messages.filter_by_one_or_more_descriptors')"
-            :deselect-label="trans('messages.remove_to_selection')"
-             label="text"
-             track-by="ID"
-            :options="options"
-            :multiple="true"
-            :taggable="true"
-            :close-on-select="false"
-        >
-    </multiselect>
+<template>
 
-</div>
+    <div class="row">
+
+        <div class="col-md-3 hidden-xs">
+            <label for="orderby">{{ trans('messages.descriptors') }}:</label>
+        </div>
+
+        <div class="col-md-9">
+            <div class="dropdown">
+                <multiselect v-model="tags_UI"
+                    :placeholder="trans('messages.filter_by_one_or_more_descriptors')"
+                    :deselect-label="trans('messages.remove_to_selection')"
+                     label="text"
+                     track-by="ID"
+                    :options="options"
+                    :multiple="true"
+                    :taggable="true"
+                    :close-on-select="false"
+                >
+                </multiselect>
+            </div>
+        </div>
+
+    </div>
+
 </template>
 
 <script>

@@ -1,19 +1,28 @@
 <template>
-    <div class="dropdown">
 
-        <p><strong>{{ trans('messages.schools') }}</strong> {{ schools_DB.join(", ") }}</p>
-        <multiselect v-model="schools_UI"
-                    :placeholder="trans('messages.filter_by_one_or_more_schools')"
-                    :deselect-label="trans('messages.remove_to_selection')"
-                     label="text"
-                     track-by="ID"
-                    :options="options"
-                    :multiple="true"
-                    :taggable="true"
-                    :close-on-select="false"
-        >
-    </multiselect>
-</div>
+    <div class="row">
+
+        <div class="col-md-3 hidden-xs">
+            <label for="orderby">{{ trans('messages.schools') }}:</label>
+        </div>
+
+        <div class="col-md-9">
+            <div class="dropdown">
+                <multiselect v-model="schools_UI"
+                            :placeholder="trans('messages.filter_by_one_or_more_schools')"
+                            :deselect-label="trans('messages.remove_to_selection')"
+                             label="text"
+                             track-by="ID"
+                            :options="options"
+                            :multiple="true"
+                            :taggable="true"
+                            :close-on-select="false"
+                >
+                </multiselect>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>

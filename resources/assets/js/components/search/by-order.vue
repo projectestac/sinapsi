@@ -1,18 +1,24 @@
 <template>
-    <div class="dropdown">
-        <p><strong>{{ trans('messages.order') }}</strong></p>
-        <div class="dropdown">
-            <multiselect v-model="orderby"
-                :deselect-label="trans('messages.remove_to_selection')"
-                track-by="ID"
-                label="text"
-                :placeholder="trans('messages.order_by')"
-                :options="options"
-                :searchable="false"
-                :allow-empty="false">
-            </multiselect>
+
+        <div class="row">
+            <div class="col-md-3 hidden-xs">
+                <label for="orderby">{{ trans('messages.order') }}:</label>
+            </div>
+            <div class="col-md-9">
+                <div class="dropdown">
+                    <multiselect v-model="orderby"
+                        :deselect-label="trans('messages.remove_to_selection')"
+                         track-by="ID"
+                         label="text"
+                        :placeholder="trans('messages.order_by')"
+                        :options="options"
+                        :searchable="false"
+                        :allow-empty="false">
+                    </multiselect>
+                </div>
+            </div>
         </div>
-    </div>
+
 </template>
 
 
