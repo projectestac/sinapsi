@@ -11,6 +11,7 @@
                 <option value="fpca-llista">{{ trans('messages.list_block') }}</option>
                 <option value="simple-title">{{ trans('messages.title') }}</option>
                 <option value="twitter-timeline">{{ trans('messages.twitter') }}</option>
+                <option value="featured-photo">{{ trans('messages.featured_photo') }}</option>
             </select>
         </div>
 
@@ -36,6 +37,7 @@ import BuilderRawHtml from './builder/raw-html.vue';
 import BuilderTwitterTimeline from './builder/twitter-timeline.vue';
 import BuilderSimpleTitle from './builder/simple-title.vue';
 import BuilderFpcaLlista from './builder/fpca-llista.vue';
+import BuilderFeaturedPhoto from './builder/featured-photo.vue';
 
 export default {
 
@@ -44,7 +46,8 @@ export default {
         BuilderRawHtml,
         BuilderTwitterTimeline,
         BuilderSimpleTitle,
-        BuilderFpcaLlista
+        BuilderFpcaLlista,
+        BuilderFeaturedPhoto
     },
 
     data: function () {

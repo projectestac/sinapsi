@@ -364,6 +364,25 @@ Block
     color:#555555;
 }
 
+/* Overwrite gencat/grafic_destacat.css */
+.fpca_llista_graficDestacat .grafic_destacat {
+    padding: 0px 0px 5px 0px;
+}
+
+.fpca_llista_graficDestacat .grafic_destacat h3 {
+        display: inherit;
+        font-size: inherit;
+        -webkit-margin-before: inherit;
+        -webkit-margin-after: inherit;
+        -webkit-margin-start: inherit;
+        -webkit-margin-end: inherit;
+        font-weight: inherit;
+        margin: initial;
+        padding: initial;
+        color: inherit;
+        line-height: inherit;
+}
+
 /* ==========================================================================
 Scroll top button
 ========================================================================== */
@@ -405,3 +424,4 @@ Reader
 .separator td{
     background-color: #b1b1b1;
 }
+

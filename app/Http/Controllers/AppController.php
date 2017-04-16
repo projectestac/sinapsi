@@ -293,11 +293,12 @@ class AppController extends Controller
 
         foreach ($blocks as $block) {
             if ($block->id > 99999999) { // It's a new block (id is timestamp)
+
                 Block::create([
                         'type' => $block->type,
                         'options' => $block->options,
                         'title' => $block->title,
-                        'content' => $block->content,
+                        'content' => $block->content ?$block->content:'',
                         'scope' => "home",
                         'scope_id' => 0,
                         'order' => $block->order]

@@ -11,6 +11,7 @@
 	import SimpleTitle from './types/simple-title.vue';
 	import TwitterTimeline from './types/twitter-timeline.vue';
     import FpcaLlista from './types/fpca-llista.vue';
+	import FeaturedPhoto from './types/featured-photo.vue';
 
 	export default {
 	  props:[ 'info','edit' ],
@@ -20,6 +21,7 @@
         SimpleTitle,
 		TwitterTimeline,
         FpcaLlista,
+		FeaturedPhoto
       },
 	  data () {
 		return {

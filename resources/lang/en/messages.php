@@ -121,6 +121,8 @@ return [
     'filters'               => 'filtres',                   /* search.vue, /sinapsi/create.blade.php, /sinapsi/edit.blade.php */
     'optional_choose_a_school' => '(Opcional) Tria un centre educatiu', /* user/by-school.vue, user/entity.vue */
     'choose_a_sinapsi'      => 'Tria una sinapsi',          /* user/sinapsi.vue, sinapsi.vue */
+    'src_image'             => 'Adreça de la imatge',       /* builder/featured-photo.vue */
+    'featured_photo'        => 'Imatge destacada',          /* block-builder.vue */
 
     /**********/
     /* BLADE  */
