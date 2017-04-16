@@ -88,6 +88,16 @@
                         },
                         "targets": 1
                     },
+                    {
+                        "render": function ( data, type, row ) {
+                            if (row[0]) {
+                                return '<img width="100px" src=' + row[0] + '>';
+                            } else {
+                                return data;
+                            }
+                        },
+                        "targets": 0
+                    },
                     { "visible": false,  "targets": [ 3 ] }
                 ],
                 "language": {

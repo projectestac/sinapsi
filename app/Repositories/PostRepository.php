@@ -140,21 +140,13 @@ class PostRepository
         }
 
         // By Projects
+
         if (!empty($params['p'])) {
             $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' posts.channel_id IN (' . $params['p'] . ')';
+            $where .= ' entities.id IN (' . $params['p'] . ')';
         }
 
-        if (!empty($params['codename'])) {
-            $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' entities.slug = "' . $params['codename'] . '"';
-        }
-
-        if (!empty($params['project'])) {
-            $where .= $where == '' ? ' WHERE ' : ' AND ';
-            $where .= ' entities.id = ' . $params['project'];
-        }
-
+        // By Date range
         if (!empty($params['sd']) && !empty($params['ed'])) {
             $where .= $where == '' ? ' WHERE ' : ' AND ';
             $where .= ' posts.pub_date BETWEEN "' . $params['sd'] .'" AND DATE_ADD("'.$params['ed'].'",INTERVAL 1 DAY)';
@@ -253,9 +245,9 @@ class PostRepository
             || !empty($params['y'])
             || !empty($params['l'])
             || !empty($params['s'])
+            || !empty($params['p'])
             || !empty($params['school'])
             || !empty($params['channels'])
-            || !empty($params['project'])
         ) {
             $select .= ' INNER JOIN channels ON posts.channel_id = channels.id
                         INNER JOIN entities ON entities.id = channels.obj_id';
@@ -328,7 +320,7 @@ class PostRepository
                     CASE WHEN channels.type = "User" 
                               THEN CONCAT("user/",users.id) 
                          WHEN channels.type = "Project" 
-                              THEN CONCAT("p/",entities.id)
+                              THEN CONCAT("p/",entities.slug)
                          ELSE CONCAT("s/",entities.slug)
                     END as source_url';
 
@@ -440,8 +432,8 @@ class PostRepository
             || !empty($params['y'])
             || !empty($params['l'])
             || !empty($params['s'])
+            || !empty($params['p'])
             || !empty($params['school'])
-            || !empty($params['project'])
             || !empty($params['channels'])
         ) {
             $select .= ' INNER JOIN channels ON posts.channel_id = channels.id

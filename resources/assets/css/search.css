@@ -40,6 +40,7 @@ header .container .dos form .form-group .btn {
     margin-top: 5px;
     margin-left: -10px;
 }
+
 .adv-control{
     margin-bottom:2px;
     padding:2px;
@@ -57,6 +58,6 @@ header .container .dos form .form-group .btn {
     color:#888;
 }
 
-.advanced-search.row{
+#advanced-search .row{
     margin-top:5px;
 }

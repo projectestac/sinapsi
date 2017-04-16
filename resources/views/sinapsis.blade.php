@@ -167,10 +167,9 @@
 
 @section('footer-append')
 
-    <script src="{{asset('js/app.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
-    <script src="{{asset('js/bootstrap-treeview.min.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap-treeview.min.js')}}"></script>
 
     <script type="text/javascript">
 

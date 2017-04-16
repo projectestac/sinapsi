@@ -136,10 +136,10 @@
             el: "#root",
             data: {
                 pagetype: 'sinapsi',
-                info: {{$sinapsi->id}},
-                slug: "{{$sinapsi->slug}}",
-                name: "{{$sinapsi->name}}",
-                querystring: "{{$sinapsi->querystring}}",
+                info: {{ $sinapsi->id }},
+                slug: "{{ $sinapsi->slug }}",
+                name: "{!! $sinapsi->name !!}",
+                querystring: "{!! $sinapsi->querystring !!}",
                 parent_id: {id: '{{$sinapsi->parent_id}}', name: '{{$sinapsi->parent_name}}'},
                 sinapsis: {!! json_encode($sinapsis) !!}
             }

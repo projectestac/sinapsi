@@ -8,19 +8,26 @@
 
         <div class="col-md-9">
             <div class="dropdown">
-                <multiselect v-model="schools_UI"
-                            :placeholder="trans('messages.filter_by_one_or_more_schools')"
-                            :deselect-label="trans('messages.remove_to_selection')"
-                             label="text"
-                             track-by="ID"
-                            :options="options"
-                            :multiple="true"
-                            :taggable="true"
-                            :close-on-select="false"
-                >
+
+                <multiselect
+                    v-model="schools_UI"
+                    label="text"
+                    track-by="ID"
+                    :placeholder="trans('messages.filter_by_one_or_more_schools')"
+                    :deselect-label="trans('messages.remove_to_selection')"
+                    :options="options"
+                    :multiple="true"
+                    :searchable="true"
+                    :loading="isLoading"
+                    :internal-search="false"
+                    :close-on-select="false"
+                    :options-limit="50"
+                    @search-change="get_schools">
                 </multiselect>
+
             </div>
         </div>
+
     </div>
 
 </template>
@@ -37,6 +44,7 @@ export default {
     },
     data () {
         return {
+            isLoading: false,
             schools_UI: [],
             schools_DB: [],
             options:[],
@@ -50,38 +58,53 @@ export default {
         }
     },
 
-    created: function(){
-        this.get_schools();
-    },
-   
-    methods: {
+    mounted: function() {
+        var that = this;
+        $.each(this.from_UI, function( index, school ) {
+            that.set_school (school.ID);
+        });
 
-        get_schools: function(){
+        if (this.from_DB) {
+            that = this;
+            $.each(this.from_DB.split(","), function (index, id) {
+                that.set_school(id);
+            });
+        }
+    },
+    
+    methods: {
+        set_school (query) {
+            this.isLoading = true
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: shared.baseUrl + '/api/v1/schools',
+                url: shared.baseUrl + '/api/v1/school/id/'+query,
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
                     this.options = response;
-                    var school_name ="";
+                    this.schools_UI.push({ 'ID': response[0].ID ,'text': response[0].text });
+                    this.isLoading = false;
+                }.bind(this),
+                error: function (jqXHR, textStatus, message) {
+                    this.errors.push(message);
+                }.bind(this)
+            });
+        },
 
-                    var that = this;
-                    $.each(this.from_UI, function( index, school ) {
-                        school_name = $.grep(that.options, function(e){ return e.ID == school.ID; });
-                        that.schools_UI.push({ 'ID': school.ID ,'text': school_name[0].text });
-                    });
-                    if (this.from_DB) {
-                        $.each(this.from_DB.split(","), function (index, school) {
-                            school_name = $.grep(that.options, function (e) {
-                                return e.ID == school
-                            });
-                            that.schools_DB.push(school_name[0].text);
-                        });
-                    }
-
+        get_schools (query) {
+            this.isLoading = true
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: shared.baseUrl + '/api/v1/school/name/'+query,
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    this.options = response;
+                    this.isLoading = false;
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
                     this.errors.push(message);

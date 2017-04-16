@@ -29,8 +29,6 @@ class EntityController extends Controller
 
         $search_options = $__entity->searchOptions;
 
-        $params[$type] = $mId;
-
         // Combine params from BBDD and params from url or ui search fields
         $filters_from_UI = $this->buildUrlFilters($params);
 
@@ -61,7 +59,7 @@ class EntityController extends Controller
                 $__entity->searchOptions = ['city','tags','order','school_types','schools','se'];
                 break;
             case 'project':
-                $__entity->keyField = 'id';
+                $__entity->keyField = 'slug';
                 $__entity->searchOptions = ['tags','order'];
                 break;
             default:
@@ -90,6 +88,7 @@ class EntityController extends Controller
     {
         $params = $request->all();
         $__entity = $this->getEntity($type, $mId);
+        $type = ($type == 'project') ? 'p' : $type;
         $params[$type] = $mId;
         $posts = $this->postRepository->getPosts($params);
 
@@ -106,6 +105,7 @@ class EntityController extends Controller
     {
         $params = $request->all();
         $__entity = $this->getEntity($type, $mId);
+        $type = ($type == 'project') ? 'p' : $type;
         $params[$type] = $mId;
         $posts = $this->postRepository->getPostsCount($params);
 

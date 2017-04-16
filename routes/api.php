@@ -33,27 +33,52 @@ Route::any('api/v1/e/{type}/{mId}/posts/count', 'EntityController@postsCount');
 // Tags
 Route::any('api/v1/tag/{id}/posts', 'TagController@posts');
 Route::any('api/v1/tag/{id}/posts/count', 'TagController@postsCount');
-
-Route::any('api/v1/cities', function () {
-    return getCities();
-});
-Route::any('api/v1/ssee', function () {
-    return getSSEE();
-});
 Route::any('api/v1/tags', function () {
     return getTags();
 });
 
+// Cities
+Route::any('api/v1/cities', function () {
+    return getCities();
+});
+Route::any('api/v1/city/{city}', function ($city) {
+    return getCity($city);
+});
+
+// Educational services
+Route::any('api/v1/ssee', function () {
+    return getSSEE();
+});
+
+// Schools
 Route::any('api/v1/schools/table', function () {
     return getSchoolsTable();
+});
+
+Route::any('api/v1/school/name/{school}', function ($school) {
+    return getSchoolByName($school);
+});
+Route::any('api/v1/school/id/{school}', function ($id) {
+    return getSchoolById($id);
 });
 
 Route::any('api/v1/schools', function () {
     return getSchools();
 });
+
+// Projects
+
+Route::any('api/v1/project/name/{name}', function ($name) {
+    return getProjectByName($name);
+});
+Route::any('api/v1/project/id/{id}', function ($id) {
+    return getProjectById($id);
+});
+
 Route::any('api/v1/projects', function () {
     return getProjects();
 });
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('api/v1/post/{post_id}/like', 'UserController@like');

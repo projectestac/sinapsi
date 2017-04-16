@@ -51,20 +51,18 @@ class EntityRepository
 
     /**
      * getProjects
-     * Get Projects ordered by number of posts (descendant order)
-     *
+     * Get Projects ordered by last post (descendant order)
+     * Jerarchy example: e1 is a project, e2 is a school, e3 is SE
      * @return mixed
      */
 
     public function getProjects()
     {
-        /* Jerarchy example: e1 is a project, e2 is a school, e3 is SE*/
- 
         $projects = Post::selectRaw(
             'e1.name AS name, 
              e1.id AS id,
              e1.codeid AS codeid,
-             e1.slug AS codename,
+             e1.slug AS slug,
              e1.image AS logo,
              e2.name AS parent_name,
              e2.codeid AS parent_codeid, 

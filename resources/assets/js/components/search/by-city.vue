@@ -7,18 +7,22 @@
 
         <div class="col-md-9">
             <div class="dropdown">
-                <multiselect v-model="cities_UI"
+                <multiselect
+                    v-model="cities_UI"
+                    label="text"
+                    track-by="ID"
                     :placeholder="trans('messages.filter_by_one_or_more_cities')"
-                    :deselect-label="trans('messages.remove_to_selection')"
-                     label="text"
-                     track-by="ID"
                     :options="options"
                     :multiple="true"
-                    :taggable="true"
+                    :searchable="true"
+                    :loading="isLoading"
+                    :internal-search="false"
                     :close-on-select="false"
-                >
+                    :options-limit="50"
+                    @search-change="get_cities">
                 </multiselect>
             </div>
+
         </div>
     </div>
 
@@ -35,8 +39,9 @@ export default {
     },
     data () {
         return {
-            cities_UI: this.from_UI ? this.from_UI : "",
-            cities_DB:this.from_DB ? this.from_DB : "",
+            isLoading: false,
+            cities_UI: this.from_UI ? this.from_UI : [],
+            cities_DB:this.from_DB ? this.from_DB : [],
             options:this.from_UI ? this.from_UI : [],
             errors:[],
         }
@@ -46,20 +51,33 @@ export default {
             bus.$emit('filters_changed','l',this.cities_UI);
         }
     },
-    mounted: function(){
-        this.get_cities();
+    mounted: function() {
+        if (this.from_DB) {
+            var that = this;
+            $.each(this.from_DB.split(","), function (index, city) {
+                that.set_city(city);
+            });
+        }
     },
+
     methods: {
-        get_cities: function(){
+
+        set_city (city) {
+            this.cities_UI.push({ 'ID': city ,'text': city });
+        },
+
+        get_cities (query) {
+            this.isLoading = true
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: shared.baseUrl + '/api/v1/cities',
+                url: shared.baseUrl + '/api/v1/city/' + query,
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
                     this.options = response;
+                    this.isLoading = false;
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
                     this.errors.push(message);

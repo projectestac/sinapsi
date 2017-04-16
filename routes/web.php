@@ -27,10 +27,12 @@ Route::any('q/sinapsis', 'AppController@getSinapsisBySearchTerm');
 Route::any('se/{codeid}', function ($codeid) {
     return redirect()->route('entity', ['type'=>'se','mId'=>$codeid]);
 });
+
 // Serveis territorials
 Route::any('st/{id}', function ($id) {
     return redirect()->route('entity', ['type'=>'st','mId'=>$id]);
 });
+
 // Projects
 Route::any('p/{id}', function ($id) {
     return redirect()->route('entity', ['type'=>'project','mId'=>$id]);
@@ -43,7 +45,6 @@ Route::any('e/{type}/{mId}', 'EntityController@index')->name('entity');
 Route::any('s/{codename}', function ($codename) {
     return redirect()->route('entity', ['type'=>'school','mId'=>$codename]);
 });
-
 
 // Tag
 Route::any('tag/{tag}', 'TagController@index');
@@ -120,7 +121,6 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 
     // Comments
-
     Route::post("/post/{post_id}/comment", [
         'as' => 'comment.store',
         'uses' => 'UserController@comment'

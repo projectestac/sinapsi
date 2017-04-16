@@ -38,6 +38,7 @@ class Controller extends BaseController
             'channels'   => '',
             'admins'     => '',
             'u'          => '',
+            'p'          => '',
             'sd'         => '',
             'ed'         => ''
         );

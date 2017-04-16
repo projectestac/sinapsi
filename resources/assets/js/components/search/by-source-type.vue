@@ -45,7 +45,7 @@ export default {
                 {'ID':'Institut','text': messages['high_school']},
                 {'ID':'IE','text': messages['institute_school']},
                 {'ID':'SEZ','text': messages['educational_services']},
-                {'ID':'Blog','text': messages['personal_blog']},
+                {'ID':'Projecte','text': messages['project']},
                 {'ID':'ZER','text': messages['zer']},
                 {'ID':'CFA','text': messages['adults']},
                 {'ID':'CdA','text': messages['fields_leraning']},

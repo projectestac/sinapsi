@@ -106,12 +106,6 @@
             }
         });
 
-        /*Sortable.create(document.getElementById('blockList'),{
-         onUpdate: function(evt) {
-         bus.$emit('update_order',evt);
-         }
-         });*/
-
     </script>
 
 

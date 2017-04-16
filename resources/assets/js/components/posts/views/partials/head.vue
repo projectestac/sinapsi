@@ -18,7 +18,7 @@
 	  data () {
 	    return {
 	      name: 'post-' + this.p.id,
-	      href: location.protocol + "//" + location.host + "/" + this.p.source_url,
+	      href: shared.baseUrl + "/" + this.p.source_url,
 		  post: this.p
 	    }
   	  }

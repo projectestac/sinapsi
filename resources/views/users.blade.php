@@ -61,7 +61,7 @@
 
 @section('footer-append')
 
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
     <script type="text/javascript">
 
         var vm = new Vue({

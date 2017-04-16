@@ -263,14 +263,13 @@ class SinapsiController extends Controller
                   FROM sinapsis AS e1
                   LEFT JOIN sinapsis AS e2
                       ON e1.parent_id = e2.id
-                  WHERE e1.slug='$sinapsi_codename'";
+                  WHERE e1.slug='".$sinapsi_codename."'";
 
         $sinapsi = DB::select($query);
 
         if (count($sinapsi)) {
             $sinapsi = $sinapsi[0];
         }
-
         
         if (Gate::denies('manage', $sinapsi->id)) {
             return view('error',

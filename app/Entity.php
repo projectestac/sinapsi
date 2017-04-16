@@ -16,7 +16,7 @@ class Entity extends Model
             return $this->image;
         } else {
             try {
-                $url = 'https://agora.xtec.cat/' . $this->codename;
+                $url = 'https://agora.xtec.cat/' . $this->slug;
                 $dom = HtmlDomParser::str_get_html(file_get_contents($url));
                 $this->image = $dom->find('#logo_entity')[0]->src;
                 $this->save();
@@ -60,7 +60,7 @@ class Entity extends Model
                 $keyField = $this->codeid;
                 break;
             case 'Projecte':
-                $keyField = $this->codeid;
+                $keyField = $this->id;
                 break;
             default:
                 $keyField = $this->slug;

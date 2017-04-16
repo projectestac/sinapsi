@@ -53,15 +53,58 @@ function getSchools()
     return  $schools;
 }
 
+function getSchoolByName($query)
+{
+    $schools =  Entity::selectRaw('id AS ID, CONCAT(name," (",municipi,")") AS text')
+        ->whereNotIn('type', ['SEZ','ST','CdA','CLIC','CREDA','Projecte'])
+        ->where('name','like','%'.$query.'%')
+        ->get();
+    return  $schools;
+}
+function getSchoolById($id)
+{
+    //TODO: first instead of get
+    $school =  Entity::selectRaw('id AS ID, CONCAT(name," (",municipi,")") AS text')
+        ->whereNotIn('type', ['SEZ','ST','CdA','CLIC','CREDA','Projecte'])
+        ->where('id',$id)
+        ->get();
+
+    return  $school;
+}
+
 function getProjects()
 {
-    $projects =  Entity::selectRaw('channels.id AS ID, CONCAT(name," (",municipi,")") AS text')
+    //TODO: Parent name and city in text
+    $projects =  Entity::selectRaw('channels.id AS ID, entities.name AS text')
         ->join('channels', 'channels.obj_id', '=', 'entities.id')
-        ->where('entities.type', 'Projecte')->get();
+        ->where('entities.type', 'Projecte')
+        ->get();
     Session::put('projects', $projects);
     return  $projects;
 }
+function getProjectByName($query)
+{
+    //TODO: Parent name and city in text
+    $projects =  Entity::selectRaw('entities.id AS ID, entities.name AS text')
+        //->join('channels', 'channels.obj_id', '=', 'entities.id')
+        ->where('entities.type', 'Projecte')
+        ->where('entities.name', 'like', '%'.$query.'%')
+        ->get();
+    return  $projects;
+}
 
+function getProjectById($id)
+{
+    //TODO: Parent name and city in text
+    //TODO: first instead of get
+    $project =  Entity::selectRaw('entities.id AS ID, entities.name AS text')
+        //->join('channels', 'channels.obj_id', '=', 'entities.id')
+        ->where('entities.type', 'Projecte')
+        ->where('entities.id', $id)
+        ->get();
+
+    return  $project;
+}
 
 function getCities()
 {
@@ -69,6 +112,15 @@ function getCities()
     Session::put('cities', $cities);
     return  $cities;
 }
+
+function getCity($city)
+{
+    $cities =  Entity::selectRaw('municipi AS ID, municipi AS text')
+                ->where('municipi','like','%'.$city.'%')
+                ->groupBy('municipi')->get();
+    return  $cities;
+}
+
 
 function getUsers()
 {
@@ -280,9 +332,9 @@ function close_tags($html)
     return $html;
 }
 
-function slug($tag)
+function slug($str)
 {
-    $slug = strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($tag, ENT_QUOTES, 'UTF-8')), ENT_QUOTES, 'UTF-8')), '-'));
+    $slug = strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($str, ENT_QUOTES, 'UTF-8')), ENT_QUOTES, 'UTF-8')), '-'));
     return $slug;
 }
 

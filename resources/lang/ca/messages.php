@@ -305,7 +305,7 @@ return [
     'high_school'                       => 'Institut',                              /* by-source-type.vue */
     'institute_school'                  => 'Institut Escola',                       /* by-source-type.vue */
     'personal_blog'                     => 'Blog personal o de projecte',           /* by-source-type.vue */
-    'adults'                            => 'adults',                                /* by-source-type.vue */
+    'adults'                            => 'Adults',                                /* by-source-type.vue */
     'fields_learning'                   => 'Camps d\'aprenentatge',                 /* by-source-type.vue */
     'girona'                            => 'Girona',                                /* by-st.vue PostRepository.php*/
     'baix_llobregat'                    => 'Baix Llobregat',                        /* by-st.vue PostRepository.php*/

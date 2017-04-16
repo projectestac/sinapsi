@@ -41,7 +41,7 @@
             </thead>
             @foreach ( $projects as $project )
                 <tr>
-                    <td><a href="{{ url('p')."/".$project->id }}">{{ $project->name }}</a></td>
+                    <td><a href="{{ url('p')."/".$project->slug }}">{{ $project->name }}</a></td>
                     <td>{{ $project->parent_name }}</td>
                     <td>{{ $project->parent_location }}</td>
                     <td>{!!$project->codename!!}</td>
@@ -57,7 +57,8 @@
 
 
 @section('footer-append')
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
+
+    <script type="text/javascript" src="{{asset('js/datatables.min.js')}}"></script>
 
     <script type="text/javascript">
 

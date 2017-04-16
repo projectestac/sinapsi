@@ -119,7 +119,9 @@ export default {
 
             var num_filters = Object.keys(this.filters).length;
             if (num_filters){
-                this.filters_warning  = num_filters ==1 ? messages.applying + " <strong>1</strong> " + messages.filter : messages.applyings + " <strong>" + num_filters + "</strong> " +  messages.filters;
+                this.filters_warning  = num_filters ==1 ? messages.applying
+                            + " <strong>1</strong> " + messages.filter : messages.applyings
+                            + " <strong>" + num_filters + "</strong> " +  messages.filters;
             } else {
                 this.filters_warning = "";
             }
