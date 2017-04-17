@@ -78,7 +78,7 @@
         info: "",
         user: {
             "logged": "{{ Auth::check() }}" ? true : false,
-            "data": "{{ Auth::user() }}".replace(/&quot;/g, '"'),
+            "data": {!! json_encode(Auth::user()) !!},
             "can_post_edit": "{{  Auth::check() and Gate::allows('post-edit') }}" ? true : false
         }
     };

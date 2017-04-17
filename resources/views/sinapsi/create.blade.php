@@ -98,12 +98,11 @@
                     <div id="config-users" class="tab-pane fade in">
                         <h3>{{ trans('messages.administrators') }}</h3>
                         <p><i>{{ trans('messages.rename_sinapsi') }}</i></p>
-                        {{ trans('messages.select_admins') }}
-
+                        <sns-users type="managers" :selected="[]"></sns-users>
 
                         <h3>{{ trans('messages.publishers') }}</h3>
                         <p><i>{{ trans('messages.manage_posts') }}</i></p>
-                        {{ trans('messages.select_publishers') }}
+                        <sns-users type="editors" :selected="[]"></sns-users>
 
                     </div>
 

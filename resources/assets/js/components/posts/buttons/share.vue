@@ -49,7 +49,7 @@ export default {
     computed:{
         user: function(){
             if (shared.user.logged){
-                return JSON.parse(shared.user.data);
+                return shared.user.data;
             } else{
                 return false
             }

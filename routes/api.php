@@ -80,6 +80,20 @@ Route::any('api/v1/projects', function () {
 });
 
 
+
+// Users
+
+Route::any('api/v1/users', 'AppController@users');
+
+Route::any('api/v1/user/name/{name}', function ($name) {
+    return getUserByName($name);
+});
+Route::any('api/v1/user/id/{id}', function ($id) {
+    return getUserById($id);
+});
+
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('api/v1/post/{post_id}/like', 'UserController@like');
     Route::get('api/v1/post/{post_id}/unlike', 'UserController@unlike');

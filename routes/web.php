@@ -158,17 +158,17 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'SinapsiController@store'
     ]);
 
-    Route::get('/{sinapsi_codename}/edit', [
+    Route::get('/{sinapsi_slug}/edit', [
         'as' => 'sinapsi.edit',
         'uses' => 'SinapsiController@edit'
     ]);
 
-    Route::post('/{sinapsi_codename}/edit', [
+    Route::post('/{sinapsi_slug}/edit', [
         'as' => 'sinapsi.update',
         'uses' => 'SinapsiController@update'
     ]);
 
-    Route::get('/{sinapsi_codename}/destroy', [
+    Route::get('/{sinapsi_slug}/destroy', [
         'as' => 'sinapsi.destroy',
         'uses' => 'SinapsiController@destroy'
     ]);

@@ -31,6 +31,10 @@ Vue.component('tags-list',    require('./components/posts/tags-list.vue'));
 Vue.component('post-head', require('./components/posts/views/partials/head.vue'));
 Vue.component('post-foot', require('./components/posts/views/partials/foot.vue'));
 Vue.component('post-tags', require('./components/posts/views/partials/tags.vue'));
+
+Vue.component('sns-users', require('./components/users.vue'));
+
+
 /*
  |--------------------------------------------------------------------------
  | Global filters

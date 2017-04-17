@@ -321,10 +321,6 @@ span.label a{
     background: #eee;
 }
 
-
-
-
-
 .sns-btn-selector{
     float:right;
     top: 6px;
@@ -341,6 +337,16 @@ span.label a{
     color:#a7a7a7;
     font-size:12px;
     padding: 0;
+}
+
+ul li a{
+    color: #C00000;
+    text-decoration: none;
+}
+
+ul li a:hover{
+    color: #C00000;
+    text-decoration: underline;
 }
 
 /* ==========================================================================

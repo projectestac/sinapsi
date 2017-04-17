@@ -127,6 +127,30 @@ function getUsers()
     return User::selectRaw('id, CONCAT(name," (",email,")") AS text')->get();
 }
 
+function getUserByName($query)
+{
+    $users =  User::selectRaw('users.id AS ID, 
+                              CASE WHEN entities.name IS NOT NULL 
+                              THEN CONCAT(users.name, " (", entities.name, ")" )
+                              ELSE users.name 
+                              END AS text'
+        )
+        ->leftjoin('entities','users.entity_id','entities.id')
+        ->where('users.name', 'like', '%'.$query.'%')
+        ->get();
+
+    return  $users;
+}
+
+function getUserById($id)
+{
+    //TODO: first instead of get
+    $user =  User::selectRaw('users.id AS ID, users.name AS text')
+        ->where('users.id', $id)
+        ->get();
+    return  $user;
+}
+
 function getDstSinapsi($user_id)
 {
     $sinapsis = Sinapsi::selectRaw('sinapsis.id, CONCAT(sinapsis.name," (",sinapsis.slug,")") AS text')

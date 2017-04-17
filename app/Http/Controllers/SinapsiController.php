@@ -12,6 +12,7 @@ use Sinapsi\SinapsiChannel;
 use Sinapsi\Tag;
 use Sinapsi\Block;
 use Sinapsi\Repositories\PostRepository;
+use Sinapsi\User;
 use Sinapsi\UserAbility;
 
 class SinapsiController extends Controller
@@ -199,7 +200,6 @@ class SinapsiController extends Controller
         
         $parent_id = !empty($request->parent_id) ? $request->parent_id : null;
 
-        // TODO: change codename to slug
         $sinapsi = Sinapsi::firstOrCreate([
             'name' => $request->name,
             'slug' => $request->slug,
@@ -214,6 +214,34 @@ class SinapsiController extends Controller
             $sinapsi->logo = url('/').'/'.$sinapsi->saveLogo($request->file('sns_logo'));
         }
         $sinapsi->save();
+
+        // USERS
+
+        if (!empty($request->managers)){
+            $managers = explode(",",$request->managers);
+            foreach ($managers as $user_id) {
+                UserAbility::create([
+                    "scope" => 'sinapsi',
+                    "scope_id" => $sinapsi->id,
+                    "user_id" => $user_id,
+                    "ability" => 'manage'
+                ]);
+            }
+        }
+
+        /*
+        $editors = explode(",",$request->editors);
+
+        if (!empty($editors)) {
+            foreach ($editors as $user_id) {
+                UserAbility::create([
+                    "scope" => 'sinapsi',
+                    "scope_id" => $sinapsi->id,
+                    "user_id" => $user_id,
+                    "ability" => 'cherry-pick'
+                ]);
+            }
+        }*/
         
         // BLOCKS
         $blocks = json_decode($request->blocks);
@@ -234,22 +262,17 @@ class SinapsiController extends Controller
 
         event(new SinapsisChanged());
 
-
         return redirect()->to($sinapsi->slug);
     }
 
     /**
      * Show the edit sinapsi form
      *
-     * @param $sinapsi_codename
+     * @param $sinapsi_slug
      * @return view
      */
-    public function edit($sinapsi_codename)
+    public function edit($sinapsi_slug)
     {
-        /*$sinapsi = Sinapsi::where('slug', $sinapsi_codename)
-            ->first();
-    */
-
         $query = "SELECT e1.name AS name,
                          e1.logo AS logo, 
                          e1.id AS id, 
@@ -263,7 +286,7 @@ class SinapsiController extends Controller
                   FROM sinapsis AS e1
                   LEFT JOIN sinapsis AS e2
                       ON e1.parent_id = e2.id
-                  WHERE e1.slug='".$sinapsi_codename."'";
+                  WHERE e1.slug='".$sinapsi_slug."'";
 
         $sinapsi = DB::select($query);
 
@@ -271,8 +294,8 @@ class SinapsiController extends Controller
             $sinapsi = $sinapsi[0];
         }
         
-        if (Gate::denies('manage', $sinapsi->id)) {
-            return view('error',
+        if (Gate::denies('sinapsi-manage', $sinapsi->id)) {
+            return view('errors/error',
                 ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
         }
 
@@ -280,31 +303,40 @@ class SinapsiController extends Controller
 
         $selected = $this->buildUrlFilters($params);
 
-        /*$selected_admins = UserAbility::where('scope','sinapsi')
-                                        ->where('scope_id',$sinapsi->id)
-                                        ->where('ability','manage')
-                                        ->pluck('user_id');*/
-
-        /*$selected["admins"] = implode(",",$selected_admins->toArray());
-
-        $selected_editors = UserAbility::where('scope','sinapsi')
+        $managers =  User::selectRaw('users.id AS ID, CASE WHEN entities.name IS NOT NULL 
+                              THEN CONCAT(users.name, " (", entities.name, ")" )
+                              ELSE users.name 
+                              END AS text')
+                            ->join('user_abilities','users.id','user_abilities.user_id')
+                            ->leftjoin('entities','entities.id','users.entity_id')
+                            ->where('scope','sinapsi')
+                            ->where('scope_id',$sinapsi->id)
+                            ->where('ability','manage')
+                            ->get();
+        /*
+        $editors =  User::selectRaw('users.id AS ID, CASE WHEN entities.name IS NOT NULL 
+                              THEN CONCAT(users.name, " (", entities.name, ")" )
+                              ELSE users.name 
+                              END AS text')
+            ->join('user_abilities','users.id','user_abilities.user_id')
+            ->leftjoin('entities','entities.id','users.entity_id')
+            ->where('scope','sinapsi')
             ->where('scope_id',$sinapsi->id)
-            ->where('ability','posts_manage')
-            ->pluck('user_id');
-
-        $selected["editors"] = implode(",",$selected_editors->toArray());*/
-
-        $sinapsis = Sinapsi::all();
+            ->where('ability','cherry-pick')
+            ->get();
+        */
 
         $blocks = Block::where('scope', 'sinapsi')
             ->where('scope_id', $sinapsi->id)
             ->orderBy('order', 'asc')
             ->get();
 
+        $sinapsis = Sinapsi::all();
 
         return view('sinapsi/edit',
                 compact([
                     'sinapsi',
+                    'managers',
                     'selected',
                     'blocks',
                     'sinapsis'
@@ -318,10 +350,10 @@ class SinapsiController extends Controller
      */
     public function update(Request $request)
     {
-        $sinapsi = Sinapsi::where('slug', $request->sinapsi_codename)->first();
+        $sinapsi = Sinapsi::where('slug', $request->sinapsi_slug)->first();
 
-        if (Gate::denies('manage', $sinapsi->id)) {
-            return view('error',
+        if (Gate::denies('sinapsi-manage', $sinapsi->id)) {
+            return view('errors/error',
                 ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
         }
 
@@ -340,15 +372,16 @@ class SinapsiController extends Controller
         $sinapsi->save();
 
         // USERS
-        // TODO: Not delete, update
-        // Delete all existing abilities
+
+        // Delete all existing manage abilities for this sinapsi
         UserAbility::where('scope', 'sinapsi')
             ->where('scope_id', $sinapsi->id)
             ->where('ability', 'manage')
             ->delete();
 
-        if (!empty($request->admins)) {
-            foreach ($request->admins as $user_id) {
+        if (!empty($request->managers)){
+            $managers = explode(",",$request->managers);
+            foreach ($managers as $user_id) {
                 UserAbility::create([
                     "scope" => 'sinapsi',
                     "scope_id" => $sinapsi->id,
@@ -358,16 +391,24 @@ class SinapsiController extends Controller
             }
         }
 
-        if (!empty($request->editors)) {
-            foreach ($request->editors as $user_id) {
+        /*
+        UserAbility::where('scope', 'sinapsi')
+            ->where('scope_id', $sinapsi->id)
+            ->where('ability', 'cherry-pick')
+            ->delete();
+
+        $editors = explode(",",$request->editors);
+
+        if (!empty($editors)) {
+            foreach ($editors as $user_id) {
                 UserAbility::create([
                     "scope" => 'sinapsi',
                     "scope_id" => $sinapsi->id,
                     "user_id" => $user_id,
-                    "ability" => 'posts_manage'
+                    "ability" => 'cherry-pick'
                 ]);
             }
-        }
+        }*/
         
         // BLOCKS
         // Initially, all blocks can be deleted
@@ -412,7 +453,12 @@ class SinapsiController extends Controller
     {
         //TODO: control if not exists
         //TODO: roles
-         $sinapsi = Sinapsi::where('slug', $sinapsi_slug)->first()->delete();
+        $sinapsi = Sinapsi::where('slug', $sinapsi_slug)->first();
+
+        Sinapsi::find($sinapsi->id)->delete();
+        UserAbility::where('scope','sinapsi')
+                    ->where('scope_id',$sinapsi->id)
+                    ->delete();
 
         event(new SinapsisChanged());
         

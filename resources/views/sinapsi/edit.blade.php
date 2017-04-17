@@ -100,14 +100,17 @@
                     </div>
 
                     <div id="config-users" class="tab-pane fade in">
+
                         <h3>{{ trans('messages.administrators') }}</h3>
                         <p><i>{{ trans('messages.rename_sinapsi') }}</i></p>
-                        {{ trans('messages.select_admins') }}
+                        <sns-users type="managers" :selected="managers"></sns-users>
 
-
+                        {{--
                         <h3>{{ trans('messages.publishers') }}</h3>
                         <p><i>{{ trans('messages.manage_posts') }}</i></p>
-                        {{ trans('messages.select_publishers') }}
+                        <sns-users type="editors" :selected="editors"></sns-users>
+                        --}}
+
                     </div>
 
                 </div>
@@ -141,7 +144,8 @@
                 name: "{!! $sinapsi->name !!}",
                 querystring: "{!! $sinapsi->querystring !!}",
                 parent_id: {id: '{{$sinapsi->parent_id}}', name: '{{$sinapsi->parent_name}}'},
-                sinapsis: {!! json_encode($sinapsis) !!}
+                sinapsis: {!! json_encode($sinapsis) !!},
+                managers: {!! json_encode($managers) !!}
             }
         });
 

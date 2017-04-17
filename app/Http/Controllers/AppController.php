@@ -60,6 +60,14 @@ class AppController extends Controller
         });
         $home['description'] = $description ? $description->value : 'Sense descripció';
 
+        /*$managers = User::selectRaw('users.id AS ID, CASE WHEN entities.name IS NOT NULL
+                              THEN CONCAT(users.name, " (", entities.name, ")" )
+                              ELSE users.name 
+                              END AS text')
+                        ->leftjoin('entities','entities.id','users.entity_id')
+                        ->where('role','admin')
+                        ->get();*/
+
         return view('home', compact([
             'search_options',
             'filters_from_UI',
@@ -485,4 +493,22 @@ class AppController extends Controller
 
         return redirect(url('sinapsis'));
     }
+
+    /**
+     * Get users
+     *
+     * @return collection
+     */
+    public function users(Request $request)
+    {
+       return User::selectRaw('users.id AS ID, CONCAT(users.name," (",entities.name,")") AS text')
+               ->join('user_abilities','users.id','user_abilities.user_id')
+               ->join('entities','entities.id','users.entity_id')
+               ->where('scope',$request->scope)
+               ->where('scope_id',$request->scope_id)
+               ->where('ability',$request->ability)
+               ->get();
+
+    }
+
 }

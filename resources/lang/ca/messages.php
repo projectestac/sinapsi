@@ -123,6 +123,10 @@ return [
     'choose_a_sinapsi'      => 'Tria una sinapsi',          /* user/sinapsi.vue, sinapsi.vue */
     'src_image'             => 'Adreça de la imatge',       /* builder/featured-photo.vue */
     'featured_photo'        => 'Imatge destacada',          /* block-builder.vue */
+    'select_one_or_more_users' => 'Selecciona un o més usuaris', /* users.vue */
+
+
+
     /**********/
     /* BLADE  */
     /**********/

@@ -73,7 +73,7 @@ class UserController extends Controller
             return view('errors.user_not_found');
         }
 
-        $entity_options = DB::table('entities')->get();
+        $entity_options = DB::table('entities')->where('type',"!=",'Projecte')->get();
 
         $entities = $entity_options->map(
             function ($entity_option) {
@@ -83,14 +83,15 @@ class UserController extends Controller
                 ];
             }
         );
-
-
+        
         /*$sinapsi_options = Sinapsi::select('sinapsis.id AS ID',
                                 'sinapsis.name AS text')
                                 ->leftJoin('user_abilities', 'user_abilities.scope_id', '=', 'sinapsis.id')
                                 ->where('user_abilities.user_id', $user_id)
                                 ->where('user_abilities.ability', 'posts_manage')
-                                ->where('user_abilities.scope', 'sinapsi')->get();*/
+                                ->where('user_abilities.scope', 'sinapsi')->get();
+        */
+        
         // TODO: user_abilities                        
         $sinapsi_options = Sinapsi::select('sinapsis.id AS ID','sinapsis.name AS text')
                                 ->where('type', 'manual')->get();

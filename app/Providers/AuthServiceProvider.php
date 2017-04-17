@@ -37,6 +37,7 @@ class AuthServiceProvider extends ServiceProvider
         | Global
         |--------------------------------------------------------------------------
         */
+
         Gate::define('manage-settings', function ($user) {
             return $user->hasAbility('manage-settings');
         });
@@ -64,6 +65,7 @@ class AuthServiceProvider extends ServiceProvider
         | Sinapsis
         |--------------------------------------------------------------------------
         */
+
         Gate::define('sinapsi-create', function ($user) {
             return $user->hasAbility('sinapsi-create');
         });

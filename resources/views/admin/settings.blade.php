@@ -120,7 +120,7 @@
                                     </div>
 
                                     <div id="administrators" class="panel-collapse collapse" style="height: 0px;">
-                                        select2admin
+                                        select2admins
                                     </div>
 
                                 </div>
@@ -150,7 +150,7 @@
             el: "#root",
             data: {
                 pagetype: 'home',
-                info: '0',
+                info: '0'
             },
             mounted: function () {
                 bus.$emit('get_blocks');

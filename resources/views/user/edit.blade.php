@@ -71,9 +71,9 @@
         var vm = new Vue({
             el: "#root",
             data: {
-                entity: {ID: '{{$user->entity_id}}', text: '{{$user->entity_name}} ({{$user->entity_location}}) '},
+                entity: {ID: "{{$user->entity_id}}", text: "{!! $user->entity_name !!} ({!! $user->entity_location !!}) "},
                 entities: {!!  json_encode($entities) !!},
-                sinapsi: {ID: '{{$sinapsi->id}}', text: '{{$sinapsi->name}} '},
+                sinapsi: {ID: "{{$sinapsi->id}}", text: "{!! $sinapsi->name !!} "},
                 sinapsis: {!!  json_encode($sinapsis) !!}
             }
         });

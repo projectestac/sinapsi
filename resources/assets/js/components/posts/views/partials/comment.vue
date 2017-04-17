@@ -32,7 +32,7 @@ export default {
         comment: this.c,
         errors: this.errors,
         baseurl: shared.baseUrl,
-        user: shared.user.logged ? JSON.parse(shared.user.data) : '',
+        user: shared.user.logged ? shared.user.data : '',
         user_can_post_edit: shared.user.can_post_edit,
     }
   },
