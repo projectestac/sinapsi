@@ -31,11 +31,20 @@ Route::any('api/v1/e/{type}/{mId}/posts', 'EntityController@posts');
 Route::any('api/v1/e/{type}/{mId}/posts/count', 'EntityController@postsCount');
 
 // Tags
+Route::any('api/v1/tag/name/{name}', function ($name) {
+    return getTagByName($name);
+});
+Route::any('api/v1/tag/id/{id}', function ($id) {
+    return getTagById($id);
+});
 Route::any('api/v1/tag/{id}/posts', 'TagController@posts');
 Route::any('api/v1/tag/{id}/posts/count', 'TagController@postsCount');
 Route::any('api/v1/tags', function () {
     return getTags();
 });
+
+
+
 
 // Cities
 Route::any('api/v1/cities', function () {

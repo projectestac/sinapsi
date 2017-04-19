@@ -66,6 +66,23 @@ function getSchools()
     return  $schools;
 }
 
+function getTagByName($query)
+{
+    $tags =  Tag::selectRaw('id AS ID, name AS text')
+        ->where('name','like','%'.$query.'%')
+        ->get();
+    return  $tags;
+}
+function getTagById($id)
+{
+    //TODO: first instead of get
+    $tag =  Tag::selectRaw('id AS ID, name AS text')
+        ->where('id',$id)
+        ->get();
+
+    return  $tag;
+}
+
 function getSchoolByName($query)
 {
     $schools =  Entity::selectRaw('id AS ID, CONCAT(name," (",municipi,")") AS text')

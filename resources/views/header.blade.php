@@ -22,6 +22,7 @@
 <![endif]-->
 
 <script src="{{ asset('js/vue.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.js"></script>
 <script src="{{asset('js/tinymce')}}/tinymce.min.js"></script>
 
 <script>

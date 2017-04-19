@@ -93,8 +93,9 @@ export default {
             });
         },
 
-        get_schools (query) {
-            this.isLoading = true
+        get_schools: _.throttle(function (query) {
+            this.isLoading = true;
+            setTimeout(function () {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -110,7 +111,8 @@ export default {
                     this.errors.push(message);
                 }.bind(this)
             });
-        }
+            }.bind(this), 2000)
+        }, 1000)
 
     }
 }

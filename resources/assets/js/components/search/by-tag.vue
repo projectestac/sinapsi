@@ -8,17 +8,21 @@
 
         <div class="col-md-9">
             <div class="dropdown">
-                <multiselect v-model="tags_UI"
+                <multiselect
+                    v-model="tags_UI"
+                    label="text"
+                    track-by="ID"
                     :placeholder="trans('messages.filter_by_one_or_more_descriptors')"
                     :deselect-label="trans('messages.remove_to_selection')"
-                     label="text"
-                     track-by="ID"
                     :options="options"
                     :multiple="true"
-                    :taggable="true"
+                    :searchable="true"
+                    :loading="isLoading"
+                    :internal-search="false"
                     :close-on-select="false"
-                >
-                </multiselect>
+                    :options-limit="50"
+                    @search-change="get_tags">
+            </multiselect>
             </div>
         </div>
 
@@ -50,46 +54,64 @@ export default {
            bus.$emit('filters_changed','t',this.tags_UI);
         }
     },
-    mounted: function(){
-         this.get_tags();
+
+    mounted: function() {
+
+        var that = this;
+        $.each(this.from_UI, function( index, tag ) {
+            that.set_tag (tag.ID);
+        });
+
+        if (this.from_DB) {
+            that = this;
+            $.each(this.from_DB.split(","), function (index, id) {
+                that.set_tag(id);
+            });
+        }
     },
+
     methods: {
- 
-      get_tags: function(){
+        set_tag (query) {
+            this.isLoading = true
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: shared.baseUrl + '/api/v1/tags',
+                url: shared.baseUrl + '/api/v1/tag/id/'+query,
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
                     this.options = response;
-                    var tag_name ="";
-                    var that = this;
-
-                    //from ui
-                    $.each(this.from_UI, function( index, tag ) {
-                        tag_name = $.grep(that.options, function(e){ return e.ID == tag.ID; });
-                        that.tags_UI.push({ 'ID': tag.ID ,'text': tag_name[0].text });
-                    });
-
-                    //from db
-                    if (this.from_DB) {
-                        $.each(this.from_DB.split(","), function (index, tag) {
-                            tag_name = $.grep(that.options, function (e) {
-                                return e.ID == tag;
-                            });
-                            that.tags_DB.push(tag_name[0].text);
-                        });
-                    }
-                    
+                    this.tags_UI.push({ 'ID': response[0].ID ,'text': response[0].text });
+                    this.isLoading = false;
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
                     this.errors.push(message);
                 }.bind(this)
             });
         },
+
+        get_tags: _.throttle(function (query) {
+            this.isLoading = true;
+            setTimeout(function () {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: shared.baseUrl + '/api/v1/tag/name/'+query,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        this.options = response;
+                        this.isLoading = false;
+                    }.bind(this),
+                    error: function (jqXHR, textStatus, message) {
+                        this.errors.push(message);
+                    }.bind(this)
+                });
+            }.bind(this), 2000)
+        }, 1000)
+
     },
 }
 </script>
