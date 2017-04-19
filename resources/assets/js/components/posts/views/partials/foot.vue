@@ -4,15 +4,16 @@
 
         <sns-like :p="post"></sns-like>
 
-        <sns-favorite :p="post"></sns-favorite>
-
         <sns-share :p="post"></sns-share>
 
         <sns-settings :p="post"></sns-settings>
 
+        <sns-favorite :p="post"></sns-favorite>
+
         <sns-comments :p="post"></sns-comments>
 
         <div v-if="post.fullcontent" class="pull-right">
+
         <a :href="'#post-' + post.id" :title="[ trans('messages.back_to_top') ]">
             <img :src="baseurl + '/img/NG_tornar_enrere.png'">
         </a>
@@ -38,10 +39,12 @@
         },
         data () {
             return {
+                user_logged: shared.user.logged,
                 post: this.p,
                 baseurl: shared.baseUrl
             }
-        }
+        },
+
     }
 
 </script>

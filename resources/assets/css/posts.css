@@ -92,16 +92,16 @@ span.glyphicon-heart.sns-grey{
 }
 
 /* Star (Favorite, Featured) */
-span.glyphicon-star {
+span.glyphicon-bookmark {
     color:#fcbe00;
 }
 
-span.glyphicon-star.sns-grey{
+span.glyphicon-bookmark.sns-grey{
     color:#888;
 }
 
 /* Share */
-span.glyphicon-send {
+span.glyphicon-share-alt {
     color:#888/*#019DCE*/;
 }
 

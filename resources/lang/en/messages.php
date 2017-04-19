@@ -124,7 +124,10 @@ return [
     'src_image'             => 'Adreça de la imatge',       /* builder/featured-photo.vue */
     'featured_photo'        => 'Imatge destacada',          /* block-builder.vue */
     'select_one_or_more_users' => 'Selecciona un o més usuaris', /* users.vue */
-
+    'like'                  => 'M\'agrada',                 /* like.vue */
+    'dislike'               => 'Ja no m\'agrada',        /* like.vue */
+    'add_to_favorites'      => 'Afegir a favorits',      /* favorite.vue */
+    'remove_from_favorites' => 'Treure de favorits',     /* favorite.vue */
 
 
     /**********/

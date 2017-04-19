@@ -3,7 +3,7 @@
     <div class="btn-group">
 
         <button type="button" class="btn btn-default dropdown-toggle sns-btn-post-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon glyphicon-send"></span> <span class="caret"></span>
+            <span title="Comparteix" class="glyphicon glyphicon glyphicon-share-alt"></span> <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
 
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+
 export default {
     props:['p'],
     data () {

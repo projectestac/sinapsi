@@ -67,7 +67,7 @@ export default {
     },
     data (){
         return {
-            baseurl: location.protocol + "//" + location.host,
+            baseurl: shared.baseUrl,
             post: this.p,
             user_can_post_edit: shared.user.can_post_edit
         }

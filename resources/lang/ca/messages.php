@@ -69,7 +69,7 @@ return [
     'optimal'               => 'Òptim',                     /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
     'gallery'               => 'Galeria',                   /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
     'list'                  => 'Llista',                    /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
-    'share'                 => 'Compartir',                 /* container.vue */
+    'share'                 => 'Compartir',                 /* container.vue, share.vue */
     'expand'                => 'Expandir',                  /* container.vue */
     'featured'              => 'Destacats',                 /* container.vue */
     'top_rated'             => 'Més votats',                /* container.vue */
@@ -124,7 +124,10 @@ return [
     'src_image'             => 'Adreça de la imatge',       /* builder/featured-photo.vue */
     'featured_photo'        => 'Imatge destacada',          /* block-builder.vue */
     'select_one_or_more_users' => 'Selecciona un o més usuaris', /* users.vue */
-
+    'like'                  => 'M\'agrada',                 /* like.vue */
+    'dislike'               => 'Ja no m\'agrada',        /* like.vue */
+    'add_to_favorites'      => 'Afegir a favorits',      /* favorite.vue */
+    'remove_from_favorites' => 'Treure de favorits',     /* favorite.vue */
 
 
     /**********/
@@ -374,4 +377,6 @@ return [
     'st'                                => 'ST',                                    /* entity/create.blade.php, entity/edit.blade.php */
     'entity'                            => 'Centre',                                /* entity/index.blade.php */
     'role'                              => 'Rol',                                   /* user/edit.blade.php */
+
 ];
+
