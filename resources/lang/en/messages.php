@@ -125,6 +125,8 @@ return [
     'featured_photo'        => 'Imatge destacada',          /* block-builder.vue */
     'select_one_or_more_users' => 'Selecciona un o més usuaris', /* users.vue */
 
+
+
     /**********/
     /* BLADE  */
     /**********/
@@ -231,7 +233,7 @@ return [
     'default_view_articles'             => 'Visualització dels articles per defecte', /* /sinapsi/create.blade.php */
     'complete'                          => 'Complet',                               /* /sinapsi/create.blade.php */
     'rename_sinapsi'                    => 'Poden renombrar la sinapsi, modificar la descripció i gestionar els blocs de la barra lateral', /* /sinapsi/create.blade.php */
-    'select admins'                     => 'select admins',                         /* /sinapsi/create.blade.php */
+    'select_admins'                     => 'select admins',                         /* /sinapsi/create.blade.php */
     'publishers'                        => 'Editors',                               /* /sinapsi/create.blade.php */
     'manage_posts'                      => 'Poden incloure i treure articles a la sinapsi (si la sinapsi és de tipus manual)', /* /sinapsi/create.blade.php */
     'select_publishers'                 => 'select editors',                        /* /sinapsi/create.blade.php */
@@ -282,7 +284,7 @@ return [
     'government_catalonia'              => 'Generalitat de Catalunya',              /* navbar.blade.php */
     'close'                             => 'Tanca',                                 /* navbar.blade.php */
     'menu_home'                         => 'Menú Inici',                            /* navbar.blade.php */
-    'menu_sinapsi'                      => 'Menú Sinapsis',                         /* navbar.blade.php */
+    'menu_sinapsis'                     => 'Menú Sinapsis',                         /* navbar.blade.php */
     'menu_center'                       => 'Menú Centres',                          /* navbar.blade.php */
     'centers'                           => 'Centres',                               /* navbar.blade.php */
     'menu_projects'                     => 'Menú Projectes',                        /* navbar.blade.php */
