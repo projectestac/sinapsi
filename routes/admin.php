@@ -22,6 +22,36 @@ Route::group(['middleware' => 'role:admin'], function () {
         'uses' => 'TagController@destroyAlias'
     ]);
 
+    // New Post
+    Route::get("post/create", [
+        'as' => 'posts.create',
+        'uses' => 'PostController@create'
+    ]);
+
+    Route::post("post/create", [
+        'as' => 'posts.preview',
+        'uses' => 'PostController@preview'
+    ]);
+
+    Route::post("post/store", [
+        'as' => 'posts.store',
+        'uses' => 'PostController@store'
+    ]);
+
+    Route::get("/post/{id}/edit", [
+        'as' => 'post.edit',
+        'uses' => 'PostController@edit'
+    ]);
+
+    Route::post("/post/{id}/edit", [
+        'as' => 'post.update',
+        'uses' => 'PostController@update'
+    ]);
+
+    Route::get("post/{id}/destroy", [
+        'as' => 'posts.destroy',
+        'uses' => 'PostController@destroy'
+    ]);
 
     Route::get("/posts/hidden", [
         'as' => 'posts.hidden',

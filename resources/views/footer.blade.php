@@ -90,7 +90,10 @@
                                             <li class="list-group-item"><p class="title_list">{{ trans('messages.help') }}</p></li>
 
                                             <li class="list-group-item bullet">
-                                                <a title="Item 1" href="#" target="_self">{{ trans('messages.about_sinapsi') }}</a>
+                                                <a title="{{ trans('messages.about_sinapsi') }}" href="/post/1" target="_self">{{ trans('messages.about_sinapsi') }}</a>
+                                            </li>
+                                            <li class="list-group-item bullet">
+                                                <a title="{{ trans('messages.advanced_search') }}" href="/post/2" target="_self">{{ trans('messages.advanced_search') }}</a>
                                             </li>
 
                                         </ul>
