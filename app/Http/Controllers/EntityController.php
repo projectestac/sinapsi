@@ -235,7 +235,7 @@ class EntityController extends Controller
         }
 
         if (Gate::denies('manage', $entity->id)) {
-            return view('error',
+            return view('errors/error',
                 ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
         }
 
@@ -280,7 +280,7 @@ class EntityController extends Controller
         $entity = Entity::where('id', $request->id)->first();
 
         if (Gate::denies('manage', $entity->id)) {
-            return view('error',
+            return view('errors/error',
                 ["err_message" => "No teniu permissos per editar aquesta sinapsi"]);
         }
 

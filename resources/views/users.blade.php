@@ -34,11 +34,11 @@
             <br>
             <table class="table" id="tbl_users">
                 <thead>
-                <th></th>
-                <th>{{ trans('messages.names') }}</th>
-                <th>{{ trans('messages.work_placement') }}</th>
-                <th>{{ trans('messages.city') }}</th>
-                {{--<th>Neurones</th>--}}
+                    <th></th>
+                    <th>{{ trans('messages.name') }}</th>
+                    <th>{{ trans('messages.work_placement') }}</th>
+                    <th>{{ trans('messages.city') }}</th>
+                    <th>{{ trans('messages.role') }}</th>
                 </thead>
                 @foreach ( $users as $user )
                     <tr>
@@ -46,7 +46,7 @@
                         <td><a href="{{ url('user') }}/{{ $user->id }}">{{ $user->name }}</a></td>
                         <td><a href="s/{{ $user->school_codename }}">{{ $user->school_name }}</a></td>
                         <td>{{ $user->school_location }}</td>
-                        {{--<td>{{ $user->reputation }}</td>--}}
+                        <td>{{ $user->role }}</td>
                     </tr>
                 @endforeach
             </table>
@@ -75,9 +75,19 @@
 
             var messages = _.get(window.trans, 'messages');
 
+            if(!shared.user.logged || shared.user.data.role != 'admin' ){
+                notVisible = [ 4 ];
+            }
+
             $('#tbl_users').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
+                "columnDefs": [
+                    {
+                        "targets": notVisible,
+                        "visible": false
+                    },
+                ],
                 "language": {
                     "search": messages['search'],
                     "zeroRecords": messages['no_results'],

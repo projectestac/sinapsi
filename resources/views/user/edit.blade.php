@@ -26,11 +26,11 @@
                             {!! Form::text('name',$user->name, ['class'=>'form-control']) !!}
                         </div>
                     </h4>
+
                     <div class="form-group">
-
                         <user-entity :options="entities" :e="entity"></user-entity>
-
                     </div>
+
                     <div class="form-group">
                         {{ Form::text('email', $user->email, ['id'=>'email','class' => 'form-control','readonly', 'placeholder' => trans('messages.email')])}}
                     </div>
@@ -44,7 +44,12 @@
                     </div>
 
                     @if (Auth()->user()->isAdmin())
-                        <user-sinapsi :options="sinapsis" :s="sinapsi"></user-sinapsi>
+                        <div class="form-group">
+                                {{ Form::select('role', array('subscriptor' => 'Subscriptor', 'admin' => 'Administrador'), $user->role, ['class' => 'form-control']) }}
+                        </div>
+                        <div class="form-group">
+                                <user-sinapsi :options="sinapsis" :s="sinapsi"></user-sinapsi>
+                        </div>
                     @endif    
 
                 </div>

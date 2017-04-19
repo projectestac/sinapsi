@@ -90,7 +90,7 @@ class EntityRepository
     {
         $users = Entity::select(
             'users.name', 'users.id', 'users.avatar',
-            'entities.name AS school_name', 'users.reputation',
+            'entities.name AS school_name', 'users.role',
             'entities.slug AS school_codename',
             'entities.municipi AS school_location')
             ->rightJoin('users', 'users.entity_id', '=', 'entities.id')

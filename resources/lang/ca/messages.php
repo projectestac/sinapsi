@@ -373,4 +373,5 @@ return [
     'sez'                               => 'SEZ',                                   /* entity/create.blade.php, entity/edit.blade.php */
     'st'                                => 'ST',                                    /* entity/create.blade.php, entity/edit.blade.php */
     'entity'                            => 'Centre',                                /* entity/index.blade.php */
+    'role'                              => 'Rol',                                   /* user/edit.blade.php */
 ];

@@ -127,7 +127,8 @@ class UserController extends Controller
         //TODO: check not null
         $user->name = $request->name;
         $user->description = $request->description;
-        $user->sinapsi_dst = $request->sinapsi_dst;
+        $user->role = $request->role;
+        $user->sinapsi_dst = $request->sinapsi_dst ? $request->sinapsi_dst : null;
         $user->wp_dst = $request->wp_dst;
 
         $user->entity_id = ($request->entity_id) ? $request->entity_id : '';
