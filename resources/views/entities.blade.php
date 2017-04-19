@@ -65,7 +65,7 @@
                 }
             });
 
-            if(!shared.user.logged){
+            if(!shared.user.logged || shared.user.data.role != 'admin'){
                 notVisible = [ 3,5,6 ];
             }else{
                 notVisible = [ 3,6 ];

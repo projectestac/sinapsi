@@ -59,7 +59,7 @@
 
         $(document).ready(function () {
 
-            if(!shared.user.logged){
+            if(!shared.user.logged || shared.user.data.role != 'admin'){
                 notVisible = [ 4,5 ];
             }else{
                 notVisible = [ 5 ];

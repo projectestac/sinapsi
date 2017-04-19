@@ -233,7 +233,7 @@ return [
     'default_view_articles'             => 'Visualització dels articles per defecte', /* /sinapsi/create.blade.php */
     'complete'                          => 'Complet',                               /* /sinapsi/create.blade.php */
     'rename_sinapsi'                    => 'Poden renombrar la sinapsi, modificar la descripció i gestionar els blocs de la barra lateral', /* /sinapsi/create.blade.php */
-    'select admins'                     => 'select admins',                         /* /sinapsi/create.blade.php */
+    'select_admins'                     => 'select admins',                         /* /sinapsi/create.blade.php */
     'publishers'                        => 'Editors',                               /* /sinapsi/create.blade.php */
     'manage_posts'                      => 'Poden incloure i treure articles a la sinapsi (si la sinapsi és de tipus manual)', /* /sinapsi/create.blade.php */
     'select_publishers'                 => 'select editors',                        /* /sinapsi/create.blade.php */
