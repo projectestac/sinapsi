@@ -21,7 +21,7 @@ elixir(mix => {
         'gencat/styles.css',
         'gencat/leaflet.css',
         'gencat/grafic_destacat.css',
-        'vue-multiselect.min.css',
+        'external/vue-multiselect.css',
         'posts.css',
         'search.css',
         'style.css',
