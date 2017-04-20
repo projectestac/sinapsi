@@ -43,8 +43,8 @@ Route::any('api/v1/tags', function () {
     return getTags();
 });
 
-
-
+// Sinapsis
+Route::any('api/v1/sinapsis', 'AppController@getSinapsisBySearchTerm');
 
 // Cities
 Route::any('api/v1/cities', function () {

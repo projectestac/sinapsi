@@ -36,7 +36,7 @@ export default {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: shared.baseUrl + '/q/sinapsis' + this.filters,
+                url: shared.baseUrl + '/api/v1/sinapsis' + this.filters,
                 method: 'POST',
                 dataType: 'json',
                 success: function (data) {

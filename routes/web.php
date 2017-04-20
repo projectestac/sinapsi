@@ -21,8 +21,6 @@ Route::get('centres', 'AppController@showEduEntities');
 Route::get('projectes', 'AppController@showProjects');
 Route::get('docents', 'AppController@showUsers');
 
-Route::any('q/sinapsis', 'AppController@getSinapsisBySearchTerm');
-
 // Serveis educatius
 Route::any('se/{codeid}', function ($codeid) {
     return redirect()->route('entity', ['type'=>'se','mId'=>$codeid]);
@@ -62,6 +60,7 @@ Route::post('user/{id}/edit', [
 Route::auth();
 
 Route::get('auth', 'Auth\LoginController@redirectToProvider');
+
 Route::get('auth/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::group(['middleware' => 'auth'], function () {
