@@ -69,7 +69,7 @@ return [
     'optimal'               => 'Òptim',                     /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
     'gallery'               => 'Galeria',                   /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
     'list'                  => 'Llista',                    /* container.vue, /sinasi/create.blade.php, /sinasi/edit.blade.php */
-    'share'                 => 'Compartir',                 /* container.vue, share.vue */
+    'share'                 => 'Comparteix',                /* container.vue, share.vue */
     'expand'                => 'Expandir',                  /* container.vue */
     'featured'              => 'Destacats',                 /* container.vue */
     'top_rated'             => 'Més votats',                /* container.vue */

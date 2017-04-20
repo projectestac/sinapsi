@@ -3,11 +3,11 @@
 
     <div class="btn-group">
 
-        <a v-if='post.favorited' title="Treure de favorits" class="btn btn-default sns-btn-post-options" @click="unfavorite($event)">
+        <a v-if='post.favorited' :title="[ trans('messages.remove_from_favorites') ]" class="btn btn-default sns-btn-post-options" @click="unfavorite($event)">
             <span class="glyphicon glyphicon glyphicon-bookmark"></span>
             <span v-if='post.num_favorites'> {{ post.num_favorites }} </span>
         </a>
-        <a v-else title="Afegir a favorits" class="btn btn-default sns-btn-post-options" @click="favorite($event)">
+        <a v-else :title="[ trans('messages.add_to_favorites') ]" class="btn btn-default sns-btn-post-options" @click="favorite($event)">
             <span class="glyphicon glyphicon glyphicon-bookmark sns-grey"></span>
             <span v-if='post.num_favorites'> {{ post.num_favorites }} </span>
         </a>
