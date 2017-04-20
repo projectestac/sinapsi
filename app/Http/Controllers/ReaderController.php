@@ -120,29 +120,35 @@ class ReaderController extends Controller
         try {
             $log_posts = collect([]);
 
-            $channel = Channel::findOrFail($channel_id);
-            $entity = Entity::findOrFail($channel->obj_id);
+            $channel = Channel::where('active',1)->where('id',$channel_id)->first();
+            
+            if($channel)
+            {
+                $entity = Entity::findOrFail($channel->obj_id);
 
-            // Get posts and tags
-            $posts = $channel->fetchPosts();
+                // Get posts and tags
+                $posts = $channel->fetchPosts();
 
-            // Save new posts and associated tags into database
-            foreach ($posts as $post) {
+                // Save new posts and associated tags into database
+                foreach ($posts as $post) {
 
-                $post_info = $this->savePost($post);
+                    $post_info = $this->savePost($post);
 
-                $log_fetch = [
-                    "entity"=>[
-                        "nom"=>$entity->name,
-                        "url"=>$entity->url
-                    ],
-                    "post"=>$post_info
-                ];
-                $log_posts->push($log_fetch);
+                    $log_fetch = [
+                        "entity"=>[
+                            "nom"=>$entity->name,
+                            "url"=>$entity->url
+                        ],
+                        "post"=>$post_info
+                    ];
+                    $log_posts->push($log_fetch);
+                }
+
+                $log_posts->push($separator);
+                return $log_posts;
+            }else{
+                return [];
             }
-
-            $log_posts->push($separator);
-            return $log_posts;
 
         } catch (Exception $e) {
             return $e->getMessage();
