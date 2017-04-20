@@ -329,7 +329,7 @@ class EntityController extends Controller
         $countChannels = count(getChannelsEntities($request->id));
         $channels = Channel::where('obj_id', $entity->id)->update(['active' => 0]);
 
-        if(!empty($request->rss_channels)){
+        if(!empty(trim($request->rss_channels))){
 
             $rssChannels = explode(PHP_EOL, $request->rss_channels);
             foreach ($rssChannels as $rssChannel) {

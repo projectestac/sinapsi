@@ -90,7 +90,12 @@
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {
-                            return '<img src="'+data+'" class="imageTable"/>';
+                            console.log();
+                            if( data ){
+                                return '<img src="'+data+'" class="imageTable"/>';
+                            }else{
+                                return '<img src="/img/logo-escola.png" class="imageTable"/>';
+                            }
                         },
                         "targets": 0
                     },
