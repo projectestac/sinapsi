@@ -14,17 +14,29 @@ class ChannelTableSeeder extends Seeder
     public function run()
     {
     
+
+       //Sinapsi user, main editor 
+       Channel::create([
+                    'type'=>'User',
+                    'obj_id'=>1,
+                    'rss'=>'',
+                    'active'=>true,
+                    ]);
+                
+
         $schools = Entity::all();
 
         foreach ($schools as $school) {
-            Channel::create([
-                'type'=>'Entity',
-                'obj_id'=>$school->id,
-                'rss'=>'http:'.$school->web.'/feed',
-                'active'=>true,
-                ]);
-        }
 
+            if (!empty($school->slug) && str_contains($school->agora_services, "Nodes")){
+                Channel::create([
+                    'type'=>'Entity',
+                    'obj_id'=>$school->id,
+                    'rss'=>'http://agora.xtec.cat/'.$school->slug.'/feed',
+                    'active'=>true,
+                    ]);
+                }
+        }
 
 
        /*

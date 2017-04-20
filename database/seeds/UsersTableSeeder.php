@@ -14,9 +14,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         
-    	$school = Entity::first();
+    	$school = Entity::where("name","Departament d'Ensenyament")->first();
         $default_avatar = "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50";
-
 
 		User::create ([
             'name'=>'Sinapsi',
