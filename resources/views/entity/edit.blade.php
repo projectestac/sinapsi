@@ -54,9 +54,11 @@
                                     <label class="col-xs-12 pad_left_0" for="entity_type">{{ trans('messages.entity_type') }}</label>
                                     <select class="form-control" name="entity_type">
                                         <option value=""></option>
+                                        <option value="LLI" @if ( $entity->type == 'LLI') selected @endif>{{ trans('messages.nursery') }}</option>
                                         <option value="Escola" @if ( $entity->type == 'Escola' ) selected @endif>{{ trans('messages.school') }}</option>
                                         <option value="Institut" @if ( $entity->type == 'Institut' ) selected @endif>{{ trans('messages.high_school') }}</option>
                                         <option value="Institut Escola" @if ( $entity->type == 'Institut Escola' ) selected @endif>{{ trans('messages.institute_school') }}</option>
+                                        <option value="Adults" @if ( $entity->type == 'Adults' ) selected @endif>{{ trans('messages.adults') }}</option>
                                         <option value="ZER" @if ( $entity->type == 'ZER' ) selected @endif>{{ trans('messages.zer') }}</option>
                                         <option value="IE" @if ( $entity->type == 'IE' ) selected @endif>{{ trans('messages.ie') }}</option>
                                         <option value="EOI" @if ( $entity->type == 'EOI' ) selected @endif>{{ trans('messages.eoi') }}</option>

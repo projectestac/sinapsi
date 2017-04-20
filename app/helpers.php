@@ -37,7 +37,7 @@ function getChannels()
 
 function getSchoolsTable()
 {
-    $schools = Entity::select(['image', 'name', 'municipi','slug','phone','id','active'])->whereNotIn('type', ['Projecte'])->orderBy('name')->get();
+    $schools = Entity::select(['image', 'name', 'municipi','slug','phone','id','active','type'])->whereNotIn('type', ['Projecte'])->orderBy('name')->get();
 
     //return Datatables::queryBuilder(DB::table('entities')->select('image','name','municipi'))->make(true);
 
@@ -52,6 +52,7 @@ function getProjectsTable()
     $projects =  Entity::selectRaw('entities.image, entities.name, e2.name AS parent_name, e2.municipi AS parent_municipi, entities.id, entities.active')
         ->join('entities AS e2', 'entities.parent_id', '=', 'e2.id')
         ->where('entities.type', 'Projecte')->orderBy('entities.name')->get();
+
     Session::put('projects', $projects);
 
     return Datatables::of($projects)->make();

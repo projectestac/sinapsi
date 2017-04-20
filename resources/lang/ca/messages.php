@@ -361,6 +361,8 @@ return [
     'st'                                => 'ST',                                    /* entity/create.blade.php, entity/edit.blade.php */
     'entity'                            => 'Centre',                                /* entity/index.blade.php */
     'role'                              => 'Rol',                                   /* user/edit.blade.php */
+    'nursery'                           => 'Llar d\'infants',                                   /* user/edit.blade.php */
+    'role'                              => 'Rol',                                   /* user/edit.blade.php */
 
 ];
 

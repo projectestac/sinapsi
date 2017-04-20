@@ -43,6 +43,8 @@
             <th>{{ trans('messages.slug') }}</th>
             <th>{{ trans('messages.phone') }}</th>
             <th>{{ trans('messages.actions') }}</th>
+            <th></th>
+            <th>{{ trans('messages.type') }}</th>
             </thead>
         </table>
 
@@ -75,7 +77,8 @@
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
                 "processing": true,
-                "serverSide": true,
+                "stateSave": true,
+                //"serverSide": true,
                 "searchDelay": 500,
                 "ajax": shared.baseUrl + "/api/v1/schools/table",
                 "columns": [
@@ -86,6 +89,7 @@
                     {data: 4, name: 'phone'},
                     {data: 5, name: 'id'},
                     {data: 6, name: 'active'},
+                    {data: 7, name: 'type'},
                 ],
                 "columnDefs": [
                     {
