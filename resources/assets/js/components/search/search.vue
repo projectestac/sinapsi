@@ -68,7 +68,7 @@ export default {
         return {
             filters: [],
             posts: [],
-            errors: {},
+            errors: [],
             filters_warning:"",
             f_ui: this.filters_ui ? this.filters_ui : [],
             f_db: this.filters_db ? this.filters_db : []

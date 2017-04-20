@@ -19,7 +19,8 @@
 	  props:[ 'p' ],
 	  data () {
 		return {
-	      post:this.p
+	      post:this.p,
+	      errors:[]
 	    }
 	  },
 	  methods:{

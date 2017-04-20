@@ -46,7 +46,7 @@ export default {
   data () {
 	return {
       post:this.p,
-      errors:this.errors,
+      errors: [],
       baseurl: shared.baseUrl,
       comments:[],
       new_comment:{text:""},
