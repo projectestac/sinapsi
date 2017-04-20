@@ -41,7 +41,7 @@
                                         <div class="col-sm-8 basic_text">
 
                                             <div class="pd-15x">
-                                                <p>{{ trans('messages.resource_not_found') }}</p>
+                                                
                                             </div>
 
                                         </div>
@@ -66,92 +66,6 @@
                                 </div>
                             </div>
 
-
-                            <div class="llistat_collapse">
-                                <div class="panel-group llistat_collapse_cont" id="acordio_distribuidora">
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h2 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"
-                                                   data-parent="#acordio_distribuidora" href="#bloc1">{{ trans('messages.who_is') }}</a>
-                                            </h2>
-                                        </div>
-                                        <div id="bloc1" class="panel-collapse collapse">
-
-                                            <div class="col-xs-12">
-
-                                                <div class="cos_bloc basic_text_peq pd-15">
-
-                                                    <ul>
-                                                        <li>{{ trans('messages.government_users') }}</li>
-                                                        <li>{{ trans('messages.government_providers') }}</li>
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h2 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"
-                                                   data-parent="#acordio_distribuidora" href="#bloc2">{{ trans('messages.why_has_been') }}</a>
-                                            </h2>
-                                        </div>
-                                        <div id="bloc2" class="panel-collapse collapse">
-
-                                            <div class="col-xs-12">
-
-                                                <div class="cos_bloc basic_text_peq pd-15">
-
-                                                    <ul>
-                                                        <li>{{ trans('messages.message_government_1') }}</li>
-                                                        <li>{{ trans('messages.message_government_2') }}</li>
-                                                        <li>{{ trans('messages.message_government_3') }}</li>
-                                                        <li>{{ trans('messages.message_government_4') }}</li>
-                                                        <li></li>
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h2 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"
-                                                   data-parent="#acordio_distribuidora" href="#bloc3">{{ trans('messages.what_does') }}</a>
-                                            </h2>
-                                        </div>
-                                        <div id="bloc3" class="panel-collapse collapse">
-
-                                            <div class="col-xs-12">
-
-                                                <div class="cos_bloc basic_text_peq pd-15">
-
-                                                    <p>{{ trans('messages.message_government_6') }}</p>
-                                                    <ul>
-                                                        <li>{{ trans('messages.message_government_7') }}</li>
-                                                        <li>{{ trans('messages.message_government_8') }}</li>
-                                                        <li>{{ trans('messages.message_government_9') }}</li>
-                                                        <li>{{ trans('messages.message_government_10') }}</li>
-                                                        <li>{{ trans('messages.message_government_11') }}</li>
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- end llistat_collapse_cont -->
                             </div>
 
                         </div>

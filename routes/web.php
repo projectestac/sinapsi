@@ -66,44 +66,6 @@ Route::get('auth/callback', 'Auth\LoginController@handleProviderCallback');
 Route::group(['middleware' => 'auth'], function () {
     Route::get("logout", 'Auth\LoginController@logout');
 
-    // Likes
-    Route::get("/post/{id}/like", [
-        'as' => 'likes.submit',
-        'uses' => 'UserController@like'
-    ]);
-
-    Route::get("/post/{id}/unvote", [
-        'as' => 'likes.destroy',
-        'uses' => 'UserController@unlike'
-    ]);
-
-    //Favorites
-    Route::get("/post/{id}/favorite", [
-        'as' => 'favorites.submit',
-        'uses' => 'UserController@favorite'
-    ]);
-
-    Route::get("/post/{id}/unfavorite", [
-        'as' => 'favorites.destroy',
-        'uses' => 'UserController@unfavorite'
-    ]);
-
-    // Comments
-    Route::post("/post/{post_id}/comment", [
-        'as' => 'comment.store',
-        'uses' => 'UserController@comment'
-    ]);
-
-    Route::post("/post/{post_id}/comment/{comment_id}/edit", [
-        'as' => 'comment.edit',
-        'uses' => 'UserController@editComment'
-    ]);
-
-    Route::post("/post/{post_id}/comment/{comment_id}/destroy", [
-        'as' => 'comment.edit',
-        'uses' => 'UserController@delComment'
-    ]);
-
     // Stick
     Route::get("/post/{id}/stick", [
         'as' => 'post.stick',
