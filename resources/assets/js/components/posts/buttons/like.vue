@@ -1,12 +1,12 @@
  
 <template>
 	
-		 <a v-if='post.liked' title="Ja no m'agrada" class="btn btn-default sns-btn-post-options" @click="unlike($event)">
+		 <a v-if='post.liked' :title="[ trans('messages.dislike') ]" class="btn btn-default sns-btn-post-options" @click="unlike($event)">
 		    <span class="glyphicon glyphicon glyphicon-heart"></span>
 		    <span v-if='post.num_likes'>{{ post.num_likes }}</span>
 		 </a>
 		 
-		 <a v-else title="M'agrada" class="btn btn-default sns-btn-post-options" @click="like($event)">
+		 <a v-else :title="[ trans('messages.like') ]" class="btn btn-default sns-btn-post-options" @click="like($event)">
 		    <span class="glyphicon glyphicon glyphicon-heart sns-grey"></span>
 		    <span v-if='post.num_likes'>{{ post.num_likes }}</span>
 		 </a>
