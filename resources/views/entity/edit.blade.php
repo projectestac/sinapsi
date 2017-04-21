@@ -55,17 +55,19 @@
                                     <select class="form-control" name="entity_type">
                                         <option value=""></option>
                                         <option value="LLI" @if ( $entity->type == 'LLI') selected @endif>{{ trans('messages.nursery') }}</option>
-                                        <option value="Escola" @if ( $entity->type == 'Escola' ) selected @endif>{{ trans('messages.school') }}</option>
-                                        <option value="Institut" @if ( $entity->type == 'Institut' ) selected @endif>{{ trans('messages.high_school') }}</option>
-                                        <option value="Institut Escola" @if ( $entity->type == 'Institut Escola' ) selected @endif>{{ trans('messages.institute_school') }}</option>
+                                        <option value="PRI" @if ( $entity->type == 'PRI' ) selected @endif>{{ trans('messages.primary') }}</option>
+                                        <option value="SEC" @if ( $entity->type == 'SEC' ) selected @endif>{{ trans('messages.secondary') }}</option>
+                                        <option value="IE" @if ( $entity->type == 'IE' ) selected @endif>{{ trans('messages.institute_school') }}</option>
                                         <option value="Adults" @if ( $entity->type == 'Adults' ) selected @endif>{{ trans('messages.adults') }}</option>
                                         <option value="ZER" @if ( $entity->type == 'ZER' ) selected @endif>{{ trans('messages.zer') }}</option>
-                                        <option value="IE" @if ( $entity->type == 'IE' ) selected @endif>{{ trans('messages.ie') }}</option>
                                         <option value="EOI" @if ( $entity->type == 'EOI' ) selected @endif>{{ trans('messages.eoi') }}</option>
+                                        <option value="MUSDANCE" @if ( $entity->type == 'MUSDANCE' ) selected @endif>{{ trans('messages.dance_and_music') }}</option>
+                                        <option value="EE" @if ( $entity->type == 'EE' ) selected @endif>{{ trans('messages.special_education') }}</option>
+                                        <option value="ESTR" @if ( $entity->type == 'ESTR' ) selected @endif>{{ trans('messages.foreign') }}</option>
                                         <option value="CdA" @if ( $entity->type == 'CdA' ) selected @endif>{{ trans('messages.cda') }}</option>
+                                        <option value="SEZ" @if ( $entity->type == 'SEZ' ) selected @endif>{{ trans('messages.sez') }}</option>
                                         <option value="CLIC" @if ( $entity->type == 'CLIC' ) selected @endif>{{ trans('messages.click') }}</option>
                                         <option value="CREDA" @if ( $entity->type == 'CREDA' ) selected @endif>{{ trans('messages.creda') }}</option>
-                                        <option value="SEZ" @if ( $entity->type == 'SEZ' ) selected @endif>{{ trans('messages.sez') }}</option>
                                         <option value="ST" @if ( $entity->type == 'ST' ) selected @endif>{{ trans('messages.st') }}</option>
                                         <option value="Projecte" @if ( $entity->type == 'Projecte' ) selected @endif>{{ trans('messages.project') }}</option>
                                     </select>

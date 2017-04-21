@@ -22,6 +22,7 @@
                     :internal-search="false"
                     :close-on-select="false"
                     :options-limit="50"
+                    :max-height="150"
                     @search-change="get_schools">
                 </multiselect>
 

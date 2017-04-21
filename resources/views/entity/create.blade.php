@@ -48,16 +48,20 @@
                                     <label class="col-xs-12 pad_left_0" for="entity_type">{{ trans('messages.entity_type') }}</label>
                                     <select class="form-control" name="entity_type">
                                         <option value=""></option>
-                                        <option value="Escola">{{ trans('messages.school') }}</option>
-                                        <option value="Institut">{{ trans('messages.high_school') }}</option>
-                                        <option value="Institut Escola">{{ trans('messages.institute_school') }}</option>
+                                        <option value="LLI">{{ trans('messages.nursery') }}</option>
+                                        <option value="PRI">{{ trans('messages.primary') }}</option>
+                                        <option value="SEC">{{ trans('messages.secondary') }}</option>
+                                        <option value="IE">{{ trans('messages.institute_school') }}</option>
+                                        <option value="Adults">{{ trans('messages.adults') }}</option>
                                         <option value="ZER">{{ trans('messages.zer') }}</option>
-                                        <option value="IE">{{ trans('messages.ie') }}</option>
                                         <option value="EOI">{{ trans('messages.eoi') }}</option>
+                                        <option value="MUSDANCE">{{ trans('messages.dance_and_music') }}</option>
+                                        <option value="EE">{{ trans('messages.special_education') }}</option>
+                                        <option value="ESTR">{{ trans('messages.foreign') }}</option>
                                         <option value="CdA">{{ trans('messages.cda') }}</option>
+                                        <option value="SEZ">{{ trans('messages.sez') }}</option>
                                         <option value="CLIC">{{ trans('messages.click') }}</option>
                                         <option value="CREDA">{{ trans('messages.creda') }}</option>
-                                        <option value="SEZ">{{ trans('messages.sez') }}</option>
                                         <option value="ST">{{ trans('messages.st') }}</option>
                                         <option value="Projecte">{{ trans('messages.project') }}</option>
                                     </select>
