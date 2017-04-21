@@ -13,6 +13,7 @@
                     :deselect-label="trans('messages.remove_to_selection')"
                      label="text"
                      track-by="ID"
+                    :max-height="150"
                     :options="options"
                     :multiple="true"
                     :taggable="true"

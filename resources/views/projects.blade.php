@@ -16,6 +16,7 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <h1 class="title-subpage">{{ trans('messages.projects_1') }}</h1>
+                                        <a href="/project/create">{{ trans('messages.new_project') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,6 +37,7 @@
             <th>{{ trans('messages.project') }}</th>
             <th>{{ trans('messages.entity') }}</th>
             <th>{{ trans('messages.city') }}</th>
+            <th>{{ trans('messages.description') }}</th>
             <th>{{ trans('messages.actions') }}</th>
             </thead>
         </table>
@@ -60,9 +62,9 @@
         $(document).ready(function () {
 
             if(!shared.user.logged || shared.user.data.role != 'admin'){
-                notVisible = [ 4,5 ];
+                notVisible = [ 5,6 ];
             }else{
-                notVisible = [ 5 ];
+                notVisible = [ 6 ];
             }
 
             var messages = _.get(window.trans, 'messages');
@@ -78,26 +80,31 @@
                     {data: 0, name: 'image'},
                     {data: 1, name: 'name'},
                     {data: 2, name: 'municipi'},
-                    {data: 3, name: 'id'},
-                    {data: 4, name: 'active'},
+                    {data: 3, name: 'info'},
+                    {data: 4, name: 'id'},
+                    {data: 5, name: 'active'},
                 ],
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {
-                            return '<img src="'+data+'" class="imageTable"/>';
+                            if( data ){
+                                return '<img src="'+data+'" class="imageTable"/>';
+                            }else{
+                                return '<img src="/img/logo-escola.png" class="imageTable"/>';
+                            }
                         },
                         "targets": 0
                     },
                     {
                         "render": function ( data, type, row ) {
                             console.log(row);
-                            if( row[5] == 1 ){
+                            if( row[6] == 1 ){
                                 return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off"></a></center>';
                             }else{
                                 return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off" style="color:#dddddd"></a></center>';
                             }
                         },
-                        "targets": 4
+                        "targets": 5
                     },
                     { "visible": false,  "targets": notVisible }
                 ],

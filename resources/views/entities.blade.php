@@ -94,7 +94,6 @@
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {
-                            console.log();
                             if( data ){
                                 return '<img src="'+data+'" class="imageTable"/>';
                             }else{

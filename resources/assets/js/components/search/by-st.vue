@@ -14,6 +14,7 @@
                     :options="options"
                     :multiple="true"
                     :taggable="true"
+                    :max-height="150"
                     :close-on-select="false"
                 >
                 </multiselect>

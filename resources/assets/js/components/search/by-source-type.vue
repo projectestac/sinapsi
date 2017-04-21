@@ -12,6 +12,7 @@
                     :placeholder="trans('messages.filter_by_one_or_more_source_type')"
                     :deselect-label="trans('messages.remove_to_selection')"
                      label="text"
+                    :max-height="150"
                      track-by="ID"
                     :options="options"
                     :multiple="true"
@@ -41,15 +42,22 @@ export default {
             sources_type_UI: this.from_UI ? this.from_UI : "",
             sources_type_DB: this.from_DB ? this.from_DB : "",
             options: [
-                {'ID':'Escola','text': messages['school']},
-                {'ID':'Institut','text': messages['high_school']},
+                {'ID':'LLI','text': messages['nursery']},
+                {'ID':'PRI','text': messages['primary']},
+                {'ID':'SEC','text': messages['secondary']},
                 {'ID':'IE','text': messages['institute_school']},
-                {'ID':'SEZ','text': messages['educational_services']},
-                {'ID':'Projecte','text': messages['project']},
+                {'ID':'Adults','text': messages['adults']},
                 {'ID':'ZER','text': messages['zer']},
-                {'ID':'CFA','text': messages['adults']},
-                {'ID':'CdA','text': messages['fields_leraning']},
+                {'ID':'EOI','text': messages['eoi']},
+                {'ID':'MUSDANS','text': messages['dance_and_music']},
+                {'ID':'EE','text': messages['special_education']},
+                {'ID':'ESTR','text': messages['foreign']},
+                {'ID':'CdA','text': messages['fields_learning']},
+                {'ID':'SEZ','text': messages['educational_services']},
+                {'ID':'CLIC','text': messages['click']},
                 {'ID':'CREDA','text': messages['creda']},
+                {'ID':'ST','text': messages['st']},
+                {'ID':'Projecte','text': messages['project']},
             ]
         }
     },
