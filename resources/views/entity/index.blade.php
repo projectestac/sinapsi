@@ -60,7 +60,7 @@
                                     <ul class="llistat_enllacos_filet_cont list-group">
 
                                         <li v-if="pagetype=='school'" class="list-group-item llista-col-1">Ubicat a
-                                            <strong>{{ $entity->location }}</strong>
+                                            <strong>{{ $entity->municipi }}</strong>
                                         <li v-if="pagetype=='project'" class="list-group-item llista-col-1">Centre:
                                             <strong>{{ $entity->parent_name }} </strong> ({{ $entity->parent_location }}
                                             )
@@ -69,7 +69,7 @@
                                         <li class="list-group-item llista-col-1">Adreça web: 
                                         <a target="_blank" href="{{ $entity->web }}">{{ $entity->web }}</a>
                                         
-                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{{ trans('messages.it_is_part_of') }}<strong>{!! $entity->slug !!}</strong>
+                                        <li v-if="pagetype=='project'" class="list-group-item llista-col-1">{!! $entity->info !!}
                                     </ul>
                                 </div>
                             </div>

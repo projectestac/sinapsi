@@ -39,6 +39,7 @@
             <th>{{ trans('messages.city') }}</th>
             <th>{{ trans('messages.description') }}</th>
             <th>{{ trans('messages.actions') }}</th>
+            <th></th>
             </thead>
         </table>
     </div>
@@ -62,9 +63,9 @@
         $(document).ready(function () {
 
             if(!shared.user.logged || shared.user.data.role != 'admin'){
-                notVisible = [ 5,6 ];
+                notVisible = [ 5,6,7 ];
             }else{
-                notVisible = [ 6 ];
+                notVisible = [ 6,7 ];
             }
 
             var messages = _.get(window.trans, 'messages');
@@ -72,8 +73,9 @@
             $('#tbl_projects').DataTable({
                 "pageLength": 25,
                 "dom": '<"top"if>rt<"bottom"p><"clear">',
-                "processing": true,
-                "serverSide": true,
+                //"processing": true,
+                //"serverSide": true,
+                "stateSave": true,
                 "searchDelay": 500,
                 "ajax": shared.baseUrl + "/api/v1/projects/table",
                 "columns": [
@@ -83,6 +85,7 @@
                     {data: 3, name: 'info'},
                     {data: 4, name: 'id'},
                     {data: 5, name: 'active'},
+                    {data: 6, name: 'slug'},
                 ],
                 "columnDefs": [
                     {
@@ -97,11 +100,16 @@
                     },
                     {
                         "render": function ( data, type, row ) {
-                            console.log(row);
+                                return '<a href="p/' + row[7] + '">' + row[1]+'</a>';
+                        },
+                        "targets": 1
+                    },
+                    {
+                        "render": function ( data, type, row ) {
                             if( row[6] == 1 ){
-                                return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off"></a></center>';
+                                return '<a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off"></a>';
                             }else{
-                                return '<center><a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off" style="color:#dddddd"></a></center>';
+                                return '<a href="/project/'+ data +'/edit" class="glyphicon glyphicon-pencil"></a> <a href="/project/'+ data +'/destroy" class="glyphicon glyphicon-off" style="color:#dddddd"></a>';
                             }
                         },
                         "targets": 5

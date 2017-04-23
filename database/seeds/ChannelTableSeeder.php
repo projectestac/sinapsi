@@ -38,6 +38,20 @@ class ChannelTableSeeder extends Seeder
                 }
         }
 
+        $projects = Entity::where('type','Projecte')->get();
+
+        foreach ($projects as $project) {
+
+            if (str_contains($project->web, "blocs.xtec.cat/xcbprojecte")){
+                Channel::create([
+                    'type'=>'Project',
+                    'obj_id'=>$project->id,
+                    'rss'=>$project->web.'/feed',
+                    'active'=>true,
+                ]);
+            }
+        }
+
 
        /*
 

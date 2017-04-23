@@ -75,7 +75,7 @@ class EntityController extends Controller
              e2.name AS parent_name,
              e2.codeid AS parent_codeid, 
              e2.municipi AS parent_location')
-            ->rightJoin('entities AS e2', 'entities.parent_id', '=', 'e2.id')
+            ->leftJoin('entities AS e2', 'entities.parent_id', '=', 'e2.id')
             ->where('entities.'.$__entity->keyField, $mId)
             ->first();
 

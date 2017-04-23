@@ -45,7 +45,8 @@ function getSchoolsTable()
 
 function getProjectsTable()
 {
-    $projects =  Entity::selectRaw('entities.image, entities.name, e2.name AS parent_name, e2.municipi AS parent_municipi, entities.info AS info, entities.id, entities.active')
+    $projects =  Entity::selectRaw('entities.image, entities.name, e2.name AS parent_name, 
+        e2.municipi AS parent_municipi, entities.info AS info, entities.id, entities.active, entities.slug')
         ->leftjoin('entities AS e2', 'entities.parent_id', '=', 'e2.id')
         ->where('entities.type', 'Projecte')->orderBy('entities.name')->get();
 
@@ -180,7 +181,10 @@ function getEntitiesTypes()
 
 function getEntitiesParent()
 {
-    $entitiesParent =  Entity::selectRaw('id AS ID, name AS text')->orderBy('name')->get(); // TREURE EL LIMIT
+    $entitiesParent =  Entity::selectRaw('id AS ID, CONCAT(name," (",municipi,")") AS text')
+                                ->where ('type','!=','Projecte')
+                                ->orderBy('name')
+                                ->get();
     return  $entitiesParent;
 }
 

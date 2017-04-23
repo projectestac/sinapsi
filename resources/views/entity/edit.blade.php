@@ -247,6 +247,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="col-xs-12 pad_left_0" for="parentid">{{ trans('messages.entity_parent') }}</label>
+
+
+
                                     <select class="form-control" name="parentid">
                                         <option value="-1"></option>
                                         @foreach ($entitiesParent as $entityParent)
