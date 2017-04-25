@@ -2,7 +2,7 @@
 
 @section('header-append')
     <title>{{ $sinapsi->name }}</title>
-@endsection
+@stop
 
 @section('content')
 
@@ -100,7 +100,7 @@
         </div>
 
     </div> {{-- Not delete --}}
-@endsection
+@stop
 
 
 @section('footer-append')

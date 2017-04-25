@@ -2,7 +2,7 @@
 
 @section('header')
     <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet">
-@endsection
+@stop
 
 @section('content')
 
@@ -57,7 +57,7 @@
         @include('errors/user_not_auth')
     @endif
 
-@endsection
+@stop
 
 @section('footer-append')
 
@@ -108,4 +108,4 @@
 
     </script>
 
-@endsection
+@stop

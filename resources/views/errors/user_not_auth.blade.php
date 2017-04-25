@@ -75,4 +75,4 @@
     </article>
 </section>
 
-@endsection
+@stop

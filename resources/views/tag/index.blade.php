@@ -2,7 +2,7 @@
 
 @section('header-append')
     <title>{{ trans('messages.tag') }} {{ $tag->name }}</title>
-@endsection
+@stop
 
 @section('content')
 
@@ -54,7 +54,7 @@
 
     </div>
 
-@endsection
+@stop
 
 @section('footer-append')
 

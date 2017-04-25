@@ -2,7 +2,7 @@
 
 @section('header-append')
     <title>{{ $entity->name }}</title>
-@endsection
+@stop
 
 @section('content')
 

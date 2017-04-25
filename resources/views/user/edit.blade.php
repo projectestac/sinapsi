@@ -65,7 +65,7 @@
 
     </div>
 
-@endsection
+@stop
 
 @section('footer-append')
 

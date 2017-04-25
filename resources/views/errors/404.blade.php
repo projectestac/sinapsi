@@ -76,4 +76,4 @@
         </article>
     </section>
 
-@endsection
+@stop

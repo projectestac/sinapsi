@@ -7,4 +7,4 @@
         <p>{{ trans('messages.not_access') }} <strong>{{ trans('messages.mail_gencat') }}</strong></p>
     </div>
 
-@endsection
+@stop

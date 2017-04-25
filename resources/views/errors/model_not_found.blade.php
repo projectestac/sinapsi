@@ -159,4 +159,4 @@
     </article>
 </section>
 
-@endsection
+@stop

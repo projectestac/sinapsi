@@ -249,7 +249,7 @@
 
     </script>
 
-@endsection
+@stop
 
 
 	

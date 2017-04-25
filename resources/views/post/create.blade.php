@@ -2,7 +2,7 @@
 
 @section('header-append')
     <title>{{ trans('messages.sinapsi') }} - {{ trans('messages.new_post') }}</title>
-@endsection
+@stop
 
 @section('content')
 
@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
 
 @section('footer-append')
 
@@ -97,4 +97,4 @@
     </script>
 
 
-@endsection
+@stop

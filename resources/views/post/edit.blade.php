@@ -2,7 +2,7 @@
 
 @section('header-append')
     <title>{{ trans('messages.editing') }} {{ $post->id }}</title>
-@endsection
+@stop
 
 @section('content')
 
@@ -85,7 +85,7 @@
         </div>
 
     </div>
-@endsection
+@stop
 
 @section('footer-append')
 
@@ -109,4 +109,4 @@
     </script>
 
 
-@endsection
+@stop
