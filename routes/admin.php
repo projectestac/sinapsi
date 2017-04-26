@@ -1,5 +1,4 @@
-
-<?php 
+<?php
 
 Route::group(['middleware' => 'role:admin'], function () {
     
