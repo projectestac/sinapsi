@@ -75,7 +75,9 @@
 
         var vm = new Vue({
             el: "#root",
+
             data: {
+                pagetype:"user",
                 entity: {ID: "{{$user->entity_id}}", text: "{!! $user->entity_name !!} ({!! $user->entity_location !!}) "},
                 entities: {!!  json_encode($entities) !!},
                 sinapsi: {ID: "{{$sinapsi->id}}", text: "{!! $sinapsi->name !!} "},

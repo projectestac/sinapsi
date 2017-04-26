@@ -75,6 +75,8 @@
 
             var messages = _.get(window.trans, 'messages');
 
+            var notVisible = [];
+
             if(!shared.user.logged || shared.user.data.role != 'admin' ){
                 notVisible = [ 4 ];
             }

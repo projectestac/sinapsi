@@ -68,25 +68,28 @@ export default {
         },
 
         get_cities: _.throttle(function (query) {
-            this.isLoading = true;
-            setTimeout(function () {
-                this.isLoading = true
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: shared.baseUrl + '/api/v1/city/' + query,
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function (response) {
-                        this.options = response;
-                        this.isLoading = false;
-                    }.bind(this),
-                    error: function (jqXHR, textStatus, message) {
-                        this.errors.push(message);
-                    }.bind(this)
-                });
-            }.bind(this), 2000)
+            
+            if (query){
+                this.isLoading = true;
+                setTimeout(function () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: shared.baseUrl + '/api/v1/city/' + query,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (response) {
+                            this.options = response;
+                            this.isLoading = false;
+                        }.bind(this),
+                        error: function (jqXHR, textStatus, message) {
+                            console.log(message);
+                            this.errors.push(message);
+                        }.bind(this)
+                    });
+                }.bind(this), 2000);
+            }
         }, 1000)
 
     }

@@ -89,6 +89,7 @@ export default {
                         default:
                             this.errors.push( trans('messages.the_server_not_respond') );
                     }
+                    console.log(message);
                     $(btn).removeClass('gly-spin');
                 }.bind(this)
             });
@@ -127,6 +128,7 @@ export default {
                         default:
                             this.errors.push( trans('messages.the_server_not_respond') );
                     }
+                    console.log(message);
       					    $("#comments-icon").removeClass('gly-spin');
                 }.bind(this),
 

@@ -3,7 +3,7 @@
     <div class="dropdown">
 
         <multiselect v-model="t"
-                     :placeholder="[ trans('messages.choose_or_create_one_or_more_descriptors') ]"
+                     :placeholder="trans('messages.choose_or_create_one_or_more_descriptors')"
                      label="text"
                      track-by="ID"
                     :multiple="true"

@@ -15,9 +15,10 @@
             :internal-search="false"
             :close-on-select="false"
             :options-limit="50"
-        @search-change="get_users">
+            @search-change="get_users">
         </multiselect>
         <input type="hidden" :name="usertype" :value="get_users_id">
+
     </div>
 
 </template>
@@ -46,7 +47,6 @@ export default {
             var array = $.map(this.users, function(value, index) {
                     return [value.ID];
                 });
-            console.log(array);
         return array;
         }
 
@@ -59,7 +59,7 @@ export default {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: shared.baseUrl + '/api/v1/user/id/'+query,
+                url: shared.baseUrl + '/api/v1/user/id/' + query,
                 method: 'GET',
                 dataType: 'json',
                 success: function (response) {
@@ -68,29 +68,37 @@ export default {
                     this.isLoading = false;
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
+                    console.log(message);
                     this.errors.push(message);
                 }.bind(this)
             });
         },
 
-        get_users (query) {
-            this.isLoading = true;
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: shared.baseUrl + '/api/v1/user/name/'+query,
-                method: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    this.options = response;
-                    this.isLoading = false;
-                }.bind(this),
-                error: function (jqXHR, textStatus, message) {
-                    this.errors.push(message);
-                }.bind(this)
-            });
-        },
+
+        get_users: _.throttle(function (query) {
+            
+            if (query){
+                this.isLoading = true;
+                setTimeout(function () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: shared.baseUrl + '/api/v1/user/name/' + query,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (response) {
+                            this.options = response;
+                            this.isLoading = false;
+                        }.bind(this),
+                        error: function (jqXHR, textStatus, message) {
+                            console.log(message);
+                            this.errors.push(message);
+                        }.bind(this)
+                    });
+                }.bind(this), 2000);
+            }
+        }, 1000)
 
     }
 }

@@ -225,6 +225,7 @@ export default {
                     bus.$emit('posts_available', this.posts);
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
+                    console.log(message);
                     this.errors.push(message);
                 }.bind(this)
             });
@@ -246,6 +247,7 @@ export default {
                     bus.$emit('pagination_available', pagination);
                 }.bind(this),
                 error: function (jqXHR, textStatus, message) {
+                    console.log(message);
                     this.errors.push(message);
                 }.bind(this)
             });

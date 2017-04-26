@@ -72,6 +72,7 @@
                         this.blocks = data;
                     }.bind(this),
                     error: function (jqXHR, textStatus, message) {
+                        console.log(message);
                         this.errors.push(message);
                     }.bind(this)
                 });

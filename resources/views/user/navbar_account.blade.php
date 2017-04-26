@@ -8,7 +8,7 @@
         <div class="dropdown-menu">
             <div class="shadowBox">
                 <div class="shadow"></div><div class="centrat">
-                    <a title="Tancar" class="pull_right tancar hidden-xs"><img src="../img/NG_boto_tancar.png" alt="Tancar">
+                    <a title="Tancar" class="pull_right tancar hidden-xs"><img src="{{asset('img/NG_boto_tancar.png')}}" alt="Tancar">
                     </a>
                     <ul class="col-sm-4 col-md-3 col_left">
                         <li class="dropdown dropdown-submenu">
