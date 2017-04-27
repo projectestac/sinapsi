@@ -326,19 +326,19 @@ class EntityController extends Controller
             $entityType = 'Entity';
         }
 
-        $countChannels = count(getChannelsEntities($request->id));
         $channels = Channel::where('obj_id', $entity->id)->update(['active' => 0]);
 
         if(!empty(trim($request->rss_channels))){
 
             $rssChannels = explode(PHP_EOL, $request->rss_channels);
+            $countChannels = count( $rssChannels );
             foreach ($rssChannels as $rssChannel) {
                 $trim_fet = trim($rssChannel);
+                $channels = Channel::where('rss',$trim_fet)->first();
 
                 if( $countChannels == 1 ){
                     $channelActive = Channel::where('id', $channels->id)->update(['active' => $entity->active,'rss' => $trim_fet]);
                 } else {
-                    $channels = Channel::where('rss',$trim_fet)->first();
                     if($channels){
                         $channelActive = Channel::where('id', $channels->id)->update(['active' => $entity->active]);
                     } else {
