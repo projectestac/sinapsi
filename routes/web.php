@@ -38,6 +38,7 @@ Route::any('p/{id}', function ($id) {
 
 // Entities
 Route::any('e/{type}/{mId}', 'EntityController@index')->name('entity');
+Route::any('e/{type}/{mId}/embed', 'EntityController@embed');
 
 // School
 Route::any('s/{codename}', function ($codename) {

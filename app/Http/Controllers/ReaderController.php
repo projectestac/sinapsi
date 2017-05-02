@@ -71,8 +71,8 @@ class ReaderController extends Controller
 
         try {
 
-            $codename = explode("/", $url)[3];
-            $entity = Entity::where('codename', $codename)->first();
+            $slug = explode("/", $url)[3];
+            $entity = Entity::where('slug', $slug)->first();
             $channel = Channel::where('obj_id', $entity->id)->where('type', 'Entity')->first();
 
             $post = $channel->fetchPost($url);

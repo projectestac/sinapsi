@@ -410,4 +410,40 @@ class EntityController extends Controller
             return redirect()->to('centres');
         }
     }
+
+
+     /**
+     * Call embed entity view
+     *
+     * @return view
+     */
+    public function embed(Request $request, $type='',$mId='')
+    {
+        $params = $request->all();
+
+        $entity = Entity::where('slug', $mId)->first();
+
+        $search_options = ['city','tags','se','st','order','school_types','schools'];
+        $filters_from_UI = $this->buildUrlFilters($params);
+        $filters_from_DB ='';
+       
+        $height = (!empty($params['h'])) ? $params['h'] : '500';
+        $pv = (!empty($params['pv'])) ? $params['pv'] : 'sns-medium-card';
+        $search_box = (!empty($params['search'])) ? $params['search'] : '';
+        
+        $pagetype = $type;
+        $info = $entity->id;
+
+        return view('embed', compact([
+            'search_box',
+            'search_options',
+            'height',
+            'filters_from_UI',
+            'filters_from_DB',
+            'pv',
+            'pagetype',
+            'info'
+        ]));
+    }
+
 }
