@@ -1,0 +1,59 @@
+<div *ngIf="nodes" class="synapses-taxonomy">
+
+  <!-- Root node -->
+  
+  <ng-container
+    *ngTemplateOutlet="tree; context: {
+      $implicit: nodes }">
+  </ng-container>
+  
+  <!-- Synapse tree template -->
+  
+  <ng-template #tree let-nodes>
+    <ul *ngIf="nodes" class="synapses-tree">
+      <li *ngFor="let node of nodes" class="synapses-node"
+          [ngClass]="{ 'root-node': !node.synapse_id }">
+      
+        <!-- Nodes without children -->
+        
+        <ng-container *ngIf="!node.child_count">
+          <span class="node-summary">
+            <a [routerLink]="['/synapses', node.slug]" class="tree-node">
+              {{ node.name }}
+            </a>
+            <span class="node-slug">{{ node.slug }}</span>
+          </span>
+        </ng-container>
+        
+        <!-- Nodes with children -->
+        
+        <ng-container *ngIf="node.child_count">
+          <cn-details
+            [open]="node.childs"
+            (toggle)="toggle(node, $event)">
+            <cn-summary>
+              <span class="node-summary">
+                <a [routerLink]="['/synapses', node.slug]" class="tree-node">
+                  <strong>{{ node.name }}</strong>
+                </a>
+                <span class="node-slug">{{ node.slug }}</span>
+              </span>
+            </cn-summary>
+            <ng-container
+              *ngTemplateOutlet="tree; context: {
+                $implicit: node.childs }">
+            </ng-container>
+            <div *ngIf="!node.childs">
+              <span class="node-spinner">
+                <cn-spinner></cn-spinner>
+                <span i18n>Loading</span>
+              </span>
+            </div>
+          </cn-details>
+        </ng-container>
+        
+      </li>
+    </ul>
+  </ng-template>
+
+</div>

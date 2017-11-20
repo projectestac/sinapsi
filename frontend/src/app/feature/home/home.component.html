@@ -1,0 +1,55 @@
+<main class="page-content">
+  
+  <!-- Page header -->
+  
+  <div class="page-header">
+    <div class="container">
+      
+      <!-- Header -->
+      
+      <header>
+        <h1 class="brand-name">
+          <strong>sinapsi</strong>.xtec.cat
+        </h1>
+        <p role="contentinfo" i18n>
+          <strong>Sinapsi</strong> collects the news published by the Catalan
+          educational centers on their websites. Makes visible most of the work
+          developed by the centers and seeks to promote synergies between them.
+        </p>
+      </header>
+      
+      <!-- Synapse search form -->
+      
+      <aside role="search">
+        <sy-search-form
+          (search)="onSearch($event)">
+        </sy-search-form>
+      </aside>
+      
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section class="page-section">
+    <div class="container">
+      <div class="row">
+        
+        <!-- Synapse posts -->
+        
+        <div class="col-lg-8">
+          <posts-catalog></posts-catalog>
+        </div>
+        
+        <!-- Sidebar -->
+        
+        <div class="col-lg-4">
+          <aside role="complementary">
+            <!--<app-block></app-block>-->
+          </aside>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</main>

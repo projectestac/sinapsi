@@ -1,0 +1,95 @@
+<section class="posts-catalog" [ngClass]="[view]">
+  <app-card>
+    
+    <!-- Catalog tabs -->
+    
+    <cn-tabs
+      [value]="request.section"
+      (valueChange)="changeSection($event)">
+      <cn-tabitem value="default" class="d-none d-md-block"
+        title="All posts" i18n-title>
+        <span i18n>Everything</span>
+      </cn-tabitem>
+      <cn-tabitem value="featured" class="d-none d-md-block"
+        title="Featured articles" i18n-title>
+        <span i18n>Featured</span>
+      </cn-tabitem>
+      <cn-tabitem value="voted" class="d-none d-md-block"
+        title="Most voted articles" i18n-title>
+        <cn-icon value="heart-o" class="d-inline d-xl-none"></cn-icon>
+        <span class="d-none d-xl-inline" i18n>Most voted</span>
+      </cn-tabitem>
+      <cn-tabitem value="commented" class="d-none d-md-block"
+        title="Most commented articles" i18n-title>
+        <cn-icon value="comment-o" class="d-inline d-xl-none"></cn-icon>
+        <span class="d-none d-xl-inline" i18n>Most commented</span>
+      </cn-tabitem>
+      
+      <!-- Area dropdown tab -->
+      
+      <cn-tabbox class="p-1 d-md-none">
+        <sy-area-select
+          [value]="request.section"
+          (valueChange)="changeSection($event)">
+        </sy-area-select>
+      </cn-tabbox>
+      
+      <!-- View picker tab -->
+      
+      <cn-tabbox class="p-1 justify-content-end">
+        <sy-view-picker [(value)]="view"></sy-view-picker>
+      </cn-tabbox>
+    </cn-tabs>
+    
+    <div class="p-3 tabs-outlet">
+    
+      <!-- Results table -->
+      
+      <ng-container *ngIf="collection?.total > 0">
+        <div [hidden]="state == 'empty' && state == 'error'">
+          <div class="results-header">
+            <div class="results-toolbar">
+              <em i18n><b>{{ collection.total | number }}</b> results found</em>
+              <button type="button" class="btn btn-sm"
+                      title="Share this synapse"
+                      [cnExpandable]="shareExp">
+                <cn-icon value="share-alt"></cn-icon>
+                <span i18n>Share</span>
+              </button>
+            </div>
+            <cn-expandable #shareExp>
+              <aside class="share-wrapper">
+                <sy-share-form></sy-share-form>
+              </aside>
+            </cn-expandable>
+          </div>
+          
+          <div class="posts-table">
+            <post *ngFor="let post of collection; trackBy: trackById"
+                  [view]="view" [post]="post">
+            </post>
+          </div>
+        </div>
+      </ng-container>
+      
+      <!-- Pagination -->
+      
+      <cn-pagination
+        maxPages="0"
+        [collection]="collection"
+        (pageChange)="page($event)">
+      </cn-pagination>
+      
+      <!-- Status message -->
+      
+      <app-state [state]="state"></app-state>
+      
+      <!-- Progress backdrop -->
+      
+      <div [hidden]="state != 'pending'" class="backdrop">
+        <cn-spinner></cn-spinner>
+      </div>
+      
+    </div>
+  </app-card>
+</section>

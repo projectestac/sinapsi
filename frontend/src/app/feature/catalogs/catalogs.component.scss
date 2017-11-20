@@ -1,0 +1,12 @@
+@import "core";
+
+.tabs-outlet {
+  border: 1px solid th-gray('divider');
+  border-top: 0;
+  padding: 0 2rem;
+  min-height: 30rem;
+}
+
+::ng-deep .state-message {
+  border: none !important;
+}

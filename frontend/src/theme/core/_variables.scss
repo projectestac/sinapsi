@@ -1,0 +1,91 @@
+//
+// Theme variables
+
+
+// Colors
+
+$th-color-primary:    rgb(192, 0, 0) !default;
+$th-color-secondary:  rgb(102, 102, 102) !default;
+
+$th-gray-50:          rgb(250, 250, 250) !default;
+$th-gray-100:         rgb(245, 245, 245) !default;
+$th-gray-200:         rgb(221, 221, 221) !default;
+$th-gray-400:         rgb(153, 153, 153) !default;
+$th-gray-600:         rgb(102, 102, 102) !default;
+$th-gray-800:         rgb(51, 51, 51) !default;
+
+// Primary and complementary
+
+$th-theme-colors: (
+  'primary':          $th-color-primary,
+  'secondary':        $th-color-secondary,
+  'red':              $th-color-primary,
+  'orange':           rgb(252, 76, 0),
+  'tangerine':        rgb(255, 128, 0),
+  'yellow':           rgb(254, 191, 0),
+  'green':            rgb(113, 161, 55),
+  'cyan':             rgb(91, 200, 213),
+  'blue':             rgb(77, 122, 255),
+  'purple':           rgb(74, 0, 208),
+  'pink':             rgb(217, 0, 217),
+  'white':            rgb(255, 255, 255),
+  'black':            rgb(0, 0, 0)
+) !default;
+
+// Gray tones
+
+$th-gray-colors: (
+  '50':               $th-gray-50,
+  '100':              $th-gray-100,
+  '200':              $th-gray-200,
+  '400':              $th-gray-400,
+  '600':              $th-gray-600,
+  '800':              $th-gray-800,
+  'background':       $th-gray-100,
+  'divider':          $th-gray-200,
+  'text':             $th-gray-800
+) !default;
+
+// Brand colors
+
+$th-brand-colors: (
+  'email':            rgb(127, 127, 127),
+  'feed':             rgb(255, 102, 0),
+  'blog':             rgb(128, 65, 1),
+  'share':            rgb(85, 172, 96),
+  'facebook':         rgb(59, 89, 152),
+  'linkedin':         rgb(0, 123, 181),
+  'pinterest':        rgb(203, 32, 39),
+  'twitter':          rgb(0, 172, 237),
+  'whatsapp':         rgb(77, 194, 71),
+  'youtube':          rgb(255, 0, 0)
+) !default;
+
+
+// Fonts
+//
+
+$th-font-families: (
+  primary:          #{"Open Sans", Helvetica, Arial, sans-serif},
+  secondary:        #{"Open Sans", Helvetica, Arial, sans-serif},
+  heading:          #{"Helvetica Neue", "Roboto", sans-serif},
+  monospace:        #{"SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace},
+  icon:             #{"FontAwesome"}
+) !default;
+
+// Grid breakpoints
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);

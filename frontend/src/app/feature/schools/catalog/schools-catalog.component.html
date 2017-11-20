@@ -1,0 +1,74 @@
+<div class="page-navigation">
+  <div class="container">
+    <cn-breadcrumb></cn-breadcrumb>
+  </div>
+</div>
+<article class="page-content">
+  
+  <!-- Header -->
+  
+  <div class="page-header">
+    <div class="container">
+      <header>
+        <h1 i18n>Schools</h1>
+      </header>
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section class="page-section">
+    <div class="page-body container">
+      
+      <!-- Actions -->
+      
+      <div class="page-form form-group hidden-print">
+        <div class="page-buttons">
+          <button
+            (click)="create()"
+            title="Create a new school" i18n-title
+            class="btn btn-secondary">
+            <cn-icon value="plus"></cn-icon>
+            <span class="d-none d-sm-inline-block" i18n>
+              New school
+            </span>
+          </button>
+        </div>
+        <cn-searchbox
+          (search)="search($event.value)"
+          [value]="request.search"
+          icon="search"
+          placeholder="Search by keyword"
+          i18n-placeholder>
+        </cn-searchbox>
+      </div>
+      
+      <!-- Results table -->
+      
+      <div [hidden]="state == 'empty' || state == 'error'">
+        <schools-table
+          [sort]="request.sort"
+          [authors]="collection"
+          (sortChange)="sort($event.values)">
+        </schools-table>
+      </div>
+      
+      <!-- Pagination -->
+      
+      <cn-pagination
+        [collection]="collection"
+        (pageChange)="page($event)">
+      </cn-pagination>
+      
+      <!-- Status message -->
+      
+      <app-state [state]="state"></app-state>
+      
+      <!-- Progress backdrop -->
+      
+      <div [hidden]="state != 'pending'" class="backdrop">
+        <cn-spinner></cn-spinner>
+      </div>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,45 @@
+<div *ngIf="synapses" class="synapses-table">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead cn-sortable
+        [cnSortValue]="sort"
+        (cnSortChange)="sortChange.emit($event)">
+        <tr role="row">
+          <th cnSortBy="name" i18n>Name</th>
+          <th i18n>Description</th>
+          <th title="Actions" class="actions-column" i18n-title>
+            <cn-icon value="pencil"></cn-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let synapse of synapses">
+          <td class="main-column w-50">
+            <a [routerLink]="['/synapses', synapse.slug]">
+              <span class="synapse-name">
+                {{ synapse.name }}
+              </span>
+            </a>
+          </td>
+          <td class="w-50">
+            {{ synapse.description }}
+          </td>
+          <td class="actions-column">
+            <button
+              (click)="editRow.emit(synapse)"
+              title="Edit synapse" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="edit"></cn-icon>
+            </button>
+            <button
+              (click)="deleteRow.emit(synapse)"
+              title="Delete synapse" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="remove"></cn-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

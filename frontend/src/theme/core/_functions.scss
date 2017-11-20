@@ -1,0 +1,26 @@
+// Color functions
+//
+
+@function th-color($key) {
+  @return map-get($th-theme-colors, $key);
+}
+
+@function th-gray($key) {
+  @return map-get($th-gray-colors, $key);
+}
+
+@function th-brand-color($key) {
+  @return map-get($th-brand-colors, $key);
+}
+
+
+// Font and text functions
+//
+
+@function th-font-family($key) {
+  @return map-get($th-font-families, $key);
+}
+
+@function th-icon-char($key) {
+  @return map-get($th-icon-chars, $key);
+}

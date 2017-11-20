@@ -1,0 +1,18 @@
+<ul *ngIf="locales.length"
+     aria-label="Other languages"
+     class="locale-links"
+     i18n-aria-label>
+  <ng-container *ngFor="let locale of locales">
+    <li *ngIf="locale.code !== lang"
+         title="{{ locale.name }}" lang="{{ locale.code }}">
+      <a href="{{locale.code}}{{path}}" hreflang="{{ locale.code }}">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <abbr class="fa fa-stack-1x fa-inverse">
+            {{ locale.code }}
+          </abbr>
+        </span>
+      </a>
+    </li>
+  </ng-container>
+</ul>

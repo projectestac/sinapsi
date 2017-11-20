@@ -1,0 +1,131 @@
+@import "core";
+
+// Base styles
+
+.synapse-block {
+  position: relative;
+  margin-bottom: .625rem;
+}
+
+
+// Header block
+
+.header-block {
+  .block-title {
+    margin-bottom: 1.2rem;
+  }
+}
+
+
+// Basic block
+
+.basic-block {
+  color: th-color('white');
+  background: th-color('secondary');
+  
+  & > a {
+    color: th-color('white');
+    text-decoration: none;
+    display: block;
+    padding: .625rem 1.5rem;
+  }
+  
+  .block-title {
+    font-size: 1.56rem;
+    margin: .38rem 0 .625rem;
+  }
+  
+  .block-content {
+    font-size: .875rem;
+  }
+  
+  @each $name, $color in $th-theme-colors {
+    &.#{$name} {
+      background: $color;
+    }
+  }
+}
+
+
+// Card block
+
+.card-block ::ng-deep {
+  .block-wrapper {
+    border: 1px solid th-gray('divider');
+  }
+  
+  .block-title {
+    font-size: 1rem;
+    font-weight: 400;
+    background: th-gray('background');
+    border-bottom: 1px solid th-gray('divider');
+    padding: .65rem 1rem;
+  }
+  
+  .block-content {
+    padding: 1rem;
+  }
+}
+
+
+// Picture block
+
+.picture-block {
+  & > a {
+    color: th-color('white');
+  }
+  
+  & > a:hover .block-title {
+    text-decoration: underline;
+  }
+  
+  .block-picture {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .block-wrapper {
+    position: absolute;
+    padding: 30% 1rem .625rem 1rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to bottom,
+      rgba(51, 51, 51, 0) 0%,
+      rgba(51, 51, 51, 1) 100%
+    );
+  }
+  
+  .block-title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  .block-content {
+    font-size: .9rem;
+  }
+}
+
+
+// Twitter block
+
+.twitter-block ::ng-deep {
+  a.twitter-timeline {
+    font-weight: 600;
+  }
+  
+  a.twitter-timeline span {
+    font-weight: 400;
+    color: th-gray('text');
+  }
+  
+  .block-wrapper {
+    border: 1px solid th-gray('divider');
+    padding: 1rem;
+  }
+  
+  .block-wrapper, iframe {
+    max-height: 35rem;
+  }
+}

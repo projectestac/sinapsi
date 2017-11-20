@@ -1,0 +1,87 @@
+@import "../core";
+
+// Font Awesome settings
+//
+
+$fa-font-path: "~font-awesome/fonts";
+
+
+// Bootstrap settings
+//
+
+// Colors
+
+$white: th-color('white');
+$black: th-color('black');
+$gray-200: th-gray('200');
+$gray-900: th-gray('800');
+
+$colors: (
+  blue: th-color('blue'),
+  indigo: th-color('purple'),
+  purple: th-color('purple'),
+  pink: th-color('pink'),
+  red: th-color('red'),
+  orange: th-color('tangerine'),
+  yellow: th-color('yellow'),
+  green: th-color('green'),
+  teal: th-color('cyan'),
+  cyan: th-color('cyan'),
+  white: th-color('white'),
+  gray: th-gray('400'),
+  gray-dark: th-gray('800')
+);
+
+$theme-colors: (
+  primary: th-color('primary'),
+  secondary: th-color('secondary'),
+  success: th-color('green'),
+  info: th-color('cyan'),
+  warning: th-color('yellow'),
+  danger: th-color('red'),
+  light: th-gray('100'),
+  dark: th-gray('800')
+);
+
+// Fonts
+
+$font-family-sans-serif: th-font-family('primary');
+$font-family-monospace:  th-font-family('monospace');
+
+
+$h1-font-size: 2.2rem;
+$h2-font-size: 1.9rem;
+$h3-font-size: 1.6rem;
+$h4-font-size: 1.4rem;
+$h5-font-size: 1.15rem;
+$h6-font-size: 1rem;
+
+$mark-bg: #ff0;
+
+// Body
+
+$body-bg: transparent;
+
+// Tables
+
+$table-accent-bg: th-gray('50');
+$table-hover-bg: th-gray('100');
+
+// Forms
+
+$input-focus-border-color: th-gray('400');
+
+// Buttons
+
+$input-group-addon-bg: th-gray('100');
+
+$navbar-toggler-padding-y: .56rem;
+$navbar-toggler-padding-x: .67rem;
+$navbar-toggler-border-radius: 0;
+
+$navbar-dark-toggler-icon-bg: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+
+// Code
+
+$code-color: #c7254e;
+$code-bg: #f9f2f4;

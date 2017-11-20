@@ -1,0 +1,15 @@
+@import "core";
+
+// Base styles
+
+.input-group {
+  input, button {
+    border-radius: 0;
+  }
+  
+  button {
+    border: none;
+    font-size: 1.3rem;
+    padding: .45rem .477rem;
+  }
+}

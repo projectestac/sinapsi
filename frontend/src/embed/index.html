@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/" target="_blank">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root>
+    <style type="text/css">
+      @keyframes bounce {
+        0%, 100% { transform: scale(1.0); }
+        50% { transform: scale(1.8); }
+      }
+      
+      .bootstrap-message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background: whitesmoke;
+        border: 1px solid #ddd;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      
+      .spinner span {
+        display: inline-block;
+        background-color: #999;
+        border-radius: 100%;
+        border: 1px solid #999;
+        height: 6px;
+        width: 6px;
+        margin: 3px;
+        animation: bounce 1s infinite ease-out;
+      }
+      
+      .spinner span:first-child {
+        animation-delay: -260ms;
+      }
+      
+      .spinner span:last-child {
+        animation-delay: 260ms;
+      }
+    </style>
+    <div class="bootstrap-message">
+      <div class="spinner">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </app-root>
+</body>
+</html>

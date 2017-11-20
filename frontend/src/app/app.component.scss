@@ -1,0 +1,13 @@
+@import "core";
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  background: white;
+}
+
+#app-content {
+  flex: 1;
+}

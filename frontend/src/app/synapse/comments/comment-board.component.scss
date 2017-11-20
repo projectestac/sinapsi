@@ -1,0 +1,16 @@
+@import "core";
+
+// Base styles
+
+.sy-comment-board {
+  position: relative;
+}
+
+.sy-load-more button {
+  border-color: th-gray('400');
+}
+
+.sy-comment-form-wrapper:not(:last-child) {
+  border-bottom: 1px dotted th-gray('divider');
+  margin-bottom: 1.65rem;
+}

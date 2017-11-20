@@ -1,0 +1,83 @@
+// Page structure
+//
+
+// Navigation links
+
+.page-navigation {
+  background: th-gray('background');
+  padding: 1px;
+}
+
+.page-navigation .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Header
+
+.page-header {
+  padding: 1px;
+  position: relative;
+  background: th-gray('background');
+  
+  .container {
+    position: relative;
+  }
+  
+  h1 {
+    @extend .d-none;
+    @extend .d-sm-block;
+    margin-top: 0.4rem;
+    margin-bottom: 1.1rem;
+    max-width: 85%;
+  }
+
+  header p[role='contentinfo'] {
+    font-size: 0.9rem;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    header, aside[role='search'] {
+      width: 66%;
+    }
+    
+    header p[role='contentinfo'] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 15px;
+      margin: 0;
+    }
+    
+    header p[role='contentinfo'] {
+      width: 33.33333333%;
+    }
+  }
+}
+
+// Contents
+
+.page-content {
+  .page-section:nth-child(odd) {
+    background: th-gray('background');
+  }
+  
+  .page-body {
+    position: relative;
+    min-height: 500px;
+  }
+
+  .page-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+  }
+  
+  .page-buttons {
+    flex: 1;
+    margin-right: 1em;
+  }
+}

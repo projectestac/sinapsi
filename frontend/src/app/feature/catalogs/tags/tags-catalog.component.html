@@ -1,0 +1,30 @@
+<section>
+
+  <!-- Results table -->
+  
+  <div [hidden]="state == 'empty' || state == 'error'">
+    <tags-table
+      [sort]="request.sort"
+      [tags]="collection"
+      (sortChange)="sort($event.values)">
+    </tags-table>
+  </div>
+  
+  <!-- Pagination -->
+  
+  <cn-pagination
+    [collection]="collection"
+    (pageChange)="page($event)">
+  </cn-pagination>
+  
+  <!-- Status message -->
+  
+  <app-state [state]="state"></app-state>
+  
+  <!-- Progress backdrop -->
+  
+  <div [hidden]="state != 'pending'" class="backdrop">
+    <cn-spinner></cn-spinner>
+  </div>
+
+</section>

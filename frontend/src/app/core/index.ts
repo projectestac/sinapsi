@@ -1,0 +1,1 @@
+export { CoreModule } from './module';

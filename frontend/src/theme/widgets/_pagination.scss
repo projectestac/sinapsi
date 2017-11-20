@@ -1,0 +1,96 @@
+// Pagination items
+
+.pagination-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pagination-meta {
+  flex: 1;
+  color: th-gray('400');
+  font-size: 1rem;
+}
+
+.pagination-meta,
+.pagination-links {
+  margin: 1rem 0;
+}
+
+.page-item {
+  .page-link {
+    border: none;
+    margin: 0 .1rem;
+    
+    i.fa {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-left: .2rem;
+      line-height: 1.25rem;
+      vertical-align: top;
+    }
+    
+    &:hover, &:focus {
+      text-decoration: underline;
+      background: transparent;
+    }
+  }
+  
+  &.next, &.first, &.previous, &.last {
+    .page-link {
+      font-size: 1.3rem;
+      line-height: 1.25rem;
+    }
+  }
+  
+  &.disabled {
+    cursor: not-allowed;
+  }
+  
+  &.active .page-link {
+    color: th-gray('800');
+    background-color: #eee;
+  }
+  
+  &:first-child .page-link {
+    padding-left: 0;
+  }
+  
+  &:last-child .page-link {
+    padding-right: 0;
+  }
+}
+
+// Remove any margin on the list
+
+ul.pagination {
+  margin: 0;
+}
+
+// Show in vertical on medium devices
+
+@include media-breakpoint-down(md) {
+  .pagination-nav {
+    flex-direction: column !important;
+  }
+  
+  .pagination-meta {
+    margin-bottom: 0;
+  }
+}
+
+// Hide page links on small devices
+
+@include media-breakpoint-down(sm) {
+  .page-item {
+    display: none;
+    
+    &.active, &.first, &.last, &.next, &.previous {
+      display: inherit;
+    }
+  }
+  
+  .pagination .page-item .page-link {
+    font-size: 1.1rem;
+  }
+}

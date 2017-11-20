@@ -1,0 +1,10 @@
+// Form controls
+
+.form-control {
+  font-size: $font-size-sm;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: th-color('text');
+}

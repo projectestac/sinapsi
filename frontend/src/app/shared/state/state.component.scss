@@ -1,0 +1,14 @@
+@import "core";
+
+// Base styles
+
+.state-message {
+  color: th-gray('600');
+  border: 1px solid th-gray('divider');
+  min-height: 500px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

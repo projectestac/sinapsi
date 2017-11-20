@@ -1,0 +1,66 @@
+<div #blockElement *ngIf="block" role="complementary" class="synapse-block">
+  <ng-container [ngSwitch]="block.options?.type">
+    
+    <!-- Header block -->
+    
+    <div *ngSwitchCase="'header'" class="header-block">
+      <h2 class="block-title">{{ block.title }}</h2>
+    </div>
+    
+    <!-- Raw HTML block -->
+    
+    <div *ngSwitchCase="'html'" class="html-block">
+      <div [innerHTML]="block.content" class="block-content"></div>
+    </div>
+    
+    <!-- Card block -->
+    
+    <div *ngSwitchCase="'card'" class="card-block">
+      <app-card>
+        <div class="block-wrapper">
+          <h3 *ngIf="block.title" class="block-title">{{ block.title }}</h3>
+          <div *ngIf="block.content" [innerHTML]="block.content"
+               class="block-content"></div>
+        </div>
+      </app-card>
+    </div>
+    
+    <!-- Picture block -->
+    
+    <div *ngSwitchCase="'picture'" class="picture-block">
+      <a [attr.href]="block.options?.href">
+        <img [attr.src]="block.options?.image_url"
+             [attr.alt]="block.title" class="block-picture">
+        <div class="block-wrapper">
+          <h3 *ngIf="block.title" class="block-title">{{ block.title }}</h3>
+          <div *ngIf="block.content" [innerHTML]="block.content"
+               class="block-content"></div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Twitter timeline block -->
+    
+    <div *ngSwitchCase="'twitter'" class="twitter-block">
+      <app-card>
+        <div class="block-wrapper">
+          <a [attr.href]="'https://twitter.com/' + block.options?.profile"
+             data-height="500" class="twitter-timeline">
+            <span i18n>Tweets by</span> @{{ block.options?.profile }}
+          </a>
+        </div>
+      </app-card>
+    </div>
+  
+    <!-- Basic color block -->
+    
+    <div *ngSwitchDefault [ngClass]="block.options?.color" class="basic-block">
+      <a [attr.href]="block.options?.href">
+        <h3 *ngIf="block.title" class="block-title">{{ block.title }}</h3>
+        <div *ngIf="block.content" [innerHTML]="block.content"
+             class="block-content"></div>
+      </a>
+    </div>
+    
+  </ng-container>
+</div>

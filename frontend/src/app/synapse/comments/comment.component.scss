@@ -1,0 +1,38 @@
+@import "core";
+
+// Base styles
+
+.sy-comment {
+  font-size: .9rem;
+  border: 1px solid th-gray('200');
+  background: th-gray('100');
+  margin-bottom: .5rem;
+  padding: 1rem;
+  
+  @include media-breakpoint-down(sm) {
+    margin-left: 0;
+  }
+}
+
+.sy-comment-header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: .65rem;
+  
+  time {
+    color: th-gray('600');
+  }
+}
+
+.sy-comment-author {
+  display: flex;
+  align-items: center;
+  
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: .5rem;
+    border-radius: 100%;
+  }
+}

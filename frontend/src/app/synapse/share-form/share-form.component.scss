@@ -1,0 +1,62 @@
+@import "core";
+
+// Base styles
+
+h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: .6rem 0 1rem 0;
+}
+
+label {
+  width: 100%;
+  font-size: .9rem;
+}
+
+input {
+  font-size: .9rem;
+}
+
+textarea {
+  font-family: th-font-family('monospace');
+}
+
+.form-group {
+  padding: .5rem 1rem;
+  background: th-gray('100');
+}
+
+.sy-share-options {
+  label {
+    display: flex;
+    align-items: center;
+  }
+  
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    .sy-height-input {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.sy-height-input {
+  span {
+    margin-right: .5rem;
+  }
+  
+  input {
+    width: 4rem;
+    text-align: center;
+  }
+}
+
+.sy-search-input {
+  span {
+    margin-left: .5rem;
+  }
+}

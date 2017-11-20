@@ -1,0 +1,47 @@
+<div class="page-navigation">
+  <div class="container">
+    <cn-breadcrumb></cn-breadcrumb>
+    <app-social *ngIf="tag" [tag]="tag"></app-social>
+  </div>
+</div>
+<article *ngIf="tag" class="page-content">
+  
+  <!-- Header -->
+  
+  <div class="page-header">
+    <div class="container">
+      <header>
+        <h1>
+          <span [hidden]="synapse.id" class="tag-hash">#</span>
+          {{ synapse.name }}
+        </h1>
+        <p role="contentinfo" [innerHTML]="synapse.description"></p>
+      </header>
+      
+      <aside role="search">
+        <sy-search-form
+          (search)="onSearch($event)">
+        </sy-search-form>
+      </aside>
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section class="page-section">
+    <div class="page-body container">
+      <div class="row">
+        <div class="col-lg-8">
+          <posts-catalog [filters]="synapse.filters"></posts-catalog>
+        </div>
+        <div class="col-lg-4">
+          <aside role="complementary">
+            <ng-container *ngFor="let block of blocks">
+              <app-block [block]="block"></app-block>
+            </ng-container>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

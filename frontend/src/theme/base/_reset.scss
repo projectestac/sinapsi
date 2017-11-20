@@ -1,0 +1,55 @@
+// Body styles
+
+html, body {
+  height: 100%;
+}
+
+body {
+  b, strong, h3 {
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: .65rem;
+  }
+
+  small, .small {
+    font-size: 85%;
+  }
+  
+  button,
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"] {
+    cursor: pointer;
+  }
+}
+
+
+// Elements
+
+pre {
+  padding: 9.5px;
+  background-color: th-gray('background');
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+th {
+  white-space: nowrap;
+}
+
+section {
+  padding: 2rem 0;
+}
+
+a:focus {
+  text-decoration: underline;
+}
+
+
+// Utility classes
+
+*[hidden] {
+  display: none !important;
+}

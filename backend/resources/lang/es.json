@@ -1,0 +1,108 @@
+{
+
+    "Your browser does not support JavaScript":
+    "Su navegador no soporta JavaScript",
+
+    "This field is required":
+    "Este campo es obligatorio",
+
+    "The value in this field is not a valid date":
+    "El valor en este campo no es una fecha válida",
+
+    "This field must be a valid email address":
+    "Este campo debe contener una dirección de correo electrónico válida",
+
+    "The value in this field is too low":
+    "El valor en este campo es demasiado bajo",
+
+    "The value in this field is too high":
+    "El valor en este campo es demasiado alto",
+
+    "The value in this field is not a valid time value":
+    "El valor en este campo no es un valor de tiempo válido",
+
+    "The value in this field is too short":
+    "El valor en este campo es demasiado corto",
+
+    "The value in this field is too long":
+    "El valor en este campo es demasiado largo",
+
+    "This field must be a valid number":
+    "Este campo debe contener un número válido",
+
+    "Could not fetch the resource":
+    "No se pudo obtener el recurso",
+
+    "Do you want to delete this record?":
+    "¿Desea eliminar este registro?",
+
+    "The resource has been saved":
+    "El recurso se guardó correctamente",
+
+    "Could not save the resource":
+    "No se pudo guardar el recurso",
+
+    "Could not remove the resource":
+    "No se pudo eliminar el recurso",
+
+    "Show more results":
+    "Mostrar más resultados",
+
+    "Processing elements…":
+    "Procesando los elementos…",
+
+    "Could not process all the elements":
+    "No se pudieron procesar todos los elementos",
+
+    "Pagination links":
+    "Enlaces de paginación",
+
+    "Showing :from to :to of :total results":
+    "Mostrando :from a :to de :total resultados",
+
+    "First page":
+    "Primera página",
+
+    "Last page":
+    "Última página",
+
+    "Previous page":
+    "Página anterior",
+
+    "Next page":
+    "Página siguiente",
+
+    "Previous":
+    "Anterior",
+
+    "Next":
+    "Siguiente",
+
+    "Show more results":
+    "Mostar más resultados",
+
+    "Yes":
+    "Sí",
+
+    "Confirm":
+    "Confirmar",
+
+    "Cancel":
+    "Cancelar",
+
+    "Search":
+    "Buscar",
+
+    "Search by keyword":
+    "Buscar por palabra clave",
+
+    "Other languages":
+    "Otros idiomas",
+    
+    "Home":
+    "Inicio",
+    
+    "Not Found":
+    "No encontrada"
+
+}

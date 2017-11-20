@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="319e0745bcbc132451569294fa2fa21bf10f555a" datatype="html">
+        <source>Toggle navigation</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/header.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/header.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4c033818f083eb8627c1f85c0ca62c495d0cdacd" datatype="html">
+        <source>Advices</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/header.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="815cad6a13eee2edfed8a43dc3a64d88b1b2db27" datatype="html">
+        <source>
+        Home
+      </source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20dd199fe7a340935f8bd1c68f011466197c9025" datatype="html">
+        <source>Back: Home</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d4e6739602cf8195d1719aaa4071c02277fee47d" datatype="html">
+        <source>Back: <x id="INTERPOLATION"/></source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,237 @@
+@import "core";
+
+// Base styles
+
+footer {
+  text-align: center;
+  background-color: th-gray('background');
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.9rem;
+  padding: 0;
+  
+  h3 {
+    text-align: left;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: th-gray('600');
+  }
+  
+  .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .shadow {
+    position: relative;
+    width: 90%;
+    margin-left: -45%;
+    border-radius: 50%;
+    box-shadow: 0 .375em .375em #e5e5e5;
+    height: 1.250em;
+    left: 50%;
+    bottom: 1.2em;
+  }
+}
+
+// Footer information
+
+.footer-info {
+  border-top: 2px solid rgba(51, 51, 51, 0.5);
+  
+  @include media-breakpoint-up(md) {
+    border-color: #ccc;
+  }
+}
+
+.legal-notice {
+  color: #999;
+  min-height: 100px;
+  padding: 1.5em .2em;
+  
+  p {
+    font-size: .7rem;
+  }
+}
+
+.legal-badges {
+  @include media-breakpoint-up(md) {
+    padding: .2rem 0 .2rem 3rem;
+  }
+}
+
+.legal-badges a {
+  font-size: 2rem;
+  line-height: 1;
+  
+  @include media-breakpoint-down(sm) {
+    font-size: 4rem;
+    padding: 1rem 0.25rem;
+  }
+}
+
+// Back-to-top link
+
+.backtotop {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 39px 0;
+  padding: .75rem 0;
+  border-top: 1px solid rgba(51, 51, 51, 0.1);
+  background: url('/assets/images/brand.png') no-repeat left center;
+  background-size: 106px 27px;
+  
+  a {
+    align-items: center;
+    color: rgba(51, 51, 51, 0.45);
+    display: flex;
+    flex-direction: row;
+    font-size: .8rem;
+    font-weight: 700;
+    text-align: left;
+    width: 5.6rem;
+  }
+}
+
+:host ::ng-deep .backtotop i.fa {
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+
+// Footer links
+
+.footer-links {
+  text-align: left;
+  
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    margin-bottom: 20px;
+    margin-left: 0;
+    padding-left: .6rem;
+    padding-right: 15px;
+    list-style: none;
+    position: relative;
+  }
+  
+  li {
+    color: rgb(102, 102, 102);
+    
+    &:before {
+      content: "·";
+      display: inline;
+      font-size: 1rem;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+    
+    a {
+      font-size: .75em;
+      font-weight: 600;
+      padding: 0.1rem 0;
+    }
+    
+    @include media-breakpoint-up(md) {
+      line-height: 1.2;
+    }
+  }
+  
+  & ::ng-deep .cn-details-marker {
+    color: th-gray('600');
+  }
+  
+  & ::ng-deep .cn-details.open .cn-details-marker {
+    color: th-gray('800');
+  }
+}
+
+
+// Media queries
+
+@include media-breakpoint-down(sm) {
+  .footer-links {
+    .wrapper {
+      padding: 8px;
+    }
+    
+    h3 {
+      margin: 0;
+      font-size: .9rem;
+      color: th-gray('600');
+    }
+    
+    li a {
+      display: block;
+      font-size: .9rem;
+      font-weight: 400;
+      
+      &:active, &:focus {
+        color: th-gray('800');
+        background-color: th-gray('200');
+      }
+    }
+    
+    & ::ng-deep .cn-details-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+      padding: 14px 3px;
+      border-top: 1px solid th-gray('400');
+      
+      .cn-details-summary {
+        flex: 1;
+      }
+      
+      .cn-details-marker {
+        display: inline !important;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .footer-links {
+    display: flex;
+    flex-direction: row;
+    
+    & ::ng-deep .expandable,
+    & ::ng-deep .cn-expandable-wrapper {
+      display: block !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+    
+    & ::ng-deep .cn-details-header {
+      outline: none;
+    }
+  }
+  
+  .footer-links > * {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  
+  .legal-notice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    p {
+      background: url('/assets/images/brand.png') no-repeat left .2rem;
+      background-size: 106px 27px;
+      padding-left: 140px;
+      text-align: left;
+    }
+  }
+}

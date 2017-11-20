@@ -1,0 +1,79 @@
+// Utilities for styling tables
+
+%shrink-column {
+  width: 1px;
+  white-space: nowrap;
+}
+
+// Columns display
+
+th, td {
+  &.shrink-column {
+    @extend %shrink-column;
+  }
+  
+  &.main-column {
+    width: 100%;
+  }
+  
+  &.actions-column {
+    @extend %shrink-column;
+    text-align: center;
+  }
+}
+
+// Cells display
+
+td {
+  &.datetime-cell {
+    @extend .text-center;
+    @extend .text-nowrap;
+  }
+  
+  &.numeric-cell {
+    @extend .text-right;
+    @extend .text-nowrap;
+  }
+  
+  &.boolean-cell {
+    @extend .text-center;
+  }
+  
+  a:only-child {
+    display: block;
+  }
+}
+
+// Sortable columns
+
+@media screen {
+
+  th.sortable {
+    padding-right: 2rem;
+  }
+
+  th.sortable:after {
+    content: th-icon-char('sort');
+    font-family: th-font-family('icon');
+    font-style: normal;
+    font-weight: 400;
+    font-size: .8rem;
+    color: th-gray('400');
+    padding: .2rem .5rem;
+    position: absolute;
+    right: 0;
+  }
+
+  th.sortable.sort-asc:after {
+    content: th-icon-char('sort-amount-asc');
+  }
+
+  th.sortable.sort-desc:after {
+    content: th-icon-char('sort-amount-desc');
+  }
+
+  th[aria-sort].sortable:after {
+    color: th-gray('800');
+  }
+
+}

@@ -1,0 +1,16 @@
+@import "core";
+
+// Page styles
+
+.page-header {
+  .container {
+    margin: 2rem auto;
+  }
+
+  .brand-name {
+    color: #bf0000;
+    font-size: 3.6rem;
+    font-family: th-font-family('heading');
+    font-weight: 300;
+  }
+}
