@@ -1,0 +1,11 @@
+{
+    "name": "seidor/foundation",
+    "description": "Foundation for Angular and Laravel",
+    "authors": [
+        {
+            "name": "Joan Sala Soler",
+            "email": "jsala@seidor.es"
+        }
+    ],
+    "require": {}
+}
