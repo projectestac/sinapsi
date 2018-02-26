@@ -3,11 +3,13 @@
   <!-- Results table -->
   
   <div [hidden]="state == 'empty' || state == 'error'">
-    <synapses-table
+    <app-synapses-table
       [sort]="request.sort"
       [synapses]="collection"
-      (sortChange)="sort($event.values)">
-    </synapses-table>
+      (sortChange)="sort($event.values)"
+      (deleteRow)="remove($event)"
+      (editRow)="edit($event)">
+    </app-synapses-table>
   </div>
   
   <!-- Pagination -->

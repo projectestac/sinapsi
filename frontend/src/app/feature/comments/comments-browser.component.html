@@ -1,0 +1,27 @@
+<div class="comments-browser">
+  <div class="comment-editor-wrapper">
+    <ng-container *ngIf="sessionState === 'inactive'">
+      <p>
+        <cn-icon value="lock"></cn-icon>
+        <a href="#" (click)="showSigninForm($event); false"
+           i18n="comments login">
+          Log in
+        </a>
+        <span i18n>to post a comment.</span>
+      </p>
+		</ng-container>
+    <ng-container *ngIf="sessionState === 'active'">
+      <app-comment-editor
+        [post]="post"
+        (created)="onCommentCreated($event)">
+      </app-comment-editor>
+    </ng-container>
+  </div>
+  
+  <div class="comments-catalog-wrapper">
+    <app-comments-catalog #catalog
+      [post]="post"
+      (deleted)="onCommentDeleted($event)">
+    </app-comments-catalog>
+  </div>
+</div>

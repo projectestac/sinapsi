@@ -1,10 +1,10 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
 
 
 /**
  * Municipality model class.
  */
-export class Municipality implements CnModel {
+export class Municipality implements Model {
     id: number;
     name: string;
     created_at: string;

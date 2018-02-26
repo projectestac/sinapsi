@@ -1,0 +1,8 @@
+<cn-menu #menu>
+  <cn-menuitem
+    *ngFor="let link of links"
+    (click)="share(link.href)"
+    [icon]="link.icon">
+    {{ link.title }}
+  </cn-menuitem>
+</cn-menu>

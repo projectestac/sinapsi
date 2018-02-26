@@ -1,11 +1,11 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
 import { Author } from '.';
 
 
 /**
  * Feed model class.
  */
-export class Feed implements CnModel {
+export class Feed implements Model {
     id: number;
     etag: string;
     reputation: boolean;

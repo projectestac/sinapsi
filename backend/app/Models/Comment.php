@@ -61,7 +61,8 @@ class Comment extends FoundationModel {
      * @return belongsTo            Model relation
      */
     public function post() {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class)
+            ->withTrashedIfRole('admin');
     }
 
 

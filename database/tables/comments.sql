@@ -4,7 +4,7 @@ CREATE TABLE `comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `content` varchar(500) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `content` varchar(500) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

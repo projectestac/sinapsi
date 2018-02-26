@@ -55,7 +55,7 @@ class AuthorController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Author::validateFields($request);
-        $resource = Author::whereID($id)->forUser()->first();
+        $resource = Author::whereId($id)->forUser()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -83,4 +83,5 @@ class AuthorController extends Controller {
         
         return ['id' => intval($id)];
     }
+
 }

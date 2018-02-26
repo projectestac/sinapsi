@@ -8,13 +8,14 @@
           <th cnSortBy="name" i18n>Name</th>
           <th i18n>Description</th>
           <th cnSortBy="post_count" i18n>Posts</th>
-          <th title="Actions" class="actions-column" i18n-title>
+          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tag of tags">
+        <tr *ngFor="let tag of tags"
+            [ngClass]="{ 'deleted-row' : tag.deleted_at }">
           <td class="main-column w-50">
             <a [routerLink]="['/tags', tag.slug]">
               {{ tag.name }}
@@ -28,18 +29,24 @@
               {{ tag.post_count | number }}
             </data>
           </td>
-          <td class="actions-column">
+          <td *appIfRole="['admin']" class="actions-column">
             <button
               (click)="editRow.emit(tag)"
               title="Edit tag" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>
-            <button
+            <button *ngIf="!tag.deleted_at"
               (click)="deleteRow.emit(tag)"
               title="Delete tag" i18n-title
               class="btn btn-sm btn-secondary">
-              <cn-icon value="remove"></cn-icon>
+              <cn-icon value="ban"></cn-icon>
+            </button>
+            <button *ngIf="tag.deleted_at"
+              (click)="restoreRow.emit(tag)"
+              title="Restore tag" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="undo"></cn-icon>
             </button>
           </td>
         </tr>

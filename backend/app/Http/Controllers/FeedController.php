@@ -99,7 +99,7 @@ class FeedController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Feed::validateFields($request);
-        $resource = Feed::whereID($id)->forAuthor()->first();
+        $resource = Feed::whereId($id)->forAuthor()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -124,7 +124,7 @@ class FeedController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Feed::whereID($id)->forAuthor()->delete();
+            $result = Feed::whereId($id)->forAuthor()->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

@@ -1,6 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CnComponentState } from 'concrete/core';
+
+
+/** Component states */
+export const enum ComponentState {
+    PENDING =   'pending',      // Fetching results
+    EMPTY =     'empty',        // No results found
+    READY =     'ready',        // Results retrieved
+    ERROT =     'error'         // Fetch error
+};
 
 
 @Component({
@@ -9,20 +16,11 @@ import { CnComponentState } from 'concrete/core';
     styleUrls: [ 'state.component.scss' ]
 })
 export class StateComponent {
-    
+
     /** Component state */
-    @Input() state: CnComponentState;
-    
-    
-    /**
-     * Component constructor.
-     */
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router
-    ) {}
-    
-    
+    @Input() state: ComponentState;
+
+
     /**
      * If the component state equals to the given value.
      *
@@ -31,12 +29,13 @@ export class StateComponent {
     public inState(name: string): boolean {
         return (this.state === name);
     }
-    
-    
+
+
     /**
      * Reload the current route for this component.
      */
     public reloadRoute() {
         window.location.reload();
     }
+
 }

@@ -2,8 +2,8 @@
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `authors` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(550) CHARACTER SET utf8mb4 NOT NULL,
-  `type` enum('projects','schools','users') CHARACTER SET utf8mb4 NOT NULL,
+  `name` varchar(550) NOT NULL,
+  `type` enum('projects','schools','users') NOT NULL,
   `municipality_id` int(10) unsigned DEFAULT NULL,
   `territory_id` int(10) unsigned DEFAULT NULL,
   `project_id` int(10) unsigned DEFAULT NULL,

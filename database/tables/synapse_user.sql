@@ -4,7 +4,7 @@ CREATE TABLE `synapse_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `synapse_id` int(10) unsigned NOT NULL,
-  `role` enum('admin','editor','viewer') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'viewer',
+  `role` enum('admin','editor','viewer') NOT NULL DEFAULT 'viewer',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

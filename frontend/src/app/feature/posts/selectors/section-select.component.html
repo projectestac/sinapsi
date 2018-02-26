@@ -1,0 +1,27 @@
+<button type="button" [cnMenu]="selectMenu"
+        class="btn btn-sm btn-outline-secondary btn-secondary dropdown-toggle">
+  <ng-container [ngSwitch]="value">
+    <span *ngSwitchCase="'featured'" i18n>Featured</span>
+    <span *ngSwitchCase="'voted'" i18n>Most voted</span>
+    <span *ngSwitchCase="'commented'" i18n>Most commented</span>
+    <span *ngSwitchDefault i18n>Everything</span>
+  </ng-container>
+</button>
+<cn-menu #selectMenu>
+  <cn-menuitem icon="bars"
+    (click)="select('everything')" i18n>
+    Everything
+  </cn-menuitem>
+  <cn-menuitem icon="bookmark"
+    (click)="select('featured')" i18n>
+    Featured
+  </cn-menuitem>
+  <cn-menuitem icon="heart"
+    (click)="select('voted')" i18n>
+    Most voted
+  </cn-menuitem>
+  <cn-menuitem icon="comments"
+    (click)="select('commented')" i18n>
+    Most commented
+  </cn-menuitem>
+</cn-menu>

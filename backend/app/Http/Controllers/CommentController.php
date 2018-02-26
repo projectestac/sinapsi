@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -55,6 +56,7 @@ class CommentController extends Controller {
     public function store(Request $request) {
         $resource = null;
         
+        $request->merge(['user_id' => 1,]);
         $values = Comment::validateRequired($request);
         $values = Comment::validateFields($request);
         
@@ -77,7 +79,7 @@ class CommentController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Comment::whereID($id)->delete();
+            $result = Comment::whereId($id)->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

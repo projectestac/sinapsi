@@ -1,0 +1,10 @@
+/e2e
+/node_modules
+
+*.marks
+.rsyncignore
+.gitattributes
+.gitignore
+.git
+.idea
+*~

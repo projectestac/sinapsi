@@ -108,7 +108,7 @@ class SynapseController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Synapse::validateFields($request);
-        $resource = Synapse::whereID($id)->forEditor()->first();
+        $resource = Synapse::whereId($id)->forEditor()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -118,6 +118,10 @@ class SynapseController extends Controller {
         if ($resource->type === 'authors') {
             unset($values['filters']);
             unset($values['synapse_id']);
+        }
+        
+        if ($resource->slug === Synapse::GENERAL_SLUG) {
+            unset($values['slug']);
         }
         
         // Update the synapse resource
@@ -140,8 +144,18 @@ class SynapseController extends Controller {
      * @return Response         Response object
      */
     public function destroy($id) {
+        // The main synapse cannot be destroyed
+        
+        $resource = Synapse::whereId($id)->first();
+        
+        if ($resource->slug === Synapse::GENERAL_SLUG) {
+            abort(400, 'Invalid request');
+        }
+        
+        // Delete the synapse
+        
         try {
-            $result = Synapse::whereID($id)->delete();
+            $result = Synapse::whereId($id)->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

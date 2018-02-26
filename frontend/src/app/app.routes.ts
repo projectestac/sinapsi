@@ -1,85 +1,71 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes }  from '@angular/router';
-
-import { HomeModule } from 'app/feature/home';
-import { HomeComponent } from 'app/feature/home';
+import { RouterModule, Routes } from '@angular/router';
 import { ErrorsModule } from 'app/feature/errors';
 import { ErrorsComponent } from 'app/feature/errors';
+import { HomeModule } from 'app/feature/home';
+import { HomeComponent } from 'app/feature/home';
+import { environment } from 'environments/environment';
+import { _ } from 'i18n';
+
+
+/**
+ * Routing components
+ */
+export const ROUTING_COMPONENTS = [
+    HomeComponent,
+    ErrorsComponent
+];
 
 
 const ROUTES: Routes = [{
     path: '',
     component: HomeComponent,
-    data: {
-        title: 'Sinapsi',
-        description: 'News published by the Catalan educational centers'
-    }
+    data: { title: environment['title'] }
   }, {
-   path: 'authors',
-   loadChildren: 'app/feature/authors/authors.module#AuthorsModule',
-   data: {
-       title: 'Authors',
-       description: 'Authors'
-   }
+    path: 'authors',
+    loadChildren: 'app/feature/authors/authors.module#AuthorsModule'
   }, {
-   path: 'catalogs',
-   loadChildren: 'app/feature/catalogs/catalogs.module#CatalogsModule',
-   data: {
-       title: 'Catalogs',
-       description: 'Synapse catalogs'
-   }
+    path: 'catalogs',
+    loadChildren: 'app/feature/catalogs/catalogs.module#CatalogsModule',
+    data: { title: _('Catalogs') }
   }, {
-   path: 'projects',
-   loadChildren: 'app/feature/projects/projects.module#ProjectsModule',
-   data: {
-       title: 'Projects',
-       description: 'Projects'
-   }
+    path: 'help',
+    loadChildren: 'app/feature/help/help.module#HelpModule',
+    data: { title: _('Help') }
   }, {
-   path: 'schools',
-   loadChildren: 'app/feature/schools/schools.module#SchoolsModule',
-   data: {
-       title: 'Schools',
-       description: 'Schools'
-   }
+    path: 'projects',
+    loadChildren: 'app/feature/projects/projects.module#ProjectsModule',
+    data: { title: _('Projects') }
   }, {
-   path: 'synapses',
-   loadChildren: 'app/feature/synapses/synapses.module#SynapsesModule',
-   data: {
-       title: 'Synapses',
-       description: 'Synapses'
-   }
+    path: 'schools',
+    loadChildren: 'app/feature/schools/schools.module#SchoolsModule',
+    data: { title: _('Schools') }
   }, {
-   path: 'tags',
-   loadChildren: 'app/feature/tags/tags.module#TagsModule',
-   data: {
-       title: 'Tags',
-       description: 'Tags'
-   }
+    path: 'synapses',
+    loadChildren: 'app/feature/synapses/synapses.module#SynapsesModule',
+    data: { title: _('Synapses') }
   }, {
-   path: 'users',
-   loadChildren: 'app/feature/users/users.module#UsersModule',
-   data: {
-       title: 'Educators',
-       description: 'Educators'
-   }
+    path: 'tags',
+    loadChildren: 'app/feature/tags/tags.module#TagsModule',
+    data: { title: _('Tags') }
+  }, {
+    path: 'users',
+    loadChildren: 'app/feature/users/users.module#UsersModule',
+    data: { title: _('Educators') }
   }, {
     path: '**',
     component: ErrorsComponent,
-    data: {
-        title: 'Not Found',
-        description: 'Content not found'
-    }
+    data: { title: 'Not Found' }
 }];
 
 
 @NgModule({
   imports: [
+    RouterModule.forRoot(ROUTES),
     HomeModule,
-    ErrorsModule,
-    RouterModule.forRoot(ROUTES)
+    ErrorsModule
   ],
-  
+
   exports: [
     RouterModule
   ]

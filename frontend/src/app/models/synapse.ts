@@ -1,17 +1,19 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
+import { Author } from '.';
+
 
 /** Synapse types */
-export type SynapseType = (
-    'authors' |
-    'tags' |
-    'synapses'
-);
+export const enum SynapseType {
+    AUTHORS =   'authors',
+    TAGS =      'tags',
+    SYNAPSES =  'synapses'
+};
 
 
 /**
  * Synapse model class.
  */
-export class Synapse implements CnModel {
+export class Synapse implements Model {
     id: number;
     blocks: number[];
     description: string;
@@ -21,7 +23,9 @@ export class Synapse implements CnModel {
     type: SynapseType;
     synapse_id: number;
     created_at: string;
+    deleted_at: string;
     updated_at: string;
     child_count?: number;
     childs?: Synapse[];
+    author?: Author;
 }

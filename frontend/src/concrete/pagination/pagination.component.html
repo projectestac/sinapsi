@@ -1,0 +1,81 @@
+<nav *ngIf="collection?.total"
+      aria-label="Pagination links" i18-aria-label
+      class="pagination-nav hidden-print">
+
+  <!-- Meta information -->
+  
+  <div *ngIf="showMeta && collection.from > 0"
+       class="pagination-meta">
+    <span i18n>
+      Showing page {{ collection.current_page | number }} of
+      {{ collection.last_page | number }} pages
+    </span>
+  </div>
+  
+  <!-- Pagination links -->
+  
+  <div class="pagination-links">
+    <ul class="pagination">
+    
+      <!-- Backward links -->
+      
+      <li *ngIf="showBounds"
+          [ngClass]="{ disabled: !hasPrevious }"
+           class="page-item first">
+        <a (click)="emitPageChange(1); false"
+           [tabindex]="!hasPrevious ? -1 : 0"
+            href="#"
+            title="First page" i18n-title
+            class="page-link">
+          <cn-icon value="angle-double-left"></cn-icon>
+        </a>
+      </li>
+      <li [ngClass]="{ disabled: !hasPrevious }"
+           class="page-item previous">
+        <a (click)="emitPageChange(collection.current_page - 1); false"
+           [tabindex]="!hasPrevious ? -1 : 0"
+            href="#"
+            title="Previous page" i18n-title
+            class="page-link">
+          <cn-icon value="angle-left"></cn-icon>
+          <span i18n>previous</span>
+        </a>
+      </li>
+      
+      <!-- Page links -->
+      
+      <li *ngFor="let page of pagesRange()"
+          [ngClass]="isCurrentPage(page) ? 'active' : 'hidden-xs'"
+           class="page-item">
+        <a href="#" (click)="emitPageChange(page); false" class="page-link">
+          <span class="sr-only" i18n>Page</span> {{ page }}
+        </a>
+      </li>
+      
+      <!-- Forward links -->
+      
+      <li [ngClass]="{ disabled: !hasNext }"
+           class="page-item next">
+        <a (click)="emitPageChange(collection.current_page + 1); false"
+           [tabindex]="!hasNext ? -1 : 0"
+            href="#"
+            title="Next page" i18n-title
+            class="page-link">
+          <span i18n>next</span>
+          <cn-icon value="angle-right"></cn-icon>
+        </a>
+      </li>
+      <li *ngIf="showBounds"
+          [ngClass]="{ disabled: !hasNext }"
+           class="page-item last">
+        <a (click)="emitPageChange(collection.last_page); false"
+           [tabindex]="!hasNext ? -1 : 0"
+            href="#"
+            title="Last page" i18n-title
+            class="page-link">
+          <cn-icon value="angle-double-right"></cn-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

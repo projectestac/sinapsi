@@ -2,16 +2,16 @@
 
 namespace App;
 
-use Socialite;
+use Auth;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Seidor\Foundation\FoundationModel;
 
 use App\Models\Author;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Synapse;
 use App\Models\Pivots\PostUser;
 use App\Models\Pivots\SynapseUser;
 
@@ -20,7 +20,7 @@ use App\Models\Pivots\SynapseUser;
  * User model class.
  */
 class User extends FoundationModel implements AuthenticatableContract {
-    use Authenticatable, Notifiable, SoftDeletes;
+    use Authenticatable, Notifiable;
     
     /** Attribute definitions */
     protected static $fields = [
@@ -28,11 +28,11 @@ class User extends FoundationModel implements AuthenticatableContract {
         'avatar_url' =>         'string|url|max:255',
         'email' =>              'string|email|max:255',
         'name' =>               'string|max:255',
-        'provider_uid' =>       'string|max:500',
-        'provider_token' =>     'string|max:500',
+        'provider_uid' =>       'string|max:127',
+        'provider_token' =>     'string',
         'role' =>               'string|in:admin,author',
         'created_at' =>         'isodate',
-        'deleted_at' =>         'isodate',
+        'disabled_at' =>        'isodate',
         'updated_at' =>         'isodate',
     ];
     
@@ -53,7 +53,7 @@ class User extends FoundationModel implements AuthenticatableContract {
     protected $casts = [
         'id' =>                 'integer',
         'created_at' =>         'datetime',
-        'deleted_at' =>         'datetime',
+        'disabled_at' =>        'datetime',
         'updated_at' =>         'datetime',
     ];
     
@@ -75,7 +75,7 @@ class User extends FoundationModel implements AuthenticatableContract {
         'provider_token',
         'remember_token',
         'created_at',
-        'deleted_at',
+        'disabled_at',
         'updated_at',
     ];
     
@@ -115,7 +115,9 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @return belongsToMany        Model relation
      */
     public function posts() {
-        return $this->belongsToMany(Post::class)->withTimestamps();
+        return $this->belongsToMany(Post::class)
+            ->withTrashedIfRole('admin')
+            ->withTimestamps();
     }
 
 
@@ -150,12 +152,23 @@ class User extends FoundationModel implements AuthenticatableContract {
 
 
     /**
+     * Scopes a query to the authenticated user.
+     *
+     * @param $query                Query builder
+     */
+    public function scopeCurrent($query) {
+        return (Auth::check() === false) ?
+            $query->corrupt() : $query->whereId(Auth::user()->id);
+    }
+
+
+    /**
      * Returns if the user belongs to the given role.
      *
      * @param $role         Role identifier
      * @return boolean      If the user belongs to the role
      */
-    public function hasRole(string $role) {
+    public function hasRole($role) {
         return $this->role === $role;
     }
 
@@ -166,8 +179,8 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @param $id           Author identifier
      * @return boolean      If the author exists and belongs to the user
      */
-    public function isAuthor(int $id) {
-        return $this->author()->whereID($id)->exists();
+    public function isAuthor($id) {
+        return $this->author()->whereId($id)->exists();
     }
 
 
@@ -177,7 +190,7 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @param $id           Synapse identifier
      * @return boolean      If the user can edit the synapse
      */
-    public function canAdminSynapse(int $id) {
+    public function canAdminSynapse($id) {
         $privilege = $this->privileges()->where('synapse_id', $id);
         return $privilege->where('role', 'admin')->exists();
     }
@@ -189,7 +202,7 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @param $id           Synapse identifier
      * @return boolean      If the user can edit the synapse
      */
-    public function canEditSynapse(int $id) {
+    public function canEditSynapse($id) {
         $privilege = $this->privileges()->where('synapse_id', $id);
         return $privilege->whereIn('role', ['admin', 'editor'])->exists();
     }

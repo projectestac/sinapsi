@@ -9,10 +9,12 @@ use App\Models\Author;
 use App\Models\Project;
 use App\Models\School;
 use App\Models\Synapse;
+use App\Models\Tag;
 use App\Observers\AuthorObserver;
 use App\Observers\ProjectObserver;
 use App\Observers\SchoolObserver;
 use App\Observers\SynapseObserver;
+use App\Observers\TagObserver;
 use App\Observers\UserObserver;
 
 
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider {
         Project::observe(ProjectObserver::class);
         School::observe(SchoolObserver::class);
         Synapse::observe(SynapseObserver::class);
+        Tag::observe(TagObserver::class);
         User::observe(UserObserver::class);
     }
 
@@ -40,9 +43,6 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        if ($this->app->environment('local')) {
-            $this->app->register('Seidor\Scaffold\ScaffoldServiceProvider');
-        }
     }
 
 }

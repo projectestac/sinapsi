@@ -77,7 +77,7 @@ class MunicipalityController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Municipality::validateFields($request);
-        $resource = Municipality::whereID($id)->first();
+        $resource = Municipality::whereId($id)->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -101,7 +101,7 @@ class MunicipalityController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Municipality::whereID($id)->delete();
+            $result = Municipality::whereId($id)->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

@@ -5,6 +5,12 @@
   white-space: nowrap;
 }
 
+// Row status
+
+.deleted-row td:not(.actions-column) {
+  text-decoration: line-through;
+}
+
 // Columns display
 
 th, td {

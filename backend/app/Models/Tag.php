@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Http\Traits\Sluggable;
+
+use App\Models\Traits\HasSlug;
+use App\Models\Traits\HasTrashed;
 
 
 /**
  * Tag model class.
  */
 class Tag extends FoundationModel {
-    use Sluggable, SoftDeletes;
+    use HasSlug, HasTrashed, SoftDeletes;
     
     
     /** Attribute definitions */
@@ -19,7 +21,7 @@ class Tag extends FoundationModel {
         'id' =>                 'integer|min:1',
         'name' =>               'string|max:255',
         'post_count' =>         'integer|min:0',
-        'slug' =>               'string|slug|max:255',
+        'slug' =>               'string|slug|max:254',
         'synapse_id' =>         'integer|min:1',
         'created_at' =>         'isodate',
         'deleted_at' =>         'isodate',
@@ -62,8 +64,8 @@ class Tag extends FoundationModel {
     protected $guarded = [
         'id',
         'post_count',
-        'deleted_at',
         'created_at',
+        'deleted_at',
         'updated_at',
     ];
 
@@ -74,7 +76,8 @@ class Tag extends FoundationModel {
      * @return belongsToMany        Model relation
      */
     public function posts() {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class)
+            ->withTrashedIfRole('admin');
     }
 
 

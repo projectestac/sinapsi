@@ -7,3 +7,26 @@
 @import "base/fonts";
 @import "base/vendor";
 @import "base/reset";
+
+
+html {
+  font-size: 16px;
+  background: th-color('white');
+}
+
+aside.synapse-blocks {
+  padding: 2rem 0;
+}
+
+
+// Development only
+
+.mock-up {
+  display: block;
+  background: rgb(249, 247, 227);
+  border: 1px dashed;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  opacity: .5;
+}

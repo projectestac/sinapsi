@@ -7,7 +7,6 @@
 
 # dependencies
 /node_modules
-/src/concrete/
 
 # IDEs and editors
 /.idea
@@ -17,6 +16,8 @@
 *.launch
 .settings/
 *.sublime-workspace
+*.marks
+~$
 
 # IDE - VSCode
 .vscode/*

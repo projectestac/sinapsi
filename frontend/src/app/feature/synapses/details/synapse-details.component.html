@@ -1,7 +1,7 @@
 <div class="page-navigation">
   <div class="container">
     <cn-breadcrumb></cn-breadcrumb>
-    <app-social *ngIf="synapse" [synapse]="synapse"></app-social>
+    <app-social-links [synapse]="synapse"></app-social-links>
   </div>
 </div>
 <article *ngIf="synapse" class="page-content">
@@ -11,14 +11,15 @@
   <div class="page-header">
     <div class="container">
       <header>
-        <h1 i18n>{{ synapse.name }}</h1>
+        <h1>{{ synapse.name }}</h1>
         <p role="contentinfo" [innerHTML]="synapse.description"></p>
       </header>
       
       <aside role="search">
-        <sy-search-form
-          (search)="onSearch($event)">
-        </sy-search-form>
+        <app-search
+          (search)="onSearch($event)"
+          [value]="browser.search">
+        </app-search>
       </aside>
     </div>
   </div>
@@ -29,13 +30,14 @@
     <div class="page-body container">
       <div class="row">
         <div class="col-lg-8">
-          <posts-catalog [filters]="synapse.filters"></posts-catalog>
+          <app-posts-browser #browser
+            [synapse]="synapse">
+          </app-posts-browser>
         </div>
         <div class="col-lg-4">
-          <aside role="complementary">
-            <ng-container *ngFor="let block of blocks">
-              <app-block [block]="block"></app-block>
-            </ng-container>
+          <aside role="complementary" class="synapse-blocks">
+            <div class="mock-up">@SynapseManager</div>
+            <app-sidebar [blocks]="blocks"></app-sidebar>
           </aside>
         </div>
       </div>

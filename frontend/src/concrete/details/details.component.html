@@ -1,0 +1,17 @@
+<div [ngClass]="state" class="cn-details">
+  <div [cnExpandable]="expandable" tabindex="0"
+       aria-label="Toggle" i18n-aria-label
+       class="cn-details-header">
+    <div class="cn-details-summary">
+      <ng-content select="cn-summary"></ng-content>
+    </div>
+    <span aria-hidden="true" class="cn-details-marker">
+      <i class="fa"></i>
+    </span>
+  </div>
+  <cn-expandable #expandable (toggle)="toggle()" class="expandable">
+    <div class="cn-details-body">
+      <ng-content select=":not(cn-summary)"></ng-content>
+    </div>
+  </cn-expandable>
+</div>

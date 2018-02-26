@@ -1,0 +1,42 @@
+<cn-overlay [open]="isOpen" (dismiss)="refuse()">
+  <div class="cn-dialog-backdrop"></div>
+  <div role="document" *ngIf="isOpen" class="modal-dialog" [@show]>
+    <div class="modal-content">
+      <div *ngIf="message.title" class="modal-header">
+        <h5 class="modal-title">
+          {{ message.title }}
+        </h5>
+        <button (click)="refuse()"
+                 type="button"
+                 tabindex="-1"
+                 aria-hidden="true"
+                 aria-label="Close" i18n-aria-label
+                 class="close ml-5">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div [innerHTML]="message.text" class="modal-body"></div>
+      <div class="modal-footer">
+        <button *ngIf="message.refuse"
+                (click)="refuse()"
+                 type="button"
+                 tabindex="1"
+                 class="btn btn-secondary">
+          <ng-container [ngSwitch]="!!message['refuse']">
+            <span *ngSwitchCase="true">{{ message.refuse }}</span>
+            <span *ngSwitchDefault i18n>Cancel</span>
+          </ng-container>
+        </button>
+        <button (click)="confirm()"
+                 type="button"
+                 tabindex="2"
+                 class="btn btn-primary">
+          <ng-container [ngSwitch]="!!message['confirm']">
+            <span *ngSwitchCase="true">{{ message.confirm }}</span>
+            <span *ngSwitchDefault i18n>Ok</span>
+          </ng-container>
+        </button>
+      </div>
+    </div>
+  </div>
+</cn-overlay>

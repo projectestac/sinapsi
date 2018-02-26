@@ -1,0 +1,91 @@
+<footer>
+  <div class="shadow"></div>
+  <div class="container">
+    <h2 class="sr-only" i18n>Footer Navigation</h2>
+    
+    <!-- Navigation menu -->
+    
+    <div class="footer-links">
+      <cn-details>
+        <cn-summary><h3 i18n>Portals</h3></cn-summary>
+        <div class="wrapper">
+          <ul>
+            <li><a target="_blank" href="http://ensenyament.gencat.cat/" i18n>Department of Education</a></li>
+            <li><a target="_blank" href="http://xtec.gencat.cat/">XTEC</a></li>
+            <li><a target="_blank" href="http://www.edu365.cat/">Edu365</a></li>
+            <li><a target="_blank" href="http://www.edu3.cat/">Edu3</a></li>
+            <li><a target="_blank" href="http://apliense.xtec.cat/arc/">ARC</a></li>
+            <li><a target="_blank" href="http://alexandria.xtec.cat/">Alexandria</a></li>
+            <li><a target="_blank" href="http://edumet.cat/">Edumet</a></li>
+          </ul>
+        </div>
+      </cn-details>
+      <cn-details>
+        <cn-summary><h3 i18n>Web services and software</h3></cn-summary>
+        <div class="wrapper">
+          <ul>
+            <li><a target="_blank" href="http://agora.xtec.cat/">Àgora Moodle</a></li>
+            <li><a target="_blank" href="http://agora.xtec.cat/nodes">Nodes</a></li>
+            <li><a target="_blank" href="http://blocs.xtec.cat/">XTECBlocs</a></li>
+            <li><a target="_blank" href="http://linkat.xtec.cat/">Linkat</a></li>
+            <li><a target="_blank" href="http://clic.xtec.cat/">JClic</a></li>
+          </ul>
+        </div>
+      </cn-details>
+      <cn-details caption="Help" i18n-caption>
+        <cn-summary><h3 i18n>Help</h3></cn-summary>
+        <div class="wrapper">
+          <ul>
+            <li><a href="help" (click)="navigate(['/help'])" accesskey="0" i18n>Table of contents</a></li>
+            <li><a href="help/about" (click)="navigate(['/help/about'])" i18n>About Sinapsi</a></li>
+            <li><a href="help/search" (click)="navigate(['/help/search'])" i18n>Advanced search</a></li>
+          </ul>
+        </div>
+      </cn-details>
+    </div>
+    
+    <div class="footer-info">
+      <!-- Copyright notice -->
+      
+      <div class="legal-notice">
+        <div class="legal-text">
+          <p>
+            <a href="http://web.gencat.cat/en/menu-ajuda/ajuda/avis_legal/"
+               target="_blank" i18n>
+              Legal notice
+            </a>:
+            <span i18n>
+              In accordance with article 17.1 of the Catalan Law 19/2014, the
+              © Government of Catalonia permits the reuse of content and data
+              provided that the source and the date of updating are cited and
+              that the information is not distorted (article 8 of Catalan Law
+              37/2007) and does not conflict with a specific license.
+            </span>
+          </p>
+        </div>
+        <div class="legal-badges">
+          <a href="https://github.com/projectestac/sinapsi" target="_blank"
+             title="GitHub Repository" i18n-title>
+            <cn-icon value="github"></cn-icon>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Language links -->
+      
+      <div class="footer-locales d-md-none">
+        <h3 class="sr-only" i18n>Other languages</h3>
+        <app-locales></app-locales>
+      </div>
+      
+      <!-- Accessibility links -->
+      
+      <div class="backtotop d-md-none">
+        <a href="#app-container" (click)="scrollTop(); false">
+          <cn-icon value="arrow-circle-o-up"></cn-icon>
+          <span i18n>Back to top</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

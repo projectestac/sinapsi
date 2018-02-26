@@ -1,0 +1,30 @@
+@import "core";
+
+// Base styles
+
+.comments-catalog {
+  position: relative;
+  background: th-gray('50');
+}
+
+.comment-actions {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.results-wrapper {
+  border: 1px solid th-gray('divider');
+}
+
+.comment-wrapper:not(:last-child) {
+  border-bottom: 1px solid th-gray('divider');
+}
+
+.load-more button {
+  border-color: th-gray('400');
+  font-size: .9rem;
+  margin-top: .5rem;
+}
+
+::ng-deep .state-message {
+  border: none !important;
+}

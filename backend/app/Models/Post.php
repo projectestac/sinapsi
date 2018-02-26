@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
+use DB;
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\User;
 use App\Models\Synapse;
+use App\Models\Traits\HasURL;
+use App\Models\Traits\HasTrashed;
 
 
 /**
  * Post model class.
  */
 class Post extends FoundationModel {
-    use SoftDeletes;
+    use SoftDeletes, HasTrashed, HasURL;
     
     /** Attribute definitions */
     protected static $fields = [
@@ -165,7 +168,8 @@ class Post extends FoundationModel {
      * @return belongsToMany        Model relation
      */
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)
+            ->withTrashedIfRole('admin');
     }
 
 
@@ -206,26 +210,21 @@ class Post extends FoundationModel {
 
     /**
      * Restrict the results to those where the post belongs to a given
-     * synapse. A post belongs to a synapse if it matches the synapse
-     * filters or exists on the synapse's post bumps.
+     * synapse. This method applies the synapse filters to the query.
      *
      * @param Synapse $synapse      Synapse object
      */
     public function scopeForSynapse($query, $synapse) {
-        $query->filter(new Request($synapse->filters));
-        
-        $query->orWhereExists(function($query) use ($synapse) {
-            $query->from('post_synapse');
-            $query->where('post_synapse.synapse_id', $synapse->id);
-            $query->whereRaw('`post_synapse`.`post_id` = `posts`.`id`');
-        });
+        if (!empty($synapse->filters)) {
+            $query->filter(new Request($synapse->filters));
+        }
         
         return $query;
     }
 
 
     /**
-     * Extend the post filters by allowing to filter by tags or
+     * Extend the post filters by allowing to filter by synapse, tags or
      * author information.
      */
     public function scopeFilter($query, Request $request) {
@@ -235,7 +234,7 @@ class Post extends FoundationModel {
         
         if ($request->has('synapse_id')) {
             $id = $request->get('synapse_id');
-            $synapse = Synapse::whereID($id)->first();
+            $synapse = Synapse::whereId($id)->first();
             
             if (!is_null($synapse)) {
                 $query->forSynapse($synapse);
@@ -265,4 +264,5 @@ class Post extends FoundationModel {
         
         return $query;
     }
+
 }

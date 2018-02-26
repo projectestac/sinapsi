@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule }  from '@angular/router';
-import { ProjectsComponent } from './projects.component';
-import { ProjectDetailsComponent } from './details';
+import { RouterModule, Routes } from '@angular/router';
+
 import { ProjectsCatalogComponent } from './catalog';
+import { ProjectDetailsComponent } from './details';
+import { ProjectsComponent } from './projects.component';
+import { _ } from 'i18n';
 
 
 /**
@@ -24,7 +26,7 @@ export const ROUTES: Routes = [{
     children: [{
         path: '',
         component: ProjectsCatalogComponent,
-        data: { title: 'Projects' }
+        data: { title: _('Projects') }
     }, {
         path: ':slug',
         component: ProjectDetailsComponent

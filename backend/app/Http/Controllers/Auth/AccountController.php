@@ -27,13 +27,14 @@ class AccountController extends Controller {
             abort(404, 'Not Found');
         }
         
-        $profile = Auth::user()
-            ->makeVisible('email')
-            ->makeHidden('deleted_at')
-            ->cards()->with('author')
+        $id = Auth::user()->id;
+        
+        $profile = User::current()
+            ->with('author')
+            ->cards()
             ->first();
         
-        return $profile->makeVisible('email');
+        return $profile;
     }
     
     
@@ -136,10 +137,7 @@ class AccountController extends Controller {
      */
     private function register($socialUser) {
         $uid = $socialUser->getId();
-        
-        $user = User::withTrashed()
-            ->where('provider_uid', $uid)
-            ->first();
+        $user = User::where('provider_uid', $uid)->first();
         
         if (is_null($user)) {
             $user = User::forceCreate([
@@ -151,12 +149,11 @@ class AccountController extends Controller {
                 'password' => bcrypt(uniqid())
             ]);
         } else {
-            if ($user->trashed()) {
-                $user->restore();
+            if (!is_null($user->disabled_at)) {
+                abort(403, 'Forbidden');
             }
             
             $user->update([
-                'name' => $socialUser->getName(),
                 'avatar_url' => $socialUser->getAvatar(),
                 'provider_token' => $socialUser->token
             ]);

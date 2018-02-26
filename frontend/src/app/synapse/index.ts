@@ -1,1 +1,0 @@
-export { SynapseModule } from './module';

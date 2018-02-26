@@ -1,0 +1,57 @@
+<section *ngIf="synapse" class="posts-browser">
+  <app-card>
+    
+    <!-- Catalog tabs -->
+    
+    <div class="post-browser-tabs">
+      <cn-tabs [value]="section" (valueChange)="requestSection($event)">
+        <cn-tabitem value="everything" class="d-none d-md-block"
+          title="All posts" i18n-title>
+          <span i18n>Everything</span>
+        </cn-tabitem>
+        <cn-tabitem value="featured" class="d-none d-md-block"
+          title="Featured articles" i18n-title>
+          <span i18n>Featured</span>
+        </cn-tabitem>
+        <cn-tabitem value="voted" class="d-none d-md-block"
+          title="Most voted articles" i18n-title>
+          <cn-icon value="heart" class="d-inline d-xl-none"></cn-icon>
+          <span class="d-none d-xl-inline" i18n>Most voted</span>
+        </cn-tabitem>
+        <cn-tabitem value="commented" class="d-none d-md-block"
+          title="Most commented articles" i18n-title>
+          <cn-icon value="comments" class="d-inline d-xl-none"></cn-icon>
+          <span class="d-none d-xl-inline" i18n>Most commented</span>
+        </cn-tabitem>
+        
+        <!-- Area dropdown tab -->
+        
+        <cn-tabbox class="p-1 d-md-none">
+          <app-section-select
+            [value]="section"
+            (valueChange)="requestSection($event)">
+          </app-section-select>
+        </cn-tabbox>
+        
+        <!-- View picker tab -->
+        
+        <cn-tabbox class="p-1 justify-content-end">
+          <app-view-select
+            [value]="view"
+            (valueChange)="requestView($event)">
+          </app-view-select>
+        </cn-tabbox>
+      </cn-tabs>
+    </div>
+    
+    <!-- Posts catalog -->
+    
+    <div class="tabs-outlet">
+      <app-posts-catalog
+        [view]="view"
+        [synapse]="synapse">
+      </app-posts-catalog>
+    </div>
+  
+  </app-card>
+</section>

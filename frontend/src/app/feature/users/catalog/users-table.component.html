@@ -8,7 +8,8 @@
           <th cnSortBy="name" i18n>Name</th>
           <th cnSortBy="school_id" i18n>School</th>
           <th cnSortBy="municipality_id" i18n>Municipality</th>
-          <th title="Actions" class="actions-column" i18n-title>
+          <th *appIfRole="['admin']" i18n>Disabled at</th>
+          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -26,12 +27,30 @@
           <td class="w-25">
             {{ author.municipality?.name }}
           </td>
-          <td class="actions-column">
+          <td *appIfRole="['admin']" class="datetime-cell">
+            <time [attr.datetime]="author.user.disabled_at"
+                  [title]="author.user.disabled_at | moment:'format':'LLLL'">
+              {{ author.user.disabled_at | moment }}
+            </time>
+          </td>
+          <td *appIfRole="['admin']" class="actions-column">
             <button
-              (click)="deleteRow.emit(author)"
-              title="Delete user" i18n-title
+              (click)="editRow.emit(author)"
+              title="Edit user" i18n-title
               class="btn btn-sm btn-secondary">
-              <cn-icon value="remove"></cn-icon>
+              <cn-icon value="edit"></cn-icon>
+            </button>
+            <button *ngIf="!author.user.disabled_at"
+              (click)="deleteRow.emit(author)"
+              title="Disable user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="lock"></cn-icon>
+            </button>
+            <button *ngIf="author.user.disabled_at"
+              (click)="restoreRow.emit(author)"
+              title="Enable user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="undo"></cn-icon>
             </button>
           </td>
         </tr>

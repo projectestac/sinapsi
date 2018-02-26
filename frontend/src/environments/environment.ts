@@ -3,22 +3,21 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+export { I18N_MESSAGES } from 'locales/messages';
+
 export const environment = {
 
   /* Production mode */
   production: false,
-  
+
   /* Application name */
-  title: 'Sinapsi',
-  
+  title: 'Sinapsi - Xtec',
+
   /* Supported application locales */
   locales: [
     { code: 'ca', name: 'català' },
     { code: 'es', name: 'castellano' },
     { code: 'en', name: 'English' }
-  ],
-  
-  /* Maximum number of pages to show */
-  maxPages: 3
+  ]
 
 };

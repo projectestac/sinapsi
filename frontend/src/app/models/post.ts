@@ -1,4 +1,4 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
 import { Author } from '.';
 import { Feed } from '.';
 import { Reaction } from '.';
@@ -8,7 +8,7 @@ import { Tag } from '.';
 /**
  * Post model class.
  */
-export class Post implements CnModel {
+export class Post implements Model {
     id: number;
     comment_count: number;
     content: string;

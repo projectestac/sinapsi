@@ -1,4 +1,5 @@
-<div #blockElement *ngIf="block" role="complementary" class="synapse-block">
+<div #blockElement *ngIf="block" role="complementary"
+     class="synapse-block" [ngClass]="{ 'locked-block' : locked }">
   <ng-container [ngSwitch]="block.options?.type">
     
     <!-- Header block -->
@@ -43,7 +44,10 @@
     
     <div *ngSwitchCase="'twitter'" class="twitter-block">
       <app-card>
-        <div class="block-wrapper">
+        <div *ngIf="locked" class="block-wrapper">
+          <span i18n>Tweets by</span> @{{ block.options?.profile }}
+        </div>
+        <div *ngIf="!locked" class="block-wrapper">
           <a [attr.href]="'https://twitter.com/' + block.options?.profile"
              data-height="500" class="twitter-timeline">
             <span i18n>Tweets by</span> @{{ block.options?.profile }}

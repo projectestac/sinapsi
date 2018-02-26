@@ -1,0 +1,27 @@
+@import "core";
+
+// Base styles
+
+.editable-sidebar app-block {
+  cursor: move;
+}
+
+.block-container {
+  position: relative;
+}
+
+.remove-button {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  z-index: 1000;
+  border-radius: 100%;
+  padding: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.remove-button,
+.remove-button ::ng-deep .fa {
+  font-size: .7rem;
+}

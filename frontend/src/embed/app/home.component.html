@@ -1,0 +1,20 @@
+<article *ngIf="synapse" class="embed-synapse">
+  <div class="embed-header-wrapper">
+    <header>
+      <h1 class="brand-name">
+        <a routerLink="/" target="_blank">
+          <strong>sinapsi</strong>.xtec.cat
+        </a>
+      </h1>
+    </header>
+    <aside *ngIf="hasSearchBox" role="search">
+      <app-search
+        (search)="onSearch($event)"
+        [value]="browser.search">
+      </app-search>
+    </aside>
+  </div>
+  <app-posts-browser #browser
+    [synapse]="synapse">
+  </app-posts-browser>
+</article>

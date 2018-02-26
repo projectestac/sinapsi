@@ -1,0 +1,57 @@
+<div class="posts-catalog" [ngClass]="[view]">
+
+  <!-- Results table -->
+  
+  <ng-container *ngIf="collection?.total > 0">
+    <div [hidden]="state == 'empty' && state == 'error'">
+      <div class="results-header">
+        <div class="results-toolbar">
+          <em i18n><b>{{ collection.total | number }}</b> results found</em>
+          <button type="button" class="btn btn-sm"
+                  title="Share this synapse"
+                  [cnExpandable]="shareExp">
+            <cn-icon value="share-alt"></cn-icon>
+            <span i18n>Share</span>
+          </button>
+        </div>
+        <cn-expandable #shareExp>
+          <aside class="share-wrapper">
+            <app-share-form
+              [synapse]="synapse"
+              [request]="{ section: request.section, view: request.view }">
+            </app-share-form>
+          </aside>
+        </cn-expandable>
+      </div>
+      
+      <div class="posts-table">
+        <ng-container *ngFor="let post of collection; trackBy: trackById">
+          <app-post-details
+            [view]="view"
+            [post]="post"
+            [synapse]="synapse">
+          </app-post-details>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+  
+  <!-- Pagination -->
+  
+  <cn-pagination
+    maxPages="0"
+    [collection]="collection"
+    (pageChange)="page($event)">
+  </cn-pagination>
+  
+  <!-- Status message -->
+  
+  <app-state [state]="state"></app-state>
+  
+  <!-- Progress backdrop -->
+  
+  <div [hidden]="state != 'pending'" class="backdrop">
+    <cn-spinner></cn-spinner>
+  </div>
+  
+</div>

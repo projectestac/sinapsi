@@ -1,0 +1,19 @@
+:host {
+  display: none !important;
+}
+
+.toaster {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+.alert {
+  margin: 1rem auto;
+  max-width: 560px;
+  pointer-events: all;
+}

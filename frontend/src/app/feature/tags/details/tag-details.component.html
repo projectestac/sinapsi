@@ -1,7 +1,10 @@
 <div class="page-navigation">
   <div class="container">
     <cn-breadcrumb></cn-breadcrumb>
-    <app-social *ngIf="tag" [tag]="tag"></app-social>
+    <app-social-links
+      *ngIf="tag && !tag.deleted_at"
+      [tag]="tag">
+    </app-social-links>
   </div>
 </div>
 <article *ngIf="tag" class="page-content">
@@ -19,9 +22,10 @@
       </header>
       
       <aside role="search">
-        <sy-search-form
-          (search)="onSearch($event)">
-        </sy-search-form>
+        <app-search
+          (search)="onSearch($event)"
+          [value]="browser.search">
+        </app-search>
       </aside>
     </div>
   </div>
@@ -32,10 +36,12 @@
     <div class="page-body container">
       <div class="row">
         <div class="col-lg-8">
-          <posts-catalog [filters]="synapse.filters"></posts-catalog>
+          <app-posts-browser #browser
+            [synapse]="synapse">
+          </app-posts-browser>
         </div>
         <div class="col-lg-4">
-          <aside role="complementary">
+          <aside role="complementary" class="synapse-blocks">
             <ng-container *ngFor="let block of blocks">
               <app-block [block]="block"></app-block>
             </ng-container>

@@ -1,28 +1,36 @@
-import { Component, OnInit } from "@angular/core";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { CnSettings } from 'concrete/core';
 import { CnBreadcrumbService } from 'concrete/breadcrumb';
+import { CnToaster } from 'concrete/toaster';
+import { SettingsService, StoreService } from 'app/core';
+import { StoreErrorEvent } from 'app/core';
+import { _ } from 'i18n';
 
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [
-        CnBreadcrumbService,
-        CnSettings
-    ]
+    providers: [ CnBreadcrumbService ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnDestroy, OnInit {
+
+    /** Unsubscribe subject */
+    private unsubscribe = new Subject();
+
 
     /**
      * Component constructor.
      */
     constructor(
         private titleService: Title,
-        private settingsService: CnSettings,
         private breadcrumbService: CnBreadcrumbService,
+        private settings: SettingsService,
+        private store: StoreService,
+        private toaster: CnToaster
     ) {}
 
 
@@ -30,60 +38,41 @@ export class AppComponent implements OnInit {
      * Component initialization method.
      */
     ngOnInit() {
+        // Subscribe to storage events and show any errors
+
+        this.store.events
+           .takeUntil(this.unsubscribe)
+           .subscribe(event => {
+               if (event instanceof StoreErrorEvent) {
+                   if (event.response['status'] !== 404) {
+                       this.toaster.error(_(
+                           'An unexpected error happened, ' +
+                           'please try again later.'
+                       ));
+                   }
+               }
+           });
+
         // Update the page title when the primary route changes
-        
+
         this.breadcrumbService.breadcrumb.subscribe(breadcrumb => {
-            let title: string = this.settingsService.get('title');
-            let sections: string = breadcrumb.map(e => e.title)
-                .reverse().join('. ');
-            
+            const title: string = this.settings.get('title');
+
+            const sections: string = breadcrumb.filter(e => e.title)
+                .map(e => e.title).reverse().join('. ');
+
             this.titleService.setTitle(sections.length ?
                 `${sections} | ${title}` : title);
         });
     }
 
-    
-    /* ----------- */
-    
-    login() {
-        // Show the log-in popup window
-        
-        let host = window.location.host;
-        let popup = this.showPopup('/accounts/register', 'LoginWindow', {
-            width: 500, height: 600
-        });
-        
-        // Poll the window location and closed status
-        
-        let timer = setInterval(() => {
-            try {
-                if (popup.closed || host === popup.location.host) {
-                    console.log("Logged in...");
-                    clearInterval(timer);
-                    popup.close();
-                }
-            } catch (e) {}
-        }, 2000);
+
+    /**
+     * Component destructor.
+     */
+    ngOnDestroy() {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
-    
-    
-    private showPopup(url: string, name: string, params: any) {
-        let options = Object.assign({
-            toolbar: 'no',
-            location: 'no',
-            status: 'no',
-            menubar: 'no',
-            copyhistory: 'no'
-        }, params);
-        
-        if (params['width'] && params['height']) {
-            options['top'] = (screen.height / 2) - (params['height'] / 2);
-            options['left'] = (screen.width / 2) - (params['width'] / 2);
-        }
-        
-        let specs = Object.keys(options)
-            .map((k) => `${k}=${options[k]}`).join(',');
-        
-        return window.open(url, name, specs);
-    }
+
 }

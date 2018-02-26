@@ -8,7 +8,7 @@ CREATE TABLE `post_synapse` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `post_synapse_unique` (`post_id`,`synapse_id`),
+  UNIQUE KEY `post_synapse_unique` (`synapse_id`,`post_id`),
   KEY `post_synapse_post_id_foreign_index` (`post_id`),
   KEY `post_synapse_synapse_id_foreign_index` (`synapse_id`),
   CONSTRAINT `post_synapse_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

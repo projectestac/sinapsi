@@ -1,17 +1,19 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
+import { Author } from '.';
 
 
 /**
  * User model class.
  */
-export class User implements CnModel {
+export class User implements Model {
     id: number;
-    email: string;
     name: string;
     password: string;
     remember_token: string;
+    avatar_url: string;
     role: string;
     created_at: string;
-    deleted_at: string;
+    disabled_at: string;
     updated_at: string;
+    author?: Author;
 }

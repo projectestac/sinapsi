@@ -2,25 +2,27 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutes } from 'app/app.routes';
-import { AppComponent } from 'app/app.component';
+import { DragulaModule } from 'ng2-dragula';
 import { ConcreteModule } from 'concrete';
-import { SharedModule } from 'app/shared';
+
+import { AppComponent } from 'app/app.component';
+import { AppRoutes } from 'app/app.routes';
+import { CoreModule } from 'app/core';
 
 
 @NgModule({
+    declarations: [
+        AppComponent
+    ],
+
     imports: [
         AppRoutes,
         BrowserAnimationsModule,
         BrowserModule,
-        HttpModule,
-        ConcreteModule,
-        SharedModule
-    ],
-
-    declarations: [
-        AppComponent
+        ConcreteModule.forRoot(),
+        CoreModule.forRoot(),
+        DragulaModule,
+        HttpModule
     ],
 
     bootstrap: [

@@ -153,7 +153,7 @@ class ScrapFeed implements ShouldQueue {
      * @param string $url       URL
      * @return boolean          true if valid
      */
-    private function isValidURL(string $url) {
+    private function isValidURL($url) {
         return mb_strlen($url) <= 512 &&
                preg_match('/^https?:\/\//', $url);
     }
@@ -166,7 +166,7 @@ class ScrapFeed implements ShouldQueue {
      * @param string $url       URL
      * @return boolean          true if valid
      */
-    private function isValidImageURL(string $url) {
+    private function isValidImageURL($url) {
         return mb_strlen($url) <= 1024 &&
                preg_match('/^https?:\/\//', $url);
     }
@@ -194,7 +194,7 @@ class ScrapFeed implements ShouldQueue {
      *
      * @return string               Substring
      */
-    private function truncate(string $string, int $length) {
+    private function truncate($string, $length) {
         if (mb_strlen($string) <= $length)
             return $string;
         
@@ -208,7 +208,7 @@ class ScrapFeed implements ShouldQueue {
         $words = $matches[0];
         $strlen = mb_strlen(join(' ', $words));
         
-        while($strlen > $length - 1 && count($words)) {
+        while ($strlen > $length - 1 && count($words)) {
             $m = array_pop($words);
             $strlen -= (1 + mb_strlen($m));
         }
@@ -398,7 +398,9 @@ class ScrapFeed implements ShouldQueue {
                         return $url;
                 }
             }
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            // pass
+        }
         
         return null;
     }
@@ -442,9 +444,12 @@ class ScrapFeed implements ShouldQueue {
         try {
             $gmdate = $item->get_gmdate();
             
-            if (empty($gmdate) === false)
+            if (empty($gmdate) === false) {
                 $date = Carbon::parse($gmdate);
-        } catch (\Exception $e) {}
+            }
+        } catch (\Exception $e) {
+            // pass
+        }
         
         if ($date > $this->scrapDate)
             $date = $this->scrapDate;

@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use App\User;
 use App\Models\Post;
 use App\Models\Pivots\PostUser;
 
@@ -16,6 +17,25 @@ use App\Models\Pivots\PostUser;
  * and shows wether the post was commented, liked or favourited.
  */
 class ReactionController extends Controller {
+    
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id           Primary key value
+     * @return Response         Response object
+     */
+    public function show($id) {
+        $resource = Auth::user()
+            ->reactions()
+            ->wherePostId($id)
+            ->first();
+        
+        if (is_null($resource))
+            abort(404, 'Not Found');
+        
+        return $resource;
+    }
     
     
     /**

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Seidor\Foundation\FoundationModel;
 use App\User;
+use Seidor\Foundation\FoundationModel;
 
 
 /**
@@ -99,7 +99,8 @@ class Author extends FoundationModel {
      * @return hasMany              Model relation
      */
     public function posts() {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)
+            ->withTrashedIfRole('admin');
     }
 
 

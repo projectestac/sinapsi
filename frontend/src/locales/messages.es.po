@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: Joan Sala Soler <jsala236@xtec.cat>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: src/app/feature/help/help.routes.ts:35
+msgid "About"
+msgstr "Acerca de"
+
+#: src/app/feature/help/help.routes.ts:39
+msgid "Advanced search"
+msgstr "Búsqueda avanzada"
+
+#: src/app/feature/authors/authors.routes.ts:25
+msgid "Author editor"
+msgstr "Edición de editores"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:26
+#: src/app/feature/catalogs/catalogs.messages.ts:45
+#: src/app/feature/comments/comments.messages.ts:19
+#: src/app/feature/projects/projects.messages.ts:19
+#: src/app/feature/schools/schools.messages.ts:19
+#: src/app/feature/users/users.messages.ts:19
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/app/app.routes.ts:30
+msgid "Catalogs"
+msgstr "Catálogos"
+
+#: src/app/feature/projects/projects.messages.ts:20
+#: src/app/feature/schools/schools.messages.ts:20
+msgid "Delete"
+msgstr "Suprimir"
+
+#: src/app/feature/comments/comments.messages.ts:20
+msgid "Delete comment"
+msgstr "Suprime el comentario"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:27
+msgid "Delete synapse"
+msgstr "Suprime la sinapsi"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:46
+msgid "Delete tag"
+msgstr "Suprime la etiqueta"
+
+#: src/app/feature/users/users.messages.ts:20
+msgid "Disable user"
+msgstr "Deshabilitar el usuario"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:31
+#: src/app/feature/catalogs/catalogs.messages.ts:50
+#: src/app/feature/comments/comments.messages.ts:24
+#: src/app/feature/projects/projects.messages.ts:24
+#: src/app/feature/schools/schools.messages.ts:24
+msgid "Do you want to delete «<strong>{name}</strong>»?"
+msgstr "¿Seguro que quieres suprimir  «<strong>{name}</strong>»?"
+
+#: src/app/feature/users/users.messages.ts:24
+msgid "Do you want to disable the user «<strong>{name}</strong>»?"
+msgstr "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?"
+
+#: src/app/app.routes.ts:54 src/app/feature/users/users.routes.ts:28
+msgid "Educators"
+msgstr "Docentes"
+
+#: src/app/app.routes.ts:34
+msgid "Help"
+msgstr "Ayuda"
+
+#: src/app/feature/posts/posts.messages.ts:10
+msgid "Please, log in to like or favourite posts."
+msgstr "Por favor, entre para marcar los artículos como favoritos."
+
+#: src/app/app.routes.ts:38 src/app/feature/projects/projects.routes.ts:29
+msgid "Projects"
+msgstr "Proyectos"
+
+#: src/app/app.routes.ts:42 src/app/feature/schools/schools.routes.ts:29
+msgid "Schools"
+msgstr "Escuelas"
+
+#: src/app/shared/social/social.providers.ts:31
+msgid "Share by Email"
+msgstr "Compartir por correo electrónico"
+
+#: src/app/shared/social/social.providers.ts:25
+msgid "Share on Facebook"
+msgstr "Compartir en Facebook"
+
+#: src/app/shared/social/social.providers.ts:19
+msgid "Share on Twitter"
+msgstr "Compartir en Twitter"
+
+#: src/app/feature/synapses/synapses.routes.ts:29
+msgid "Synapse editor"
+msgstr "Edición de sinapsis"
+
+#: src/app/app.routes.ts:46 src/app/feature/catalogs/catalogs.routes.ts:31
+msgid "Synapses"
+msgstr "Sinapsis"
+
+#: src/app/feature/help/help.routes.ts:31
+msgid "Table of contents"
+msgstr "Tabla de contenidos"
+
+#: src/app/app.routes.ts:50 src/app/feature/catalogs/catalogs.routes.ts:35
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: src/app/feature/catalogs/catalogs.routes.ts:39
+msgid "Taxonomies"
+msgstr "Taxonomías"
+
+#: src/app/feature/comments/comments.messages.ts:12
+msgid "The comment «{name}» has been deleted."
+msgstr "El comentario «{name}» ha sido eliminado."
+
+#: src/app/feature/projects/projects.messages.ts:12
+msgid "The project «<strong>{name}</strong>» has been deleted."
+msgstr "El proyecto «<strong>{name}</strong>» ha sido eliminado."
+
+#: src/app/feature/schools/schools.messages.ts:12
+msgid "The school «<strong>{name}</strong>» has been deleted."
+msgstr "La escuela «<strong>{name}</strong>» ha sido eliminada."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:12
+msgid "The synapse «<strong>{name}</strong>» has been deleted."
+msgstr "La sinapsi «<strong>{name}</strong>» ha sido eliminada."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:19
+msgid "The tag «<strong>{name}</strong>» has been deleted."
+msgstr "La etiqueta «<strong>{name}</strong>» ha sido eliminada."
+
+#: src/app/feature/users/users.messages.ts:12
+msgid "The user «<strong>{name}</strong>» has been successfully disabled."
+msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:37
+#: src/app/feature/comments/comments.messages.ts:30
+#: src/app/feature/projects/projects.messages.ts:30
+#: src/app/feature/schools/schools.messages.ts:30
+msgid "This action cannot be undone."
+msgstr "Esta acción no puede deshacerse."
+
+#: src/app/shared/social/social.providers.ts:37
+msgid "Web syndication"
+msgstr "Sindicación web"
+
+#: src/app/core/services/session.service.ts:141
+msgid "Your account has been temporarily disabled."
+msgstr "Tu cuenta se inhabilitó temporalmente."

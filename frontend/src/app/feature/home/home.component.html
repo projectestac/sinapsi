@@ -21,9 +21,10 @@
       <!-- Synapse search form -->
       
       <aside role="search">
-        <sy-search-form
-          (search)="onSearch($event)">
-        </sy-search-form>
+        <app-search
+          (search)="onSearch($event)"
+          [value]="browser.search">
+        </app-search>
       </aside>
       
     </div>
@@ -32,23 +33,19 @@
   <!-- Contents -->
   
   <section class="page-section">
-    <div class="container">
+    <div class="page-body container">
       <div class="row">
-        
-        <!-- Synapse posts -->
-        
         <div class="col-lg-8">
-          <posts-catalog></posts-catalog>
+          <app-posts-browser #browser
+            [synapse]="synapse">
+          </app-posts-browser>
         </div>
-        
-        <!-- Sidebar -->
-        
         <div class="col-lg-4">
-          <aside role="complementary">
-            <!--<app-block></app-block>-->
+          <aside role="complementary" class="synapse-blocks">
+            <div class="mock-up">@SynapseManager</div>
+            <app-sidebar [blocks]="blocks"></app-sidebar>
           </aside>
         </div>
-        
       </div>
     </div>
   </section>

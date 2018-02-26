@@ -1,38 +1,39 @@
 import { Component, Input } from '@angular/core';
-import { CnQuery, CnQuerier } from "concrete/core";
-import { CatalogComponent } from 'app/shared';
+import { RequestManager, StoreQuery } from 'app/core';
+import { CatalogComponent } from 'app/core';
 import { Synapse } from 'app/models';
 
 
 @Component({
-    selector: 'taxonomies-catalog',
+    selector: 'app-taxonomies-catalog',
     templateUrl: 'taxonomies-catalog.component.html',
     styleUrls: [ 'taxonomies-catalog.component.scss' ],
-    providers: [ CnQuerier ]
+    providers: [ RequestManager ]
 })
 export class TaxonomiesCatalogComponent extends CatalogComponent {
-    
-    /** Catalog REST API path */
-    @Input() requestPath: string = 'api/synapses/nodes';
-    
-    /** Request query mandatory values */
-    @Input() requestBindings: CnQuery = {
-        type: 'synapses',
+
+    /** This catalog storage path */
+    protected path = '/api/synapses/nodes';
+
+    /** Query bindings for requests */
+    @Input() bindings: StoreQuery = {
+        type: ['synapses', 'tags'],
         sort: ['name'],
         with: ['childs']
     };
-    
-    
+
+
     /**
      * Expand a synapse node with its children.
      *
      * @param node      Synapse model
      */
-    expand(node: Synapse) {
-        if (node.child_count < 1 || node.childs)
+    public expand(node: Synapse) {
+        if (node.child_count < 1 || node.childs) {
             return;
-        
-        this.store.query(`${this.requestPath}/${node.id}`, {
+        }
+
+        this.store.query(`${this.path}/${node.id}`, {
             type: 'synapses', sort: ['name']
         }).subscribe((nodes) => {
             setTimeout(() => {

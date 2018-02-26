@@ -24,11 +24,7 @@ class TagController extends Controller {
     public function index(Request $request) {
         $query = Tag::cards();
         
-        if (Auth::check() === true) {
-            if (Auth::user()->hasRole('admin'))
-                $query->withTrashed();
-        }
-        
+        $query->withTrashedIfRole('admin');
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
@@ -46,11 +42,7 @@ class TagController extends Controller {
     public function show($id) {
         $query = Tag::cards($id);
         
-        if (Auth::check() === true) {
-            if (Auth::user()->hasRole('admin'))
-                $query->withTrashed();
-        }
-        
+        $query->withTrashedIfRole('admin');
         $resource = $query->first();
         
         if (is_null($resource))
@@ -68,11 +60,13 @@ class TagController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Tag::whereID($id)->delete();
+            $resource = Tag::whereId($id)->first();
             
-            if ($result == false) {
+            if (is_null($resource)) {
                 abort(404, 'Not Found');
             }
+            
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
@@ -89,11 +83,15 @@ class TagController extends Controller {
      */
     public function restore($id) {
         try {
-            $result = Tag::whereID($id)->restore();
+            $resource = Tag::whereId($id)
+                ->withTrashed()
+                ->first();
             
-            if ($result == false) {
+            if (is_null($resource)) {
                 abort(404, 'Not Found');
             }
+            
+            $resource->restore();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

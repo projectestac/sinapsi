@@ -1,0 +1,18 @@
+@import "core";
+
+// Base styles
+
+:host ::ng-deep .nav-item {
+  flex-grow: 0;
+}
+
+:host ::ng-deep cn-tabitem,
+:host ::ng-deep cn-tabbox {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep cn-tabitem:last-child,
+:host ::ng-deep cn-tabbox:last-child {
+  flex-grow: 1;
+}

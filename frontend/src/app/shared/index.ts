@@ -1,2 +1,3 @@
-export { SharedModule } from './module';
-export { CatalogComponent, OnRequestChange } from './catalog/catalog.component';
+export * from './shared.module';
+export * from './role.directive';
+export * from './moment.pipe';

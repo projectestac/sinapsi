@@ -19,7 +19,7 @@ class Authenticate {
         if (Auth::guard($guard)->guest()) {
             abort(401, 'Unauthorized');
         }
-
+        
         return $next($request);
     }
 }

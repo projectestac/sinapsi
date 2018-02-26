@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule }  from '@angular/router';
-import { CatalogsComponent } from './catalogs.component';
-import { SynapsesCatalogComponent } from './synapses/synapses-catalog.component';
-import { TagsCatalogComponent } from './tags/tags-catalog.component';
-import { TaxonomiesCatalogComponent } from './taxonomies/taxonomies-catalog.component';
+import { RouterModule, Routes } from '@angular/router';
+
+import { CatalogBrowserComponent } from './catalog-browser.component';
+import { SynapsesCatalogComponent } from './synapses';
+import { TagsCatalogComponent } from './tags';
+import { TaxonomiesCatalogComponent } from './taxonomies';
+import { _ } from 'i18n';
 
 
 /**
  * Routing components
  */
 export const ROUTING_COMPONENTS = [
-    CatalogsComponent,
+    CatalogBrowserComponent,
     SynapsesCatalogComponent,
     TagsCatalogComponent,
     TaxonomiesCatalogComponent
@@ -22,19 +24,19 @@ export const ROUTING_COMPONENTS = [
  */
 export const ROUTES: Routes = [{
     path: '',
-    component: CatalogsComponent,
+    component: CatalogBrowserComponent,
     children: [{
         path: 'synapses',
         component: SynapsesCatalogComponent,
-        data: { title: 'Synapses' }
+        data: { title: _('Synapses') }
     }, {
         path: 'tags',
         component: TagsCatalogComponent,
-        data: { title: 'Tags' }
+        data: { title: _('Tags') }
     }, {
         path: 'taxonomies',
         component: TaxonomiesCatalogComponent,
-        data: { title: 'Taxonomies' }
+        data: { title: _('Taxonomies') }
     }, {
         path: '',
         redirectTo: 'taxonomies'

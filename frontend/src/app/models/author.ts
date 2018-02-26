@@ -1,4 +1,4 @@
-import { CnModel } from 'concrete/core';
+import { Model } from 'app/core';
 import { Municipality } from '.';
 import { Project } from '.';
 import { School } from '.';
@@ -10,7 +10,7 @@ import { User } from '.';
 /**
  * Author model class.
  */
-export class Author implements CnModel {
+export class Author implements Model {
     id: number;
     name: string;
     reputation: boolean;

@@ -8,7 +8,7 @@
           <th cnSortBy="name" i18n>Name</th>
           <th cnSortBy="school_id" i18n>School</th>
           <th cnSortBy="municipality_id" i18n>Municipality</th>
-          <th title="Actions" class="actions-column" i18n-title>
+          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -26,7 +26,7 @@
           <td class="w-25">
             {{ author.municipality?.name }}
           </td>
-          <td class="actions-column">
+          <td *appIfRole="['admin']" class="actions-column">
             <button
               (click)="editRow.emit(author)"
               title="Edit project" i18n-title

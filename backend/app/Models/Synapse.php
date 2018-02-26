@@ -5,17 +5,22 @@ namespace App\Models;
 use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\User;
 use App\Models\Pivots\SynapseUser;
-use App\Http\Traits\Sluggable;
+use App\Models\Traits\HasSlug;
+use App\Models\Traits\HasTrashed;
 
 
 /**
  * Synapse model class.
  */
 class Synapse extends FoundationModel {
-    use Sluggable;
+    use HasSlug, HasTrashed, SoftDeletes;
+    
+    /** General synapse slug */
+    const GENERAL_SLUG = 'general';
     
     
     /** Attribute definitions */
@@ -26,10 +31,11 @@ class Synapse extends FoundationModel {
         'description' =>        'string|max:255',
         'filters' =>            'json',
         'name' =>               'string|max:150',
-        'slug' =>               'string|slug|max:255',
+        'slug' =>               'string|slug|max:254',
         'type' =>               'string|in:authors,tags,synapses',
         'synapse_id' =>         'integer|min:1|nullable',
         'created_at' =>         'isodate',
+        'deleted_at' =>         'isodate',
         'updated_at' =>         'isodate',
     ];
     
@@ -49,6 +55,7 @@ class Synapse extends FoundationModel {
         'blocks' =>             'array',
         'filters' =>            'json',
         'created_at' =>         'datetime',
+        'deleted_at' =>         'datetime',
         'updated_at' =>         'datetime',
     ];
     
@@ -69,6 +76,7 @@ class Synapse extends FoundationModel {
     protected $guarded = [
         'id',
         'created_at',
+        'deleted_at',
         'updated_at',
     ];
     
@@ -108,7 +116,9 @@ class Synapse extends FoundationModel {
      * @return belongsToMany        Model relation
      */
     public function posts() {
-        return $this->belongsToMany(Post::class)->withTimestamps();
+        return $this->belongsToMany(Post::class)
+            ->withTrashedIfRole('admin')
+            ->withTimestamps();
     }
 
 
@@ -128,7 +138,8 @@ class Synapse extends FoundationModel {
      * @return hasOne               Model relation
      */
     public function tag() {
-        return $this->hasOne(Tag::class);
+        return $this->hasOne(Tag::class)
+            ->withTrashedIfRole('admin');
     }
 
 

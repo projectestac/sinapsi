@@ -1,0 +1,32 @@
+@import "core";
+
+// Overwrite the default Bootstrap grid break-points
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 380px,
+  md: 500px,
+  lg: 650px,
+  xl: 800px
+);
+
+:host ::ng-deep {
+  @import "~bootstrap/scss/utilities/display";
+}
+
+
+// Base styles
+
+#app-container {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+// Menu component
+
+::ng-deep .dropdown-menu > * {
+  font-size: 1rem;
+}

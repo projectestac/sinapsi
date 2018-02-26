@@ -1,0 +1,68 @@
+<div class="page-navigation">
+  <div class="container">
+    <cn-breadcrumb></cn-breadcrumb>
+  </div>
+</div>
+<article class="page-content">
+  
+  <!-- Header -->
+  
+  <div class="page-header">
+    <div class="container">
+      <header>
+        <h1 i18n>Synapses</h1>
+      </header>
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section class="page-section">
+    <div class="page-body container">
+      <app-card>
+        
+        <!-- Actions -->
+        
+        <div class="page-form form-group hidden-print">
+          <div class="page-buttons">
+            <button *appIfRole="['admin']"
+              (click)="create()"
+              title="Create a new synapse" i18n-title
+              class="btn btn-secondary">
+              <cn-icon value="plus"></cn-icon>
+              <span class="d-none d-sm-inline-block" i18n>
+                New synapse
+              </span>
+            </button>
+          </div>
+          <cn-searchbox
+            (search)="search($event.value)"
+            [value]="keywords"
+            icon="search"
+            placeholder="Search by keyword"
+            i18n-placeholder>
+          </cn-searchbox>
+        </div>
+        
+        <!-- Results -->
+        
+        <cn-tabs [value]="childPath" (valueChange)="pick($event)">
+          <cn-tabitem value="taxonomies">
+            <span i18n>Taxonomies</span>
+          </cn-tabitem>
+          <cn-tabitem value="synapses">
+            <span i18n>Synapses</span>
+          </cn-tabitem>
+          <cn-tabitem value="tags">
+            <span i18n>Tags</span>
+          </cn-tabitem>
+        </cn-tabs>
+        
+        <div class="tabs-outlet">
+          <router-outlet></router-outlet>
+        </div>
+      
+      </app-card>
+    </div>
+  </section>
+</article>

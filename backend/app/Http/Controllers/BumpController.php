@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -87,7 +88,7 @@ class BumpController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = PostSynapse::validateFields($request);
-        $resource = PostSynapse::whereID($id)->forEditor()->first();
+        $resource = PostSynapse::whereId($id)->forEditor()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -113,7 +114,7 @@ class BumpController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = PostSynapse::whereID($id)->forEditor()->delete();
+            $result = PostSynapse::whereId($id)->forEditor()->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

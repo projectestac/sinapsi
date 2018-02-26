@@ -1,0 +1,20 @@
+<div role="group" aria-label="View options" i18n-aria-label class="btn-group">
+  <button type="button" title="Optimal view" i18n-title
+          class="btn btn-sm btn-outline-secondary"
+          (click)="select('optimal')"
+          [ngClass]="{ active: (value === 'optimal') }">
+    <cn-icon value="id-card-o"></cn-icon>
+  </button>
+  <button type="button" title="List view" i18n-title
+          class="btn btn-sm btn-outline-secondary"
+          (click)="select('list')"
+          [ngClass]="{ active: (value === 'list') }">
+    <cn-icon value="list"></cn-icon>
+  </button>
+  <button type="button" title="Gallery view" i18n-title
+          class="btn btn-sm btn-outline-secondary"
+          (click)="select('gallery')"
+          [ngClass]="{ active: (value === 'gallery') }">
+    <cn-icon value="image"></cn-icon>
+  </button>
+</div>

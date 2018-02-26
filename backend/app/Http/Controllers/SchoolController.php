@@ -55,7 +55,7 @@ class SchoolController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = School::validateFields($request);
-        $resource = School::whereID($id)->first();
+        $resource = School::whereId($id)->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');

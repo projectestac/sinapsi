@@ -1,0 +1,45 @@
+Installation of Sinapsi
+
+  Copyright (C) 2018 Department of Education, Government of Catalonia
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+======================================================================
+
+  Dependencies
+  ------------
+
+  This project was built using the frameworks Laravel 5.4 for the
+  backend and Angular 5.2 on the frontend.
+
+  Server requeriments:
+
+  * Apache >= 2.4
+  * MySQL >= 5.6
+  * PHP >= 5.6.4
+  * Mbstring PHP Extension
+  * PDO PHP Extension
+  * Tokenizer PHP Extension
+  * XML PHP Extension
+
+  Build requeriments:
+
+  * Make >= 4.1
+  * Composer >= 1.4
+  * Node.js >= 7.10
+
+  Compile the software
+  --------------------
+
+  $ make
+
+  Install the software
+  --------------------
+
+  $ sudo make install
+
+  Make parameters
+  ---------------
+

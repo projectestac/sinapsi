@@ -2,35 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="319e0745bcbc132451569294fa2fa21bf10f555a" datatype="html">
-        <source>Toggle navigation</source>
-        <target>Commuta la navegació</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/header.component.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
-        <source>Home</source>
-        <target>Inici</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/header.component.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4c033818f083eb8627c1f85c0ca62c495d0cdacd" datatype="html">
-        <source>Advices</source>
-        <target>Avisos</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/header.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="815cad6a13eee2edfed8a43dc3a64d88b1b2db27" datatype="html">
-        <source>Home</source>
+        <source>
+        Home
+      </source>
         <target>Inici</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -38,16 +16,1224 @@
         <source>Back: Home</source>
         <target>Torna a: Inici</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d4e6739602cf8195d1719aaa4071c02277fee47d" datatype="html">
-        <source>Back: <x id="INTERPOLATION"/></source>
-        <target>Torna a: <x id="INTERPOLATION"/></target>
+      <trans-unit id="58bdaa60999b1798588ae6ea863d7b851660344f" datatype="html">
+        <source>Back: <x id="INTERPOLATION" equiv-text="{{ crumb.title }}"/></source>
+        <target>Torna a: <x id="INTERPOLATION" equiv-text="{{ crumb.title }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9a1004030b332d67c34af5c6fd8321b7a1b6155e" datatype="html">
+        <source>Toggle</source>
+        <target>Commuta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/details/details.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="56a634c9d07b8d44ea81c992b614b4a3f9fdc272" datatype="html">
+        <source>
+      Showing page <x id="INTERPOLATION" equiv-text="{{ collection.current_page | number }}"/> of
+      <x id="INTERPOLATION_1" equiv-text="{{ collection.last_page | number }}"/> pages
+    </source>
+        <target>Pàgina <x id="INTERPOLATION" equiv-text="{{ collection.current_page | number }}"/> de <x id="INTERPOLATION_1" equiv-text="{{ collection.last_page | number }}"/> pàgines </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="af848956f6d48636a11a1194f1a668943332fe8e" datatype="html">
+        <source>First page</source>
+        <target>Primera pàgina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb4da0c71fba282b1b0e54169c81fb9b804922db" datatype="html">
+        <source>previous</source>
+        <target>anterior</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="575e782fd27f2ee70a034a775efe9ad162472250" datatype="html">
+        <source>Previous page</source>
+        <target>Pàgina anterior</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8380d9eff8613c0bc58edc7cebc2aa72e17b11e3" datatype="html">
+        <source>Page</source>
+        <target>Pàgina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="612af120c77b52601251e6833cb9e3cfb55fe0fe" datatype="html">
+        <source>next</source>
+        <target>següent</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ce3cefb1cd0099aa5003dda16ec9eb21fd8ba789" datatype="html">
+        <source>Next page</source>
+        <target>Pàgina següent</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65f86c516832ca3fd99a1d353f0c166344886b1b" datatype="html">
+        <source>Last page</source>
+        <target>Darrera pàgina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="06d89d48cfdcd846399ef6f6b86d31d8d98aab0e" datatype="html">
+        <source>Type to search</source>
+        <target>Escriviu per cercar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+        <source>Search</source>
+        <target>Cerca</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
           <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <target>S'està carregant…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/spinner/spinner.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0105368e152d32a77df3d03bbc1b6b57f498d1e8" datatype="html">
+        <source>Footer Navigation</source>
+        <target>Navegació de peu de pàgina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6990ad8d6182662e864495ac31c3758cda1c7a28" datatype="html">
+        <source>Portals</source>
+        <target>Portals</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3149ecf8456e2f902cc7dea06856f41ca1b706c8" datatype="html">
+        <source>Department of Education</source>
+        <target>Departament d'educació</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ee7703ff46ebaab1a1a2b222cbde17a36b253a92" datatype="html">
+        <source>Web services and software</source>
+        <target>Serveis web i programari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="85b79c9064aed1ead31ace985f31aa1363f6bdaf" datatype="html">
+        <source>Help</source>
+        <target>Ajuda</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="09599ba088f9bd29b8dbf8e1a61166cba8af948d" datatype="html">
+        <source>Table of contents</source>
+        <target>Taula de continguts</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7ef02d70081b98c0d05d346759d345b604705ba3" datatype="html">
+        <source>About Sinapsi</source>
+        <target>Sobre Sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-about.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d91251b1e8eac61266f09f6b99427b7abc20fafa" datatype="html">
+        <source>Advanced search</source>
+        <target>Cerca avançada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4442094105905548077185e4146a3afdcf38e077" datatype="html">
+        <source>
+              Legal notice
+            </source>
+        <target>Avís legal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ceb7d11a9303b240a5055389110ed60559b21480" datatype="html">
+        <source>
+              In accordance with article 17.1 of the Catalan Law 19/2014, the
+              © Government of Catalonia permits the reuse of content and data
+              provided that the source and the date of updating are cited and
+              that the information is not distorted (article 8 of Catalan Law
+              37/2007) and does not conflict with a specific license.
+            </source>
+        <target>D'acord amb l'article 17.1 de la Llei 19/2014, la ©Generalitat de Catalunya permet la reutilització dels continguts i de les dades sempre que se'n citi la font i la data d'actualització i que no es desnaturalitzi la informació (article 8 de la Llei 37/2007) i també que no es contradigui amb una llicència específica.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7a2c26639a15ef18286dd784e55c9fa696fc334e" datatype="html">
+        <source>GitHub Repository</source>
+        <target>Repositori de GitHub</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="83f454fd4f97539e378ecd19461a3995d7e51574" datatype="html">
+        <source>Other languages</source>
+        <target>Altres llengües</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/locales/locales.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0f03eb1f27fee61229b02cb74d685bb4ad5add94" datatype="html">
+        <source>Back to top</source>
+        <target>Torna a dalt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
+        <source>Close</source>
+        <target>Tanca</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
+        <source>Cancel</source>
+        <target>Cancel·la</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="be5c752b58791dd799bc5d5482d4351e06f18673" datatype="html">
+        <source>Ok</source>
+        <target>D'acord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="319e0745bcbc132451569294fa2fa21bf10f555a" datatype="html">
+        <source>Toggle navigation</source>
+        <target>Commuta la navegació</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <target>Inici</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e6cf887a1289952c640d2b4288d4f8a1c9e619ef" datatype="html">
+        <source>Synapses</source>
+        <target>Sinapsis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0ac48d1bc40e665593084fc668d041a9bb663c6e" datatype="html">
+        <source>Schools</source>
+        <target>Centres</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2a7deb7096cada2c3177157652680fe7e6de0ed" datatype="html">
+        <source>Projects</source>
+        <target>Projectes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="78ed60a534302cde8c0dfbf6da13b4d2a0eb5cca" datatype="html">
+        <source>Educators</source>
+        <target>Docents</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html">
+        <source>Log in</source>
+        <target>Entrada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc8996094bd4aefc16bcd15f44e717d0ad7eb3a1" datatype="html">
+        <source>
+                      User profile
+                    </source>
+        <target>Perfil d'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="75ba5cfc5098caa925e5200c11512fe3101b0a40" datatype="html">
+        <source>
+                      Settings
+                    </source>
+        <target>Configuració</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20d5952d06d2d530e391f917c37a1b8257292c2d" datatype="html">
+        <source>
+                      Log out
+                    </source>
+        <target>Tanca la sessió</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f433548bcecc092826f2b19dbf31b2e67a0be468" datatype="html">
+        <source>
+                User profile
+              </source>
+        <target>Perfil d'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e761ecc698c385562f9eaa5a9b8082fd97bee81f" datatype="html">
+        <source>
+                Settings
+              </source>
+        <target>Configuració</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba7378cdaaa60b4fee17a551b232ad3512dac17d" datatype="html">
+        <source>
+                Log out
+              </source>
+        <target>Tanca la sessió</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c0f907f0f4cff86387f921dc1987a819c7d9417b" datatype="html">
+        <source>
+          <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> collects the news published by the Catalan
+          educational centers on their websites. Makes visible most of the work
+          developed by the centers and seeks to promote synergies between them.
+        </source>
+        <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> recull les notícies que publiquen els centres educatius catalans a les seves pàgines web. Fa visible la major part del treball desenvolupat pels centres i busca promoure sinergies entre ells.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="be97b2ab9effe4b2520406dd963bcf331f5b8fa7" datatype="html">
+        <source>Tweets by</source>
+        <target>Tweets de</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92dfaee9783fca6341e7d8cae627399ae02303af" datatype="html">
+        <source>Delete this block</source>
+        <target>Suprimeix aquest bloc</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6fcbf761098624382d8edcae063b3f0207059601" datatype="html">
+        <source>Drag to reorder</source>
+        <target>Arrossega per a reordenar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="71740c443026ae481ac1e8765d0ef09a39e1683b" datatype="html">
+        <source>Filter by one or more keywords</source>
+        <target>Filtra per una o més paraules clau</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5d15bba248b53db1d552c52b682aa173fe915387" datatype="html">
+        <source>Embed in web page</source>
+        <target>Incrustació en una pàgina web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3c3875c365ff985fbf1be5264ab9cf3138b54abf" datatype="html">
+        <source>Include a search form</source>
+        <target>Inclou un formulari de cerca</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f795804dd769efdc4cc84a34a93a8fef70e4b4af" datatype="html">
+        <source>Height in pixels:</source>
+        <target>Alçada en píxels:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="078af007914dca2bd3c45e2ca1361773552e395c" datatype="html">
+        <source>Embed code</source>
+        <target>Codi d'incrustació</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a09dd0141e4aef6eb52c6c3ea41c519e8661a50f" datatype="html">
+        <source>
+        Copy this code to embed the current synapse in your web page
+      </source>
+        <target>Copieu aquest codi per inserir la sinapsi actual a la vostra pàgina web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f871b41bfbdb193507cce2cd848c2d02bde77a03" datatype="html">
+        <source>No results found</source>
+        <target>Sense resultats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bf6a2d07c40c83892e7212a5e4d93fae19ef1432" datatype="html">
+        <source>We cannot find any item matching your search.</source>
+        <target>No s'ha trobat cap element que coincideixi amb la vostra cerca.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dfe6fd08edf2e1208117c99d0607f276d6eb82e0" datatype="html">
+        <source>
+      Clear search
+    </source>
+        <target>Esborra la cerca</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0adf1bca29ccebf68557971297659f1e5c705980" datatype="html">
+        <source>Unexpected error</source>
+        <target>Error inesperat</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="97e6199eedfbb4b9e439acd45db8906c99bd10f3" datatype="html">
+        <source>Could not fetch information from server.</source>
+        <target>No s'ha pogut obtenir la informació del servidor.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f7e53f755560b3d5abe7c5b640f43c300da52d7e" datatype="html">
+        <source>
+      Reload this page
+    </source>
+        <target>Torna a carregar aquesta pàgina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a5b387f5a15b95e339df10fc23526c659a2b6c6f" datatype="html">
+        <source>deleted</source>
+        <target>suprimit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f884f5cd998c15913583d78ec85c4e75414bc28a" datatype="html">
+        <source>This post was deleted</source>
+        <target>Aquest article s'ha suprimit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="681a802d32ee0d866f50fc1f527404b3a6eb0765" datatype="html">
+        <source>Permalink</source>
+        <target>Enllaç permanent</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="420273ffde941a44eea2dfb712deb88479714829" datatype="html">
+        <source>Post image</source>
+        <target>Imatge de l'article</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3230f6602c82e020cb18cce2b32952d75869a5d5" datatype="html">
+        <source>Like</source>
+        <target>M'agrada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="11a0771f88158a540a54e0e4ec5d25733d65fc0e" datatype="html">
+        <source>Favorite</source>
+        <target>Afegeix als favorits</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0bd8b27f60a1f098a53e06328426d818e3508ff9" datatype="html">
+        <source>Share</source>
+        <target>Comparteix</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adae3ca9a22dbe017908d1c47e9c1297604c326a" datatype="html">
+        <source>Restore post</source>
+        <target>Restaura l'article</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="59561deb7ddc7509cfd36996c15b67fda9bfe30c" datatype="html">
+        <source>Remove post</source>
+        <target>Suprimeix l'article</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4206a05d6b2a46cecb7e278847e0250d562120a1" datatype="html">
+        <source>comments</source>
+        <target>comentaris</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a5a8099429d20eede216ee4a0c6a56eebf22ee31" datatype="html">
+        <source>
+            Comment
+          </source>
+        <target>Comentari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a5d7ee2acbfa9c91ab7f41d26bda9ff0cafe42f" datatype="html">
+        <source>Comment</source>
+        <target>Comentari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faa270eed7e5c6e0f37827211ef6c4808ed0032f" datatype="html">
+        <source>Everything</source>
+        <target>Tots</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="558eba3b6a445daf167791ee87f9553e5a9b501f" datatype="html">
+        <source>All posts</source>
+        <target>Tots els articles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d06e27f7453fcf29134f9e61533ea4eb4b890f5f" datatype="html">
+        <source>Featured</source>
+        <target>Destacats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f5b08dc56969e850d5d288eafd75c44130108f4f" datatype="html">
+        <source>Featured articles</source>
+        <target>Articles destacats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6a89e125cc1ed67e3033fd3de0662b7f302cb5eb" datatype="html">
+        <source>Most voted</source>
+        <target>Més votats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="84195371ba2aeec6fd81bce1113aca31ca3f1e55" datatype="html">
+        <source>Most voted articles</source>
+        <target>Articles més votats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="830ed559e614b58f70d7005c4783749b9d3dc22c" datatype="html">
+        <source>Most commented</source>
+        <target>Més comentats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d3ca6669211b10943c705dfea21bd124a75d655a" datatype="html">
+        <source>Most commented articles</source>
+        <target>Articles més comentats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0351c133c040333ecff3ce8d1cc55c376d2b7c0c" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{ collection.total | number }}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> results found</source>
+        <target>S'han trobat <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{ collection.total | number }}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> resultats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a13a9624cedec8006f5d43e9991f5b3b043cca0a" datatype="html">
+        <source>Author picture</source>
+        <target>Imatge de l'autor</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="11dc4523808b88e5855f0c94e91738c0f5ff5278" datatype="html">
+        <source>says:</source>
+        <target>diu:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="50ff68990cb970d492daaec81fd154938f344526" datatype="html">
+        <source>Join the discussion</source>
+        <target>Uneix-te a la discussió</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="31df223403303323ab45f28c44964fee9fc05395" datatype="html">
+        <source>Add a comment…</source>
+        <target>Afegeix un comentari…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db254f9e7304918bfd3da9eba2ac6ac54c705266" datatype="html">
+        <source>Send comment</source>
+        <target>Envieu un comentari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="73c85a147bcc1b5f79ae10affa13f420fc99c2e9" datatype="html">
+        <source>
+          Log in
+        </source>
+        <target>Entreu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">comments login</note>
+      </trans-unit>
+      <trans-unit id="cf3e24a457fbd347f9cb4bee3a6f33b59b774dad" datatype="html">
+        <source>to post a comment.</source>
+        <target>per a enviar comentaris.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="019d4bd6a5690f0cfa0ecf346a4e6bf7f0d8debb" datatype="html">
+        <source>Remove</source>
+        <target>Elimina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0c7067999b96bbabfe56cff68fc0871a877ea8dd" datatype="html">
+        <source>Delete this comment</source>
+        <target>Suprimeix aquest comentari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b957bc093be7d0b59f85844bb41fee924d349b4b" datatype="html">
+        <source>
+    Everything
+  </source>
+        <target>Tots</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b800b0ccf2861e0e1cfb9e0634b02c78cc84db03" datatype="html">
+        <source>
+    Featured
+  </source>
+        <target>Destacats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="167ccbf30f453f1fb60b13c01d03febb3f327492" datatype="html">
+        <source>
+    Most voted
+  </source>
+        <target>Més votats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="81580debc7fb5112a31ad892a0a414a97d71519c" datatype="html">
+        <source>
+    Most commented
+  </source>
+        <target>Més comentats</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eec28274836e4d7f69286f8cb42343aebcab8c06" datatype="html">
+        <source>Optimal view</source>
+        <target>Visualització òptima</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="29d73d20dd2a3f56d37590c43c80474ed223eea9" datatype="html">
+        <source>List view</source>
+        <target>Visualització de llista</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8598558186bd7a52a27e390b1ada1c43af1e90fe" datatype="html">
+        <source>Gallery view</source>
+        <target>Visualització de galeria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ef0da09fbfc281886b040da689e33f91b9251cc" datatype="html">
+        <source>View options</source>
+        <target>Opcions de visualització</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c6e8bca8e83e3269cd8bc34d1bd8065d38ec60d0" datatype="html">
+        <source>
+                New synapse
+              </source>
+        <target>Nova sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="527912a7a4920a2cf2fecdbdba2c3ac143b611f5" datatype="html">
+        <source>Create a new synapse</source>
+        <target>Crea una nova sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d4161422f3ecebfc6f0732afaa276ac82757612a" datatype="html">
+        <source>Search by keyword</source>
+        <target>Cerca per paraula clau</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c651a5f519187e63192462480dc8db17f2394d41" datatype="html">
+        <source>Taxonomies</source>
+        <target>Taxonomies</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cafc87479686947e2590b9f588a88040aeaf660b" datatype="html">
+        <source>Tags</source>
+        <target>Etiquetes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html">
+        <source>Description</source>
+        <target>Descripció</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+        <source>Actions</source>
+        <target>Accions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5fe4b2aaae00f24ec01bd85424d069defe3700a7" datatype="html">
+        <source>Edit synapse</source>
+        <target>Edita la sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52ea46364092e55b081705de761f77499af65690" datatype="html">
+        <source>Delete synapse</source>
+        <target>Suprimeix la sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d5c73b3cf7fe880e38c987940cc2aff67a845280" datatype="html">
+        <source>Posts</source>
+        <target>Articles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dd92c0898afd0c864dec18244379330dd6667418" datatype="html">
+        <source>Edit tag</source>
+        <target>Edita l'etiqueta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f5ec2990a0f425e0eb566f05abb76200f07abddc" datatype="html">
+        <source>Delete tag</source>
+        <target>Suprimeix l'etiqueta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="478f31bf3f360b2bdf28b42bc6577a2fe8b56734" datatype="html">
+        <source>Restore tag</source>
+        <target>Restaura l'etiqueta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="def755457793d5ad40597886d2d317bc5f415a2f" datatype="html">
+        <source>Loading</source>
+        <target>S'està carregant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/taxonomies/taxonomies-tree.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="632476f072cc8007d0fd769265b1dd21675f9b19" datatype="html">
+        <source>Table of Contents</source>
+        <target>Taula de continguts</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="181cd969a111ff593bf9c48bd35bced2e86d83f2" datatype="html">
+        <source>Advanced Search</source>
+        <target>Cerca avançada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-search.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b88907e77657b00e638d39967ac34b414e88c466" datatype="html">
+        <source>
+              New project
+            </source>
+        <target>Nou projecte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f540f05dc71be88e226a3920dbf1140b2658e5ea" datatype="html">
+        <source>Create a new project</source>
+        <target>Crea un projecte nou</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ae39e41097f712a2b669c3ce1f01acac74f95f05" datatype="html">
+        <source>School</source>
+        <target>Centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc5e5749864ee38c36ab3f7fdd347cebb88ac8b6" datatype="html">
+        <source>Municipality</source>
+        <target>Municipi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b50b492392bbd579b8b38f3833b1ed18e1c6bd7d" datatype="html">
+        <source>Edit project</source>
+        <target>Edita el projecte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="210ca341161aa287ee75d40bbb819947c5a6f90c" datatype="html">
+        <source>Delete project</source>
+        <target>Suprimeix el projecte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f2192067d43dab5b20ce7747fe93fce7de833db7" datatype="html">
+        <source>
+              New school
+            </source>
+        <target>Nou centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a7522a0849c97596dee3f9f1b7e626d023e3ee62" datatype="html">
+        <source>Create a new school</source>
+        <target>Crea un nou centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1541352d44b84415a6a998bf627f3de5a9f13649" datatype="html">
+        <source>Territory</source>
+        <target>Territori</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e1eaabcab75063c2373673561e2ce7fa97f65b27" datatype="html">
+        <source>Edit school</source>
+        <target>Edita el centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b19f5d6a9f2dba729f5db7436b6bba756f1d8204" datatype="html">
+        <source>Delete school</source>
+        <target>Suprimeix el centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="30f76639c0d7edfe597279f11935a9a2d0ba213b" datatype="html">
+        <source>Disabled at</source>
+        <target>Desactivat el</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="632e8b20c98e8eec4059a605a4b011bb476137af" datatype="html">
+        <source>Edit user</source>
+        <target>Edita l'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ff7a096a2b1417f755016d2ac92763cacb2bc5a9" datatype="html">
+        <source>Disable user</source>
+        <target>Desactiva l'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e9e7bce64706d324ed3f4b22fde1d975dc5fd09" datatype="html">
+        <source>Enable user</source>
+        <target>Activa l'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
     </body>

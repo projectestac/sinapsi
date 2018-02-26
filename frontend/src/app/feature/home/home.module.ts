@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ConcreteModule } from 'concrete';
 import { SharedModule } from 'app/shared';
-import { SynapseModule } from 'app/synapse';
+import { PostsModule } from 'app/feature/posts';
 import { HomeComponent } from './home.component';
 
 
@@ -10,14 +8,12 @@ import { HomeComponent } from './home.component';
     declarations: [
         HomeComponent
     ],
-    
+
     imports: [
-        CommonModule,
-        ConcreteModule,
         SharedModule,
-        SynapseModule
+        PostsModule
     ],
-    
+
     exports: [
         HomeComponent
     ]

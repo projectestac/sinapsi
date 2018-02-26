@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect routes to the frontend
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/(api)(/?.*)$
+    RewriteCond %{REQUEST_URI} !^/(accounts)(/?.*)$
+    RewriteCond %{REQUEST_URI} !^/(feeds)(/?.*)$
+    RewriteCond %{REQUEST_URI} !^/(_debugbar)(/?.*)$
+    RewriteCond %{REQUEST_URI} !^/manifest.json$
+    RewriteRule ^(.*)$ /en/$1  [L,R=301]
+    RewriteRule ^$ /en/        [L,R=301]
+    
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

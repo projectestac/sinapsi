@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Models\Post;
+use App\Models\Synapse;
+use App\Models\Pivots\PostSynapse;
 
 
 /**
@@ -24,11 +27,7 @@ class PostController extends Controller {
     public function index(Request $request) {
         $query = Post::cards();
         
-        if (Auth::check() === true) {
-            if (Auth::user()->hasRole('admin'))
-                $query->withTrashed();
-        }
-        
+        $query->withTrashedIfRole('admin');
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
@@ -46,11 +45,7 @@ class PostController extends Controller {
     public function show($id) {
         $query = Post::cards($id);
         
-        if (Auth::check() === true) {
-            if (Auth::user()->hasRole('admin'))
-                $query->withTrashed();
-        }
-        
+        $query->withTrashedIfRole('admin');
         $resource = $query->first();
         
         if (is_null($resource))
@@ -68,7 +63,7 @@ class PostController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Post::whereID($id)->delete();
+            $result = Post::whereId($id)->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');
@@ -89,7 +84,7 @@ class PostController extends Controller {
      */
     public function restore($id) {
         try {
-            $result = Post::whereID($id)->restore();
+            $result = Post::whereId($id)->restore();
             
             if ($result == false) {
                 abort(404, 'Not Found');

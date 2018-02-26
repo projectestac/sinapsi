@@ -1,0 +1,7 @@
+<button type="button"
+        class="btn btn-sm btn-outline-secondary"
+        (click)="pick()"
+        [attr.aria-selected]="selected"
+        [ngClass]="{ active: selected }">
+  <ng-content></ng-content>
+</button>

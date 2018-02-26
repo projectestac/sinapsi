@@ -1,0 +1,19 @@
+<form role="search" class="form-inline hidden-print">
+  <div class="input-group">
+    <span *ngIf="icon" class="input-group-prepend"
+          (click)="searchBox.focus()">
+      <span class="input-group-text">
+        <cn-icon [value]="icon"></cn-icon>
+      </span>
+    </span>
+    <input #searchBox
+           (keydown)="onKeyDown()"
+           (keyup)="onKeyUp(searchBox.value)"
+           [value]="viewValue || null"
+           [placeholder]="placeholder || ''"
+           title="Type to search" i18n-title
+           aria-label="Search" i18n-aria-label
+           type="search"
+           class="form-control"/>
+  </div>
+</form>

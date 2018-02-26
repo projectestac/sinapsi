@@ -1,27 +1,27 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CnCollection, CnModel } from 'concrete/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Collection, Model } from 'app/core';
 import { Author, School } from 'app/models';
 
 
 @Component({
-    selector: 'schools-table',
+    selector: 'app-schools-table',
     templateUrl: 'schools-table.component.html',
     styleUrls: [ 'schools-table.component.scss' ]
 })
 export class SchoolsTableComponent {
-    
+
     /** Synapses collection */
-    @Input() authors: CnCollection<Author>;
-    
+    @Input() authors: Collection<Author>;
+
     /** Table sorting columns */
     @Input() sort: string[] = [];
-    
+
     /** Table sort event */
     @Output() sortChange = new EventEmitter<Author>();
-    
+
     /** Row edition event */
     @Output() editRow = new EventEmitter<Author>();
-    
+
     /** Row removal event */
     @Output() deleteRow = new EventEmitter<Author>();
 

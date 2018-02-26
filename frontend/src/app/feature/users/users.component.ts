@@ -1,9 +1,8 @@
-import { Component } from "@angular/core";
-import { CnStore } from "concrete/core";
+import { Component } from '@angular/core';
+import { StoreService } from 'app/core';
 
 
 @Component({
-    template: '<router-outlet></router-outlet>',
-    providers: [ CnStore ]
+    template: '<router-outlet></router-outlet>'
 })
 export class UsersComponent {}

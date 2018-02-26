@@ -77,7 +77,7 @@ class TerritoryController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Territory::validateFields($request);
-        $resource = Territory::whereID($id)->first();
+        $resource = Territory::whereId($id)->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -101,7 +101,7 @@ class TerritoryController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Territory::whereID($id)->delete();
+            $result = Territory::whereId($id)->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

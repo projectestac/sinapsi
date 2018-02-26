@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from 'app/shared';
-import { ConcreteModule } from 'concrete';
 
 import { CatalogsRoutes } from './catalogs.routes';
 import { ROUTING_COMPONENTS } from './catalogs.routes';
@@ -17,12 +15,10 @@ import { TaxonomiesTreeComponent } from './taxonomies/taxonomies-tree.component'
         TagsTableComponent,
         TaxonomiesTreeComponent
     ],
-    
+
     imports: [
-        CommonModule,
-        SharedModule,
-        ConcreteModule,
-        CatalogsRoutes
+        CatalogsRoutes,
+        SharedModule
     ]
 })
 export class CatalogsModule { }

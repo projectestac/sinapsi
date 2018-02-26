@@ -88,7 +88,7 @@ class PrivilegeController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = SynapseUser::validateFields($request);
-        $resource = SynapseUser::whereID($id)->forAdmin()->first();
+        $resource = SynapseUser::whereId($id)->forAdmin()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -114,7 +114,7 @@ class PrivilegeController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = SynapseUser::whereID($id)->forAdmin()->delete();
+            $result = SynapseUser::whereId($id)->forAdmin()->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

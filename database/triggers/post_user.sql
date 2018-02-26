@@ -1,7 +1,8 @@
 -- Increment the post's likes and favourite counts
 
 DELIMITER ;;
-CREATE TRIGGER `synapse`.`post_user_after_insert` AFTER INSERT
+CREATE DEFINER=CURRENT_USER
+TRIGGER `post_user_after_insert` AFTER INSERT
 ON `post_user` FOR EACH ROW
 BEGIN
     UPDATE posts SET
@@ -14,7 +15,8 @@ DELIMITER ;
 -- Update the post's likes and favourite counts
 
 DELIMITER ;;
-CREATE TRIGGER `synapse`.`post_user_after_update` AFTER UPDATE
+CREATE DEFINER=CURRENT_USER
+TRIGGER `post_user_after_update` AFTER UPDATE
 ON `post_user` FOR EACH ROW
 BEGIN
     UPDATE posts SET
@@ -27,7 +29,8 @@ DELIMITER ;
 -- Decrement the post's likes and favourite counts
 
 DELIMITER ;;
-CREATE TRIGGER `synapse`.`post_user_after_delete` AFTER DELETE
+CREATE DEFINER=CURRENT_USER
+TRIGGER `post_user_after_delete` AFTER DELETE
 ON `post_user` FOR EACH ROW
 BEGIN
     UPDATE posts SET

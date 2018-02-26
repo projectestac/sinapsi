@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule }  from '@angular/router'
-import { SynapsesComponent } from './synapses.component';
+import { RouterModule, Routes } from '@angular/router'
+
+import { SynapseEditorComponent } from './editor';
 import { SynapseDetailsComponent } from './details';
+import { SynapsesComponent } from './synapses.component';
+import { _ } from 'i18n';
 
 
 /**
@@ -9,7 +12,8 @@ import { SynapseDetailsComponent } from './details';
  */
 export const ROUTING_COMPONENTS = [
     SynapsesComponent,
-    SynapseDetailsComponent
+    SynapseDetailsComponent,
+    SynapseEditorComponent
 ];
 
 
@@ -20,6 +24,10 @@ export const ROUTES: Routes = [{
     path: '',
     component: SynapsesComponent,
     children: [{
+        path: 'compose/:id',
+        component: SynapseEditorComponent,
+        data: { title: _('Synapse editor') }
+    }, {
         path: ':slug',
         component: SynapseDetailsComponent
     }, {

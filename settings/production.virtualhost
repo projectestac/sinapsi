@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+  ServerName sinapsi.localhost
+  ServerAdmin webmaster@localhost
+  DocumentRoot /var/www/sinapsi/public
+  
+  LogLevel error ssl:warn
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+  
+  <Directory /var/www/sinapsi/public>
+    Options +FollowSymLinks -MultiViews -Indexes
+    AllowOverride All
+    Require all granted
+  </Directory>
+</VirtualHost>

@@ -3,10 +3,10 @@
   <!-- Results table -->
   
   <div [hidden]="state == 'empty' || state == 'error'">
-    <taxonomies-tree
+    <app-taxonomies-tree
       [nodes]="collection"
       (expand)="expand($event)">
-    </taxonomies-tree>
+    </app-taxonomies-tree>
   </div>
   
   <!-- Pagination -->

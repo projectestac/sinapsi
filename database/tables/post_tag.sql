@@ -3,7 +3,7 @@
 CREATE TABLE `post_tag` (
   `post_id` int(10) unsigned NOT NULL,
   `tag_id` int(10) unsigned NOT NULL,
-  UNIQUE KEY `post_tag_unique` (`post_id`,`tag_id`),
+  UNIQUE KEY `post_tag_unique` (`tag_id`,`post_id`),
   KEY `post_tag_post_id_foreign_index` (`post_id`),
   KEY `post_tag_tag_id_foreign_index` (`tag_id`),
   CONSTRAINT `post_tag_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

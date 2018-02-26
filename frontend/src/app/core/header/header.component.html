@@ -1,0 +1,144 @@
+<header role="banner">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      
+      <!-- Navbar toggle button -->
+      
+      <button
+        [cnExpandable]="linksExp"
+        type="button"
+        class="navbar-toggler"
+        aria-controls="toolbar-links"
+        aria-label="Toggle navigation"
+        i18n-aria-label>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- Brand link -->
+      
+      <a routerLink="/" accesskey="1" class="navbar-brand">
+        <span class="brand-name">
+          <strong>sinapsi</strong>.xtec.cat
+        </span>
+      </a>
+      
+      <!-- Language links -->
+      
+      <div class="toolbar-locales d-none d-md-block">
+        <app-locales></app-locales>
+      </div>
+      
+      <!-- Section links -->
+      
+      <div class="navbar-collapse">
+        <cn-expandable #linksExp id="toolbar-links">
+          <ul class="navbar-nav main-navbar mr-auto">
+            
+            <!-- Section links -->
+            
+            <li routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                class="nav-item">
+              <a routerLink="/"
+                 class="nav-link" i18n>Home</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a routerLink="/tags"
+                 class="d-none">Tags</a>
+              <a routerLink="/synapses"
+                 class="d-none">Synapses</a>
+              <a routerLink="/catalogs"
+                 class="nav-link" i18n>Synapses</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a routerLink="/schools"
+                 class="nav-link" i18n>Schools</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a routerLink="/projects"
+                 class="nav-link" i18n>Projects</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a routerLink="/users"
+                 class="nav-link" i18n>Educators</a>
+            </li>
+            
+            <!-- Authentication links -->
+            
+            <li *ngIf="sessionState == 'inactive'" class="nav-item d-sm-none">
+              <a (click)="showSigninForm($event)" class="nav-link">
+                 <cn-icon value="lock"></cn-icon>
+                 <span i18n>Log in</span>
+              </a>
+            </li>
+            
+            <!-- User navigation -->
+            
+            <li *ngIf="sessionState == 'active'"
+                class="nav-item d-sm-none">
+              <cn-details>
+                <cn-summary>
+                  <img [src]="currentUser.avatar_url" class="user-avatar"/>
+                  {{ currentUser.name }}
+                </cn-summary>
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <button (click)="showUserProfile($event)"
+                       class="btn btn-link nav-link" i18n>
+                      User profile
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button (click)="showUserSettings($event)"
+                       class="btn btn-link nav-link" i18n>
+                      Settings
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button (click)="signOut($event)"
+                       class="btn btn-link nav-link" i18n>
+                      Log out
+                    </button>
+                  </li>
+                </ul>
+              </cn-details>
+            </li>
+          </ul>
+        </cn-expandable>
+        
+        <!-- Authentication and user navigation -->
+        
+        <div class="user-navigation nav-item d-none d-sm-block">
+          <button *ngIf="sessionState == 'inactive'"
+             (click)="showSigninForm($event)"
+             class="btn btn-link">
+            <cn-icon value="lock"></cn-icon>
+            <span i18n>Log in</span>
+          </button>
+          
+          <ng-container *ngIf="sessionState == 'active'">
+            <button [cnMenu]="userMenu" class="btn btn-link">
+              <img [src]="currentUser.avatar_url" class="user-avatar"/>
+              <span>{{ currentUser.name }}</span>
+            </button>
+            <cn-menu #userMenu>
+              <cn-menuitem icon="address-card"
+                (click)="showUserProfile($event)" i18n>
+                User profile
+              </cn-menuitem>
+              <cn-menuitem icon="cogs"
+                (click)="showUserSettings($event)" i18n>
+                Settings
+              </cn-menuitem>
+              <hr>
+              <cn-menuitem icon="lock"
+                (click)="signOut($event)" i18n>
+                Log out
+              </cn-menuitem>
+            </cn-menu>
+           </ng-container>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

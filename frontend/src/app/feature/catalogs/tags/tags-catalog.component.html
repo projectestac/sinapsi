@@ -3,11 +3,14 @@
   <!-- Results table -->
   
   <div [hidden]="state == 'empty' || state == 'error'">
-    <tags-table
+    <app-tags-table
       [sort]="request.sort"
       [tags]="collection"
-      (sortChange)="sort($event.values)">
-    </tags-table>
+      (sortChange)="sort($event.values)"
+      (deleteRow)="remove($event)"
+      (editRow)="edit($event)"
+      (restoreRow)="restore($event)">
+    </app-tags-table>
   </div>
   
   <!-- Pagination -->

@@ -1,0 +1,32 @@
+<div class="page-navigation">
+  <div class="container">
+    <cn-breadcrumb></cn-breadcrumb>
+  </div>
+</div>
+<article *ngIf="synapse" class="page-content">
+  
+  <!-- Header -->
+  
+  <div class="page-header">
+    <div class="container">
+      <header>
+        <h1>{{ synapse.name }}</h1>
+      </header>
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section class="page-section">
+    <div class="page-body container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="mock-up">@SynapseForm</div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mock-up">@BlocksForm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

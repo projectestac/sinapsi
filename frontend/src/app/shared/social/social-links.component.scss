@@ -1,0 +1,37 @@
+@import "core";
+
+// Base styles
+
+.btn {
+  font-size: .83rem;
+  text-decoration: none;
+  padding: 0;
+  
+  &.twitter .fa-circle {
+    color: th-brand-color('twitter');
+  }
+  
+  &.facebook .fa-circle {
+    color: th-brand-color('facebook');
+  }
+  
+  &.wordpress .fa-circle {
+    color: th-brand-color('wordpress');
+  }
+  
+  &.email .fa-circle {
+    color: th-brand-color('email');
+  }
+  
+  &.feed .fa-circle {
+    color: th-brand-color('feed');
+  }
+  
+  &:focus .fa-stack {
+    outline: 1px dotted th-gray('800');
+  }
+  
+  &:hover .fa-circle, &:focus .fa-circle {
+    color: th-gray('600');
+  }
+}

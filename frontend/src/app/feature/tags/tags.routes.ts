@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule }  from '@angular/router'
-import { TagsComponent } from './tags.component';
+import { RouterModule, Routes } from '@angular/router'
 import { TagDetailsComponent } from './details';
+import { TagsComponent } from './tags.component';
 
 
 /**

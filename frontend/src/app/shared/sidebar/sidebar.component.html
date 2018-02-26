@@ -1,0 +1,26 @@
+<!-- Static sidebar -->
+
+<ng-container *ngIf="!editable">
+  <div class="static-sidebar">
+    <ng-container *ngFor="let block of blocks">
+      <app-block [block]="block"></app-block>
+    </ng-container>
+  </div>
+</ng-container>
+
+<!-- Editable sidebar -->
+
+<ng-container *ngIf="editable">
+  <div [dragula]="uid" [dragulaModel]="blocks" class="editable-sidebar">
+    <div *ngFor="let block of blocks" title="Drag to reorder" i18n-title
+         class="block-container">
+      <app-block [block]="block" [locked]="true"></app-block>
+      <button
+        (click)="remove(block)"
+        title="Delete this block" i18n-title
+        class="btn btn-sm remove-button">
+        <cn-icon value="remove"></cn-icon>
+      </button>
+    </div>
+  </div>
+</ng-container>

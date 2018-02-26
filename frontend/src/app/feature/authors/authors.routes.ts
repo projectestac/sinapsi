@@ -1,16 +1,32 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule }  from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AuthorEditorComponent } from './editor';
 import { AuthorsResolver } from './authors.resolver';
+import { _ } from 'i18n';
+
+
+/**
+ * Routing components
+ */
+export const ROUTING_COMPONENTS = [
+    AuthorEditorComponent
+];
 
 
 /**
  * Module routes
  */
 export const ROUTES: Routes = [{
-    path: ':id',
-    resolve: {
-        author: AuthorsResolver
-    }
+    path: '',
+    children: [{
+        path: 'compose/:id',
+        component: AuthorEditorComponent,
+        data: { title: _('Author editor') }
+    }, {
+        path: ':id',
+        resolve: { author: AuthorsResolver }
+    }]
 }];
 
 

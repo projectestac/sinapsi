@@ -55,7 +55,7 @@ class ProjectController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Project::validateFields($request);
-        $resource = Project::whereID($id)->forAuthor()->first();
+        $resource = Project::whereId($id)->forAuthor()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');

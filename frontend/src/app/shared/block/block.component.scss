@@ -7,6 +7,14 @@
   margin-bottom: .625rem;
 }
 
+.synapse-block.locked-block {
+  pointer-events: none;
+}
+
+.block-content {
+  font-size: .875rem;
+}
+
 
 // Header block
 
@@ -33,10 +41,6 @@
   .block-title {
     font-size: 1.56rem;
     margin: .38rem 0 .625rem;
-  }
-  
-  .block-content {
-    font-size: .875rem;
   }
   
   @each $name, $color in $th-theme-colors {
@@ -100,10 +104,6 @@
   .block-title {
     font-size: 1rem;
     font-weight: 700;
-  }
-  
-  .block-content {
-    font-size: .9rem;
   }
 }
 

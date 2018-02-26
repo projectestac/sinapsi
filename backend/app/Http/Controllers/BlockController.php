@@ -86,7 +86,7 @@ class BlockController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Block::validateFields($request);
-        $resource = Block::whereID($id)->forEditor()->first();
+        $resource = Block::whereId($id)->forEditor()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -110,7 +110,7 @@ class BlockController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Block::whereID($id)->forEditor()->delete();
+            $result = Block::whereId($id)->forEditor()->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

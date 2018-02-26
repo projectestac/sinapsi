@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Atom;
 
+use Auth;
 use FeedWriter\ATOM;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -40,8 +41,11 @@ class SyndicationController extends Controller {
      * @return Response         Response object
      */
     public function tagIndex($slug) {
-        $tag = Tag::whereSlug($slug)
-            ->with('synapse')->first();
+        $query = Tag::whereSlug($slug)
+            ->withTrashedIfRole('admin')
+            ->with('synapse');
+        
+        $tag = $query->first();
         
         if (is_null($tag))
             abort(404, 'Not Found');
@@ -107,7 +111,7 @@ class SyndicationController extends Controller {
      */
     private function appendItems($feed, $query) {
         $query->orderBy('published_at', 'desc');
-        $query->with('author')->limit(50);
+        $query->with('author')->limit(20);
         
         foreach ($query->get() as $post) {
             $item = $feed->createNewItem();

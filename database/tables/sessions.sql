@@ -1,11 +1,11 @@
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sessions` (
-  `id` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `id` varchar(255) CHARSET utf8 NOT NULL,
   `user_id` int(10) unsigned DEFAULT NULL,
-  `ip_address` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `user_agent` text CHARACTER SET utf8mb4,
-  `payload` text CHARACTER SET utf8mb4 NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text,
+  `payload` text NOT NULL,
   `last_activity` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `sessions_id_unique` (`id`),

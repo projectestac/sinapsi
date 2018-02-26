@@ -5,6 +5,7 @@
   },
   "apps": [
     {
+      "baseHref": "/en",
       "name": "sinapsi",
       "root": "src",
       "outDir": "dist",
@@ -29,7 +30,10 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.en.prod.ts",
+        "ca": "environments/environment.ca.prod.ts",
+        "es": "environments/environment.es.prod.ts",
+        "en": "environments/environment.en.prod.ts"
       },
       "stylePreprocessorOptions": {
         "includePaths": [
@@ -38,9 +42,11 @@
       }
     },
     {
+      "baseHref": "/en",
       "name": "embed",
       "root": "src",
       "outDir": "dist/embed",
+      "deployUrl": "embed",
       "assets": [{
         "glob": "**/*",
         "input": "theme/assets/",
@@ -60,7 +66,10 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.en.prod.ts",
+        "ca": "environments/environment.ca.prod.ts",
+        "es": "environments/environment.es.prod.ts",
+        "en": "environments/environment.en.prod.ts"
       },
       "stylePreprocessorOptions": {
         "includePaths": [

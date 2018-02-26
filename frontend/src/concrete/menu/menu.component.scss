@@ -1,0 +1,68 @@
+// Base styles
+
+:host {
+  display: none !important;
+}
+
+.dropdown-menu {
+  display: block;
+  position: relative;
+  float: none;
+  font-size: 0.875rem;
+}
+
+.cn-menu-backdrop {
+  pointer-events: none;
+  background: #333;
+  opacity: 0.4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dropdown-menu {
+  box-shadow: 0px 2px 5px 0px #ddd;
+  margin: 0;
+}
+
+
+// Menu icons
+
+::ng-deep .cn-menu-wrapper .icon-wrapper {
+  margin-right: .5rem;
+}
+
+
+// Menu separator elements
+
+::ng-deep .cn-menu-wrapper hr {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+}
+
+
+// On small devices, center the menu on screen always
+
+@media (min-width: 576px) {
+  .cn-menu-backdrop {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .cn-menu-wrapper {
+    position: relative !important;
+    top: inherit !important;
+    left: inherit !important;
+    bottom: inherit !important;
+    right: inherit !important;
+  }
+  
+  .dropdown-menu {
+    box-shadow: 0px 2px 5px 0px #333;
+  }
+}

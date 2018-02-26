@@ -14,6 +14,120 @@ use Illuminate\Http\Request;
 */
 
 
+/* -- ADMINISTRATION ROUTES ----------------------------------------------- */
+
+Route::group([
+    'middleware' => [
+        'api',
+        'auth',
+        'role:admin'
+    ],
+], function () {
+
+    /** Users */
+
+    Route::resource('users', 'UserController', [
+        'except' => ['update', 'store', 'create', 'edit']]);
+
+    Route::post('users/{id}', 'UserController@restore')
+        ->name('users.restore');
+
+    /** Authors */
+
+    Route::resource('schools', 'SchoolController', [
+        'only' => ['store', 'update']]);
+
+    /** Sources */
+
+    Route::post('feeds/{id}', 'FeedController@restore')
+        ->name('feeds.restore');
+
+    Route::resource('municipalities', 'MunicipalityController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
+    Route::resource('territories', 'TerritoryController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
+    /** Posts */
+
+    Route::resource('comments', 'CommentController', [
+        'only' => ['destroy']]);
+
+    Route::resource('posts', 'PostController', [
+        'only' => ['destroy']]);
+
+    Route::post('posts/{id}', 'PostController@restore')
+        ->name('posts.restore');
+
+    Route::resource('tags', 'TagController', [
+        'only' => ['destroy']]);
+
+    Route::post('tags/{id}', 'TagController@restore')
+        ->name('tags.restore');
+
+    /** Synapses */
+
+    Route::resource('synapses', 'SynapseController', [
+        'only' => ['store', 'destroy']]);
+
+});
+
+
+/* -- AUTHENTICATED USER ROUTES ------------------------------------------- */
+
+Route::group([
+    'middleware' => [
+        'api',
+        'auth'
+    ],
+], function () {
+    
+    /** Authenticated user */
+
+    Route::get('accounts/profile', 'Auth\AccountController@profile')
+        ->name('accounts.profile');
+
+    Route::post('accounts/logout', 'Auth\AccountController@logout')
+        ->name('accounts.logout');
+
+    /** Authors */
+
+    Route::resource('projects', 'ProjectController', [
+        'only' => ['store', 'update']]);
+
+    /** Sources */
+
+    Route::resource('authors', 'AuthorController', [
+        'only' => ['update']]);
+
+    Route::resource('feeds', 'FeedController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
+    /** Posts */
+
+    Route::resource('posts/reactions', 'ReactionController', [
+       'only' => ['show', 'update']]);
+
+    Route::resource('comments', 'CommentController', [
+        'only' => ['store']]);
+
+    /** Synapses */
+
+    Route::resource('blocks', 'BlockController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
+    Route::resource('synapses/bumps', 'BumpController', [
+        'except' => ['create', 'edit']]);
+
+    Route::resource('synapses/privileges', 'PrivilegeController', [
+        'except' => ['create', 'edit']]);
+
+    Route::resource('synapses', 'SynapseController', [
+        'only' => ['update']]);
+
+});
+
+
 /* -- PUBLIC ACCESS ROTUES ------------------------------------------------ */
 
 Route::group([
@@ -70,119 +184,5 @@ Route::group([
     
     Route::resource('synapses', 'SynapseController', [
         'only' => ['index', 'show']]);
-
-});
-
-
-/* -- AUTHENTICATED USER ROUTES ------------------------------------------- */
-
-Route::group([
-    'middleware' => [
-        'api',
-        'auth'
-    ],
-], function () {
-    
-    /** Authenticated user */
-
-    Route::get('accounts/profile', 'Auth\AccountController@profile')
-        ->name('accounts.profile');
-
-    Route::post('accounts/logout', 'Auth\AccountController@logout')
-        ->name('accounts.logout');
-
-    /** Authors */
-
-    Route::resource('projects', 'ProjectController', [
-        'only' => ['store', 'update']]);
-
-    /** Sources */
-
-    Route::resource('authors', 'AuthorController', [
-        'only' => ['update']]);
-
-    Route::resource('feeds', 'FeedController', [
-        'except' => ['index', 'show', 'create', 'edit']]);
-
-    /** Posts */
-
-    Route::resource('posts/reactions', 'ReactionController', [
-       'only' => ['update']]);
-
-    Route::resource('comments', 'CommentController', [
-        'only' => ['store']]);
-
-    /** Synapses */
-
-    Route::resource('blocks', 'BlockController', [
-        'except' => ['index', 'show', 'create', 'edit']]);
-
-    Route::resource('synapses/bumps', 'BumpController', [
-        'except' => ['create', 'edit']]);
-
-    Route::resource('synapses/privileges', 'PrivilegeController', [
-        'except' => ['create', 'edit']]);
-
-    Route::resource('synapses', 'SynapseController', [
-        'only' => ['update']]);
-
-});
-
-
-/* -- ADMINISTRATION ROUTES ----------------------------------------------- */
-
-Route::group([
-    'middleware' => [
-        'api',
-        'auth',
-        'role:admin'
-    ],
-], function () {
-
-    /** Users */
-
-    Route::resource('users', 'UserController', [
-        'except' => ['update', 'store', 'create', 'edit']]);
-
-    Route::post('users/{id}', 'UserController@restore')
-        ->name('users.restore');
-
-    /** Authors */
-
-    Route::resource('schools', 'SchoolController', [
-        'only' => ['store', 'update']]);
-
-    /** Sources */
-
-    Route::post('feeds/{id}', 'FeedController@restore')
-        ->name('feeds.restore');
-
-    Route::resource('municipalities', 'MunicipalityController', [
-        'except' => ['index', 'show', 'create', 'edit']]);
-
-    Route::resource('territories', 'TerritoryController', [
-        'except' => ['index', 'show', 'create', 'edit']]);
-
-    /** Posts */
-
-    Route::resource('comments', 'CommentController', [
-        'only' => ['destroy']]);
-
-    Route::resource('posts', 'PostController', [
-        'only' => ['destroy']]);
-
-    Route::post('posts/{id}', 'PostController@restore')
-        ->name('posts.restore');
-
-    Route::resource('tags', 'TagController', [
-        'only' => ['destroy']]);
-
-    Route::post('tags/{id}', 'TagController@restore')
-        ->name('tags.restore');
-
-    /** Synapses */
-
-    Route::resource('synapses', 'SynapseController', [
-        'only' => ['store', 'destroy']]);
 
 });

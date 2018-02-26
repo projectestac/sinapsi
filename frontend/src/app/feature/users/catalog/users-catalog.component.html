@@ -38,11 +38,14 @@
       <!-- Results table -->
       
       <div [hidden]="state == 'empty' || state == 'error'">
-        <users-table
+        <app-users-table
           [sort]="request.sort"
           [authors]="collection"
-          (sortChange)="sort($event.values)">
-        </users-table>
+          (sortChange)="sort($event.values)"
+          (deleteRow)="disable($event)"
+          (editRow)="edit($event)"
+          (restoreRow)="restore($event)">
+        </app-users-table>
       </div>
       
       <!-- Pagination -->

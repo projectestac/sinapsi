@@ -7,7 +7,7 @@
         <tr role="row">
           <th cnSortBy="name" i18n>Name</th>
           <th i18n>Description</th>
-          <th title="Actions" class="actions-column" i18n-title>
+          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -24,7 +24,7 @@
           <td class="w-50">
             {{ synapse.description }}
           </td>
-          <td class="actions-column">
+          <td *appIfRole="['admin']" class="actions-column">
             <button
               (click)="editRow.emit(synapse)"
               title="Edit synapse" i18n-title

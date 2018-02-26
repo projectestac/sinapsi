@@ -7,12 +7,15 @@ use Auth;
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Traits\HasURL;
+use App\Models\Traits\HasTrashed;
+
 
 /**
  * Feed model class.
  */
 class Feed extends FoundationModel {
-    use SoftDeletes;
+    use SoftDeletes, HasTrashed, HasURL;
     
     /** Attribute definitions */
     protected static $fields = [
@@ -89,7 +92,8 @@ class Feed extends FoundationModel {
      * @return hasMany              Model relation
      */
     public function posts() {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)
+            ->withTrashedIfRole('admin');
     }
     
     

@@ -2,8 +2,8 @@
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
   `attempts` tinyint(3) unsigned NOT NULL,
   `reserved` tinyint(3) unsigned NOT NULL,
   `reserved_at` int(10) unsigned DEFAULT NULL,
