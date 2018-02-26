@@ -22,6 +22,7 @@ MYSQL           = mysql
 NPM             = npm
 PHP             = php
 RSYNC           = rsync
+NG              = ng
 
 PRINT           = @printf "\033[1;92m== %s\033[0m\n"
 
@@ -153,7 +154,7 @@ ifneq ($(locale),$(DEFAULT_LOCALE))
   $(eval args += --i18n-format=xlf)
 endif
   
-  cd $(srcdir)/frontend && ng build $(args)
+  cd $(srcdir)/frontend && $(NG) build $(args)
   
 ifneq ($(app),$(DEFAULT_APP))
   cp -r $(path)$(base)/. $(path)/
@@ -259,7 +260,7 @@ lint:
 
   $(PRINT) "Running linters"
   
-  @cd $(srcdir)/frontend && ng lint || true
+  @cd $(srcdir)/frontend && $(NG) lint || true
   
   @find $(srcdir)/backend/app -iname "*.php" -exec \
   php -l {} \; | grep -v "No syntax errors" || true
@@ -270,6 +271,15 @@ lint:
   
   @phpcs --report=emacs --standard=$(srcdir)/backend/ruleset.xml \
          $(srcdir)/backend/app || true
+
+
+# =============================================================================
+# Serve the frontend in development mode using Angular CLI
+# =============================================================================
+
+serve:
+
+  cd $(srcdir)/frontend && $(NG) s
 
 
 # =============================================================================

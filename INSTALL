@@ -29,6 +29,7 @@ Installation of Sinapsi
   * Make >= 4.1
   * Composer >= 1.4
   * Node.js >= 7.10
+  * Angular CLI >= 1.7
 
   Compile the software
   --------------------
