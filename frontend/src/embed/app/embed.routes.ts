@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -14,10 +15,11 @@ export const ROUTING_COMPONENTS = [
 const ROUTES: Routes = [{
     path: '',
     component: HomeComponent,
-    canDeactivate: [ 'PopupRouterLinks' ]
+    canDeactivate: [ 'PopupRoute' ]
   }, {
     path: '**',
-    component: HomeComponent
+    component: HomeComponent,
+    canDeactivate: [ 'PopupRoute' ]
 }];
 
 
@@ -25,11 +27,12 @@ const ROUTES: Routes = [{
   imports: [ RouterModule.forRoot(ROUTES) ],
   exports: [ RouterModule ],
   providers: [{
-    provide: 'PopupRouterLinks',
+    provide: APP_BASE_HREF,
+    useValue:  '/' + (document.documentElement.lang || 'en')
+  }, {
+    provide: 'PopupRoute',
     useValue: (component, route, state, nextState) => {
-        const lang = document.documentElement.lang || 'en';
-        window.open(`/${lang}${nextState.url}`, '_blank');
-
+        window.open(`..${nextState.url}`, '_blank');
         return false;
     }
   }]

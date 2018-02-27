@@ -46,7 +46,7 @@
       "name": "embed",
       "root": "src",
       "outDir": "dist/embed",
-      "deployUrl": "embed",
+      "deployUrl": "/en/embed",
       "assets": [{
         "glob": "**/*",
         "input": "theme/assets/",
