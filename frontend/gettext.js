@@ -16,6 +16,8 @@ const parser = extractor.createJsParser([
 ]);
 
 parser.parseFilesGlob('./src/**/*.ts');
-extractor.savePotFile('./src/locales/messages.pot');
 
-extractor.printStats();
+console.log(extractor.getPotString({
+    'Project-Id-Version' : 'sinapsi',
+    'POT-Creation-Date' : (new Date()).toISOString()
+}));

@@ -23,6 +23,7 @@ NPM             = npm
 PHP             = php
 RSYNC           = rsync
 NG              = ng
+NODE            = node
 
 PRINT           = @printf "\033[1;92m== %s\033[0m\n"
 
@@ -34,6 +35,8 @@ PRINT           = @printf "\033[1;92m== %s\033[0m\n"
 srcdir   ?= $(CURDIR)
 outdir   ?= $(srcdir)/build
 distdir  ?= $(srcdir)/packages
+i18ndir  ?= $(srcdir)/locales
+
 wwwdir   ?= /var/www
 sitedir  ?= /etc/apache2/sites-available
 user     ?= www-data
@@ -280,6 +283,19 @@ lint:
 serve:
 
   cd $(srcdir)/frontend && $(NG) s
+
+
+# =============================================================================
+# Extract internationalizable messages
+# =============================================================================
+
+i18n:
+
+  $(PRINT) "Building i18n templates"
+
+  mkdir -p $(i18ndir)
+  cd $(srcdir)/frontend && $(NG) xi18n --output-path $(i18ndir)
+  cd $(srcdir)/frontend && $(NODE) gettext.js > $(i18ndir)/messages.pot
 
 
 # =============================================================================
