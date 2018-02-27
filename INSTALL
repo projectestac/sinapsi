@@ -34,13 +34,35 @@ Installation of Sinapsi
   Compile the software
   --------------------
 
+  Make sure all the requeriments are met an issue:
+
   $ make
 
   Install the software
   --------------------
 
+  After the make command finishes without errors, you may want to configure
+  the application before installing it. Open the file ./build/.env and set
+  the parameters to suit your needs.
+
+  Then run the intallation target:
+
   $ sudo make install
 
-  Make parameters
+  You shall be able to access the application at http://sinapsi.localhost
+  when the installation finishes.
+
+  Install options
   ---------------
 
+  In order to install the software on your system, you may need to provide
+  some of the following parameters to the make command:
+
+  wwwdir   Installation folder (default: /var/www)
+  sitedir  Apache sites folder (default: /etc/apache2/sites-available)
+  user     Apache user         (default: www-data)
+  group    Apache group        (default: www-data)
+
+  For example:
+
+  $ sudo make install wwwdir=/opt user=httpd group=httpd
