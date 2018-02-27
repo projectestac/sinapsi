@@ -48,6 +48,10 @@
     & > * {
       padding-right: .5rem;
     }
+    
+    @include media-breakpoint-down(xs) {
+      font-size: 1rem;
+    }
   }
   
   .metadata {
