@@ -32,7 +32,7 @@ export class FooterComponent {
      * Scroll to the top of the window container.
      */
     public scrollTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
     }
 
 }

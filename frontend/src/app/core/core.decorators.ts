@@ -8,18 +8,24 @@ import { ElementRef } from '@angular/core';
 export function ScrollTop(element?: ElementRef) {
     return function (target: any, key: string, descriptor: any) {
         const method = descriptor.value;
-        
+
         descriptor.value = function(...args: any[]) {
             const response = method.apply(this, args);
             const container = document.getElementById('app-container');
-            
-            window.scrollTo({ top: 0, behavior: 'auto' });
-            container.scrollTo({ top: 0, behavior: 'auto' });
-            container.focus();
-            
+
+            try {
+                window.scrollTo(0, 0);
+
+                container.scrollTop = 0;
+                container.scrollIntoView(true);
+                container.focus();
+            } catch(e) {
+                // pass
+            }
+
             return response;
         };
-        
+
         return descriptor;
     };
 }
