@@ -72,9 +72,8 @@ class SyndicationController extends Controller {
         $this->appendItems($feed, Post::forSynapse($synapse));
         
         $content = $feed->generateFeed();
-        $mime = $feed->getMIMEType();
         $response = response($content, 200);
-        $response->header('Content-Type', "$mime; charset=utf-8");
+        $response->header('Content-Type', "text/xml; charset=utf-8");
         
         return $response;
     }
@@ -95,9 +94,8 @@ class SyndicationController extends Controller {
         $this->appendItems($feed, Post::forTag($tag));
         
         $content = $feed->generateFeed();
-        $mime = $feed->getMIMEType();
         $response = response($content, 200);
-        $response->header('Content-Type', "$mime; charset=utf-8");
+        $response->header('Content-Type', "text/xml; charset=utf-8");
         
         return $response;
     }
