@@ -282,7 +282,8 @@ lint:
 
 serve:
 
-  cd $(srcdir)/frontend && $(NG) s
+  cd $(srcdir)/frontend && $(NG) serve --port 4200 \
+    --public-host http://localhost:4200/
 
 
 # =============================================================================
