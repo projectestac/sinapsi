@@ -12,6 +12,7 @@ import { SearchModule } from './search';
 import { ShareFormModule } from './share';
 import { SocialModule } from './social';
 import { StateModule } from './state';
+import { TypeaheadModule } from './typeahead';
 
 import { MomentPipe } from './moment.pipe';
 import { RoleDirective } from './role.directive';
@@ -35,6 +36,7 @@ import { RoleDirective } from './role.directive';
         ShareFormModule,
         SocialModule,
         StateModule,
+        TypeaheadModule,
         RoleDirective,
         MomentPipe
     ]

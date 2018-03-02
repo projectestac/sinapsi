@@ -1,0 +1,55 @@
+<div class="typeahead-box" [ngClass]="{ focus: hasFocus }">
+
+  <!-- Autocomplete input box -->
+
+  <div class="typeahead-input">
+    <input #inputBox
+      type="text"
+      role="combobox"
+      [(ngModel)]="keywords"
+      (keydown.arrowdown)="activateNext()"
+      (keydown.arrowup)="activatePrevious()"
+      (keydown.enter)="choose(activeValue)"
+      (keydown.escape)="clear(); false"
+      (keyup)="search(inputBox.value)"
+      (focus)="focus()"
+      (blur)="blur()"
+      (input)="$event.stopPropagation()"
+      (change)="$event.stopPropagation()"
+      [attr.aria-expanded]="ariaExpanded()"
+      [attr.aria-activedescendant]="ariaActiveDescendant()"
+      [attr.aria-owns]="ariaOwns()"
+      aria-autocomplete="list"
+      aria-haspopup="true"
+      placeholder="Type to search"
+      class="form-control"
+      i18n-placeholder/>
+  </div>
+
+  <!-- Search results -->
+
+  <div class="typeahead-results">
+    <ul *ngIf="collection"
+        [id]="ariaOwns()"
+        role="listbox"
+        class="list-group">
+      <li *ngFor="let model of collection"
+          (mousedown)="choose(model)"
+          [id]="ariaOptionId(model)"
+          [attr.aria-selected]="ariaSelected(model)"
+          [ngClass]="{ active: isActive(model) }"
+          class="list-group-item list-group-item-action">
+        {{ model.name }}
+      </li>
+      <li class="text-muted typeahead-footer list-group-item">
+        <small *ngIf="!hasResults() && request?.search" i18n>
+          No results could be found
+        </small>
+        <small *ngIf="hasResults()" i18n>
+          Showing {{ collection.to}} of {{ collection.total }} results
+        </small>
+      </li>
+    </ul>
+  </div>
+
+</div>

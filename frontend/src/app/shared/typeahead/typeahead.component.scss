@@ -1,0 +1,45 @@
+@import "core";
+
+// Base styles
+
+.typeahead-box.focus {
+  .typeahead-results {
+    display: block;
+  }
+}
+
+.typeahead-results {
+  position: relative;
+  display: none;
+  
+  .list-group {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    box-shadow: 0px 2px 5px 0px #ddd;
+  }
+  
+  .list-group-item {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .list-group-item:first-child {
+    border-top: 0;
+  }
+  
+  .list-group-item.active {
+    color: inherit;
+    background-color: th-gray('200');
+    border-color: th-gray('200');
+  }
+  
+  .list-group-item.typeahead-footer {
+    background-color: th-gray('50');
+  }
+  
+  .list-group-item-action {
+    cursor: pointer;
+  }
+
+}
