@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ConcreteModule } from 'concrete';
@@ -31,6 +32,7 @@ import { RoleDirective } from './role.directive';
         ConcreteModule,
         EditorModule,
         FormsModule,
+        ReactiveFormsModule,
         SidebarModule,
         SearchModule,
         ShareFormModule,
