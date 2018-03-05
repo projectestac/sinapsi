@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConcreteModule } from 'concrete';
 
+import { MultiselectComponent } from './multiselect.component';
 import { TypeaheadComponent } from './typeahead.component';
 
 
 @NgModule({
     declarations: [
+        MultiselectComponent,
         TypeaheadComponent
     ],
 
@@ -18,6 +20,7 @@ import { TypeaheadComponent } from './typeahead.component';
     ],
 
     exports: [
+        MultiselectComponent,
         TypeaheadComponent
     ]
 })

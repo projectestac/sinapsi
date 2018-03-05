@@ -3,7 +3,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter, SimpleChanges } from '@angular/core';
-import { HostListener, ViewChild, forwardRef } from '@angular/core';
+import { ViewChild, forwardRef } from '@angular/core';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -29,10 +29,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
     OnChanges, OnDestroy, OnInit {
 
     /** Default request limit */
-    private readonly DEFAULT_LIMIT = 6;
+    public readonly DEFAULT_LIMIT = 6;
 
     /** Default request sort order */
-    private readonly DEFAULT_SORT = ['name'];
+    public readonly DEFAULT_SORT = ['name'];
 
     /** Form on change callback */
     private _onChange: any = null;
@@ -44,10 +44,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
     private unsubscribe = new Subject();
 
     /** Initial model identifier **/
-    private valueId: number = null;
+    protected valueId: number = null;
 
     /** Weather the control is disabled */
-    private isDisabled = false;
+    protected isDisabled = false;
 
     /** Search keywords */
     public keywords: string = null;
@@ -74,7 +74,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
     @Input() path: string = null;
 
     /** Current value */
-    @Input() value: Model = null;
+    @Input() value: any = null;
 
     /** Request filters */
     @Input() filters: StoreQuery = {};
@@ -85,10 +85,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
     };
 
     /** On input event */
-    @Output('input') inputEvent = new EventEmitter<Model>();
+    @Output('input') inputEvent = new EventEmitter<any>();
 
     /** On change event */
-    @Output('change') changeEvent = new EventEmitter<Model>();
+    @Output('change') changeEvent = new EventEmitter<any>();
 
     /** On blur event */
     @Output('blur') blurEvent = new EventEmitter<Element>();
@@ -104,7 +104,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      * Component constructor.
      */
     constructor(
-        private store: StoreService
+        protected store: StoreService
     ) {}
 
 
@@ -172,7 +172,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
 
     /**
+     * Registers a callback that will be invoked when the choosen
+     * value changes.
      *
+     * @param fn    Callback function
      */
     registerOnChange(fn: any) {
         this._onChange = fn;
@@ -180,7 +183,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
 
     /**
+     * Registers a callback that will be invoked when the component
+     * is blured.
      *
+     * @param fn    Callback function
      */
     registerOnTouched(fn: any) {
         this._onTouched = fn;
@@ -390,10 +396,9 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
         // Emit change and blur events
 
-        if (this.value && this.valueId !== this.value.id) {
-            this.changeEvent.emit(this.value);
-        } else if (!this.value && this.valueId) {
-            this.changeEvent.emit(null);
+        if (this.hasChanges()) {
+            this.valueId = this.value && this.value['id'] || null;
+            this.changeEvent.emit(this.value || null);
         }
 
         this.blurEvent.emit(this.inputBox);
@@ -417,13 +422,13 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
 
     /**
-     * Returns if the given model is the selected value. The values
-     * are compared by their 'id' properties.
+     * Returns if the given model is a chosen value. The values
+     * are compared by their model 'id' properties.
      *
      * @param model     Model to check
      * @returns         True if the model is selected
      */
-    public isValue(model: Model) {
+    public isChoice(model: Model) {
         if (model && this.value) {
             return (model.id === this.value.id);
         }
@@ -441,6 +446,24 @@ export class TypeaheadComponent implements ControlValueAccessor,
         if (Array.isArray(this.collection)) {
             return (this.collection['total'] > 0) &&
                    (this.collection.length > 0);
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Returns if the choosen value has changed.
+     *
+     * @returns         True if there are changes
+     */
+    public hasChanges(): boolean {
+        if (this.value && this.valueId) {
+            return this.valueId !== this.value.id;
+        } else if (!this.value && this.valueId) {
+            return true;
+        } else if (!this.valueId && this.value) {
+            return true;
         }
 
         return false;
@@ -472,7 +495,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      *
      * @param keywords      Search keywords
      */
-    private fetch(keywords: string) {
+    protected fetch(keywords: string) {
         // Build the request using the user filters or the
         // default parameters
 
@@ -545,8 +568,9 @@ export class TypeaheadComponent implements ControlValueAccessor,
      *
      * @param keywords      String to normalize
      */
-    private normalize(keywords: string): string {
-        return keywords.trim().replace(/\s+/g, ' ').toLowerCase();
+    protected normalize(keywords: string): string {
+        return (keywords && keywords !== null) ?
+            keywords.trim().replace(/\s+/g, ' ').toLowerCase() : '';
     }
 
 
@@ -559,7 +583,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      *
      * @returns         True if they equal; false otherwise
      */
-    private valueEquals(model: Model, keywords: string) {
+    protected valueEquals(model: Model, keywords: string) {
         if (model && keywords) {
             const k1 = this.normalize(keywords);
             const k2 = this.normalize(model['name']);
@@ -582,7 +606,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      *
      * @returns         True if the arrays are equal
      */
-    private arraysEqual(a1: any[], a2: any[]): boolean {
+    protected arraysEqual(a1: any[], a2: any[]): boolean {
         if (a1 !== a2) {
             if (a1.length !== a2.length) {
                 return false;
@@ -610,7 +634,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      *
      * @returns         True if the requests are equal
      */
-    private requestsEqual(r1: any, r2: any): boolean {
+    protected requestsEqual(r1: any, r2: any): boolean {
         const k1 = Object.keys(r1);
         const k2 = Object.keys(r2);
 
