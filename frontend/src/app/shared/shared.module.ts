@@ -8,6 +8,8 @@ import { ConcreteModule } from 'concrete';
 
 import { BlockModule } from './block';
 import { CardModule } from './card';
+import { ColorpickerModule } from './colorpicker';
+import { DatepickerModule } from './datepicker';
 import { SidebarModule } from './sidebar';
 import { SearchModule } from './search';
 import { ShareFormModule } from './share';
@@ -30,6 +32,8 @@ import { RoleDirective } from './role.directive';
         CardModule,
         CommonModule,
         ConcreteModule,
+        ColorpickerModule,
+        DatepickerModule,
         EditorModule,
         FormsModule,
         ReactiveFormsModule,
