@@ -58,18 +58,6 @@ export class MultiselectComponent extends TypeaheadComponent {
 
 
     /**
-     * On component property changes.
-     */
-    ngOnChanges(changes: SimpleChanges) {
-        super.ngOnChanges(changes);
-
-        if ('value' in changes && !Array.isArray(this.value)) {
-            throw new Error("Attribute 'value' must be an array");
-        }
-    }
-
-
-    /**
      * Writes a value from the model into the view.
      *
      * @param value     New value
@@ -78,6 +66,9 @@ export class MultiselectComponent extends TypeaheadComponent {
         if (Array.isArray(value)) {
             this.valueIds = value.map(v => v['id'] || null);
             this.value = value.map(v => Object.assign({}, v));
+        } else {
+            this.valueIds = null;
+            this.value = null;
         }
     }
 
