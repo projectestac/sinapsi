@@ -233,6 +233,26 @@ abstract class FoundationModel extends Model {
     
     
     /**
+     * Orders the query by the matched text position.
+     *
+     * If the search string is found on the column value starting in
+     * a position lower than the first four characters the result is
+     * ordered first. Note that this method assumes that the string
+     * to match exists on the given column value.
+     *
+     * @param $query    Query
+     * @param $column   Table column
+     * @param $search   Text to match
+     */
+    public function scopeOrderByMatch($query, $column, $string) {
+        $sql = "if(position(? in `$column`)<4,0,1)";
+        $query->orderByRaw($sql, [$string]);
+        
+        return $query;
+    }
+    
+    
+    /**
      * Add a WHERE-LIKE clause to the query to match the provided
      * string in any position.
      *
@@ -639,7 +659,7 @@ abstract class FoundationModel extends Model {
      *
      * The query is sorted by the provided fields on the Request's sort[]
      * parameter in the order that they are given. The field names can be
-     * prefixed with a minus symbol to indicate a descending order
+     * prefixed with a minus symbol to indicate a descending order.
      *
      * The allowed fields for sorting must be defined on the model's $field
      * array, otherwise the field will be ignored.
@@ -647,6 +667,11 @@ abstract class FoundationModel extends Model {
      * The provided Request object must include a 'sort' parameter with the
      * columns to use for sorting; otherwise, the query is sorted by the
      * model's primary key column.
+     *
+     * The special $ prefix sorts the results by how closely the searched
+     * text matches the result. To use the $ prefix the column must be
+     * on the model's $searchable array and the request must include a
+     * 'search' parameter with exactly one search value.
      *
      * @param  Request $request     HTTP request object
      * @return Builder              Scoped query
@@ -686,9 +711,22 @@ abstract class FoundationModel extends Model {
                 $column = substr($field, 1);
             }
             
-            // Add an order to the query
+            // Add an order clause to the query. The signs +/- indicate
+            // the direction and the sign $ orders the query by a search
+            // clausule match.
             
-            if (in_array($column, $sortable)) {
+            if ($sign === '$') {
+                $column = substr($field, 1);
+                $search = $request->get('search');
+                
+                try {
+                    if (key_exists($column, $this->searchable)) {
+                        $query->orderByMatch($column, $search);
+                    }
+                } catch (\Exception $e) {
+                    // pass
+                }
+            } else if (in_array($column, $sortable)) {
                 $query->orderBy($column, $direction);
             }
         }
