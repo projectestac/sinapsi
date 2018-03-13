@@ -2,7 +2,7 @@ import { StoreQuery } from 'app/core';
 import { _ } from 'i18n';
 
 
-export interface TypeaheadConfig {
+export interface FieldConfig {
     id: string;
     name: string;
     path: string;
@@ -13,7 +13,7 @@ export interface TypeaheadConfig {
 /**
  * Predefined published at intervals.
  */
-export const TYPEAHEAD_FIELDS: TypeaheadConfig[] = [{
+export const TYPEAHEAD_FIELDS: FieldConfig[] = [{
     id:     'tags',
     name:   _('Tags'),
     path:   '/api/tags',

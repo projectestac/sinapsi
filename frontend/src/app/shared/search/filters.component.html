@@ -5,21 +5,21 @@
     
     <div class="search-tabs">
       <cn-tabs [(value)]="tab">
-        <cn-tabitem *ngFor="let item of filters" [value]="item.id">
+        <cn-tabitem *ngFor="let item of fields" [value]="item.id">
           <div class="search-tab-title">
             <span>{{ item.name }}</span>
-            <span *ngIf="form.get(item.id).value"
+            <span *ngIf="countValue(item.id) > 0"
                   class="badge badge-pill badge-secondary">
-              {{ form.get(item.id).value.length }}
+              {{ countValue(item.id) }}
             </span>
           </div>
         </cn-tabitem>
         <cn-tabitem value="published_at">
           <div class="search-tab-title">
             <span i18n>Publish date</span>
-            <span *ngIf="form.get('before').value || form.get('after').value"
+            <span *ngIf="countValue('before') || countValue('after')"
                   class="badge badge-pill badge-secondary">
-              1
+              {{ countValue('before') }}
             </span>
           </div>
         </cn-tabitem>
@@ -30,7 +30,7 @@
 
       <!-- Typeahead filter forms -->
       
-      <ng-container *ngFor="let item of filters">
+      <ng-container *ngFor="let item of fields">
         <div *ngIf="tab === item.id">
           <span class="filter-icon">
             <cn-icon value="search"></cn-icon>
@@ -80,14 +80,14 @@
             <label>
               <span i18n>Published after</span>
               <app-datepicker formControlName="after"
-                (input)="interval = null">
+                (input)="clearInterval()">
               </app-datepicker>
             </label>
 
             <label>
               <span i18n>Published before</span>
               <app-datepicker formControlName="before"
-                (input)="interval = null">
+                (input)="clearInterval()">
               </app-datepicker>
             </label>
 
