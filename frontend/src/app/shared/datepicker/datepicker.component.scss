@@ -1,0 +1,29 @@
+@import "core";
+
+// Fallback date picker
+
+.fallback-picker {
+
+  select {
+    border: 0;
+    padding: 0;
+    appearance: none;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  select:active, select:focus {
+    background: th-gray('200');
+  }
+  
+  option:first-child {
+    display: none;
+  }
+  
+  .date-divider {
+    pointer-events: none;
+    align-self: center;
+  }
+
+}

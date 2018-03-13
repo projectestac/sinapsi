@@ -1,0 +1,15 @@
+<div class="input-group">
+  <span class="input-group-prepend">
+    <span class="input-group-text">
+      <cn-icon value="calendar"></cn-icon>
+    </span>
+  </span>
+  <input #inputBox
+    type="date"
+    (blur)="blur()"
+    (focus)="focus()"
+    (keydown.escape)="clear(); false"
+    (change)="$event.stopPropagation()"
+    (input)="choose(inputBox.value); $event.stopPropagation()"
+    class="form-control"/>
+</div>
