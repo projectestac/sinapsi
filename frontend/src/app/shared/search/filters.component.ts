@@ -184,6 +184,10 @@ export class FiltersComponent implements OnChanges {
                 }
             });
 
+        // Reset the date range interval
+
+        this.interval = PUBLISH_INTERVALS[0];
+
         // Clear the current date interval if a value for the
         // date boxes was provided
 
