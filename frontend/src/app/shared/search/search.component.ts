@@ -13,15 +13,7 @@ export class SearchComponent {
     @Input('value') value: string;
 
     /** Emitted on search */
-    @Output('search') searchEvent: EventEmitter<string>;
-
-
-    /**
-     * Component constructor.
-     */
-    constructor() {
-        this.searchEvent = new EventEmitter();
-    }
+    @Output('search') searchEvent = new EventEmitter<string>();
 
 
     /**

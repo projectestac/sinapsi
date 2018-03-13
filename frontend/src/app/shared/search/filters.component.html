@@ -1,0 +1,107 @@
+<form [formGroup]="form">
+  <div class="form-wrapper">
+    
+    <!-- Filters tabs -->
+    
+    <div class="search-tabs">
+      <cn-tabs [(value)]="tab">
+        <cn-tabitem *ngFor="let item of filters" [value]="item.id">
+          <div class="search-tab-title">
+            <span>{{ item.name }}</span>
+            <span *ngIf="form.get(item.id).value"
+                  class="badge badge-pill badge-secondary">
+              {{ form.get(item.id).value.length }}
+            </span>
+          </div>
+        </cn-tabitem>
+        <cn-tabitem value="published_at">
+          <div class="search-tab-title">
+            <span i18n>Publish date</span>
+            <span *ngIf="form.get('before').value || form.get('after').value"
+                  class="badge badge-pill badge-secondary">
+              1
+            </span>
+          </div>
+        </cn-tabitem>
+      </cn-tabs>
+    </div>
+    
+    <div class="tabs-outlet">
+
+      <!-- Typeahead filter forms -->
+      
+      <ng-container *ngFor="let item of filters">
+        <div *ngIf="tab === item.id">
+          <span class="filter-icon">
+            <cn-icon value="search"></cn-icon>
+          </span>
+          <app-multiselect
+            [path]="item.path"
+            [filters]="item.filters"
+            [formControlName]="item.id"
+            (input)="submit(form.value)"
+            autofocus i18n-placeholder>
+          </app-multiselect>
+        </div>
+      </ng-container>
+      
+      <!-- Date interval filters -->
+      
+      <div *ngIf="tab === 'published_at'">
+        <fieldset class="date-interval form-group">
+          <legend class="col-form-label">
+            <span i18n>Published at</span>
+          </legend>
+          
+          <ng-container *ngFor="let item of intervals">
+            <div class="custom-control custom-radio">
+              <input
+                type="radio"
+                name="date-interval"
+                [id]="'interval-filter-' + item.id"
+                [checked]="item === interval"
+                (input)="applyInterval(item)"
+                (change)="submit(form.value)"
+                class="custom-control-input">
+              <label class="custom-control-label"
+                [for]="'interval-filter-' + item.id">
+                {{ item.name }}
+              </label>
+            </div>
+          </ng-container>
+        </fieldset>
+
+        <fieldset class="date-range form-group">
+          <legend class="col-form-label" i18n>
+            <span i18n>Between two dates</span>
+          </legend>
+
+          <div class="d-flex flex-row">
+            <label>
+              <span i18n>Published after</span>
+              <app-datepicker formControlName="after"
+                (input)="interval = null">
+              </app-datepicker>
+            </label>
+
+            <label>
+              <span i18n>Published before</span>
+              <app-datepicker formControlName="before"
+                (input)="interval = null">
+              </app-datepicker>
+            </label>
+
+            <button
+              (click)="submit(form.value)"
+              title="Apply date range" i18n-title
+              class="btn btn-secondary-light">
+              <cn-icon value="search"></cn-icon>
+              <span class="sr-only" i18n>Apply</span>
+            </button>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+</form>
