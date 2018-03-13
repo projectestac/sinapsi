@@ -34,6 +34,14 @@ export class CnDetailsComponent {
 
 
     /**
+     * Whether the component is open.
+     */
+    get open(): boolean {
+        return this.isOpen;
+    }
+
+
+    /**
      * Component state
      */
     get state(): string {
