@@ -24,9 +24,6 @@ let numIntances = 0;
 })
 export class MultiselectComponent extends TypeaheadComponent {
 
-    /** Prevent the blur event */
-    private lockBlur = false;
-
     /** Initial model identifier **/
     protected valueIds: number[] = null;
 
@@ -103,7 +100,7 @@ export class MultiselectComponent extends TypeaheadComponent {
 
             if (this.value.every(v => (v.id !== model.id))) {
                 this.value.push(Object.assign({}, model));
-                this.inputEvent.emit(this.value);
+                this.emitInputEvent();
             }
         }
     }
@@ -119,7 +116,12 @@ export class MultiselectComponent extends TypeaheadComponent {
             for (let i = 0; i < this.value.length; i++) {
                 if (this.value[i].id === model.id) {
                     this.value.splice(i, 1);
-                    this.inputEvent.emit(this.value);
+
+                    if (this.value.length <= 0) {
+                        this.value = null;
+                    }
+
+                    this.emitInputEvent();
                     break;
                 }
             }
@@ -142,25 +144,6 @@ export class MultiselectComponent extends TypeaheadComponent {
 
 
     /**
-     * Prevents the blur event on the component from being called.
-     *
-     * This method does not prevent the blur event on the input box
-     * from firing; it only prevents the blur callback from execting
-     * and focuses then focuses again the input box.
-     */
-    public preventBlur(event: Event) {
-        this.lockBlur = true;
-
-        setTimeout(() => {
-            this.inputBox.nativeElement.focus();
-            this.lockBlur = false;
-        });
-
-        event.stopPropagation();
-    }
-
-
-    /**
      * Remove the focus from this component input box.
      */
     public blur() {
@@ -174,11 +157,12 @@ export class MultiselectComponent extends TypeaheadComponent {
         // Emit change and blur events
 
         if (this.hasChanges()) {
-            this.valueIds = this.value && this.value.map(v => v['id'] || null);
-            this.changeEvent.emit(this.value || null);
+            this.valueIds = this.value && this.value.map(
+                value => value['id'] || null);
+            this.emitChangeEvent();
         }
 
-        this.blurEvent.emit(this.inputBox);
+        this.emitBlurEvent();
     }
 
 
@@ -222,6 +206,25 @@ export class MultiselectComponent extends TypeaheadComponent {
 
 
     /**
+     * Show the given page of results.
+     */
+    public page(page: number) {
+        if (!this.collection || page < 1) {
+            return;
+        }
+
+        const request = { ...this.request, page: page };
+
+        this.store.query(this.path, request)
+                .subscribe(collection => {
+                    this.request = request;
+                    this.collection = collection;
+                    this.activate(null);
+                });
+    }
+
+
+    /**
      * Fecth new results from the server for the given keywords.
      *
      * @param keywords      Search keywords
@@ -230,10 +233,14 @@ export class MultiselectComponent extends TypeaheadComponent {
         // Build the request using the user filters or the
         // default parameters
 
-        const request = Object.assign({}, this.filters, {
-            search: this.normalize(keywords),
+        const filters = Object.assign({
             limit: this.DEFAULT_LIMIT,
-            sort: this.DEFAULT_SORT
+            sort: this.DEFAULT_SORT },
+            this.filters
+        );
+
+        const request = Object.assign(filters, {
+            search: this.normalize(keywords)
         });
 
         // Fetch new results if the new request differs from

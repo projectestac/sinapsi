@@ -9,6 +9,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Collection, Model } from 'app/core';
 import { StoreQuery, StoreService } from 'app/core';
+import { _ } from 'i18n';
 
 
 /** Unique component intance ID */
@@ -28,11 +29,14 @@ let numIntances = 0;
 export class TypeaheadComponent implements ControlValueAccessor,
     OnChanges, OnDestroy, OnInit {
 
+    /** Prevent the blur event */
+    protected lockBlur = false;
+
     /** Default request limit */
-    public readonly DEFAULT_LIMIT = 6;
+    public readonly DEFAULT_LIMIT = 5;
 
     /** Default request sort order */
-    public readonly DEFAULT_SORT = ['name'];
+    public readonly DEFAULT_SORT = ['$name', 'name'];
 
     /** Form on change callback */
     private _onChange: any = null;
@@ -46,8 +50,11 @@ export class TypeaheadComponent implements ControlValueAccessor,
     /** Initial model identifier **/
     protected valueId: number = null;
 
-    /** Weather the control is disabled */
+    /** Whether the control is disabled */
     protected isDisabled = false;
+
+    /** Whether the autofocus flag is set */
+    protected autofocus = false;
 
     /** Search keywords */
     public keywords: string = null;
@@ -70,6 +77,9 @@ export class TypeaheadComponent implements ControlValueAccessor,
     /** Unique identifier of the component */
     @Input() id = `app-typeahead-${numIntances++}`;
 
+    /** Placeholder text */
+    @Input() placeholder = _('Type to search');
+
     /** Path of the API endpoint */
     @Input() path: string = null;
 
@@ -78,6 +88,11 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
     /** Request filters */
     @Input() filters: StoreQuery = {};
+
+    /** Autofocus attribute of the control */
+    @Input('autofocus') set setAutofocus(value: string) {
+        this.autofocus = (value !== null && value !== undefined);
+    };
 
     /** Disabled attribute of the control */
     @Input('disabled') set setDisabled(value: string) {
@@ -118,33 +133,18 @@ export class TypeaheadComponent implements ControlValueAccessor,
             throw new Error("Attribute 'path' is required");
         }
 
-        // Call the form touched callback on blur
-
-        this.blurEvent
-            .takeUntil(this.unsubscribe)
-            .subscribe(model => {
-                if (typeof this._onTouched === 'function') {
-                    this._onTouched();
-                }
-            });
-
-        // Call the form change callback when the value has changed
-        // and the input box has lost its focus
-
-        this.changeEvent
-            .takeUntil(this.unsubscribe)
-            .subscribe(model => {
-                if (typeof this._onChange === 'function') {
-                    this._onChange(model);
-                }
-            });
-
         // Search new results on each key up of the input box
 
         this.keyUp
             .debounceTime(400)
             .takeUntil(this.unsubscribe)
             .subscribe(keywords => this.fetch(keywords));
+
+        // Autofocus the contorl if requested
+
+        if (this.autofocus === true) {
+            this.focus();
+        }
     }
 
 
@@ -241,7 +241,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      * Returns the UUID of the options list.
      */
     public ariaOwns(): string {
-        return `#${this.id}-listbox`;
+        return `${this.id}-listbox`;
     }
 
 
@@ -284,7 +284,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
         this.value = null;
         this.keywords = null;
         this.activeValue = null;
-        this.inputEvent.emit(null);
+        this.emitInputEvent();
     }
 
 
@@ -339,9 +339,9 @@ export class TypeaheadComponent implements ControlValueAccessor,
         if (model) {
             this.value = Object.assign({}, model);
             this.keywords = model['name'];
-            this.inputEvent.emit(this.value);
             this.activate(model);
             this.fetch(this.keywords);
+            this.emitInputEvent();
         } else {
             this.clear();
         }
@@ -354,7 +354,12 @@ export class TypeaheadComponent implements ControlValueAccessor,
      * @param keywords  Search keywords
      */
     public search(keywords: string) {
-        this.keyUp.next(keywords);
+        const nkeys = this.normalize(keywords);
+        const okeys = this.request['search'];
+
+        if (nkeys !== okeys) {
+            this.keyUp.next(keywords);
+        }
     }
 
 
@@ -374,7 +379,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      * Remove the focus from this component input box.
      */
     public blur() {
-        if (this.hasFocus === false) {
+        if (this.lockBlur || !this.hasFocus) {
             return;
         }
 
@@ -398,10 +403,29 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
         if (this.hasChanges()) {
             this.valueId = this.value && this.value['id'] || null;
-            this.changeEvent.emit(this.value || null);
+            this.emitChangeEvent();
         }
 
-        this.blurEvent.emit(this.inputBox);
+        this.emitBlurEvent();
+    }
+
+
+    /**
+     * Prevents the blur event on the component from being called.
+     *
+     * This method does not prevent the blur event on the input box
+     * from firing; it only prevents the blur callback from execting
+     * and focuses then focuses again the input box.
+     */
+    public preventBlur(event: Event) {
+        this.lockBlur = true;
+
+        setTimeout(() => {
+            this.inputBox.nativeElement.focus();
+            this.lockBlur = false;
+        });
+
+        event.stopPropagation();
     }
 
 
@@ -491,6 +515,86 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
 
     /**
+     * Emit a control blur event.
+     */
+    protected emitBlurEvent() {
+        if (typeof this._onTouched === 'function') {
+            this._onTouched();
+        }
+
+        this.blurEvent.emit(this.inputBox);
+    }
+
+
+    /**
+     * Emit a value change event.
+     */
+    protected emitChangeEvent() {
+        const value = this.value || null;
+
+        if (typeof this._onChange === 'function') {
+            this._onChange(value);
+        }
+
+        this.changeEvent.emit(value);
+    }
+
+
+    /**
+     * Emit a control input event.
+     */
+    protected emitInputEvent() {
+        const value = this.value || null;
+
+        if (typeof this._onChange === 'function') {
+            this._onChange(value);
+        }
+
+        this.inputEvent.emit(value);
+    }
+
+
+    /**
+     * Show the previous page of results.
+     */
+    public previous() {
+        if (this.collection.from > 1) {
+            this.page(this.collection.current_page - 1);
+        }
+    }
+
+
+    /**
+     * Show the next page of results.
+     */
+    public next() {
+        if (this.collection.total > this.collection.to) {
+            this.page(this.collection.current_page + 1);
+        }
+    }
+
+
+    /**
+     * Show the given page of results.
+     */
+    public page(page: number) {
+        if (!this.collection || page < 1) {
+            return;
+        }
+
+        const request = { ...this.request, page: page };
+
+        this.store.query(this.path, request)
+                .subscribe(collection => {
+                    this.request = request;
+                    this.collection = collection;
+                    this.refreshValue();
+                    this.refreshActiveValue();
+                });
+    }
+
+
+    /**
      * Fecth new results from the server for the given keywords.
      *
      * @param keywords      Search keywords
@@ -499,10 +603,14 @@ export class TypeaheadComponent implements ControlValueAccessor,
         // Build the request using the user filters or the
         // default parameters
 
-        const request = Object.assign({}, this.filters, {
-            search: this.normalize(keywords),
+        const filters = Object.assign({
             limit: this.DEFAULT_LIMIT,
-            sort: this.DEFAULT_SORT
+            sort: this.DEFAULT_SORT },
+            this.filters
+        );
+
+        const request = Object.assign(filters, {
+            search: this.normalize(keywords)
         });
 
         // Fetch new results if the new request differs from
