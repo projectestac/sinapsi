@@ -1,0 +1,45 @@
+<div class="search-toolbar">
+
+  <!-- Toolbar -->
+
+  <div class="toolbar-items-wrapper">
+    <div class="toolbar-item">
+      <ng-container *ngIf="filtered">
+        <span i18n>
+          <strong>The search results are filtered</strong>
+        </span>
+        <button (click)="clearFilters()"
+          title="Clear filters" title-i18n
+          class="btn btn-link">
+          <cn-icon value="times-circle"></cn-icon>
+          <span class="sr-only" i18n>Clear</span>
+        </button>
+      </ng-container>
+    </div>
+    
+    <div class="toolbar-item">
+      <button (click)="toggleFilters()"
+        class="btn btn-link">
+        <span i18n>Refine search</span>
+        <cn-icon
+          *ngIf="expandable.state === 'closed'"
+          value="caret-down">
+        </cn-icon>
+        <cn-icon
+          *ngIf="expandable.state === 'open'"
+          value="caret-up">
+        </cn-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search filters -->
+
+  <cn-expandable #expandable>
+    <app-filters #filters
+      [value]="value"
+      (input)="submit($event)">
+    </app-filters>
+  </cn-expandable>
+
+</div>

@@ -8,12 +8,14 @@ import { TypeaheadModule } from 'app/shared/typeahead';
 
 import { FiltersComponent } from './filters.component';
 import { SearchComponent } from './search.component';
+import { SearchToolbarComponent } from './toolbar.component';
 
 
 @NgModule({
     declarations: [
         FiltersComponent,
-        SearchComponent
+        SearchComponent,
+        SearchToolbarComponent
     ],
 
     imports: [
@@ -27,7 +29,8 @@ import { SearchComponent } from './search.component';
 
     exports: [
         FiltersComponent,
-        SearchComponent
+        SearchComponent,
+        SearchToolbarComponent
     ]
 })
 export class SearchModule {}

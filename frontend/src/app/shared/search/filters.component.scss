@@ -29,6 +29,14 @@ fieldset:not(:first-child) {
   margin-top: 1rem;
 }
 
+.custom-radio {
+  margin: 0.375rem 0.75rem;
+}
+
+.custom-radio > label {
+  cursor: pointer;
+}
+
 
 // Layout
 
@@ -46,7 +54,7 @@ fieldset:not(:first-child) {
     background: white;
     border: 1px solid th-gray('200');
     margin-left: -1px;
-    min-height: 24rem;
+    min-height: 24.5rem;
     padding: 1rem;
     width: 70%;
   }
@@ -121,18 +129,6 @@ fieldset:not(:first-child) {
 
 
 // Published at filter
-
-.date-interval {
-  
-  .custom-radio {
-    margin: 0.375rem 0.75rem;
-  }
-  
-  .custom-radio > label {
-    cursor: pointer;
-  }
-  
-}
 
 .date-range {
   

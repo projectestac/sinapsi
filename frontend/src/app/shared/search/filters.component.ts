@@ -7,6 +7,7 @@ import { StoreQuery, StoreService } from 'app/core';
 import { DATE_PATTERN } from 'app/shared/datepicker';
 import { TYPEAHEAD_FIELDS, FieldConfig } from './search.fields';
 import { PUBLISH_INTERVALS, Interval } from './search.intervals';
+import { RESULTS_ORDERINGS, Ordering } from './search.orderings';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class FiltersComponent implements OnChanges {
 
     /** Maps the controls to their query keys */
     private readonly CONTROLS_MAPPING = {
+        sort:           'sort',
         after:          'min-published_at',
         before:         'max-published_at',
         municipalities: 'municipality_id',
@@ -36,6 +38,12 @@ export class FiltersComponent implements OnChanges {
     /** Predefined date intervals */
     public intervals = PUBLISH_INTERVALS;
 
+    /** Current active order */
+    public ordering = RESULTS_ORDERINGS[0];
+
+    /** Predefined date intervals */
+    public orderings = RESULTS_ORDERINGS;
+
     /** Multiselect fields */
     public fields = TYPEAHEAD_FIELDS;
 
@@ -46,7 +54,7 @@ export class FiltersComponent implements OnChanges {
     @Input() value: StoreQuery = {};
 
     /** Emitted on search */
-    @Output('search') searchEvent = new EventEmitter<StoreQuery>();
+    @Output('input') input = new EventEmitter<StoreQuery>();
 
 
     /**
@@ -77,12 +85,37 @@ export class FiltersComponent implements OnChanges {
      */
     public submit(values: any) {
         const query = this.toQuery(values);
-        this.searchEvent.emit(query);
+        this.input.emit(query);
     }
 
 
     /**
-     * Sets the active interval and patch the form with the
+     * Sets the active ordering and patches the form with the
+     * given ordering values.
+     *
+     * @param interval      Date interval
+     */
+    public applyOrdering(ordering: Ordering) {
+        this.ordering = ordering;
+        this.form.patchValue({ sort: ordering.sort });
+    }
+
+
+    /**
+     * Clears the active interval and patches the form with the
+     * given date range values.
+     *
+     * @param after         After date
+     * @param before        Before date
+     */
+    public applyDateRange(after: Date, before: Date) {
+        this.interval = null;
+        this.form.patchValue({ after: after, before: before });
+    }
+
+
+    /**
+     * Sets the active interval and patches the form with the
      * given interval date range.
      *
      * @param interval      Date interval
@@ -107,6 +140,57 @@ export class FiltersComponent implements OnChanges {
 
 
     /**
+     * Returns if the control has a value. This method returns false
+     * if the control does not have a value or the value is empty.
+     *
+     * @param name      Control name
+     * @returns         True if a value exists
+     */
+    public hasValue(name: string): boolean {
+        return !!this.form.get(name).value;
+    }
+
+
+    /**
+     * Returns if any of the date controls has a value.
+     * {@see #hasValue}
+     *
+     * @returns         True if a value exists
+     */
+    public hasDateValues(): boolean {
+        return this.hasValue('before') || this.hasValue('after');
+    }
+
+
+    /**
+     * Returns if any of the controls has a value.
+     *
+     * @returns         True if a value exists
+     */
+    public hasValues(): boolean {
+        const names = Object.keys(this.CONTROLS_MAPPING);
+        return !!names.find(name => this.hasValue(name));
+    }
+
+
+    /**
+     * Returns the number of values on a control.
+     *
+     * @param name      Control name
+     * @returns         Number of values
+     */
+    public countValue(name: string): number {
+        const values = this.form.get(name).value;
+
+        if (Array.isArray(values)) {
+            return values.length;
+        }
+
+        return values ? 1 : 0;
+    }
+
+
+    /**
      * Builds the form controls for the typeahead filters
      * and the date range fields.
      *
@@ -115,7 +199,8 @@ export class FiltersComponent implements OnChanges {
     private buildForm(): FormGroup {
         const controls = {
             after:  null,
-            before: null
+            before: null,
+            sort: null
         };
 
         this.fields.forEach(field => {
@@ -133,21 +218,23 @@ export class FiltersComponent implements OnChanges {
      * @returns         Request query
      */
     private toQuery(values: any): StoreQuery {
-        const entries = Object.entries(values);
         const query = {};
 
         // Map and transform the form values
 
-        entries.forEach(([key, value]) => {
-            if (value !== null && value !== undefined) {
-                const name = this.CONTROLS_MAPPING[key];
-                const hasModels = Array.isArray(value);
-                const filters = hasModels ? value.map(m => m.id) : value;
+        if (values !== null && values !== undefined) {
+            Object.entries(values).forEach(([key, value]) => {
+                if (value !== null && value !== undefined) {
+                    const name = this.CONTROLS_MAPPING[key];
+                    const isField = !!this.fields.find(f => f.id === key);
+                    const hasModels = isField && Array.isArray(value);
+                    const filters = hasModels ? value.map(m => m.id) : value;
 
-                query[name] = (name in query) ?
-                    [...query[name], ...filters] : filters;
-            }
-        });
+                    query[name] = (name in query) ?
+                        [...query[name], ...filters] : filters;
+                }
+            });
+        }
 
         // Fill with null any undefined filters
 
@@ -168,6 +255,8 @@ export class FiltersComponent implements OnChanges {
      * value attribute.
      */
     private initValues() {
+        this.value = (this.value || {});
+
         // Patch the models by obtaining them from the server or set
         // the value to null. If the control is not a typeahead field,
         // then just patch its value.
@@ -178,22 +267,24 @@ export class FiltersComponent implements OnChanges {
                 const values = this.value[param] || null;
 
                 if (field && values) {
-                    this.patchModels(field, values);
+                    const ids = Array.isArray(values) ?
+                        values.map(v => parseInt(v, 10)) :
+                        [parseInt(values, 10)];
+
+                    this.patchModels(field, ids);
                 } else {
                     this.form.patchValue({[name]: values});
                 }
             });
 
-        // Reset the date range interval
+        // Update the date range interval and ordering
 
-        this.interval = PUBLISH_INTERVALS[0];
+        const after = this.form.get('after').value;
+        const before = this.form.get('before').value;
+        const sort = this.form.get('sort').value;
 
-        // Clear the current date interval if a value for the
-        // date boxes was provided
-
-        if (this.hasValue('before') || this.hasValue('after')) {
-            this.clearInterval();
-        }
+        this.interval = this.findInterval(before, after);
+        this.ordering = this.findOrdering(sort);
     }
 
 
@@ -204,22 +295,17 @@ export class FiltersComponent implements OnChanges {
      * @param field     Field configuration
      * @param values    Array of model identifiers
      */
-    private patchModels(field: FieldConfig, ids: number | number[]) {
+    private patchModels(field: FieldConfig, ids: number[]) {
         let values = this.form.get(field.id).value || [];
-        let valueIds = Array.isArray(ids) ? ids : [ids];
 
         // Remove any values not found in the ids array
 
-        values = values.filter(model => {
-            return valueIds.indexOf(model.id) >= 0;
-        });
+        values = values.filter(m => ids.indexOf(m.id) >= 0);
 
         // Fetch any missing values from the server and patch
         // the form control value
 
-        const newIds = valueIds.filter(id => {
-            return !values.find(v => id === v.id);
-        });
+        const newIds = ids.filter(id => !values.find(v => id === v.id));
 
         if (newIds.length < 1) {
             this.form.patchValue({[field.id]: values});
@@ -236,35 +322,6 @@ export class FiltersComponent implements OnChanges {
 
 
     /**
-     * Returns if the control has a value. This method returns false
-     * if the control does not have a value or the value is empty.
-     *
-     * @param name      Control name
-     * @returns         True if a value exists
-     */
-    private hasValue(name: string): boolean {
-        return !!this.form.get(name).value;
-    }
-
-
-    /**
-     * Returns the number of values on a control.
-     *
-     * @param name      Control name
-     * @returns         Number of values
-     */
-    private countValue(name: string): number {
-        const values = this.form.get(name).value;
-
-        if (Array.isArray(values)) {
-            return values.length;
-        }
-
-        return values ? 1 : 0;
-    }
-
-
-    /**
      * Returns the control value with the given identifier.
      *
      * @param name      Control name
@@ -273,6 +330,51 @@ export class FiltersComponent implements OnChanges {
     private findValue(name: string, id: number): Model {
         const values = this.form.get(name).value || [];
         return values.find(v => id === v.id) || null;
+    }
+
+
+    /**
+     * Given two dates returns the matching date range interval.
+     *
+     * @param before    Start of the date range
+     * @param after     End of the date range
+     *
+     * @returns         Matching interval object or null
+     */
+    private findInterval(before: any, after: any): Interval {
+        const mb = this.toMilliseconds(before);
+        const ma = this.toMilliseconds(after);
+
+        return this.intervals.find(i => {
+            return (mb === this.toMilliseconds(i.before)) &&
+                   (ma === this.toMilliseconds(i.after));
+        }) || null;
+    }
+
+
+    /**
+     * Given a sort array returns a matching sort ordering.
+     *
+     * @param sort      Sort array
+     * @returns         Matching ordering object or null
+     */
+    private findOrdering(sort: string[]): Ordering {
+        return this.orderings.find(o => {
+            return String(sort) === String(o.sort);
+        }) || null;
+    }
+
+
+    /**
+     * Returns the number of milliseconds since epoch for a Date
+     * object or a string representation of a date.
+     *
+     * @param value     Date or string
+     * @returns         Milliseconds or NaN if the date is not valid
+     */
+    private toMilliseconds(value: string | Date): number {
+        return (value instanceof Date) ?
+            value.getTime() : new Date(value).getTime();
     }
 
 }

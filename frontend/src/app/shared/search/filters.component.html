@@ -17,9 +17,18 @@
         <cn-tabitem value="published_at">
           <div class="search-tab-title">
             <span i18n>Publish date</span>
-            <span *ngIf="countValue('before') || countValue('after')"
+            <span *ngIf="hasDateValues()"
                   class="badge badge-pill badge-secondary">
-              {{ countValue('before') }}
+              1
+            </span>
+          </div>
+        </cn-tabitem>
+        <cn-tabitem value="sort">
+          <div class="search-tab-title">
+            <span i18n>Order by</span>
+            <span *ngIf="form.get('sort').value"
+                  class="badge badge-pill badge-secondary">
+              1
             </span>
           </div>
         </cn-tabitem>
@@ -60,8 +69,8 @@
                 name="date-interval"
                 [id]="'interval-filter-' + item.id"
                 [checked]="item === interval"
-                (input)="applyInterval(item)"
-                (change)="submit(form.value)"
+                (input)="applyInterval(item); $event.stopPropagation()"
+                (change)="submit(form.value); $event.stopPropagation()"
                 class="custom-control-input">
               <label class="custom-control-label"
                 [for]="'interval-filter-' + item.id">
@@ -79,19 +88,22 @@
           <div class="d-flex flex-row">
             <label>
               <span i18n>Published after</span>
-              <app-datepicker formControlName="after"
+              <app-datepicker #after
+                [value]="form.get('after').value"
                 (input)="clearInterval()">
               </app-datepicker>
             </label>
 
             <label>
               <span i18n>Published before</span>
-              <app-datepicker formControlName="before"
+              <app-datepicker #before
+                [value]="form.get('before').value"
                 (input)="clearInterval()">
               </app-datepicker>
             </label>
 
             <button
+              (mousedown)="applyDateRange(after.value, before.value)"
               (click)="submit(form.value)"
               title="Apply date range" i18n-title
               class="btn btn-secondary-light">
@@ -99,6 +111,33 @@
               <span class="sr-only" i18n>Apply</span>
             </button>
           </div>
+        </fieldset>
+      </div>
+
+      <!-- Results order filter -->
+
+      <div *ngIf="tab === 'sort'">
+        <fieldset class="ordering form-group">
+          <legend class="col-form-label">
+            <span i18n>Results ordering</span>
+          </legend>
+          
+          <ng-container *ngFor="let item of orderings">
+            <div class="custom-control custom-radio">
+              <input
+                type="radio"
+                name="ordering"
+                [id]="'ordering-filter-' + item.id"
+                [checked]="item === ordering"
+                (input)="applyOrdering(item); $event.stopPropagation()"
+                (change)="submit(form.value); $event.stopPropagation()"
+                class="custom-control-input">
+              <label class="custom-control-label"
+                [for]="'ordering-filter-' + item.id">
+                {{ item.name }}
+              </label>
+            </div>
+          </ng-container>
         </fieldset>
       </div>
 

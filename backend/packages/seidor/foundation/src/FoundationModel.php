@@ -235,18 +235,18 @@ abstract class FoundationModel extends Model {
     /**
      * Orders the query by the matched text position.
      *
-     * If the search string is found on the column value starting in
-     * a position lower than the first four characters the result is
-     * ordered first. Note that this method assumes that the string
-     * to match exists on the given column value.
+     * If the search string is found on the column value the result
+     * is ordered ascending by the position value.
      *
      * @param $query    Query
      * @param $column   Table column
      * @param $search   Text to match
      */
     public function scopeOrderByMatch($query, $column, $string) {
-        $sql = "if(position(? in `$column`)<4,0,1)";
-        $query->orderByRaw($sql, [$string]);
+        if (is_string($string) && strlen($string) > 0) {
+            $sql = "nullif(-position(? in `$column`), 0) desc";
+            $query->orderByRaw($sql, [$string]);
+        }
         
         return $query;
     }
