@@ -1,25 +1,17 @@
 import { Component } from '@angular/core';
-import { Collection } from 'app/core';
-import { Block, Synapse } from 'app/models';
-import { SynapseDetailsComponent } from 'app/feature/synapses/details';
+import { DetailsComponent, RequestManager } from 'app/core';
 
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
-    styleUrls: [ 'home.component.scss' ]
+    styleUrls: [ 'home.component.scss' ],
+    providers: [ RequestManager ]
 })
-export class HomeComponent extends SynapseDetailsComponent {
-
-    /** Model for this synapse */
-    public synapse: Synapse = null;
-
-    /** Sidebar blocks for this synapse */
-    public blocks: Collection<Block> = null;
-
+export class HomeComponent extends DetailsComponent {
 
     /**
-     * Fetch the home synapse and its blocks.
+     * Fetch the home synapse and its side blocks.
      */
     protected fetchSynapse(slug: string) {
         super.fetchSynapse('general');

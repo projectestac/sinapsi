@@ -56,13 +56,16 @@ export class HomeComponent implements OnInit {
 
 
     /**
-     * On search
+     * Request a new keyword search.
      */
-    public onSearch(event: Event) {
+    public search(keywords: string) {
         this.router.navigate(['.'], {
             relativeTo: this.route,
             queryParamsHandling: 'merge',
-            queryParams: { search: event }
+            queryParams: {
+                search: keywords,
+                page: null
+            }
         });
     }
 

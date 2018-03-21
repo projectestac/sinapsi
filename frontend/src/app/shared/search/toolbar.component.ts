@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 import { EventEmitter, ViewChild } from '@angular/core';
 import { StoreQuery } from 'app/core';
 
@@ -9,7 +9,7 @@ import { StoreQuery } from 'app/core';
     templateUrl: 'toolbar.component.html',
     styleUrls: [ 'toolbar.component.scss' ]
 })
-export class SearchToolbarComponent implements OnInit {
+export class SearchToolbarComponent implements AfterViewInit {
 
     /** Wether the toolbar was activated */
     private _activated = false;
@@ -33,7 +33,7 @@ export class SearchToolbarComponent implements OnInit {
     /**
      * Component initialization.
      */
-    ngOnInit() {
+    ngAfterViewInit() {
         this.filters.form.valueChanges.subscribe(values => {
             this._filtered = this.filters.hasValues();
         });

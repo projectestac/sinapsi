@@ -22,9 +22,14 @@
       
       <aside role="search">
         <app-search
-          (search)="onSearch($event)"
-          [value]="browser.search">
+          (search)="search($event)"
+          [value]="request.search">
         </app-search>
+        
+        <app-search-toolbar
+          (input)="filter($event)"
+          [value]="request">
+        </app-search-toolbar>
       </aside>
       
     </div>

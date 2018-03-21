@@ -47,7 +47,7 @@ export class PostsBrowserComponent implements OnInit, OnDestroy {
      * Component initialization.
      */
     ngOnInit() {
-        this.manager.queries
+        this.manager.requests
             .takeUntil(this.unsubscribe)
             .subscribe(query => {
                 this.section = query['section'] || this.DEFAULT_SECTION;

@@ -3,7 +3,7 @@ import { EventEmitter, OnInit } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 
-import { CatalogState, Collection, Model } from 'app/core';
+import { FetchState, Collection, Model } from 'app/core';
 import { StoreQuery, StoreService } from 'app/core';
 import { Comment, Post } from 'app/models';
 import { CommentsMessages } from '../comments.messages';
@@ -20,7 +20,7 @@ export class CommentsCatalogComponent implements OnInit {
     protected path = '/api/comments';
 
     /** Current state */
-    public state: CatalogState = CatalogState.PENDING;
+    public state: FetchState = FetchState.PENDING;
 
     /** Current collection */
     public collection: Collection<Model>;
@@ -97,14 +97,14 @@ export class CommentsCatalogComponent implements OnInit {
      * @param request       Request query
      */
     private updateCatalog() {
-        this.state = CatalogState.PENDING;
+        this.state = FetchState.PENDING;
 
         this.store.query(this.path, this.request)
             .subscribe(collection => {
                 collection.unshift(...this.collection);
                 this.collection = collection;
-                this.state = CatalogState.READY;
-            }, errors => this.state = CatalogState.ERROR);
+                this.state = FetchState.READY;
+            }, errors => this.state = FetchState.ERROR);
     }
 
 

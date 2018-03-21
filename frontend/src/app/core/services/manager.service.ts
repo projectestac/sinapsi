@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { StoreQuery } from './store.service';
 
@@ -15,7 +16,7 @@ export class RequestManager implements OnDestroy {
     protected subject = new ReplaySubject<StoreQuery>(1);
 
     /** Observable of queries */
-    public queries = this.subject.asObservable();
+    private _requests = this.subject.asObservable();
 
 
     /**
@@ -25,6 +26,8 @@ export class RequestManager implements OnDestroy {
         private router: Router,
         private route: ActivatedRoute
     ) {
+        // Emit request objects when the URL changes
+
         this.route.queryParamMap
             .subscribe(paramMap => {
                 this.subject.next(this.toQuery(paramMap));
@@ -37,6 +40,14 @@ export class RequestManager implements OnDestroy {
      */
     ngOnDestroy() {
         this.subject.complete();
+    }
+
+
+    /**
+     * Observable of request queries.
+     */
+    get requests(): Observable<StoreQuery> {
+        return this._requests;
     }
 
 
@@ -58,7 +69,7 @@ export class RequestManager implements OnDestroy {
     replace(params: any) {
         this.router.navigate(['.'], {
             relativeTo: this.route,
-            queryParams: params
+            queryParams: this.serialize(params)
         });
     }
 
@@ -72,7 +83,7 @@ export class RequestManager implements OnDestroy {
         this.router.navigate(['.'], {
             relativeTo: this.route,
             queryParamsHandling: 'merge',
-            queryParams: params
+            queryParams: this.serialize(params)
         });
     }
 
@@ -141,6 +152,27 @@ export class RequestManager implements OnDestroy {
         });
 
         return query;
+    }
+
+
+    /**
+     * Serialize the values of an object for use on a request.
+     *
+     * For now this method only transforms Date instances to ISO 8601
+     * strings. All other values are left untouched.
+     *
+     * @param params    Object to serialize
+     * @returns         New object with all the values serialized
+     */
+    private serialize(params: object): object {
+        const result = {};
+
+        Object.entries(params).map(([key, value]) => {
+            result[key] = (value instanceof Date) ?
+                value.toISOString() : value;
+        });
+
+        return result;
     }
 
 }

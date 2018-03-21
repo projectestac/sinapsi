@@ -9,7 +9,7 @@
     </header>
     <aside *ngIf="hasSearchBox" role="search">
       <app-search
-        (search)="onSearch($event)"
+        (search)="search($event)"
         [value]="browser.search">
       </app-search>
     </aside>

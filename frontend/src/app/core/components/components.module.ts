@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CatalogComponent } from './catalog.component';
+import { DetailsComponent } from './details.component';
 
 
 /**
@@ -7,7 +8,8 @@ import { CatalogComponent } from './catalog.component';
  */
 @NgModule({
     declarations: [
-        CatalogComponent
+        CatalogComponent,
+        DetailsComponent
     ]
 })
 export class ComponentsModule {

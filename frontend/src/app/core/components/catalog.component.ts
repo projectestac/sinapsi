@@ -9,15 +9,7 @@ import { SessionEvent, SessionStateChanged } from 'app/core/services';
 import { RequestManager, StoreService } from 'app/core/services';
 import { Collection, Model, StoreQuery } from 'app/core/services';
 import { ScrollTop } from 'app/core/core.decorators';
-
-
-/** Catalog component states */
-export const enum CatalogState {
-    PENDING = 'pending',   // Currently fetching results
-    EMPTY   = 'empty',     // No results were found
-    READY   = 'ready',     // Results succesfully retrieved
-    ERROR   = 'error'      // Could not retrive results
-}
+import { FetchState } from './components.types';
 
 
 /**
@@ -59,7 +51,7 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
     protected /*abstract*/ path: string;
 
     /** Current state */
-    public state: CatalogState = CatalogState.PENDING;
+    public state: FetchState = FetchState.PENDING;
 
     /** Current request query */
     public request: StoreQuery = {};
@@ -98,7 +90,7 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // Update the catalog when the request changes
 
-        this.manager.queries
+        this.manager.requests
             .takeUntil(this.unsubscribe)
             .subscribe(query => this.updateCatalog(
                 this.createRequest(query)));
@@ -233,20 +225,15 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
      * @param request       Request query
      */
     private updateCatalog(request?: StoreQuery) {
-        this.state = CatalogState.PENDING;
+        this.state = FetchState.PENDING;
         this.request = request;
 
         this.store.query(this.path, request).subscribe(
             collection => {
                 this.collection = collection;
                 this.state = (collection.total > 0) ?
-                    CatalogState.READY : CatalogState.EMPTY;
-            },
-
-            errors => {
-                this.state = CatalogState.ERROR
-            }
-        );
+                    FetchState.READY : FetchState.EMPTY;
+            }, errors => this.state = FetchState.ERROR);
     }
 
 }

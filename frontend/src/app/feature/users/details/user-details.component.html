@@ -15,12 +15,20 @@
         <p role="contentinfo" [innerHTML]="synapse.description"></p>
       </header>
       
+      <!-- Synapse search form -->
+      
       <aside role="search">
         <app-search
-          (search)="onSearch($event)"
-          [value]="browser.search">
+          (search)="search($event)"
+          [value]="request.search">
         </app-search>
+        
+        <app-search-toolbar
+          (input)="filter($event)"
+          [value]="request">
+        </app-search-toolbar>
       </aside>
+      
     </div>
   </div>
   
@@ -44,3 +52,9 @@
     </div>
   </section>
 </article>
+
+<!-- Error message -->
+
+<ng-container *ngIf="state === 'empty'">
+  <app-errors code="404"></app-errors>
+</ng-container>

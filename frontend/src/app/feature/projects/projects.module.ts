@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'app/shared';
+import { ErrorsModule } from 'app/feature/errors';
 import { PostsModule } from 'app/feature/posts';
 
 import { ProjectsTableComponent } from './catalog';
@@ -15,6 +16,7 @@ import { ROUTING_COMPONENTS } from './projects.routes';
 
     imports: [
         SharedModule,
+        ErrorsModule,
         PostsModule,
         ProjectsRoutes
     ]
