@@ -110,6 +110,13 @@ class Post extends FoundationModel {
         'territory_id',
         'project_id',
     ];
+    
+    /** Allowed post reaction filters */
+    protected $feedbackFields = [
+        'liked',
+        'favourited',
+        'commented'
+    ];
 
 
     /**
@@ -149,6 +156,16 @@ class Post extends FoundationModel {
      */
     public function reaction() {
         return $this->hasOne(Pivots\PostUser::class)->forUser();
+    }
+
+
+    /**
+     * User reactions to this post.
+     *
+     * @return hasMany              Model relation
+     */
+    public function feedbacks() {
+        return $this->hasMany(Pivots\PostUser::class);
     }
 
 
@@ -257,8 +274,23 @@ class Post extends FoundationModel {
         
         if (empty($filters) === false) {
             $query->whereHas('author', function($query) use ($filters) {
-                foreach ($filters as $field => $ids)
+                foreach ($filters as $field => $ids) {
                     $query->whereIn($field, (array) $ids);
+                }
+            });
+        }
+        
+        // Filter by the given user reaction fields
+        
+        $filters = $request->only($this->feedbackFields);
+        $filters = array_filter($filters);
+        
+        if (empty($filters) === false) {
+            $query->whereHas('feedbacks', function($query) use ($filters) {
+                foreach ($filters as $field => $ids) {
+                    $query->whereIn('user_id', (array) $ids);
+                    $query->where($field, true);
+                }
             });
         }
         
