@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { Component, Input, OnInit } from '@angular/core';
 import { OnChanges, SimpleChanges } from '@angular/core';
 
-import { CatalogComponent, OnRequestChange } from 'app/core';
+import { CatalogComponent } from 'app/core';
 import { RequestManager, Model, StoreQuery } from 'app/core';
 import { PostsSection, PostsView } from '../posts.types';
 import { Synapse } from 'app/models';
@@ -27,9 +27,7 @@ export class PostsCatalogComponent extends CatalogComponent
     };
 
     /** Default query values for requests */
-    @Input() defaults: StoreQuery = {
-        sort: ['-published_at']
-    };
+    @Input() defaults: StoreQuery = {};
 
     /** Query bindings for requests */
     @Input() bindings: StoreQuery = {};
@@ -83,62 +81,6 @@ export class PostsCatalogComponent extends CatalogComponent
      */
     trackById(index: number, model: Model) {
         return model.id;
-    }
-
-
-    /**
-     * Listen for section changes and update the request defaults
-     * accordingly.
-     *
-     * @param request       Current request object
-     */
-    @OnRequestChange('section')
-    private onSectionChange(request: StoreQuery) {
-        switch (request.section) {
-            case 'featured':
-                this.defaults['sort'] = ['-published_at', '-reputation'];
-                this.defaults['min-comment_count'] = null;
-                this.defaults['min-reputation'] = 30;
-                this.defaults['min-like_count'] = null;
-
-                request['sort'] = ['-published_at', '-reputation'];
-                request['min-comment_count'] = null;
-                request['min-reputation'] = 30;
-                request['min-like_count'] = null;
-                break;
-            case 'voted':
-                request['sort'] = ['-like_count', '-published_at'];
-                request['min-comment_count'] = null;
-                request['min-reputation'] = null;
-                request['min-like_count'] = 1;
-
-                this.defaults['sort'] = ['-like_count', '-published_at'];
-                this.defaults['min-comment_count'] = null;
-                this.defaults['min-reputation'] = null;
-                this.defaults['min-like_count'] = 1;
-                break;
-            case 'commented':
-                request['sort'] = ['-comment_count', '-published_at'];
-                request['min-comment_count'] = 1;
-                request['min-reputation'] = null;
-                request['min-like_count'] = null;
-
-                this.defaults['sort'] = ['-comment_count', '-published_at'];
-                this.defaults['min-comment_count'] = 1;
-                this.defaults['min-reputation'] = null;
-                this.defaults['min-like_count'] = null;
-                break;
-            default:
-                request['sort'] = ['-published_at'];
-                request['min-comment_count'] = null;
-                request['min-reputation'] = null;
-                request['min-like_count'] = null;
-
-                this.defaults['sort'] = ['-published_at'];
-                this.defaults['min-comment_count'] = null;
-                this.defaults['min-reputation'] = null;
-                this.defaults['min-like_count'] = null;
-        }
     }
 
 }

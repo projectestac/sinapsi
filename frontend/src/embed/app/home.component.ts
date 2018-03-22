@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Collection, StoreService } from 'app/core';
+import { SectionConfig, SectionsBuilder } from 'app/feature/posts';
 import { Synapse, Tag } from 'app/models';
 
 
@@ -10,6 +11,9 @@ import { Synapse, Tag } from 'app/models';
     styleUrls: ['home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+    /** Post browser sections */
+    public sections = SectionsBuilder.forSynapse();
 
     /** Model for this synapse */
     public synapse: Synapse = null;

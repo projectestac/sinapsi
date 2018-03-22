@@ -11,6 +11,17 @@
 }
 
 
+// Tabs
+
+.post-browser-tabs {
+  @include media-breakpoint-down(lg) {
+    ::ng-deep .nav-link {
+      font-size: 95%;
+    }
+  }
+}
+
+
 // Gallery view
 
 ::ng-deep .posts-catalog.gallery {

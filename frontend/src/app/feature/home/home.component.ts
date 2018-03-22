@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DetailsComponent, RequestManager } from 'app/core';
+import { SectionsBuilder } from 'app/feature/posts';
 
 
 @Component({
@@ -9,6 +10,10 @@ import { DetailsComponent, RequestManager } from 'app/core';
     providers: [ RequestManager ]
 })
 export class HomeComponent extends DetailsComponent {
+
+    /** Post browser sections */
+    public sections = SectionsBuilder.forSynapse();
+
 
     /**
      * Fetch the home synapse and its side blocks.

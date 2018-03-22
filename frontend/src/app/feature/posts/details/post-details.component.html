@@ -1,5 +1,5 @@
 <article #article class="post"
-  [ngClass]="[state, view, post.deleted_at ? 'removed' : 'active']">
+  [ngClass]="[state || null, view || null, post.deleted_at ? 'removed' : 'active']">
   
   <!-- Post header -->
   

@@ -1,4 +1,4 @@
-<div class="posts-catalog" [ngClass]="[view]">
+<div class="posts-catalog" [ngClass]="view || null">
 
   <!-- Results table -->
   
@@ -9,7 +9,8 @@
           <em i18n><b>{{ collection.total | number }}</b> results found</em>
           <button type="button" class="btn btn-sm"
                   title="Share this synapse"
-                  [cnExpandable]="shareExp">
+                  [cnExpandable]="shareExp"
+                  class="share-button">
             <cn-icon value="share-alt"></cn-icon>
             <span i18n>Share</span>
           </button>

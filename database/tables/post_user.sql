@@ -10,9 +10,10 @@ CREATE TABLE `post_user` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `post_user_unique` (`post_id`,`user_id`),
+  UNIQUE KEY `post_user_unique` (`user_id`,`post_id`),
   KEY `post_user_post_id_foreign_index` (`post_id`),
   KEY `post_user_user_id_foreign_index` (`user_id`),
+  KEY `post_user_actions_index` (`user_id`,`post_id`,`liked`,`favourited`,`commented`),
   CONSTRAINT `user_post_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_post_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci COMMENT='User reactions to a post';

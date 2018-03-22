@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
@@ -10,32 +10,6 @@ import { RequestManager, StoreService } from 'app/core/services';
 import { Collection, Model, StoreQuery } from 'app/core/services';
 import { ScrollTop } from 'app/core/core.decorators';
 import { FetchState } from './components.types';
-
-
-/**
- * Registers a callback for the given request parameter.
- *
- * This decorator can be used to modify the request object before it is
- * sent to the server. Decorated methods will receive the current request
- * object as a parameter.
- *
- * @example
- * ```typescript
- *
- * @OnRequestChange('section')
- * onSortChange(request: StoreQuery) {
- *     if (request.section === 'recent-posts') {
- *         request['sort'] = ['-created_at'];
- *     }
- * }
- *
- * ```
- */
-export function OnRequestChange(key: string) {
-    return function (target: any, method: string) {
-        target.registerCallback(key, target[method]);
-    };
-}
 
 
 /**
@@ -59,11 +33,14 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
     /** Current collection */
     public collection: Collection<Model>;
 
-    /** On change event callables */
-    private callbacks: Object;
-
     /** Unsubscribe subject */
     private unsubscribe = new Subject();
+
+    /** Requests subject */
+    private _requests = new ReplaySubject<StoreQuery>(1);
+
+    /** Component states subject */
+    private _states = new ReplaySubject<FetchState>(1);
 
     /** Default query values for requests */
     @Input() defaults: StoreQuery;
@@ -88,12 +65,28 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
      * Component initialization.
      */
     ngOnInit() {
+        // Update the component state on changes
+
+        this.states
+            .takeUntil(this.unsubscribe)
+            .subscribe(state => this.state = state);
+
         // Update the catalog when the request changes
+
+        this.requests
+            .takeUntil(this.unsubscribe)
+            .subscribe(request => {
+                this.updateCatalog(request);
+            });
+
+        // Create requests from the manager queries
 
         this.manager.requests
             .takeUntil(this.unsubscribe)
-            .subscribe(query => this.updateCatalog(
-                this.createRequest(query)));
+            .subscribe(query => {
+                const request = this.createRequest(query);
+                this.requests.next(request);
+            });
 
         // Update the catalog when the user signs in/out
 
@@ -101,7 +94,7 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
             .takeUntil(this.unsubscribe)
             .subscribe(event => {
                if (event instanceof SessionStateChanged) {
-                   this.updateCatalog(this.request);
+                   this.requests.next(this.request);
                }
             });
     }
@@ -113,6 +106,22 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.unsubscribe.next();
         this.unsubscribe.complete();
+    }
+
+
+    /**
+     * Observable of requests.
+     */
+    get requests(): Subject<StoreQuery> {
+        return this._requests;
+    }
+
+
+    /**
+     * Observable of state changes.
+     */
+    get states(): Subject<FetchState> {
+        return this._states;
     }
 
 
@@ -169,53 +178,13 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
 
 
     /**
-     * Register a callback function for the given parameter. The
-     * function will be invoked before each request if the parameter
-     * value changed.
-     *
-     * @param key       Query paramaeter name
-     * @param method    Callable function
-     */
-    public registerCallback(key: string, method: Function) {
-        if (this.callbacks === undefined) {
-            this.callbacks = {};
-        }
-
-        this.callbacks[key] = method;
-    }
-
-
-    /**
      * Creates a request object for the given query.
      *
      * @param query     Custom query parameters
      * @returns         Request query
      */
     private createRequest(query?: StoreQuery) {
-        // Build the base request
-
-        const request = Object.assign({},
-            this.defaults || {},
-            query || {},
-            this.bindings || {}
-        );
-
-        // Invoke any registerd callables
-
-        if (typeof this.callbacks === 'object') {
-            const requestKeys = Object.keys(
-                Object.assign({}, request, this.request));
-
-            requestKeys.forEach(key => {
-                if (key in this.callbacks) {
-                    if (request[key] !== this.request[key]) {
-                        this.callbacks[key].call(this, request);
-                    }
-                }
-            });
-        }
-
-        return request;
+        return { ...this.defaults, ...query, ...this.bindings };
     }
 
 
@@ -225,15 +194,25 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
      * @param request       Request query
      */
     private updateCatalog(request?: StoreQuery) {
-        this.state = FetchState.PENDING;
+        this.states.next(FetchState.PENDING);
         this.request = request;
 
-        this.store.query(this.path, request).subscribe(
-            collection => {
-                this.collection = collection;
-                this.state = (collection.total > 0) ?
-                    FetchState.READY : FetchState.EMPTY;
-            }, errors => this.state = FetchState.ERROR);
+        this.store.query(this.path, request)
+            .subscribe(
+                collection => {
+                    this.collection = collection;
+
+                    if (collection.length > 0) {
+                        this.states.next(FetchState.READY);
+                    } else {
+                        this.states.next(FetchState.EMPTY);
+                    }
+                },
+
+                errors => {
+                    this.states.next(FetchState.ERROR)
+                }
+            );
     }
 
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DetailsComponent, RequestManager } from 'app/core';
-import { Synapse, SynapseType, Tag } from 'app/models';
 import { FetchState } from 'app/core/components';
+import { SectionsBuilder } from 'app/feature/posts';
+import { Synapse, SynapseType, Tag } from 'app/models';
 
 
 @Component({
@@ -14,6 +15,9 @@ export class TagDetailsComponent extends DetailsComponent {
 
     /** Tag object */
     public tag: Tag = null;
+
+    /** Post browser sections */
+    public sections = SectionsBuilder.forSynapse();
 
 
     /**
@@ -43,24 +47,30 @@ export class TagDetailsComponent extends DetailsComponent {
     private fetchTag(slug: string) {
         const params = { slug: slug, limit: 1, with: ['synapse'] };
 
-        this.state = FetchState.PENDING;
+        this.states.next(FetchState.PENDING);
 
         this.store.query('/api/tags', params)
-            .subscribe(collection => {
-                if (collection.length > 0) {
-                    this.tag = <Tag> collection[0];
-                    this.state = FetchState.READY;
+            .subscribe(
+                collection => {
+                    if (collection.length > 0) {
+                        this.tag = <Tag> collection[0];
+                        this.states.next(FetchState.READY);
 
-                    this.synapse = this.tag['synapse'] ?
-                        this.tag.synapse : this.createSynapse(this.tag);
+                        this.synapse = this.tag['synapse'] ?
+                            this.tag.synapse : this.createSynapse(this.tag);
 
-                    if (Array.isArray(this.synapse.blocks)) {
-                        this.fetchBlocks(this.synapse.blocks);
+                        if (Array.isArray(this.synapse.blocks)) {
+                            this.fetchBlocks(this.synapse.blocks);
+                        }
+                    } else {
+                        this.states.next(FetchState.EMPTY);
                     }
-                } else {
-                    this.state = FetchState.EMPTY;
+                },
+
+                errors => {
+                    this.states.next(FetchState.ERROR);
                 }
-            }, errors => this.state = FetchState.ERROR);
+            );
     }
 
 

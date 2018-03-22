@@ -1,4 +1,5 @@
 import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -38,6 +39,9 @@ export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
     /** Unsubscribe subject */
     protected unsubscribe = new Subject();
 
+    /** Component states subject */
+    private _states = new ReplaySubject<FetchState>(1);
+
 
     /**
      * Component constructor.
@@ -55,6 +59,12 @@ export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
      * Component initialization.
      */
     ngOnInit() {
+        // Update the component state on changes
+
+        this.states
+            .takeUntil(this.unsubscribe)
+            .subscribe(state => this.state = state);
+
         // Get hold of request queries
 
         this.manager.requests
@@ -96,6 +106,14 @@ export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
 
 
     /**
+     * Observable of state changes.
+     */
+    get states(): Subject<FetchState> {
+        return this._states;
+    }
+
+
+    /**
      * Request a new keyword search.
      *
      * @param keywords  Search keywords
@@ -133,21 +151,27 @@ export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
     protected fetchSynapse(slug: string) {
         const params = { slug: slug, limit: 1 };
 
-        this.state = FetchState.PENDING;
+        this.states.next(FetchState.PENDING);
 
         this.store.query('/api/synapses', params)
-            .subscribe(collection => {
-                if (collection.length > 0) {
-                    this.synapse = <Synapse> collection[0];
-                    this.state = FetchState.READY;
+            .subscribe(
+                collection => {
+                    if (collection.length > 0) {
+                        this.synapse = <Synapse> collection[0];
+                        this.states.next(FetchState.READY);
 
-                    if (Array.isArray(this.synapse.blocks)) {
-                        this.fetchBlocks(this.synapse.blocks);
+                        if (Array.isArray(this.synapse.blocks)) {
+                            this.fetchBlocks(this.synapse.blocks);
+                        }
+                    } else {
+                        this.states.next(FetchState.EMPTY);
                     }
-                } else {
-                    this.state = FetchState.EMPTY;
+                },
+
+                errors => {
+                    this.states.next(FetchState.ERROR);
                 }
-            }, errors => this.state = FetchState.ERROR);
+            );
     }
 
 

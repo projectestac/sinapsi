@@ -1,7 +1,9 @@
 import { Subject } from 'rxjs/Subject';
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { RequestManager } from 'app/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { OnDestroy, OnInit } from '@angular/core';
+import { RequestManager, StoreQuery } from 'app/core';
 import { Synapse } from 'app/models';
+import { SectionConfig, SectionsBuilder } from './posts.sections';
 import { PostsSection, PostsView } from './posts.types';
 
 
@@ -11,10 +13,7 @@ import { PostsSection, PostsView } from './posts.types';
     styleUrls: [ 'posts-browser.component.scss' ],
     providers: [ RequestManager ]
 })
-export class PostsBrowserComponent implements OnInit, OnDestroy {
-
-    /** Default browser section */
-    private readonly DEFAULT_SECTION = PostsSection.EVERYTHING;
+export class PostsBrowserComponent implements OnDestroy, OnInit {
 
     /** Default browser view */
     private readonly DEFAULT_VIEW = PostsView.OPTIMAL;
@@ -22,17 +21,20 @@ export class PostsBrowserComponent implements OnInit, OnDestroy {
     /** Unsubscribe subject */
     private unsubscribe = new Subject();
 
-    /** Current posts section */
-    @Input() section: PostsSection = this.DEFAULT_SECTION;
+    /** Current request object */
+    public request: StoreQuery = {
+        view: this.DEFAULT_VIEW,
+        section: null
+    };
 
-    /** Current posts view */
-    @Input() view: PostsView = this.DEFAULT_VIEW;
+    /** Sections configuration */
+    @Input() sections: SectionConfig[] = null;
 
     /** Request synapse model */
     @Input() synapse: Synapse = null;
 
-    /** Request search filter */
-    @Input() search: string = null;
+    /** Catalog component */
+    @ViewChild('catalog') catalog;
 
 
     /**
@@ -47,12 +49,17 @@ export class PostsBrowserComponent implements OnInit, OnDestroy {
      * Component initialization.
      */
     ngOnInit() {
-        this.manager.requests
+        if (!(Array.isArray(this.sections) && this.sections.length > 0)) {
+           throw new Error("Attribute 'sections' is required");
+        }
+
+        // Modify the request before it is sent to the server
+
+        this.catalog.requests
             .takeUntil(this.unsubscribe)
-            .subscribe(query => {
-                this.section = query['section'] || this.DEFAULT_SECTION;
-                this.view = query['view'] || this.DEFAULT_VIEW;
-                this.search = query['search'] || null;
+            .subscribe(request => {
+                this.interceptRequest(request);
+                setTimeout(() => this.request = request);
             });
     }
 
@@ -71,11 +78,10 @@ export class PostsBrowserComponent implements OnInit, OnDestroy {
      *
      * @param section   New section value
      */
-    requestSection(section: PostsSection) {
-        this.manager.replace({
-            section: section,
-            search: this.search,
-            view: this.view,
+    public requestSection(section: PostsSection) {
+        this.manager.merge({
+            page: 1,
+            section: section
         });
     }
 
@@ -85,10 +91,36 @@ export class PostsBrowserComponent implements OnInit, OnDestroy {
      *
      * @param view      New view value
      */
-    requestView(view: PostsView) {
+    public requestView(view: PostsView) {
         this.manager.merge({
             view: view
         });
+    }
+
+
+    /**
+     * Intercepts the request before it is sent to the server. This
+     * method applies the current section filters to the request.
+     *
+     * @param request   Request query object
+     */
+    private interceptRequest(request: StoreQuery) {
+        const viewId = request['view'] || this.DEFAULT_VIEW;
+        const sectionId = request['section'] || this.sections[0]['id'];
+
+        // Apply the section bindings and defaults to the request
+
+        const section = this.sections.find(s => s.id === sectionId);
+
+        if (section !== undefined) {
+            const base = { ...section.defaults, ...request };
+            Object.assign(request, base, section.bindings);
+        }
+
+        // Update the view and section identifiers
+
+        request['view'] = viewId;
+        request['section'] = sectionId;
     }
 
 }
