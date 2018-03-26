@@ -13,6 +13,26 @@
         "glob": "**/*",
         "input": "theme/assets/",
         "output": "assets/"
+      }, {
+        "glob": "**/*",
+        "input": "../node_modules/tinymce/skins/lightgray/",
+        "output": "assets/tinymce/skin/"
+      }, {
+        "glob": "theme.min.js",
+        "input": "../node_modules/tinymce/themes/modern/",
+        "output": "assets/tinymce/"
+      }, {
+        "glob": "plugin.min.js",
+        "input": "../node_modules/tinymce/plugins/image/",
+        "output": "assets/tinymce/plugins/image/"
+      }, {
+        "glob": "plugin.min.js",
+        "input": "../node_modules/tinymce/plugins/link/",
+        "output": "assets/tinymce/plugins/link/"
+      }, {
+        "glob": "plugin.min.js",
+        "input": "../node_modules/tinymce/plugins/lists/",
+        "output": "assets/tinymce/plugins/lists/"
       }],
       "index": "index.html",
       "main": "main.ts",
@@ -25,7 +45,8 @@
         "theme/main.scss"
       ],
       "scripts": [
-          "../node_modules/moment/min/moment.min.js"
+          "../node_modules/moment/min/moment.min.js",
+          "../node_modules/tinymce/tinymce.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -62,7 +83,9 @@
       "styles": [
         "theme/main.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/moment/min/moment.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

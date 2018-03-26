@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { EditorModule } from '@tinymce/tinymce-angular';
 import { ConcreteModule } from 'concrete';
 
 import { BlockModule } from './block';
 import { CardModule } from './card';
 import { ColorpickerModule } from './colorpicker';
 import { DatepickerModule } from './datepicker';
+import { HTMLEditorModule } from './htmleditor';
 import { SidebarModule } from './sidebar';
 import { SearchModule } from './search';
 import { ShareFormModule } from './share';
@@ -34,8 +34,8 @@ import { RoleDirective } from './role.directive';
         ConcreteModule,
         ColorpickerModule,
         DatepickerModule,
-        EditorModule,
         FormsModule,
+        HTMLEditorModule,
         ReactiveFormsModule,
         SidebarModule,
         SearchModule,
