@@ -62,7 +62,8 @@ class Block extends FoundationModel {
      * @return belongsTo            Model relation
      */
     public function synapse() {
-        return $this->belongsTo(Synapse::class);
+        return $this->belongsTo(Synapse::class)
+            ->withTrashedIfRole('admin');
     }
 
 

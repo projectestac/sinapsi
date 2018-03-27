@@ -14,7 +14,6 @@ class TagObserver {
      * @return void
      */
     public function deleting(Tag $tag) {
-        debug("deleting fired");
         $tag->synapse()->delete();
     }
     
@@ -25,7 +24,6 @@ class TagObserver {
      * @return void
      */
     public function restoring(Tag $tag) {
-        debug("restoring fired");
         $tag->synapse()->restore();
     }
 
