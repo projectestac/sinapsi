@@ -48,6 +48,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
         private app: ApplicationRef
     ) {
         this.settings['language'] = locale;
+        this.settings['document_base_url'] = '.';
     }
 
 
