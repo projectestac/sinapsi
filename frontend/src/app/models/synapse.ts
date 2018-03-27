@@ -3,7 +3,7 @@ import { Author } from '.';
 
 
 /** Synapse types */
-export const enum SynapseType {
+export enum SynapseType {
     AUTHORS =   'authors',
     TAGS =      'tags',
     SYNAPSES =  'synapses'

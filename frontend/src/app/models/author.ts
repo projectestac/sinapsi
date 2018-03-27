@@ -7,6 +7,14 @@ import { Territory } from '.';
 import { User } from '.';
 
 
+/** Author types */
+export enum AuthorType {
+    PROJECTS =  'projects',
+    SCHOOLS =   'schools',
+    USERS =     'users'
+};
+
+
 /**
  * Author model class.
  */
@@ -15,7 +23,7 @@ export class Author implements Model {
     name: string;
     reputation: boolean;
     slug: string;
-    type: string;
+    type: AuthorType;
     municipality_id: number;
     project_id: number;
     school_id: number;

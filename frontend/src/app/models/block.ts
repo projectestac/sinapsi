@@ -3,7 +3,7 @@ import { Synapse } from '.';
 
 
 /** Block types */
-export const enum BlockType {
+export enum BlockType {
     BASIC =     'basic',
     CARD =      'card',
     HEADER =    'header',
