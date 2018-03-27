@@ -9,9 +9,10 @@ export type CnDialogEvent = (
  * Triggered when a dialog is confirmed.
  */
 export class CnDialogConfirmed {
-    get confirmed() {
-        return true;
-    }
+    constructor(
+        public confirmed: boolean = true,
+        public value: string = null
+    ) {}
 }
 
 
@@ -19,7 +20,8 @@ export class CnDialogConfirmed {
  * Triggered when a dialog is refused.
  */
 export class CnDialogRefused {
-    get confirmed() {
-        return false;
-    }
+    constructor(
+        public confirmed: boolean = false,
+        public value: string = null
+    ) {}
 }

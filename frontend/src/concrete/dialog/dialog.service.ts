@@ -3,21 +3,9 @@ import { ComponentFactoryResolver, ComponentRef } from '@angular/core';
 import { ApplicationRef, EmbeddedViewRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { CnDialogMessage, CnDialogType } from './dialog.types';
 import { CnDialogComponent } from './dialog.component';
 import { CnDialogEvent } from './dialog.events';
-
-
-/**
- * Represents a dialog message.
- */
-export class CnDialogMessage {
-    constructor(
-        public text: string,
-        public confirm?: string,
-        public refuse?: string,
-        public title?: string
-    ) {}
-}
 
 
 /**
@@ -61,7 +49,21 @@ export class CnDialog implements OnDestroy {
      * @returns         Observable
      */
     open(message: CnDialogMessage): Observable<CnDialogEvent> {
-        return this.component.show(message);
+        return this.component.show({
+            type: CnDialogType.CUSTOM,
+            ...message
+        });
+    }
+
+
+    /**
+     * Shows an alert dialog.
+     *
+     * @param message   Message string
+     */
+    alert(message: string): Observable<CnDialogEvent> {
+        return this.open(new CnDialogMessage(
+            message, CnDialogType.ALERT));
     }
 
 
@@ -71,7 +73,19 @@ export class CnDialog implements OnDestroy {
      * @param message   Message string
      */
     confirm(message: string): Observable<CnDialogEvent> {
-        return this.open(new CnDialogMessage(message));
+        return this.open(new CnDialogMessage(
+            message, CnDialogType.CONFIRMATION));
+    }
+
+
+    /**
+     * Shows a prompt dialog.
+     *
+     * @param message   Message string
+     */
+    prompt(message: string): Observable<CnDialogEvent> {
+        return this.open(new CnDialogMessage(
+            message, CnDialogType.PROMPT));
     }
 
 

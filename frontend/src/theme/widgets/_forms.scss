@@ -4,7 +4,21 @@
   font-size: $font-size-sm;
 }
 
+.form-control-lg {
+  font-size: $font-size-lg;
+}
+
 .form-control:focus {
   box-shadow: none;
   border-color: th-color('text');
+}
+
+.form-container-label {
+  display: block;
+  margin: 0;
+}
+
+.form-container-label > span:first-child {
+  display: block;
+  margin-bottom: .5rem;
 }

@@ -15,22 +15,33 @@
           <span>&times;</span>
         </button>
       </div>
-      <div [innerHTML]="message.text" class="modal-body"></div>
+      <div class="modal-body">
+        <div [innerHTML]="message.text" class="modal-text"></div>
+        <div *ngIf="message.type === 'prompt'"
+             class="modal-input">
+          <input #inputBox
+            type="text"
+            tabindex="1"
+            (keyup.enter)="confirm()"
+            [placeholder]="message['prompt'] || ''"
+            class="form-control form-control-lg">
+        </div>
+      </div>
       <div class="modal-footer">
-        <button *ngIf="message.refuse"
+        <button *ngIf="isCancellable(message)"
                 (click)="refuse()"
-                 type="button"
-                 tabindex="1"
-                 class="btn btn-secondary">
+                type="button"
+                tabindex="2"
+                class="btn btn-secondary">
           <ng-container [ngSwitch]="!!message['refuse']">
             <span *ngSwitchCase="true">{{ message.refuse }}</span>
             <span *ngSwitchDefault i18n>Cancel</span>
           </ng-container>
         </button>
         <button (click)="confirm()"
-                 type="button"
-                 tabindex="2"
-                 class="btn btn-primary">
+                type="button"
+                tabindex="3"
+                class="btn btn-primary">
           <ng-container [ngSwitch]="!!message['confirm']">
             <span *ngSwitchCase="true">{{ message.confirm }}</span>
             <span *ngSwitchDefault i18n>Ok</span>
