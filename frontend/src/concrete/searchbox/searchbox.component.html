@@ -1,4 +1,4 @@
-<form role="search" class="form-inline hidden-print">
+<form role="search" (submit)="false "class="form-inline hidden-print">
   <div class="input-group">
     <span *ngIf="icon" class="input-group-prepend"
           (click)="searchBox.focus()">
@@ -8,6 +8,7 @@
     </span>
     <input #searchBox
            (keydown)="onKeyDown()"
+           (keydown.escape)="clear()"
            (keyup)="onKeyUp(searchBox.value)"
            [value]="viewValue || null"
            [placeholder]="placeholder || ''"

@@ -115,6 +115,14 @@ export class CnSearchboxComponent implements OnInit, OnChanges, OnDestroy {
 
 
     /**
+     * Clear the search box.
+     */
+    public clear() {
+        this.viewValue = null;
+    }
+
+
+    /**
      * Emit the given value.
      *
      * @param value         Search value
