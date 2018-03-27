@@ -19,6 +19,8 @@ trait HasSlug {
         static::creating(function($model) {
             if (empty($model->slug)) {
                 $base = str_slug($model->name);
+                $base = strlen($base) > 0 ? $base : 'void';
+                
                 $slug = $base;
                 $suffix = 1;
                 
