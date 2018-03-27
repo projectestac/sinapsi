@@ -34,8 +34,11 @@ Route::group([
 
     /** Authors */
 
+    Route::resource('projects', 'ProjectController', [
+        'only' => ['store', 'update', 'destroy']]);
+
     Route::resource('schools', 'SchoolController', [
-        'only' => ['store', 'update']]);
+        'only' => ['store', 'update', 'destroy']]);
 
     /** Sources */
 
@@ -89,11 +92,6 @@ Route::group([
 
     Route::post('accounts/logout', 'Auth\AccountController@logout')
         ->name('accounts.logout');
-
-    /** Authors */
-
-    Route::resource('projects', 'ProjectController', [
-        'only' => ['store', 'update']]);
 
     /** Sources */
 

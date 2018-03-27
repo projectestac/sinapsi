@@ -1143,7 +1143,7 @@
 										}
 									]
 								},
-								"description": "Update an existing project object.\n\nAccess:\n\t\n\tAuthenticated users. The author of the project must\n\tbelong to the authenticated user."
+								"description": "Update an existing project object.\n\nAccess:\n\t\n\tAdministrators."
 							},
 							"response": []
 						},
@@ -1247,7 +1247,40 @@
 										"projects"
 									]
 								},
-								"description": "Create a new project object.\n\nAccess:\n\n\tAuthenticated users. The author of the project will\n\tbelong to the authenticated user."
+								"description": "Create a new project object.\n\nAccess:\n\n\tAdministrators."
+							},
+							"response": []
+						},
+						{
+							"name": "Remove a project",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/projects/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Delete a single project.\n\nAccess:\n\t\n\tAdministrators."
 							},
 							"response": []
 						}
@@ -1712,6 +1745,39 @@
 									]
 								},
 								"description": "Create a new school object.\n\nAccess:\n\n\tAdministrators."
+							},
+							"response": []
+						},
+						{
+							"name": "Remove a school",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/schools/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"schools",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Delete a single school.\n\nAccess:\n\t\n\tAdministrators."
 							},
 							"response": []
 						}

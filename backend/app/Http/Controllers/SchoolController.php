@@ -93,4 +93,25 @@ class SchoolController extends Controller {
         return ['id' => $resource->id];
     }
 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id           Primary key value
+     * @return Response         Response object
+     */
+    public function destroy($id) {
+        try {
+            $result = School::whereId($id)->delete();
+            
+            if ($result == false) {
+                abort(404, 'Not Found');
+            }
+        } catch (QueryException $e) {
+            abort(400, 'Invalid request');
+        }
+        
+        return ['id' => intval($id)];
+    }
+
 }
