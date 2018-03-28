@@ -7020,6 +7020,40 @@
 							"response": []
 						},
 						{
+							"name": "Create synapse for tag",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/synapses/tags/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"synapses",
+										"tags",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Create a new synapse object for the given tag.\n\nAccess:\n\t\n\tAdministrators."
+							},
+							"response": []
+						},
+						{
 							"name": "Update a synapse",
 							"event": [
 								{

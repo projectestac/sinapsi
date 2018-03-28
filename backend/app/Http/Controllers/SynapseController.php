@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Models\Synapse;
+use App\Models\Tag;
 
 
 /**
@@ -165,6 +166,49 @@ class SynapseController extends Controller {
         }
         
         return ['id' => intval($id)];
+    }
+
+
+    /**
+     * Create a new synapse for a tag.
+     *
+     * @param int $id           Tag's primary key value
+     * @return Response         Response object
+     */
+    public function storeForTag(Request $request, $id) {
+        $tag = Tag::cards($id)->withTrashed()->first();
+        $resource = null;
+        
+        if (is_null($tag))
+            abort(404, 'Not Found');
+        
+        // Check that a synapse for the tag does not exist
+        
+        if ($tag->synapse()->withTrashed()->exists()) {
+            abort(422, 'Synapse already exists');
+        }
+        
+        // Validate the request
+        
+        $values = Synapse::validateRequired($request);
+        $values = Synapse::validateFields($request);
+        
+        // Set the default synapse options
+        
+        $values['type'] = 'tags';
+        $values['filters'] = ['tag_id' => $tag->id];
+        
+        // Create the synapse and attach it to the tag
+        
+        try {
+            $resource = Synapse::create($values);
+            $tag->update(['synapse_id' => $resource->id]);
+        } catch (QueryException $e) {
+            Synapse::validateConstrains($request);
+            abort(400, 'Invalid request');
+        }
+        
+        return ['id' => $resource->id];
     }
 
 }

@@ -70,6 +70,9 @@ Route::group([
 
     /** Synapses */
 
+    Route::post('synapses/tags/{id}', 'SynapseController@storeForTag')
+        ->name('synapses.tags');
+
     Route::resource('synapses', 'SynapseController', [
         'only' => ['store', 'destroy']]);
 
