@@ -91,6 +91,16 @@ class Synapse extends FoundationModel {
 
 
     /**
+     * Blocks attribute mutator. This method explicitly casts
+     * the block identifiers to and integer array.
+     */
+    public function setBlocksAttribute($blocks) {
+        $serialized = json_encode(array_map("intval", $blocks));
+        $this->attributes['blocks'] = $serialized;
+    }
+
+
+    /**
      * Author for this synapse.
      *
      * @return hasOne               Model relation
