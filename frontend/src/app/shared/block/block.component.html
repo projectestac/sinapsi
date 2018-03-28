@@ -45,7 +45,11 @@
     <div *ngSwitchCase="'twitter'" class="twitter-block">
       <app-card>
         <div *ngIf="locked" class="block-wrapper">
-          <span i18n>Tweets by</span> @{{ block.options?.profile }}
+          <span i18n>Tweets by</span>
+          <span class="text-primary">@{{ block.options?.profile }}</span>
+          <div class="text-muted" i18n>
+            <small>The timeline of the user will be shown here.</small>
+           </div>
         </div>
         <div *ngIf="!locked" class="block-wrapper">
           <a [attr.href]="'https://twitter.com/' + block.options?.profile"

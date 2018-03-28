@@ -1,9 +1,13 @@
 import { Subscription } from 'rxjs/Subscription';
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, SimpleChanges } from '@angular/core';
+import { EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
+import { CnDialog } from 'concrete/dialog';
 import { Collection } from 'app/core';
 import { Block, BlockType } from 'app/models';
+import { _ } from 'i18n';
+
+import { SidebarMessages } from './sidebar.messages';
 
 
 @Component({
@@ -28,11 +32,20 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     /** If the sidebar is editable */
     @Input() editable = false;
 
+    /** Emited after reordering the blocks */
+    @Output() sortBlock = new EventEmitter<number[]>();
+
+    /** Emited after removing a block */
+    @Output() deleteBlock = new EventEmitter<Block>();
+
 
     /**
      * Component constructor.
      */
-    constructor(private dragula: DragulaService) {
+    constructor(
+        private dragula: DragulaService,
+        private dialog: CnDialog
+    ) {
         SidebarComponent.numInstances++;
         this.uid = `sidebar_${SidebarComponent.numInstances}`;
     }
@@ -63,8 +76,11 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      */
     ngOnChanges(changes: SimpleChanges) {
         if ('editable' in changes) {
-            (changes['editable'].currentValue) ?
-               this.initDraggable() : this.destroyDraggable();
+            if (changes['editable'].currentValue) {
+               this.initDraggable();
+            } else {
+               this.destroyDraggable();
+            }
         }
     }
 
@@ -74,16 +90,30 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      */
     public toggleEditable() {
         this.editable = !this.editable;
+        
+        if (this.editable) {
+            this.initDraggable();
+        } else {
+            this.destroyDraggable();
+        }
     }
 
 
     /**
-     * Fired to remove a block.
+     * Fired to remove a block..
      *
      * @param block     Sidebar block to remove
      */
     public remove(block: Block) {
-        console.log("Remove Block");
+        const confirm = SidebarMessages.RemoveConfirm();
+
+        this.dialog.open(confirm)
+            .filter(event => event.confirmed)
+            .subscribe(event => {
+                const i = this.blocks.findIndex(e => e.id === block.id);
+                this.blocks.splice(i, 1);
+                this.deleteBlock.emit(block);
+            });
     }
 
 
@@ -92,8 +122,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      */
     private onBlockSorted() {
         const order = this.blocks.map(block => block.id);
-        console.log("Reorder Blocks");
-        console.log(order);
+        this.sortBlock.emit(order);
     }
 
 
