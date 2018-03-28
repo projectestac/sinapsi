@@ -14,3 +14,12 @@ a:hover, a:focus {
   padding: .2rem .5rem;
   white-space: nowrap;
 }
+
+.deleted-row .actions-column {
+  opacity: .2;
+  pointer-events: none;
+}
+
+.deleted-row .synapse-name {
+  opacity: .2;
+}

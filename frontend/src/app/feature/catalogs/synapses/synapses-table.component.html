@@ -13,7 +13,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let synapse of synapses">
+        <tr *ngFor="let synapse of synapses"
+            [ngClass]="{ 'deleted-row' : synapse.deleted_at }">
           <td class="main-column w-50">
             <a [routerLink]="['/synapses', synapse.slug]">
               <span class="synapse-name">

@@ -14,6 +14,13 @@ export class UserMessages {
     );
 
 
+    /** The user was successfully restored */
+    static readonly RestoreSuccess = (author) => format(
+        _('The user «<strong>{name}</strong>» has been re-enabled.'),
+         { name: author.name }
+    );
+
+
     /** Disable user confirmation dialog */
     static readonly DisableConfirm = (author) => ({
         refuse:  _('Cancel'),

@@ -23,32 +23,79 @@ export class TagsCatalogComponent extends CatalogComponent {
 
     /** Query bindings for requests */
     @Input() bindings: StoreQuery = {
-        with: ['synapse']
+        'min-post_count': 2,
+        'with': ['synapse']
     };
 
 
     /**
-     * Edit an existing tag.
+     * Edit an existing tag synapse or create a new synapse
+     * if a synapse for the tag does not exist.
+     *
+     * @param tag   Tag object
+     */
+    public editOrCreate(tag: Tag) {
+        if (tag.synapse !== null) {
+            this.edit(tag);
+        } else {
+            this.create(tag);
+        }
+    }
+
+
+    /**
+     * Edit an existing tag synapse.
+     *
+     * @param tag   Tag object
      */
     public edit(tag: Tag) {
-        console.log('Edit Tag');
-        this.manager.navigate(['/synapses', 'compose', tag.synapse.id]);
+        this.manager.navigate(['/synapses', 'compose', tag.synapse_id]);
+    }
+
+
+    /**
+     * Create a new synapse for the tag.
+     *
+     * @param tag   Tag object
+     */
+    public create(tag: Tag) {
+        const prompt = CatalogMessages.CreateTagPrompt(tag);
+
+        this.dialog.open(prompt)
+            .filter(event => event.confirmed)
+            .filter(event => !!event.value.trim())
+            .subscribe(event => {
+                const params = { name: event.value };
+                const createPath = `/api/synapses/tags/${tag.id}`;
+
+                this.store.create(createPath, params)
+                    .subscribe(response => {
+                        tag.synapse_id = response['id'];
+                        this.edit(tag);
+                    });
+            });
     }
 
 
     /**
      * Delete an existing tag.
+     *
+     * @param tag   Tag object
      */
     public remove(tag: Tag) {
         const confirm = CatalogMessages.RemoveTagConfirm(tag);
         const success = CatalogMessages.RemoveTagSuccess(tag);
         
         this.dialog.open(confirm)
+            .filter(event => event.confirmed)
             .subscribe(event => {
-                if (event.confirmed) {
-                    console.log('Remove Tag');
-                    this.toaster.success(success);
-                }
+                const deleted_at = (new Date()).toISOString();
+
+                this.store.delete(this.path, tag.id)
+                   .subscribe(event => {
+                       tag.deleted_at = deleted_at;
+                       this.toaster.success(success);
+                   });
             });
     }
 
@@ -57,7 +104,13 @@ export class TagsCatalogComponent extends CatalogComponent {
      * Restore a deleted tag.
      */
     public restore(tag: Tag) {
-        console.log('Restore Tag');
+        const success = CatalogMessages.RestoreTagSuccess(tag);
+
+        this.store.restore(this.path, tag.id)
+           .subscribe(event => {
+               tag.deleted_at = null;
+               this.toaster.success(success);
+           });
     }
 
 }

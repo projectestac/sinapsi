@@ -7,16 +7,16 @@ import { _, format } from 'i18n';
  */
 export class SchoolMessages {
 
-    /** The project was successfully deleted */
+    /** The school was successfully deleted */
     static readonly RemoveSuccess = (author) => format(
         _('The school «<strong>{name}</strong>» has been deleted.'),
          { name: author.name }
     );
 
 
-    /** Remove project confirmation dialog */
+    /** Remove school confirmation dialog */
     static readonly RemoveConfirm = (author) => ({
-        refuse:  _('Cancel'),
+        type: 'confirm',
         confirm: _('Delete'),
         text: `
           <p>
@@ -30,6 +30,15 @@ export class SchoolMessages {
               ${ _('This action cannot be undone.') }
             </small>
           </p>`
+    });
+
+
+    /** Create school prompt dialog */
+    static readonly CreatePrompt = () => ({
+        type: 'prompt',
+        confirm: _('Create school'),
+        prompt: _('Name of the school'),
+        text: `<p>${_('Please enter a name for the new school.')}</p>`
     });
 
 }

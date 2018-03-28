@@ -16,7 +16,7 @@ export class CommentsMessages {
 
     /** Delete synapse confirmation dialog */
     static readonly RemoveConfirm = (comment) => ({
-        refuse:  _('Cancel'),
+        type: 'confirm',
         confirm: _('Delete comment'),
         text: `
           <p>

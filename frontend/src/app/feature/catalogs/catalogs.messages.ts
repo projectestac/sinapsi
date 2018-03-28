@@ -21,9 +21,16 @@ export class CatalogMessages {
     );
 
 
+    /** The tag was successfully restored */
+    static readonly RestoreTagSuccess = (tag) => format(
+        _('The tag «<strong>{name}</strong>» has been restored.'),
+         { name: tag.name }
+    );
+
+
     /** Delete synapse confirmation dialog */
     static readonly RemoveSynapseConfirm = (tag) => ({
-        refuse:  _('Cancel'),
+        type: 'confirm',
         confirm: _('Delete synapse'),
         text: `
           <p>
@@ -42,7 +49,7 @@ export class CatalogMessages {
 
     /** Delete tag confirmation dialog */
     static readonly RemoveTagConfirm = (tag) => ({
-        refuse:  _('Cancel'),
+        type: 'confirm',
         confirm: _('Delete tag'),
         text: `
           <p>
@@ -57,6 +64,36 @@ export class CatalogMessages {
                 The tag will not longer show on search results but can
                 be restored later on.
               `)}
+            </small>
+          </p>`
+    });
+
+
+    /** Create synapse prompt dialog */
+    static readonly CreateSynapsePrompt = () => ({
+        type: 'prompt',
+        confirm: _('Create synapse'),
+        prompt: _('Name of the synapse'),
+        text: `<p>${_('Please enter a name for the new synapse.')}</p>`
+    });
+
+
+    /** Create tag prompt dialog */
+    static readonly CreateTagPrompt = (tag) => ({
+        type: 'prompt',
+        confirm: _('Create synapse'),
+        prompt: _('Name of the synapse'),
+        text: `
+          <p>
+            ${format(
+               _('No synapse exists for the tag «<strong>{name}</strong>».'),
+               { name: tag.name }
+            )}
+          </p>
+          <p>
+            <small class="text-muted">
+              ${_('To edit the tag, a synapse must be created.')}
+              ${_('Please enter a name to create a new synapse for the tag.')}
             </small>
           </p>`
     });

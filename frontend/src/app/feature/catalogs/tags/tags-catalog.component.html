@@ -8,7 +8,7 @@
       [tags]="collection"
       (sortChange)="sort($event.values)"
       (deleteRow)="remove($event)"
-      (editRow)="edit($event)"
+      (editRow)="editOrCreate($event)"
       (restoreRow)="restore($event)">
     </app-tags-table>
   </div>

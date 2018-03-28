@@ -30,9 +30,15 @@
             </data>
           </td>
           <td *appIfRole="['admin']" class="actions-column">
-            <button
+            <button *ngIf="!tag.synapse_id"
               (click)="editRow.emit(tag)"
-              title="Edit tag" i18n-title
+              title="Create synapse" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="plus"></cn-icon>
+            </button>
+            <button *ngIf="tag.synapse_id"
+              (click)="editRow.emit(tag)"
+              title="Edit synapse" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>

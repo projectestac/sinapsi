@@ -16,7 +16,7 @@ export class ProjectMessages {
 
     /** Remove project confirmation dialog */
     static readonly RemoveConfirm = (author) => ({
-        refuse:  _('Cancel'),
+        type: 'confirm',
         confirm: _('Delete'),
         text: `
           <p>
@@ -30,6 +30,15 @@ export class ProjectMessages {
               ${ _('This action cannot be undone.') }
             </small>
           </p>`
+    });
+
+
+    /** Create project prompt dialog */
+    static readonly CreatePrompt = () => ({
+        type: 'prompt',
+        confirm: _('Create project'),
+        prompt: _('Name of the project'),
+        text: `<p>${_('Please enter a name for the new project.')}</p>`
     });
 
 }

@@ -16,6 +16,9 @@ export class UsersCatalogComponent extends CatalogComponent {
     /** This catalog storage path */
     protected path = '/api/authors';
 
+    /** Users storage path */
+    private usersPath = '/api/users';
+
     /** Default query values for requests */
     @Input() defaults: StoreQuery = {
         sort: ['name']
@@ -33,7 +36,6 @@ export class UsersCatalogComponent extends CatalogComponent {
      * Edit an existing user.
      */
     public edit(author: Author) {
-        console.log('Edit User');
         this.manager.navigate(['/authors', 'compose', author.id]);
     }
 
@@ -44,13 +46,18 @@ export class UsersCatalogComponent extends CatalogComponent {
     public disable(author: Author) {
         const confirm = UserMessages.DisableConfirm(author);
         const success = UserMessages.DisableSuccess(author);
-        
+
         this.dialog.open(confirm)
+            .filter(event => event.confirmed)
             .subscribe(event => {
-                if (event.confirmed) {
-                    console.log('Disable User');
-                    this.toaster.success(success);
-                }
+                const id = author.user_id;
+                const disabled_at = (new Date()).toISOString();
+
+                this.store.delete(this.usersPath, id)
+                   .subscribe(event => {
+                       author.user.disabled_at = disabled_at;
+                       this.toaster.success(success);
+                   });
             });
     }
 
@@ -59,7 +66,14 @@ export class UsersCatalogComponent extends CatalogComponent {
      * Restore a disabled user.
      */
     public restore(author: Author) {
-        console.log('Restore User');
+        const id = author.user_id;
+        const success = UserMessages.RestoreSuccess(author);
+
+        this.store.restore(this.usersPath, id)
+           .subscribe(event => {
+               author.user.disabled_at = null;
+               this.toaster.success(success);
+           });
     }
 
 }

@@ -115,20 +115,18 @@ export class CommentsCatalogComponent implements OnInit {
         const confirm = CommentsMessages.RemoveConfirm(comment);
         const success = CommentsMessages.RemoveSuccess(comment);
         
-        this.dialog.open(confirm).subscribe(event => {
-           if (event.confirmed === false) {
-               return;
-           }
-           
-           this.store.delete(this.path, comment.id)
-               .subscribe((response) => {
-                   const index = this.collection.indexOf(comment);
-                   
-                   this.collection.splice(index, 1);
-                   this.toaster.success(success);
-                   this.deleted.emit(comment);
-               });
-       });
+        this.dialog.open(confirm)
+            .filter(event => event.confirmed)
+            .subscribe(event => {
+               this.store.delete(this.path, comment.id)
+                   .subscribe((response) => {
+                       const index = this.collection.indexOf(comment);
+                       
+                       this.collection.splice(index, 1);
+                       this.toaster.success(success);
+                       this.deleted.emit(comment);
+                   });
+           });
     }
 
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
+import { CnDialog } from 'concrete/dialog';
+import { StoreService } from 'app/core';
+import { Synapse } from 'app/models';
+import { CatalogMessages } from './catalogs.messages';
 
 
 @Component({
@@ -21,7 +25,9 @@ export class CatalogBrowserComponent {
      */
     constructor(
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private dialog: CnDialog,
+        private store: StoreService
     ) {
         // Set the active route path on route changes. This
         // activates the tab for the current route.
@@ -75,10 +81,29 @@ export class CatalogBrowserComponent {
 
 
     /**
+     * Edit an existing synapse.
+     */
+    public edit(synapse: Synapse) {
+        this.router.navigate(['/synapses', 'compose', synapse.id]);
+    }
+
+
+    /**
      * Create a new synapse.
      */
     public create() {
-        console.log('Create Synapse');
+        const prompt = CatalogMessages.CreateSynapsePrompt();
+
+        this.dialog.open(prompt)
+            .filter(event => event.confirmed)
+            .filter(event => !!event.value.trim())
+            .subscribe(event => {
+                const params = { name: event.value };
+                const path = '/api/synapses';
+
+                this.store.create(path, params)
+                    .subscribe(s => this.edit(<Synapse> s));
+            });
     }
 
 }

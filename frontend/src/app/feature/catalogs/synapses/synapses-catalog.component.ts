@@ -28,27 +28,28 @@ export class SynapsesCatalogComponent extends CatalogComponent {
 
 
     /**
-     * Edit an existing tag.
+     * Edit an existing synapse.
      */
     public edit(synapse: Synapse) {
-        console.log('Edit Synapse');
         this.manager.navigate(['/synapses', 'compose', synapse.id]);
     }
 
 
     /**
-     * Delete an existing tag.
+     * Delete an existing synapse.
      */
     public remove(synapse: Synapse) {
         const confirm = CatalogMessages.RemoveSynapseConfirm(synapse);
         const success = CatalogMessages.RemoveSynapseSuccess(synapse);
-        
+
         this.dialog.open(confirm)
+            .filter(event => event.confirmed)
             .subscribe(event => {
-                if (event.confirmed) {
-                    console.log('Remove Synapse');
-                    this.toaster.success(success);
-                }
+                this.store.delete(this.path, synapse.id)
+                   .subscribe(event => {
+                       synapse.deleted_at = (new Date()).toISOString();
+                       this.toaster.success(success);
+                   });
             });
     }
 

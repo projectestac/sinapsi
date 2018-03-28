@@ -14,7 +14,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let author of authors">
+        <tr *ngFor="let author of authors"
+            [ngClass]="{ 'deleted-row' : author.deleted_at }">
           <td class="main-column w-50">
             <a [routerLink]="['/authors', author.id]">
               {{ author.school?.name }}

@@ -16,6 +16,9 @@ export class ProjectsCatalogComponent extends CatalogComponent {
     /** This catalog storage path */
     protected path = '/api/authors';
 
+    /** Projects storage path*/
+    private projectsPath = '/api/projects';
+
     /** Default query values for requests */
     @Input() defaults: StoreQuery = {
         sort: ['name']
@@ -30,19 +33,28 @@ export class ProjectsCatalogComponent extends CatalogComponent {
 
 
     /**
-     * Create a new project.
+     * Edit an existing school.
      */
-    public create() {
-        console.log('Create Project');
+    public edit(author: Author) {
+        this.manager.navigate(['/authors', 'compose', author.id]);
     }
 
 
     /**
-     * Edit an existing school.
+     * Create a new project.
      */
-    public edit(author: Author) {
-        console.log('Edit Project');
-        this.manager.navigate(['/authors', 'compose', author.id]);
+    public create() {
+        const prompt = ProjectMessages.CreatePrompt();
+
+        this.dialog.open(prompt)
+            .filter(event => event.confirmed)
+            .filter(event => !!event.value.trim())
+            .subscribe(event => {
+                const params = { name: event.value };
+
+                this.store.create(this.projectsPath, params)
+                    .subscribe(s => this.edit(<Author> s));
+            });
     }
 
 
@@ -52,13 +64,18 @@ export class ProjectsCatalogComponent extends CatalogComponent {
     public remove(author: Author) {
         const confirm = ProjectMessages.RemoveConfirm(author);
         const success = ProjectMessages.RemoveSuccess(author);
-        
+
         this.dialog.open(confirm)
+            .filter(event => event.confirmed)
             .subscribe(event => {
-                if (event.confirmed) {
-                    console.log('Remove Project');
-                    this.toaster.success(success);
-                }
+                const id = author.project_id;
+                const deleted_at = (new Date()).toISOString();
+
+                this.store.delete(this.projectsPath, id)
+                   .subscribe(event => {
+                       author.deleted_at = deleted_at;
+                       this.toaster.success(success);
+                   });
             });
     }
 

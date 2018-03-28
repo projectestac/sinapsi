@@ -1,2 +1,6 @@
 @import "core";
 
+.deleted-row .actions-column {
+  opacity: .2;
+  pointer-events: none;
+}
