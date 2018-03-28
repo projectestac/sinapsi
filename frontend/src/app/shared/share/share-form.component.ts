@@ -34,11 +34,12 @@ export class ShareFormComponent {
      * Synapse's embed link.
      */
     get embedUrl(): string {
-        const params = {
-            'search-box': this.searchBox,
-            'synapse': this.synapse.slug,
-            'type': this.synapse.type
-        };
+        const params = { 'search-box': this.searchBox };
+
+        if (this.synapse) {
+            params['synapse'] = this.synapse.slug;
+            params['type'] = this.synapse.type;
+        }
 
         const base = document.baseURI;
         const request = Object.assign(params, this.request);
