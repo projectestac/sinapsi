@@ -10,6 +10,7 @@ import { CardModule } from './card';
 import { ColorpickerModule } from './colorpicker';
 import { DatepickerModule } from './datepicker';
 import { HTMLEditorModule } from './htmleditor';
+import { PermissionsModule } from './permissions';
 import { SidebarModule } from './sidebar';
 import { SearchModule } from './search';
 import { ShareFormModule } from './share';
@@ -18,12 +19,10 @@ import { StateModule } from './state';
 import { TypeaheadModule } from './typeahead';
 
 import { MomentPipe } from './moment.pipe';
-import { RoleDirective } from './role.directive';
 
 
 @NgModule({
     declarations: [
-        RoleDirective,
         MomentPipe
     ],
 
@@ -36,6 +35,7 @@ import { RoleDirective } from './role.directive';
         DatepickerModule,
         FormsModule,
         HTMLEditorModule,
+        PermissionsModule,
         ReactiveFormsModule,
         SidebarModule,
         SearchModule,
@@ -43,7 +43,6 @@ import { RoleDirective } from './role.directive';
         SocialModule,
         StateModule,
         TypeaheadModule,
-        RoleDirective,
         MomentPipe
     ]
 })
