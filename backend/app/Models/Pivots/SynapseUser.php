@@ -80,9 +80,15 @@ class SynapseUser extends FoundationModel {
 
     /**
      * Restrict the results to those where the authenticated user has
-     * an editor privilege over the synapse.
+     * an admin privilege over the synapse.
+     *
+     * Note that site admins can administer all the objects.
      */
     public function scopeForAdmin($query) {
+        if (Auth::user()->role === 'admin') {
+            return $query;
+        }
+        
         $query->where('user_id', Auth::user()->id);
         $query->where('role', 'admin');
         

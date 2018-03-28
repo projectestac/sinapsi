@@ -68,8 +68,14 @@ class Project extends FoundationModel {
     /**
      * Restrict the results to those where the project author is the
      * authenticated user.
+     *
+     * Note that site admins are authors for all the objects.
      */
     public function scopeForAuthor($query) {
+        if (Auth::user()->role === 'admin') {
+            return $query;
+        }
+        
         $query->whereExists(function ($query) {
             $query->from('authors');
             $query->where('user_id', Auth::user()->id);

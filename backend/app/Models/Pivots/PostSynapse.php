@@ -83,8 +83,14 @@ class PostSynapse extends FoundationModel {
     /**
      * Restrict the results to those where the authenticated user has
      * an editor privilege over the synapse.
+     *
+     * Note that site admins can edit all the objects.
      */
     public function scopeForEditor($query) {
+        if (Auth::user()->role === 'admin') {
+            return $query;
+        }
+        
         $query->whereExists(function ($query) {
             $query->from('synapse_user');
             $query->where('user_id', Auth::user()->id);
