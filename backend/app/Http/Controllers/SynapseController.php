@@ -197,12 +197,12 @@ class SynapseController extends Controller {
         
         $values['type'] = 'tags';
         $values['filters'] = ['tag_id' => $tag->id];
-        $values['deleted_at'] = $tag->deleted_at;
         
         // Create the synapse and attach it to the tag
         
         try {
-            $resource = Synapse::forceCreate($values);
+            $resource = Synapse::create($values);
+            $resource->update(['deleted_at' => $tag->deleted_at]);
             $tag->update(['synapse_id' => $resource->id]);
         } catch (QueryException $e) {
             Synapse::validateConstrains($request);
