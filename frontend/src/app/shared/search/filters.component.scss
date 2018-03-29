@@ -105,7 +105,7 @@ fieldset:not(:first-child) {
   pointer-events: none;
 }
 
-::ng-deep .typeahead-box {
+.search-filters ::ng-deep .typeahead-box {
   
   .list-group-item {
     border-width: 1px 0;

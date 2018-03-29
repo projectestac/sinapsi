@@ -1,6 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
-import { EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, ViewChild } from '@angular/core';
+import { EventEmitter, OnChanges, forwardRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Collection, Model } from 'app/core';
 import { StoreQuery, StoreService } from 'app/core';
@@ -13,7 +14,12 @@ import { RESULTS_ORDERINGS, Ordering } from './search.orderings';
 @Component({
     selector: 'app-filters',
     templateUrl: 'filters.component.html',
-    styleUrls: [ 'filters.component.scss' ]
+    styleUrls: [ 'filters.component.scss' ],
+    providers: [{
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FiltersComponent),
+      multi: true
+    }]
 })
 export class FiltersComponent implements OnChanges {
 
@@ -28,6 +34,15 @@ export class FiltersComponent implements OnChanges {
         tags:           'tag_id',
         territories:    'territory_id'
     };
+
+    /** Form on change callback */
+    private _onChange: any = null;
+
+    /** Form on touched callback */
+    private _onTouched: any = null;
+
+    /** Wether the component is disabled */
+    private _disabled = false;
 
     /** Current active tab */
     public tab = 'tags';
@@ -54,7 +69,13 @@ export class FiltersComponent implements OnChanges {
     @Input() value: StoreQuery = {};
 
     /** Emitted on search */
-    @Output('input') input = new EventEmitter<StoreQuery>();
+    @Output('input') inputEvent = new EventEmitter<StoreQuery>();
+
+    /** Emitted on changes */
+    @Output('change') changeEvent = new EventEmitter<StoreQuery>();
+
+    /** Root element */
+    @ViewChild('fieldset') fieldset;
 
 
     /**
@@ -79,13 +100,71 @@ export class FiltersComponent implements OnChanges {
 
 
     /**
+     * Registers a callback that will be invoked when the choosen
+     * value changes.
+     *
+     * @param fn    Callback function
+     */
+    registerOnChange(fn: any) {
+        this._onChange = fn;
+    }
+
+
+    /**
+     * Registers a callback that will be invoked when the component
+     * is blured.
+     *
+     * @param fn    Callback function
+     */
+    registerOnTouched(fn: any) {
+        this._onTouched = fn;
+    }
+
+
+    /**
+     * Writes a value from the model into the view.
+     *
+     * @param value     New value
+     */
+    writeValue(value: any) {
+        this.value = value;
+    }
+
+
+    /**
+     * Sets the disabled state of the component.
+     */
+    setDisabledState(disabled: boolean) {
+        this.disabled = disabled;
+    }
+
+
+    /**
+     * Returns the disabled state of the component.
+     *
+     * @returns     If the control is disabled
+     */
+    get disabled(): boolean {
+        return this._disabled;
+    }
+
+
+    /**
+     * Sets the disabled state of the component.
+     */
+    set disabled(disabled: boolean) {
+        this._disabled = disabled;
+    }
+
+
+    /**
      * Submit the form.
      *
      * @param values     Form values
      */
     public submit(values: any) {
         const query = this.toQuery(values);
-        this.input.emit(query);
+        this.inputEvent.emit(query);
     }
 
 
@@ -375,6 +454,30 @@ export class FiltersComponent implements OnChanges {
     private toMilliseconds(value: string | Date): number {
         return (value instanceof Date) ?
             value.getTime() : new Date(value).getTime();
+    }
+
+
+    /**
+     * Call the touched and change callbacks when the control
+     * is blured.
+     */
+    public _onBlur(event) {
+        const root = this.fieldset.nativeElement;
+
+        setTimeout(() => {
+            if (root.contains(document.activeElement)) {
+                return;
+            }
+
+            if (typeof this._onTouched === 'function') {
+                this._onTouched();
+            }
+
+            if (typeof this._onChange === 'function') {
+                const query = this.toQuery(this.form.value);
+                this._onChange(query);
+            }
+        });
     }
 
 }

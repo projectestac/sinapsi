@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<fieldset #fieldset [formGroup]="form" (focusout)="_onBlur($event)" tabindex="-1">
   <div class="form-wrapper">
     
     <!-- Filters tabs -->
@@ -35,7 +35,7 @@
       </cn-tabs>
     </div>
     
-    <div class="tabs-outlet">
+    <div class="tabs-outlet search-filters">
 
       <!-- Typeahead filter forms -->
       
@@ -143,4 +143,4 @@
 
     </div>
   </div>
-</form>
+</fieldset>
