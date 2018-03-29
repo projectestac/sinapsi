@@ -1,5 +1,9 @@
 <div class="colorpicker" [ngClass]="{ focus: focused, disabled: disabled }">
 
+  <!-- Hidden input -->
+
+  <input (focusin)="focus()" tabindex="-1">
+
   <!-- Input box -->
 
   <div #inputBox role="combobox"

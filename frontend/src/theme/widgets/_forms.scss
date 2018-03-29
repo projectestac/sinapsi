@@ -22,3 +22,24 @@
   display: block;
   margin-bottom: .5rem;
 }
+
+
+// Typed inputs
+
+.input-group-typed {
+  position: relative;
+  display: block;
+
+  & > .form-control {
+    padding-left: 2.4rem;
+  }
+
+  & > .input-group-icon {
+    position: absolute;
+    color: th-gray('600');
+    padding: 0.28rem 0.37rem;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+  }
+}

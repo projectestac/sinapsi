@@ -1,5 +1,15 @@
 @import "core";
 
+// Base styles
+
+.colorpicker {
+  position: relative;
+  
+  .custom-select:focus {
+    box-shadow: none;
+  }
+}
+
 
 // Available colors
 
@@ -69,10 +79,10 @@
   z-index: 9999;
   width: 100%;
   max-height: 10.6rem;
-  box-shadow: 0px 2px 5px 0px #ddd;
   background-color: white;
-  border: 1px solid th-gray('divider');
   border-radius: 0.25rem;
+  border: 1px solid th-gray('200');
+  box-shadow: 0px 2px 5px 0px th-gray('200');
 }
 
 .list-group-item {
@@ -91,4 +101,15 @@
 
 .list-group-item-action {
   cursor: pointer;
+}
+
+
+// Hidden input
+
+input {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }

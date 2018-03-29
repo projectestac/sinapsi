@@ -371,6 +371,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
             this.hasFocus = true;
             this.inputBox.nativeElement.focus();
             this.focusEvent.emit(this.inputBox);
+            this.search(this.keywords);
         }
     }
 
