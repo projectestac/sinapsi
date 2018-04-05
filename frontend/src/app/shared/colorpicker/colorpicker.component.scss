@@ -40,7 +40,11 @@
 }
 
 .color-placeholder {
-  color: th-gray('600');
+  color: th-gray('400');
+}
+
+.colorpicker-input {
+  font-weight: 400;
 }
 
 .colorpicker-input[disabled] {
