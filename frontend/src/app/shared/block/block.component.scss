@@ -5,6 +5,7 @@
 .synapse-block {
   position: relative;
   margin-bottom: .625rem;
+  overflow: hidden;
 }
 
 .synapse-block.locked-block {
@@ -30,6 +31,7 @@
 .basic-block {
   color: th-color('white');
   background: th-color('secondary');
+  min-height: 4rem;
   
   & > a {
     color: th-color('white');
@@ -50,12 +52,21 @@
   }
 }
 
+.basic-block.white {
+  border: 1px solid th-gray('divider');
+}
+
+.basic-block.white > a {
+  color: th-color('primary');
+}
+
 
 // Card block
 
 .card-block ::ng-deep {
   .block-wrapper {
     border: 1px solid th-gray('divider');
+    min-height: 4rem;
   }
   
   .block-title {
@@ -75,6 +86,8 @@
 // Picture block
 
 .picture-block {
+  min-height: 8rem;
+  
   & > a {
     color: th-color('white');
   }
@@ -123,6 +136,7 @@
   .block-wrapper {
     border: 1px solid th-gray('divider');
     padding: 1rem;
+    min-height: 4rem;
   }
   
   .block-wrapper, iframe {

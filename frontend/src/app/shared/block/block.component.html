@@ -6,6 +6,8 @@
     
     <div *ngSwitchCase="'header'" class="header-block">
       <h2 class="block-title">{{ block.title }}</h2>
+      <div *ngIf="block.content" [innerHTML]="block.content"
+           class="block-content"></div>
     </div>
     
     <!-- Raw HTML block -->
@@ -46,7 +48,7 @@
       <app-card>
         <div *ngIf="locked" class="block-wrapper">
           <span i18n>Tweets by</span>
-          <span class="text-primary">@{{ block.options?.profile }}</span>
+          <span class="text-primary">{{ block.options?.profile }}</span>
           <div class="text-muted" i18n>
             <small>The timeline of the user will be shown here.</small>
            </div>
@@ -54,7 +56,7 @@
         <div *ngIf="!locked" class="block-wrapper">
           <a [attr.href]="'https://twitter.com/' + block.options?.profile"
              data-height="500" class="twitter-timeline">
-            <span i18n>Tweets by</span> @{{ block.options?.profile }}
+            <span i18n>Tweets by</span> {{ block.options?.profile }}
           </a>
         </div>
       </app-card>
