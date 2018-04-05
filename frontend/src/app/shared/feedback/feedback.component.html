@@ -1,0 +1,44 @@
+<div *ngIf="control" class="feedback-box">
+  <small *ngIf="!mustShow" class="form-text text-muted">
+    <ng-content></ng-content>
+  </small>
+  <small *ngIf="mustShow" role="alert" class="form-text text-danger">
+    <ng-container [ngSwitch]="error.name">
+      <span *ngSwitchCase="'email'" i18n>
+        The value for this field must be a valid email address.
+      </span>
+      <span *ngSwitchCase="'http'" i18n>
+        The value for this field must be a valid web address.
+      </span>
+      <span *ngSwitchCase="'max'" i18n>
+        The value for this field must be lower or equal to
+        {{ error.value['max'] }}.
+      </span>
+      <span *ngSwitchCase="'maxlength'" i18n>
+        The value for this field cannot be longer than
+        {{ error.value['requiredLength'] }} characters.
+      </span>
+      <span *ngSwitchCase="'min'" i18n>
+        The value for this field must be greater or equal to
+        {{ error.value['min'] }}.
+      </span>
+      <span *ngSwitchCase="'minlength'" i18n>
+        The value for this field must have a length of at least
+        {{ error.value['requiredLength'] }} characters.
+      </span>
+      <span *ngSwitchCase="'required'" i18n>
+        A value for this field is required.
+      </span>
+      <span *ngSwitchCase="'slug'" i18n>
+        A slug can only contain lower case letters and numbers
+        optionally separated by hypens.
+      </span>
+      <span *ngSwitchCase="'twitter'" i18n>
+        The value for this field must a valid username.
+      </span>
+      <span *ngSwitchDefault i18n>
+        The value for this field is not valid.
+      </span>
+    </ng-container>
+  </small>
+</div>
