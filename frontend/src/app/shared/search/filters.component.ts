@@ -128,6 +128,7 @@ export class FiltersComponent implements OnChanges {
      */
     writeValue(value: any) {
         this.value = value;
+        this.initValues();
     }
 
 
