@@ -1,0 +1,10 @@
+<div class="source-editor-box form-control" [ngClass]="state()">
+  <textarea #editorArea rows="6"
+    (focus)="_onFocus()"
+    (blur)="_onBlur()"
+    (change)="value = editorArea.value"
+    [value]="value"
+    [disabled]="disabled"
+    class="form-control">
+  </textarea>
+</div>

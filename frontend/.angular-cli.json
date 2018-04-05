@@ -46,7 +46,9 @@
       ],
       "scripts": [
           "../node_modules/moment/min/moment.min.js",
-          "../node_modules/tinymce/tinymce.min.js"
+          "../node_modules/tinymce/tinymce.min.js",
+          "../node_modules/codemirror/lib/codemirror.js",
+          "../node_modules/codemirror/mode/htmlmixed/htmlmixed.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

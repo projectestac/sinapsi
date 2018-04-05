@@ -25,6 +25,7 @@
     "@angular/router": "^5.2.3",
     "@tinymce/tinymce-angular": "^1.0.5",
     "bootstrap": "^4.0.0",
+    "codemirror": "^5.36.0",
     "core-js": "^2.5.3",
     "font-awesome": "^4.7.0",
     "inert-polyfill": "^0.2.5",

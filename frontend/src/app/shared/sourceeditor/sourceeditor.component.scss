@@ -1,0 +1,34 @@
+@import 'core';
+
+.source-editor-box.form-control {
+  position: relative;
+  overflow: hidden;
+  resize: vertical;
+  height: 10.5rem;
+  padding: 0;
+
+  &.focused {
+    border-color: th-gray('400');
+  }
+
+  textarea {
+    border: none !important;
+    font-family: monospace;
+    height: 100%;
+  }
+
+  ::ng-deep .CodeMirror {
+    height: 100%;
+    
+    pre {
+      color: th-gray('600');
+      font-weight: 400;
+    }
+  }
+  
+  &.disabled {
+    ::ng-deep .CodeMirror {
+      pointer-events: none;
+    }
+  }
+}
