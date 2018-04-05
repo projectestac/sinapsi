@@ -10,6 +10,10 @@ import { _ } from 'i18n';
 import { SidebarMessages } from './sidebar.messages';
 
 
+/** Component intances */
+let uid = 0;
+
+
 @Component({
     selector: 'app-sidebar',
     templateUrl: 'sidebar.component.html',
@@ -25,6 +29,9 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
 
     /** Instance unique identifier */
     public readonly uid: string;
+
+    /** Unique identifier of the component */
+    @Input() id = `app-sidebar-${uid++}`;
 
     /** Sidebar blocks */
     @Input() blocks: Collection<Block>;
@@ -45,10 +52,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     constructor(
         private dragula: DragulaService,
         private dialog: CnDialog
-    ) {
-        SidebarComponent.numInstances++;
-        this.uid = `sidebar_${SidebarComponent.numInstances}`;
-    }
+    ) {}
 
 
     /**
@@ -130,9 +134,11 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      * Initialize the drag-n-drop zone.
      */
     private initDraggable() {
-        this.dragula.setOptions(this.uid, {});
-        this.draggableSubscription = this.dragula.dropModel
-            .subscribe(event => this.onBlockSorted());
+        if (!this.draggableSubscription) {
+            this.dragula.setOptions(this.id, {});
+            this.draggableSubscription = this.dragula.dropModel
+                .subscribe(event => this.onBlockSorted());
+        }
     }
 
 
@@ -141,7 +147,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      */
     private destroyDraggable() {
         if (this.draggableSubscription !== null) {
-            this.dragula.destroy(this.uid);
+            this.dragula.destroy(this.id);
             this.draggableSubscription.unsubscribe();
             this.draggableSubscription = null;
         }
