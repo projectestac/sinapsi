@@ -34,6 +34,8 @@ class AccountController extends Controller {
             ->cards()
             ->first();
         
+        $profile->makeVisible('email');
+        
         return $profile;
     }
     

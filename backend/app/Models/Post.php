@@ -175,7 +175,9 @@ class Post extends FoundationModel {
      * @return belongsToMany        Model relation
      */
     public function synapses() {
-        return $this->belongsToMany(Synapse::class)->withTimestamps();
+        return $this->belongsToMany(Synapse::class)
+            ->withTrashedIfRole('admin')
+            ->withTimestamps();
     }
 
 

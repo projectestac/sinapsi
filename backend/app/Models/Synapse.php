@@ -169,7 +169,8 @@ class Synapse extends FoundationModel {
      * @return belongsTo            Model relation
      */
     public function parent() {
-        return $this->belongsTo(Synapse::class, 'synapse_id');
+        return $this->belongsTo(Synapse::class, 'synapse_id')
+            ->withTrashedIfRole('admin');
     }
     
     
@@ -179,7 +180,8 @@ class Synapse extends FoundationModel {
      * @return belongsTo            Model relation
      */
     public function childs() {
-        return $this->hasMany(Synapse::class, 'synapse_id');
+        return $this->hasMany(Synapse::class, 'synapse_id')
+            ->withTrashedIfRole('admin');
     }
     
     

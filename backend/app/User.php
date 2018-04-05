@@ -147,7 +147,9 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @return belongsToMany        Model relation
      */
     public function synapses() {
-        return $this->belongsToMany(Synapse::class)->withTimestamps();
+        return $this->belongsToMany(Synapse::class)
+            ->withTrashedIfRole('admin')
+            ->withTimestamps();
     }
 
 
@@ -159,6 +161,20 @@ class User extends FoundationModel implements AuthenticatableContract {
     public function scopeCurrent($query) {
         return (Auth::check() === false) ?
             $query->corrupt() : $query->whereId(Auth::user()->id);
+    }
+
+
+    /**
+     * Overwrites the cards method to add the hidden email column
+     * to the query's select clausule.
+     *
+     * @param $query        Query builder
+     * @param $id           Primary key of an object
+     * @param $relation     Relation being queried
+     */
+    public function scopeCards($query, $id = null, $relation = null) {
+        $query = parent::scopeCards($query, $id, $relation);
+        return $query->addSelect('email');
     }
 
 
@@ -205,6 +221,28 @@ class User extends FoundationModel implements AuthenticatableContract {
     public function canEditSynapse($id) {
         $privilege = $this->privileges()->where('synapse_id', $id);
         return $privilege->whereIn('role', ['admin', 'editor'])->exists();
+    }
+
+
+    /**
+     * Overwrites the getHidden method of the model. This method
+     * overwrites the hidden attributes by removing the user email
+     * field if the current user is an admin.
+     */
+    public function getHidden() {
+        $hidden = parent::getHidden();
+        
+        // Grant administrators the right to see the user emails
+        
+        if (Auth::check() === true) {
+            if (Auth::user()->hasRole('admin')) {
+                $hidden = array_filter($hidden, function($value) {
+                    return $value !== 'email';
+                });
+            }
+        }
+        
+        return $hidden;
     }
 
 }
