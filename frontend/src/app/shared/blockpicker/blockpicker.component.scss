@@ -1,0 +1,36 @@
+@import "core";
+
+// Base styles
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  color: th-gray('400');
+  border: 1px solid th-gray('200');
+  background: th-gray('background');
+  font-size: .9rem;
+  padding: .5rem;
+  width: 5.5rem;
+
+  &:hover, &:focus {
+    color: th-gray('600');
+  }
+
+  &.active {
+    color: th-gray('text');
+    background: th-color('white');
+  }
+}
+
+.blockpicker-box ::ng-deep .fa {
+  font-size: 2rem;
+  margin-bottom: .4rem;
+}
