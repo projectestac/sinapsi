@@ -25,6 +25,8 @@ RSYNC           = rsync
 NG              = ng
 NODE            = node
 
+POMERGE         = pomerge
+
 PRINT           = @printf "\033[1;92m== %s\033[0m\n"
 
 
@@ -297,6 +299,27 @@ i18n:
   mkdir -p $(i18ndir)
   cd $(srcdir)/frontend && $(NG) xi18n --output-path $(i18ndir)
   cd $(srcdir)/frontend && $(NODE) gettext.js > $(i18ndir)/messages.pot
+
+
+# =============================================================================
+# Merge translations
+# =============================================================================
+
+i18n-merge: i18n
+
+  $(PRINT) "Merging translations"
+
+  for locale in $(locales); do \
+    $(POMERGE) -t locales/messages.pot \
+               -i frontend/src/locales/messages.$$locale.po \
+               -o locales/messages.$$locale.po || exit $$?; \
+  done;
+
+  for locale in $(locales); do \
+    $(POMERGE) -t locales/messages.xlf \
+               -i frontend/src/locales/messages.$$locale.xlf \
+               -o locales/messages.$$locale.xlf || exit $$?; \
+  done;
 
 
 # =============================================================================
