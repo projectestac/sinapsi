@@ -98,7 +98,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
      * @param value     New value
      */
     writeValue(value: any) {
-        this.editor.writeValue(value);
+        this.editor.writeValue(value || '');
     }
 
 

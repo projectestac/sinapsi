@@ -42,6 +42,29 @@ export class BlockComponent implements AfterViewInit {
 
 
     /**
+     * Returns this block's HREF option as an absolute URL.
+     *
+     * @returns     Block URL
+     */
+    public toAbsoluteURL(value: string): string {
+        const href = value ? value.trim() : null;
+        let url = null;
+
+        if (href === null || href.length === 0) {
+            return null;
+        }
+
+        try {
+            const base = document.baseURI;
+            const hasProtocol = /^https?:\/\//.test(href);
+            url = hasProtocol ? new URL(href) : new URL(`${base}/${href}`);
+        } catch (e) {}
+
+        return url ? url.toString() : null;
+    }
+
+
+    /**
      * Initialize the Twitter timeline widget for a block.
      *
      * @param block     Block element

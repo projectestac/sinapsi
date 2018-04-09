@@ -12,12 +12,23 @@ export class SharedValidators {
      * @returns         Validation errors or null
      */
     public static http(control: FormControl): ValidationErrors | null {
+        const value = control.value;
+
         let url = null;
         let valid = false;
 
+        // Do not validate empty input values
+
+        if (value == null || value.length === 0) {
+            return null;
+        }
+
+        // Validate absolute and relative URLs and check that
+        // the protocol is also valid
+
         try {
             const base = document.baseURI;
-            const href = control.value.trim();
+            const href = value.trim();
             const hasProtocol = /^[a-z]+:\/\//.test(href);
 
             url = hasProtocol ? new URL(href) : new URL(`${base}/${href}`);

@@ -31,8 +31,8 @@
     <!-- Picture block -->
     
     <div *ngSwitchCase="'picture'" class="picture-block">
-      <a [attr.href]="block.options?.href">
-        <img [attr.src]="block.options?.image_url"
+      <a [attr.href]="toAbsoluteURL(block.options?.href)">
+        <img [attr.src]="toAbsoluteURL(block.options?.image_url)"
              [attr.alt]="block.title" class="block-picture">
         <div class="block-wrapper">
           <h3 *ngIf="block.title" class="block-title">{{ block.title }}</h3>
@@ -65,7 +65,7 @@
     <!-- Basic color block -->
     
     <div *ngSwitchDefault [ngClass]="block.options?.color" class="basic-block">
-      <a [attr.href]="block.options?.href">
+      <a [attr.href]="toAbsoluteURL(block.options?.href)">
         <h3 *ngIf="block.title" class="block-title">{{ block.title }}</h3>
         <div *ngIf="block.content" [innerHTML]="block.content"
              class="block-content"></div>
