@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

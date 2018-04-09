@@ -207,6 +207,10 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @return boolean      If the user can edit the synapse
      */
     public function canAdminSynapse($id) {
+        if ($this->role === 'admin') {
+            return true;
+        }
+
         $privilege = $this->privileges()->where('synapse_id', $id);
         return $privilege->where('role', 'admin')->exists();
     }
@@ -219,6 +223,10 @@ class User extends FoundationModel implements AuthenticatableContract {
      * @return boolean      If the user can edit the synapse
      */
     public function canEditSynapse($id) {
+        if ($this->role === 'admin') {
+            return true;
+        }
+
         $privilege = $this->privileges()->where('synapse_id', $id);
         return $privilege->whereIn('role', ['admin', 'editor'])->exists();
     }
