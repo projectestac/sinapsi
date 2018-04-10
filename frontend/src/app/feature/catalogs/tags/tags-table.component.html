@@ -22,7 +22,7 @@
             </a>
           </td>
           <td class="w-50">
-            {{ tag.synapse?.description | stripTags }}
+            <span [innerHTML]="tag.synapse?.description | stripTags"></span>
           </td>
           <td class="numeric-cell">
             <data [attr.value]="tag.post_count">

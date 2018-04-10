@@ -23,7 +23,7 @@
             </a>
           </td>
           <td class="w-50">
-            {{ synapse.description | stripTags }}
+            <span [innerHTML]="synapse.description | stripTags"></span>
           </td>
           <td *appIfRole="['admin']" class="actions-column">
             <button
