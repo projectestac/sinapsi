@@ -101,6 +101,17 @@ class Synapse extends FoundationModel {
 
 
     /**
+     * Filters attribute mutator. This mehod accepts raw JSON
+     * strings as filter values; all other values are converted to
+     * JSON strings before storing them on the database.
+     */
+    public function setFiltersAttribute($filters) {
+        $serialized = is_array($filters) ? json_encode($filters) : $filters;
+        $this->attributes['filters'] = $serialized;
+    }
+
+
+    /**
      * Author for this synapse.
      *
      * @return hasOne               Model relation
