@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http';
+import { URLSearchParams, QueryEncoder } from '@angular/http';
 
 import {
     ModelCreated,
@@ -113,7 +114,7 @@ export class StoreService implements OnDestroy {
      * @return              Observable
      */
     query(path: string, params?: Object): Observable<Collection<Model>> {
-        const options = { params: serializeObject(params) };
+        const options = { params: toURLSearchParams(params) };
         const request = Object.assign({}, options.params);
 
         return this.http.get(path, options)
@@ -189,7 +190,7 @@ export class StoreService implements OnDestroy {
      * @return              Observable
      */
     update(path: string, id: number, params: Object): Observable<StoreResponse> {
-        const options = { params: serializeObject(params) };
+        const options = { params: toURLSearchParams(params) };
         const request = Object.assign({ id: id }, options.params);
 
         return this.http.put(`${path}/${id}`, null, options)
@@ -318,6 +319,25 @@ function serializeObject(object: any): string {
     });
 
     return parts.join('&');
+}
+
+
+/**
+ * Serializes an object and returns a suitable URLSearchParams
+ * object with the raw parameters.
+ *
+ * @param params    Parameters to serialize
+ * @returns         URLSearchParams object
+ */
+function toURLSearchParams(params: any): URLSearchParams {
+    const serialized = serializeObject(params);
+
+    return new URLSearchParams(serialized,
+        new class extends QueryEncoder {
+            encodeValue(v) { return v; }
+            encodeKey(v) { return v; }
+        }
+    );
 }
 
 
