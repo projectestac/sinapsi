@@ -53,7 +53,9 @@ export class ProjectsCatalogComponent extends CatalogComponent {
                 const params = { name: event.value };
 
                 this.store.create(this.projectsPath, params)
-                    .subscribe(s => this.edit(<Author> s));
+                    .subscribe(response => this.edit(<Author> {
+                        id: response['author_id']
+                    }));
             });
     }
 

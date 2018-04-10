@@ -89,7 +89,10 @@ class ProjectController extends Controller {
             abort(400, 'Invalid request');
         }
         
-        return ['id' => $resource->id];
+        return [
+            'id' => $resource->id,
+            'author_id' => $resource->author->id
+        ];
     }
 
 

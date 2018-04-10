@@ -85,12 +85,14 @@ class SchoolController extends Controller {
         try {
             $resource = School::create($values);
         } catch (QueryException $e) {
-            debug($e);
             School::validateConstrains($request);
             abort(400, 'Invalid request');
         }
         
-        return ['id' => $resource->id];
+        return [
+            'id' => $resource->id,
+            'author_id' => $resource->author->id
+        ];
     }
 
 
