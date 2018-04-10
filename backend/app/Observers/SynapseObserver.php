@@ -15,7 +15,8 @@ class SynapseObserver {
      */
     public function created(Synapse $synapse) {
         if (is_null($synapse->synapse_id) === false) {
-            Synapse::where('id', $synapse->synapse_id)
+            Synapse::withTrashed()
+                ->where('id', $synapse->synapse_id)
                 ->increment('child_count');
         }
     }
@@ -34,12 +35,15 @@ class SynapseObserver {
         $nid = $synapse->getDirty('synapse_id');
         
         if (is_null($oid) === false) {
-            Synapse::where('id', $oid)
+            Synapse::withTrashed()
+                ->where('id', $oid)
+                ->where('child_count', '>', 0)
                 ->decrement('child_count');
         }
         
         if (is_null($nid) === false) {
-            Synapse::where('id', $nid)
+            Synapse::withTrashed()
+                ->where('id', $nid)
                 ->increment('child_count');
         }
     }
@@ -52,7 +56,9 @@ class SynapseObserver {
      */
     public function deleted(Synapse $synapse) {
         if (is_null($synapse->synapse_id) === false) {
-            Synapse::where('id', $synapse->synapse_id)
+            Synapse::withTrashed()
+                ->where('id', $synapse->synapse_id)
+                ->where('child_count', '>', 0)
                 ->decrement('child_count');
         }
     }
