@@ -24,7 +24,7 @@ trait HasSlug {
                 $slug = $base;
                 $suffix = 1;
                 
-                while (static::where('slug', $slug)->exists()) {
+                while (static::where('slug', $slug)->withTrashed()->exists()) {
                     if ($suffix >= 100) break;
                     $slug = "$base-" . (++$suffix);
                 }
