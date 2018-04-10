@@ -98,7 +98,12 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
      * @param value     New value
      */
     writeValue(value: any) {
-        this.editor.writeValue(value || '');
+        try {
+            this.editor.writeValue(value || '');
+        } catch (e) {
+            // WA: TinyMCE crashes with «TypeError: s is null» when
+            // receiving an empty value 
+        }
     }
 
 
