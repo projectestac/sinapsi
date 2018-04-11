@@ -4,7 +4,9 @@ import 'codemirror/mode/htmlmixed/htmlmixed';
 import { Component, Input, Output, OnInit } from '@angular/core';
 import { EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ViewChild, forwardRef } from '@angular/core';
+import { SecurityContext } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { EDITOR_SETTINGS } from './sourceeditor.settings';
 
 
@@ -54,7 +56,9 @@ export class SourceEditorComponent implements
     /**
      * Component constructor.
      */
-    constructor() {}
+    constructor(
+        private sanitizer: DomSanitizer
+    ) {}
 
 
     /**
@@ -135,8 +139,8 @@ export class SourceEditorComponent implements
      * @param value     New value
      */
     writeValue(value: any) {
-        this.value = value;
-        
+        this.value = this.sanitize(value);
+
         if (this.editor) {
             this.editor.setValue(this.value || '');
         }
@@ -221,6 +225,18 @@ export class SourceEditorComponent implements
         if (typeof this._onChange === 'function') {
             this._onChange(this.value);
         }
+    }
+
+
+    /**
+     * Sanitizes the given string by stripping out unsafe
+     * DOM elements.
+     *
+     * @param value     String to sanitize
+     * @returns         Sanitized string
+     */
+    private sanitize(value: string) {
+        return this.sanitizer.sanitize(SecurityContext.HTML, value);
     }
 
 }

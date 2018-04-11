@@ -1,8 +1,10 @@
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Inject, LOCALE_ID } from '@angular/core';
+import { SecurityContext } from '@angular/core';
 import { ViewChild, ApplicationRef, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { EDITOR_SETTINGS } from './htmleditor.settings';
 
 
@@ -45,7 +47,8 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     constructor(
         @Inject(LOCALE_ID)
         private locale: string,
-        private app: ApplicationRef
+        private app: ApplicationRef,
+        private sanitizer: DomSanitizer
     ) {
         this.settings['language'] = locale;
         this.settings['document_base_url'] = '.';
@@ -99,7 +102,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
      */
     writeValue(value: any) {
         try {
-            this.editor.writeValue(value || '');
+            this.editor.writeValue(this.sanitize(value) || '');
         } catch (e) {
             // WA: TinyMCE crashes with «TypeError: s is null» when
             // receiving an empty value 
@@ -157,6 +160,28 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
             disabled: this._disabled,
             focused: this._focused
         };
+    }
+
+
+    /**
+     * Sanitizes the given string by stripping out unsafe
+     * DOM elements.
+     *
+     * @param value     String to sanitize
+     * @returns         Sanitized string
+     */
+    private sanitize(value: string) {
+        return this.sanitizer.sanitize(SecurityContext.HTML, value);
+    }
+
+
+    /**
+     * Focus the editor on drop events. This ensures the changes
+     * made to the editor are emitted.
+     */
+    public _onDrop(event) {
+        event.editor.focus();
+        event.editor.getBody().focus();
     }
 
 }

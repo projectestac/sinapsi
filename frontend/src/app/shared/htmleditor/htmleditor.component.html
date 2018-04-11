@@ -2,6 +2,7 @@
   <editor #editor
     [init]="settings"
     (onFocus)="focused = true"
-    (onBlur)="focused = false">
+    (onBlur)="focused = false"
+    (onDrop)="_onDrop($event)">
   </editor>
 </div>

@@ -12,6 +12,11 @@ export const EDITOR_SETTINGS: any = {
     menubar: false,
     resize: true,
 
+    // Content
+
+    entity_encoding: 'raw',
+    invalid_elements: 'html,body,iframe',
+
     // Assets
 
     skin_url: asset_path('skin'),
