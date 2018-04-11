@@ -28,7 +28,7 @@ class Synapse extends FoundationModel {
         'id' =>                 'integer|min:1',
         'blocks' =>             'array',
         'blocks.*' =>           'integer|min:1|distinct|nullable',
-        'description' =>        'string|max:255',
+        'description' =>        'string|max:255|nullable',
         'filters' =>            'json',
         'name' =>               'string|max:150',
         'slug' =>               'string|slug|max:254',
