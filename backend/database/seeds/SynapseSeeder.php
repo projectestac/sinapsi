@@ -17,7 +17,7 @@ class SynapseSeeder extends Seeder {
             'id' => 1,
             'slug' => Synapse::GENERAL_SLUG,
             'name' => 'General',
-            'description' => 'Notícies que publiquen els centres educatius catalans.',
+            'description' => 'Home page synapse.',
             'type' => 'synapses'
         ]);
     }
