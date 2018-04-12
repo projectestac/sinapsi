@@ -105,7 +105,7 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
      * @param request   Request query object
      */
     private interceptRequest(request: StoreQuery) {
-        const viewId = request['view'] || this.DEFAULT_VIEW;
+        const viewId = request['view'] || this.getViewId();
         const sectionId = request['section'] || this.sections[0]['id'];
 
         // Apply the section bindings and defaults to the request
@@ -121,6 +121,26 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
 
         request['view'] = viewId;
         request['section'] = sectionId;
+    }
+
+
+    /**
+     * Returns the default view for the current synapse. If a synapse
+     * object does not exist or the synapse object does not have a 'view'
+     * filter, {@code DEFAULT_VIEW} is returned.
+     *
+     * @returns         View identifier
+     */
+    private getViewId(): PostsView {
+        let viewId = this.DEFAULT_VIEW;
+
+        if (this.synapse && this.synapse['filters']) {
+            if (this.synapse.filters['view']) {
+                viewId = this.synapse.filters['view'];
+            }
+        }
+
+        return viewId;
     }
 
 }
