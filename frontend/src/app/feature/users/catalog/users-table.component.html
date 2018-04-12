@@ -18,7 +18,10 @@
         <tr *ngFor="let author of authors">
           <td class="main-column w-50">
             <a [routerLink]="['/authors', author.id]">
-              {{ author.user.name }}
+              <span class="d-flex">
+                <img [src]="author.user.avatar_url" class="user-avatar"/>
+                {{ author.user.name }}
+              </span>
             </a>
           </td>
           <td class="w-25">
