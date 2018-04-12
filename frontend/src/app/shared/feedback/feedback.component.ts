@@ -9,17 +9,24 @@ import { FormControl } from '@angular/forms';
 })
 export class FeedbackComponent {
 
-    /**  */
+    /** Form control to validate */
     @Input() control: FormControl;
 
 
-    get mustShow() {
+    /**
+     * If an error message must be shown for the control.
+     *
+     * @returns     If the control was touched and is invalid
+     */
+    get mustShowError(): boolean {
         return this.control.touched && this.control.invalid;
     }
 
 
     /**
-     * First error found.
+     * First error found on the control.
+     *
+     * @returns     Error state
      */
     get error(): any {
         const keys = Object.keys(this.control.errors);

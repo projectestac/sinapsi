@@ -1,8 +1,8 @@
 <div *ngIf="control" class="feedback-box">
-  <small *ngIf="!mustShow" class="form-text text-muted">
+  <small *ngIf="!mustShowError" class="form-text text-muted">
     <ng-content></ng-content>
   </small>
-  <small *ngIf="mustShow" role="alert" class="form-text text-danger">
+  <small *ngIf="mustShowError" role="alert" class="form-text text-danger">
     <ng-container [ngSwitch]="error.name">
       <span *ngSwitchCase="'email'" i18n>
         The value for this field must be a valid email address.
@@ -31,7 +31,7 @@
       </span>
       <span *ngSwitchCase="'slug'" i18n>
         A slug can only contain lower case letters and numbers
-        optionally separated by hypens.
+        optionally separated by hyphens.
       </span>
       <span *ngSwitchCase="'twitter'" i18n>
         The value for this field must be a valid username.
