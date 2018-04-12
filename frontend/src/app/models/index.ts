@@ -5,6 +5,7 @@ export * from './comment';
 export * from './feed';
 export * from './municipality';
 export * from './post';
+export * from './privilege';
 export * from './project';
 export * from './reaction';
 export * from './school';
