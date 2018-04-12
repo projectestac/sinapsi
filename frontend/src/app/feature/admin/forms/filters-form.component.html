@@ -1,0 +1,89 @@
+<fieldset [formGroup]="form">
+
+  <!-- Search keywords filter -->
+
+  <ng-container *ngIf="form.get('search') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Search keywords:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="Search keywords" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>
+          Restrict the synapse articles to those matching this keywords.
+          Boolean <a routerLink="/help/search">search operators</a> are
+          supported.
+        </span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Default view filter -->
+
+  <ng-container *ngIf="form.get('view') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Default view:</span>
+      </label>
+      <div class="custom-control custom-radio">
+        <input type="radio"
+          [formControl]="control"
+           id="view-optimal"
+           name="view"
+           value="optimal"
+           class="custom-control-input">
+        <label for="view-optimal" class="custom-control-label">
+          <span i18n>Optimal view</span>
+          <small class="text-muted">
+            — <span i18n>Title and extract of the articles</span>
+          </small>
+        </label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio"
+          [formControl]="control"
+           id="view-list"
+           name="view"
+           value="list"
+           class="custom-control-input">
+        <label for="view-list" class="custom-control-label">
+          <span i18n>List view</span>
+          <small class="text-muted">
+            — <span i18n>Condensed view of the articles' titles</span>
+          </small>
+        </label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio"
+          [formControl]="control"
+           id="view-gallery"
+           name="view"
+           value="gallery"
+           class="custom-control-input">
+        <label for="view-gallery" class="custom-control-label">
+          <span i18n>Gallery view</span>
+          <small class="text-muted">
+            — <span i18n>Thumbnails of the articles' pictures</span>
+          </small>
+        </label>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Advanced filters -->
+
+  <ng-container *ngIf="form.get('filters') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Search filters:</span>
+      </label>
+      <app-filters
+        [formControl]="control">
+      </app-filters>
+    </div>
+  </ng-container>
+
+</fieldset>

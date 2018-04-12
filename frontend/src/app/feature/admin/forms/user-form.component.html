@@ -1,0 +1,126 @@
+<fieldset [formGroup]="form">
+
+  <!-- User name -->
+
+  <ng-container *ngIf="form.get('user.name') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Name:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="Name of the author" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Full name of the user.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- User email -->
+
+  <ng-container *ngIf="form.get('user.email') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Email:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="Email of the author" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Login email address of the user.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- School -->
+
+  <ng-container *ngIf="form.get('school') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>School:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/schools">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Educational center of this author.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Municipality -->
+
+  <ng-container *ngIf="form.get('municipality') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Municipality:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/municipalities">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Municipality of this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Territory -->
+
+  <ng-container *ngIf="form.get('territory') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Territorial service:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/territories">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Territorial service for this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- User role -->
+
+  <ng-container *ngIf="form.get('user.role') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Role:</span>
+      </label>
+      <div class="custom-control custom-radio">
+        <input type="radio"
+          [formControl]="control"
+           id="role-author"
+           name="role"
+           value="author"
+           class="custom-control-input">
+        <label for="role-author" class="custom-control-label">
+          <span i18n>Author</span>
+          <small class="text-muted">
+            — <span i18n>Restricted control of the author's pages</span>
+          </small>
+        </label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio"
+          [formControl]="control"
+           id="role-admin"
+           name="role"
+           value="admin"
+           class="custom-control-input">
+        <label for="role-admin" class="custom-control-label">
+          <span i18n>Administrator</span>
+          <small class="text-muted">
+            — <span i18n>Full access and control of the site</span>
+          </small>
+        </label>
+      </div>
+    </div>
+  </ng-container>
+
+</fieldset>

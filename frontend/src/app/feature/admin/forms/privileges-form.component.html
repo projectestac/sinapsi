@@ -1,0 +1,94 @@
+<fieldset [formGroup]="form" class="privileges-form">
+
+  <!-- User selector -->
+
+  <div class="user-form form-group">
+    <label class="form-container-label">
+      <span i18n>Append users:</span>
+      <div class="form-inline">
+        <div class="users-typeahead">
+          <app-typeahead #userBox
+            path="/api/users">
+          </app-typeahead>
+        </div>
+        <div class="append-button">
+          <button title="Append user" i18n-title
+            (click)="append(userBox.value)"
+            [disabled]="!userBox.value"
+            class="btn btn-sm btn-secondary">
+            <cn-icon value="plus"></cn-icon>
+            <span class="sr-only" i18n>Append user</span>
+          </button>
+        </div>
+      </div>
+    </label>
+    <small class="form-text text-muted">
+      <span i18n>
+        Select the user you want to append to the synapse.
+      </span>
+    </small>
+  </div>
+
+  <!-- User privileges table -->
+
+  <div *ngIf="privileges" class="table-responsive">
+    <table class="table table-sm table-hover">
+      <caption i18n>
+        Current users of this synapse:
+      </caption>
+      <thead>
+        <tr role="row">
+          <th i18n>Name</th>
+          <th class="text-center" i18n>Editor</th>
+          <th class="text-center" i18n>Manager</th>
+          <th title="Actions" class="actions-column" i18n-title>
+            <cn-icon value="pencil"></cn-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let privilege of privileges">
+          <td class="main-column w-75">
+            <span class="d-flex">
+              <img [src]="privilege.user.avatar_url" class="user-avatar"/>
+              {{ privilege.user.name }}
+            </span>
+          </td>
+          <td class="text-center w-25">
+            <button role="button"
+                (click)="toggleEditorRole(privilege)"
+              [attr.aria-pressed]="isEditor(privilege)"
+              title="Toggle edition rights" i18n-title
+              class="btn btn-sm btn-toggle">
+              <ng-container *ngIf="isEditor(privilege)">
+                <cn-icon value="check"></cn-icon>
+              </ng-container>
+            </button>
+          </td>
+          <td class="text-center w-25">
+            <button role="button"
+              (click)="toggleAdminRole(privilege)"
+              [attr.aria-pressed]="isAdmin(privilege)"
+              title="Toggle management rights" i18n-title
+              class="btn btn-sm btn-toggle">
+              <ng-container *ngIf="isAdmin(privilege)">
+                <cn-icon value="check"></cn-icon>
+              </ng-container>
+            </button>
+          </td>
+          <td class="actions-column">
+            <button
+              (click)="remove(privilege.user)"
+              title="Remove user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="ban"></cn-icon>
+            </button>
+          </td>
+        </tr>
+        <tr *ngFor="let n of _emptyRows()">
+          <td colspan="4" class="pb-4 pt-3"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</fieldset>
