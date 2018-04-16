@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 import { CnToaster } from 'concrete/toaster';
 
 import { SessionStateChanged } from './session.events';
-import { User } from 'app/models';
+import { PrivilegeRole, Synapse, User, UserRole } from 'app/models';
 import { _ } from 'i18n';
 
 
@@ -103,8 +103,74 @@ export class SessionService implements OnDestroy {
      *
      * @returns     Wether a session is active
      */
-    public isActive() {
+    public isActive(): boolean {
         return (this.sessionState === SessionState.ACTIVE);
+    }
+
+
+    /**
+     * Returns true if the current user is an administrator.
+     *
+     * @returns     True if the current user has the role 'admin';
+     *              false if there isn't an active session or the
+     *              user role is not 'admin'.
+     */
+    public isAdministrator(): boolean {
+        return this.isActive() ?
+            this.profile['role'] === UserRole.ADMINISTRATOR : false;
+    }
+
+
+
+
+    /**
+     * Returns the current user privilege role over the synapse.
+     * Note that administrators always have management rights over
+     * all synapses.
+     *
+     * @param synapse       Synapse to check
+     * @returns             MANAGER, EDITOR or VIEWER
+     */
+    private roleForSynapse(synapse: Synapse): PrivilegeRole {
+        if (this.isAdministrator()) {
+            return PrivilegeRole.MANAGER;
+        }
+
+        if (synapse['privilege']) {
+            if (synapse.privilege['role']) {
+                return synapse.privilege.role;
+            }
+        }
+
+        return PrivilegeRole.VIEWER;
+    }
+
+
+    /**
+     * Returns if the current user can edit the given synapse.
+     *
+     * @param synapse       Synapse to check
+     * @returns             True if the current user has a privilege
+     *                      other than VIEWER over the synapse
+     */
+    public canEditSynapse(synapse: Synapse): boolean {
+        const role = this.roleForSynapse(synapse);
+
+        return role === PrivilegeRole.MANAGER ||
+               role === PrivilegeRole.EDITOR;
+    }
+
+
+    /**
+     * Returns if the current user can manage the given synapse.
+     *
+     * @param synapse       Synapse to check
+     * @returns             True if the current user has a privilege
+     *                      over the synapse with a manager role.
+     */
+    public canManageSynapse(synapse: Synapse): boolean {
+        const role = this.roleForSynapse(synapse);
+        return role === PrivilegeRole.MANAGER;
     }
 
 

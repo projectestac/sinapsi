@@ -1,5 +1,5 @@
 import { Model } from 'app/core';
-import { Author } from '.';
+import { Author, Privilege } from '.';
 
 
 /** Synapse types */
@@ -28,4 +28,5 @@ export class Synapse implements Model {
     child_count?: number;
     childs?: Synapse[];
     author?: Author;
+    privilege?: Privilege;
 }
