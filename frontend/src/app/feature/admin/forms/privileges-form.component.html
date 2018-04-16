@@ -67,11 +67,11 @@
           </td>
           <td class="text-center w-25">
             <button role="button"
-              (click)="toggleAdminRole(privilege)"
-              [attr.aria-pressed]="isAdmin(privilege)"
+              (click)="toggleManagerRole(privilege)"
+              [attr.aria-pressed]="isManager(privilege)"
               title="Toggle management rights" i18n-title
               class="btn btn-sm btn-toggle">
-              <ng-container *ngIf="isAdmin(privilege)">
+              <ng-container *ngIf="isManager(privilege)">
                 <cn-icon value="check"></cn-icon>
               </ng-container>
             </button>

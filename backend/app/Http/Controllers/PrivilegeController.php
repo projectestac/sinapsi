@@ -12,7 +12,7 @@ use App\Models\Pivots\SynapseUser;
 
 /**
  * Synapse privilege controller. This class controlls user privileges
- * over a synapse and show wether a user can administer or edit a
+ * over a synapse and shows wether a user can manager or edit a
  * given synapse.
  */
 class PrivilegeController extends Controller {
@@ -24,7 +24,7 @@ class PrivilegeController extends Controller {
      * @return Response         Response object
      */
     public function index(Request $request) {
-        $query = SynapseUser::cards()->forAdmin();
+        $query = SynapseUser::cards()->forManager();
         
         $query->filter($request);
         $query->include($request);
@@ -41,7 +41,7 @@ class PrivilegeController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = SynapseUser::cards($id)->forAdmin()->first();
+        $resource = SynapseUser::cards($id)->forManager()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -65,7 +65,7 @@ class PrivilegeController extends Controller {
         
         $synapse_id = $values['synapse_id'];
         
-        if (!Auth::user()->canAdminSynapse($synapse_id)) {
+        if (!Auth::user()->canManageSynapse($synapse_id)) {
             abort(403, 'Forbbiden');
         }
         
@@ -89,7 +89,7 @@ class PrivilegeController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = SynapseUser::validateFields($request);
-        $resource = SynapseUser::whereId($id)->forAdmin()->first();
+        $resource = SynapseUser::whereId($id)->forManager()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');
@@ -115,7 +115,7 @@ class PrivilegeController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = SynapseUser::whereId($id)->forAdmin()->delete();
+            $result = SynapseUser::whereId($id)->forManager()->delete();
             
             if ($result == false) {
                 abort(404, 'Not Found');

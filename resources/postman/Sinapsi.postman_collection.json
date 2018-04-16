@@ -3050,327 +3050,6 @@
 						}
 					],
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "tags",
-					"description": "Tag resource",
-					"item": [
-						{
-							"name": "Tags listing",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											"/* Get response body and content type */",
-											"var body = JSON.parse(responseBody);",
-											"var contentType = postman.getResponseHeader(\"Content-Type\");",
-											"",
-											"/* Valid status codes for this resource */",
-											"var statusCodes = [200, 400, 401, 403, 404, 422];",
-											"",
-											"/* JSON error response schema */",
-											"var errorSchema = {",
-											"    type: 'object',",
-											"    required: ['status', 'message'],",
-											"    properties: {",
-											"        'status' : {",
-											"            type: 'number'",
-											"        },",
-											"        'message' : {",
-											"            type: 'string'",
-											"        },",
-											"        'errors' : {",
-											"            type: 'object',",
-											"            required: [\"code\", \"message\"],",
-											"        }",
-											"    }",
-											"};",
-											"",
-											"/* Success JSON message schema */",
-											"var successSchema = {",
-											"    type: 'object',",
-											"    required: ['id'],",
-											"    properties: {",
-											"        'id' : { type: 'integer' }",
-											"    }",
-											"};",
-											"",
-											"",
-											"/*",
-											" * Basic tests",
-											" */",
-											"",
-											"tests[\"Response time is less than 300ms\"] = (",
-											"    responseTime < 300);",
-											"",
-											"tests[\"Content-Type is 'application/json'\"] = (",
-											"    !!contentType && contentType.has(\"application/json\"));",
-											"",
-											"tests[\"Status code is valid\"] = (",
-											"    statusCodes.indexOf(responseCode.code) >= 0);",
-											"",
-											"",
-											"/*",
-											" * Validate JSON responses",
-											" */",
-											"",
-											"tests[\"Response is a JSON object\"] = tv4.validate(",
-											"    body, {type: 'object'});",
-											"",
-											"if (responseCode.code >= 400 && responseCode.code < 422) {",
-											"    tests[\"Response is a valid error object\"] = tv4.validate(",
-											"        body, errorSchema);",
-											"}",
-											"",
-											"if (responseCode.code === 200 && request.method !== 'GET') {",
-											"    tests[\"Response is a valid success object\"] = tv4.validate(",
-											"        body, successSchema);",
-											"}"
-										]
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{host}}/api/tags?limit={{limit}}&page={{page}}&sort[]={{sort}}&with[]={{with}}&search={{search}}",
-									"protocol": "http",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"tags"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "{{limit}}",
-											"equals": true
-										},
-										{
-											"key": "page",
-											"value": "{{page}}",
-											"equals": true
-										},
-										{
-											"key": "sort[]",
-											"value": "{{sort}}",
-											"equals": true
-										},
-										{
-											"key": "with[]",
-											"value": "{{with}}",
-											"equals": true
-										},
-										{
-											"key": "search",
-											"value": "{{search}}",
-											"equals": true
-										}
-									]
-								},
-								"description": "Obtain a list of tags. Soft-deleted models are only retrieved if the user has administrator rights.\n\nAccess:\n\t\n\tAll users.\n\nParameters:\n\n    limit     Maximum number of results to fetch\n    page      Page of results to fetch\n    search    Restrict the results to the given search string\n    sort[]    Results order array\n    with[]    Array of related objects to fetch\n\nRelated objects that can be fetched:\n\n    synapse   Synapse object\n"
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve a tag",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											"/* Get response body and content type */",
-											"var body = JSON.parse(responseBody);",
-											"var contentType = postman.getResponseHeader(\"Content-Type\");",
-											"",
-											"/* Valid status codes for this resource */",
-											"var statusCodes = [200, 400, 401, 403, 404, 422];",
-											"",
-											"/* JSON error response schema */",
-											"var errorSchema = {",
-											"    type: 'object',",
-											"    required: ['status', 'message'],",
-											"    properties: {",
-											"        'status' : {",
-											"            type: 'number'",
-											"        },",
-											"        'message' : {",
-											"            type: 'string'",
-											"        },",
-											"        'errors' : {",
-											"            type: 'object',",
-											"            required: [\"code\", \"message\"],",
-											"        }",
-											"    }",
-											"};",
-											"",
-											"/* Success JSON message schema */",
-											"var successSchema = {",
-											"    type: 'object',",
-											"    required: ['id'],",
-											"    properties: {",
-											"        'id' : { type: 'integer' }",
-											"    }",
-											"};",
-											"",
-											"",
-											"/*",
-											" * Basic tests",
-											" */",
-											"",
-											"tests[\"Response time is less than 300ms\"] = (",
-											"    responseTime < 300);",
-											"",
-											"tests[\"Content-Type is 'application/json'\"] = (",
-											"    !!contentType && contentType.has(\"application/json\"));",
-											"",
-											"tests[\"Status code is valid\"] = (",
-											"    statusCodes.indexOf(responseCode.code) >= 0);",
-											"",
-											"",
-											"/*",
-											" * Validate JSON responses",
-											" */",
-											"",
-											"tests[\"Response is a JSON object\"] = tv4.validate(",
-											"    body, {type: 'object'});",
-											"",
-											"if (responseCode.code >= 400 && responseCode.code < 422) {",
-											"    tests[\"Response is a valid error object\"] = tv4.validate(",
-											"        body, errorSchema);",
-											"}",
-											"",
-											"if (responseCode.code === 200 && request.method !== 'GET') {",
-											"    tests[\"Response is a valid success object\"] = tv4.validate(",
-											"        body, successSchema);",
-											"}"
-										]
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{host}}/api/tags/:id",
-									"protocol": "http",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"tags",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{id}}"
-										}
-									]
-								},
-								"description": "Retrieve a single tag object. Soft-deleted models are only retrieved if the user has administrator rights.\n\nAccess:\n\t\n\tAll users."
-							},
-							"response": []
-						},
-						{
-							"name": "Restore a tag",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{host}}/api/tags/:id",
-									"protocol": "http",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"tags",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{id}}"
-										}
-									]
-								},
-								"description": "Restore a soft-deleted tag object. This method will also restore any synapse belonging to the tag.\n\nAccess:\n\t\n\tAdministrators."
-							},
-							"response": []
-						},
-						{
-							"name": "Remove a tag",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{host}}/api/tags/:id",
-									"protocol": "http",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"tags",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "{{id}}"
-										}
-									]
-								},
-								"description": "Soft-delete a single tag. This method will also soft-delete any synapse belonging to the tag.\n\nAccess:\n\t\n\tAdministrators."
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
 				}
 			]
 		},
@@ -6023,7 +5702,7 @@
 												}
 											]
 										},
-										"description": "Obtain a list of synapse privileges.\n\nAccess:\n\t\n\tAuthenticated users.\n\nParameters:\n\n    limit     Maximum number of results to fetch\n    page      Page of results to fetch\n    search    Restrict the results to the given search string\n    sort[]    Results order array\n    with[]    Array of related objects to fetch\n\nRelated objects that can be fetched:\n\n    synapse   Synapse object\n    user      User object"
+										"description": "Obtain a list of synapse privileges.\n\nAccess:\n\t\n\tAuthenticated users. The user must have management\n\tprivileges over the synapse to see its privileges.\n\nParameters:\n\n    limit     Maximum number of results to fetch\n    page      Page of results to fetch\n    search    Restrict the results to the given search string\n    sort[]    Results order array\n    with[]    Array of related objects to fetch\n\nRelated objects that can be fetched:\n\n    synapse   Synapse object\n    user      User object"
 									},
 									"response": []
 								},
@@ -6135,7 +5814,7 @@
 												}
 											]
 										},
-										"description": "Retrieve a single synapse privilege object.\n\nAccess:\n\t\n\tAuthenticated users."
+										"description": "Retrieve a single synapse privilege object.\n\nAccess:\n\t\n\tAuthenticated users. The user must have management\n\tprivileges over the synapse to see its privileges."
 									},
 									"response": []
 								},
@@ -6240,7 +5919,7 @@
 												"privileges"
 											]
 										},
-										"description": "Create a new synapse privilege object.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tadministration privileges over the synapse."
+										"description": "Create a new synapse privilege object.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tmanagement privileges over the synapse."
 									},
 									"response": []
 								},
@@ -6352,7 +6031,7 @@
 												}
 											]
 										},
-										"description": "Update an existing synapse privilege object.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tadministration privileges over the synapse."
+										"description": "Update an existing synapse privilege object.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tmanagement privileges over the synapse."
 									},
 									"response": []
 								},
@@ -6389,7 +6068,7 @@
 												}
 											]
 										},
-										"description": "Remove a single synapse privilege.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tadministration privileges over the synapse."
+										"description": "Remove a single synapse privilege.\n\nAccess:\n\n\tAuthenticated users. The authenticated user must have\n\tmanagement privileges over the synapse."
 									},
 									"response": []
 								}
@@ -7197,6 +6876,333 @@
 									]
 								},
 								"description": "Remove a single synapse.\n\nAccess:\n\n\tAdministrators."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "TAGS",
+			"description": "",
+			"item": [
+				{
+					"name": "tags",
+					"description": "Tag resource",
+					"item": [
+						{
+							"name": "Tags listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"/* Get response body and content type */",
+											"var body = JSON.parse(responseBody);",
+											"var contentType = postman.getResponseHeader(\"Content-Type\");",
+											"",
+											"/* Valid status codes for this resource */",
+											"var statusCodes = [200, 400, 401, 403, 404, 422];",
+											"",
+											"/* JSON error response schema */",
+											"var errorSchema = {",
+											"    type: 'object',",
+											"    required: ['status', 'message'],",
+											"    properties: {",
+											"        'status' : {",
+											"            type: 'number'",
+											"        },",
+											"        'message' : {",
+											"            type: 'string'",
+											"        },",
+											"        'errors' : {",
+											"            type: 'object',",
+											"            required: [\"code\", \"message\"],",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"/* Success JSON message schema */",
+											"var successSchema = {",
+											"    type: 'object',",
+											"    required: ['id'],",
+											"    properties: {",
+											"        'id' : { type: 'integer' }",
+											"    }",
+											"};",
+											"",
+											"",
+											"/*",
+											" * Basic tests",
+											" */",
+											"",
+											"tests[\"Response time is less than 300ms\"] = (",
+											"    responseTime < 300);",
+											"",
+											"tests[\"Content-Type is 'application/json'\"] = (",
+											"    !!contentType && contentType.has(\"application/json\"));",
+											"",
+											"tests[\"Status code is valid\"] = (",
+											"    statusCodes.indexOf(responseCode.code) >= 0);",
+											"",
+											"",
+											"/*",
+											" * Validate JSON responses",
+											" */",
+											"",
+											"tests[\"Response is a JSON object\"] = tv4.validate(",
+											"    body, {type: 'object'});",
+											"",
+											"if (responseCode.code >= 400 && responseCode.code < 422) {",
+											"    tests[\"Response is a valid error object\"] = tv4.validate(",
+											"        body, errorSchema);",
+											"}",
+											"",
+											"if (responseCode.code === 200 && request.method !== 'GET') {",
+											"    tests[\"Response is a valid success object\"] = tv4.validate(",
+											"        body, successSchema);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{host}}/api/tags?limit={{limit}}&page={{page}}&sort[]={{sort}}&with[]={{with}}&search={{search}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tags"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "{{limit}}",
+											"equals": true
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"equals": true
+										},
+										{
+											"key": "sort[]",
+											"value": "{{sort}}",
+											"equals": true
+										},
+										{
+											"key": "with[]",
+											"value": "{{with}}",
+											"equals": true
+										},
+										{
+											"key": "search",
+											"value": "{{search}}",
+											"equals": true
+										}
+									]
+								},
+								"description": "Obtain a list of tags. Soft-deleted models are only retrieved if the user has administrator rights.\n\nAccess:\n\t\n\tAll users.\n\nParameters:\n\n    limit     Maximum number of results to fetch\n    page      Page of results to fetch\n    search    Restrict the results to the given search string\n    sort[]    Results order array\n    with[]    Array of related objects to fetch\n\nRelated objects that can be fetched:\n\n    synapse   Synapse object\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a tag",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"/* Get response body and content type */",
+											"var body = JSON.parse(responseBody);",
+											"var contentType = postman.getResponseHeader(\"Content-Type\");",
+											"",
+											"/* Valid status codes for this resource */",
+											"var statusCodes = [200, 400, 401, 403, 404, 422];",
+											"",
+											"/* JSON error response schema */",
+											"var errorSchema = {",
+											"    type: 'object',",
+											"    required: ['status', 'message'],",
+											"    properties: {",
+											"        'status' : {",
+											"            type: 'number'",
+											"        },",
+											"        'message' : {",
+											"            type: 'string'",
+											"        },",
+											"        'errors' : {",
+											"            type: 'object',",
+											"            required: [\"code\", \"message\"],",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"/* Success JSON message schema */",
+											"var successSchema = {",
+											"    type: 'object',",
+											"    required: ['id'],",
+											"    properties: {",
+											"        'id' : { type: 'integer' }",
+											"    }",
+											"};",
+											"",
+											"",
+											"/*",
+											" * Basic tests",
+											" */",
+											"",
+											"tests[\"Response time is less than 300ms\"] = (",
+											"    responseTime < 300);",
+											"",
+											"tests[\"Content-Type is 'application/json'\"] = (",
+											"    !!contentType && contentType.has(\"application/json\"));",
+											"",
+											"tests[\"Status code is valid\"] = (",
+											"    statusCodes.indexOf(responseCode.code) >= 0);",
+											"",
+											"",
+											"/*",
+											" * Validate JSON responses",
+											" */",
+											"",
+											"tests[\"Response is a JSON object\"] = tv4.validate(",
+											"    body, {type: 'object'});",
+											"",
+											"if (responseCode.code >= 400 && responseCode.code < 422) {",
+											"    tests[\"Response is a valid error object\"] = tv4.validate(",
+											"        body, errorSchema);",
+											"}",
+											"",
+											"if (responseCode.code === 200 && request.method !== 'GET') {",
+											"    tests[\"Response is a valid success object\"] = tv4.validate(",
+											"        body, successSchema);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{host}}/api/tags/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tags",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Retrieve a single tag object. Soft-deleted models are only retrieved if the user has administrator rights.\n\nAccess:\n\t\n\tAll users."
+							},
+							"response": []
+						},
+						{
+							"name": "Restore a tag",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{host}}/api/tags/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tags",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Restore a soft-deleted tag object. This method will also restore any synapse belonging to the tag.\n\nAccess:\n\t\n\tAdministrators."
+							},
+							"response": []
+						},
+						{
+							"name": "Remove a tag",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{host}}/api/tags/:id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"tags",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								},
+								"description": "Soft-delete a single tag. This method will also soft-delete any synapse belonging to the tag.\n\nAccess:\n\t\n\tAdministrators."
 							},
 							"response": []
 						}

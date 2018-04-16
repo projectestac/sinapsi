@@ -233,7 +233,7 @@ class Synapse extends FoundationModel {
             $query->from('synapse_user');
             $query->where('user_id', Auth::user()->id);
             $query->where('synapse_id', DB::raw('`synapses`.`id`'));
-            $query->whereIn('role', ['admin', 'editor']);
+            $query->whereIn('role', ['manager', 'editor']);
         });
         
         return $query;

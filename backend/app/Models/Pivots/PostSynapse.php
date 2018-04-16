@@ -95,7 +95,7 @@ class PostSynapse extends FoundationModel {
             $query->from('synapse_user');
             $query->where('user_id', Auth::user()->id);
             $query->where('synapse_id', DB::raw('`post_synapse`.`synapse_id`'));
-            $query->whereIn('role', ['admin', 'editor']);
+            $query->whereIn('role', ['manager', 'editor']);
         });
         
         return $query;

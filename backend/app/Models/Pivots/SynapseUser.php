@@ -21,7 +21,7 @@ class SynapseUser extends FoundationModel {
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
-        'role' =>               'string|in:admin,editor,viewer',
+        'role' =>               'string|in:manager,editor,viewer',
         'synapse_id' =>         'integer|min:1',
         'user_id' =>            'integer|min:1',
         'created_at' =>         'isodate',
@@ -80,17 +80,17 @@ class SynapseUser extends FoundationModel {
 
     /**
      * Restrict the results to those where the authenticated user has
-     * an admin privilege over the synapse.
+     * an management privileges over the synapse.
      *
      * Note that site admins can administer all the objects.
      */
-    public function scopeForAdmin($query) {
+    public function scopeForManager($query) {
         if (Auth::user()->role === 'admin') {
             return $query;
         }
         
         $query->where('user_id', Auth::user()->id);
-        $query->where('role', 'admin');
+        $query->where('role', 'manager');
         
         return $query;
     }

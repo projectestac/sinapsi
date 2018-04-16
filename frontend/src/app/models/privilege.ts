@@ -4,7 +4,7 @@ import { User, Synapse } from '.';
 
 /** Privilege role types */
 export enum PrivilegeRole {
-    ADMINISTRATOR = 'admin',
+    MANAGER       = 'manager',
     EDITOR        = 'editor',
     VIEWER        = 'viewer'
 };

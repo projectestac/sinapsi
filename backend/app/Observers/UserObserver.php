@@ -26,7 +26,7 @@ class UserObserver {
         ]);
         
         SynapseUser::create([
-            'role' => 'admin',
+            'role' => 'manager',
             'user_id' => $user->id,
             'synapse_id' => $synapse->id
         ]);

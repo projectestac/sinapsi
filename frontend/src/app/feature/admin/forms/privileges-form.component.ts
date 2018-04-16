@@ -48,10 +48,10 @@ export class PrivilegesFormComponent implements OnInit {
      * Returns if a privilege grants management rights.
      *
      * @param privilege     Privilege object to check
-     * @returns             If the privilege role is 'admin'
+     * @returns             If the privilege role is 'manager'
      */
-    public isAdmin(privilege: Privilege): boolean {
-        return (privilege.role === PrivilegeRole.ADMINISTRATOR);
+    public isManager(privilege: Privilege): boolean {
+        return (privilege.role === PrivilegeRole.MANAGER);
     }
 
 
@@ -59,12 +59,12 @@ export class PrivilegesFormComponent implements OnInit {
      * Returns if a privilege grants edition rights.
      *
      * @param privilege     Privilege object to check
-     * @returns             If the privilege role is 'admin' or 'editor'
+     * @returns             If the privilege role is 'manager' or 'editor'
      */
     public isEditor(privilege: Privilege): boolean {
         return (
             privilege.role === PrivilegeRole.EDITOR ||
-            this.isAdmin(privilege)
+            this.isManager(privilege)
         );
     }
 
@@ -125,14 +125,14 @@ export class PrivilegesFormComponent implements OnInit {
 
 
     /**
-     * Toggle the admin role for the given privilege object.
+     * Toggle the manager role for the given privilege object.
      *
      * @param privilege     Privilege object
      */
-    public toggleAdminRole(privilege: Privilege) {
-        privilege.role = (this.isAdmin(privilege)) ?
+    public toggleManagerRole(privilege: Privilege) {
+        privilege.role = (this.isManager(privilege)) ?
             PrivilegeRole.EDITOR :
-            PrivilegeRole.ADMINISTRATOR;
+            PrivilegeRole.MANAGER;
     }
 
 
