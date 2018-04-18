@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"Project-Id-Version: sinapsi\n"
+"POT-Creation-Date: 2018-04-12T16:24:33.163Z\n"
+"PO-Revision-Date: 2018-04-12T17:58:12.247Z\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,10 +20,27 @@ msgstr "Acerca de"
 msgid "Advanced search"
 msgstr "Búsqueda avanzada"
 
+#: src/app/feature/posts/posts.sections.ts:34
+msgid "All posts"
+msgstr "Todos los artículos"
+
+#: src/app/shared/search/search.intervals.ts:18
+msgid "Any time"
+msgstr "En cualquier momento"
+
 #: src/app/feature/authors/authors.routes.ts:25
 msgid "Author editor"
-msgstr "Edición de editores"
+msgstr "Edición de autores"
 
+#: src/app/shared/colorpicker/colorpicker.types.ts:12
+msgid "Black"
+msgstr "Negro"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:13
+msgid "Blue"
+msgstr "Azul"
+
+#: src/app/feature/users/users.messages.ts:26
 #: src/app/feature/catalogs/catalogs.messages.ts:26
 #: src/app/feature/catalogs/catalogs.messages.ts:45
 #: src/app/feature/comments/comments.messages.ts:19
@@ -37,8 +54,38 @@ msgstr "Cancelar"
 msgid "Catalogs"
 msgstr "Catálogos"
 
+#: src/app/feature/posts/posts.sections.ts:120
+msgid "Commented"
+msgstr "Comentados"
+
+#: src/app/feature/posts/posts.sections.ts:121
+msgid "Commented articles"
+msgstr "Artículos comentados"
+
+#: src/app/feature/projects/projects.messages.ts:39
+msgid "Create project"
+msgstr "Crear proyecto"
+
+#: src/app/feature/schools/schools.messages.ts:39
+msgid "Create school"
+msgstr "Crear centro"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:75
+#: src/app/feature/catalogs/catalogs.messages.ts:84
+msgid "Create synapse"
+msgstr "Crear sinapsis"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:14
+msgid "Cyan"
+msgstr "Cian"
+
+#: src/app/shared/search/search.orderings.ts:17
+msgid "Default ordering"
+msgstr "Ordenación predeterminada"
+
 #: src/app/feature/projects/projects.messages.ts:20
 #: src/app/feature/schools/schools.messages.ts:20
+#: src/app/shared/sidebar/sidebar.messages.ts:12
 msgid "Delete"
 msgstr "Suprimir"
 
@@ -46,49 +93,202 @@ msgstr "Suprimir"
 msgid "Delete comment"
 msgstr "Suprime el comentario"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:34
 #: src/app/feature/catalogs/catalogs.messages.ts:27
 msgid "Delete synapse"
-msgstr "Suprime la sinapsi"
+msgstr "Suprime la sinapsis"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:53
 #: src/app/feature/catalogs/catalogs.messages.ts:46
 msgid "Delete tag"
 msgstr "Suprime la etiqueta"
 
+#: src/app/feature/users/users.messages.ts:27
 #: src/app/feature/users/users.messages.ts:20
 msgid "Disable user"
 msgstr "Deshabilitar el usuario"
 
-#: src/app/feature/catalogs/catalogs.messages.ts:31
-#: src/app/feature/catalogs/catalogs.messages.ts:50
+#: src/app/feature/catalogs/catalogs.messages.ts:38
+#: src/app/feature/catalogs/catalogs.messages.ts:57
 #: src/app/feature/comments/comments.messages.ts:24
 #: src/app/feature/projects/projects.messages.ts:24
 #: src/app/feature/schools/schools.messages.ts:24
+#: src/app/feature/catalogs/catalogs.messages.ts:31
+#: src/app/feature/catalogs/catalogs.messages.ts:50
 msgid "Do you want to delete «<strong>{name}</strong>»?"
 msgstr "¿Seguro que quieres suprimir  «<strong>{name}</strong>»?"
 
+#: src/app/shared/sidebar/sidebar.messages.ts:14
+msgid "Do you want to delete this block?"
+msgstr "¿Quieres suprimir este bloque?"
+
+#: src/app/feature/users/users.messages.ts:31
 #: src/app/feature/users/users.messages.ts:24
 msgid "Do you want to disable the user «<strong>{name}</strong>»?"
 msgstr "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?"
 
-#: src/app/app.routes.ts:54 src/app/feature/users/users.routes.ts:28
+#: src/app/app.routes.ts:54
+#: src/app/feature/users/users.routes.ts:28
 msgid "Educators"
 msgstr "Docentes"
+
+#: src/app/feature/posts/posts.sections.ts:33
+msgid "Everything"
+msgstr "Todos"
+
+#: src/app/feature/posts/posts.sections.ts:96
+msgid "Favourited"
+msgstr "Favoritos"
+
+#: src/app/feature/posts/posts.sections.ts:97
+msgid "Favourited articles"
+msgstr "Artículos favoritos"
+
+#: src/app/feature/posts/posts.sections.ts:42
+msgid "Featured"
+msgstr "Destacados"
+
+#: src/app/feature/posts/posts.sections.ts:43
+msgid "Featured articles"
+msgstr "Artículos destacados"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:15
+msgid "Gray"
+msgstr "Gris"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:16
+msgid "Green"
+msgstr "Verde"
 
 #: src/app/app.routes.ts:34
 msgid "Help"
 msgstr "Ayuda"
 
+#: src/app/feature/posts/posts.sections.ts:108
+msgid "Liked"
+msgstr "Votados"
+
+#: src/app/feature/posts/posts.sections.ts:109
+msgid "Liked articles"
+msgstr "Artículos votados"
+
+#: src/app/feature/posts/posts.sections.ts:65
+msgid "Most commented"
+msgstr "Más comentados"
+
+#: src/app/feature/posts/posts.sections.ts:66
+msgid "Most commented articles"
+msgstr "Artículos más comentados"
+
+#: src/app/shared/search/search.orderings.ts:25
+msgid "Most recent articles first"
+msgstr "Los artículos más recientes primero"
+
+#: src/app/shared/search/search.orderings.ts:21
+msgid "Most relevant results first"
+msgstr "Los resultados más relevantes primero"
+
+#: src/app/feature/posts/posts.sections.ts:54
+msgid "Most voted"
+msgstr "Más votados"
+
+#: src/app/feature/posts/posts.sections.ts:55
+msgid "Most voted articles"
+msgstr "Artículos más votados"
+
+#: src/app/shared/search/search.fields.ts:28
+msgid "Municipalities"
+msgstr "Municipios"
+
+#: src/app/feature/projects/projects.messages.ts:40
+msgid "Name of the project"
+msgstr "Nombre del proyecto"
+
+#: src/app/feature/schools/schools.messages.ts:40
+msgid "Name of the school"
+msgstr "Nombre del centro"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:76
+#: src/app/feature/catalogs/catalogs.messages.ts:85
+msgid "Name of the synapse"
+msgstr "Nombre de la sinapsis"
+
+#: src/app/feature/catalogs/catalogs.messages.ts:89
+msgid "No synapse exists for the tag «<strong>{name}</strong>»."
+msgstr "No existe ninguna sinapsis para la etiqueta «<strong>{name}</strong>»."
+
+#: src/app/shared/search/search.orderings.ts:29
+msgid "Oldest articles first"
+msgstr "Los artículos más antiguos primero"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:17
+msgid "Orange"
+msgstr "Naranja"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:18
+msgid "Pink"
+msgstr "Rosa"
+
+#: src/app/feature/projects/projects.messages.ts:41
+msgid "Please enter a name for the new project."
+msgstr "Escriba un nombre para el nuevo proyecto."
+
+#: src/app/feature/schools/schools.messages.ts:41
+msgid "Please enter a name for the new school."
+msgstr "Escriba un nombre para el nuevo centro."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:77
+msgid "Please enter a name for the new synapse."
+msgstr "Escriba un nombre para la nueva sinapsis."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:96
+msgid "Please enter a name to create a new synapse for the tag."
+msgstr "Escriba un nombre para crear una nueva sinapsis para la etiqueta."
+
 #: src/app/feature/posts/posts.messages.ts:10
 msgid "Please, log in to like or favourite posts."
 msgstr "Por favor, entre para marcar los artículos como favoritos."
 
-#: src/app/app.routes.ts:38 src/app/feature/projects/projects.routes.ts:29
+#: src/app/app.routes.ts:38
+#: src/app/feature/projects/projects.routes.ts:29
+#: src/app/shared/search/search.fields.ts:38
 msgid "Projects"
 msgstr "Proyectos"
 
-#: src/app/app.routes.ts:42 src/app/feature/schools/schools.routes.ts:29
+#: src/app/feature/posts/posts.sections.ts:84
+#: src/app/feature/posts/posts.sections.ts:85
+msgid "Published articles"
+msgstr "Artículos publicados"
+
+#: src/app/shared/search/search.intervals.ts:33
+msgid "Published this month"
+msgstr "Publicados este mes"
+
+#: src/app/shared/search/search.intervals.ts:28
+msgid "Published this week"
+msgstr "Publicados esta semana"
+
+#: src/app/shared/search/search.intervals.ts:38
+msgid "Published this year"
+msgstr "Publicados este año"
+
+#: src/app/shared/search/search.intervals.ts:23
+msgid "Published today"
+msgstr "Publicados hoy"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:19
+msgid "Purple"
+msgstr "Púrpura"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:20
+msgid "Red"
+msgstr "Rojo"
+
+#: src/app/app.routes.ts:42
+#: src/app/feature/schools/schools.routes.ts:29
+#: src/app/shared/search/search.fields.ts:33
 msgid "Schools"
-msgstr "Escuelas"
+msgstr "Centros"
 
 #: src/app/shared/social/social.providers.ts:31
 msgid "Share by Email"
@@ -106,7 +306,8 @@ msgstr "Compartir en Twitter"
 msgid "Synapse editor"
 msgstr "Edición de sinapsis"
 
-#: src/app/app.routes.ts:46 src/app/feature/catalogs/catalogs.routes.ts:31
+#: src/app/app.routes.ts:46
+#: src/app/feature/catalogs/catalogs.routes.ts:31
 msgid "Synapses"
 msgstr "Sinapsis"
 
@@ -114,13 +315,23 @@ msgstr "Sinapsis"
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: src/app/app.routes.ts:50 src/app/feature/catalogs/catalogs.routes.ts:35
+#: src/app/app.routes.ts:50
+#: src/app/feature/catalogs/catalogs.routes.ts:35
+#: src/app/shared/search/search.fields.ts:18
 msgid "Tags"
 msgstr "Etiquetas"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:21
+msgid "Tangerine"
+msgstr "Mandarina"
 
 #: src/app/feature/catalogs/catalogs.routes.ts:39
 msgid "Taxonomies"
 msgstr "Taxonomías"
+
+#: src/app/shared/search/search.fields.ts:23
+msgid "Territories"
+msgstr "Territorios"
 
 #: src/app/feature/comments/comments.messages.ts:12
 msgid "The comment «{name}» has been deleted."
@@ -132,7 +343,7 @@ msgstr "El proyecto «<strong>{name}</strong>» ha sido eliminado."
 
 #: src/app/feature/schools/schools.messages.ts:12
 msgid "The school «<strong>{name}</strong>» has been deleted."
-msgstr "La escuela «<strong>{name}</strong>» ha sido eliminada."
+msgstr "El centro «<strong>{name}</strong>» ha sido eliminada."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:12
 msgid "The synapse «<strong>{name}</strong>» has been deleted."
@@ -142,21 +353,54 @@ msgstr "La sinapsi «<strong>{name}</strong>» ha sido eliminada."
 msgid "The tag «<strong>{name}</strong>» has been deleted."
 msgstr "La etiqueta «<strong>{name}</strong>» ha sido eliminada."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:26
+msgid "The tag «<strong>{name}</strong>» has been restored."
+msgstr "La etiqueta «<strong>{name}</strong>» ha sido restaurada."
+
+#: src/app/feature/users/users.messages.ts:19
+msgid "The user «<strong>{name}</strong>» has been re-enabled."
+msgstr "El usuario «<strong>{name}</strong>» se ha vuelto a habilitar."
+
 #: src/app/feature/users/users.messages.ts:12
 msgid "The user «<strong>{name}</strong>» has been successfully disabled."
 msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
 
-#: src/app/feature/catalogs/catalogs.messages.ts:37
+#: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
 #: src/app/feature/projects/projects.messages.ts:30
 #: src/app/feature/schools/schools.messages.ts:30
+#: src/app/shared/sidebar/sidebar.messages.ts:17
+#: src/app/feature/catalogs/catalogs.messages.ts:37
 msgid "This action cannot be undone."
 msgstr "Esta acción no puede deshacerse."
+
+#: src/app/feature/catalogs/catalogs.messages.ts:95
+msgid "To edit the tag, a synapse must be created."
+msgstr "Para editar la etiqueta, primero debe crearse una sinapsis."
+
+#: src/app/shared/typeahead/typeahead.component.ts:81
+msgid "Type to search"
+msgstr "Escriba para buscar"
+
+#: src/app/feature/authors/editor/author-editor.forms.ts:19
+#: src/app/feature/synapses/editor/synapse-editor.forms.ts:31
+#: src/app/feature/synapses/editor/synapse-editor.forms.ts:25
+msgid "Untitled block"
+msgstr "Bloque sin título"
 
 #: src/app/shared/social/social.providers.ts:37
 msgid "Web syndication"
 msgstr "Sindicación web"
 
+#: src/app/shared/colorpicker/colorpicker.types.ts:22
+msgid "White"
+msgstr "Blanco"
+
+#: src/app/shared/colorpicker/colorpicker.types.ts:23
+msgid "Yellow"
+msgstr "Amarillo"
+
+#: src/app/core/services/session.service.ts:142
 #: src/app/core/services/session.service.ts:141
 msgid "Your account has been temporarily disabled."
 msgstr "Tu cuenta se inhabilitó temporalmente."
