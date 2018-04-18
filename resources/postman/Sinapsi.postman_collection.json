@@ -7291,6 +7291,38 @@
 					"_postman_isSubFolder": true
 				}
 			]
+		},
+		{
+			"name": "BATCH",
+			"description": "Batch processing of requests.",
+			"item": [
+				{
+					"name": "Batch process requests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/$batch",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"$batch"
+							]
+						},
+						"description": "Batch processes multiple requests and returns an array with the individual responses.\n\nObservations:\n\n    * The requests are run on a single transaction.\n    * The transaction will be rolled back if one of the requests fails.\n    * A maximum of 100 requests can be processed on a single batch.\n\nAccess:\n\t\n\tAll users. Individual request access permission apply\n\tfor\teach processed request.\n\nParameters:\n\n    entries[]    Array of request entries\n\nRequest entry parameters:\n\n    path         Relative API path for the request.\n    method       Request method (get, post, put, etc).\n    params[]\t Array of request parameters.\n"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

@@ -14,6 +14,7 @@ class FoundationServiceProvider extends ServiceProvider {
      */
     public function boot() {
         Validator::extend('isodate', 'Seidor\Foundation\Validators@date');
+        Validator::extend('object', 'Seidor\Foundation\Validators@object');
         Validator::extend('slug', 'Seidor\Foundation\Validators@slug');
     }
 

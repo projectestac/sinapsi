@@ -29,7 +29,7 @@ class Synapse extends FoundationModel {
         'blocks' =>             'array',
         'blocks.*' =>           'integer|min:1|distinct|nullable',
         'description' =>        'string|max:255|nullable',
-        'filters' =>            'json',
+        'filters' =>            'object|nullable',
         'name' =>               'string|max:150',
         'slug' =>               'string|slug|max:254',
         'type' =>               'string|in:authors,tags,synapses',

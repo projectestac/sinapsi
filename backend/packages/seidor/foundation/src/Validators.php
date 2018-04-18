@@ -4,6 +4,7 @@ namespace Seidor\Foundation;
 
 use DateTime;
 use InvalidArgumentException;
+use Validator;
 
 class Validators {
     
@@ -35,6 +36,21 @@ class Validators {
      */
     public function slug($attribute, $value, $params, $validator) {
         return preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $value);
+    }
+    
+    
+    /**
+     * Validates that the given value is either a PHP array or
+     * a json string.
+     *
+     * @param $attribute    Name of the attribute being validated
+     * @param $value        Value of the attribute
+     * @param $params       Validation rule parameters array
+     * @param $validator    Current validator instance
+     */
+    public function object($attribute, $value, $params, $validator) {
+        return !Validator::make([$value], [0 => 'json'])->fails() ||
+               !Validator::make([$value], [0 => 'array'])->fails();
     }
 
 }

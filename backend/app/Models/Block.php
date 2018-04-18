@@ -15,9 +15,9 @@ class Block extends FoundationModel {
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
-        'content' =>            'string',
-        'options' =>            'json',
-        'title' =>              'string|max:255',
+        'content' =>            'string|nullable',
+        'options' =>            'object|nullable',
+        'title' =>              'string|max:255|nullable',
         'synapse_id' =>         'integer|min:1',
         'created_at' =>         'isodate',
         'updated_at' =>         'isodate',
@@ -54,6 +54,17 @@ class Block extends FoundationModel {
         'created_at',
         'updated_at',
     ];
+
+
+    /**
+     * Options attribute mutator. This mehod accepts raw JSON
+     * strings as filter values; all other values are converted to
+     * JSON strings before storing them on the database.
+     */
+    public function setOptionsAttribute($options) {
+        $serialized = is_array($options) ? json_encode($options) : $options;
+        $this->attributes['options'] = $serialized;
+    }
 
 
     /**

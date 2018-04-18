@@ -186,4 +186,9 @@ Route::group([
     Route::resource('synapses', 'SynapseController', [
         'only' => ['index', 'show']]);
 
+    /** Batch processing */
+
+    Route::post('$batch', 'Batch\BatchController@process')
+        ->name('$batch.process');
+
 });
