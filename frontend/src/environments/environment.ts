@@ -13,6 +13,9 @@ export const environment = {
   /* Application name */
   title: 'Sinapsi - Xtec',
 
+  /* Contact email */
+  email: 'agora@xtec.cat',
+
   /* Supported application locales */
   locales: [
     { code: 'ca', name: 'català' },

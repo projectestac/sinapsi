@@ -34,11 +34,11 @@ export class UserMessages {
           </p>
           <p>
             <small class="text-muted">
-              ${_(`
-                The user will no longer be able to access the application.
-                User accounts can be temporarily disabled and re-enabled
-                again later.
-              `)}
+              ${_(
+                'The user will no longer be able to access the application.' +
+                'User accounts can be temporarily disabled and re-enabled' +
+                'again later.'
+              )}
             </small>
           </p>`
     });

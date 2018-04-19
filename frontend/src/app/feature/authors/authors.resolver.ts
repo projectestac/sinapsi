@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Resolve, Router } from '@angular/router';
 import { StoreService } from 'app/core';
 import { Author } from 'app/models';
-import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
 

@@ -60,10 +60,10 @@ export class CatalogMessages {
           </p>
           <p>
             <small class="text-muted">
-              ${_(`
-                The tag will not longer show on search results but can
-                be restored later on.
-              `)}
+              ${_(
+                'The tag will not longer show on search results but can' +
+                'be restored later on.'
+               )}
             </small>
           </p>`
     });

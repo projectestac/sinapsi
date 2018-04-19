@@ -45,6 +45,9 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     /** Emited after removing a block */
     @Output() deleteBlock = new EventEmitter<Block>();
 
+    /** Emited on block changes */
+    @Output() changeBlock = new EventEmitter<Block[]>();
+
 
     /**
      * Component constructor.
@@ -114,9 +117,10 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
         this.dialog.open(confirm)
             .filter(event => event.confirmed)
             .subscribe(event => {
-                const i = this.blocks.findIndex(e => e.id === block.id);
+                const i = this.blocks.findIndex(e => e === block);
                 this.blocks.splice(i, 1);
                 this.deleteBlock.emit(block);
+                this.changeBlock.emit(this.blocks);
             });
     }
 
@@ -127,6 +131,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     private onBlockSorted() {
         const order = this.blocks.map(block => block.id);
         this.sortBlock.emit(order);
+        this.changeBlock.emit(this.blocks);
     }
 
 

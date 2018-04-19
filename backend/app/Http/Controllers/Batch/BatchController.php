@@ -91,8 +91,6 @@ class BatchController extends Controller {
             $request->headers->set('Accept', $accept);
         }
 
-        debug($request);
-
         return $request;
     }
 

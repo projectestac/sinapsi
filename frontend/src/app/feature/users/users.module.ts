@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'app/shared';
-import { ErrorsModule } from 'app/feature/errors';
 import { PostsModule } from 'app/feature/posts';
 
 import { UsersTableComponent } from './catalog';
@@ -16,7 +15,6 @@ import { ROUTING_COMPONENTS } from './users.routes';
 
     imports: [
         SharedModule,
-        ErrorsModule,
         PostsModule,
         UsersRoutes
     ]

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ConcreteModule } from 'concrete';
 import { ErrorsComponent } from './errors.component';
 
 
@@ -11,6 +12,7 @@ import { ErrorsComponent } from './errors.component';
 
     imports: [
         CommonModule,
+        ConcreteModule,
         RouterModule
     ],
 

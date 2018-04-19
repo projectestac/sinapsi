@@ -86,7 +86,7 @@
           </legend>
 
           <div class="d-flex flex-row">
-            <label>
+            <label class="form-container-label">
               <span i18n>Published after</span>
               <app-datepicker #after
                 [value]="form.get('after').value"
@@ -94,7 +94,7 @@
               </app-datepicker>
             </label>
 
-            <label>
+            <label class="form-container-label">
               <span i18n>Published before</span>
               <app-datepicker #before
                 [value]="form.get('before').value"

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorsModule } from 'app/feature/errors';
-import { ErrorsComponent } from 'app/feature/errors';
+import { ErrorsModule } from 'app/shared/errors';
+import { ErrorsComponent } from 'app/shared/errors';
+
 import { HomeModule } from 'app/feature/home';
 import { HomeComponent } from 'app/feature/home';
 import { environment } from 'environments/environment';
