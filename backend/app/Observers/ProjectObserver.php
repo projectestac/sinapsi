@@ -36,7 +36,6 @@ class ProjectObserver {
         $author = Author::create([
             'type' => 'projects',
             'name' => $project->name,
-            'user_id' => $user->id,
             'project_id' => $project->id,
             'synapse_id' => $synapse->id
         ]);

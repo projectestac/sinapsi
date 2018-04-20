@@ -36,7 +36,6 @@ class SchoolObserver {
         $author = Author::create([
             'type' => 'schools',
             'name' => $school->name,
-            'user_id' => $user->id,
             'school_id' => $school->id,
             'synapse_id' => $synapse->id
         ]);

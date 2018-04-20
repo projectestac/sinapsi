@@ -55,7 +55,7 @@ class AuthorController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Author::validateFields($request);
-        $resource = Author::whereId($id)->forUser()->first();
+        $resource = Author::whereId($id)->forOwner()->first();
         
         if (is_null($resource))
             abort(404, 'Not Found');

@@ -154,4 +154,17 @@ class Author extends FoundationModel {
         return $this->belongsTo(User::class);
     }
 
+
+    /**
+     * Restrict the results to those where the authenticated user
+     * owns the author. Note that site admins own all the objects.
+     */
+    public function scopeForOwner($query) {
+        if (Auth::user()->role === 'admin') {
+            return $query;
+        }
+        
+        return $query->forUser();
+    }
+
 }
