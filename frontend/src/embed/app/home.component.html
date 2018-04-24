@@ -8,10 +8,7 @@
       </h1>
     </header>
     <aside *ngIf="hasSearchBox" role="search">
-      <app-search
-        (search)="search($event)"
-        [value]="browser.search">
-      </app-search>
+      <app-search (search)="search($event)"></app-search>
     </aside>
   </div>
   <app-posts-browser
