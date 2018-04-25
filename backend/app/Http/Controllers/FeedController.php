@@ -25,6 +25,7 @@ class FeedController extends Controller {
     public function index(Request $request) {
         $query = Feed::cards();
         
+        Feed::mutateURLs($request);
         $query->filter($request);
         $query->include($request);
         $query->sort($request);

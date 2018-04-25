@@ -20,7 +20,7 @@ class Feed extends FoundationModel {
     protected static $fields = [
         'id' =>                 'integer|min:1',
         'etag' =>               'string',
-        'url' =>                'string|url|max:512',
+        'url' =>                'string|max:512',
         'author_id' =>          'integer|min:1',
         'created_at' =>         'isodate',
         'deleted_at' =>         'isodate',
@@ -49,11 +49,6 @@ class Feed extends FoundationModel {
         'updated_at' =>         'datetime',
     ];
     
-    /** Fields that can be searched automatically */
-    protected $searchable = [
-        'url' =>                'string',
-    ];
-    
     /** Relations that can be fetched automatically */
     protected $includable = [
         'author',
@@ -68,7 +63,7 @@ class Feed extends FoundationModel {
         'modified_at',
         'updated_at',
     ];
-
+    
     /** Hidden attributes */
     protected $hidden = [
         'etag'

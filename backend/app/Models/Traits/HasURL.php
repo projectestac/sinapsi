@@ -2,6 +2,8 @@
 
 namespace App\Models\Traits;
 
+use Illuminate\Http\Request;
+
 
 /**
  * Provides accessors and mutators to encode/decode URLs attributes
@@ -24,6 +26,24 @@ trait HasURL {
      */
     public function setUrlAttribute($url) {
         $this->attributes['url'] = rawurlencode($url);
+    }
+    
+    
+    /**
+     * Mutate the URLs found on the requests so they can be used
+     * for filtering.
+     *
+     * @param $request      Request to mutate
+     */
+    public static function mutateURLs(Request $request) {
+        $keys = ['url', 'has-url', 'max-url', 'min-url'];
+        
+        foreach ($keys as $key) {
+            if ($request->has($key)) {
+                $value = rawurlencode($request->get($key));
+                $request->merge([$key => $value]);
+            }
+        }
     }
 
 }
