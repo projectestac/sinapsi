@@ -1,1 +1,1 @@
-1	Administrator	admin@example.org	admin	$2y$10$yM5wOjuxTZr/Hn0pNu/4Xe592j81znYUnRQyNSH1RGwoYwP3nKNFu	\N	\N	unknown	unknown	2018-02-01 14:14:01	2018-02-01 14:14:01	\N
+1	Administrator	admin@example.org	admin	$2y$10$yM5wOjuxTZr/Hn0pNu/4Xe592j81znYUnRQyNSH1RGwoYwP3nKNFu	\N	/images/avatar.png	unknown	unknown	2018-02-01 14:14:01	2018-02-01 14:14:01	\N

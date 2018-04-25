@@ -18,6 +18,7 @@ class UserSeeder extends Seeder {
             'email' => 'admin@example.org',
             'name' => 'Administrator',
             'role' => 'admin',
+            'avatar_url' => '/images/avatar.png',
             'provider_uid' => 'unknown',
             'provider_token' => 'unknown',
             'password' => bcrypt(uniqid())
