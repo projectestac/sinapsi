@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DB;
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -32,7 +31,7 @@ class Post extends FoundationModel {
         'guid' =>               'string',
         'reputation' =>         'integer|min:0|max:255',
         'title' =>              'string|max:255',
-        'url' =>                'string|url|max:512',
+        'url' =>                'string|max:512',
         'author_id' =>          'integer|min:1',
         'feed_id' =>            'integer|min:1',
         'created_at' =>         'isodate',
@@ -176,8 +175,8 @@ class Post extends FoundationModel {
      */
     public function synapses() {
         return $this->belongsToMany(Synapse::class)
-            ->withTrashedIfRole('admin')
-            ->withTimestamps();
+                    ->withTrashedIfAdmin()
+                    ->withTimestamps();
     }
 
 
@@ -188,7 +187,7 @@ class Post extends FoundationModel {
      */
     public function tags() {
         return $this->belongsToMany(Tag::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -198,7 +197,8 @@ class Post extends FoundationModel {
      * @return belongsToMany        Model relation
      */
     public function users() {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)
+                    ->withTimestamps();
     }
 
 

@@ -33,49 +33,13 @@ class SynapseController extends Controller {
     
     
     /**
-     * Display a listing of synapse root/child nodes.
-     *
-     * @return Response         Response object
-     */
-    public function nodes(Request $request, $id = null) {
-        $query = Synapse::nodeCards();
-        
-        if (!$request->has('search') || !is_null($id))
-            $query->where('synapse_id', $id);
-        
-        // Include children of the node if requested
-        
-        $with = $request->get('with');
-        
-        if (is_array($with) && in_array('childs', $with)) {
-            $query->with(['childs' => function($query) use ($request) {
-                $query->nodeCards();
-                $query->sort($request);
-            }]);
-        }
-        
-        // Filter and sort the root nodes
-        
-        $query->filter($request);
-        $query->sort($request);
-        
-        return $query->paginateRequest($request);
-    }
-    
-    
-    /**
      * Display the specified resource.
      *
      * @param int $id           Primary key value
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Synapse::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Synapse::cards($id)->firstOrFail();
     }
 
 
@@ -109,25 +73,11 @@ class SynapseController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Synapse::validateFields($request);
-        $resource = Synapse::whereId($id)->forEditor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        // Filter out non-updatable values
-        
-        if ($resource->type === 'authors') {
-            unset($values['filters']);
-            unset($values['synapse_id']);
-        }
-        
-        if ($resource->slug === Synapse::GENERAL_SLUG) {
-            unset($values['slug']);
-        }
-        
-        // Update the synapse resource
+        $resource = Synapse::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
+            $values = $this->filterValues($values, $resource);
             $resource->update($values);
         } catch (QueryException $e) {
             Synapse::validateConstrains($request);
@@ -145,27 +95,48 @@ class SynapseController extends Controller {
      * @return Response         Response object
      */
     public function destroy($id) {
-        // The main synapse cannot be destroyed
-        
-        $resource = Synapse::whereId($id)->first();
-        
-        if ($resource->slug === Synapse::GENERAL_SLUG) {
-            abort(400, 'Invalid request');
-        }
-        
-        // Delete the synapse
-        
         try {
-            $result = Synapse::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Synapse::whereId($id);
+            $resource = $query->firstOrFail();
+            $this->authorize('destroy', $resource);
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
+    }
+    
+    
+    /**
+     * Display a listing of synapse root/child nodes.
+     *
+     * @return Response         Response object
+     */
+    public function nodes(Request $request, $id = null) {
+        $query = Synapse::nodeCards();
+        
+        if (!$request->has('search') || !is_null($id)) {
+            $query->where('synapse_id', $id);
+        }
+        
+        // Include children of the node if requested
+        
+        $with = $request->get('with');
+        
+        if (is_array($with) && in_array('childs', $with)) {
+            $query->with(['childs' => function($query) use ($request) {
+                $query->nodeCards();
+                $query->sort($request);
+            }]);
+        }
+        
+        // Filter and sort the root nodes
+        
+        $query->filter($request);
+        $query->sort($request);
+        
+        return $query->paginateRequest($request);
     }
 
 
@@ -176,22 +147,20 @@ class SynapseController extends Controller {
      * @return Response         Response object
      */
     public function storeForTag(Request $request, $id) {
-        $tag = Tag::cards($id)->withTrashed()->first();
         $resource = null;
+        $query = Tag::cards($id)->withTrashed();
+        $tag = $query->firstOrFail();
         
-        if (is_null($tag))
-            abort(404, 'Not Found');
+        // Validate the request
+        
+        $values = Synapse::validateRequired($request);
+        $values = Synapse::validateFields($request);
         
         // Check that a synapse for the tag does not exist
         
         if ($tag->synapse()->withTrashed()->exists()) {
             abort(422, 'Synapse already exists');
         }
-        
-        // Validate the request
-        
-        $values = Synapse::validateRequired($request);
-        $values = Synapse::validateFields($request);
         
         // Set the default synapse options
         
@@ -210,6 +179,34 @@ class SynapseController extends Controller {
         }
         
         return ['id' => $resource->id];
+    }
+
+
+    /**
+     * Filters non-updatable values for a resource.
+     *
+     * This method filters the given values array by removing from
+     * it all the values that cannot be updated for the given
+     * resource object.
+     *
+     * @param array $values         Values to filter
+     * @param \App\Models\Synapse   Model to update
+     *
+     * @return array                Filtered values
+     */
+    private function filterValues(array $values, Synapse $resource) {
+        $filtered = $values;
+        
+        if ($resource->type === 'authors') {
+            unset($filtered['filters']);
+            unset($filtered['synapse_id']);
+        }
+        
+        if ($resource->slug === Synapse::GENERAL_SLUG) {
+            unset($filtered['slug']);
+        }
+        
+        return $filtered;
     }
 
 }

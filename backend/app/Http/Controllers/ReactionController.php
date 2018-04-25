@@ -26,15 +26,10 @@ class ReactionController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Auth::user()
-            ->reactions()
-            ->wherePostId($id)
-            ->first();
+        $query = Auth::user()->reactions();
+        $query->wherePostId($id);
         
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return $query->firstOrFail();
     }
     
     

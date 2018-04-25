@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
 
@@ -74,29 +73,7 @@ class Block extends FoundationModel {
      */
     public function synapse() {
         return $this->belongsTo(Synapse::class)
-            ->withTrashedIfRole('admin');
-    }
-
-
-    /**
-     * Restrict the results to those where the authenticated user has
-     * an editor privilege over the synapse.
-     *
-     * Note that site admins can edit all the objects.
-     */
-    public function scopeForEditor($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        $query->whereExists(function ($query) {
-            $query->from('synapse_user');
-            $query->where('user_id', Auth::user()->id);
-            $query->where('synapse_id', DB::raw('`blocks`.`synapse_id`'));
-            $query->whereIn('role', ['manager', 'editor']);
-        });
-        
-        return $query;
+                    ->withTrashedIfAdmin();
     }
 
 }

@@ -26,11 +26,7 @@ class SyndicationController extends Controller {
      * @return Response         Response object
      */
     public function synapseIndex($slug) {
-        $synapse = Synapse::whereSlug($slug)->first();
-        
-        if (is_null($synapse))
-            abort(404, 'Not Found');
-        
+        $synapse = Synapse::whereSlug($slug)->firstOrFail();
         return $this->createSynapseFeed($synapse);
     }
     
@@ -41,14 +37,9 @@ class SyndicationController extends Controller {
      * @return Response         Response object
      */
     public function tagIndex($slug) {
-        $query = Tag::whereSlug($slug)
-            ->withTrashedIfRole('admin')
-            ->with('synapse');
-        
-        $tag = $query->first();
-        
-        if (is_null($tag))
-            abort(404, 'Not Found');
+        $query = Tag::whereSlug($slug)->with('synapse');
+        $query->withTrashedIfAdmin();
+        $tag = $query->firstOrFail();
         
         return is_null($tag->synapse) ?
             $this->createTagFeed($tag) :

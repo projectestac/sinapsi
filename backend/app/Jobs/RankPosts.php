@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use DB;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

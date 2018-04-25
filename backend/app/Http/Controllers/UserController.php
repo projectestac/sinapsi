@@ -41,12 +41,7 @@ class UserController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = User::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return User::cards($id)->firstOrFail();
     }
     
     
@@ -58,12 +53,7 @@ class UserController extends Controller {
      */
     public function destroy($id) {
         try {
-            $resource = User::whereId($id)->first();
-            
-            if (is_null($resource)) {
-                abort(404, 'Not Found');
-            }
-            
+            $resource = User::whereId($id)->firstOrFail();
             $resource->disabled_at = Carbon::now();
             $resource->save();
         } catch (QueryException $e) {
@@ -82,12 +72,7 @@ class UserController extends Controller {
      */
     public function restore($id) {
         try {
-            $resource = User::whereId($id)->first();
-            
-            if (is_null($resource)) {
-                abort(404, 'Not Found');
-            }
-            
+            $resource = User::whereId($id)->firstOrFail();
             $resource->disabled_at = null;
             $resource->save();
         } catch (QueryException $e) {

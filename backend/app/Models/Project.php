@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
 
@@ -62,27 +61,6 @@ class Project extends FoundationModel {
      */
     public function author() {
         return $this->hasOne(Author::class)->where('type', 'projects');
-    }
-    
-    
-    /**
-     * Restrict the results to those where the project author is the
-     * authenticated user.
-     *
-     * Note that site admins are authors for all the objects.
-     */
-    public function scopeForAuthor($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        $query->whereExists(function ($query) {
-            $query->from('authors');
-            $query->where('user_id', Auth::user()->id);
-            $query->where('project_id', DB::raw('`projects`.`id`'));
-        });
-        
-        return $query;
     }
 
 }

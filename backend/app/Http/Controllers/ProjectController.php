@@ -38,12 +38,7 @@ class ProjectController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Project::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Project::cards($id)->firstOrFail();
     }
 
 
@@ -55,10 +50,7 @@ class ProjectController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Project::validateFields($request);
-        $resource = Project::whereId($id)->forAuthor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = Project::whereId($id)->firstOrFail();
         
         try {
             $resource->update($values);
@@ -104,11 +96,9 @@ class ProjectController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Project::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Project::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

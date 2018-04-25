@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,7 +26,7 @@ class PostController extends Controller {
     public function index(Request $request) {
         $query = Post::cards();
         
-        $query->withTrashedIfRole('admin');
+        $query->withTrashedIfAdmin();
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
@@ -44,14 +43,9 @@ class PostController extends Controller {
      */
     public function show($id) {
         $query = Post::cards($id);
+        $query->withTrashedIfAdmin();
         
-        $query->withTrashedIfRole('admin');
-        $resource = $query->first();
-        
-        if (is_null($resource))
-           abort(404, 'Not Found');
-        
-        return $resource;
+        return $query->firstOrFail();
     }
     
     
@@ -63,11 +57,9 @@ class PostController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Post::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Post::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
@@ -84,11 +76,9 @@ class PostController extends Controller {
      */
     public function restore($id) {
         try {
-            $result = Post::whereId($id)->restore();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Post::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->restore();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

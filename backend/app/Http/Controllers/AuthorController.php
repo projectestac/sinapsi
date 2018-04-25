@@ -38,12 +38,7 @@ class AuthorController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Author::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Author::cards($id)->firstOrFail();
     }
 
 
@@ -55,26 +50,11 @@ class AuthorController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Author::validateFields($request);
-        $resource = Author::whereId($id)->forOwner()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        // Filter out all non-updatable values
-        
-        $values = array_intersect_key($values, [
-            'municipality_id' => null,
-            'territory_id' => null,
-            'school_id' => null
-        ]);
-        
-        if ($resource->type === 'schools') {
-            unset($values['school_id']);
-        }
-        
-        // Update the author resource
+        $resource = Author::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
+            $values = $this->filterValues($values, $resource);
             $resource->update($values);
         } catch (QueryException $e) {
             Author::validateConstrains($request);
@@ -82,6 +62,33 @@ class AuthorController extends Controller {
         }
         
         return ['id' => intval($id)];
+    }
+
+
+    /**
+     * Filters non-updatable values for a resource.
+     *
+     * This method filters the given values array by removing from
+     * it all the values that cannot be updated for the given
+     * resource object.
+     *
+     * @param array $values         Values to filter
+     * @param \App\Models\Author    Model to update
+     *
+     * @return array                Filtered values
+     */
+    private function filterValues(array $values, Author $resource) {
+        $filtered = array_intersect_key($values, [
+            'municipality_id' => null,
+            'territory_id' => null,
+            'school_id' => null
+        ]);
+        
+        if ($resource->type === 'schools') {
+            unset($filtered['school_id']);
+        }
+        
+        return $filtered;
     }
 
 }

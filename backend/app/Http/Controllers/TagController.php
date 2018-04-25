@@ -24,7 +24,7 @@ class TagController extends Controller {
     public function index(Request $request) {
         $query = Tag::cards();
         
-        $query->withTrashedIfRole('admin');
+        $query->withTrashedIfAdmin();
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
@@ -41,14 +41,9 @@ class TagController extends Controller {
      */
     public function show($id) {
         $query = Tag::cards($id);
+        $query->withTrashedIfAdmin();
         
-        $query->withTrashedIfRole('admin');
-        $resource = $query->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return $query->firstOrFail();
     }
     
     
@@ -60,12 +55,7 @@ class TagController extends Controller {
      */
     public function destroy($id) {
         try {
-            $resource = Tag::whereId($id)->first();
-            
-            if (is_null($resource)) {
-                abort(404, 'Not Found');
-            }
-            
+            $resource = Tag::whereId($id)->firstOrFail();
             $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
@@ -83,14 +73,8 @@ class TagController extends Controller {
      */
     public function restore($id) {
         try {
-            $resource = Tag::whereId($id)
-                ->withTrashed()
-                ->first();
-            
-            if (is_null($resource)) {
-                abort(404, 'Not Found');
-            }
-            
+            $query = Tag::whereId($id)->withTrashed();
+            $resource = $query->firstOrFail();
             $resource->restore();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');

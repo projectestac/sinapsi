@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -138,8 +137,8 @@ class Synapse extends FoundationModel {
      */
     public function posts() {
         return $this->belongsToMany(Post::class)
-            ->withTrashedIfRole('admin')
-            ->withTimestamps();
+                    ->withTrashedIfAdmin()
+                    ->withTimestamps();
     }
 
 
@@ -160,7 +159,7 @@ class Synapse extends FoundationModel {
      */
     public function tag() {
         return $this->hasOne(Tag::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -181,7 +180,7 @@ class Synapse extends FoundationModel {
      */
     public function parent() {
         return $this->belongsTo(Synapse::class, 'synapse_id')
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
     
     
@@ -192,7 +191,7 @@ class Synapse extends FoundationModel {
      */
     public function childs() {
         return $this->hasMany(Synapse::class, 'synapse_id')
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
     
     
@@ -216,26 +215,5 @@ class Synapse extends FoundationModel {
     public function scopeNodeCards($query) {
         return $query->select($this->nodeFields);
     }
-    
-    
-    /**
-     * Restrict the results to those where the authenticated user has
-     * an editor privilege over the synapse.
-     *
-     * Note that site admins can edit all the objects.
-     */
-    public function scopeForEditor($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        $query->whereExists(function ($query) {
-            $query->from('synapse_user');
-            $query->where('user_id', Auth::user()->id);
-            $query->where('synapse_id', DB::raw('`synapses`.`id`'));
-            $query->whereIn('role', ['manager', 'editor']);
-        });
-        
-        return $query;
-    }
+
 }

@@ -24,11 +24,15 @@ class PrivilegeController extends Controller {
      * @return Response         Response object
      */
     public function index(Request $request) {
-        $query = SynapseUser::cards()->forManager();
+        $query = SynapseUser::cards();
         
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
+        
+        if (!Auth::user()->isAdmin()) {
+            $query->forManager();
+        }
         
         return $query->paginateRequest($request);
     }
@@ -41,10 +45,8 @@ class PrivilegeController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = SynapseUser::cards($id)->forManager()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = SynapseUser::cards($id)->firstOrFail();
+        $this->authorize('show', $resource);
         
         return $resource;
     }
@@ -60,16 +62,7 @@ class PrivilegeController extends Controller {
         
         $values = SynapseUser::validateRequired($request);
         $values = SynapseUser::validateFields($request);
-        
-        // Validate that the user can administer the synapse
-        
-        $synapse_id = $values['synapse_id'];
-        
-        if (!Auth::user()->canManageSynapse($synapse_id)) {
-            abort(403, 'Forbbiden');
-        }
-        
-        // Create a new resource
+        $this->authorize('store', [SynapseUser::class, $values]);
         
         try {
             $resource = SynapseUser::create($values);
@@ -89,15 +82,12 @@ class PrivilegeController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = SynapseUser::validateFields($request);
-        $resource = SynapseUser::whereId($id)->forManager()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = SynapseUser::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
             unset($values['synapse_id']);
             unset($values['user_id']);
-            
             $resource->update($values);
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
@@ -115,15 +105,15 @@ class PrivilegeController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = SynapseUser::whereId($id)->forManager()->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = SynapseUser::whereId($id);
+            $resource = $query->firstOrFail();
+            $this->authorize('destroy', $resource);
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
     }
+
 }

@@ -39,12 +39,7 @@ class BlockController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Block::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Block::cards($id)->firstOrFail();
     }
 
 
@@ -58,16 +53,7 @@ class BlockController extends Controller {
         
         $values = Block::validateRequired($request);
         $values = Block::validateFields($request);
-        
-        // Validate that the user can edit the synapse
-        
-        $synapse_id = $values['synapse_id'];
-        
-        if (!Auth::user()->canEditSynapse($synapse_id)) {
-            abort(403, 'Forbbiden');
-        }
-        
-        // Create a new resource
+        $this->authorize('store', [Block::class, $values]);
         
         try {
             $resource = Block::create($values);
@@ -87,10 +73,8 @@ class BlockController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Block::validateFields($request);
-        $resource = Block::whereId($id)->forEditor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = Block::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
             unset($values['synapse_id']);
@@ -111,11 +95,10 @@ class BlockController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Block::whereId($id)->forEditor()->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Block::whereId($id);
+            $resource = $query->firstOrFail();
+            $this->authorize('destroy', $resource);
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

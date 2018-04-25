@@ -100,7 +100,7 @@ class Author extends FoundationModel {
      */
     public function posts() {
         return $this->hasMany(Post::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -131,7 +131,7 @@ class Author extends FoundationModel {
      */
     public function synapse() {
         return $this->belongsTo(Synapse::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -152,19 +152,6 @@ class Author extends FoundationModel {
      */
     public function user() {
         return $this->belongsTo(User::class);
-    }
-
-
-    /**
-     * Restrict the results to those where the authenticated user
-     * owns the author. Note that site admins own all the objects.
-     */
-    public function scopeForOwner($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        return $query->forUser();
     }
 
 }

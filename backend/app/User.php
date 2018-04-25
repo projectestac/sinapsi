@@ -21,7 +21,13 @@ use App\Models\Pivots\SynapseUser;
  */
 class User extends FoundationModel implements AuthenticatableContract {
     use Authenticatable, Notifiable;
-    
+
+    /** Administrator role */
+    const ADMIN_ROLE = 'admin';
+
+    /** Administrator role */
+    const AUTHOR_ROLE = 'author';
+
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:0',
@@ -116,7 +122,7 @@ class User extends FoundationModel implements AuthenticatableContract {
      */
     public function posts() {
         return $this->belongsToMany(Post::class)
-            ->withTrashedIfRole('admin')
+            ->withTrashedIfAdmin()
             ->withTimestamps();
     }
 
@@ -148,19 +154,8 @@ class User extends FoundationModel implements AuthenticatableContract {
      */
     public function synapses() {
         return $this->belongsToMany(Synapse::class)
-            ->withTrashedIfRole('admin')
+            ->withTrashedIfAdmin()
             ->withTimestamps();
-    }
-
-
-    /**
-     * Scopes a query to the authenticated user.
-     *
-     * @param $query                Query builder
-     */
-    public function scopeCurrent($query) {
-        return (Auth::check() === false) ?
-            $query->corrupt() : $query->whereId(Auth::user()->id);
     }
 
 
@@ -190,64 +185,78 @@ class User extends FoundationModel implements AuthenticatableContract {
 
 
     /**
-     * Returns if the given author ID belongs to this user.
+     * Returns if this user has the 'admin' role.
+     */
+    public function isAdmin() {
+        return $this->role === User::ADMIN_ROLE;
+    }
+
+
+    /**
+     * Returns if this user has the 'author' role.
+     */
+    public function isAuthor() {
+        return $this->role === User::AUTHOR_ROLE;
+    }
+
+
+    /**
+     * Returns if the given author belongs to this user.
      *
      * @param $id           Author identifier
-     * @return boolean      If the author exists and belongs to the user
+     * @return boolean      If the author belongs to the user
      */
-    public function isAuthor($id) {
+    public function isAuthorFor($id) {
         return $this->author()->whereId($id)->exists();
     }
 
 
     /**
-     * Returns if the user can edit the given synapse.
+     * Returns if the user has a privilege over the synapse with
+     * the role 'editor' or 'manager'.
      *
      * @param $id           Synapse identifier
-     * @return boolean      If the user can edit the synapse
+     * @return boolean      If the user has edition rights
      */
-    public function canManageSynapse($id) {
-        if ($this->role === 'admin') {
-            return true;
-        }
-
-        $privilege = $this->privileges()->where('synapse_id', $id);
-        return $privilege->where('role', 'manager')->exists();
+    public function isEditorFor($id) {
+        $query = $this->privileges();
+        $query->where('synapse_id', $id);
+        $query->whereIn('role', ['editor', 'manager']);
+        
+        return $query->exists();
     }
 
 
     /**
-     * Returns if the user can edit the given synapse.
+     * Returns if the user has a privilege over the synapse with
+     * the role 'manager'.
      *
      * @param $id           Synapse identifier
-     * @return boolean      If the user can edit the synapse
+     * @return boolean      If the user has management rights
      */
-    public function canEditSynapse($id) {
-        if ($this->role === 'admin') {
-            return true;
-        }
-
-        $privilege = $this->privileges()->where('synapse_id', $id);
-        return $privilege->whereIn('role', ['manager', 'editor'])->exists();
+    public function isManagerFor($id) {
+        $query = $this->privileges();
+        $query->where('synapse_id', $id);
+        $query->where('role', 'manager');
+        
+        return $query->exists();
     }
 
 
     /**
-     * Overwrites the getHidden method of the model. This method
-     * overwrites the hidden attributes by removing the user email
-     * field if the current user is an admin.
+     * Overwrites the getHidden method of the model.
+     *
+     * This method overwrites the hidden attributes by removing the
+     * user email field if the current user is an administrator. Thus,
+     * granting admins the right to see user emails.
      */
     public function getHidden() {
         $hidden = parent::getHidden();
         
-        // Grant administrators the right to see the user emails
-        
-        if (Auth::check() === true) {
-            if (Auth::user()->hasRole('admin')) {
-                $hidden = array_filter($hidden, function($value) {
-                    return $value !== 'email';
-                });
-            }
+        if (Auth::check() && Auth::user()->isAdmin()) {
+            $hidden = array_filter($hidden, function($value) {
+                return $value !== 'email';
+            });
         }
         
         return $hidden;

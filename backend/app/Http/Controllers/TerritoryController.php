@@ -38,12 +38,7 @@ class TerritoryController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Territory::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Territory::cards($id)->firstOrFail();
     }
 
 
@@ -77,10 +72,7 @@ class TerritoryController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Territory::validateFields($request);
-        $resource = Territory::whereId($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = Territory::whereId($id)->firstOrFail();
         
         try {
             $resource->update($values);
@@ -101,15 +93,14 @@ class TerritoryController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Territory::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Territory::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
     }
+
 }

@@ -38,12 +38,7 @@ class SchoolController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = School::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return School::cards($id)->firstOrFail();
     }
 
 
@@ -55,10 +50,7 @@ class SchoolController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = School::validateFields($request);
-        $resource = School::whereId($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = School::whereId($id)->firstOrFail();
         
         try {
             $resource->update($values);
@@ -104,11 +96,9 @@ class SchoolController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = School::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = School::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

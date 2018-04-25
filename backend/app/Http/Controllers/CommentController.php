@@ -39,12 +39,7 @@ class CommentController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Comment::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Comment::cards($id)->firstOrFail();
     }
 
 
@@ -56,12 +51,12 @@ class CommentController extends Controller {
     public function store(Request $request) {
         $resource = null;
         
-        $request->merge(['user_id' => 1,]);
+        $request->merge(['user_id' => Auth::id(),]);
         $values = Comment::validateRequired($request);
         $values = Comment::validateFields($request);
         
         try {
-            $values['user_id'] = Auth::user()->id;
+            $values['user_id'] = Auth::id();
             $resource = Comment::create($values);
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
@@ -79,15 +74,14 @@ class CommentController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Comment::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Comment::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
     }
+
 }

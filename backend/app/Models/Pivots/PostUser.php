@@ -63,7 +63,7 @@ class PostUser extends FoundationModel {
      */
     public function post() {
         return $this->belongsTo(Post::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 

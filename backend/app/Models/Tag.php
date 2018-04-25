@@ -77,7 +77,7 @@ class Tag extends FoundationModel {
      */
     public function posts() {
         return $this->belongsToMany(Post::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -88,7 +88,7 @@ class Tag extends FoundationModel {
      */
     public function synapse() {
         return $this->belongsTo(Synapse::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 }

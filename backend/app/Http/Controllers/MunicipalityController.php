@@ -38,12 +38,7 @@ class MunicipalityController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Municipality::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Municipality::cards($id)->firstOrFail();
     }
 
 
@@ -77,10 +72,7 @@ class MunicipalityController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Municipality::validateFields($request);
-        $resource = Municipality::whereId($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = Municipality::whereId($id)->firstOrFail();
         
         try {
             $resource->update($values);
@@ -101,11 +93,9 @@ class MunicipalityController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Municipality::whereId($id)->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Municipality::whereId($id);
+            $resource = $query->firstOrFail();
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }

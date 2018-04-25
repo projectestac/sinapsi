@@ -40,12 +40,7 @@ class FeedController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = Feed::cards($id)->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return Feed::cards($id)->firstOrFail();
     }
 
 
@@ -59,14 +54,7 @@ class FeedController extends Controller {
         
         $values = Feed::validateRequired($request);
         $values = Feed::validateFields($request);
-        
-        // Validate that the author belongs to the user
-        
-        $author_id = $values['author_id'];
-        
-        if (!Auth::user()->isAuthor($author_id)) {
-            abort(403, 'Forbbiden');
-        }
+        $this->authorize('store', [Feed::class, $values]);
         
         // Create a new resource or untrash it if a deleted feed with
         // the same URL already exists
@@ -99,10 +87,8 @@ class FeedController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = Feed::validateFields($request);
-        $resource = Feed::whereId($id)->forAuthor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = Feed::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
             unset($values['author_id']);
@@ -124,16 +110,15 @@ class FeedController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = Feed::whereId($id)->forAuthor()->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = Feed::whereId($id);
+            $resource = $query->firstOrFail();
+            $this->authorize('destroy', $resource);
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
     }
-    
+
 }

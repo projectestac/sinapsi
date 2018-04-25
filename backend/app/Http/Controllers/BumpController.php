@@ -23,7 +23,7 @@ class BumpController extends Controller {
      * @return Response         Response object
      */
     public function index(Request $request) {
-        $query = PostSynapse::cards()->forEditor();
+        $query = PostSynapse::cards();
         
         $query->filter($request);
         $query->include($request);
@@ -40,12 +40,7 @@ class BumpController extends Controller {
      * @return Response         Response object
      */
     public function show($id) {
-        $resource = PostSynapse::cards($id)->forEditor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
-        
-        return $resource;
+        return PostSynapse::cards($id)->firstOrFail();
     }
 
 
@@ -59,16 +54,7 @@ class BumpController extends Controller {
         
         $values = PostSynapse::validateRequired($request);
         $values = PostSynapse::validateFields($request);
-        
-        // Validate that the user can edit the synapse
-        
-        $synapse_id = $values['synapse_id'];
-        
-        if (!Auth::user()->canEditSynapse($synapse_id)) {
-            abort(403, 'Forbbiden');
-        }
-        
-        // Create a new resource
+        $this->authorize('store', [PostSynapse::class, $values]);
         
         try {
             $resource = PostSynapse::create($values);
@@ -88,15 +74,12 @@ class BumpController extends Controller {
      */
     public function update(Request $request, $id) {
         $values = PostSynapse::validateFields($request);
-        $resource = PostSynapse::whereId($id)->forEditor()->first();
-        
-        if (is_null($resource))
-            abort(404, 'Not Found');
+        $resource = PostSynapse::whereId($id)->firstOrFail();
+        $this->authorize('update', $resource);
         
         try {
             unset($values['post_id']);
             unset($values['synapse_id']);
-            
             $resource->update($values);
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
@@ -114,15 +97,15 @@ class BumpController extends Controller {
      */
     public function destroy($id) {
         try {
-            $result = PostSynapse::whereId($id)->forEditor()->delete();
-            
-            if ($result == false) {
-                abort(404, 'Not Found');
-            }
+            $query = PostSynapse::whereId($id);
+            $resource = $query->firstOrFail();
+            $this->authorize('destroy', $resource);
+            $resource->delete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
         
         return ['id' => intval($id)];
     }
+
 }

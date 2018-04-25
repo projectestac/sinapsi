@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -69,7 +68,7 @@ class Feed extends FoundationModel {
         'modified_at',
         'updated_at',
     ];
-    
+
     /** Hidden attributes */
     protected $hidden = [
         'etag'
@@ -93,28 +92,7 @@ class Feed extends FoundationModel {
      */
     public function posts() {
         return $this->hasMany(Post::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
-    
-    
-    /**
-     * Restrict the results to those where the feed author is the
-     * authenticated user.
-     *
-     * Note that site admins are authors of all the objects.
-     */
-    public function scopeForAuthor($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        $query->whereExists(function ($query) {
-            $query->from('authors');
-            $query->where('id', DB::raw('`feeds`.`author_id`'));
-            $query->where('user_id', Auth::user()->id);
-        });
-        
-        return $query;
-    }
-    
+
 }

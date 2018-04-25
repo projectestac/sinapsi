@@ -2,6 +2,7 @@
 
 namespace App\Models\Pivots;
 
+use DB;
 use Auth;
 use Seidor\Foundation\FoundationModel;
 
@@ -64,7 +65,7 @@ class SynapseUser extends FoundationModel {
      */
     public function synapse() {
         return $this->belongsTo(Synapse::class)
-            ->withTrashedIfRole('admin');
+                    ->withTrashedIfAdmin();
     }
 
 
@@ -79,20 +80,19 @@ class SynapseUser extends FoundationModel {
 
 
     /**
-     * Restrict the results to those where the authenticated user has
-     * an management privileges over the synapse.
-     *
-     * Note that site admins can administer all the objects.
+     * Restrict the results to those where the authenticated user
+     * has management privileges over the synapse to which this
+     * privilege belongs.
      */
     public function scopeForManager($query) {
-        if (Auth::user()->role === 'admin') {
-            return $query;
-        }
-        
-        $query->where('user_id', Auth::user()->id);
-        $query->where('role', 'manager');
-        
-        return $query;
+        return $query->whereExists(function ($query) {
+           $rawId = DB::raw('`synapse_user`.`synapse_id`');
+
+           $query->from('synapse_user as grant');
+           $query->where('grant.role', 'manager');
+           $query->where('grant.user_id', Auth::id());
+           $query->where('grant.synapse_id', $rawId);
+        });
     }
 
 }

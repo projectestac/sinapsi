@@ -27,13 +27,8 @@ class AccountController extends Controller {
             abort(404, 'Not Found');
         }
         
-        $id = Auth::user()->id;
-        
-        $profile = User::current()
-            ->with('author')
-            ->cards()
-            ->first();
-        
+        $query = User::cards()->whereId(Auth::id());
+        $profile = $query->with('author')->firstOrFail();
         $profile->makeVisible('email');
         
         return $profile;
@@ -163,4 +158,5 @@ class AccountController extends Controller {
         
         return $user;
     }
+
 }

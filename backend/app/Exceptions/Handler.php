@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -52,13 +54,22 @@ class Handler extends ExceptionHandler
         // Return a JSON error object
         
         $error = [
-            'status' => null,
-            'message' => null
+            'status' => 500,
+            'message' => 'Unknown'
         ];
         
         if ($exception instanceof HttpException) {
             $error['status'] = $exception->getStatusCode();
             $error['message'] = $exception->getMessage();
+        } else if ($exception instanceof AuthorizationException) {
+            $error['status'] = 403;
+            $error['message'] = $exception->getMessage();
+        } else if ($exception instanceof AuthenticationException) {
+            $error['status'] = 401;
+            $error['message'] = $exception->getMessage();
+        } else if ($exception instanceof ModelNotFoundException) {
+            $error['status'] = 404;
+            $error['message'] = 'Not Found';
         } else if ($exception instanceof ValidationException) {
             $error['status'] = 422;
             $error['message'] = 'Unprocessable Entity';
