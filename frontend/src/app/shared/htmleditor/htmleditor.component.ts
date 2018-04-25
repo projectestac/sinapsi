@@ -32,6 +32,9 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     /** Current value */
     @Input() value: any = null;
 
+    /** Editor height */
+    @Input() height: number = 80;
+
     /** Disabled attribute of the control */
     @Input('disabled') set setDisabled(value: string) {
         this.disabled = (value !== null && value !== undefined);
@@ -52,6 +55,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     ) {
         this.settings['language'] = locale;
         this.settings['document_base_url'] = '.';
+        this.settings['height'] = this.height;
     }
 
 
@@ -61,6 +65,10 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if ('value' in changes) {
             this.writeValue(this.value);
+        }
+
+        if ('height' in changes) {
+            this.settings['height'] = this.height;
         }
     }
 
