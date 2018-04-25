@@ -338,7 +338,7 @@ abstract class FoundationModel extends Model {
      * @return Builder              Scoped query
      */
     public function scopeWhereText($query, $fields, $text, $boolean = 'and') {
-        $searchValue = trim($text);
+        $searchValue = $this->sanitizeSearch(trim($text));
         
         if ($searchValue == false) {
             return $query;
@@ -352,6 +352,22 @@ abstract class FoundationModel extends Model {
             [$searchValue], $boolean);
         
         return $query;
+    }
+    
+    
+    /**
+     * Sanitize a string for use in full-text searches in boolean
+     * mode. Only the symbols [+-~@*"] are supported.
+     *
+     * @param $text     Text to sanitize
+     * @return          Sanitized text
+     */
+    public function sanitizeSearch($text) {
+        $matches = [];
+        $regex = '/"[^"]+"(\s+@[0-9]+)?|[-+~]?[^-+~<>\(\)"@\s]+/';
+        preg_match_all($regex, $text, $matches);
+        
+        return implode(' ', $matches[0]);
     }
     
     
@@ -381,7 +397,7 @@ abstract class FoundationModel extends Model {
             return $query->corrupt();
         }
         
-        return $query->where('user_id', Auth::user()->id);
+        return $query->where('user_id', Auth::id());
     }
     
     
@@ -566,7 +582,7 @@ abstract class FoundationModel extends Model {
         
         if (!empty($search) && !empty($fields)) {
             $query->where(function($query) use ($search, $fields) {
-                $text = urldecode($search);
+                $text = rawurldecode($search);
                 
                 $fulltextKeys = array_keys(
                     array_filter($fields, function($value) {
