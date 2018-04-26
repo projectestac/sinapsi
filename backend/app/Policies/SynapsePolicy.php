@@ -12,6 +12,20 @@ class SynapsePolicy extends ModelPolicy {
 
 
     /**
+     * Make sure admins cannot delete the general synapse or
+     * the authors synapses.
+     *
+     * @param  \App\User    $user
+     * @param  \App\Model   $model
+     * @return mixed
+     */
+    public function before(User $user, $ability) {
+        return ($ability === 'destroy') ?
+            null : parent::before($user, $ability);
+    }
+
+
+    /**
      * Determine whether the user can update the synapse.
      *
      * @param  \App\User            $user
@@ -33,7 +47,8 @@ class SynapsePolicy extends ModelPolicy {
      * @return mixed
      */
     public function destroy(User $user, Synapse $synapse) {
-        return $synapse->slug !== Synapse::GENERAL_SLUG;
+        return ($synapse->type !== 'authors') &&
+               ($synapse->slug !== Synapse::GENERAL_SLUG);
     }
 
 }
