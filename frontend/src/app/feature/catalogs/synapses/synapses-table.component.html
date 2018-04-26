@@ -7,7 +7,7 @@
         <tr role="row">
           <th cnSortBy="name" i18n>Name</th>
           <th i18n>Description</th>
-          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
+          <th *appIfCan="['manage-synapses']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -25,14 +25,16 @@
           <td class="w-50">
             <span [innerHTML]="synapse.description | stripTags"></span>
           </td>
-          <td *appIfRole="['admin']" class="actions-column">
+          <td *appIfCan="['manage-synapses']" class="actions-column">
             <button
+              *appIfCan="['update-synapse', synapse]"
               (click)="editRow.emit(synapse)"
               title="Edit synapse" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>
             <button
+              *appIfCan="['destroy-synapse', synapse]"
               (click)="deleteRow.emit(synapse)"
               title="Delete synapse" i18n-title
               class="btn btn-sm btn-secondary">

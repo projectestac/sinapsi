@@ -65,8 +65,8 @@
             
             <!-- Authentication links -->
             
-            <li *ngIf="sessionState == 'inactive'" class="nav-item d-sm-none">
-              <a (click)="showSigninForm($event)" class="nav-link">
+            <li *ngIf="!session.check()" class="nav-item d-sm-none">
+              <a (click)="session.showSignInForm()" class="nav-link">
                  <cn-icon value="lock"></cn-icon>
                  <span i18n>Log in</span>
               </a>
@@ -74,12 +74,11 @@
             
             <!-- User navigation -->
             
-            <li *ngIf="sessionState == 'active'"
-                class="nav-item d-sm-none">
+            <li *ngIf="session.check()" class="nav-item d-sm-none">
               <cn-details>
                 <cn-summary>
-                  <img [src]="currentUser.avatar_url" class="user-avatar"/>
-                  {{ currentUser.name }}
+                  <img [src]="session.user.avatar_url" class="user-avatar"/>
+                  {{ session.user.name }}
                 </cn-summary>
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
@@ -95,7 +94,7 @@
                     </button>
                   </li>
                   <li class="nav-item">
-                    <button (click)="signOut($event)"
+                    <button (click)="session.signOut()"
                        class="btn btn-link nav-link" i18n>
                       Log out
                     </button>
@@ -109,17 +108,17 @@
         <!-- Authentication and user navigation -->
         
         <div class="user-navigation nav-item d-none d-sm-block">
-          <button *ngIf="sessionState == 'inactive'"
-             (click)="showSigninForm($event)"
+          <button *ngIf="!session.check()"
+             (click)="session.showSignInForm()"
              class="btn btn-link">
             <cn-icon value="lock"></cn-icon>
             <span i18n>Log in</span>
           </button>
           
-          <ng-container *ngIf="sessionState == 'active'">
+          <ng-container *ngIf="session.check()">
             <button [cnMenu]="userMenu" class="btn btn-link">
-              <img [src]="currentUser.avatar_url" class="user-avatar"/>
-              <span>{{ currentUser.name }}</span>
+              <img [src]="session.user.avatar_url" class="user-avatar"/>
+              <span>{{ session.user.name }}</span>
             </button>
             <cn-menu #userMenu>
               <cn-menuitem icon="address-card"
@@ -132,7 +131,7 @@
               </cn-menuitem>
               <hr>
               <cn-menuitem icon="lock"
-                (click)="signOut($event)" i18n>
+                (click)="session.signOut()" i18n>
                 Log out
               </cn-menuitem>
             </cn-menu>

@@ -4,8 +4,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 
-import { SessionService, SessionState} from 'app/core/services';
-import { SessionEvent, SessionStateChanged } from 'app/core/services';
+import { SessionService, SessionState } from 'app/core/auth';
+import { SessionEvent, UserChanged } from 'app/core/auth';
 import { RequestManager, StoreService } from 'app/core/services';
 import { Collection, Model, StoreQuery } from 'app/core/services';
 import { ScrollTop } from 'app/core/core.decorators';
@@ -75,9 +75,7 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
 
         this.requests
             .takeUntil(this.unsubscribe)
-            .subscribe(request => {
-                this.updateCatalog(request);
-            });
+            .subscribe(request => this.updateCatalog(request));
 
         // Create requests from the manager queries
 
@@ -92,11 +90,8 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
 
         this.session.events
             .takeUntil(this.unsubscribe)
-            .subscribe(event => {
-               if (event instanceof SessionStateChanged) {
-                   this.requests.next(this.request);
-               }
-            });
+            .filter(e => e instanceof UserChanged)
+            .subscribe(e => this.requests.next(this.request));
     }
 
 
@@ -122,17 +117,6 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
      */
     get states(): Subject<FetchState> {
         return this._states;
-    }
-
-
-    /**
-     * Navigates to the editor for the given model.
-     *
-     * @param id        Model unique identifier
-     */
-    @ScrollTop()
-    public compose(id: number) {
-        this.manager.navigate(['compose', id]);
     }
 
 

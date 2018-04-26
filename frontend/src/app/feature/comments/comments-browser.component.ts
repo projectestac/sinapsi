@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
-import { SessionService, SessionState } from 'app/core/services';
+import { SessionService, SessionState } from 'app/core';
 import { CatalogComponent, StoreQuery } from 'app/core';
 import { Collection, Model } from 'app/core';
 import { Post } from 'app/models';
@@ -29,23 +29,9 @@ export class CommentsBrowserComponent {
     /**
      * Component constructor.
      */
-    constructor(private session: SessionService) {}
-
-
-    /**
-     * Session state.
-     */
-    get sessionState(): SessionState {
-        return this.session.state;
-    }
-
-
-    /**
-     * Shows the log in form popup window.
-     */
-    public showSigninForm(event: Event) {
-        this.session.showSigninForm();
-    }
+    constructor(
+        public session: SessionService
+    ) {}
 
 
     /**

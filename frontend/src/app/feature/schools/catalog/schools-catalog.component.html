@@ -24,7 +24,7 @@
       
       <div class="page-form form-group hidden-print">
         <div class="page-buttons">
-          <button *appIfRole="['admin']"
+          <button *appIfCan="['manage-authors']"
             (click)="create()"
             title="Create a new school" i18n-title
             class="btn btn-secondary">

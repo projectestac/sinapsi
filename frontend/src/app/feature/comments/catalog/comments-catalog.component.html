@@ -7,7 +7,7 @@
       <div *ngFor="let comment of collection" class="comment-wrapper">
         <app-comment-details [comment]="comment"></app-comment-details>
         
-        <div *appIfRole="['admin']" class="comment-actions">
+        <div *appIfCan="['manage-synapses']" class="comment-actions">
           <button type="button"
              (click)="remove(comment)"
              title="Delete this comment" i18n-title

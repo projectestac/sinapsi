@@ -4,8 +4,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { CnToaster } from 'concrete/toaster';
 
-import { SessionStateChanged } from './session.events';
-import { PrivilegeRole, Synapse, User, UserRole } from 'app/models';
+import { UserChanged } from './session.events';
+import { User } from 'app/models';
 import { _ } from 'i18n';
 
 
@@ -22,6 +22,9 @@ export const enum SessionState {
  */
 @Injectable()
 export class SessionService implements OnDestroy {
+
+    /** Authentication error message */
+    private DISABLED_MESSAGE = _('Your account has been temporarily disabled.');
 
     /** Log in API path */
     private SIGNIN_PATH = '/accounts/register';
@@ -47,16 +50,16 @@ export class SessionService implements OnDestroy {
     };
 
     /** Authentication state */
-    private sessionState: SessionState = SessionState.POLLING;
-
-    /** Authenticated user profile */
-    private userProfile: User = null;
+    private state = SessionState.POLLING;
 
     /** Authentication pop-up reference */
     private authWindow: Window = null;
 
     /** Authentication subject */
     private subject = new Subject<any>();
+
+    /** Authenticated user */
+    public user: User = null;
 
     /** Observable of queries */
     public events = this.subject.asObservable();
@@ -70,7 +73,7 @@ export class SessionService implements OnDestroy {
         private toaster: CnToaster
     ) {
         this.APP_HOST = window.location.host;
-        this.fetchUserProfile();
+        this.fetchUser();
     }
 
 
@@ -83,101 +86,19 @@ export class SessionService implements OnDestroy {
 
 
     /**
-     * Authentication state
-     */
-    get state(): SessionState {
-        return this.sessionState;
-    }
-
-
-    /**
-     * Authenticated user profile
-     */
-    get profile(): User {
-        return this.userProfile;
-    }
-
-
-    /**
      * Returns true if a session is active.
      *
-     * @returns     Wether a session is active
+     * @returns     Whether a session is active
      */
-    public isActive(): boolean {
-        return (this.sessionState === SessionState.ACTIVE);
-    }
-
-
-    /**
-     * Returns true if the current user is an administrator.
-     *
-     * @returns     True if the current user has the role 'admin';
-     *              false if there isn't an active session or the
-     *              user role is not 'admin'.
-     */
-    public isAdministrator(): boolean {
-        return this.isActive() ?
-            this.profile['role'] === UserRole.ADMINISTRATOR : false;
-    }
-
-
-
-
-    /**
-     * Returns the current user privilege role over the synapse.
-     * Note that administrators always have management rights over
-     * all synapses.
-     *
-     * @param synapse       Synapse to check
-     * @returns             MANAGER, EDITOR or VIEWER
-     */
-    private roleForSynapse(synapse: Synapse): PrivilegeRole {
-        if (this.isAdministrator()) {
-            return PrivilegeRole.MANAGER;
-        }
-
-        if (synapse['privilege']) {
-            if (synapse.privilege['role']) {
-                return synapse.privilege.role;
-            }
-        }
-
-        return PrivilegeRole.VIEWER;
-    }
-
-
-    /**
-     * Returns if the current user can edit the given synapse.
-     *
-     * @param synapse       Synapse to check
-     * @returns             True if the current user has a privilege
-     *                      other than VIEWER over the synapse
-     */
-    public canEditSynapse(synapse: Synapse): boolean {
-        const role = this.roleForSynapse(synapse);
-
-        return role === PrivilegeRole.MANAGER ||
-               role === PrivilegeRole.EDITOR;
-    }
-
-
-    /**
-     * Returns if the current user can manage the given synapse.
-     *
-     * @param synapse       Synapse to check
-     * @returns             True if the current user has a privilege
-     *                      over the synapse with a manager role.
-     */
-    public canManageSynapse(synapse: Synapse): boolean {
-        const role = this.roleForSynapse(synapse);
-        return role === PrivilegeRole.MANAGER;
+    public check(): boolean {
+        return (this.state === SessionState.ACTIVE);
     }
 
 
     /**
      * Show the authentication / registration window.
      */
-    public showSigninForm() {
+    public showSignInForm() {
         // Focus the current pop-up if it is not closed
 
         if (this.authWindow && !this.authWindow.closed) {
@@ -203,10 +124,9 @@ export class SessionService implements OnDestroy {
                 clearInterval(timer);
                 
                 this.authWindow.close();
-                this.fetchUserProfile().subscribe(authorized => {
+                this.fetchUser().subscribe(authorized => {
                     if (authorized === false) {
-                        this.toaster.error(_(
-                            'Your account has been temporarily disabled.'));
+                        this.toaster.error(this.DISABLED_MESSAGE);
                     }
                 });
             }
@@ -218,9 +138,9 @@ export class SessionService implements OnDestroy {
      * Sign out the authenticated user if any.
      */
     public signOut() {
-        if (this.sessionState = SessionState.ACTIVE) {
+        if (this.state = SessionState.ACTIVE) {
             this.http.post(this.SIGNOUT_PATH, {}).subscribe(
-                response => this.clearCurrentUser());
+                response => this.clearUser());
         }
     }
 
@@ -231,22 +151,43 @@ export class SessionService implements OnDestroy {
      * @returns     An observable with the value true on success
      *              or false on error
      */
-    public fetchUserProfile(): Observable<boolean> {
+    private fetchUser(): Observable<boolean> {
         const subject = new Subject<boolean>();
-        
+        this.state = SessionState.POLLING;
+
         this.http.get(this.PROFILE_PATH, {})
             .map(response => response.json())
-            .subscribe(profile => {
-                this.setCurrentUser(<User> profile);
+            .subscribe(user => {
+                this.setUser(<User> user);
                 subject.next(true);
                 subject.complete();
             }, errors => {
-                this.clearCurrentUser();
+                this.clearUser();
                 subject.next(false);
                 subject.complete();
             });
-        
+
         return subject.asObservable();
+    }
+
+
+    /**
+     * Set the authenticated user profile.
+     */
+    private setUser(user: User) {
+        this.user = user,
+        this.state = SessionState.ACTIVE;
+        this.subject.next(new UserChanged(this.state));
+    }
+
+
+    /**
+     * Clear the current authenticated user profile.
+     */
+    private clearUser() {
+        this.user = null;
+        this.state = SessionState.INACTIVE;
+        this.subject.next(new UserChanged(this.state));
     }
 
 
@@ -275,30 +216,6 @@ export class SessionService implements OnDestroy {
             (k) => `${k}=${options[k]}`).join(',');
 
         return window.open(url, name, specs);
-    }
-
-
-    /**
-     * Set the authenticated user profile.
-     */
-    private setCurrentUser(user: User) {
-        const event = new SessionStateChanged(SessionState.ACTIVE);
-
-        this.userProfile = user,
-        this.sessionState = SessionState.ACTIVE;
-        this.subject.next(event);
-    }
-
-
-    /**
-     * Clear the current authenticated user profile.
-     */
-    private clearCurrentUser() {
-        const event = new SessionStateChanged(SessionState.INACTIVE);
-
-        this.userProfile = null;
-        this.sessionState = SessionState.INACTIVE;
-        this.subject.next(event);
     }
 
 }

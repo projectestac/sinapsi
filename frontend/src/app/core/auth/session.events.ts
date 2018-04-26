@@ -3,13 +3,13 @@ import { SessionState } from './session.service';
 
 /** Authentication events */
 export type SessionEvent = (
-    SessionStateChanged
+    UserChanged
 );
 
 
 /**
- * Event triggered when the authentication state changes.
+ * Event triggered when the user changes.
  */
-export class SessionStateChanged {
+export class UserChanged {
     constructor(public state: SessionState) {}
 }

@@ -20,10 +20,10 @@ import { _ } from 'i18n';
 export class PostDetailsComponent {
 
     /** Post API path */
-    private path = 'api/posts';
+    private path = '/api/posts';
 
     /** Post reactions API path */
-    private reactionsPath = 'api/posts/reactions';
+    private reactionsPath = '/api/posts/reactions';
 
     /** Whether the component is expanded */
     private isOpen = false;
@@ -94,7 +94,7 @@ export class PostDetailsComponent {
      * Toggle a like reaction from the active user.
      */
     toggleLike() {
-        if (this.session.isActive() === false) {
+        if (!this.session.check()) {
             this.toaster.info(PostsMessages.ReactionError);
         } else {
             this.toggleReaction('liked')
@@ -111,7 +111,7 @@ export class PostDetailsComponent {
      * Toggle a favourite reaction from the active user.
      */
     toggleFavorite() {
-        if (this.session.isActive() === false) {
+        if (!this.session.check()) {
             this.toaster.info(PostsMessages.ReactionError);
         } else {
             this.toggleReaction('favourited')

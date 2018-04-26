@@ -2,6 +2,10 @@ import { Model } from 'app/core';
 import { Author, Privilege } from '.';
 
 
+/** General synapse slug */
+export const GENERAL_SLUG = 'general';
+
+
 /** Synapse types */
 export enum SynapseType {
     AUTHORS =   'authors',

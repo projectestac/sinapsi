@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SessionService, SessionState } from 'app/core/services';
+import { SessionService, SessionState } from 'app/core/auth';
 import { SettingsService } from 'app/core/services';
 import { User } from 'app/models';
 
@@ -29,7 +29,7 @@ export class HeaderComponent {
     constructor(
         private router: Router,
         private settings: SettingsService,
-        private session: SessionService
+        public session: SessionService
     ) {
         this.title = settings.get('title');
         this.locales = settings.get('locales');
@@ -43,27 +43,11 @@ export class HeaderComponent {
 
 
     /**
-     * Authenticated user accessor.
-     */
-    get currentUser(): User {
-        return this.session.profile;
-    }
-
-
-    /**
-     * Session state.
-     */
-    get sessionState(): SessionState {
-        return this.session.state;
-    }
-
-
-    /**
      * Navigate to the profile of the authenticated user.
      */
     public showUserProfile(event: Event) {
-        if (this.session.isActive()) {
-            const author = this.currentUser.author;
+        if (this.session.check()) {
+            const author = this.session.user.author;
             this.router.navigate(['/authors', author.id]);
         }
     }
@@ -73,26 +57,10 @@ export class HeaderComponent {
      * Navigate to the setting editor for the authenticated user.
      */
     public showUserSettings(event: Event) {
-        if (this.session.isActive()) {
-            const author = this.currentUser.author;
-            this.router.navigate(['/authors', 'compose', author.id]);
+        if (this.session.check()) {
+            const author = this.session.user.author;
+            this.router.navigate(['/editors', 'authors', author.id]);
         }
-    }
-
-
-    /**
-     * Shows the log in form popup window.
-     */
-    public showSigninForm(event: Event) {
-        this.session.showSigninForm();
-    }
-
-
-    /**
-     * Signs the authenitcated user out of the application.
-     */
-    public signOut(event: Event) {
-        this.session.signOut();
     }
 
 }

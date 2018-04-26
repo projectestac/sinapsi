@@ -2,10 +2,11 @@ import * as moment from 'moment';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { LOCALE_ID, Optional, SkipSelf } from '@angular/core';
 
+import { AuthModule } from './auth';
 import { FooterModule } from './footer';
 import { HeaderModule } from './header';
 import { LocalesModule } from './locales';
-import { SessionService } from './services';
+
 import { SettingsService } from './services';
 import { StoreService } from './services';
 
@@ -32,7 +33,12 @@ export const LocaleProvider = {
  * Core module.
  */
 @NgModule({
+    imports: [
+        AuthModule.forRoot()
+    ],
+
     exports: [
+        AuthModule,
         FooterModule,
         HeaderModule,
         LocalesModule
@@ -48,7 +54,6 @@ export class CoreModule {
             ngModule: CoreModule,
             providers: [
                 LocaleProvider,
-                SessionService,
                 SettingsService,
                 StoreService
             ]

@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ConcreteModule } from 'concrete';
 
+import { AuthModule } from 'app/core/auth';
 import { BlockModule } from './block';
 import { BlockpickerModule } from './blockpicker';
 import { CardModule } from './card';
@@ -13,7 +14,6 @@ import { DatepickerModule } from './datepicker';
 import { ErrorsModule } from './errors';
 import { FeedbackModule } from './feedback';
 import { HTMLEditorModule } from './htmleditor';
-import { PermissionsModule } from './permissions';
 import { SidebarModule } from './sidebar';
 import { SearchModule } from './search';
 import { ShareFormModule } from './share';
@@ -33,6 +33,7 @@ import { StripTagsPipe } from './striptags.pipe';
     ],
 
     exports: [
+        AuthModule,
         BlockModule,
         BlockpickerModule,
         CardModule,
@@ -44,7 +45,6 @@ import { StripTagsPipe } from './striptags.pipe';
         FeedbackModule,
         FormsModule,
         HTMLEditorModule,
-        PermissionsModule,
         ReactiveFormsModule,
         SidebarModule,
         SearchModule,

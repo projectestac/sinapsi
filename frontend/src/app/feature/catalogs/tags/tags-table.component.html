@@ -8,7 +8,7 @@
           <th cnSortBy="name" i18n>Name</th>
           <th i18n>Description</th>
           <th cnSortBy="post_count" i18n>Posts</th>
-          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
+          <th *appIfCan="['manage-tags']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -29,26 +29,28 @@
               {{ tag.post_count | number }}
             </data>
           </td>
-          <td *appIfRole="['admin']" class="actions-column">
-            <button *ngIf="!tag.synapse_id"
-              (click)="editRow.emit(tag)"
-              title="Create synapse" i18n-title
-              class="btn btn-sm btn-secondary">
-              <cn-icon value="plus"></cn-icon>
-            </button>
-            <button *ngIf="tag.synapse_id"
-              (click)="editRow.emit(tag)"
-              title="Edit synapse" i18n-title
-              class="btn btn-sm btn-secondary">
-              <cn-icon value="edit"></cn-icon>
-            </button>
-            <button *ngIf="!tag.deleted_at"
+          <td *appIfCan="['manage-tags']" class="actions-column">
+            <ng-container *appIfCan="['manage-synapses']">
+              <button *ngIf="!tag.synapse_id"
+                (click)="editRow.emit(tag)"
+                title="Create synapse" i18n-title
+                class="btn btn-sm btn-secondary">
+                <cn-icon value="plus"></cn-icon>
+              </button>
+              <button *ngIf="tag.synapse_id"
+                (click)="editRow.emit(tag)"
+                title="Edit synapse" i18n-title
+                class="btn btn-sm btn-secondary">
+                <cn-icon value="edit"></cn-icon>
+              </button>
+            </ng-container>
+            <button *appIfCan="['destroy-tag', tag]"
               (click)="deleteRow.emit(tag)"
               title="Delete tag" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="ban"></cn-icon>
             </button>
-            <button *ngIf="tag.deleted_at"
+            <button *appIfCan="['restore-tag', tag]"
               (click)="restoreRow.emit(tag)"
               title="Restore tag" i18n-title
               class="btn btn-sm btn-secondary">

@@ -5,8 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Collection } from 'app/core/services';
 import { RequestManager, StoreQuery, StoreService } from 'app/core/services';
-import { SessionService, SessionState} from 'app/core/services';
-import { SessionEvent, SessionStateChanged } from 'app/core/services';
+import { SessionService, SessionState} from 'app/core/auth';
+import { SessionEvent, UserChanged } from 'app/core/auth';
 import { ScrollTop } from 'app/core/core.decorators';
 import { Block, Synapse } from 'app/models';
 import { FetchState } from './components.types';
@@ -85,12 +85,11 @@ export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
 
         this.session.events
             .takeUntil(this.unsubscribe)
+            .filter(e => e instanceof UserChanged)
             .subscribe(event => {
-               if (event instanceof SessionStateChanged) {
-                   if (this.slug !== null) {
-                       this.clear();
-                       this.fetchSynapse(this.slug);
-                   }
+               if (this.slug !== null) {
+                   this.clear();
+                   this.fetchSynapse(this.slug);
                }
             });
     }

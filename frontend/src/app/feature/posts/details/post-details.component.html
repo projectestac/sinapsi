@@ -111,7 +111,7 @@
         
         <!-- Administration buttons -->
         
-        <ng-container *appIfRole="['admin']">
+        <ng-container *appIfCan="['manage-synapses']">
           <button *ngIf="post?.deleted_at"
               (click)="restorePost()"
               type="button"

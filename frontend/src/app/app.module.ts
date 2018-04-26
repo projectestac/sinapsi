@@ -6,6 +6,7 @@ import { DragulaModule } from 'ng2-dragula';
 import { ConcreteModule } from 'concrete';
 
 import { AppComponent } from 'app/app.component';
+import { AppPolicies } from 'app/app.policies';
 import { AppRoutes } from 'app/app.routes';
 import { CoreModule } from 'app/core';
 
@@ -16,6 +17,7 @@ import { CoreModule } from 'app/core';
     ],
 
     imports: [
+        AppPolicies,
         AppRoutes,
         BrowserAnimationsModule,
         BrowserModule,

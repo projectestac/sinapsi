@@ -20,15 +20,7 @@ export class ErrorsComponent {
      * Component constructor.
      */
     constructor(
-        private session: SessionService
+        public session: SessionService
     ) {}
-
-
-    /**
-     * Shows the log in popup window.
-     */
-    public showSignin() {
-        this.session.showSigninForm();
-    }
 
 }

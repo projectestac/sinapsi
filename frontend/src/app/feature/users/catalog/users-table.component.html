@@ -8,8 +8,8 @@
           <th cnSortBy="name" i18n>Name</th>
           <th cnSortBy="school_id" i18n>School</th>
           <th cnSortBy="municipality_id" i18n>Municipality</th>
-          <th *appIfRole="['admin']" i18n>Disabled at</th>
-          <th *appIfRole="['admin']" title="Actions" class="actions-column" i18n-title>
+          <th *appIfCan="['manage-authors']" i18n>Disabled at</th>
+          <th *appIfCan="['manage-authors']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
         </tr>
@@ -30,26 +30,29 @@
           <td class="w-25">
             {{ author.municipality?.name }}
           </td>
-          <td *appIfRole="['admin']" class="datetime-cell">
+          <td *appIfCan="['manage-authors']" class="datetime-cell">
             <time [attr.datetime]="author.user.disabled_at"
                   [title]="author.user.disabled_at | moment:'format':'LLLL'">
               {{ author.user.disabled_at | moment }}
             </time>
           </td>
-          <td *appIfRole="['admin']" class="actions-column">
+          <td *appIfCan="['manage-authors']" class="actions-column">
             <button
+              *appIfCan="['update-author', author]"
               (click)="editRow.emit(author)"
               title="Edit user" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>
-            <button *ngIf="!author.user.disabled_at"
+            <button
+              *appIfCan="['destroy-user', author.user]"
               (click)="deleteRow.emit(author)"
               title="Disable user" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="lock"></cn-icon>
             </button>
-            <button *ngIf="author.user.disabled_at"
+            <button
+              *appIfCan="['restore-user', author.user]"
               (click)="restoreRow.emit(author)"
               title="Enable user" i18n-title
               class="btn btn-sm btn-secondary">

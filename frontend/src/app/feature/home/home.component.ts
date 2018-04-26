@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsComponent, RequestManager } from 'app/core';
 import { SectionsBuilder } from 'app/feature/posts';
+import { GENERAL_SLUG } from 'app/models';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class HomeComponent extends DetailsComponent {
      * Fetch the home synapse and its side blocks.
      */
     protected fetchSynapse(slug: string) {
-        super.fetchSynapse('general');
+        super.fetchSynapse(GENERAL_SLUG);
     }
 
 }

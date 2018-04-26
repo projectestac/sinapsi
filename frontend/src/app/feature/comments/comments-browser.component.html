@@ -1,16 +1,16 @@
 <div class="comments-browser">
   <div class="comment-editor-wrapper">
-    <ng-container *ngIf="sessionState === 'inactive'">
+    <ng-container *ngIf="!session.check()">
       <p>
         <cn-icon value="lock"></cn-icon>
-        <a href="#" (click)="showSigninForm($event); false"
+        <a href="#" (click)="session.showSignInForm(); false"
            i18n="comments login">
           Log in
         </a>
         <span i18n>to post a comment.</span>
       </p>
 		</ng-container>
-    <ng-container *ngIf="sessionState === 'active'">
+    <ng-container *ngIf="session.check()">
       <app-comment-editor
         [post]="post"
         (created)="onCommentCreated($event)">
