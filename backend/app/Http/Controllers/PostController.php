@@ -78,6 +78,7 @@ class PostController extends Controller {
     public function restore($id) {
         try {
             $query = Post::whereId($id);
+            $query->withTrashedIfAdmin();
             $resource = $query->firstOrFail();
             $resource->restore();
         } catch (QueryException $e) {
