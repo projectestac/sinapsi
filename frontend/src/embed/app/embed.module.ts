@@ -7,6 +7,7 @@ import { ConcreteModule } from 'concrete';
 import { CoreModule } from 'app/core';
 import { PostsModule } from 'app/feature/posts';
 import { SearchModule } from 'app/shared/search';
+import { AppPolicies } from 'app/app.policies';
 
 import { EmbedComponent } from './embed.component';
 import { EmbedRoutes } from './embed.routes';
@@ -20,6 +21,7 @@ import { ROUTING_COMPONENTS } from './embed.routes';
     ],
 
     imports: [
+        AppPolicies,
         EmbedRoutes,
         BrowserAnimationsModule,
         BrowserModule,

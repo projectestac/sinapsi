@@ -2,6 +2,7 @@ import "rxjs/add/operator/take";
 import "rxjs/add/operator/takeUntil";
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 import { enableProdMode } from '@angular/core';
