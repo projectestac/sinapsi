@@ -31,7 +31,7 @@ export class SynapsesCatalogComponent extends CatalogComponent {
      * Edit an existing synapse.
      */
     public edit(synapse: Synapse) {
-        this.manager.navigate(['/synapses', 'compose', synapse.id]);
+        this.manager.navigate(['/editors', 'synapses', synapse.id]);
     }
 
 

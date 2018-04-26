@@ -36,7 +36,7 @@ export class UsersCatalogComponent extends CatalogComponent {
      * Edit an existing user.
      */
     public edit(author: Author) {
-        this.manager.navigate(['/authors', 'compose', author.id]);
+        this.manager.navigate(['/editors', 'authors', author.id]);
     }
 
 

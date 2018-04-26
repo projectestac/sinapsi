@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FiltersFormComponent {
 
+    /** Form for this component */
     @Input('formGroup') form: FormGroup;
 
 }

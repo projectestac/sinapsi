@@ -1,12 +1,12 @@
-<fieldset #fieldset [formGroup]="form" class="feeds-form">
-  <div *ngIf="form.get('feeds') as feeds" class="form-group">
+<fieldset #fieldset class="feeds-form">
+  <div *ngIf="form" class="form-group">
 
     <!-- URL inputs -->
 
     <label class="form-container-label">
       <span i18n>Author feeds:</span>
       <div [ngClass]="state()" class="form-group-control form-control">
-        <ng-container *ngFor="let group of feeds.controls">
+        <ng-container *ngFor="let group of form.controls">
           <div [ngClass]="groupState(group)" class="input-group-typed">
             <input #feedBox
               type="text"
@@ -32,7 +32,7 @@
 
     <!-- Feedback messages -->
 
-    <small *ngIf="!feeds.touched || !feeds.invalid"
+    <small *ngIf="!form.touched || !form.invalid"
             class="form-text text-muted">
       <span i18n>
         <abbr title="Really Simple Syndication">RSS</abbr> / 
@@ -40,7 +40,7 @@
         for the author's synapse.
       </span>
     </small>
-    <small *ngIf="feeds.touched && feeds.invalid"
+    <small *ngIf="form.touched && form.invalid"
             class="form-text text-danger">
       <span i18n>
         The provided values must be valid web addresses.

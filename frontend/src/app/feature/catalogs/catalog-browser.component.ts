@@ -84,7 +84,7 @@ export class CatalogBrowserComponent {
      * Edit an existing synapse.
      */
     public edit(synapse: Synapse) {
-        this.router.navigate(['/synapses', 'compose', synapse.id]);
+        this.router.navigate(['/editors', 'synapses', synapse.id]);
     }
 
 

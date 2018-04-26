@@ -75,15 +75,14 @@
 
   <!-- Advanced filters -->
 
-  <ng-container *ngIf="form.get('filters') as control">
-    <div class="form-group">
-      <label class="form-container-label">
-        <span i18n>Search filters:</span>
-      </label>
-      <app-filters
-        [formControl]="control">
-      </app-filters>
-    </div>
-  </ng-container>
+  <div class="form-group">
+    <label class="form-container-label">
+      <span i18n>Search filters:</span>
+    </label>
+    <app-filters
+      (input)="form.patchValue($event)"
+      [value]="form.value">
+    </app-filters>
+  </div>
 
 </fieldset>

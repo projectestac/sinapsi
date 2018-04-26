@@ -14,7 +14,9 @@ const SV = SharedValidators;
 const fb = new FormBuilder();
 
 
-/** Block form group */
+/**
+ * Block form group
+ */
 export const BLOCK_FORM = fb.group({
     title: [ _('Untitled block'), V.maxLength(255) ],
     content: null,
@@ -28,59 +30,87 @@ export const BLOCK_FORM = fb.group({
 });
 
 
-/** Author synapse form */
-export const SYNAPSE_FORM = fb.group({
-    id: null,
-    description: [ null, V.maxLength(255) ],
-    name: [ null, [V.required, V.maxLength(150)] ],
-    slug: [ null, [V.required, V.maxLength(254), SV.slug] ]
+/**
+ * Feed form group
+ */
+export const FEED_FORM = fb.group({
+    url: [ null, [V.maxLength(512), SV.http(true)] ]
 });
 
 
-/** Author feeds form */
+/**
+ * Feeds form group
+ */
 export const FEEDS_FORM = fb.group({
-    feeds: arrayForGroup(25, {
-        id: null,
+    feeds: groups(25, {
         url: [ null, [V.maxLength(512), SV.http(true)] ]
     })
 });
 
 
-/** School form group */
+/**
+ * Synapse form group
+ */
+export const SYNAPSE_FORM = fb.group({
+    blocks: [],
+    description: [ null, V.maxLength(255) ],
+    name: [ null, [V.required, V.maxLength(150)] ],
+    slug: [ null, [SV.slug, V.required, V.maxLength(254)] ]
+});
+
+
+/**
+ * School form group
+ */
 export const SCHOOL_FORM = fb.group({
     municipality: null,
     territory: null,
     synapse: SYNAPSE_FORM,
     school: fb.group({
-        id: null,
         name: [ null, [V.required, V.maxLength(150)] ]
     })
 });
 
 
-/** Project form group */
+/**
+ * Project form group
+ */
 export const PROJECT_FORM = fb.group({
     municipality: null,
     territory: null,
     school: null,
     synapse: SYNAPSE_FORM,
     project: fb.group({
-        id: null,
         name: [ null, [V.required, V.maxLength(150)] ]
     })
 });
 
 
-/** User form group */
+/**
+ * User form group
+ */
 export const USER_FORM = fb.group({
     municipality: null,
     territory: null,
     school: null,
     synapse: SYNAPSE_FORM,
     user: fb.group({
-        id: null,
         email: [ null, [V.required, V.email] ],
         name: [ null, [V.required, V.maxLength(150)] ]
+    })
+});
+
+
+/**
+ * Author editor form group
+ */
+export const EDITOR_FORM = fb.group({
+    block: BLOCK_FORM,
+    author: USER_FORM,
+    synapse: SYNAPSE_FORM,
+    blocks: [[]],
+    feeds: groups(25, {
+        url: [ null, [V.maxLength(512), SV.http(true)] ]
     })
 });
 
@@ -93,7 +123,7 @@ export const USER_FORM = fb.group({
  *
  * @returns         A form array of form groups
  */
-function arrayForGroup(n: number, config: any): FormArray {
+function groups(n: number, config: any): FormArray {
     const groups: FormGroup[] = [];
 
     for (let i = 0; i < n; i++) {

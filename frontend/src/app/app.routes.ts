@@ -30,6 +30,9 @@ const ROUTES: Routes = [{
     loadChildren: 'app/feature/catalogs/catalogs.module#CatalogsModule',
     data: { title: _('Catalogs') }
   }, {
+    path: 'editors',
+    loadChildren: 'app/feature/editors/editors.module#EditorsModule'
+  }, {
     path: 'help',
     loadChildren: 'app/feature/help/help.module#HelpModule',
     data: { title: _('Help') }

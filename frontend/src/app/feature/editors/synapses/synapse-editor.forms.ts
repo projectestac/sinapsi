@@ -14,19 +14,9 @@ const SV = SharedValidators;
 const fb = new FormBuilder();
 
 
-/** Synapse form group */
-export const SYNAPSE_FORM = fb.group({
-    filters: null,
-    search: null,
-    synapse: null,
-    view: 'optimal',
-    description: [ null, V.maxLength(255) ],
-    name: [ null, [V.required, V.maxLength(150)] ],
-    slug: [ null, [SV.slug, V.required, V.maxLength(254)] ]
-});
-
-
-/** Block form group */
+/**
+ * Block form group
+ */
 export const BLOCK_FORM = fb.group({
     title: [ _('Untitled block'), V.maxLength(255) ],
     content: null,
@@ -40,30 +30,50 @@ export const BLOCK_FORM = fb.group({
 });
 
 
-/** Synapse privileges form group */
-export const PRIVILEGES_FORM = fb.group({
-    privileges: arrayForGroup(25, {
-        id: null,
-        user: [null, V.required],
-        role: [null, V.required]
-    })
+/**
+ * Filters form group
+ */
+export const FILTERS_FORM = fb.group({
+    author_id: null,
+    municipality_id: null,
+    search: null,
+    sort: null,
+    tag_id: null,
+    territory_id: null,
+    view: 'optimal',
+    "max-published_at": null,
+    "min-published_at": null
 });
 
 
 /**
- * Create a FormArray for the given FormGroup configuration.
- *
- * @param n         Number of groups on the array
- * @param config    Form group configuration
- *
- * @returns         A form array of form groups
+ * Privilege form group
  */
-function arrayForGroup(n: number, config: any): FormArray {
-    const groups: FormGroup[] = [];
+export const PRIVILEGE_FORM = fb.group({
+    user: [null, V.required],
+    role: ['viewer', V.required]
+});
 
-    for (let i = 0; i < n; i++) {
-        groups.push(fb.group(config));
-    }
 
-    return fb.array(groups);
-}
+/**
+ * Synapse form group
+ */
+export const SYNAPSE_FORM = fb.group({
+    blocks: [],
+    filters: FILTERS_FORM,
+    synapse: null,
+    description: [ null, V.maxLength(255) ],
+    name: [ null, [V.required, V.maxLength(150)] ],
+    slug: [ null, [SV.slug, V.required, V.maxLength(254)] ]
+});
+
+
+/**
+ * Synapse editor form group
+ */
+export const EDITOR_FORM = fb.group({
+    block: BLOCK_FORM,
+    synapse: SYNAPSE_FORM,
+    blocks: [[]],
+    privileges: [[]]
+});

@@ -11,9 +11,13 @@ import { SchoolFormComponent } from './forms';
 import { SynapseFormComponent } from './forms';
 import { UserFormComponent } from './forms';
 
+import { EditorsRoutes } from './editors.routes';
+import { ROUTING_COMPONENTS } from './editors.routes';
+
 
 @NgModule({
     declarations: [
+        ROUTING_COMPONENTS,
         BlockFormComponent,
         FeedsFormComponent,
         FiltersFormComponent,
@@ -25,19 +29,9 @@ import { UserFormComponent } from './forms';
     ],
 
     imports: [
+        EditorsRoutes,
         RouterModule,
         SharedModule
-    ],
-
-    exports: [
-        BlockFormComponent,
-        FeedsFormComponent,
-        FiltersFormComponent,
-        PrivilegesFormComponent,
-        ProjectFormComponent,
-        SchoolFormComponent,
-        SynapseFormComponent,
-        UserFormComponent
     ]
 })
-export class AdminModule {}
+export class EditorsModule {}

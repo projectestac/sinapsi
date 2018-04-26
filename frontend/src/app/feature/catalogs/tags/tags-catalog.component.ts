@@ -49,7 +49,7 @@ export class TagsCatalogComponent extends CatalogComponent {
      * @param tag   Tag object
      */
     public edit(tag: Tag) {
-        this.manager.navigate(['/synapses', 'compose', tag.synapse_id]);
+        this.manager.navigate(['/editors', 'synapses', tag.synapse_id]);
     }
 
 

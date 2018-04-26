@@ -7,6 +7,7 @@ import { FooterModule } from './footer';
 import { HeaderModule } from './header';
 import { LocalesModule } from './locales';
 
+import { Comparator } from './services';
 import { SettingsService } from './services';
 import { StoreService } from './services';
 
@@ -53,6 +54,7 @@ export class CoreModule {
         return {
             ngModule: CoreModule,
             providers: [
+                Comparator,
                 LocaleProvider,
                 SettingsService,
                 StoreService

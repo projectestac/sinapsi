@@ -4,9 +4,9 @@
   </div>
 </div>
 <article *ngIf="author" class="page-content">
-  
+
   <!-- Header -->
-  
+
   <div class="page-header">
     <div class="container">
       <header>
@@ -14,26 +14,167 @@
       </header>
     </div>
   </div>
-  
+
   <!-- Contents -->
-  
+
   <section class="page-section">
-    <div class="page-body container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="mock-up">
-            <p>@AuthorForm</p>
-            <div class="mock-up">@UserForm</div>
-            <div class="mock-up">@SchoolForm</div>
-            <div class="mock-up">@ProjectForm</div>
+    <div *ngIf="state === 'ready'" class="page-body container">
+      <form [formGroup]="form" (ngSumbit)="save(form, models)" novalidate>
+
+        <cn-tabs [(value)]="tab">
+          <cn-tabitem value="author" i18n>
+            Author information
+          </cn-tabitem>
+          <cn-tabitem value="synapse" i18n>
+            Synapse
+          </cn-tabitem>
+          <cn-tabitem value="feeds" i18n>
+            Feeds
+          </cn-tabitem>
+          <cn-tabitem value="sidebar" i18n>
+            Sidebar
+          </cn-tabitem>
+        </cn-tabs>
+        
+        <div class="tabs-outlet">
+
+          <!-- Author information -->
+
+          <ng-container *ngIf="form.get('author') as group">
+            <section [hidden]="tab !== 'author'">
+              <div class="row">
+                <div class="main-column col-lg-8">
+                  <ng-container *ngIf="author.type === 'users'">
+                    <app-user-form [formGroup]="group"></app-user-form>
+                  </ng-container>
+
+                  <ng-container *ngIf="author.type === 'schools'">
+                    <app-school-form [formGroup]="group"></app-school-form>
+                  </ng-container>
+
+                  <ng-container *ngIf="author.type === 'projects'">
+                    <app-project-form [formGroup]="group"></app-project-form>
+                  </ng-container>
+                </div>
+              </div>
+            </section>
+          </ng-container>
+
+          <!-- Synapse form -->
+
+          <ng-container *ngIf="form.get('synapse') as group">
+            <section [hidden]="tab !== 'synapse'">
+              <div class="row">
+                <div class="main-column col-lg-8">
+                  <app-synapse-form [formGroup]="group"></app-synapse-form>
+                </div>
+              </div>
+            </section>
+          </ng-container>
+
+          <!-- Author feeds form -->
+
+          <ng-container *ngIf="form.get('feeds') as group">
+            <section [hidden]="tab !== 'feeds'">
+              <div class="row">
+                <div class="main-column col-lg-8">
+                  <app-feeds-form [formGroup]="group"></app-feeds-form>
+                </div>
+              </div>
+            </section>
+          </ng-container>
+
+          <!-- Synapse sidebar form -->
+
+          <ng-container *ngIf="form.get('block') as group">
+            <section [hidden]="tab !== 'sidebar'">
+              <div class="row">
+                <div class="main-column col-lg-8">
+                  <app-block-form [formGroup]="group"></app-block-form>
+
+                  <div class="mb-4">
+                    <button type="button"
+                      (click)="unshiftBlock(group.value)"
+                       class="btn btn-secondary">
+                      <cn-icon value="plus"></cn-icon>
+                      <span i18n>Add to sidebar</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="blocks-column col-lg-4">
+                  <div class="blocks-preview">
+                    <label class="form-container-label">
+                      <span i18n>Block preview:</span>
+                    </label>
+                    <small class="form-text text-muted" i18n>
+                      This is how the block will look on the sidebar.
+                    </small>
+                    <app-block [block]="group.value"></app-block>
+                  </div>
+
+                  <div class="blocks-sidebar">
+                    <label class="form-container-label">
+                      <span i18n>Current sidebar:</span>
+                    </label>
+                    <small *ngIf="blocks" class="form-text text-muted" i18n>
+                      Drag and drop the blocks to reorder them or press the
+                      delete button in order to remove a block.
+                    </small>
+                    <small *ngIf="!blocks" class="form-text text-muted" i18n>
+                      The current sidebar does not contain any blocks.
+                    </small>
+                    <app-sidebar
+                      [blocks]="form.get('blocks').value"
+                      editable="true">
+                    </app-sidebar>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </ng-container>
+
+        </div>
+
+        <!-- Editor action buttons -->
+
+        <div *ngIf="form.get('synapse') as synapse"
+              class="editor-actions">
+          <div *ngIf="synapse.touched && synapse.invalid"
+               class="form-text text-danger">
+            <small i18n>
+              The form has errors, please correct them before saving.
+            </small>
           </div>
-          <div class="mock-up">@SynapseForm</div>
-          <div class="mock-up">@FeedsForm</div>
+
+          <div class="action-buttons">
+            <button type="button"
+              (click)="save(form, models)"
+              [disabled]="synapse.invalid"
+              class="btn btn-primary">
+              <span i18n>Save changes</span>
+            </button>
+            <button type="button"
+              (click)="reset()"
+              class="btn btn-secondary">
+              <span i18n>Reset</span>
+            </button>
+          </div>
         </div>
-        <div class="col-lg-4">
-          <div class="mock-up">@BlocksForm</div>
-        </div>
-      </div>
+
+      </form>
+    </div>
+
+    <!-- Progress backdrop -->
+
+    <div [hidden]="state != 'pending'" class="backdrop">
+      <cn-spinner></cn-spinner>
     </div>
   </section>
 </article>
+
+<!-- Error message -->
+
+<ng-container *ngIf="state === 'empty' || state === 'error'">
+  <app-errors [code]="status"></app-errors>
+</ng-container>

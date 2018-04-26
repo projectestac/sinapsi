@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Collection, Model } from 'app/core';
 import { User, Privilege, PrivilegeRole } from 'app/models';
 
@@ -15,16 +15,13 @@ import { User, Privilege, PrivilegeRole } from 'app/models';
 export class PrivilegesFormComponent implements OnInit {
 
     /** Minimum number of rows on the users table */
-    private readonly MIN_ROWS = 12;
+    public readonly MIN_ROWS = 12;
 
     /** Ordered privileges collection */
-    public privileges: Collection<Privilege>;
+    public privileges = [];
 
-    /** Privileges form groups */
-    public formArray: FormArray;
-    
-    /** Form for this component */
-    @Input('formGroup') form: FormGroup;
+    /** Privileges form groups array */
+    @Input('control') control: FormControl;
 
     /** User typeahead box */
     @ViewChild('userBox') userBox;
@@ -34,12 +31,10 @@ export class PrivilegesFormComponent implements OnInit {
      * Component initialization.
      */
     ngOnInit() {
-        this.formArray = <FormArray> this.form.get('privileges');
+        this.updateCollection(this.control.value);
 
-        this.form.valueChanges.subscribe(form => {
-            this.privileges = this.formArray.value
-                .filter(v => v['user'] !== null)
-                .sort((a, b) => a.user.name.localeCompare(b.user.name));
+        this.control.valueChanges.subscribe(value => {
+            this.updateCollection(value);
         });
     }
 
@@ -70,41 +65,27 @@ export class PrivilegesFormComponent implements OnInit {
 
 
     /**
-     * Returns an empty array with N values.
-     */
-    public _emptyRows(): any[] {
-        const length = this.privileges.length;
-        const numRows = Math.max(this.MIN_ROWS - length);
-        return Array(numRows).fill(null);
-    }
-
-
-    /**
      * Appends a privilege for the given user to the privileges
      * form array.
      *
      * @param user      User owning the privilege
      */
     public append(user: User) {
-        // Ignore users that already own a privilege
+        if (!this.findUserPrivilege(user)) {
+            this.userBox.clear();
 
-        if (this.findUserGroup(user)) {
-            return;
-        }
+            if (!Array.isArray(this.control.value)) {
+                this.control.setValue([]);
+            }
 
-        // Append the user to the first empty group on
-        // the privileges form array
-
-        const group = this.findEmptyGroup();
-
-        if (typeof group === 'object') {
-            group.setValue({
-               id: null,
+            const privilege = {
                user: user,
                role: PrivilegeRole.VIEWER
-            });
+            };
 
-            this.userBox.clear();
+            this.control.value.push(privilege);
+            this.privileges.push(privilege);
+            this.sortByUserName(this.privileges);
         }
     }
 
@@ -116,10 +97,29 @@ export class PrivilegesFormComponent implements OnInit {
      * @param user      User owning the privilege
      */
     public remove(user: User) {
-        const group = this.findUserGroup(user);
+        const value = this.findUserPrivilege(user);
 
-        if (typeof group === 'object') {
-            group.reset();
+        if (typeof value === 'object') {
+            const values = this.control.value;
+            const privileges = this.privileges;
+
+            values.splice(values.indexOf(value), 1);
+            privileges.splice(privileges.indexOf(value), 1);
+        }
+    }
+
+
+    /**
+     * Update the sorted privileges collection.
+     *
+     * @param values    Privileges array
+     */
+    public updateCollection(values: any[]) {
+        if (Array.isArray(values)) {
+            this.privileges = values.filter(v => !!v['user']);
+            this.sortByUserName(this.privileges);
+        } else {
+            this.privileges = [];
         }
     }
 
@@ -149,29 +149,64 @@ export class PrivilegesFormComponent implements OnInit {
 
 
     /**
-     * Returns the first form group on the privileges
-     * form controls that contains the given user.
+     * Returns the first privilege on the control value that
+     * contains the given user. Values are compared by their ID
+     * attribute.
      *
      * @param user      User to search
-     * @returns         Form group object or undefined
+     * @returns         Privilege object or undefined
      */
-    private findUserGroup(user: User) {
-        return this.formArray.controls.find((group) => {
-            const value = group.get('user').value;
-            return (value && user.id === value.id);
+    private findUserPrivilege(user: User) {
+        if (!Array.isArray(this.control.value)) {
+            return undefined;
+        }
+
+        return this.control.value.find(privilege => {
+            return (user.id === privilege.user.id);
         });
     }
 
 
     /**
-     * Returns the first empty form group on the privileges
-     * form controls
+     * Sorts the given privileges in place by the user name.
      *
-     * @returns         Form group object or undefined
+     * @param privileges    Privileges array
+     * @returns             Sorted privileges
      */
-    private findEmptyGroup() {
-        return this.formArray.controls.find((group) => {
-            return !group.get('user').value;
+    private sortByUserName(privileges: any[]): any[] {
+        return privileges.sort((a, b) => {
+            return this.compareNames(a['user'], b['user']);
         });
     }
+
+
+    /**
+     * Compare two user objects by their name.
+     *
+     * @param a     First user to compare
+     * @param b     Second user to compare
+     *
+     * @returns     Locale comparision value
+     */
+    private compareNames(a: User, b: User) {
+        const an = a && a['name'];
+        const bn = b && b['name'];
+
+        if (typeof an === 'string' && typeof bn === 'string') {
+            return an.localeCompare(bn);
+        }
+
+        return (an === bn) ? 0 : (an < bn) ? -1 : 1;
+    }
+
+
+    /**
+     * Returns an empty array with N values.
+     */
+    public _emptyRows(): any[] {
+        const length = this.privileges.length;
+        const numRows = Math.max(this.MIN_ROWS - length);
+        return Array(numRows).fill(null);
+    }
+
 }

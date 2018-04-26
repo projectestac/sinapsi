@@ -36,7 +36,7 @@ export class ProjectsCatalogComponent extends CatalogComponent {
      * Edit an existing school.
      */
     public edit(author: Author) {
-        this.manager.navigate(['/authors', 'compose', author.id]);
+        this.manager.navigate(['/editors', 'authors', author.id]);
     }
 
 
