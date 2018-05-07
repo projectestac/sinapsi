@@ -221,6 +221,19 @@ export class StoreService implements OnDestroy {
 
 
     /**
+     * Batch process multiple requests.
+     *
+     * @param path          Resource path
+     * @param params        Batch requests
+     *
+     * @returns             Observable
+     */
+    batch(path: string, params: Object): Observable<any> {
+        return this.create(path, params);
+    }
+
+
+    /**
      * Throws a storage error event and throws a new observable
      * with the error response.
      */
@@ -315,6 +328,8 @@ function serializeObject(object: any): string {
         } else if (value !== null) {
             const v: string = serializeValue(value);
             parts.push(`${param}=${encodeURL(v)}`);
+        } else {
+            parts.push(`${param}=`);
         }
     });
 
