@@ -27,7 +27,7 @@ Route::group([
     /** Users */
 
     Route::resource('users', 'UserController', [
-        'except' => ['update', 'store', 'create', 'edit']]);
+        'except' => ['store', 'create', 'edit']]);
 
     Route::post('users/{id}', 'UserController@restore')
         ->name('users.restore');

@@ -86,12 +86,12 @@ class SynapseUser extends FoundationModel {
      */
     public function scopeForManager($query) {
         return $query->whereExists(function ($query) {
-           $rawId = DB::raw('`synapse_user`.`synapse_id`');
+            $rawId = DB::raw('`synapse_user`.`synapse_id`');
 
-           $query->from('synapse_user as grant');
-           $query->where('grant.role', 'manager');
-           $query->where('grant.user_id', Auth::id());
-           $query->where('grant.synapse_id', $rawId);
+            $query->from('synapse_user as grant');
+            $query->where('grant.role', 'manager');
+            $query->where('grant.user_id', Auth::id());
+            $query->where('grant.synapse_id', $rawId);
         });
     }
 

@@ -76,6 +76,8 @@ class User extends FoundationModel implements AuthenticatableContract {
     /** Attributes that are not mass assignable */
     protected $guarded = [
         'id',
+        'avatar_url',
+        'email',
         'password',
         'provider_uid',
         'provider_token',

@@ -43,8 +43,29 @@ class UserController extends Controller {
     public function show($id) {
         return User::cards($id)->firstOrFail();
     }
-    
-    
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int $id           Primary key value
+     * @return Response         Response object
+     */
+    public function update(Request $request, $id) {
+        $values = User::validateFields($request);
+        $resource = User::whereId($id)->firstOrFail();
+        
+        try {
+            $resource->update($values);
+        } catch (QueryException $e) {
+            User::validateConstrains($request);
+            abort(400, 'Invalid request');
+        }
+        
+        return ['id' => intval($id)];
+    }
+
+
     /**
      * Disable the specified user resource.
      *
