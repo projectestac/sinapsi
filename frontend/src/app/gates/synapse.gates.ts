@@ -12,8 +12,9 @@ export const SYNAPSE_GATES = {
      * Determine whether the user can update the synapse.
      */
     'update-synapse': (user: User, synapse: Synapse): boolean => {
-        return (synapse.privilege.role === PrivilegeRole.EDITOR) ||
-               (synapse.privilege.role === PrivilegeRole.MANAGER);
+        return (synapse.privilege !== null) && (
+               (synapse.privilege.role === PrivilegeRole.EDITOR) ||
+               (synapse.privilege.role === PrivilegeRole.MANAGER));
     },
 
 
@@ -31,8 +32,9 @@ export const SYNAPSE_GATES = {
      * Determine whether the user can manage the synapse blocks.
      */
     'manage-blocks': (user: User, synapse: Synapse): boolean => {
-        return (synapse.privilege.role === PrivilegeRole.EDITOR) ||
-               (synapse.privilege.role === PrivilegeRole.MANAGER);
+        return (synapse.privilege !== null) && (
+               (synapse.privilege.role === PrivilegeRole.EDITOR) ||
+               (synapse.privilege.role === PrivilegeRole.MANAGER));
     },
 
 
@@ -40,7 +42,8 @@ export const SYNAPSE_GATES = {
      * Determine whether the user can manage the synapse privileges.
      */
     'manage-privileges': (user: User, synapse: Synapse): boolean => {
-        return synapse.privilege.role === PrivilegeRole.MANAGER;
+        return (synapse.privilege !== null) &&
+               (synapse.privilege.role === PrivilegeRole.MANAGER);
     }
 
 };

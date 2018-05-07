@@ -7,11 +7,20 @@ import { User, UserRole } from 'app/models';
 export const USER_GATES = {
 
     /**
+     * Determine whether the user can update the user.
+     */
+    'update-user': (user: User, person: User): boolean => {
+        return (user.role === UserRole.ADMINISTRATOR);
+    },
+
+
+    /**
      * Determine whether the user can delete the user.
      */
     'destroy-user': (user: User, person: User): boolean => {
         return (user.role === UserRole.ADMINISTRATOR) &&
-               (user.disabled_at === null);
+               (person.disabled_at === null) &&
+               (person.id !== user.id);
     },
 
 
@@ -20,7 +29,7 @@ export const USER_GATES = {
      */
     'restore-user': (user: User, person: User): boolean => {
         return (user.role === UserRole.ADMINISTRATOR) &&
-               (user.disabled_at !== null);
+               (person.disabled_at !== null);
     }
 
 };
