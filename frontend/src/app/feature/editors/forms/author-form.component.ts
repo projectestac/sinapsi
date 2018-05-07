@@ -3,10 +3,10 @@ import { FormGroup } from '@angular/forms';
 
 
 @Component({
-    selector: 'app-synapse-form',
-    templateUrl: 'synapse-form.component.html'
+    selector: 'app-author-form',
+    templateUrl: 'author-form.component.html'
 })
-export class SynapseFormComponent {
+export class AuthorFormComponent {
 
     @Input('formGroup') form: FormGroup;
 

@@ -3,151 +3,82 @@
     <cn-breadcrumb></cn-breadcrumb>
   </div>
 </div>
-<article *ngIf="synapse" class="page-content">
+<article *ngIf="state !== 'empty'" class="page-content">
 
   <!-- Header -->
 
   <div class="page-header">
     <div class="container">
       <header>
-        <h1>{{ synapse.name }}</h1>
+        <h1>
+          <span class="text-muted" i18n>Editing:</span>
+          {{ synapse?.name }}
+        </h1>
       </header>
     </div>
   </div>
 
   <!-- Contents -->
 
-  <section class="page-section">
-    <div *ngIf="state === 'ready'" class="page-body container">
-      <form [formGroup]="form" (ngSumbit)="save(form, models)" novalidate>
+  <section *ngIf="state !== 'error'" class="page-section">
+    <div class="page-body container">
+      <form *ngIf="synapse" [formGroup]="form" (ngSumbit)="save()" novalidate>
+
+        <!-- Editor tabs -->
 
         <cn-tabs [(value)]="tab">
-          <cn-tabitem value="synapse" i18n>
-            Synapse information
+          <cn-tabitem value="synapse">
+            <span i18n>Synapse information</span>
           </cn-tabitem>
-          <cn-tabitem value="filters" i18n>
-            Filters
+          <cn-tabitem value="filters">
+            <span i18n>Filters</span>
           </cn-tabitem>
-          <cn-tabitem value="sidebar" i18n>
-            Sidebar
+          <cn-tabitem value="privileges"
+            *appIfCan="['manage-privileges', synapse]">
+            <span i18n>Privileges</span>
           </cn-tabitem>
-          <cn-tabitem
-            *ngIf="userCanManage(synapse)"
-            value="users" i18n>
-            Users
+          <cn-tabitem value="blocks"
+            *appIfCan="['manage-blocks', synapse]">
+            <span i18n>Blocks</span>
           </cn-tabitem>
         </cn-tabs>
-        
+
+        <!-- Editor sections -->
+
         <div class="tabs-outlet">
+          <app-synapse-section
+            [hidden]="tab !== 'synapse'"
+            [form]="form.get('synapse')">
+          </app-synapse-section>
 
-          <!-- Synapse forms -->
+          <app-filters-section
+            [hidden]="tab !== 'filters'"
+            [form]="form.get('synapse').get('filters')">
+          </app-filters-section>
 
-          <ng-container *ngIf="form.get('synapse') as group">
-            <section [hidden]="tab !== 'synapse'">
-              <div class="row">
-                <div class="main-column col-lg-8">
-                  <app-synapse-form [formGroup]="group"></app-synapse-form>
-                </div>
-              </div>
-            </section>
+          <app-privileges-section
+            [hidden]="tab !== 'privileges'"
+            [form]="form.get('privileges')">
+          </app-privileges-section>
 
-            <ng-container *ngIf="group.get('filters') as group">
-              <section [hidden]="tab !== 'filters'">
-                <div class="row">
-                  <div class="main-column col-lg-8">
-                    <app-filters-form [formGroup]="group"></app-filters-form>
-                  </div>
-                </div>
-              </section>
-            </ng-container>
-          </ng-container>
-
-          <!-- Synapse sidebar form -->
-
-          <ng-container *ngIf="form.get('block') as group">
-            <section [hidden]="tab !== 'sidebar'">
-              <div class="row">
-                <div class="main-column col-lg-8">
-                  <app-block-form [formGroup]="group"></app-block-form>
-
-                  <div class="mb-4">
-                    <button type="button"
-                      (click)="unshiftBlock(group.value)"
-                       class="btn btn-secondary">
-                      <cn-icon value="plus"></cn-icon>
-                      <span i18n>Add to sidebar</span>
-                    </button>
-                  </div>
-                </div>
-                
-                <div class="blocks-column col-lg-4">
-                  <div class="blocks-preview">
-                    <label class="form-container-label">
-                      <span i18n>Block preview:</span>
-                    </label>
-                    <small class="form-text text-muted" i18n>
-                      This is how the block will look on the sidebar.
-                    </small>
-                    <app-block [block]="group.value"></app-block>
-                  </div>
-
-                  <div class="blocks-sidebar">
-                    <label class="form-container-label">
-                      <span i18n>Current sidebar:</span>
-                    </label>
-                    <small *ngIf="blocks" class="form-text text-muted" i18n>
-                      Drag and drop the blocks to reorder them or press the
-                      delete button in order to remove a block.
-                    </small>
-                    <small *ngIf="!blocks" class="form-text text-muted" i18n>
-                      The current sidebar does not contain any blocks.
-                    </small>
-                    <app-sidebar
-                      [blocks]="form.get('blocks').value"
-                      editable="true">
-                    </app-sidebar>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </ng-container>
-
-          <!-- User permissions form -->
-
-          <ng-container *ngIf="form.get('privileges') as control">
-            <section [hidden]="tab !== 'users'">
-              <div class="row">
-                <div class="main-column col-lg-8">
-                  <app-privileges-form [control]="control">
-                  </app-privileges-form>
-                </div>
-              </div>
-            </section>
-          </ng-container>
-
+          <app-blocks-section
+            [hidden]="tab !== 'blocks'"
+            [form]="form.get('blocks')">
+          </app-blocks-section>
         </div>
 
-        <!-- Editor action buttons -->
+        <!-- Editor actions -->
 
-        <div *ngIf="form.get('synapse') as synapse"
-              class="editor-actions">
-          <div *ngIf="synapse.touched && synapse.invalid"
-               class="form-text text-danger">
-            <small i18n>
-              The form has errors, please correct them before saving.
-            </small>
-          </div>
-
+        <div class="editor-actions">
           <div class="action-buttons">
             <button type="button"
-              (click)="save(form, models)"
-              [disabled]="synapse.invalid"
-              class="btn btn-primary">
+              (click)="save()"
+               class="btn btn-primary">
               <span i18n>Save changes</span>
             </button>
             <button type="button"
-              (click)="reset()"
-              class="btn btn-secondary">
+              (click)="confirmReset()"
+               class="btn btn-secondary">
               <span i18n>Reset</span>
             </button>
           </div>
@@ -158,7 +89,7 @@
 
     <!-- Progress backdrop -->
 
-    <div [hidden]="state != 'pending'" class="backdrop">
+    <div [hidden]="state !== 'pending'" class="backdrop">
       <cn-spinner></cn-spinner>
     </div>
   </section>
@@ -167,5 +98,5 @@
 <!-- Error message -->
 
 <ng-container *ngIf="state === 'empty' || state === 'error'">
-  <app-errors [code]="status"></app-errors>
+  <app-errors [code]="error.status"></app-errors>
 </ng-container>

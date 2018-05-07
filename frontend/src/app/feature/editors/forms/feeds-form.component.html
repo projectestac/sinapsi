@@ -19,8 +19,8 @@
               (keydown.ArrowUp)="focusPrevious(); false"
               (keydown.PageUp)="focusFirst(); false"
               (keydown.PageDown)="focusLast(); false"
+              [placeholder]="placeholder"
               class="form-control"
-              placeholder="http://www.example.org/feed/atom/"
               i18n-placeholder>
             <span class="input-group-icon">
               <cn-icon value="feed"></cn-icon>

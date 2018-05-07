@@ -1,29 +1,17 @@
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-import { Collection, Model, FetchState } from 'app/core';
-import { Comparator, StoreService } from 'app/core';
-import { SessionService, UserChanged } from 'app/core';
-import { ScrollTop } from 'app/core/core.decorators';
-import { Author, Block, Project, School, Synapse, User } from 'app/models';
-import { EDITOR_FORM } from './author-editor.forms';
+import { Comparator, EditorComponent, Model } from 'app/core';
+import { Author, AuthorType, Synapse } from 'app/models';
+import { AuthorFormBuilder } from './author-editor.builder';
 
 
-/**
- * Returns a deep copy of a simple object
- */
-function clone(object: any): any {
-    return JSON.parse(JSON.stringify(object));
-}
-
-/**
- * Default values for the editor
- */
-const DEFAULT_VALUE = clone(EDITOR_FORM.value);
+/** Author owners map */
+const OWNER_KEYS = {
+    'projects': 'project',
+    'schools':  'school',
+    'users':    'user'
+};
 
 
 /**
@@ -34,215 +22,372 @@ const DEFAULT_VALUE = clone(EDITOR_FORM.value);
     templateUrl: 'author-editor.component.html',
     styleUrls: [ 'author-editor.component.scss' ]
 })
-export class AuthorEditorComponent implements OnDestroy, OnInit {
+export class AuthorEditorComponent extends EditorComponent {
 
-    /** Active tab */
+    /** Active editor tab */
     public tab = 'author';
 
-    /** Form being edited */
-    public form = EDITOR_FORM;
-
-    /** Models being edited */
-    public models = clone(DEFAULT_VALUE);
-
-    /** Current state */
-    public state: FetchState = FetchState.PENDING;
-
-    /** Last HTTP error code or null */
-    public status: number = null;
-
-    /** Component states subject */
-    private _states = new ReplaySubject<FetchState>(1);
-
-    /** Unsubscribe subject */
-    protected unsubscribe = new Subject();
+    /** Author being edited */
+    private author = null;
 
 
     /**
-     * Component constructor.
+     * Author owner model.
      */
-    constructor(
-        private route: ActivatedRoute,
-        private session: SessionService,
-        private store: StoreService
-    ) {}
+    get owner(): any {
+        if (this.author && this.author['type']) {
+            const type = this.author.type;
+            return this.author[OWNER_KEYS[type]];
+        }
 
-
-    /**
-     * Component initialization.
-     */
-    ngOnInit() {
-        // Update the component state on changes
-
-        this.states
-            .takeUntil(this.unsubscribe)
-            .subscribe(state => this.state = state);
-
-        // Refresh the page when the URL changes
-
-        this.route.params
-            .takeUntil(this.unsubscribe)
-            .subscribe(params => this.edit(params.id));
-
-        // Refresh when the logged in user changes
-
-        this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
-            .subscribe(params => this.edit(
-                this.route.snapshot.params.id
-            ));
+        return null;
     }
 
 
     /**
-     * Component destructor.
+     * {@inheritDoc}
      */
-    ngOnDestroy() {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    }
-
-
-    /**
-     * Observable of state changes.
-     */
-    get states(): Subject<FetchState> {
-        return this._states;
-    }
-
-
-    /**
-     * Returns the author being edited.
-     */
-    get author(): Author[] {
-        return this.models['author'];
-    }
-
-
-    /**
-     * Sets the author being edited.
-     */
-    set author(author: Author[]) {
-        this.models['author'] = author;
-    }
-
-
-    /**
-     * Returns the synapse blocks being edited.
-     */
-    get blocks(): Block[] {
-        return this.models['blocks'];
-    }
-
-
-    /**
-     * Sets the synapse blocks being edited.
-     */
-    set blocks(blocks: Block[]) {
-        this.models['blocks'] = blocks;
-    }
-
-
-    /**
-     * Returns the synapse model being edited.
-     */
-    get synapse(): Synapse {
-        return this.models['synapse'];
-    }
-
-
-    /**
-     * Sets the synapse model being edited.
-     */
-    set synapse(synapse: Synapse) {
-        this.models['synapse'] = synapse;
-    }
-
-
-    /**
-     * Initialize the editor for an object.
-     *
-     * @param id        Unique ID of the author
-     */
-    @ScrollTop()
     public edit(id: number) {
-        this.clear();
         this.tab = 'author';
-        this.fetchModels(id);
+        super.edit(id);
     }
 
 
     /**
-     * Save the current form data.
+     * {@inheritDoc}
      */
-    public save(form: FormGroup, models: any) {
-        console.log('save');
-    }
-
-
-    /**
-     * Reset the forms to its initial values.
-     */
-    @ScrollTop()
     public reset() {
-        this.form.reset(clone(DEFAULT_VALUE));
-        this.form.patchValue(clone(this.models));
+        this.tab = 'author';
+        super.reset();
     }
 
 
     /**
-     * Reset the forms to its default values.
+     * {@inheritDoc}
      */
-    public clear() {
-        this.form.reset(clone(DEFAULT_VALUE));
+    public createForm(): FormGroup {
+        return AuthorFormBuilder.createEditorForm();
     }
 
 
     /**
-     * Fetch all the editable models from the backend.
+     * Returns an obsevable authorizing the edition of an author.
      *
-     * This method fetches the synapse object along with its blocks
-     * and privileges if the current user can edit/manage the synapse.
+     * A subscription error is emitted if the current user does not
+     * have enough permissions to edit the author. Otherwise an
+     * observable with the author will be emitted.
      *
-     * @param id        Synapse identifier
+     * @param author        Author object
+     * @returns             Observable
      */
-    protected fetchModels(id: number) {
-        this.states.next(FetchState.PENDING);
+    private authorize(author: Author): Observable<Author> {
+        // Only authenticated users can edit authors
 
-        this.getAuthor(id)
-            .concatMap(author => {
-                const synapse = author['synapse'];
+        if (this.session.check() === false) {
+            return Observable.throw({ status: 403 });
+        }
 
-                return Observable.forkJoin([
-                    Observable.of(author),
-                    Observable.of(synapse),
-                    this.getBlocks(synapse),
-                    this.getFeeds(author)
-                ]);
-            })
-            .catch(error => {
-                this.author = null;
-                this.status = error.status;
+        // Check if user policies grant access to the author
 
-                this.states.next(this.status === 404 ?
-                    FetchState.EMPTY : FetchState.ERROR);
+        if (!this.policies.can('update-author', author)) {
+            return Observable.throw({ status: 401 });
+        }
 
-                return Observable.throw(error);
-            })
-            .subscribe(values => {
-                this.models = {
-                    author: values[0],
-                    synapse: values[1],
-                    blocks: values[2],
-                    feeds: values[3],
-                    block: this.models['block']
-                };
+        // Disable any controls that must not be editable
 
-                this.form.reset(clone(DEFAULT_VALUE));
-                this.form.patchValue(clone(this.models));
-                this.states.next(FetchState.READY);
+        if (author.type === AuthorType.SCHOOLS) {
+            const group = this.form.get('author') as FormGroup;
+            group.removeControl('school');
+        }
+
+        if (author.type === AuthorType.USERS) {
+            if (!this.policies.can('update-user', author.user)) {
+                this.form.removeControl('user');
+            }
+        }
+
+        return Observable.of(author);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public fetchModels(id: number): Observable<any> {
+        return this.getAuthor(id)
+            .map(author => this.author = author)
+            .concatMap(author => this.authorize(author))
+            .concatMap(author => Observable.forkJoin([
+                Observable.of(author),
+                this.getFeeds(author),
+                Observable.of(author['synapse']),
+                this.getBlocks(author['synapse']),
+                Observable.of(author['user'])
+            ]))
+            .map(values => ({
+                author: values[0],
+                feeds: values[1],
+                synapse: values[2],
+                blocks: values[3],
+                user: values[4]
+            }));
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public updateModels(changes: any): Observable<any> {
+        return Observable.of(null)
+            .concatMap(v => this.updateBlocks(changes))
+            .concatMap(v => this.updateSynapse(changes))
+            .concatMap(v => this.updateAuthor(changes))
+            .concatMap(v => this.updateUser(changes))
+            .concatMap(v => this.updateFeeds(changes));
+    }
+
+
+    /**
+     * Update the author if it has changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateAuthor(changes: any): Observable<any> {
+        const id = this.author.id;
+
+        // Update only if the author changed
+
+        if (!changes.hasOwnProperty('author')) {
+            return Observable.of({ id: id });
+        }
+
+        // Convert any models to their ID properties an then
+        // update the author with the normalized values
+
+        const values = changes['author'];
+        const params = Comparator.normalize(values);
+
+        // Make sure the school can be cleared
+
+        if (params.hasOwnProperty('school')) {
+            if (params['school'] === null) {
+                params['school_id'] = null;
+                delete params['school'];
+            }
+        }
+
+        // Make sure the territory can be cleared
+
+        if (params.hasOwnProperty('territory')) {
+            if (params['territory'] === null) {
+                params['territory_id'] = null;
+                delete params['territory'];
+            }
+        }
+
+        // Make sure the municipality can be cleared
+
+        if (params.hasOwnProperty('municipality')) {
+            if (params['municipality'] === null) {
+                params['municipality_id'] = null;
+                delete params['municipality'];
+            }
+        }
+
+        return this.store.update('/api/authors', id, params);
+    }
+
+
+    /**
+     * Update the user if it has changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateUser(changes: any): Observable<any> {
+        // Update only if the synapse changed
+
+        if (!changes.hasOwnProperty('user')) {
+            return Observable.of(null);
+        }
+
+        // Update the user information
+
+        const id = this.author.user.id;
+        const params = changes['user'];
+
+        return this.store.update('/api/users', id, params);
+    }
+
+
+    /**
+     * Update the synapse if it has changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateSynapse(changes: any): Observable<any> {
+        const id = this.author.synapse.id;
+
+        // Update only if the synapse changed
+
+        if (!changes.hasOwnProperty('synapse')) {
+            return Observable.of({ id: id });
+        }
+
+        // Convert any models to their ID properties an then
+        // update the synapse with the normalized values
+
+        const values = changes['synapse'];
+        const params = Comparator.normalize(values);
+
+        // Make sure the parent synapse can be cleared
+
+        if (params.hasOwnProperty('synapse')) {
+            if (params['synapse'] === null) {
+                params['synapse_id'] = null;
+                delete params['synapse'];
+            }
+        }
+
+        return this.store.update('/api/synapses', id, params);
+    }
+
+
+    /**
+     * Update the synapse blocks if they have changed. If the blocks
+     * have changed their identifiers will be propagated into the
+     * synapse changes object for later storage.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateBlocks(changes: any): Observable<any> {
+        const id = this.author.synapse.id;
+        const entries = [];
+
+        // Update the blocks only if they have changed
+
+        if (!changes.hasOwnProperty('blocks')) {
+            return Observable.of({ id: id });
+        }
+
+        // Obtain the blocks to remove and those to create
+
+        const news = changes['blocks'];
+        const olds = this.models['blocks'];
+
+        const remove = olds.filter(v => !news.some(n => n.id === v.id));
+        const create = news.filter(v => !olds.some(o => o.id === v.id));
+
+        // Create the batch update request for the blocks
+
+        remove.forEach(block => entries.push({
+            method: 'delete',
+            path: `/api/blocks/${block.id}`
+        }));
+
+        create.forEach(block => entries.push({
+            method: 'post',
+            path: '/api/blocks',
+            params: { ...block, synapse_id: id }
+        }));
+
+        // If no blocks where created or removed, simply update
+        // the blocks order on the changes array
+
+        if (entries.length < 1) {
+            const ids = news.map(v => v.id);
+            this.assignChanges(changes, { synapse: { blocks: ids }});
+
+            return Observable.of({ id: id });
+        }
+
+        // Create the batch update observable and map the responses
+        // into the changes array so the order is preserved
+
+        return this.store.batch('/api/$batch', { entries: entries })
+            .map(responses => {
+                const vs = responses.map(v => v.id).slice(remove.length);
+                const ids = news.map(v => v.id ? v.id : vs.shift());
+                this.assignChanges(changes, { synapse: { blocks: ids } });
             });
+    }
+
+
+    /**
+     * Update the author feeds if they have changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateFeeds(changes: any): Observable<any> {
+        const id = this.author.id;
+        const entries = [];
+
+        // Update the blocks only if they have changed
+
+        if (!changes.hasOwnProperty('feeds')) {
+            return Observable.of({ id: id });
+        }
+
+        // Obtain the blocks to remove and those to create
+
+        const news = changes['feeds'].filter(v => v.url);
+        const olds = this.models['feeds'];
+
+        let remove = olds.filter(v => !news.some(n => n.url === v.url));
+        let create = news.filter(v => !olds.some(o => o.url === v.url));
+
+        // Remove any duplicated URLs from the creation array
+
+        create = create.filter((v, i) => {
+            return i === create.findIndex(c => c.url === v.url);
+        });
+
+        // Create the batch update request for the blocks
+
+        remove.forEach(feed => entries.push({
+            method: 'delete',
+            path: `/api/feeds/${feed.id}`
+        }));
+
+        create.forEach(feed => entries.push({
+            method: 'post',
+            path: '/api/feeds',
+            params: { ...feed, author_id: id }
+        }));
+
+        // If no feeds where created or removed, simply return
+
+        if (entries.length < 1) {
+            return Observable.of({ id: id });
+        }
+
+        // Create the batch update observable
+
+        return this.store.batch('/api/$batch', { entries: entries });
+    }
+
+
+    /**
+     * Assigns the given parameters to a form changes object.
+     *
+     * This differs from {@code Object.assign} in that it preserves
+     * the existing properties of the object.
+     *
+     * @param changes       Object to modify
+     * @param params        Parameters to assign
+     */
+    private assignChanges(changes: any, params: any) {
+        Object.entries(params).forEach(([key, value]) => {
+            if (changes.hasOwnProperty(key)) {
+                Object.assign(changes[key], value);
+            } else {
+                changes[key] = value;
+            }
+        });
     }
 
 
@@ -284,8 +429,9 @@ export class AuthorEditorComponent implements OnDestroy, OnInit {
      * @returns         Observable with the blocks
      */
     private getFeeds(author: Author): Observable<any> {
-        const params = { author_id: author.id, sort: ['url'] };
-        return this.store.query('/api/feeds', params);
+        return this.store.query('/api/feeds', {
+            author_id: author.id, sort: ['url']
+        });
     }
 
 
@@ -300,20 +446,6 @@ export class AuthorEditorComponent implements OnDestroy, OnInit {
         return models.sort((a, b) => {
             return ids.indexOf(a.id) - ids.indexOf(b.id);
         });
-    }
-
-
-    /**
-     * Adds a block to the begining of the sidebar.
-     *
-     * @param block     Block element
-     */
-    public unshiftBlock(block: Block) {
-        const form = this.form.get('block');
-        const models = this.form.get('blocks').value;
-
-        models.unshift(block);
-        form.reset(clone(DEFAULT_VALUE['block']));
     }
 
 }

@@ -4,8 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-block-form',
-    templateUrl: 'block-form.component.html',
-    styleUrls: [ 'admin-form.component.scss' ]
+    templateUrl: 'block-form.component.html'
 })
 export class BlockFormComponent implements OnInit {
 

@@ -49,7 +49,7 @@
       <tbody>
         <tr *ngFor="let privilege of privileges">
           <td class="main-column w-75">
-            <span class="d-flex">
+            <span *ngIf="privilege?.user" class="d-flex">
               <img [src]="privilege.user.avatar_url" class="user-avatar"/>
               {{ privilege.user.name }}
             </span>

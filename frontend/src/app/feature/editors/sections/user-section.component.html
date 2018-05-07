@@ -1,0 +1,39 @@
+<section class="user-section">
+  <div class="row" *ngIf="form">
+    <div class="main-column col-lg-8">
+      <div *ngIf="form.get('role') as control" class="form-group">
+        <label class="form-container-label">
+          <span i18n>Role:</span>
+        </label>
+        <div class="custom-control custom-radio">
+          <input type="radio"
+             [formControl]="control"
+             id="role-author"
+             name="role"
+             value="author"
+             class="custom-control-input">
+          <label for="role-author" class="custom-control-label">
+            <span i18n>Author</span>
+            <small class="text-muted">
+              — <span i18n>Restricted control of the author's pages</span>
+            </small>
+          </label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio"
+             [formControl]="control"
+             id="role-admin"
+             name="role"
+             value="admin"
+             class="custom-control-input">
+          <label for="role-admin" class="custom-control-label">
+            <span i18n>Administrator</span>
+            <small class="text-muted">
+              — <span i18n>Full access and control of the site</span>
+            </small>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

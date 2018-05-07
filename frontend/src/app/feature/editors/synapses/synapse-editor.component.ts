@@ -1,30 +1,10 @@
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-import { Collection, Model, FetchState } from 'app/core';
-import { Comparator, StoreService } from 'app/core';
-import { SessionService, UserChanged } from 'app/core';
-import { PoliciesService } from 'app/core';
-import { ScrollTop } from 'app/core/core.decorators';
+import { Comparator, EditorComponent, Model } from 'app/core';
 import { Block, Privilege, Synapse } from 'app/models';
-import { EDITOR_FORM } from './synapse-editor.forms';
-
-
-/**
- * Returns a deep copy of a simple object
- */
-function clone(object: any): any {
-    return JSON.parse(JSON.stringify(object));
-}
-
-/**
- * Default values for the editor
- */
-const DEFAULT_VALUE = clone(EDITOR_FORM.value);
+import { SynapseFormBuilder } from './synapse-editor.builder';
+import { GENERAL_SLUG } from 'app/models';
 
 
 /**
@@ -35,268 +15,287 @@ const DEFAULT_VALUE = clone(EDITOR_FORM.value);
     templateUrl: 'synapse-editor.component.html',
     styleUrls: [ 'synapse-editor.component.scss' ]
 })
-export class SynapseEditorComponent implements OnDestroy, OnInit {
+export class SynapseEditorComponent extends EditorComponent {
 
-    /** Active tab */
+    /** Active editor tab */
     public tab = 'synapse';
 
-    /** Form being edited */
-    public form = EDITOR_FORM;
-
-    /** Models being edited */
-    public models = clone(DEFAULT_VALUE);
-
-    /** Current state */
-    public state: FetchState = FetchState.PENDING;
-
-    /** Last HTTP error code or null */
-    public status: number = null;
-
-    /** Component states subject */
-    private _states = new ReplaySubject<FetchState>(1);
-
-    /** Unsubscribe subject */
-    protected unsubscribe = new Subject();
+    /** Synapse being edited */
+    public synapse = null;
 
 
     /**
-     * Component constructor.
+     * {@inheritDoc}
      */
-    constructor(
-        private route: ActivatedRoute,
-        private session: SessionService,
-        private policies: PoliciesService,
-        private store: StoreService
-    ) {}
-
-
-    /**
-     * Component initialization.
-     */
-    ngOnInit() {
-        // Update the component state on changes
-
-        this.states
-            .takeUntil(this.unsubscribe)
-            .subscribe(state => this.state = state);
-
-        // Refresh the page when the URL changes
-
-        this.route.params
-            .takeUntil(this.unsubscribe)
-            .subscribe(params => this.edit(params.id));
-
-        // Refresh when the logged in user changes
-
-        this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
-            .subscribe(params => this.edit(
-                this.route.snapshot.params.id
-            ));
-    }
-
-
-    /**
-     * Component destructor.
-     */
-    ngOnDestroy() {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    }
-
-
-    /**
-     * Observable of state changes.
-     */
-    get states(): Subject<FetchState> {
-        return this._states;
-    }
-
-
-    /**
-     * Returns the synapse blocks being edited.
-     */
-    get blocks(): Block[] {
-        return this.models['blocks'];
-    }
-
-
-    /**
-     * Sets the synapse blocks being edited.
-     */
-    set blocks(blocks: Block[]) {
-        this.models['blocks'] = blocks;
-    }
-
-
-    /**
-     * Returns the synapse privileges being edited.
-     */
-    get privileges(): Privilege[] {
-        return this.models['privileges'];
-    }
-
-
-    /**
-     * Sets the synapse privileges being edited.
-     */
-    set privileges(privileges: Privilege[]) {
-        this.models['privileges'] = privileges;
-    }
-
-
-    /**
-     * Returns the synapse model being edited.
-     */
-    get synapse(): Synapse {
-        return this.models['synapse'];
-    }
-
-
-    /**
-     * Sets the synapse model being edited.
-     */
-    set synapse(synapse: Synapse) {
-        this.models['synapse'] = synapse;
-    }
-
-
-    /**
-     * Initialize the editor for an object.
-     *
-     * @param id        Unique ID of the synapse
-     */
-    @ScrollTop()
     public edit(id: number) {
-        this.clear();
         this.tab = 'synapse';
-        this.fetchModels(id);
+        super.edit(id);
     }
 
 
     /**
-     * Save the current form data.
+     * {@inheritDoc}
      */
-    public save(form: FormGroup, models: any) {
-        this.saveBlocks(form, models);
-        this.savePrivileges(form, models);
-        this.saveSynapse(form, models);
-    }
-
-
-    private saveSynapse(form, models) {
-        const olds = models['synapse'];
-        const news = form.get('synapse').value;
-        const changes = Comparator.changes(news, olds);
-
-        if (Object.keys(changes).length > 0) {
-            const id = models['synapse'].id;
-            const params = Comparator.normalize(changes);
-
-            this.store.update('/api/synapses', id, params)
-                .subscribe(success => console.log('Synapse saved'));
-        }
-    }
-
-
-    private savePrivileges(form, models) {
-        const olds = models['privileges'];
-        const news = form.get('privileges').value;
-
-        if (!Comparator.equals(news, olds)) {
-            console.log('Synch privileges');
-            console.log(Comparator.changes(news, olds));
-            console.log(Comparator.changes(olds, news));
-        }
-    }
-
-
-    private saveBlocks(form, models) {
-        const olds = models['blocks'];
-        const news = form.get('blocks').value;
-
-        if (!Comparator.equals(news, olds)) {
-            const id = models['synapse'].id;
-            const batch = [];
-
-            news.forEach(block => batch.push({
-                path: '/api/blocks',
-                method: 'post',
-                params: {...block, synapse_id: id }
-            }));
-
-            this.store.create('/api/$batch', { entries: batch })
-                .subscribe(success => console.log('Blocks updated'));
-        }
-    }
-
-
-    /**
-     * Reset the forms to its initial values.
-     */
-    @ScrollTop()
     public reset() {
-        this.form.reset(clone(DEFAULT_VALUE));
-        this.form.patchValue(clone(this.models));
+        this.tab = 'synapse';
+        super.reset();
     }
 
 
     /**
-     * Reset the forms to its default values.
+     * {@inheritDoc}
      */
-    public clear() {
-        this.form.reset(clone(DEFAULT_VALUE));
+    public createForm(): FormGroup {
+        return SynapseFormBuilder.createEditorForm();
     }
 
 
     /**
-     * Fetch all the editable models from the backend.
+     * Returns an obsevable authorizing the edition of a synapse.
      *
-     * This method fetches the synapse object along with its blocks
-     * and privileges if the current user can edit/manage the synapse.
+     * A subscription error is emitted if the current user does not
+     * have enough permissions to edit the synapse. Otherwise an
+     * observable with the synapse will be emitted.
      *
-     * @param id        Synapse identifier
+     * @param synapse       Synapse object
+     * @returns             Observable
      */
-    protected fetchModels(id: number) {
-        this.states.next(FetchState.PENDING);
+    private authorize(synapse: Synapse): Observable<Synapse> {
+        // Only authenticated users can edit synapses
 
-        this.getSynapse(id)
-            .concatMap(synapse => {
-                if (!this.userCanEdit(synapse)) {
-                    return Observable.throw({
-                        status: 403,
-                        message: 'Forbidden'
-                    });
-                }
+        if (this.session.check() === false) {
+            return Observable.throw({ status: 403 });
+        }
 
-                return Observable.forkJoin([
-                    Observable.of(synapse),
-                    this.getBlocks(synapse),
-                    this.getPrivileges(synapse)
-                ]);
-            })
-            .catch(error => {
-                this.synapse = null;
-                this.status = error.status;
+        // Check if user policies grant access to the synapse
 
-                this.states.next(this.status === 404 ?
-                    FetchState.EMPTY : FetchState.ERROR);
+        if (!this.policies.can('update-synapse', synapse)) {
+            return Observable.throw({ status: 401 });
+        }
 
-                return Observable.throw(error);
-            })
-            .subscribe(values => {
-                this.models = {
-                    synapse: values[0],
-                    blocks: values[1],
-                    privileges: values[2],
-                    block: this.models['block']
-                };
+        // Disable any controls that must not be editable
 
-                this.form.reset(clone(DEFAULT_VALUE));
-                this.form.patchValue(clone(this.models));
-                this.states.next(FetchState.READY);
+        if (synapse.slug === GENERAL_SLUG) {
+            this.form.get('synapse.slug').disable();
+        }
+
+        if (!this.policies.can('manage-privileges', synapse)) {
+            this.form.get('privileges').disable();
+        }
+
+        if (!this.policies.can('manage-blocks', synapse)) {
+            this.form.get('blocks').disable();
+        }
+
+        return Observable.of(synapse);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public fetchModels(id: number): Observable<any> {
+        return this.getSynapse(id)
+            .map(synapse => this.synapse = synapse)
+            .concatMap(synapse => this.authorize(synapse))
+            .concatMap(synapse => Observable.forkJoin([
+                Observable.of(synapse),
+                this.getBlocks(synapse),
+                this.getPrivileges(synapse)
+            ]))
+            .map(values => ({
+                synapse: values[0],
+                blocks: values[1],
+                privileges: values[2]
+            }));
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public updateModels(changes: any): Observable<any> {
+        return Observable.of(null)
+            .concatMap(v => this.updateBlocks(changes))
+            .concatMap(v => this.updateSynapse(changes))
+            .concatMap(v => this.updatePrivileges(changes));
+    }
+
+
+    /**
+     * Update the synapse if it has changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateSynapse(changes: any): Observable<any> {
+        const id = this.synapse.id;
+
+        // Update only if the synapse changed
+
+        if (!changes.hasOwnProperty('synapse')) {
+            return Observable.of({ id: id });
+        }
+
+        // Convert any models to their ID properties an then
+        // update the synapse with the normalized values
+
+        const values = changes['synapse'];
+        const params = Comparator.normalize(values);
+
+        // Make sure the parent synapse can be cleared
+
+        if (params.hasOwnProperty('synapse')) {
+            if (params['synapse'] === null) {
+                params['synapse_id'] = null;
+                delete params['synapse'];
+            }
+        }
+
+        return this.store.update('/api/synapses', id, params);
+    }
+
+
+    /**
+     * Update the synapse blocks if they have changed. If the blocks
+     * have changed their identifiers will be propagated into the
+     * synapse changes object for later storage.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updateBlocks(changes: any): Observable<any> {
+        const id = this.synapse.id;
+        const entries = [];
+
+        // Update the blocks only if they have changed
+
+        if (!changes.hasOwnProperty('blocks')) {
+            return Observable.of({ id: id });
+        }
+
+        // Obtain the blocks to remove and those to create
+
+        const news = changes['blocks'];
+        const olds = this.models['blocks'];
+
+        const remove = olds.filter(v => !news.some(n => n.id === v.id));
+        const create = news.filter(v => !olds.some(o => o.id === v.id));
+
+        // Create the batch update request for the blocks
+
+        remove.forEach(block => entries.push({
+            method: 'delete',
+            path: `/api/blocks/${block.id}`
+        }));
+
+        create.forEach(block => entries.push({
+            method: 'post',
+            path: '/api/blocks',
+            params: { ...block, synapse_id: id }
+        }));
+
+        // If no blocks where created or removed, simply update
+        // the blocks order on the changes array
+
+        if (entries.length < 1) {
+            const ids = news.map(v => v.id);
+            this.assignChanges(changes, { synapse: { blocks: ids }});
+
+            return Observable.of({ id: id });
+        }
+
+        // Create the batch update observable and map the responses
+        // into the changes array so the order is preserved
+
+        return this.store.batch('/api/$batch', { entries: entries })
+            .map(responses => {
+                const vs = responses.map(v => v.id).slice(remove.length);
+                const ids = news.map(v => v.id ? v.id : vs.shift());
+                this.assignChanges(changes, { synapse: { blocks: ids } });
             });
+    }
+
+
+    /**
+     * Update the synapse privileges if they have changed.
+     *
+     * @param changes       Form changes object
+     * @returns             Observable with the response
+     */
+    private updatePrivileges(changes: any): Observable<any> {
+        const id = this.synapse.id;
+        const entries = [];
+
+        // Update the privileges only if they have changed
+
+        if (!changes.hasOwnProperty('privileges')) {
+            return Observable.of({ id: id });
+        }
+
+        // Obtain the privileges to remove, create or update
+
+        const news = changes['privileges'];
+        const olds = this.models['privileges'];
+
+        const remove = olds.filter(v => !news.some(n => n.id === v.id));
+        const create = news.filter(v => !olds.some(o => o.id === v.id));
+        const update = news.filter(v => olds.some(o => o.id === v.id));
+
+        // Create the batch update request for the blocks
+
+        remove.forEach(privilege => entries.push({
+            method: 'delete',
+            path: `/api/synapses/privileges/${privilege.id}`
+        }));
+
+        create.forEach(privilege => entries.push({
+            method: 'post',
+            path: '/api/synapses/privileges',
+            params: {
+                ...Comparator.normalize(privilege),
+                synapse_id: id
+            }
+        }));
+
+        update.forEach(privilege => entries.push({
+            method: 'put',
+            path: `/api/synapses/privileges/${privilege.id}`,
+            params: {
+                ...Comparator.normalize(privilege),
+                synapse_id: id
+            }
+        }));
+
+        // Make sure there are entries to update
+
+        if (entries.length < 1) {
+            return Observable.of(null);
+        }
+
+        // Create the batch update observable
+
+        return this.store.batch('/api/$batch', { entries: entries })
+    }
+
+
+    /**
+     * Assigns the given parameters to a form changes object.
+     *
+     * This differs from {@code Object.assign} in that it preserves
+     * the existing properties of the object.
+     *
+     * @param changes       Object to modify
+     * @param params        Parameters to assign
+     */
+    private assignChanges(changes: any, params: any) {
+        Object.entries(params).forEach(([key, value]) => {
+            if (changes.hasOwnProperty(key)) {
+                Object.assign(changes[key], value);
+            } else {
+                changes[key] = value;
+            }
+        });
     }
 
 
@@ -339,12 +338,7 @@ export class SynapseEditorComponent implements OnDestroy, OnInit {
      * @returns         Observable with the synapse object
      */
     private getSynapse(id: number): Observable<any> {
-        return this.store.get('/api/synapses', id).map(synapse => {
-            synapse['filters'] = synapse['filters'] || {};
-            synapse['synapse'] = synapse['parent'] || null;
-
-            return synapse;
-        });
+        return this.store.get('/api/synapses', id);
     }
 
 
@@ -359,44 +353,6 @@ export class SynapseEditorComponent implements OnDestroy, OnInit {
         return models.sort((a, b) => {
             return ids.indexOf(a.id) - ids.indexOf(b.id);
         });
-    }
-
-
-    /**
-     * Returns if the current user can edit the given synapse.
-     *
-     * @param synapse       Synapse object
-     * @returns             True if a user is logged in and has
-     *                      edition rights over the synapse.
-     */
-    public userCanEdit(synapse: Synapse): boolean {
-        return this.policies.can('update-synapse', synapse);
-    }
-
-
-    /**
-     * Returns if the current user can manage the given synapse.
-     *
-     * @param synapse       Synapse object
-     * @returns             True if a user is logged in and has
-     *                      edition rights over the synapse.
-     */
-    public userCanManage(synapse: Synapse): boolean {
-        return this.policies.can('manage-privileges', synapse);
-    }
-
-
-    /**
-     * Adds a block to the begining of the sidebar.
-     *
-     * @param block     Block element
-     */
-    public unshiftBlock(block: Block) {
-        const form = this.form.get('block');
-        const models = this.form.get('blocks').value;
-
-        models.unshift(block);
-        form.reset(clone(DEFAULT_VALUE['block']));
     }
 
 }

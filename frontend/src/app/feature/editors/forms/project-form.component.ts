@@ -4,8 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-project-form',
-    templateUrl: 'project-form.component.html',
-    styleUrls: [ 'admin-form.component.scss' ]
+    templateUrl: 'project-form.component.html'
 })
 export class ProjectFormComponent {
 

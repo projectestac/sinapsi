@@ -7,10 +7,7 @@ import { User, Privilege, PrivilegeRole } from 'app/models';
 @Component({
     selector: 'app-privileges-form',
     templateUrl: 'privileges-form.component.html',
-    styleUrls: [
-        'admin-form.component.scss',
-        'privileges-form.component.scss'
-    ]
+    styleUrls: [ 'privileges-form.component.scss' ]
 })
 export class PrivilegesFormComponent implements OnInit {
 
@@ -20,7 +17,7 @@ export class PrivilegesFormComponent implements OnInit {
     /** Ordered privileges collection */
     public privileges = [];
 
-    /** Privileges form groups array */
+    /** Privileges control as an array */
     @Input('control') control: FormControl;
 
     /** User typeahead box */

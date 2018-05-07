@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { ErrorsComponent } from 'app/shared/errors';
 
 import { EditorsComponent } from './editors.component';
+import { CanDeactivateEditor } from './editors.guards';
 import { AuthorEditorComponent } from './authors';
 import { SynapseEditorComponent } from './synapses';
 import { _ } from 'i18n';
@@ -27,10 +28,12 @@ export const ROUTES: Routes = [{
     children: [{
         path: 'authors/:id',
         component: AuthorEditorComponent,
+        canDeactivate: [ CanDeactivateEditor ],
         data: { title: _('Author editor') }
     }, {
         path: 'synapses/:id',
         component: SynapseEditorComponent,
+        canDeactivate: [ CanDeactivateEditor ],
         data: { title: _('Synapse editor') }
     }, {
         path: '',
@@ -44,6 +47,7 @@ export const ROUTES: Routes = [{
  */
 @NgModule({
     imports: [ RouterModule.forChild(ROUTES) ],
-    exports: [ RouterModule ]
+    exports: [ RouterModule ],
+    providers: [ CanDeactivateEditor ]
 })
 export class EditorsRoutes {}

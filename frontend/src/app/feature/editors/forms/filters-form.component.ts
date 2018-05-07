@@ -4,8 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-filters-form',
-    templateUrl: 'filters-form.component.html',
-    styleUrls: [ 'admin-form.component.scss' ]
+    templateUrl: 'filters-form.component.html'
 })
 export class FiltersFormComponent {
 

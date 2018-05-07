@@ -4,8 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-user-form',
-    templateUrl: 'user-form.component.html',
-    styleUrls: [ 'admin-form.component.scss' ]
+    templateUrl: 'user-form.component.html'
 })
 export class UserFormComponent {
 

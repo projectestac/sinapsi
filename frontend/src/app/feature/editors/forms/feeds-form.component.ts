@@ -1,29 +1,107 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewChild, ViewChildren } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { SharedValidators } from 'app/shared';
+
+
+/** Validators alias */
+const V = Validators;
+
+/** SharedValidators alias */
+const SV = SharedValidators;
+
+/** Form builder instance */
+const fb = new FormBuilder();
 
 
 @Component({
     selector: 'app-feeds-form',
     templateUrl: 'feeds-form.component.html',
-    styleUrls: [
-        'admin-form.component.scss',
-        'feeds-form.component.scss'
-    ]
+    styleUrls: [ 'feeds-form.component.scss' ]
 })
-export class FeedsFormComponent {
+export class FeedsFormComponent implements OnInit {
 
     /** Wether this component is focused */
     private _focused = false;
 
-    /** Form for this component */
-    @Input('formGroup') form: FormGroup;
+    /** Feeds form array */
+    public form: FormArray;
+
+    /** Placeholder text */
+    @Input() placeholder = 'http://www.example.org/feed/atom/';
+
+    /** Feeds control as an array */
+    @Input() control: FormControl;
 
     /** This component's input elements */
     @ViewChildren('feedBox') inputs;
 
     /** This component's root element */
     @ViewChild('fieldset') fieldset;
+
+
+    /**
+     * Component initialization.
+     */
+    ngOnInit() {
+        this.form = this.createForm();
+        this.updateCollection(this.control.value);
+
+        // Sync the control validations with the form array
+
+        this.control.setValidators((control) => {
+            const controls = this.form.controls;
+            const fails = controls.find(c => c.invalid);
+            return fails ? { 'invalid': true } : null;
+        });
+
+        // Update the form array when the control value changes
+
+        this.control.valueChanges.subscribe(values => {
+            this.updateCollection(values);
+        });
+    }
+
+
+    /**
+     * Builds the form array.
+     */
+    private createForm(): FormArray {
+        return this.createGroups(25, {
+           url: [ null, [V.maxLength(512), SV.http(true)] ]
+        });
+    }
+
+
+    /**
+     * Create a FormArray for the given FormGroup configuration.
+     *
+     * @param n         Number of groups on the array
+     * @param config    Form group configuration
+     *
+     * @returns         A form array of form groups
+     */
+    private createGroups(n: number, config: any): FormArray {
+        const groups: FormGroup[] = [];
+
+        for (let i = 0; i < n; i++) {
+            groups.push(fb.group(config));
+        }
+
+        return fb.array(groups);
+    }
+
+
+    /**
+     * Update the feeds collection.
+     *
+     * @param values    Feeds array
+     */
+    private updateCollection(values: any[]) {
+        const feeds = Array.isArray(values) ? values : [];
+        this.form.patchValue(feeds);
+    }
 
 
     /**
@@ -105,6 +183,17 @@ export class FeedsFormComponent {
 
 
     /**
+     * Returns the first empty form group.
+     *
+     * @returns         Form group
+     */
+    public _firstEmpty(): FormGroup {
+        const controls = this.form.controls;
+        return <FormGroup> controls.find(c => !c.value['url']);
+    }
+
+
+    /**
      * Fired when a child input element is focused.
      *
      * @param group     Form group for the focused input
@@ -144,6 +233,15 @@ export class FeedsFormComponent {
                 control.setValue(trimmed);
             }
         }
+
+        // Update the feeds control values
+
+        const feeds = this.control.value || [];
+        const values = this.form.value;
+
+        this.control.patchValue(values.map(feed => {
+            return feeds.find(v => v.url === feed.url) || feed;
+        }));
     }
 
 }
