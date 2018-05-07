@@ -27,6 +27,7 @@ class PostController extends Controller {
         $query = Post::cards();
         
         Post::mutateURLs($request);
+        
         $query->withTrashedIfAdmin();
         $query->filter($request);
         $query->include($request);

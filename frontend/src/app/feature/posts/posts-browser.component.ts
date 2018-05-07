@@ -107,6 +107,7 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
     private interceptRequest(request: StoreQuery) {
         const viewId = request['view'] || this.getViewId();
         const sectionId = request['section'] || this.sections[0]['id'];
+        const sort = request['sort'] || this.getSort();
 
         // Apply the section bindings and defaults to the request
 
@@ -115,6 +116,12 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
         if (section !== undefined) {
             const base = { ...section.defaults, ...request };
             Object.assign(request, base, section.bindings);
+        }
+
+        // Set the default sort order for the request
+
+        if (Array.isArray(sort)) {
+            request['sort'] = sort;
         }
 
         // Update the view and section identifiers
@@ -141,6 +148,23 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
         }
 
         return viewId;
+    }
+
+
+    /**
+     * Returns the default sort order for the current synapse. If a
+     * synapse does not exist or no default sort is set for it, this
+     * method returns null.
+     *
+     * @returns         Synapse sort filter or null
+     **/
+    private getSort(): string[] {
+        if (!this.synapse || !this.synapse['filters']) {
+            return null;
+        }
+
+        const sort = this.synapse.filters['sort'];
+        return Array.isArray(sort) ? sort : null;
     }
 
 }

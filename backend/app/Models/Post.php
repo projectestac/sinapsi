@@ -236,15 +236,11 @@ class Post extends FoundationModel {
     public function scopeForSynapse($query, $synapse) {
         if (!empty($synapse->filters)) {
             if (is_array($synapse->filters)) {
-                $request = new Request(array_filter(
+                $query->filter(new Request(array_filter(
                     $synapse->filters, function($v) {
                         return is_null($v) === false;
                     })
-                );
-
-                $query->filter($request);
-                $query->include($request);
-                $query->sort($request);
+                ));
             }
         }
         
