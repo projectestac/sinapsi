@@ -487,6 +487,7 @@ abstract class FoundationModel extends Model {
     public function scopeFilter($query, Request $request) {
         $values = [
             'eqs' =>  [],
+            'not' =>  [],
             'has' =>  [],
             'min' => [],
             'max' => []
@@ -524,7 +525,7 @@ abstract class FoundationModel extends Model {
         $rules = static::$fields;
         
         foreach ($values as $prefix => $input) {
-            if ($prefix !== 'eqs') {
+            if ($prefix !== 'eqs' && $prefix !== 'not') {
                 static::validateArray($input, $rules);
                 continue;
             }
@@ -560,6 +561,11 @@ abstract class FoundationModel extends Model {
                         break;
                     case 'max':
                         $query->where($key, '<=', $value);
+                        break;
+                    case 'not':
+                        $query = (is_array($value)) ?
+                            $query->whereNotIn($key, $value) :
+                            $query->where($key, '!=', $value);
                         break;
                     default:
                         $query = (is_array($value)) ?
