@@ -19,7 +19,7 @@ import { FetchState } from './components.types';
     template: '@CatalogComponent',
     providers: [ RequestManager ]
 })
-export /*abstract*/  class DetailsComponent implements OnDestroy, OnInit {
+export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
 
     /** Current state */
     public state: FetchState = FetchState.PENDING;

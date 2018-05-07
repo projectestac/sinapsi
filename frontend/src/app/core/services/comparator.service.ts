@@ -58,12 +58,26 @@ export class Comparator {
 
 
     /**
+     * Returns if the values of two objects differ. This method does
+     * not compare the objects value by value. See {@code changes}.
+     *
+     * @param a     Object to compare
+     * @param b     Object to compare
+     *
+     * @returns     True if values differ
+     */
+    public static differ(a: object, b: object): boolean {
+        return Object.keys(Comparator.changes(a, b)).length > 0;
+    }
+
+
+    /**
      * Compares two values for deep strict equivalence.
      *
      * @param a     Value to compare
      * @param b     Value to compare
      *
-     * @returns     Wether the objects are equivalent
+     * @returns     Whether the objects are equivalent
      */
     public static equals(a: any, b: any): boolean {
         const type = Comparator.typeOf(a);
@@ -92,7 +106,7 @@ export class Comparator {
      * @param a     Array to compare
      * @param b     Array to compare
      *
-     * @returns     Wether the arrays are equivalent
+     * @returns     Whether the arrays are equivalent
      */
     public static arraysEqual(a: any[], b: any[]): boolean {
         if (a.length !== b.length) {
@@ -115,7 +129,7 @@ export class Comparator {
      * @param a     Date to compare
      * @param b     Date to compare
      *
-     * @returns     Wether the dates are equivalent
+     * @returns     Whether the dates are equivalent
      */
     public static datesEqual(a: Date, b: Date): boolean {
         return a.getTime() === b.getTime();
@@ -128,7 +142,7 @@ export class Comparator {
      * @param a     Object to compare
      * @param b     Object to compare
      *
-     * @returns     Wether the objects are equivalent
+     * @returns     Whether the objects are equivalent
      */
     public static objectsEqual(a: object, b: object): boolean {
         const akeys = Object.keys(a);
@@ -145,6 +159,20 @@ export class Comparator {
         }
 
         return true;
+    }
+
+
+    /**
+     * Returns if two values are of the same type.
+     * {@see #typeOf}
+     *
+     * @param a     Object to compare
+     * @param b     Object to compare
+     *
+     * @returns     Whether the types are equivalent
+     */
+    public static typesEqual(a: any, b: any) {
+        return Comparator.typeOf(a) === Comparator.typeOf(b);
     }
 
 
