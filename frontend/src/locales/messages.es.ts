@@ -11,6 +11,9 @@ export const I18N_MESSAGES = {
     "All posts":
     "Todos los artículos",
 
+    "Any changes you made to the form will be lost.":
+    "Cualquier cambio que hay realizado en el formulario se perderá.",
+
     "Any time":
     "En cualquier momento",
 
@@ -74,6 +77,9 @@ export const I18N_MESSAGES = {
     "Do you want to disable the user «<strong>{name}</strong>»?":
     "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?",
 
+    "Do you want to reset the form to its initial state?":
+    "¿Desea restablecer el formulario a su estado inicial?",
+
     "Educators":
     "Docentes",
 
@@ -100,6 +106,9 @@ export const I18N_MESSAGES = {
 
     "Help":
     "Ayuda",
+
+    "Leave this page":
+    "Salir de la página",
 
     "Liked":
     "Votados",
@@ -188,6 +197,9 @@ export const I18N_MESSAGES = {
     "Red":
     "Rojo",
 
+    "Reset form":
+    "Restablecer formulario",
+
     "Schools":
     "Centros",
 
@@ -223,6 +235,12 @@ export const I18N_MESSAGES = {
 
     "The comment «{name}» has been deleted.":
     "El comentario «{name}» ha sido eliminado.",
+
+    "The form data has been successfully saved.":
+    "Los datos del formulario se han guardado con éxito.",
+
+    "The form has errors, please correct them before saving.":
+    "El formulario tiene errores, corríjalos antes de guardarlos.",
 
     "The project «<strong>{name}</strong>» has been deleted.":
     "El proyecto «<strong>{name}</strong>» ha sido eliminado.",

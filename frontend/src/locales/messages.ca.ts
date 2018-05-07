@@ -11,6 +11,9 @@ export const I18N_MESSAGES = {
     "All posts":
     "Tots els articles",
 
+    "Any changes you made to the form will be lost.":
+    "Qualsevol modificació que hagueu fet al formulari es perdrà.",
+
     "Any time":
     "En qualsevol moment",
 
@@ -74,6 +77,9 @@ export const I18N_MESSAGES = {
     "Do you want to disable the user «<strong>{name}</strong>»?":
     "Voleu desactivar l'usuari «<strong>{name}</strong>»?",
 
+    "Do you want to reset the form to its initial state?":
+    "Voleu restablir el formulari al seu estat inicial?",
+
     "Educators":
     "Docents",
 
@@ -100,6 +106,9 @@ export const I18N_MESSAGES = {
 
     "Help":
     "Ajuda",
+
+    "Leave this page":
+    "Surt de la pàgina",
 
     "Liked":
     "Votats",
@@ -188,6 +197,9 @@ export const I18N_MESSAGES = {
     "Red":
     "Vermell",
 
+    "Reset form":
+    "Reinicialitza el formulari",
+
     "Schools":
     "Centres",
 
@@ -223,6 +235,12 @@ export const I18N_MESSAGES = {
 
     "The comment «{name}» has been deleted.":
     "S'ha suprimit el comentari «{name}».",
+
+    "The form data has been successfully saved.":
+    "S'han desat les dades del formulari.",
+
+    "The form has errors, please correct them before saving.":
+    "El formulari conté errors, corregiu-los abans de desar.",
 
     "The project «<strong>{name}</strong>» has been deleted.":
     "S'ha suprimit el projecte «<strong>{name}</strong>».",
