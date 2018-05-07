@@ -45,6 +45,14 @@
         </div>
         <div class="col-lg-4">
           <aside role="complementary" class="synapse-blocks">
+            <ng-container *appIfCan="['update-author', synapse.author]">
+              <div class="card p-3 mb-3">
+                <a [routerLink]="['/editors/authors', synapse.author.id]">
+                  <cn-icon value="edit"></cn-icon>
+                  <span i18n>Edit project</span>
+                </a>
+              </div>
+            </ng-container>
             <app-sidebar [blocks]="blocks"></app-sidebar>
           </aside>
         </div>

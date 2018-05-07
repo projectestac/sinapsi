@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router'
 import { SharedModule } from 'app/shared';
 import { PostsModule } from 'app/feature/posts';
 import { HomeComponent } from './home.component';
@@ -10,6 +11,7 @@ import { HomeComponent } from './home.component';
     ],
 
     imports: [
+        RouterModule,
         SharedModule,
         PostsModule
     ],

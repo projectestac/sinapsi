@@ -148,7 +148,14 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
      */
     @ScrollTop()
     protected fetchSynapse(slug: string) {
-        const params = { slug: slug, limit: 1 };
+        const params = {
+            slug: slug,
+            limit: 1,
+            with: [
+                'author',
+                'privilege'
+            ]
+        };
 
         this.states.next(FetchState.PENDING);
 
