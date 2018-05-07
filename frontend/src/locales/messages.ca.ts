@@ -11,8 +11,11 @@ export const I18N_MESSAGES = {
     "All posts":
     "Tots els articles",
 
+    "An unexpected error happened, please try again later.":
+    "S'ha produït un error inesperat; torneu-ho a provar més tard.",
+
     "Any changes you made to the form will be lost.":
-    "Qualsevol modificació que hagueu fet al formulari es perdrà.",
+    "Els canvis que hagueu fet al formulari es perdran.",
 
     "Any time":
     "En qualsevol moment",
@@ -198,7 +201,7 @@ export const I18N_MESSAGES = {
     "Vermell",
 
     "Reset form":
-    "Reinicialitza el formulari",
+    "Restableix el formulari",
 
     "Schools":
     "Centres",
@@ -242,6 +245,9 @@ export const I18N_MESSAGES = {
     "The form has errors, please correct them before saving.":
     "El formulari conté errors, corregiu-los abans de desar.",
 
+    "The form has unsaved changes. Do you want to leave this page without saving them?":
+    "El formulari té canvis sense desar. Voleu sortir d'aquesta pàgina sense desar-los?",
+
     "The project «<strong>{name}</strong>» has been deleted.":
     "S'ha suprimit el projecte «<strong>{name}</strong>».",
 
@@ -257,11 +263,17 @@ export const I18N_MESSAGES = {
     "The tag «<strong>{name}</strong>» has been restored.":
     "S'ha restaurat l'etiqueta «<strong> {name} </ strong>».",
 
+    "The tag will not longer show on search results but can be restored later on.":
+    "L'etiqueta no es mostrarà més als resultats de la cerca, però es pot restaurar més endavant.",
+
     "The user «<strong>{name}</strong>» has been re-enabled.":
     "S'ha tornat a habilitar l'usuari «<strong> {name} </ strong>». ",
 
     "The user «<strong>{name}</strong>» has been successfully disabled.":
     "L'usuari «<strong>{name}</strong>» s'ha inhabilitat amb èxit.",
+
+    "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later.":
+    "L'usuari ja no podrà accedir a l'aplicació. Els comptes d'usuari es poden desactivar temporalment i tornar a activar-se més tard.",
 
     "This action cannot be undone.":
     "Aquesta acció no es pot desfer.",

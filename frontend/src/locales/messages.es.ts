@@ -11,6 +11,9 @@ export const I18N_MESSAGES = {
     "All posts":
     "Todos los artículos",
 
+    "An unexpected error happened, please try again later.":
+    "Se produjo un error inesperado. Inténtelo de nuevo más tarde.",
+
     "Any changes you made to the form will be lost.":
     "Cualquier cambio que hay realizado en el formulario se perderá.",
 
@@ -242,6 +245,9 @@ export const I18N_MESSAGES = {
     "The form has errors, please correct them before saving.":
     "El formulario tiene errores, corríjalos antes de guardarlos.",
 
+    "The form has unsaved changes. Do you want to leave this page without saving them?":
+    "El formulario tiene cambios no guardados ¿Quiere salir de esta página sin guardarlos?",
+
     "The project «<strong>{name}</strong>» has been deleted.":
     "El proyecto «<strong>{name}</strong>» ha sido eliminado.",
 
@@ -257,11 +263,17 @@ export const I18N_MESSAGES = {
     "The tag «<strong>{name}</strong>» has been restored.":
     "La etiqueta «<strong>{name}</strong>» ha sido restaurada.",
 
+    "The tag will not longer show on search results but can be restored later on.":
+    "La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser restaurada más adelante.",
+
     "The user «<strong>{name}</strong>» has been re-enabled.":
     "El usuario «<strong>{name}</strong>» se ha vuelto a habilitar.",
 
     "The user «<strong>{name}</strong>» has been successfully disabled.":
     "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito.",
+
+    "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later.":
+    "El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario pueden desactivarse temporalmente y volver a habilitarse más tarde.",
 
     "This action cannot be undone.":
     "Esta acción no puede deshacerse.",

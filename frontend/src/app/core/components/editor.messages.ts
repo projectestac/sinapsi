@@ -38,8 +38,7 @@ export class EditorMessages {
         confirm: _('Leave this page'),
         text: `
           <p>
-            ${ _('The form has unsaved changes. ' +
-                 'Do you want to leave this page without saving them?') }
+            ${_('The form has unsaved changes. Do you want to leave this page without saving them?')}
           </p>
           <p>
             <small class="text-muted">

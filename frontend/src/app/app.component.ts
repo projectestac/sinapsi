@@ -45,10 +45,7 @@ export class AppComponent implements OnDestroy, OnInit {
            .subscribe(event => {
                if (event instanceof StoreErrorEvent) {
                    if (event.response['status'] !== 404) {
-                       this.toaster.error(_(
-                           'An unexpected error happened, ' +
-                           'please try again later.'
-                       ));
+                       this.toaster.error(_('An unexpected error happened, please try again later.'));
                    }
                }
            });

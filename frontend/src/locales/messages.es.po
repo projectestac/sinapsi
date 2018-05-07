@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2018-05-07T15:18:58.310Z\n"
+"POT-Creation-Date: 2018-05-07T19:30:53.336Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: \n"
@@ -23,7 +23,12 @@ msgstr "Búsqueda avanzada"
 msgid "All posts"
 msgstr "Todos los artículos"
 
+#: src/app/app.component.ts:48
+msgid "An unexpected error happened, please try again later."
+msgstr "Se produjo un error inesperado. Inténtelo de nuevo más tarde."
+
 #: src/app/core/components/editor.messages.ts:29
+#: src/app/core/components/editor.messages.ts:45
 #: src/app/core/components/editor.messages.ts:46
 msgid "Any changes you made to the form will be lost."
 msgstr "Cualquier cambio que hay realizado en el formulario se perderá."
@@ -75,6 +80,8 @@ msgstr "Crear proyecto"
 msgid "Create school"
 msgstr "Crear centro"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:72
+#: src/app/feature/catalogs/catalogs.messages.ts:81
 #: src/app/feature/catalogs/catalogs.messages.ts:75
 #: src/app/feature/catalogs/catalogs.messages.ts:84
 msgid "Create synapse"
@@ -221,11 +228,14 @@ msgstr "Nombre del proyecto"
 msgid "Name of the school"
 msgstr "Nombre del centro"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:73
+#: src/app/feature/catalogs/catalogs.messages.ts:82
 #: src/app/feature/catalogs/catalogs.messages.ts:76
 #: src/app/feature/catalogs/catalogs.messages.ts:85
 msgid "Name of the synapse"
 msgstr "Nombre de la sinapsis"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:86
 #: src/app/feature/catalogs/catalogs.messages.ts:89
 msgid "No synapse exists for the tag «<strong>{name}</strong>»."
 msgstr "No existe ninguna sinapsis para la etiqueta «<strong>{name}</strong>»."
@@ -250,10 +260,12 @@ msgstr "Escriba un nombre para el nuevo proyecto."
 msgid "Please enter a name for the new school."
 msgstr "Escriba un nombre para el nuevo centro."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:74
 #: src/app/feature/catalogs/catalogs.messages.ts:77
 msgid "Please enter a name for the new synapse."
 msgstr "Escriba un nombre para la nueva sinapsis."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:93
 #: src/app/feature/catalogs/catalogs.messages.ts:96
 msgid "Please enter a name to create a new synapse for the tag."
 msgstr "Escriba un nombre para crear una nueva sinapsis para la etiqueta."
@@ -360,6 +372,10 @@ msgstr "Los datos del formulario se han guardado con éxito."
 msgid "The form has errors, please correct them before saving."
 msgstr "El formulario tiene errores, corríjalos antes de guardarlos."
 
+#: src/app/core/components/editor.messages.ts:41
+msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
+msgstr "El formulario tiene cambios no guardados ¿Quiere salir de esta página sin guardarlos?"
+
 #: src/app/feature/projects/projects.messages.ts:12
 msgid "The project «<strong>{name}</strong>» has been deleted."
 msgstr "El proyecto «<strong>{name}</strong>» ha sido eliminado."
@@ -380,6 +396,10 @@ msgstr "La etiqueta «<strong>{name}</strong>» ha sido eliminada."
 msgid "The tag «<strong>{name}</strong>» has been restored."
 msgstr "La etiqueta «<strong>{name}</strong>» ha sido restaurada."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:63
+msgid "The tag will not longer show on search results but can be restored later on."
+msgstr "La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser restaurada más adelante."
+
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
 msgstr "El usuario «<strong>{name}</strong>» se ha vuelto a habilitar."
@@ -387,6 +407,10 @@ msgstr "El usuario «<strong>{name}</strong>» se ha vuelto a habilitar."
 #: src/app/feature/users/users.messages.ts:12
 msgid "The user «<strong>{name}</strong>» has been successfully disabled."
 msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
+
+#: src/app/feature/users/users.messages.ts:37
+msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
+msgstr "El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario pueden desactivarse temporalmente y volver a habilitarse más tarde."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
@@ -397,6 +421,7 @@ msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
 msgid "This action cannot be undone."
 msgstr "Esta acción no puede deshacerse."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:92
 #: src/app/feature/catalogs/catalogs.messages.ts:95
 msgid "To edit the tag, a synapse must be created."
 msgstr "Para editar la etiqueta, primero debe crearse una sinapsis."

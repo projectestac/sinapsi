@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2018-05-07T15:18:58.310Z\n"
+"POT-Creation-Date: 2018-05-07T19:30:53.336Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: \n"
@@ -23,10 +23,15 @@ msgstr "Cerca avançada"
 msgid "All posts"
 msgstr "Tots els articles"
 
+#: src/app/app.component.ts:48
+msgid "An unexpected error happened, please try again later."
+msgstr "S'ha produït un error inesperat; torneu-ho a provar més tard."
+
 #: src/app/core/components/editor.messages.ts:29
+#: src/app/core/components/editor.messages.ts:45
 #: src/app/core/components/editor.messages.ts:46
 msgid "Any changes you made to the form will be lost."
-msgstr "Qualsevol modificació que hagueu fet al formulari es perdrà."
+msgstr "Els canvis que hagueu fet al formulari es perdran."
 
 #: src/app/shared/search/search.intervals.ts:18
 msgid "Any time"
@@ -75,6 +80,8 @@ msgstr "Crea un projecte"
 msgid "Create school"
 msgstr "Crea un centre"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:72
+#: src/app/feature/catalogs/catalogs.messages.ts:81
 #: src/app/feature/catalogs/catalogs.messages.ts:75
 #: src/app/feature/catalogs/catalogs.messages.ts:84
 msgid "Create synapse"
@@ -221,11 +228,14 @@ msgstr "Nom del projecte"
 msgid "Name of the school"
 msgstr "Nom del centre"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:73
+#: src/app/feature/catalogs/catalogs.messages.ts:82
 #: src/app/feature/catalogs/catalogs.messages.ts:76
 #: src/app/feature/catalogs/catalogs.messages.ts:85
 msgid "Name of the synapse"
 msgstr "Nom de la sinapsi"
 
+#: src/app/feature/catalogs/catalogs.messages.ts:86
 #: src/app/feature/catalogs/catalogs.messages.ts:89
 msgid "No synapse exists for the tag «<strong>{name}</strong>»."
 msgstr "No existeix cap sinapsi per a l'etiqueta «<strong>{name}</strong>»."
@@ -250,10 +260,12 @@ msgstr "Introduïu un nom per al projecte nou."
 msgid "Please enter a name for the new school."
 msgstr "Introduïu un nom per al nou centre."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:74
 #: src/app/feature/catalogs/catalogs.messages.ts:77
 msgid "Please enter a name for the new synapse."
 msgstr "Introduïu un nom per a la nova sinapsi."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:93
 #: src/app/feature/catalogs/catalogs.messages.ts:96
 msgid "Please enter a name to create a new synapse for the tag."
 msgstr "Introduïu un nom per crear una sinapsi per a l'etiqueta."
@@ -298,7 +310,7 @@ msgstr "Vermell"
 
 #: src/app/core/components/editor.messages.ts:22
 msgid "Reset form"
-msgstr "Reinicialitza el formulari"
+msgstr "Restableix el formulari"
 
 #: src/app/app.routes.ts:46 src/app/feature/schools/schools.routes.ts:29
 #: src/app/shared/search/search.fields.ts:33 src/app/app.routes.ts:42
@@ -360,6 +372,10 @@ msgstr "S'han desat les dades del formulari."
 msgid "The form has errors, please correct them before saving."
 msgstr "El formulari conté errors, corregiu-los abans de desar."
 
+#: src/app/core/components/editor.messages.ts:41
+msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
+msgstr "El formulari té canvis sense desar. Voleu sortir d'aquesta pàgina sense desar-los?"
+
 #: src/app/feature/projects/projects.messages.ts:12
 msgid "The project «<strong>{name}</strong>» has been deleted."
 msgstr "S'ha suprimit el projecte «<strong>{name}</strong>»."
@@ -380,6 +396,10 @@ msgstr "S'ha suprimit l'etiqueta «<strong>{name}</strong>»."
 msgid "The tag «<strong>{name}</strong>» has been restored."
 msgstr "S'ha restaurat l'etiqueta «<strong> {name} </ strong>»."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:63
+msgid "The tag will not longer show on search results but can be restored later on."
+msgstr "L'etiqueta no es mostrarà més als resultats de la cerca, però es pot restaurar més endavant."
+
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
 msgstr "S'ha tornat a habilitar l'usuari «<strong> {name} </ strong>». "
@@ -387,6 +407,10 @@ msgstr "S'ha tornat a habilitar l'usuari «<strong> {name} </ strong>». "
 #: src/app/feature/users/users.messages.ts:12
 msgid "The user «<strong>{name}</strong>» has been successfully disabled."
 msgstr "L'usuari «<strong>{name}</strong>» s'ha inhabilitat amb èxit."
+
+#: src/app/feature/users/users.messages.ts:37
+msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
+msgstr "L'usuari ja no podrà accedir a l'aplicació. Els comptes d'usuari es poden desactivar temporalment i tornar a activar-se més tard."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
@@ -397,6 +421,7 @@ msgstr "L'usuari «<strong>{name}</strong>» s'ha inhabilitat amb èxit."
 msgid "This action cannot be undone."
 msgstr "Aquesta acció no es pot desfer."
 
+#: src/app/feature/catalogs/catalogs.messages.ts:92
 #: src/app/feature/catalogs/catalogs.messages.ts:95
 msgid "To edit the tag, a synapse must be created."
 msgstr "Per a poder editar l'etiqueta, primer cal crear una sinapsi."
