@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collection, Model } from 'app/core';
+import { PoliciesService } from 'app/core';
 import { Author, User } from 'app/models';
 
 
@@ -27,5 +28,11 @@ export class UsersTableComponent {
 
     /** Row restore event */
     @Output() restoreRow = new EventEmitter<Author>();
+
+
+    /**
+     * Component constructor.
+     */
+    constructor(public policies: PoliciesService) {}
 
 }

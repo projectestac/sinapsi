@@ -44,13 +44,13 @@
                 <cn-icon value="edit"></cn-icon>
               </button>
             </ng-container>
-            <button *appIfCan="['destroy-tag', tag]"
+            <button *ngIf="!tag.deleted_at"
               (click)="deleteRow.emit(tag)"
               title="Delete tag" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="ban"></cn-icon>
             </button>
-            <button *appIfCan="['restore-tag', tag]"
+            <button *ngIf="tag.deleted_at"
               (click)="restoreRow.emit(tag)"
               title="Restore tag" i18n-title
               class="btn btn-sm btn-secondary">

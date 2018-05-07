@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collection, Model } from 'app/core';
+import { PoliciesService } from 'app/core';
 import { Synapse } from 'app/models';
 
 
@@ -24,5 +25,11 @@ export class SynapsesTableComponent {
 
     /** Row removal event */
     @Output() deleteRow = new EventEmitter<Synapse>();
+
+
+    /**
+     * Component constructor.
+     */
+    constructor(public policies: PoliciesService) {}
 
 }

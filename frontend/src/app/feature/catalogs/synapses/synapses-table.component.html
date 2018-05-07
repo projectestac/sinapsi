@@ -27,15 +27,15 @@
           </td>
           <td *appIfCan="['manage-synapses']" class="actions-column">
             <button
-              *appIfCan="['update-synapse', synapse]"
               (click)="editRow.emit(synapse)"
+              [disabled]="!policies.can('update-synapse', synapse)"
               title="Edit synapse" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>
             <button
-              *appIfCan="['destroy-synapse', synapse]"
               (click)="deleteRow.emit(synapse)"
+              [disabled]="!policies.can('destroy-synapse', synapse)"
               title="Delete synapse" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="remove"></cn-icon>

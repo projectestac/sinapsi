@@ -44,16 +44,16 @@
               class="btn btn-sm btn-secondary">
               <cn-icon value="edit"></cn-icon>
             </button>
-            <button
-              *appIfCan="['destroy-user', author.user]"
+            <button *ngIf="!author.user.disabled_at"
               (click)="deleteRow.emit(author)"
+              [disabled]="!policies.can('destroy-user', author.user)"
               title="Disable user" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="lock"></cn-icon>
             </button>
-            <button
-              *appIfCan="['restore-user', author.user]"
+            <button *ngIf="author.user.disabled_at"
               (click)="restoreRow.emit(author)"
+              [disabled]="!policies.can('restore-user', author.user)"
               title="Enable user" i18n-title
               class="btn btn-sm btn-secondary">
               <cn-icon value="undo"></cn-icon>
