@@ -99,7 +99,7 @@ class SynapseController extends Controller {
             $query = Synapse::whereId($id);
             $resource = $query->firstOrFail();
             $this->authorize('destroy', $resource);
-            $resource->delete();
+            $resource->forceDelete();
         } catch (QueryException $e) {
             abort(400, 'Invalid request');
         }
