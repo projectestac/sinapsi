@@ -67,7 +67,7 @@ class Synapse extends FoundationModel {
     /** Relations that can be fetched automatically */
     protected $includable = [
         'author',
-        'parent',
+        'synapse',
         'privilege',
     ];
     
@@ -178,7 +178,7 @@ class Synapse extends FoundationModel {
      *
      * @return belongsTo            Model relation
      */
-    public function parent() {
+    public function synapse() {
         return $this->belongsTo(Synapse::class, 'synapse_id')
                     ->withTrashedIfAdmin();
     }
@@ -197,13 +197,12 @@ class Synapse extends FoundationModel {
     
     /**
      * Overwrites the cards method to restrict the fields returned
-     * for parent/child relations.
+     * for child relations.
      */
     public function scopeCards($query, $id = null, $relation = null) {
-        if ($relation === 'parent' || $relation === 'childs')
-           return $query->nodeCards();
-        
-        return parent::scopeCards($query, $id, $relation);
+        return ($relation !== 'childs') ?
+            parent::scopeCards($query, $id, $relation) :
+            $query->nodeCards();
     }
     
     
