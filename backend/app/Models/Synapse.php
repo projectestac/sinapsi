@@ -25,7 +25,7 @@ class Synapse extends FoundationModel {
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
-        'blocks' =>             'array',
+        'blocks' =>             'array|nullable',
         'blocks.*' =>           'integer|min:1|distinct|nullable',
         'description' =>        'string|max:255|nullable',
         'filters' =>            'object|nullable',
@@ -94,7 +94,13 @@ class Synapse extends FoundationModel {
      * the block identifiers to and integer array.
      */
     public function setBlocksAttribute($blocks) {
-        $serialized = json_encode(array_map("intval", $blocks));
+        $serialized = null;
+
+        if (is_array($blocks)) {
+            $values = array_map('intval', array_filter($blocks));
+            $serialized = json_encode($values);
+        }
+
         $this->attributes['blocks'] = $serialized;
     }
 

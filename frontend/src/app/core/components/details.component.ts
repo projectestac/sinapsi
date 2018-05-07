@@ -3,7 +3,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Collection } from 'app/core/services';
+import { Model, Collection } from 'app/core/services';
 import { RequestManager, StoreQuery, StoreService } from 'app/core/services';
 import { SessionService, SessionState} from 'app/core/auth';
 import { SessionEvent, UserChanged } from 'app/core/auth';
@@ -180,14 +180,29 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
      * @param ids       Block identifiers
      */
     protected fetchBlocks(ids: number[]) {
-        this.store.query('/api/blocks', { id: ids })
-            .subscribe(blocks => {
-                blocks.sort((a, b) => {
-                    return ids.indexOf(a.id) - ids.indexOf(b.id)
+        if (!Array.isArray(ids) || !ids.length) {
+            this.blocks = null;
+        } else {
+            this.store.query('/api/blocks', { id: ids })
+                .map(blocks => this.sortByIndex(ids, blocks))
+                .subscribe(blocks => {
+                    this.blocks = blocks as Collection<Block>;
                 });
+        }
+    }
 
-                this.blocks = blocks as Collection<Block>;
-            });
+
+    /**
+     * Sorts an array of models in-place by their position on
+     * the given IDs array.
+     *
+     * @param ids       Model identifiers
+     * @param models    Models to sort
+     */
+    private sortByIndex(ids: number[], models: Model[]): any[] {
+        return models.sort((a, b) => {
+            return ids.indexOf(a.id) - ids.indexOf(b.id);
+        });
     }
 
 }

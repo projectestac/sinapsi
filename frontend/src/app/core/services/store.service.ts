@@ -320,11 +320,13 @@ function serializeObject(object: any): string {
             return;
         }
 
-        if (Array.isArray(value)) {
+        if (Array.isArray(value) && value.length > 0) {
             value.forEach(function(item) {
                 const v: string = serializeValue(item);
                 parts.push(`${param}[]=${encodeURL(v)}`);
             });
+        } else if (Array.isArray(value)) {
+            parts.push(`${param}[]=`);
         } else if (value !== null) {
             const v: string = serializeValue(value);
             parts.push(`${param}=${encodeURL(v)}`);
