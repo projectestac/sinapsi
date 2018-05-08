@@ -12,5 +12,9 @@
     color: th-color('primary');
     font-family: th-font-family('heading');
     font-weight: 300;
+    
+    @include media-breakpoint-down(md) {
+      font-size: 2.25rem;
+    }
   }
 }

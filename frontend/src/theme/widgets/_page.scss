@@ -26,11 +26,13 @@
   }
   
   h1 {
-    @extend .d-none;
-    @extend .d-sm-block;
     margin-top: 0.4rem;
     margin-bottom: 1.1rem;
     max-width: 85%;
+
+    @include media-breakpoint-down(md) {
+      font-size: 1.625rem;
+    }
   }
 
   header div[role='contentinfo'] {

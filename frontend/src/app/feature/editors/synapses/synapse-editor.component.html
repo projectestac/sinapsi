@@ -26,22 +26,24 @@
 
         <!-- Editor tabs -->
 
-        <cn-tabs [(value)]="tab">
-          <cn-tabitem value="synapse">
-            <span i18n>Synapse information</span>
-          </cn-tabitem>
-          <cn-tabitem value="filters">
-            <span i18n>Filters</span>
-          </cn-tabitem>
-          <cn-tabitem value="privileges"
-            *appIfCan="['manage-privileges', synapse]">
-            <span i18n>Privileges</span>
-          </cn-tabitem>
-          <cn-tabitem value="blocks"
-            *appIfCan="['manage-blocks', synapse]">
-            <span i18n>Blocks</span>
-          </cn-tabitem>
-        </cn-tabs>
+        <div class="synapse-editor-tabs">
+          <cn-tabs [(value)]="tab">
+            <cn-tabitem value="synapse">
+              <span i18n>Synapse information</span>
+            </cn-tabitem>
+            <cn-tabitem value="filters">
+              <span i18n>Filters</span>
+            </cn-tabitem>
+            <cn-tabitem value="privileges"
+              *appIfCan="['manage-privileges', synapse]">
+              <span i18n>Privileges</span>
+            </cn-tabitem>
+            <cn-tabitem value="blocks"
+              *appIfCan="['manage-blocks', synapse]">
+              <span i18n>Blocks</span>
+            </cn-tabitem>
+          </cn-tabs>
+        </div>
 
         <!-- Editor sections -->
 

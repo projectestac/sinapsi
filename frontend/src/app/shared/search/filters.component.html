@@ -7,7 +7,12 @@
       <cn-tabs [(value)]="tab">
         <cn-tabitem *ngFor="let item of fields" [value]="item.id">
           <div class="search-tab-title">
-            <span>{{ item.name }}</span>
+            <span class="tab-icon d-sm-none">
+              <cn-icon [value]="item.icon"></cn-icon>
+            </span>
+            <span class="d-none d-sm-block">
+              {{ item.name }}
+            </span>
             <span *ngIf="countValue(item.id) > 0"
                   class="badge badge-pill badge-secondary">
               {{ countValue(item.id) }}
@@ -16,7 +21,12 @@
         </cn-tabitem>
         <cn-tabitem value="published_at">
           <div class="search-tab-title">
-            <span i18n>Publish date</span>
+            <span class="tab-icon d-sm-none">
+              <cn-icon value="calendar"></cn-icon>
+            </span>
+            <span class="d-none d-sm-block" i18n>
+              Publish date
+            </span>
             <span *ngIf="hasDateValues()"
                   class="badge badge-pill badge-secondary">
               1
@@ -25,7 +35,12 @@
         </cn-tabitem>
         <cn-tabitem value="sort">
           <div class="search-tab-title">
-            <span i18n>Order by</span>
+            <span class="tab-icon d-sm-none">
+              <cn-icon value="sort-amount-asc"></cn-icon>
+            </span>
+            <span class="d-none d-sm-block" i18n>
+              Order by
+            </span>
             <span *ngIf="form.get('sort').value"
                   class="badge badge-pill badge-secondary">
               1

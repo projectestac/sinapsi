@@ -84,5 +84,9 @@
     align-items: center;
     justify-content: space-between;
   }
-
+  
+  .pagination-buttons {
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
 }

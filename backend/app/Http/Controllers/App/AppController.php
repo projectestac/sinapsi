@@ -38,7 +38,7 @@ class AppController extends Controller {
             $size = $filesystem->name($path);
             
             $icons[] = [
-               "src" =>     "images/launch/$size.png",
+               "src" =>     "/images/launch/$size.png",
                "sizes" =>   "{$size}x{$size}",
                "type" =>    "image/png"
             ];

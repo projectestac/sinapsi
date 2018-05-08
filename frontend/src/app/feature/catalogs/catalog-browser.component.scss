@@ -3,8 +3,20 @@
 .tabs-outlet {
   border: 1px solid th-gray('divider');
   border-top: 0;
-  padding: 0 2rem;
+  padding: 0 1rem;
   min-height: 30rem;
+  
+  @include media-breakpoint-up(lg) {
+    padding: 0 2rem;
+  }
+}
+
+.catalog-browser-tabs {
+  @include media-breakpoint-down(md) {
+    ::ng-deep .nav-link {
+      font-size: 95%;
+    }
+  }
 }
 
 ::ng-deep .state-message {

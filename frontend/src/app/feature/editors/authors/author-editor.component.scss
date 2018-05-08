@@ -30,6 +30,13 @@
   padding: 0;
 }
 
+.author-editor-tabs {
+  @include media-breakpoint-down(md) {
+    ::ng-deep .nav-link {
+      font-size: 95%;
+    }
+  }
+}
 
 // Action buttons
 

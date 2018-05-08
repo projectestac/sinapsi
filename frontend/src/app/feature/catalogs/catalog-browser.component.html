@@ -46,17 +46,19 @@
         
         <!-- Results -->
         
-        <cn-tabs [value]="childPath" (valueChange)="pick($event)">
-          <cn-tabitem value="taxonomies">
-            <span i18n>Taxonomies</span>
-          </cn-tabitem>
-          <cn-tabitem value="synapses">
-            <span i18n>Synapses</span>
-          </cn-tabitem>
-          <cn-tabitem value="tags">
-            <span i18n>Tags</span>
-          </cn-tabitem>
-        </cn-tabs>
+        <div class="catalog-browser-tabs">
+          <cn-tabs [value]="childPath" (valueChange)="pick($event)">
+            <cn-tabitem value="taxonomies">
+              <span i18n>Taxonomies</span>
+            </cn-tabitem>
+            <cn-tabitem value="synapses">
+              <span i18n>Synapses</span>
+            </cn-tabitem>
+            <cn-tabitem value="tags">
+              <span i18n>Tags</span>
+            </cn-tabitem>
+          </cn-tabs>
+        </div>
         
         <div class="tabs-outlet">
           <router-outlet></router-outlet>

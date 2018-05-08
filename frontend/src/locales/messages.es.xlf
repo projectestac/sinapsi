@@ -245,6 +245,14 @@
           <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="d82ace01e5259ebdad30b68ba01bedcd87956d0d" datatype="html">
+        <source>http://web.gencat.cat/en/menu-ajuda/ajuda/avis_legal/</source>
+        <target>http://web.gencat.cat/es/menu-ajuda/ajuda/avis_legal/</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="ceb7d11a9303b240a5055389110ed60559b21480" datatype="html">
         <source>
               In accordance with article 17.1 of the Catalan Law 19/2014, the
@@ -332,7 +340,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0ac48d1bc40e665593084fc668d041a9bb663c6e" datatype="html">
@@ -725,20 +733,20 @@
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1aee80ab35aa99508802cdec6306e110b2feaf9e" datatype="html">
+      <trans-unit id="1cccadceefca87a39effdef34c1d546493ebaede" datatype="html">
         <source>Publish date</source>
         <target>Fecha de publicación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="400c30183b9b6cf5b3decf8491a929e10fa21a3b" datatype="html">
+      <trans-unit id="13da0d916180898026702ac665c67d0530183d7a" datatype="html">
         <source>Order by</source>
         <target>Ordenación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5ff3607b2103fd30612f36b0393f427dd2c77d54" datatype="html">
@@ -746,7 +754,7 @@
         <target>Publicación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1123008fd4f87b47f2f50ecf0c068684188dd0af" datatype="html">
@@ -754,7 +762,7 @@
         <target>Entre dos fechas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="23ea73713d466823349713191794d33bd9e39f61" datatype="html">
@@ -762,7 +770,7 @@
         <target>Publicado después</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="178d3c474ee8c8a2caac5c354bcdceb505c4668a" datatype="html">
@@ -770,7 +778,7 @@
         <target>Publicado antes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c2d0ac9f528bbd5f53fd34269fde8b59e029621b" datatype="html">
@@ -778,7 +786,7 @@
         <target>Aplicar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d70f826e450195b92fdb8704cc3bc0c53cf69e34" datatype="html">
@@ -786,7 +794,7 @@
         <target>Aplicar rango de fechas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8568d21092552783c4982bfa925f86b6e12ed5c8" datatype="html">
@@ -794,7 +802,7 @@
         <target>Ordenación de resultados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="71740c443026ae481ac1e8765d0ef09a39e1683b" datatype="html">
@@ -809,7 +817,7 @@
         <source>
           <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>The search results are filtered<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>
         </source>
-        <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Se han filtrado los resultados de búsqueda<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Se han filtrado los resultados<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -905,6 +913,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/state/state.component.ts</context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0adf1bca29ccebf68557971297659f1e5c705980" datatype="html">
+        <source>Unexpected error</source>
+        <target>Error inesperado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="97e6199eedfbb4b9e439acd45db8906c99bd10f3" datatype="html">
@@ -1285,7 +1301,7 @@
         <target>Taxonomías</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cafc87479686947e2590b9f588a88040aeaf660b" datatype="html">
@@ -1293,7 +1309,7 @@
         <target>Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
@@ -1429,7 +1445,7 @@
         <target>Datos del autor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7160311a32a547596628a142e8fc3ca09e029055" datatype="html">
@@ -1437,7 +1453,7 @@
         <target>Sinapsis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
@@ -1445,11 +1461,11 @@
         <target>Bloques</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b2998166dd6f1cc2da0a7073dea46a67ba674c86" datatype="html">
@@ -1457,7 +1473,7 @@
         <target>Nombre del autor:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c31eab5d26e41d74a00805798a47b17bb3ceb6f1" datatype="html">
@@ -1465,7 +1481,7 @@
         <target>Nombre completo del autor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="91b96d7228b6e05c238fa4e39abfc17ad51a6eef" datatype="html">
@@ -1473,7 +1489,7 @@
         <target>Correo electrónico:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
@@ -1485,7 +1501,7 @@
         <target>Dirección de correo electrónico de inicio de sesión del usuario.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">72</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
@@ -1497,11 +1513,11 @@
         <target>Guardar cambios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">117</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="06c663bf1474713f57551123a46b34318543b67d" datatype="html">
@@ -1509,11 +1525,11 @@
         <target>Restablecer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">122</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
@@ -1521,7 +1537,7 @@
         <target>Datos de la sinapsis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1298c1d2bbbb7415f5494e800f6775fdb70f4df6" datatype="html">
@@ -1529,7 +1545,7 @@
         <target>Filtros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e6deb306d99c3da64ee4436557039fbcbc45fea2" datatype="html">
@@ -1537,7 +1553,7 @@
         <target>Privilegios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d1fee12ecdc35ab97161067954562b66bfbdcb45" datatype="html">

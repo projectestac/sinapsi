@@ -26,17 +26,19 @@
 
         <!-- Editor tabs -->
 
-        <cn-tabs [(value)]="tab">
-          <cn-tabitem value="author">
-            <span i18n>Author information</span>
-          </cn-tabitem>
-          <cn-tabitem value="synapse">
-            <span i18n>Synapse</span>
-          </cn-tabitem>
-          <cn-tabitem value="blocks">
-            <span i18n>Blocks</span>
-          </cn-tabitem>
-        </cn-tabs>
+        <div class="author-editor-tabs">
+          <cn-tabs [(value)]="tab">
+            <cn-tabitem value="author">
+              <span i18n>Author information</span>
+            </cn-tabitem>
+            <cn-tabitem value="synapse">
+              <span i18n>Synapse</span>
+            </cn-tabitem>
+            <cn-tabitem value="blocks">
+              <span i18n>Blocks</span>
+            </cn-tabitem>
+          </cn-tabs>
+        </div>
 
         <!-- Editor sections -->
 
