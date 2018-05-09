@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragulaModule } from 'ng2-dragula';
@@ -24,7 +24,7 @@ import { CoreModule } from 'app/core';
         ConcreteModule.forRoot(),
         CoreModule.forRoot(),
         DragulaModule,
-        HttpModule
+        HttpClientModule
     ],
 
     bootstrap: [

@@ -3,8 +3,8 @@
 // Base styles
 
 .comment {
-  font-size: .9rem;
-  padding: 1rem;
+  font-size: .8125rem;
+  padding: .75rem;
   
   @include media-breakpoint-down(sm) {
     margin-left: 0;
@@ -37,5 +37,7 @@
 }
 
 .comment-text {
+  font-size: .875rem;
   white-space: pre-line;
+  margin-left: 1.9rem;
 }

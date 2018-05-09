@@ -87,12 +87,12 @@ export class TagsCatalogComponent extends CatalogComponent {
         const success = CatalogMessages.RemoveTagSuccess(tag);
         
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
-            .subscribe(event => {
+            .filter(e => e.confirmed)
+            .subscribe(() => {
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.path, tag.id)
-                   .subscribe(event => {
+                   .subscribe(() => {
                        tag.deleted_at = deleted_at;
                        this.toaster.success(success);
                    });

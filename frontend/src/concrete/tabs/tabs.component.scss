@@ -15,4 +15,14 @@
 :host ::ng-deep cn-tabitem:last-child,
 :host ::ng-deep cn-tabbox:last-child {
   flex-grow: 1;
+  
+  .nav-item {
+    flex-grow: 1;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    border-right: 0;
+  }
 }

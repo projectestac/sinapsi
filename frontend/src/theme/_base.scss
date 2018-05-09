@@ -16,6 +16,54 @@ html {
 
 aside.synapse-blocks {
   padding: 2rem 0;
+
+  @include media-breakpoint-down(xs) {
+    padding: 0;
+  }
+}
+
+section {
+  @include media-breakpoint-down(xs) {
+    padding: 1rem 0;
+  }
+}
+
+
+// Horizontal spacing
+
+.sh:empty {
+  display: none;
+}
+
+.sh:not(:last-child) {
+  margin-right: .4em;
+}
+
+.sh:not(:first-child) {
+  margin-left: .4em;
+}
+
+.sh + .sh {
+  margin-left: 0;
+}
+
+
+// Vertical spacing
+
+.sv:empty {
+  display: none;
+}
+
+.sv:not(:last-child) {
+  margin-right: .4em;
+}
+
+.sv:not(:first-child) {
+  margin-left: .4em;
+}
+
+.sv + .sv {
+  margin-left: 0;
 }
 
 

@@ -4,10 +4,8 @@
       <p>
         <cn-icon value="lock"></cn-icon>
         <a href="#" (click)="session.showSignInForm(); false"
-           i18n="comments login">
-          Log in
-        </a>
-        <span i18n>to post a comment.</span>
+           class="sh" i18n="comments login">Log in</a>
+        <span class="sh" i18n>to post a comment.</span>
       </p>
 		</ng-container>
     <ng-container *ngIf="session.check()">

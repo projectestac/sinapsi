@@ -4,8 +4,10 @@
   color: th-gray('400');
 }
 
-.page-header {
-  .container {
+.page-header .container {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(sm) {
     margin-bottom: 2rem;
   }
 }

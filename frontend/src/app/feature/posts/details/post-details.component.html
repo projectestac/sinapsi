@@ -8,7 +8,9 @@
       <a (click)="toggleExpansion(); false" href="#" class="title">
         {{ post.title }}
       </a>
-      <a [href]="post.url" class="permalink" target="_blank"
+      <a (click)="open(post.url); false"
+         [href]="post.url" target="_blank"
+          class="permalink"
          title="Permalink" i18n-title>
         <cn-icon value="link"></cn-icon>
       </a>
@@ -31,7 +33,7 @@
   <!-- Post contents -->
   
   <div class="post-container">
-    <figure class="post-image">
+    <figure (click)="open(post.url); false" class="post-image">
       <div class="post-image-wrapper">
         <img *ngIf="post.image_url" [src]="post.image_url"
              alt="Post image" i18n-alt>
@@ -53,7 +55,8 @@
     <div class="post-tags">
       <ul>
         <li *ngFor="let tag of post.tags; trackBy: trackById">
-          <a [routerLink]="['/tags', tag.slug]">
+          <a [routerLink]="['/tags', tag.slug]"
+             (click)="navigate(['/tags', tag.slug]); false">
             {{ tag.name }}
           </a>
         </li>
@@ -68,13 +71,15 @@
     <!-- Post comments -->
     
     <cn-expandable #expandable (toggle)="scrollFooterIntoView()">
-      <div *ngIf="expandable.state === 'open'" class="comments-wrapper">
-        <app-comments-browser
-          [post]="post"
-          (created)="onCommentCreated($event)"
-          (deleted)="onCommentDeleted($event)">
-        </app-comments-browser>
-      </div>
+      <ng-container *ngIf="expandable.state === 'open'">
+        <div class="comments-wrapper">
+          <app-comments-browser
+            [post]="post"
+            (created)="onCommentCreated($event)"
+            (deleted)="onCommentDeleted($event)">
+          </app-comments-browser>
+        </div>
+      </ng-container>
     </cn-expandable>
     
     <!-- Post actions -->
@@ -87,7 +92,7 @@
             class="btn btn-sm btn-light like-button"
             [ngClass]="{ packed: post.reaction?.liked }">
           <cn-icon value="heart"></cn-icon>
-          <span>{{ post.like_count || null }}</span>
+          <span class="sh">{{ post.like_count || null }}</span>
         </button>
         <button (click)="toggleFavorite()"
             type="button"
@@ -95,7 +100,7 @@
             class="btn btn-sm btn-light bookmark-button"
             [ngClass]="{ packed: post.reaction?.favourited }">
           <cn-icon value="bookmark"></cn-icon>
-          <span>{{ post.favourite_count || null }}</span>
+          <span class="sh">{{ post.favourite_count || null }}</span>
         </button>
         
         <!-- Social share menu -->
@@ -125,7 +130,7 @@
               type="button"
               title="Remove post" i18n-title
               class="btn btn-sm btn-light share-button">
-            <cn-icon value="ban"></cn-icon>
+            <cn-icon value="remove"></cn-icon>
           </button>
         </ng-container>
         
@@ -137,10 +142,10 @@
             [ngClass]="{ packed: post.reaction?.commented }"
             class="btn btn-sm btn-light comment-button">
           <cn-icon value="comment"></cn-icon>
-          <span *ngIf="post.comment_count > 0">
+          <span class="sh" *ngIf="post.comment_count > 0">
             {{ post.comment_count }} <span i18n>comments</span>
           </span>
-          <span *ngIf="post.comment_count < 1" i18n>
+          <span class="sh" *ngIf="post.comment_count < 1" i18n>
             Comment
           </span>
         </button>

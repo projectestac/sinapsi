@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { throwError, Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Comparator, EditorComponent, Model } from 'app/core';
@@ -64,13 +64,13 @@ export class SynapseEditorComponent extends EditorComponent {
         // Only authenticated users can edit synapses
 
         if (this.session.check() === false) {
-            return Observable.throw({ status: 403 });
+            return throwError({ status: 403 });
         }
 
         // Check if user policies grant access to the synapse
 
         if (!this.policies.can('update-synapse', synapse)) {
-            return Observable.throw({ status: 401 });
+            return throwError({ status: 401 });
         }
 
         // Disable any controls that must not be editable

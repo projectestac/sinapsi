@@ -383,9 +383,9 @@ export class ColorpickerComponent implements ControlValueAccessor {
      */
     protected scrollToColor(value: Color) {
         try {
-            const uid = this.optionUID(value);
+            const euid = this.optionUID(value);
             const box = this.listBox.nativeElement;
-            const element = box.querySelector(`#${uid}`);
+            const element = box.querySelector(`#${euid}`);
 
             box.scrollTop = element.offsetTop;
         } catch (e) {

@@ -36,6 +36,14 @@ export const GLOBAL_GATES = {
 
 
     /**
+     * Determine whether the user can manage comments.
+     */
+    'manage-comments': (user: User): boolean => {
+        return user.role === UserRole.ADMINISTRATOR;
+    },
+
+
+    /**
      * Determine whether the user can manage synapses.
      */
     'manage-synapses': (user: User): boolean => {

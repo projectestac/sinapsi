@@ -1,11 +1,13 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CnToaster } from 'concrete/toaster';
 import { CnExpandState } from 'concrete/expandable';
 
 import { ModelCreated, ModelDeleted } from 'app/core';
 import { StoreQuery, StoreService, SessionService } from 'app/core';
 import { Collection, Model } from 'app/core';
+import { ScrollTop } from 'app/core';
 import { Comment, Post, Reaction, Synapse } from 'app/models';
 import { PostsView } from '../posts.types';
 import { PostsMessages } from '../posts.messages';
@@ -60,7 +62,8 @@ export class PostDetailsComponent {
      */
     get state(): CnExpandState {
         return this.isOpen ?
-            CnExpandState.OPEN : CnExpandState.CLOSED;
+            CnExpandState.OPEN :
+            CnExpandState.CLOSED;
     }
 
 
@@ -68,6 +71,7 @@ export class PostDetailsComponent {
      * Component constructor.
      */
     constructor(
+        protected router: Router,
         protected store: StoreService,
         protected session: SessionService,
         protected toaster: CnToaster
@@ -201,6 +205,25 @@ export class PostDetailsComponent {
             .subscribe(success => {
                 this.post.deleted_at = null;
             });
+    }
+
+
+    /**
+     * Open the given URL on a new tab.
+     *
+     * @param url       URL to open
+     */
+    open(url: string) {
+        window.open(url, '_blank');
+    }
+
+
+    /**
+     * Navigate to the given route.
+     */
+    @ScrollTop()
+    public navigate(path: any[]) {
+        this.router.navigate(path);
     }
 
 

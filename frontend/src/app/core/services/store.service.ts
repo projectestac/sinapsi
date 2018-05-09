@@ -1,9 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { RequestOptionsArgs } from '@angular/http';
-import { URLSearchParams, QueryEncoder } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParameterCodec } from '@angular/common/http';
 
 import {
     ModelCreated,
@@ -91,10 +90,8 @@ export class StoreService implements OnDestroy {
 
     /**
      * Service constructor.
-     *
-     * @param http          Http service
      */
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
 
     /**
@@ -114,12 +111,12 @@ export class StoreService implements OnDestroy {
      * @return              Observable
      */
     query(path: string, params?: Object): Observable<Collection<Model>> {
-        const options = { params: toURLSearchParams(params) };
+        const options = { params: toHttpParams(params) };
         const request = Object.assign({}, options.params);
 
         return this.http.get(path, options)
             .catch(response => this.throw(
-                new RetrieveError(path, request, response.json())))
+                new RetrieveError(path, request, response)))
             .map(response => toCollection<Model>(response));
     }
 
@@ -137,8 +134,7 @@ export class StoreService implements OnDestroy {
 
         return this.http.get(`${path}/${id}`)
             .catch(response => this.throw(
-                new RetrieveError(path, request, response.json())))
-            .map(response => response.json());
+                new RetrieveError(path, request, response)));
     }
 
 
@@ -155,9 +151,9 @@ export class StoreService implements OnDestroy {
 
         return this.http.delete(`${path}/${id}`)
             .catch(response => this.throw(
-                new UpdateError(path, request, response.json())))
+                new UpdateError(path, request, response)))
             .map(response => this.emit(
-                new ModelDeleted(path, request, response.json())));
+                new ModelDeleted(path, request, response)));
     }
 
 
@@ -174,9 +170,9 @@ export class StoreService implements OnDestroy {
 
         return this.http.post(`${path}/${id}`, {})
             .catch(response => this.throw(
-                new UpdateError(path, request, response.json())))
+                new UpdateError(path, request, response)))
             .map(response => this.emit(
-                new ModelRestored(path, request, response.json())));
+                new ModelRestored(path, request, response)));
     }
 
 
@@ -190,14 +186,14 @@ export class StoreService implements OnDestroy {
      * @return              Observable
      */
     update(path: string, id: number, params: Object): Observable<StoreResponse> {
-        const options = { params: toURLSearchParams(params) };
+        const options = { params: toHttpParams(params) };
         const request = Object.assign({ id: id }, options.params);
 
         return this.http.put(`${path}/${id}`, null, options)
             .catch(response => this.throw(
-                new UpdateError(path, request, response.json())))
+                new UpdateError(path, request, response)))
             .map(response => this.emit(
-                new ModelUpdated(path, request, response.json())));
+                new ModelUpdated(path, request, response)));
     }
 
 
@@ -214,9 +210,9 @@ export class StoreService implements OnDestroy {
 
         return this.http.post(path, params)
             .catch(response => this.throw(
-                new UpdateError(path, request, response.json())))
+                new UpdateError(path, request, response)))
             .map(response => this.emit(
-                new ModelCreated(path, request, response.json())));
+                new ModelCreated(path, request, response)));
     }
 
 
@@ -340,21 +336,22 @@ function serializeObject(object: any): string {
 
 
 /**
- * Serializes an object and returns a suitable URLSearchParams
+ * Serializes an object and returns a suitable HttpParams
  * object with the raw parameters.
  *
  * @param params    Parameters to serialize
- * @returns         URLSearchParams object
+ * @returns         HttpParams object
  */
-function toURLSearchParams(params: any): URLSearchParams {
-    const serialized = serializeObject(params);
-
-    return new URLSearchParams(serialized,
-        new class extends QueryEncoder {
-            encodeValue(v) { return v; }
+function toHttpParams(params: any): HttpParams {
+    return new HttpParams({
+        fromString: serializeObject(params),
+        encoder: new class implements HttpParameterCodec {
             encodeKey(v) { return v; }
+            decodeKey(k) { return k; }
+            encodeValue(v) { return v; }
+            decodeValue(v) { return v; }
         }
-    );
+    });
 }
 
 
@@ -364,13 +361,12 @@ function toURLSearchParams(params: any): URLSearchParams {
  * @param response              Response object
  * @return                      A new collection object
  */
-function toCollection<T>(response: Response): Collection<T> {
-    const object: Object = response.json();
-    const data: Collection<T> = object['data'];
+function toCollection<T>(response: any): Collection<T> {
+    const data: Collection<T> = response['data'];
 
-    Object.keys(object).forEach(function(key) {
+    Object.keys(response).forEach(function(key) {
         if (key !== 'data') {
-            data[key] = object[key];
+            data[key] = response[key];
         }
     });
 

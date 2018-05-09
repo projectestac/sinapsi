@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Component, Input, Output } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { EventEmitter, SimpleChanges } from '@angular/core';

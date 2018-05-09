@@ -1,5 +1,4 @@
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject, Subject } from 'rxjs';
 
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter, SimpleChanges } from '@angular/core';

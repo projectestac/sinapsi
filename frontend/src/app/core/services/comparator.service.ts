@@ -24,7 +24,7 @@ export class Comparator {
         Object.entries(object).forEach(([key, value]) => {
             if (Comparator.typeOf(value) === 'object') {
                 if (value.hasOwnProperty('id')) {
-                    object[`${key}_id`] = value.id;
+                    object[`${key}_id`] = value['id'];
                     delete object[key];
                 }
             }
@@ -152,7 +152,7 @@ export class Comparator {
             return false;
         }
 
-        for (let key of akeys) {
+        for (const key of akeys) {
             if (!Comparator.equals(a[key], b[key])) {
                 return false;
             }

@@ -68,13 +68,13 @@ export class ProjectsCatalogComponent extends CatalogComponent {
         const success = ProjectMessages.RemoveSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
-            .subscribe(event => {
+            .filter(e => e.confirmed)
+            .subscribe(() => {
                 const id = author.project_id;
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.projectsPath, id)
-                   .subscribe(event => {
+                   .subscribe(() => {
                        author.deleted_at = deleted_at;
                        this.toaster.success(success);
                    });

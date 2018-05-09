@@ -33,7 +33,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     @Input() value: any = null;
 
     /** Editor height */
-    @Input() height: number = 80;
+    @Input() height = 80;
 
     /** Disabled attribute of the control */
     @Input('disabled') set setDisabled(value: string) {

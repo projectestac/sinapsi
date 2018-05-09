@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Component, Input, ViewChild } from '@angular/core';
 import { OnDestroy, OnInit } from '@angular/core';
 import { RequestManager, StoreQuery } from 'app/core';

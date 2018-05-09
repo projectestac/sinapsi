@@ -12,7 +12,7 @@ Installation of Sinapsi
   ------------
 
   This project was built using the frameworks Laravel 5.4 for the
-  backend and Angular 5.2 on the frontend.
+  backend and Angular 6.0 on the frontend.
 
   Server requeriments:
 
@@ -29,7 +29,7 @@ Installation of Sinapsi
   * Make >= 4.1
   * Composer >= 1.4
   * Node.js >= 7.10
-  * Angular CLI >= 1.7
+  * Angular CLI >= 6.0
 
   Compile the software
   --------------------

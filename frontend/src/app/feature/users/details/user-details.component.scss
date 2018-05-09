@@ -1,7 +1,9 @@
 @import "core";
 
-.page-header {
-  .container {
+.page-header .container {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(sm) {
     margin-bottom: 2rem;
   }
 }

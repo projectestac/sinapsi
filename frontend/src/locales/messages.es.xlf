@@ -284,7 +284,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
@@ -340,7 +340,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0ac48d1bc40e665593084fc668d041a9bb663c6e" datatype="html">
@@ -381,7 +381,7 @@
       </trans-unit>
       <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html">
         <source>Log in</source>
-        <target>Entrada</target>
+        <target>Entre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/header/header.component.ts</context>
           <context context-type="linenumber">71</context>
@@ -390,7 +390,11 @@
           <context context-type="sourcefile">app/core/header/header.component.ts</context>
           <context context-type="linenumber">115</context>
         </context-group>
-      </trans-unit>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      <note>comments login</note></trans-unit>
       <trans-unit id="fc8996094bd4aefc16bcd15f44e717d0ad7eb3a1" datatype="html">
         <source>
                       User profile
@@ -464,7 +468,7 @@
         <target>dice:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="50ff68990cb970d492daaec81fd154938f344526" datatype="html">
@@ -499,23 +503,12 @@
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="73c85a147bcc1b5f79ae10affa13f420fc99c2e9" datatype="html">
-        <source>
-          Log in
-        </source>
-        <target>Entre</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <note priority="1" from="description">comments login</note>
-      <note>comments login</note></trans-unit>
       <trans-unit id="cf3e24a457fbd347f9cb4bee3a6f33b59b774dad" datatype="html">
         <source>to post a comment.</source>
         <target>para añadir comentarios.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="019d4bd6a5690f0cfa0ecf346a4e6bf7f0d8debb" datatype="html">
@@ -539,7 +532,7 @@
         <target>Mostrar más comentarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="be97b2ab9effe4b2520406dd963bcf331f5b8fa7" datatype="html">
@@ -932,10 +925,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="f7e53f755560b3d5abe7c5b640f43c300da52d7e" datatype="html">
-        <source>
-      Reload this page
-    </source>
-        <target>Cargar esta página</target>
+        <source>Reload this page</source>
+        <target>Refrescar esta página</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/state/state.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -1030,9 +1021,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="32753fe131ab72cc72f416b79766952cf37f5e88" datatype="html">
-        <source>
-    <x id="INTERPOLATION" equiv-text="{{ section.name }}"/>
-  </source>
+        <source><x id="INTERPOLATION" equiv-text="{{ section.name }}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{ section.name }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
@@ -1044,7 +1033,7 @@
         <target>Enlace permanente</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5b387f5a15b95e339df10fc23526c659a2b6c6f" datatype="html">
@@ -1052,7 +1041,7 @@
         <target>eliminado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f884f5cd998c15913583d78ec85c4e75414bc28a" datatype="html">
@@ -1060,7 +1049,7 @@
         <target>Este artículo fue eliminado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="420273ffde941a44eea2dfb712deb88479714829" datatype="html">
@@ -1068,7 +1057,7 @@
         <target>Imagen del artículo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3230f6602c82e020cb18cce2b32952d75869a5d5" datatype="html">
@@ -1076,7 +1065,7 @@
         <target>Me gusta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="11a0771f88158a540a54e0e4ec5d25733d65fc0e" datatype="html">
@@ -1084,7 +1073,7 @@
         <target>Añadir a favoritos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0bd8b27f60a1f098a53e06328426d818e3508ff9" datatype="html">
@@ -1092,7 +1081,7 @@
         <target>Compartir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">110</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
@@ -1104,7 +1093,7 @@
         <target>Restaurar artículo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="59561deb7ddc7509cfd36996c15b67fda9bfe30c" datatype="html">
@@ -1112,7 +1101,7 @@
         <target>Eliminar artículo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4206a05d6b2a46cecb7e278847e0250d562120a1" datatype="html">
@@ -1120,7 +1109,7 @@
         <target>comentarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="linenumber">146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5a8099429d20eede216ee4a0c6a56eebf22ee31" datatype="html">
@@ -1130,7 +1119,7 @@
         <target>Comentar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5a5d7ee2acbfa9c91ab7f41d26bda9ff0cafe42f" datatype="html">
@@ -1138,7 +1127,7 @@
         <target>Comentar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">140</context>
         </context-group>
       </trans-unit>
       <trans-unit id="862ce6145268ceabf49fb809a756527ce2d4eda9" datatype="html">
@@ -1258,10 +1247,8 @@
           <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c6e8bca8e83e3269cd8bc34d1bd8065d38ec60d0" datatype="html">
-        <source>
-                New synapse
-              </source>
+      <trans-unit id="938f1ce19e2906bb194cc27e5951f2d88f8c3098" datatype="html">
+        <source>New synapse</source>
         <target>Nueva sinapsis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
@@ -1281,15 +1268,15 @@
         <target>Buscar por palabra clave</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
@@ -1301,7 +1288,7 @@
         <target>Taxonomías</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cafc87479686947e2590b9f588a88040aeaf660b" datatype="html">
@@ -1309,7 +1296,7 @@
         <target>Etiquetas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
@@ -2308,10 +2295,8 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b88907e77657b00e638d39967ac34b414e88c466" datatype="html">
-        <source>
-              New project
-            </source>
+      <trans-unit id="32126c3c0f60d7c2538b1b6bc724590a6a8d0fe8" datatype="html">
+        <source>New project</source>
         <target>Nuevo proyecto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
@@ -2374,10 +2359,8 @@
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f2192067d43dab5b20ce7747fe93fce7de833db7" datatype="html">
-        <source>
-              New school
-            </source>
+      <trans-unit id="4df8556b7199feacceae7b2d371c066ddd7d4af7" datatype="html">
+        <source>New school</source>
         <target>Nuevo centro</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>

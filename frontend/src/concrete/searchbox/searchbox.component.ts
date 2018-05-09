@@ -1,9 +1,9 @@
-import 'rxjs/add/operator/debounceTime';
+
 
 import { Component, Input, Output } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy, SimpleChanges } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 
 
 

@@ -1,5 +1,5 @@
-import { state, transition } from '@angular/core';
-import { animate, style, trigger } from '@angular/core';
+import { state, transition } from '@angular/animations';
+import { animate, style, trigger } from '@angular/animations';
 
 
 /**
@@ -7,7 +7,8 @@ import { animate, style, trigger } from '@angular/core';
  */
 export const ExpandTrigger = trigger('expand', [
     state('open', style({
-        height: '*'
+        height: '*',
+        overflow: 'hidden'
     })),
 
     state('closed', style({

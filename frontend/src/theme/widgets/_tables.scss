@@ -26,6 +26,10 @@ th, td {
     @extend %shrink-column;
     text-align: center;
   }
+  
+  &.actions-column .btn:not(:last-child) {
+    margin-right: .4rem;
+  }
 }
 
 // Cells display
@@ -82,4 +86,13 @@ td {
     color: th-gray('800');
   }
 
+}
+
+
+// Small screens
+
+@include media-breakpoint-down(md) {
+  .table {
+    font-size: 90%;
+  }
 }

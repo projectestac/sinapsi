@@ -14,7 +14,7 @@
   position: relative;
   
   @include media-breakpoint-down(xs) {
-    padding: .5rem .5rem 1rem .5rem;
+    padding: 1rem .5rem;
   }
 }
 
@@ -50,7 +50,7 @@
     }
     
     @include media-breakpoint-down(xs) {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
   
@@ -58,6 +58,7 @@
     display: flex;
     justify-content: space-between;
     font-size: .9rem;
+    margin-bottom: .5rem;
     order: 1;
     
     @include media-breakpoint-down(sm) {
@@ -107,13 +108,17 @@
   }
   
   .post-social {
-    button {
+    .btn {
       color: th-gray('400');
       background: th-gray('50');
     }
     
-    button span {
+    .btn span {
       color: th-gray('600');
+    }
+    
+    .btn:not(:last-child) {
+      margin-right: .2rem;
     }
     
     .like-button.packed {
@@ -158,6 +163,7 @@
   max-height: 15.5rem;
   overflow-y: hidden;
   margin: 0;
+  cursor: pointer;
   
   img {
     color: transparent;
@@ -230,16 +236,18 @@
     display: none;
   }
   
-  .post-footer {
-    .back-to-top {
-      display: inline-block;
-    }
-    
-    .back-to-top .btn {
-      color: th-gray('400');
-      font-size: 1.8rem;
-      line-height: 1;
-      padding: 0;
+  @include media-breakpoint-up(sm) {
+    .post-footer {
+      .back-to-top {
+        display: inline-block;
+      }
+      
+      .back-to-top .btn {
+        color: th-gray('400');
+        font-size: 1.8rem;
+        line-height: 1;
+        padding: 0;
+      }
     }
   }
   
@@ -257,13 +265,17 @@
   border-bottom: 1px solid th-gray('200');
   
   .post-header {
-    margin-left: 4rem;
+    margin-left: 5rem;
   }
   
   .post-header h1 {
     font-weight: 400;
   }
   
+  .post-header .metadata {
+    margin-bottom: 0;
+  }
+
   .post-container {
     padding: 0;
   }
@@ -272,8 +284,8 @@
     background: th-gray('50');
     background-image: url('/assets/images/post-image-96.png');
     background-size: cover;
-    min-height: 3rem;
-    min-width: 3rem;
+    min-height: 4rem;
+    min-width: 4rem;
     padding: 0;
   }
   
@@ -284,8 +296,8 @@
     top: 1rem;
     
     &, img {
-      height: 3rem;
-      width: 3rem;
+      height: 4rem;
+      width: 4rem;
     }
     
     img {

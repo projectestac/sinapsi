@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 

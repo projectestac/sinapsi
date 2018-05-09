@@ -48,13 +48,13 @@ export class UsersCatalogComponent extends CatalogComponent {
         const success = UserMessages.DisableSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
-            .subscribe(event => {
+            .filter(e => e.confirmed)
+            .subscribe(() => {
                 const id = author.user_id;
                 const disabled_at = (new Date()).toISOString();
 
                 this.store.delete(this.usersPath, id)
-                   .subscribe(event => {
+                   .subscribe(() => {
                        author.user.disabled_at = disabled_at;
                        this.toaster.success(success);
                    });
@@ -70,7 +70,7 @@ export class UsersCatalogComponent extends CatalogComponent {
         const success = UserMessages.RestoreSuccess(author);
 
         this.store.restore(this.usersPath, id)
-           .subscribe(event => {
+           .subscribe(() => {
                author.user.disabled_at = null;
                this.toaster.success(success);
            });

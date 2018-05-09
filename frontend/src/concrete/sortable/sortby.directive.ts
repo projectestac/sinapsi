@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Directive, Input, OnInit, OnDestroy } from '@angular/core';
 import { ElementRef, HostListener, Renderer2 } from '@angular/core';
 

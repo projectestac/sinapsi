@@ -71,13 +71,13 @@ export class SchoolsCatalogComponent extends CatalogComponent {
         const success = SchoolMessages.RemoveSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
-            .subscribe(event => {
+            .filter(e => e.confirmed)
+            .subscribe(() => {
                 const id = author.school_id;
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.schoolsPath, id)
-                   .subscribe(event => {
+                   .subscribe(() => {
                        author.deleted_at = deleted_at;
                        this.toaster.success(success);
                    });

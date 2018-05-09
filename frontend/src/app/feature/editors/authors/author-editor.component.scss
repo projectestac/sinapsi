@@ -55,6 +55,10 @@
   .form-text small {
     font-weight: 600;
   }
+  
+  .btn:not(:last-child) {
+    margin-right: .4rem;
+  }
 }
 
 

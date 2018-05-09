@@ -1,7 +1,7 @@
 import { Injectable, Injector, OnDestroy } from '@angular/core';
 import { ComponentFactoryResolver, ComponentRef } from '@angular/core';
 import { ApplicationRef, EmbeddedViewRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { CnDialogMessage, CnDialogType } from './dialog.types';
 import { CnDialogComponent } from './dialog.component';

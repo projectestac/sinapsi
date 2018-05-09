@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { NavigationEnd, PRIMARY_OUTLET, Router } from '@angular/router';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 
 
 /**
@@ -29,8 +29,6 @@ export class CnBreadcrumbService implements OnDestroy {
 
     /**
      * Service constructor.
-     *
-     * @param http          Http service
      */
     constructor(
         private router: Router,

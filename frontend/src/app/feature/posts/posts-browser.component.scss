@@ -7,7 +7,11 @@
   border-color: th-gray('divider');
   border-style: solid;
   min-height: 30rem;
-  padding: 1rem;
+  padding: .5rem;
+  
+  @include media-breakpoint-up(sm) {
+    padding: 1rem;
+  }
 }
 
 
@@ -34,11 +38,7 @@
   }
   
   app-post-details {
-    flex-basis: 100%;
-    
-    @include media-breakpoint-up(sm) {
-      flex-basis: 50%;
-    }
+    flex-basis: 50%;
     
     @include media-breakpoint-up(md) {
       flex-basis: 33%;

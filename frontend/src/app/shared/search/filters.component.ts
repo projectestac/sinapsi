@@ -249,7 +249,7 @@ export class FiltersComponent implements OnChanges {
      */
     public hasValues(): boolean {
         const names = Object.keys(this.CONTROLS_MAPPING);
-        return !!names.find(name => this.hasValue(name));
+        return names.some(name => this.hasValue(name));
     }
 
 
@@ -300,25 +300,27 @@ export class FiltersComponent implements OnChanges {
     private toQuery(values: any): StoreQuery {
         const query = {};
 
-        // Map and transform the form values
+        // Map and transform the form values. This extends the query
+        // object with the provided values
 
         if (values !== null && values !== undefined) {
             Object.entries(values).forEach(([key, value]) => {
                 if (value !== null && value !== undefined) {
                     const name = this.CONTROLS_MAPPING[key];
-                    const isField = !!this.fields.find(f => f.id === key);
-                    const hasModels = isField && Array.isArray(value);
-                    const filters = hasModels ? value.map(m => m.id) : value;
 
-                    query[name] = (name in query) ?
-                        [...query[name], ...filters] : filters;
+                    if (Array.isArray(value) && this.fieldExists(key)) {
+                        const ids = value.map(model => model.id);
+                        this.pushValues(query, name, ids);
+                    } else {
+                        this.pushValues(query, name, value);
+                    }
                 }
             });
         }
 
         // Fill with null any undefined filters
 
-        for (let key in this.CONTROLS_MAPPING) {
+        for (const key in this.CONTROLS_MAPPING) {
             const name = this.CONTROLS_MAPPING[key];
 
             if (query[name] === undefined) {
@@ -378,7 +380,7 @@ export class FiltersComponent implements OnChanges {
     private patchModels(field: FieldConfig, ids: number[]) {
         let values = this.form.get(field.id).value || [];
 
-        // Remove any values not found in the ids array
+        // Remove any values not found on the ids array
 
         values = values.filter(m => ids.indexOf(m.id) >= 0);
 
@@ -395,7 +397,10 @@ export class FiltersComponent implements OnChanges {
             this.store.query(field.path, request)
                 .subscribe(results => {
                     values.push.apply(values, results);
-                    this.form.patchValue({[field.id]: values});
+
+                    this.form.patchValue({ [field.id]:
+                        (values.length > 0) ? values : null
+                    });
                 });
         }
     }
@@ -479,6 +484,55 @@ export class FiltersComponent implements OnChanges {
                 this._onChange(query);
             }
         });
+    }
+
+
+    /**
+     * Returns if a field with the given identifier exists on the
+     * fields array.
+     *
+     * @param id        Unique field identifier
+     * @returns         If the field exists
+     */
+    private fieldExists(id: string): boolean {
+        return this.fields.some(v => (id === v.id));
+    }
+
+
+    /**
+     * Push a value to the given key of a query object.
+     *
+     * If the query does not have the given property it will be
+     * created, otherwise the provided values will be pushed into the
+     * property value (extending the current value when required).
+     *
+     * @param query     Query object to modify
+     * @param name      Query property name
+     * @param value     Value to add to the property
+     */
+    private pushValues(query: object, name: string, value: any) {
+        // If the query does not have the property just
+        // add it with the given value
+
+        if (!query.hasOwnProperty(name)) {
+            query[name] = value;
+            return;
+        }
+
+        // If the query value is not an array, transform it
+
+        if (!Array.isArray(query[name])) {
+            query[name] = [query[name]];
+        }
+
+        // If the value is an array, extend the query with it,
+        // otherwise append the value to the end
+
+        if (Array.isArray(value)) {
+            query[name].push.apply(query[name], value);
+        } else {
+            query[name].push(value);
+        }
     }
 
 }

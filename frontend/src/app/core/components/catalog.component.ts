@@ -1,5 +1,4 @@
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject, Subject } from 'rxjs';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';

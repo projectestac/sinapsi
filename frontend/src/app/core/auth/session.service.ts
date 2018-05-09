@@ -1,7 +1,6 @@
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { CnToaster } from 'concrete/toaster';
 
 import { UserChanged } from './session.events';
@@ -69,7 +68,7 @@ export class SessionService implements OnDestroy {
      * Service constructor.
      */
     constructor(
-        private http: Http,
+        private http: HttpClient,
         private toaster: CnToaster
     ) {
         this.APP_HOST = window.location.host;
@@ -156,7 +155,6 @@ export class SessionService implements OnDestroy {
         this.state = SessionState.POLLING;
 
         this.http.get(this.PROFILE_PATH, {})
-            .map(response => response.json())
             .subscribe(user => {
                 this.setUser(<User> user);
                 subject.next(true);

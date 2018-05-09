@@ -1,5 +1,5 @@
-import { transition, trigger } from '@angular/core';
-import { animate, keyframes, style } from '@angular/core';
+import { transition, trigger } from '@angular/animations';
+import { animate, keyframes, style } from '@angular/animations';
 
 
 /**

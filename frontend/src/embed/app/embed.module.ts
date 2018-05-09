@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConcreteModule } from 'concrete';
@@ -27,7 +27,7 @@ import { ROUTING_COMPONENTS } from './embed.routes';
         BrowserModule,
         ConcreteModule.forRoot(),
         CoreModule.forRoot(),
-        HttpModule,
+        HttpClientModule,
         PostsModule,
         SearchModule
     ],

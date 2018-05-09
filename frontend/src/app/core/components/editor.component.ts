@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { throwError, Observable, Subject, ReplaySubject } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormGroup } from '@angular/forms';
@@ -192,9 +190,9 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
             this.form.value, this.models);
 
         this.updateModels(changes)
-            .catch(error => {
+            .catch(errors => {
                 this.states.next(FetchState.READY);
-                return Observable.throw(error);
+                return throwError(errors);
             })
             .subscribe(response => {
                 this.refresh(this.route.snapshot.params.id);
@@ -217,7 +215,7 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
                 this.error = error;
                 this.states.next(error.status === 404 ?
                     FetchState.EMPTY : FetchState.ERROR);
-                return Observable.throw(error);
+                return throwError(error);
             })
             .subscribe(models => {
                 this.patch(models);
@@ -265,7 +263,9 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
 
         if ('controls' in control) {
             Object.values(control['controls'])
-                  .forEach(c => this.touch(c));
+                  .forEach((c: AbstractControl) => {
+                      this.touch(c);
+                  });
         }
     }
 

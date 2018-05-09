@@ -1,9 +1,11 @@
+import { Subject } from 'rxjs';
 import { Component, Input, Output } from '@angular/core';
-import { EventEmitter, OnInit } from '@angular/core';
+import { EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 
 import { FetchState, Collection, Model } from 'app/core';
+import { PoliciesService, SessionService, UserChanged } from 'app/core';
 import { StoreQuery, StoreService } from 'app/core';
 import { Comment, Post } from 'app/models';
 import { CommentsMessages } from '../comments.messages';
@@ -14,16 +16,22 @@ import { CommentsMessages } from '../comments.messages';
     templateUrl: 'comments-catalog.component.html',
     styleUrls: [ 'comments-catalog.component.scss' ]
 })
-export class CommentsCatalogComponent implements OnInit {
+export class CommentsCatalogComponent implements OnInit, OnDestroy {
 
     /** This catalog storage path */
     protected path = '/api/comments';
+
+    /** Unsubscribe subject */
+    private unsubscribe = new Subject();
 
     /** Current state */
     public state: FetchState = FetchState.PENDING;
 
     /** Current collection */
     public collection: Collection<Model>;
+
+    /** If the current user can edit comments */
+    public editable = false;
 
     /** Current request query */
     public request: StoreQuery = {
@@ -43,8 +51,10 @@ export class CommentsCatalogComponent implements OnInit {
      * Component constructor.
      */
     constructor(
-        protected store: StoreService,
         protected dialog: CnDialog,
+        protected policies: PoliciesService,
+        protected session: SessionService,
+        protected store: StoreService,
         protected toaster: CnToaster
     ) {}
 
@@ -54,7 +64,23 @@ export class CommentsCatalogComponent implements OnInit {
      */
     ngOnInit() {
         this.request['post_id'] = this.post.id;
+
+        this.updateEditable();
         this.updateCatalog();
+
+        this.session.events
+            .takeUntil(this.unsubscribe)
+            .filter(e => e instanceof UserChanged)
+            .subscribe(e => this.updateEditable());
+    }
+
+
+    /**
+     * Component destructor.
+     */
+    ngOnDestroy() {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 
 
@@ -127,6 +153,14 @@ export class CommentsCatalogComponent implements OnInit {
                        this.deleted.emit(comment);
                    });
            });
+    }
+
+
+    /**
+     * Update the editable state of the component.
+     */
+    public updateEditable() {
+        this.editable = this.policies.can('manage-comments');
     }
 
 }

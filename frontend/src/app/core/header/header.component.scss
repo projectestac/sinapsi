@@ -59,6 +59,10 @@
     padding: 0;
   }
   
+  .main-navbar {
+    overflow-x: hidden;
+  }
+  
   .main-navbar > .nav-item {
     border-bottom: 1px solid th-gray('400');
     

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { throwError, Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Comparator, EditorComponent, Model } from 'app/core';
@@ -84,13 +84,13 @@ export class AuthorEditorComponent extends EditorComponent {
         // Only authenticated users can edit authors
 
         if (this.session.check() === false) {
-            return Observable.throw({ status: 403 });
+            return throwError({ status: 403 });
         }
 
         // Check if user policies grant access to the author
 
         if (!this.policies.can('update-author', author)) {
-            return Observable.throw({ status: 401 });
+            return throwError({ status: 401 });
         }
 
         // Disable any controls that must not be editable
@@ -337,7 +337,7 @@ export class AuthorEditorComponent extends EditorComponent {
         const news = changes['feeds'].filter(v => v.url);
         const olds = this.models['feeds'];
 
-        let remove = olds.filter(v => !news.some(n => n.url === v.url));
+        const remove = olds.filter(v => !news.some(n => n.url === v.url));
         let create = news.filter(v => !olds.some(o => o.url === v.url));
 
         // Remove any duplicated URLs from the creation array

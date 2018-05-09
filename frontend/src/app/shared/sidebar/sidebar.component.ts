@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Component, Input, Output, SimpleChanges } from '@angular/core';
 import { EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';

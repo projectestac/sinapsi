@@ -19,7 +19,7 @@ export function ScrollTop(element?: ElementRef) {
                 container.scrollTop = 0;
                 container.scrollIntoView(true);
                 container.focus();
-            } catch(e) {
+            } catch (e) {
                 // pass
             }
 

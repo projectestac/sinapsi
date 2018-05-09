@@ -43,10 +43,10 @@ export class SynapsesCatalogComponent extends CatalogComponent {
         const success = CatalogMessages.RemoveSynapseSuccess(synapse);
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
-            .subscribe(event => {
+            .filter(e => e.confirmed)
+            .subscribe(() => {
                 this.store.delete(this.path, synapse.id)
-                   .subscribe(event => {
+                   .subscribe(() => {
                        synapse.deleted_at = (new Date()).toISOString();
                        this.toaster.success(success);
                    });

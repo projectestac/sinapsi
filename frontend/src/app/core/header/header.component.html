@@ -68,7 +68,7 @@
             <li *ngIf="!session.check()" class="nav-item d-sm-none">
               <a (click)="session.showSignInForm()" class="nav-link">
                  <cn-icon value="lock"></cn-icon>
-                 <span i18n>Log in</span>
+                 <span class="sh" i18n>Log in</span>
               </a>
             </li>
             
@@ -112,7 +112,7 @@
              (click)="session.showSignInForm()"
              class="btn btn-link">
             <cn-icon value="lock"></cn-icon>
-            <span i18n>Log in</span>
+            <span class="sh" i18n>Log in</span>
           </button>
           
           <ng-container *ngIf="session.check()">

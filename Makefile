@@ -142,28 +142,23 @@ endif
 
 	$(eval path := $(outdir)/public/$(locale)$(base))
 
+	$(eval args += --prod)
 	$(eval args := --progress=false)
 	$(eval args += --aot --build-optimizer)
 	$(eval args += --deploy-url=)
-	$(eval args += --app=$(app))
+	$(eval args += --project=$(app))
 	$(eval args += --base-href=/$(locale)$(base)/)
-	$(eval args += --target=$(target))
-	$(eval args += --env=$(locale))
-	$(eval args += --locale=$(locale))
+	$(eval args += --configuration=$(locale))
+	$(eval args += --i18n-locale=$(locale))
 	$(eval args += --output-path=$(path))
 
 ifneq ($(locale),$(DEFAULT_LOCALE))
-	$(eval args += --missing-translation=ignore)
+	$(eval args += --i18n-missing-translation=ignore)
 	$(eval args += --i18n-file=src/locales/messages.$(locale).xlf)
 	$(eval args += --i18n-format=xlf)
 endif
 
 	cd $(srcdir)/frontend && $(NG) build $(args)
-
-ifneq ($(app),$(DEFAULT_APP))
-	cp -r $(path)$(base)/. $(path)/
-	rm -r $(path)$(base)
-endif
 
 	find $(path) -name 'index.html' -exec \
 	sed -r -i 's|<html[^>]+>|<html lang="$(locale)">|' {} \;

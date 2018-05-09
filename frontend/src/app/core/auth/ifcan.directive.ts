@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Directive, Input } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { TemplateRef, ViewContainerRef } from '@angular/core';
