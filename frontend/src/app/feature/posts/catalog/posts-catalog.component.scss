@@ -8,10 +8,13 @@
   justify-content: space-between;
   align-items: center;
   color: th-gray('400');
-}
-
-.results-toolbar {
   padding-bottom: 1rem;
+  
+  em {
+    font-size: .875rem;
+    font-style: normal;
+    margin-right: 1rem;
+  }
 }
 
 .results-header {

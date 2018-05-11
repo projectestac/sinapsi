@@ -8,6 +8,17 @@
   }
 }
 
+.admin-block {
+  a {
+    font-size: .875rem;
+    font-weight: 600;
+  }
+  
+  ::ng-deep .fa {
+    color: th-gray('text');
+  }
+}
+
 // Hide the share form
 
 ::ng-deep {

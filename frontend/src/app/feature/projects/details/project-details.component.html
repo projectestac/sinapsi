@@ -46,7 +46,7 @@
         <div class="col-lg-4">
           <aside role="complementary" class="synapse-blocks">
             <ng-container *appIfCan="['update-author', synapse.author]">
-              <div class="card p-3 mb-3">
+              <div class="admin-block card p-3 mb-3">
                 <a [routerLink]="['/editors/authors', synapse.author.id]">
                   <cn-icon value="edit"></cn-icon>
                   <span class="sh" i18n>Edit project</span>

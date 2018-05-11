@@ -23,6 +23,10 @@
       font-size: 95%;
     }
   }
+  
+  .view-picker-wrapper ::ng-deep .nav-item {
+    text-align: right;
+  }
 }
 
 
