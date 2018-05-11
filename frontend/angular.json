@@ -61,7 +61,8 @@
               "node_modules/tinymce/tinymce.min.js",
               "node_modules/codemirror/lib/codemirror.js",
               "node_modules/codemirror/mode/htmlmixed/htmlmixed.js"
-            ]
+            ],
+            "serviceWorker": true
           },
           "configurations": {
             "prod": {

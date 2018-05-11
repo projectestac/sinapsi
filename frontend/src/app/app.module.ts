@@ -9,6 +9,8 @@ import { AppComponent } from 'app/app.component';
 import { AppPolicies } from 'app/app.policies';
 import { AppRoutes } from 'app/app.routes';
 import { CoreModule } from 'app/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -24,7 +26,10 @@ import { CoreModule } from 'app/core';
         ConcreteModule.forRoot(),
         CoreModule.forRoot(),
         DragulaModule,
-        HttpClientModule
+        HttpClientModule,
+        ServiceWorkerModule.register('./ngsw-worker.js', {
+            enabled: environment.production
+        })
     ],
 
     bootstrap: [
