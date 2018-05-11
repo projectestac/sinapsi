@@ -15,6 +15,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
+use App\Jobs\FeedSanitizer;
 use App\Models\Feed;
 use App\Models\Post;
 use App\Models\Tag;
@@ -75,8 +76,10 @@ class ScrapFeed implements ShouldQueue {
         $this->userAgent = config('scraper.user-agent');
         
         $this->parser = new SimplePie();
+        $this->parser->sanitize = new FeedSanitizer();
         $this->parser->enable_cache(false);
         $this->parser->strip_comments(true);
+        $this->parser->set_sanitize_class(FeedSanitizer::class);
         $this->parser->strip_htmltags($this->parser->strip_htmltags);
         $this->parser->strip_attributes($this->parser->strip_attributes);
     }

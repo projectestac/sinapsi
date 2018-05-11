@@ -60,7 +60,7 @@ export class BlockComponent implements AfterViewInit {
             url = hasProtocol ? new URL(href) : new URL(`${base}/${href}`);
         } catch (e) {}
 
-        return url ? url.toString() : null;
+        return url ? url.toString().replace(/^https?:\/\//, '//') : null;
     }
 
 
