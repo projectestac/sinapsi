@@ -7,7 +7,9 @@
     <span class="comment-author">
       <img alt="Author picture" i18n-alt [src]="comment.user.avatar_url"/>
       <span>
-        <a href="#" rel="author">{{ comment.user.name }}</a>
+        <a [routerLink]="['/authors', comment.author.id]" rel="author">
+          {{ comment.user.name }}
+        </a>
         <span class="sh" i18n>says:</span>
       </span>
     </span>

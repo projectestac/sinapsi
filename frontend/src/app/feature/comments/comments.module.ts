@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared';
 import { CommentDetailsComponent } from './details';
 import { CommentEditorComponent } from './editor';
@@ -16,6 +16,7 @@ import { CommentsCatalogComponent } from './catalog';
     ],
 
     imports: [
+        RouterModule,
         SharedModule
     ],
 

@@ -37,7 +37,7 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
     public request: StoreQuery = {
         limit: 15,
         sort: ['-id'],
-        with: ['user']
+        with: ['author', 'user']
     };
 
     /** Requested post */
@@ -92,7 +92,7 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
     public fetchOne(id: number) {
         const request = {
             id: id,
-            with: ['user']
+            with: ['author', 'user']
         };
 
         this.store.query(this.path, request)

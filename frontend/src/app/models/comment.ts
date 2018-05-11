@@ -1,6 +1,5 @@
 import { Model } from 'app/core';
-import { Post } from '.';
-import { User } from '.';
+import { Author, Post, User } from '.';
 
 
 /**
@@ -13,6 +12,7 @@ export class Comment implements Model {
     user_id: number;
     created_at: string;
     updated_at: string;
+    author?: Author;
     post?: Post;
     user?: User;
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Seidor\Foundation\FoundationModel;
+use App\Models\Author;
 use App\User;
 
 
@@ -43,6 +44,7 @@ class Comment extends FoundationModel {
     
     /** Relations that can be fetched automatically */
     protected $includable = [
+        'author',
         'post',
         'user',
     ];
@@ -53,6 +55,17 @@ class Comment extends FoundationModel {
         'created_at',
         'updated_at',
     ];
+
+
+    /**
+     * Author for this comment.
+     *
+     * @return belongsTo            Model relation
+     */
+    public function author() {
+        return $this->belongsTo(Author::class, 'user_id', 'user_id')
+                    ->where('type', 'users');
+    }
 
 
     /**
