@@ -158,7 +158,7 @@ class ScrapFeed implements ShouldQueue {
      */
     private function isValidURL($url) {
         return mb_strlen($url) <= 512 &&
-               preg_match('/^https?:\/\//', $url);
+               preg_match('/^(https?:)?\/\//', $url);
     }
     
     
@@ -171,7 +171,7 @@ class ScrapFeed implements ShouldQueue {
      */
     private function isValidImageURL($url) {
         return mb_strlen($url) <= 1024 &&
-               preg_match('/^https?:\/\//', $url);
+               preg_match('/^(https?:)?\/\//', $url);
     }
     
     
