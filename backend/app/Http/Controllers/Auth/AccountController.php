@@ -16,7 +16,7 @@ use App\Http\Controllers\Controller;
  * Account authentication controller.
  */
 class AccountController extends Controller {
-    
+
     /**
      * Display the authenticated user resource.
      *
@@ -26,15 +26,15 @@ class AccountController extends Controller {
         if (Auth::check() === false) {
             abort(404, 'Not Found');
         }
-        
+
         $query = User::cards()->whereId(Auth::id());
         $profile = $query->with('author')->firstOrFail();
         $profile->makeVisible('email');
-        
+
         return $profile;
     }
-    
-    
+
+
     /**
      * Logs the user out of the application.
      *
@@ -43,11 +43,11 @@ class AccountController extends Controller {
      */
     public function logout() {
         Auth::logout();
-        
+
         return ['success' => 'User logged out'];
     }
-    
-    
+
+
     /**
      * Authenticates a user with a Google access token.
      *
@@ -55,29 +55,29 @@ class AccountController extends Controller {
      */
     public function login(Request $request) {
         $token = $request->bearerToken();
-        
+
         if (is_null($token)) {
             abort(401, 'No token was provided');
         }
-        
+
         Auth::logout();
-        
+
         try {
             $driver = Socialite::driver('google');
             $socialUser = $driver->userFromToken($token);
             $user = $this->register($socialUser);
-            
+
             if (!is_null($user)) {
                 Auth::login($user, true);
             }
         } catch (\Exception $e) {
             abort(401, 'Unauthorized');
         }
-        
+
         return ['id' => $user->id];
     }
-    
-    
+
+
     /**
      * Redirect the user to the Google OAuth Provider.
      *
@@ -85,10 +85,10 @@ class AccountController extends Controller {
      */
     public function redirectToProvider() {
         $driver = Socialite::driver('google');
-        
+
         $driver->scopes(['openid', 'profile']);
         $domain = config('services.google.domain');
-        
+
         if (!empty($domain)) {
             $driver->with([
                 'hd' => $domain,
@@ -99,11 +99,11 @@ class AccountController extends Controller {
                 'prompt' => 'select_account'
             ]);
         }
-        
+
         return $driver->redirect();
     }
-    
-    
+
+
     /**
      * Authenticate with the Google OAuth provider.
      *
@@ -113,7 +113,7 @@ class AccountController extends Controller {
         try {
             $socialUser = Socialite::driver('google')->user();
             $user = $this->register($socialUser);
-            
+
             if (!is_null($user)) {
                 Auth::login($user, true);
             }
@@ -121,8 +121,8 @@ class AccountController extends Controller {
             abort(401, 'Unauthorized');
         }
     }
-    
-    
+
+
     /**
      * Register the user into the application.
      *
@@ -134,8 +134,12 @@ class AccountController extends Controller {
      */
     private function register($socialUser) {
         $uid = $socialUser->getId();
-        $user = User::where('provider_uid', $uid)->first();
-        
+        $email = $socialUser->getEmail();
+
+        $query = User::where('provider_uid', $uid);
+        $query->orWhere('email', $email);
+        $user = $query->first();
+
         if (is_null($user)) {
             $user = User::forceCreate([
                 'name' => $socialUser->getName(),
@@ -149,13 +153,14 @@ class AccountController extends Controller {
             if (!is_null($user->disabled_at)) {
                 abort(403, 'Forbidden');
             }
-            
+
             $user->update([
                 'avatar_url' => $socialUser->getAvatar(),
+                'provider_uid' => $socialUser->getId(),
                 'provider_token' => $socialUser->token
             ]);
         }
-        
+
         return $user;
     }
 
