@@ -16,7 +16,9 @@ class ReputationPosts extends Command {
      *
      * @var string
      */
-    protected $signature = 'reputation:posts';
+    protected $signature = 'reputation:posts
+        {--force :      Update all the posts regardless of the date}
+    ';
 
     /**
      * The console command description.
@@ -40,7 +42,8 @@ class ReputationPosts extends Command {
      * @return mixed
      */
     public function handle() {
-        RankPosts::dispatch();
+        $force = $this->option('force');
+        RankPosts::dispatch($force);
     }
 
 }
