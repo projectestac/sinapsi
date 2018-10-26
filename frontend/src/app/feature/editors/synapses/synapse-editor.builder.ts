@@ -32,8 +32,8 @@ export class SynapseFormBuilder {
         "max-published_at": null,
         "min-published_at": null
     });
-    
-    
+
+
     /**
      * Synapse form group.
      */
@@ -41,12 +41,12 @@ export class SynapseFormBuilder {
         blocks: null,
         synapse: null,
         filters: SynapseFormBuilder.createFiltersForm(),
-        description: [ null, V.maxLength(255) ],
-        name: [ null, [V.required, V.maxLength(150)] ],
+        description: [ null, V.maxLength(512) ],
+        name: [ null, [V.required, V.maxLength(255)] ],
         slug: [ null, [SV.slug, V.required, V.maxLength(254)] ]
     });
-    
-    
+
+
     /**
      * Synapse editor form group.
      */

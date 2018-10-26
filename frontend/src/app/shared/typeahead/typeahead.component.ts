@@ -414,8 +414,8 @@ export class TypeaheadComponent implements ControlValueAccessor,
      * Prevents the blur event on the component from being called.
      *
      * This method does not prevent the blur event on the input box
-     * from firing; it only prevents the blur callback from execting
-     * and focuses then focuses again the input box.
+     * from firing; it only prevents the blur callback from executing
+     * and then focuses again the input box.
      */
     public preventBlur(event: Event) {
         this.lockBlur = true;

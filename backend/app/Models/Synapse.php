@@ -17,37 +17,37 @@ use App\Models\Traits\HasTrashed;
  */
 class Synapse extends FoundationModel {
     use HasSlug, HasTrashed, SoftDeletes;
-    
+
     /** General synapse slug */
     const GENERAL_SLUG = 'general';
-    
-    
+
+
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
         'blocks' =>             'array|nullable',
         'blocks.*' =>           'integer|min:1|distinct|nullable',
-        'description' =>        'string|max:255|nullable',
+        'description' =>        'string|max:512|nullable',
         'filters' =>            'object|nullable',
-        'name' =>               'string|max:150',
-        'slug' =>               'string|slug|max:254',
+        'name' =>               'string|max:255',
+        'slug' =>               'string|slug|max:255',
         'type' =>               'string|in:authors,tags,synapses',
         'synapse_id' =>         'integer|min:1|nullable',
         'created_at' =>         'isodate',
         'deleted_at' =>         'isodate',
         'updated_at' =>         'isodate',
     ];
-    
+
     /** Attributes that are required definitions */
     protected static $required = [
         'name' =>               'required',
     ];
-    
+
     /** Constrained attributes */
     protected static $constrains = [
         'slug' =>               'unique:synapses',
     ];
-    
+
     /** Attributes that should be cast */
     protected $casts = [
         'id' =>                 'integer',
@@ -57,20 +57,20 @@ class Synapse extends FoundationModel {
         'deleted_at' =>         'datetime',
         'updated_at' =>         'datetime',
     ];
-    
+
     /** Fields that can be searched automatically */
     protected $searchable = [
         'description' =>        'string',
         'name' =>               'string',
     ];
-    
+
     /** Relations that can be fetched automatically */
     protected $includable = [
         'author',
         'synapse',
         'privilege',
     ];
-    
+
     /** Attributes that are not mass assignable */
     protected $guarded = [
         'id',
@@ -78,7 +78,7 @@ class Synapse extends FoundationModel {
         'deleted_at',
         'updated_at',
     ];
-    
+
     /** Fields to show on parent/child relations */
     protected $nodeFields = [
         'id',
@@ -177,8 +177,8 @@ class Synapse extends FoundationModel {
     public function users() {
         return $this->belongsToMany(User::class);
     }
-    
-    
+
+
     /**
      * Parent synapse for this synapse.
      *
@@ -188,8 +188,8 @@ class Synapse extends FoundationModel {
         return $this->belongsTo(Synapse::class, 'synapse_id')
                     ->withTrashedIfAdmin();
     }
-    
-    
+
+
     /**
      * Child synapses for this synapse.
      *
@@ -199,8 +199,8 @@ class Synapse extends FoundationModel {
         return $this->hasMany(Synapse::class, 'synapse_id')
                     ->withTrashedIfAdmin();
     }
-    
-    
+
+
     /**
      * Overwrites the cards method to restrict the fields returned
      * for child relations.
@@ -210,8 +210,8 @@ class Synapse extends FoundationModel {
             parent::scopeCards($query, $id, $relation) :
             $query->nodeCards();
     }
-    
-    
+
+
     /**
      * Returns a node representation of the model. This method
      * restricts the returned fields to those defined on the

@@ -25,9 +25,9 @@ export class AuthorFormBuilder {
      */
     static createSynapseForm = () => fb.group({
         blocks: null,
-        description: [ null, V.maxLength(255) ],
-        name: [ null, [V.required, V.maxLength(150)] ],
-        slug: [ null, [SV.slug, V.required, V.maxLength(254)] ]
+        description: [ null, V.maxLength(512) ],
+        name: [ null, [V.required, V.maxLength(255)] ],
+        slug: [ null, [SV.slug, V.required, V.maxLength(255)] ]
     });
 
 
