@@ -49,6 +49,22 @@ LOAD DATA LOCAL INFILE 'seeds/synapses.txt' INTO TABLE synapses;
 LOAD DATA LOCAL INFILE 'seeds/users.txt' INTO TABLE users;
 
 
+-- === Load other data if it was provided =====================================
+
+LOAD DATA LOCAL INFILE 'seeds/blocks.txt' INTO TABLE blocks;
+LOAD DATA LOCAL INFILE 'seeds/comments.txt' INTO TABLE comments;
+LOAD DATA LOCAL INFILE 'seeds/feeds.txt' INTO TABLE feeds;
+LOAD DATA LOCAL INFILE 'seeds/municipalities.txt' INTO TABLE municipalities;
+LOAD DATA LOCAL INFILE 'seeds/posts.txt' INTO TABLE posts;
+LOAD DATA LOCAL INFILE 'seeds/post_synapse.txt' INTO TABLE post_synapse;
+LOAD DATA LOCAL INFILE 'seeds/post_tag.txt' INTO TABLE post_tag;
+LOAD DATA LOCAL INFILE 'seeds/post_user.txt' INTO TABLE post_user;
+LOAD DATA LOCAL INFILE 'seeds/projects.txt' INTO TABLE projects;
+LOAD DATA LOCAL INFILE 'seeds/schools.txt' INTO TABLE schools;
+LOAD DATA LOCAL INFILE 'seeds/tags.txt' INTO TABLE tags;
+LOAD DATA LOCAL INFILE 'seeds/territories.txt' INTO TABLE territories;
+
+
 -- === Create views ===========================================================
 
 SOURCE views/posts_by_author.sql;
