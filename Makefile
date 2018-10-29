@@ -61,7 +61,7 @@ define HTACCESS
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /@base@
-  
+
   RewriteRule ^index\.html$$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
@@ -87,12 +87,12 @@ all: dependencies backend public
 dependencies:
 
 	$(PRINT) "Resolving dependencies"
-	
+
 	test -d $(srcdir)
-	
+
 	mkdir -p $(outdir)
 	mkdir -p $(outdir)/public
-	
+
 	cd $(srcdir)/frontend && $(NPM) install
 
 
@@ -238,7 +238,7 @@ install:
 	/$(sitedir)/sinapsi.conf
 
 	a2ensite sinapsi.conf
-	service apache2 restart
+	service apache2 reload
 
 	$(PRINT) "Creating database"
 
@@ -325,4 +325,3 @@ clean:
 	$(PRINT) "Cleaning up build files"
 
 	-rm -r $(outdir)
-
