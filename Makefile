@@ -249,6 +249,7 @@ install:
 	$(PRINT) "Generating encryption key"
 
 	cd $(path) && $(PHP) artisan key:generate > /dev/null
+	cd $(path) && $(PHP) artisan up
 
 
 # =============================================================================
