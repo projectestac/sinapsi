@@ -17,7 +17,7 @@ use App\Models\Traits\HasTrashed;
  */
 class Post extends FoundationModel {
     use SoftDeletes, HasTrashed, HasURL;
-    
+
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
@@ -39,7 +39,7 @@ class Post extends FoundationModel {
         'published_at' =>       'isodate',
         'updated_at' =>         'isodate',
     ];
-    
+
     /** Attributes that are required definitions */
     protected static $required = [
         'url' =>                'required',
@@ -48,12 +48,12 @@ class Post extends FoundationModel {
         'author_id' =>          'required',
         'feed_id' =>            'required',
     ];
-    
+
     /** Constrained attributes */
     protected static $constrains = [
         'url' =>                'unique:posts',
     ];
-    
+
     /** Attributes that should be cast */
     protected $casts = [
         'id' =>                 'integer',
@@ -68,13 +68,13 @@ class Post extends FoundationModel {
         'published_at' =>       'datetime',
         'updated_at' =>         'datetime',
     ];
-    
+
     /** Fields that can be searched automatically */
     protected $searchable = [
         'content' =>            'text',
         'title' =>              'text',
     ];
-    
+
     /** Relations that can be fetched automatically */
     protected $includable = [
         'author',
@@ -82,7 +82,7 @@ class Post extends FoundationModel {
         'reaction',
         'tags'
     ];
-    
+
     /** Attributes that are not mass assignable */
     protected $guarded = [
         'id',
@@ -95,13 +95,13 @@ class Post extends FoundationModel {
         'deleted_at',
         'updated_at',
     ];
-    
+
     /** Hidden attributes */
     protected $hidden = [
         'md5_hash',
         'guid'
     ];
-    
+
     /** Allowed post author filters */
     protected $authorFields = [
         'municipality_id',
@@ -109,7 +109,7 @@ class Post extends FoundationModel {
         'territory_id',
         'project_id',
     ];
-    
+
     /** Allowed post reaction filters */
     protected $feedbackFields = [
         'liked',
@@ -212,7 +212,7 @@ class Post extends FoundationModel {
             $query->from('post_tag')->whereIn('post_tag.tag_id', $ids);
             $query->whereRaw('`post_tag`.`post_id` = `posts`.`id`');
         });
-        
+
         return $query;
     }
 
@@ -243,7 +243,7 @@ class Post extends FoundationModel {
                 ));
             }
         }
-        
+
         return $query;
     }
 
@@ -254,32 +254,32 @@ class Post extends FoundationModel {
      */
     public function scopeFilter($query, Request $request) {
         $query = parent::scopeFilter($query, $request);
-        
+
         // Filter by the given synapse identifier
-        
+
         if ($request->has('synapse_id')) {
             $id = $request->get('synapse_id');
             $synapse = Synapse::whereId($id)->first();
-            
+
             if (!is_null($synapse)) {
                 $query->forSynapse($synapse);
             } else {
                 $query->corrupt();
             }
         }
-        
+
         // Filter by the given tag identifiers
-        
+
         if ($request->has('tag_id')) {
             $tags = (array) $request->get('tag_id');
             $query->whereTagIn($tags);
         }
-        
+
         // Filter by the given author fields
-        
+
         $filters = $request->only($this->authorFields);
         $filters = array_filter($filters);
-        
+
         if (empty($filters) === false) {
             $query->whereHas('author', function($query) use ($filters) {
                 foreach ($filters as $field => $ids) {
@@ -287,21 +287,25 @@ class Post extends FoundationModel {
                 }
             });
         }
-        
-        // Filter by the given user reaction fields
-        
+
+        // Filter by the given user reaction fields. Note that this filters
+        // take a list of author ids instead of user ids.
+
         $filters = $request->only($this->feedbackFields);
         $filters = array_filter($filters);
-        
+
         if (empty($filters) === false) {
             $query->whereHas('feedbacks', function($query) use ($filters) {
-                foreach ($filters as $field => $ids) {
-                    $query->whereIn('user_id', (array) $ids);
+                foreach ($filters as $field => $authors) {
+                    $q = Author::whereIn('id', (array) $authors);
+                    $ids = $q->pluck('user_id')->toArray();
+
                     $query->where($field, true);
+                    $query->whereIn('user_id', $ids);
                 }
             });
         }
-        
+
         return $query;
     }
 
