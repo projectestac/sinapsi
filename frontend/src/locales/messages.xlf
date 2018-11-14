@@ -1,0 +1,2221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="815cad6a13eee2edfed8a43dc3a64d88b1b2db27" datatype="html">
+        <source>
+        Home
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20dd199fe7a340935f8bd1c68f011466197c9025" datatype="html">
+        <source>Back: Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="58bdaa60999b1798588ae6ea863d7b851660344f" datatype="html">
+        <source>Back: <x id="INTERPOLATION" equiv-text="{{ crumb.title }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9a1004030b332d67c34af5c6fd8321b7a1b6155e" datatype="html">
+        <source>Toggle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/details/details.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="56a634c9d07b8d44ea81c992b614b4a3f9fdc272" datatype="html">
+        <source>
+      Showing page <x id="INTERPOLATION" equiv-text="{{ collection.current_page | number }}"/> of
+      <x id="INTERPOLATION_1" equiv-text="{{ collection.last_page | number }}"/> pages
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="af848956f6d48636a11a1194f1a668943332fe8e" datatype="html">
+        <source>First page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb4da0c71fba282b1b0e54169c81fb9b804922db" datatype="html">
+        <source>previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="575e782fd27f2ee70a034a775efe9ad162472250" datatype="html">
+        <source>Previous page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8380d9eff8613c0bc58edc7cebc2aa72e17b11e3" datatype="html">
+        <source>Page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="612af120c77b52601251e6833cb9e3cfb55fe0fe" datatype="html">
+        <source>next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ce3cefb1cd0099aa5003dda16ec9eb21fd8ba789" datatype="html">
+        <source>Next page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65f86c516832ca3fd99a1d353f0c166344886b1b" datatype="html">
+        <source>Last page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="06d89d48cfdcd846399ef6f6b86d31d8d98aab0e" datatype="html">
+        <source>Type to search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94516fa213706c67ce5a5b5765681d7fb032033a" datatype="html">
+        <source>Loading...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/spinner/spinner.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="83f454fd4f97539e378ecd19461a3995d7e51574" datatype="html">
+        <source>Other languages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/locales/locales.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0105368e152d32a77df3d03bbc1b6b57f498d1e8" datatype="html">
+        <source>Footer Navigation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6990ad8d6182662e864495ac31c3758cda1c7a28" datatype="html">
+        <source>Portals</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3149ecf8456e2f902cc7dea06856f41ca1b706c8" datatype="html">
+        <source>Department of Education</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ee7703ff46ebaab1a1a2b222cbde17a36b253a92" datatype="html">
+        <source>Web services and software</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="85b79c9064aed1ead31ace985f31aa1363f6bdaf" datatype="html">
+        <source>Help</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="09599ba088f9bd29b8dbf8e1a61166cba8af948d" datatype="html">
+        <source>Table of contents</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7ef02d70081b98c0d05d346759d345b604705ba3" datatype="html">
+        <source>About Sinapsi</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-about.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d91251b1e8eac61266f09f6b99427b7abc20fafa" datatype="html">
+        <source>Advanced search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4442094105905548077185e4146a3afdcf38e077" datatype="html">
+        <source>
+              Legal notice
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ceb7d11a9303b240a5055389110ed60559b21480" datatype="html">
+        <source>
+              In accordance with article 17.1 of the Catalan Law 19/2014, the
+              © Government of Catalonia permits the reuse of content and data
+              provided that the source and the date of updating are cited and
+              that the information is not distorted (article 8 of Catalan Law
+              37/2007) and does not conflict with a specific license.
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7a2c26639a15ef18286dd784e55c9fa696fc334e" datatype="html">
+        <source>GitHub Repository</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0f03eb1f27fee61229b02cb74d685bb4ad5add94" datatype="html">
+        <source>Back to top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="be5c752b58791dd799bc5d5482d4351e06f18673" datatype="html">
+        <source>Ok</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="319e0745bcbc132451569294fa2fa21bf10f555a" datatype="html">
+        <source>Toggle navigation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e6cf887a1289952c640d2b4288d4f8a1c9e619ef" datatype="html">
+        <source>Synapses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0ac48d1bc40e665593084fc668d041a9bb663c6e" datatype="html">
+        <source>Schools</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2a7deb7096cada2c3177157652680fe7e6de0ed" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="78ed60a534302cde8c0dfbf6da13b4d2a0eb5cca" datatype="html">
+        <source>Educators</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc8996094bd4aefc16bcd15f44e717d0ad7eb3a1" datatype="html">
+        <source>
+                      User profile
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="75ba5cfc5098caa925e5200c11512fe3101b0a40" datatype="html">
+        <source>
+                      Settings
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20d5952d06d2d530e391f917c37a1b8257292c2d" datatype="html">
+        <source>
+                      Log out
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f433548bcecc092826f2b19dbf31b2e67a0be468" datatype="html">
+        <source>
+                User profile
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e761ecc698c385562f9eaa5a9b8082fd97bee81f" datatype="html">
+        <source>
+                Settings
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba7378cdaaa60b4fee17a551b232ad3512dac17d" datatype="html">
+        <source>
+                Log out
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a13a9624cedec8006f5d43e9991f5b3b043cca0a" datatype="html">
+        <source>Author picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="11dc4523808b88e5855f0c94e91738c0f5ff5278" datatype="html">
+        <source>says:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="50ff68990cb970d492daaec81fd154938f344526" datatype="html">
+        <source>Join the discussion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="31df223403303323ab45f28c44964fee9fc05395" datatype="html">
+        <source>Add a comment…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2a3a3c4cf8a2ddba172e31865ebfbaa72f1bac15" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ charsLeft }}"/> characters left</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db254f9e7304918bfd3da9eba2ac6ac54c705266" datatype="html">
+        <source>Send comment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="73c85a147bcc1b5f79ae10affa13f420fc99c2e9" datatype="html">
+        <source>
+          Log in
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">comments login</note>
+      </trans-unit>
+      <trans-unit id="cf3e24a457fbd347f9cb4bee3a6f33b59b774dad" datatype="html">
+        <source>to post a comment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="019d4bd6a5690f0cfa0ecf346a4e6bf7f0d8debb" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0c7067999b96bbabfe56cff68fc0871a877ea8dd" datatype="html">
+        <source>Delete this comment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aca889dfd03e25018da0a2ba469afa0875c69098" datatype="html">
+        <source>Show more comments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="be97b2ab9effe4b2520406dd963bcf331f5b8fa7" datatype="html">
+        <source>Tweets by</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8e6e07f1a5b549beac2e59f717d0ed9dee7ad7f2" datatype="html">
+        <source>
+            <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>The timeline of the user will be shown here.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+           </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8fa4d523f7b91df4390120b85ed0406138273e1a" datatype="html">
+        <source>Color</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="acdc089753e4bb5365863a8cea03151e0198f47a" datatype="html">
+        <source>Picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c8b3949fa0abc839acb537a326f2b9267d70cf1f" datatype="html">
+        <source>Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3f697d568eab3702a7a136ef2192d9fd9ca5b1eb" datatype="html">
+        <source>Header</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="153aa4062a72c2db19550f8f666631951d79af69" datatype="html">
+        <source>HTML</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="342b520ffc24c6c8c46ed7b2f7bbdffbd130d663" datatype="html">
+        <source>Timeline</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e322276f8175386a71a1fb08f3783c246d102dd" datatype="html">
+        <source>Error inesperat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/errors/errors.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="27f334668303bdec4d7041583eef1c7e87fc1bdf" datatype="html">
+        <source>Error inesperado</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/errors/errors.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0adf1bca29ccebf68557971297659f1e5c705980" datatype="html">
+        <source>Unexpected error</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/errors/errors.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="796c2a2d848c360bd57b4d5f3e0a6d70404af009" datatype="html">
+        <source>
+        The value for this field must be a valid email address.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a447e243be6038bfcb8d728e36a60747f5a8ea65" datatype="html">
+        <source>
+        The value for this field must be a valid web address.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34d48197e33a7a6b94b531a5cec2fa5ee64c2a1a" datatype="html">
+        <source>
+        The value for this field must be lower or equal to
+        <x id="INTERPOLATION" equiv-text="{{ error.value[&apos;max&apos;] }}"/>.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8ed1fc4c90bb6fa68211dd0664ee4e637d45560a" datatype="html">
+        <source>
+        The value for this field cannot be longer than
+        <x id="INTERPOLATION" equiv-text="{{ error.value[&apos;requiredLength&apos;] }}"/> characters.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="12f6ba23aa853f0753eb7b19afc4e5ed0a358459" datatype="html">
+        <source>
+        The value for this field must be greater or equal to
+        <x id="INTERPOLATION" equiv-text="{{ error.value[&apos;min&apos;] }}"/>.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="44cf58105359ebd45dfc083d6d24561e4197bdbe" datatype="html">
+        <source>
+        The value for this field must have a length of at least
+        <x id="INTERPOLATION" equiv-text="{{ error.value[&apos;requiredLength&apos;] }}"/> characters.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="89445ceb78a51bf4c822c95f81023a5622ee2d09" datatype="html">
+        <source>
+        A value for this field is required.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bfc5dd06f2fe4737eaab83d27bd91ceecc5bb04e" datatype="html">
+        <source>
+        A slug can only contain lower case letters and numbers
+        optionally separated by hyphens.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="acfd4a660a806ffec028743683403603d64f9f05" datatype="html">
+        <source>
+        The value for this field must be a valid username.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc45a7ab2fe2a95d317fe0170e3b91eb752a3049" datatype="html">
+        <source>
+        The value for this field is not valid.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92dfaee9783fca6341e7d8cae627399ae02303af" datatype="html">
+        <source>Delete this block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6fcbf761098624382d8edcae063b3f0207059601" datatype="html">
+        <source>Drag to reorder</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1aee80ab35aa99508802cdec6306e110b2feaf9e" datatype="html">
+        <source>Publish date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="400c30183b9b6cf5b3decf8491a929e10fa21a3b" datatype="html">
+        <source>Order by</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5ff3607b2103fd30612f36b0393f427dd2c77d54" datatype="html">
+        <source>Published at</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1123008fd4f87b47f2f50ecf0c068684188dd0af" datatype="html">
+        <source>Between two dates</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="23ea73713d466823349713191794d33bd9e39f61" datatype="html">
+        <source>Published after</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="178d3c474ee8c8a2caac5c354bcdceb505c4668a" datatype="html">
+        <source>Published before</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c2d0ac9f528bbd5f53fd34269fde8b59e029621b" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d70f826e450195b92fdb8704cc3bc0c53cf69e34" datatype="html">
+        <source>Apply date range</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8568d21092552783c4982bfa925f86b6e12ed5c8" datatype="html">
+        <source>Results ordering</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="71740c443026ae481ac1e8765d0ef09a39e1683b" datatype="html">
+        <source>Filter by one or more keywords</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d238b4f1e0dad2394f80730ff727380c4159b950" datatype="html">
+        <source>
+          <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>The search results are filtered<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="99ee4faa69cd2ea8e3678c1f557c0ff1f05aae46" datatype="html">
+        <source>Clear</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1e5e23363e949f7dcbaf034bdb141a561132a10e" datatype="html">
+        <source>Clear filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2f2473d72992064b77490a7f69757147ff7c52a5" datatype="html">
+        <source>Refine search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5d15bba248b53db1d552c52b682aa173fe915387" datatype="html">
+        <source>Embed in web page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3c3875c365ff985fbf1be5264ab9cf3138b54abf" datatype="html">
+        <source>Include a search form</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f795804dd769efdc4cc84a34a93a8fef70e4b4af" datatype="html">
+        <source>Height in pixels:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="078af007914dca2bd3c45e2ca1361773552e395c" datatype="html">
+        <source>Embed code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a09dd0141e4aef6eb52c6c3ea41c519e8661a50f" datatype="html">
+        <source>
+        Copy this code to embed the current synapse in your web page
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f871b41bfbdb193507cce2cd848c2d02bde77a03" datatype="html">
+        <source>No results found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bf6a2d07c40c83892e7212a5e4d93fae19ef1432" datatype="html">
+        <source>We cannot find any item matching your search.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dfe6fd08edf2e1208117c99d0607f276d6eb82e0" datatype="html">
+        <source>
+      Clear search
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="97e6199eedfbb4b9e439acd45db8906c99bd10f3" datatype="html">
+        <source>Could not fetch information from server.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f7e53f755560b3d5abe7c5b640f43c300da52d7e" datatype="html">
+        <source>
+      Reload this page
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f588923eb204f06a2eb331893fde1dc3d042ae48" datatype="html">
+        <source>
+          No results could be found
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a87de0df987e91053004c6f4a43bc91892fd9553" datatype="html">
+        <source>
+            Showing <x id="INTERPOLATION" equiv-text="{{ collection.from | number }}"/> to
+            <x id="INTERPOLATION_1" equiv-text="{{ collection.to | number }}"/> of
+            <x id="INTERPOLATION_2" equiv-text="{{ collection.total | number }}"/> results
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="680d5c75b7fd8d37961083608b9fcdc4167b4c43" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f732c304c7433e5a83ffcd862c3dce709a0f4982" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d6b1a79fec12aebe166f98e12bfceef1adb8fc3e" datatype="html">
+        <source>
+        Selection:
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6c588009d704b187a907b06d066cc1de2620b17f" datatype="html">
+        <source>
+        No items selected
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f3939b403a7350dd797f1c23ebb19b050f28dffe" datatype="html">
+        <source>
+      No results could be found
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c3d1dbcfc7a535c70367595019d681225c0f01f6" datatype="html">
+        <source>
+        Showing <x id="INTERPOLATION" equiv-text="{{ collection.from | number }}"/> to
+        <x id="INTERPOLATION_1" equiv-text="{{ collection.to | number }}"/> of
+        <x id="INTERPOLATION_2" equiv-text="{{ collection.total | number }}"/> results
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="32753fe131ab72cc72f416b79766952cf37f5e88" datatype="html">
+        <source>
+    <x id="INTERPOLATION" equiv-text="{{ section.name }}"/>
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="681a802d32ee0d866f50fc1f527404b3a6eb0765" datatype="html">
+        <source>Permalink</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a5b387f5a15b95e339df10fc23526c659a2b6c6f" datatype="html">
+        <source>deleted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f884f5cd998c15913583d78ec85c4e75414bc28a" datatype="html">
+        <source>This post was deleted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="420273ffde941a44eea2dfb712deb88479714829" datatype="html">
+        <source>Post image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3230f6602c82e020cb18cce2b32952d75869a5d5" datatype="html">
+        <source>Like</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="11a0771f88158a540a54e0e4ec5d25733d65fc0e" datatype="html">
+        <source>Favorite</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0bd8b27f60a1f098a53e06328426d818e3508ff9" datatype="html">
+        <source>Share</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adae3ca9a22dbe017908d1c47e9c1297604c326a" datatype="html">
+        <source>Restore post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="59561deb7ddc7509cfd36996c15b67fda9bfe30c" datatype="html">
+        <source>Remove post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4206a05d6b2a46cecb7e278847e0250d562120a1" datatype="html">
+        <source>comments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a5a8099429d20eede216ee4a0c6a56eebf22ee31" datatype="html">
+        <source>
+            Comment
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a5d7ee2acbfa9c91ab7f41d26bda9ff0cafe42f" datatype="html">
+        <source>Comment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="862ce6145268ceabf49fb809a756527ce2d4eda9" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ area.name }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0351c133c040333ecff3ce8d1cc55c376d2b7c0c" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{ collection.total | number }}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> results found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6d435fddcb71a4b018d05b976fb6911ff36d5ace" datatype="html">
+        <source>Share this synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eec28274836e4d7f69286f8cb42343aebcab8c06" datatype="html">
+        <source>Optimal view</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="29d73d20dd2a3f56d37590c43c80474ed223eea9" datatype="html">
+        <source>List view</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8598558186bd7a52a27e390b1ada1c43af1e90fe" datatype="html">
+        <source>Gallery view</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6ef0da09fbfc281886b040da689e33f91b9251cc" datatype="html">
+        <source>View options</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="12d641c66c9010e6144c4487cbbf559ce2496d34" datatype="html">
+        <source>
+          <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.xtec.cat
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">embed/app/home.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07183606414fea3bc6bbb0c8fae76c07a2942f94" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> collects the news published by the
+          Catalan educational centers on their websites. Makes visible most of
+          the work developed by the centers and seeks to promote synergies
+          between them.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5fe4b2aaae00f24ec01bd85424d069defe3700a7" datatype="html">
+        <source>Edit synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/synapses/details/synapse-details.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/tags/details/tag-details.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c6e8bca8e83e3269cd8bc34d1bd8065d38ec60d0" datatype="html">
+        <source>
+                New synapse
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="527912a7a4920a2cf2fecdbdba2c3ac143b611f5" datatype="html">
+        <source>Create a new synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d4161422f3ecebfc6f0732afaa276ac82757612a" datatype="html">
+        <source>Search by keyword</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c651a5f519187e63192462480dc8db17f2394d41" datatype="html">
+        <source>Taxonomies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cafc87479686947e2590b9f588a88040aeaf660b" datatype="html">
+        <source>Tags</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+        <source>Actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52ea46364092e55b081705de761f77499af65690" datatype="html">
+        <source>Delete synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d5c73b3cf7fe880e38c987940cc2aff67a845280" datatype="html">
+        <source>Posts</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="05f867b8ce32ae125e2fe5b9fd17f044651ca98a" datatype="html">
+        <source>Create synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f5ec2990a0f425e0eb566f05abb76200f07abddc" datatype="html">
+        <source>Delete tag</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="478f31bf3f360b2bdf28b42bc6577a2fe8b56734" datatype="html">
+        <source>Restore tag</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="def755457793d5ad40597886d2d317bc5f415a2f" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/catalogs/taxonomies/taxonomies-tree.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dc08fb91c1c3292fd02ffdb6d0f97fccd3009fb4" datatype="html">
+        <source>Editing:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b28910202a5f6bd9ede4b5702e8e23d285012a53" datatype="html">
+        <source>Author information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7160311a32a547596628a142e8fc3ca09e029055" datatype="html">
+        <source>Synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
+        <source>Blocks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b2998166dd6f1cc2da0a7073dea46a67ba674c86" datatype="html">
+        <source>Author name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c31eab5d26e41d74a00805798a47b17bb3ceb6f1" datatype="html">
+        <source>Full name of the author.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="91b96d7228b6e05c238fa4e39abfc17ad51a6eef" datatype="html">
+        <source>Email:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0b81ef6942cbb545dfb1d7390fb550ef8d7093c1" datatype="html">
+        <source>Login email address of the user.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5b3075e8dc3f3921ec316b0bd83b6d14a06c1a4f" datatype="html">
+        <source>Save changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="06c663bf1474713f57551123a46b34318543b67d" datatype="html">
+        <source>Reset</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
+        <source>Synapse information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1298c1d2bbbb7415f5494e800f6775fdb70f4df6" datatype="html">
+        <source>Filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e6deb306d99c3da64ee4436557039fbcbc45fea2" datatype="html">
+        <source>Privileges</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d1fee12ecdc35ab97161067954562b66bfbdcb45" datatype="html">
+        <source>School:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6f3ab04475c4136e181f61b4b131b16152fd8ef3" datatype="html">
+        <source>Educational center of this author.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aee76fd7b6dac61985a352ac0f4c9063b608c6f0" datatype="html">
+        <source>Municipality:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b75d32de97eb7e51bc0a1d64edc8ffb05bb4e939" datatype="html">
+        <source>Municipality of this author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="09f313434073ffc8534c6b6cb3128c0f1a37d5d1" datatype="html">
+        <source>Territorial service:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3879bd11a32adc1806f57b9719ceac2d752928e8" datatype="html">
+        <source>Territorial service for this author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="61879a8027ec586e1b033dfdfa66366af824f70c" datatype="html">
+        <source>Block type:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8737210008395d7b014e5118d2ed198ae9745215" datatype="html">
+        <source>Title:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6a8814a4a736a50822a2931d65aaf7acb412d5cf" datatype="html">
+        <source>Title of the block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="521a5706b528b7ae866edb39bf0824d90900b86c" datatype="html">
+        <source>
+        Heading title of the block.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ad6d9e1238be03027d57ed3687be4ba955816829" datatype="html">
+        <source>Background color:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04ada1d79d14cf28af5d9fcd64e882b855ed2fb0" datatype="html">
+        <source>Pick a color</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="76d6708efd67368a626c988248d6cba4e8c8b063" datatype="html">
+        <source>
+        Background color of the block.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65535ec0dfde0784dae94d34511aa3dc165048d7" datatype="html">
+        <source>Picture:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc5245dc72786fe5e196ceb3200a8bab53319724" datatype="html">
+        <source>http://www.example.org/image.png</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3004ab435190d448da937101e122ef4e57b44cbd" datatype="html">
+        <source>
+        The URL of an image to show on the block.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dfbcaa454511ca4c0b760a43740041c4b66ed742" datatype="html">
+        <source>Web address:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cf7857bed92b1c3d64ffe8d1eb1775233b2b77e6" datatype="html">
+        <source>http://www.example.org/</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4831856aa6799dbccea1c51fdffdbd842694d7d6" datatype="html">
+        <source>
+        An URL to open when a user clicks on the block.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b54b5df2e2421b96c97ff98948b11ccca1aa1b26" datatype="html">
+        <source>Twitter profile:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ed5ed66b1b9562737c68d2fedfb6d8c5226c9d34" datatype="html">
+        <source>@username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3aa2293dcdb97f3373c64068f6e9c7b7beab85ac" datatype="html">
+        <source>
+        Username of an existing Twitter user.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5cc395a98a5f4436a039e1bb8a28908bce1041e6" datatype="html">
+        <source>Contents:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e6f8728bf145b20067e7ca0196cd5d2f500bdda6" datatype="html">
+        <source>
+        Text contents of the block.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc0864d2e72ecf75ec2471ec7bbbfc38bd8d8ea3" datatype="html">
+        <source>Source code:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a47a681237c36eb612e2904586091ddd4fb6ede" datatype="html">
+        <source>
+        Block contents as HTML source code. Bootstrap&apos;s CSS classes
+        are supported for styling.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="801d5aee9f6d2e95f81536f655cd7c59f44ee35a" datatype="html">
+        <source>Author feeds:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5ec38d518c25a47b169d88df7c8446c673074a3f" datatype="html">
+        <source>
+        <x id="START_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>RSS<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> / 
+        <x id="START_TAG_ABBR_1" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>Atom<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> feeds
+        for the author&apos;s synapse.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9c5bd6719780a69d7ae92fa6eb63a5471512e741" datatype="html">
+        <source>
+        The provided values must be valid web addresses.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5d8cedf8c8209924f07a7211478bb7045325e696" datatype="html">
+        <source>Search keywords:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dc48e6c074ebeaaabeab0c7790fa6bfe2a8fe1e5" datatype="html">
+        <source>Search keywords</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="66049d73b97decec4b3dd52a51aadab9c12a0896" datatype="html">
+        <source>
+          Restrict the synapse articles to those matching this keywords.
+          Boolean <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>search operators<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> are
+          supported.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc809e34124663aab42239e72e465652ffe9cc3f" datatype="html">
+        <source>Default view:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1c0054675a538d6b4119b706881f296231b3cd6e" datatype="html">
+        <source>Title and extract of the articles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="efca57dd9adf8ccddc7269f96e6741b245cb46d9" datatype="html">
+        <source>Condensed view of the articles&apos; titles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="02892c7a1306d77a42a49ff499504dc79cd0375b" datatype="html">
+        <source>Thumbnails of the articles&apos; pictures</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="18662de6d9e6a19c72bd41c33eafef8db2da1c51" datatype="html">
+        <source>Search filters:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="946a3c5ecb27d78b3d2123c88aee5ff68244e7cf" datatype="html">
+        <source>Append users:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04eb9b686c052bfc329234772794f6d7aa44a76e" datatype="html">
+        <source>Append user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4320c682af7c4c6781e8b7285caf5dbe3ce0de8a" datatype="html">
+        <source>
+        Select the user you want to append to the synapse.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8f06a01febd785f51c0f8c83a57112d2fa41227d" datatype="html">
+        <source>
+        Current users of this synapse:
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="91444811128782dee281d41b12cd7e8f60df4673" datatype="html">
+        <source>Editor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc7cc6d3ab8dfa39501aa59c4b3412ef25818d5d" datatype="html">
+        <source>Manager</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="21a2a44d089b529af78c5d785a8c958cf997b9a1" datatype="html">
+        <source>Toggle edition rights</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f6d3f9c85ebc18c24cf03aa079b69d04435e43c1" datatype="html">
+        <source>Toggle management rights</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="36b8c12e3d36f3a653be59a07fd20fa1c0603dae" datatype="html">
+        <source>Remove user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="74dec02f143725d5ca7992ed79198baca311b379" datatype="html">
+        <source>Project name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fdac77efd49e9dd82009c54ea00211ebf9b193eb" datatype="html">
+        <source>Name of the author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="39bb5340515c3f7a15ee81db7d3435afcfbce6c4" datatype="html">
+        <source>Full name of the project.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d3a8c79ad75df4b4f3eb5747ec55828028e8a952" datatype="html">
+        <source>School name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3c06ce721f4464850206d1e233b0d9b60454fc28" datatype="html">
+        <source>Full name of the school.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8e9d4052d74bb5ff1c5f46ab74fa7d7664315c72" datatype="html">
+        <source>Name of the synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="614aa168613d0be82c4e756abad7bc875712f2f3" datatype="html">
+        <source>Descriptive name of the synapse.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04025d5c989ef75204db4cec960af6969cf6c678" datatype="html">
+        <source>Parent synapse:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="21719bb3c5aa01324efc3ed230d1ad7b4f233b2d" datatype="html">
+        <source>Parent node on the synapse&apos;s taxonomy.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="67a1c5b4d0290d72ca1792674f4b2da7e1a7e90e" datatype="html">
+        <source>Synapse slug:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b8e7a7093ef20d9bd466c601101bff97520490b2" datatype="html">
+        <source>example-url-slug</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="19e23c635332cf46e50b02438504b38ac97e8fdf" datatype="html">
+        <source>Unique identifier of this synapse.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b9f9152e1a063ead0bc03accca47d53838d7b7ce" datatype="html">
+        <source>Short description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="833544d7bf3897f69caff58be51ee4251328e5f2" datatype="html">
+        <source>Description of the synapse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="51e4c346ec3be21e187190cbc3dad0f141bcff29" datatype="html">
+        <source>Short description of the synapse contents.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="616e206cb4f25bd5885fc35925365e43cf5fb929" datatype="html">
+        <source>Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b434d5a4d85a20cbfbafccf60626bfcb085ad467" datatype="html">
+        <source>Full name of the user.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d553bafede6cc74d41c9b426a246c62faf1db72" datatype="html">
+        <source>Email of the author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fe85c4fbbaf58250de4a57e8595dbc9bafe8713b" datatype="html">
+        <source>Role:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7293b61e9088c66421df2e367e0ccc00346cf9f" datatype="html">
+        <source>Author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1a045a7357705e37ea14ca51432369dd8d04e4f3" datatype="html">
+        <source>Restricted control of the author&apos;s pages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ca2283fc765b9f44b69f0175d685dc2443da6011" datatype="html">
+        <source>Administrator</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="331ae8315fdd269e187353141bc2218ef9040e47" datatype="html">
+        <source>Full access and control of the site</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a4556f324bd9681f4c978a362bf8d47428e40bae" datatype="html">
+        <source>Add to sidebar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bff41a0482e824ae35c61a90443e276cd50c94f8" datatype="html">
+        <source>Block preview:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="24365ac0e0f9e1dd4d48821ea6f4cd569d144b56" datatype="html">
+        <source>
+          This is how the block will look on the sidebar.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="95797b68bece82ff99af2e98cb8bcdfafee84051" datatype="html">
+        <source>Current sidebar:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a5563ac89fc33f61bbbd082cdd49d2b6dd5fbb90" datatype="html">
+        <source>
+          Drag and drop the blocks to reorder them or press the
+          delete button in order to remove a block.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ab93a348a1b12024d76f49900e6537bbc91b9f17" datatype="html">
+        <source>
+          The current sidebar does not contain any blocks.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="632476f072cc8007d0fd769265b1dd21675f9b19" datatype="html">
+        <source>Table of Contents</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="181cd969a111ff593bf9c48bd35bced2e86d83f2" datatype="html">
+        <source>Advanced Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-search.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b88907e77657b00e638d39967ac34b414e88c466" datatype="html">
+        <source>
+              New project
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f540f05dc71be88e226a3920dbf1140b2658e5ea" datatype="html">
+        <source>Create a new project</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b50b492392bbd579b8b38f3833b1ed18e1c6bd7d" datatype="html">
+        <source>Edit project</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/details/project-details.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ae39e41097f712a2b669c3ce1f01acac74f95f05" datatype="html">
+        <source>School</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cc5e5749864ee38c36ab3f7fdd347cebb88ac8b6" datatype="html">
+        <source>Municipality</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="210ca341161aa287ee75d40bbb819947c5a6f90c" datatype="html">
+        <source>Delete project</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f2192067d43dab5b20ce7747fe93fce7de833db7" datatype="html">
+        <source>
+              New school
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a7522a0849c97596dee3f9f1b7e626d023e3ee62" datatype="html">
+        <source>Create a new school</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e1eaabcab75063c2373673561e2ce7fa97f65b27" datatype="html">
+        <source>Edit school</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/details/school-details.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1541352d44b84415a6a998bf627f3de5a9f13649" datatype="html">
+        <source>Territory</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b19f5d6a9f2dba729f5db7436b6bba756f1d8204" datatype="html">
+        <source>Delete school</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="632e8b20c98e8eec4059a605a4b011bb476137af" datatype="html">
+        <source>Edit user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/details/user-details.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="30f76639c0d7edfe597279f11935a9a2d0ba213b" datatype="html">
+        <source>Disabled at</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ff7a096a2b1417f755016d2ac92763cacb2bc5a9" datatype="html">
+        <source>Disable user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e9e7bce64706d324ed3f4b22fde1d975dc5fd09" datatype="html">
+        <source>Enable user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

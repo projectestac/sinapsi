@@ -1,0 +1,15 @@
+@import "core";
+
+// Base styles
+
+.form-group {
+  margin-bottom: .65rem;
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .65rem;
+}

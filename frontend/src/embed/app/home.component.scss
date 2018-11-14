@@ -1,0 +1,102 @@
+@import "core";
+
+
+// Base styles
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  h1, p {
+    margin: 0;
+  }
+
+}
+
+aside {
+  margin-top: .5rem;
+}
+
+.embed-header-wrapper {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: .4rem;
+  border-bottom: 1px solid th-gray('divider');
+  background: th-color('white');
+  z-index: 9999;
+}
+
+.brand-name {
+  font-size: 1.6rem;
+  color: th-color('primary');
+  font-family: th-font-family('heading');
+  font-weight: 300;
+}
+
+
+// Posts browser
+
+:host ::ng-deep {
+
+  .posts-browser {
+    padding: 0;
+  }
+  
+  .post-browser-tabs {
+    display: none;
+  }
+  
+  .tabs-outlet {
+    border: none !important;
+  }
+  
+  .back-to-top {
+    display: none !important;
+  }
+
+}
+
+
+// Posts catalog
+
+:host ::ng-deep {
+
+  .card:before {
+    display: none;
+  }
+  
+  .card {
+    margin: 0 !important;
+  }
+  
+  .card-block {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .results-header {
+    display: none !important;
+  }
+  
+  .posts-catalog {
+    padding: 0;
+  }
+
+}
+
+
+// Pagination links
+
+:host ::ng-deep {
+
+  .pagination-meta > span {
+    display: none;
+  }
+
+  .pagination-nav {
+    margin: 0;
+  }
+
+}

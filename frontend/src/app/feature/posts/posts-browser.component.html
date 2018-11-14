@@ -1,0 +1,49 @@
+<section class="posts-browser">
+  <app-card>
+    
+    <!-- Catalog tabs -->
+    
+    <div class="post-browser-tabs">
+      <cn-tabs
+        [value]="request['section']"
+        (valueChange)="requestSection($event)">
+        <cn-tabitem *ngFor="let area of sections"
+          [value]="area.id"
+          [attr.title]="area.title" i18n-title
+          class="d-none d-md-block">
+          <span i18n>{{ area.name }}</span>
+        </cn-tabitem>
+        
+        <!-- Sections dropdown for small screens -->
+        
+        <cn-tabbox class="p-1 d-md-none">
+          <app-section-select
+            [value]="request['section']"
+            (valueChange)="requestSection($event)"
+            [sections]="sections">
+          </app-section-select>
+        </cn-tabbox>
+        
+        <!-- View picker tab -->
+        
+        <cn-tabbox class="view-picker-wrapper p-1 justify-content-end">
+          <app-view-select
+            [value]="request['view']"
+            (valueChange)="requestView($event)">
+          </app-view-select>
+        </cn-tabbox>
+      </cn-tabs>
+    </div>
+    
+    <!-- Posts catalog -->
+    
+    <div class="tabs-outlet">
+      <app-posts-catalog
+        #catalog
+        [view]="request['view']"
+        [synapse]="synapse">
+      </app-posts-catalog>
+    </div>
+  
+  </app-card>
+</section>

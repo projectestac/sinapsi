@@ -1,0 +1,16 @@
+/storage
+/tests
+/vendor
+/package.json
+/ruleset.xml
+/phpunit.xml
+/webpack.mix.js
+
+*.marks
+.env
+.rsyncignore
+.gitattributes
+.gitignore
+.git
+.idea
+*~

@@ -1,0 +1,31 @@
+@import 'core';
+
+.html-editor-box.form-control {
+  padding: 0;
+  
+  &.focused {
+    border-color: th-gray('400');
+  }
+  
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+::ng-deep .mce-tinymce {
+  .mce-container-body {
+    overflow: hidden;
+    border-radius: .25rem;
+  }
+
+  .mce-statusbar,
+  .mce-toolbar-grp {
+    border: none;
+  }
+
+  &.mce-panel {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: .25rem;
+  }
+}

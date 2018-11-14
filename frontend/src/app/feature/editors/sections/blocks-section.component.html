@@ -1,0 +1,47 @@
+<section class="blocks-section">
+  <div class="row">
+    <div class="main-column col-lg-8">
+      <app-block-form
+        [formGroup]="form">
+      </app-block-form>
+
+      <div class="mb-4">
+        <button type="button"
+          (click)="unshift(form.value)"
+           class="btn btn-secondary">
+          <cn-icon value="plus"></cn-icon>
+          <span class="sh" i18n>Add to sidebar</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="side-column col-lg-4">
+      <div class="blocks-preview">
+        <label class="form-container-label">
+          <span i18n>Block preview:</span>
+        </label>
+        <small class="form-text text-muted" i18n>
+          This is how the block will look on the sidebar.
+        </small>
+        <app-block [block]="form.value"></app-block>
+      </div>
+
+      <div class="blocks-sidebar">
+        <label class="form-container-label">
+          <span i18n>Current sidebar:</span>
+        </label>
+        <small *ngIf="blocks?.value?.length" class="form-text text-muted" i18n>
+          Drag and drop the blocks to reorder them or press the
+          delete button in order to remove a block.
+        </small>
+        <small *ngIf="!blocks?.value?.length" class="form-text text-muted" i18n>
+          The current sidebar does not contain any blocks.
+        </small>
+        <app-sidebar
+          [blocks]="blocks.value"
+          editable="true">
+        </app-sidebar>
+      </div>
+    </div>
+  </div>
+</section>

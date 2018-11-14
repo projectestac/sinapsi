@@ -1,0 +1,29 @@
+<section>
+
+  <!-- Results table -->
+  
+  <div [hidden]="state == 'empty' || state == 'error'">
+    <app-taxonomies-tree
+      [nodes]="collection"
+      (expand)="expand($event)">
+    </app-taxonomies-tree>
+  </div>
+  
+  <!-- Pagination -->
+  
+  <cn-pagination
+    [collection]="collection"
+    (pageChange)="page($event)">
+  </cn-pagination>
+  
+  <!-- Status message -->
+  
+  <app-state [state]="state"></app-state>
+  
+  <!-- Progress backdrop -->
+  
+  <div [hidden]="state != 'pending'" class="backdrop">
+    <cn-spinner></cn-spinner>
+  </div>
+
+</section>

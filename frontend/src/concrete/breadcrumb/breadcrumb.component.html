@@ -1,0 +1,19 @@
+<nav role="navigation" aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="" title="Back: Home" i18n i18n-title>
+        Home
+      </a>
+    </li>
+    <ng-container *ngFor="let crumb of breadcrumb">
+      <li *ngIf="crumb['title']"
+          [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active"
+          class="breadcrumb-item">
+        <a [routerLink]="crumb.href" title="Back: {{ crumb.title }}" i18n-title>
+          {{ crumb.title }}
+        </a>
+      </li>
+    </ng-container>
+  </ol>
+</nav>

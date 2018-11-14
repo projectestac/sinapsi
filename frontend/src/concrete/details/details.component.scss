@@ -1,0 +1,31 @@
+// Header
+
+.cn-details-summary {
+  flex-grow: 1;
+}
+
+.cn-details-marker {
+  display: none;
+  line-height: 20px;
+  margin: -5px 0;
+  font-size: 1.5rem;
+  padding: 0;
+  width: 24px;
+}
+
+
+// Header expand/collapse button
+
+.cn-details {
+  &.open .cn-details-marker {
+    overflow-y: hidden;
+  }
+  
+  &.open .cn-details-marker i:before {
+    content: "\f139";
+  }
+  
+  &.closed .cn-details-marker i:before {
+    content: "\f13a";
+  }
+}

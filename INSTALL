@@ -1,0 +1,73 @@
+Installation of Sinapsi
+
+  Copyright (C) 2018 Department of Education, Government of Catalonia
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+======================================================================
+
+  Dependencies
+  ------------
+
+  This project was built using the frameworks Laravel 5.4 for the
+  backend and Angular 6.0 on the frontend.
+
+  Server requeriments:
+
+  * Apache >= 2.4
+  * MySQL >= 5.6
+  * PHP >= 5.6.4
+  * Mbstring PHP Extension
+  * PDO PHP Extension
+  * Tokenizer PHP Extension
+  * XML PHP Extension
+
+  Build requeriments:
+
+  * Make >= 4.1
+  * Composer >= 1.4
+  * Node.js >= 7.10
+  * Angular CLI >= 6.0
+
+  Compile the software
+  --------------------
+
+  Make sure all the requeriments are met an issue:
+
+  $ make
+
+  Install the software
+  --------------------
+
+  After the make command finishes without errors, you may want to configure
+  the application before installing it. Open the file ./build/.env and set
+  the parameters to suit your needs.
+
+  Then run the intallation target:
+
+  $ sudo make install
+
+  You shall be able to access the application at http://sinapsi.localhost
+  when the installation finishes.
+
+  Install options
+  ---------------
+
+  In order to install the software on your system, you may need to provide
+  some of the following parameters to the make command:
+
+  wwwdir   Installation folder (default: /var/www)
+  sitedir  Apache sites folder (default: /etc/apache2/sites-available)
+  user     Apache user         (default: www-data)
+  group    Apache group        (default: www-data)
+
+  For example:
+
+  $ sudo make install wwwdir=/opt user=httpd group=httpd
+
+  Manual installation
+  -------------------
+
+  Please see the DEPLOY file.

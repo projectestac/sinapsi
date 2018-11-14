@@ -1,0 +1,21 @@
+@import "core";
+
+// Base styles
+
+.side-column .form-text {
+  margin-bottom: 1rem;
+}
+
+.blocks-sidebar {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+// Media breakpoints
+
+@include media-breakpoint-up(lg) {
+  .blocks-sidebar {
+    margin-top: 2rem;
+  }
+}

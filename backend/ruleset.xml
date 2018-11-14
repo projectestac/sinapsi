@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="CustomStandard">
+
+ <!-- <rule ref="PHPCompatibility"/> -->
+ 
+ <rule ref="PSR2">
+  <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/>
+  <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/>
+  <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+  <exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed"/>
+  <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/>
+  <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/>
+  <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+  <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterFunction"/>
+ </rule>
+
+</ruleset>

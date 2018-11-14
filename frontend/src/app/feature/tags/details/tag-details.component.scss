@@ -1,0 +1,24 @@
+@import "core";
+
+.tag-hash {
+  color: th-gray('400');
+}
+
+.page-header .container {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 2rem;
+  }
+}
+
+.admin-block {
+  a {
+    font-size: .875rem;
+    font-weight: 600;
+  }
+  
+  ::ng-deep .fa {
+    color: th-gray('text');
+  }
+}

@@ -1,0 +1,22 @@
+<form class="comment-form" (ngSubmit)="submit(content)">
+  <div class="form-group">
+    <label class="sr-only" i18n>Join the discussion</label>
+    <textarea name="comment"
+        #comment="ngModel"
+        [(ngModel)]="content"
+        maxlength="{{ MAX_LENGTH }}"
+        minlength="{{ MIN_LENGTH }}"
+        required rows="2"
+        placeholder="Add a comment…" i18n-placeholder
+        class="form-control"></textarea>
+  </div>
+  <div class="form-footer">
+    <small i18n>{{ charsLeft }} characters left</small>
+    <button
+      type="submit"
+      [disabled]="comment.errors"
+      class="btn btn-sm btn-primary">
+      <span i18n>Send comment</span>
+    </button>
+  </div>
+</form>

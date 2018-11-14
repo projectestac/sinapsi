@@ -1,0 +1,73 @@
+<fieldset [formGroup]="form">
+  
+  <!-- Synapse name -->
+
+  <ng-container *ngIf="form.get('name') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Title:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="Name of the synapse" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Descriptive name of the synapse.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Parent synapse -->
+
+  <ng-container *ngIf="form.get('synapse') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Parent synapse:</span>
+        <app-typeahead
+          [formControl]="control"
+          [filters]="{ type: 'synapses' }"
+           path="/api/synapses">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Parent node on the synapse's taxonomy.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Synapse slug -->
+
+  <ng-container *ngIf="form.get('slug') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Synapse slug:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="example-url-slug" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Unique identifier of this synapse.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Synapse description -->
+
+  <ng-container *ngIf="form.get('description') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Short description:</span>
+        <app-htmleditor
+          [formControl]="control"
+          height="170"
+          placeholder="Description of the synapse" i18n-placeholder>
+        </app-htmleditor>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Short description of the synapse contents.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+</fieldset>

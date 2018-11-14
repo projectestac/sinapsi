@@ -1,0 +1,33 @@
+@import 'core';
+
+// Base styles
+
+.form-group-control {
+  padding: 0;
+  height: 16rem;
+  overflow-y: auto;
+  resize: vertical;
+
+  &.focused, &.focused .form-control {
+    border-color: th-gray('400');
+  }
+}
+
+.input-group-typed {
+  .form-control {
+    border-width: 0 0 1px 0;
+    border-style: dashed;
+  }
+
+  &:last-child input.form-control {
+    border-bottom: none;
+  }
+  
+  &.empty .input-group-icon {
+    opacity: .3;
+  }
+
+  .ng-touched.ng-invalid + .input-group-icon {
+    color: th-color('red');
+  }
+}

@@ -1,0 +1,29 @@
+@import "core";
+
+// Base styles
+
+.card {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  border-color: th-gray('200');
+  margin-bottom: 1rem;
+}
+
+.card:before {
+  content: '';
+  position: absolute;
+  box-shadow: 0 .375rem .375rem #e5e5e5;
+  height: 1.250rem;
+  width: 90%;
+  left: 50%;
+  bottom: 0;
+  margin-left: -45%;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.card-block {
+  background-color: th-color('white');
+  z-index: 1;
+}

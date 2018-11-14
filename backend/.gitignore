@@ -1,0 +1,17 @@
+/node_modules
+/public/css
+/public/hot
+/public/locales
+/public/fonts
+/public/storage
+/public/vendor
+/storage/*
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+.env
+*.marks
+~$

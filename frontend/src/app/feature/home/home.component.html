@@ -1,0 +1,66 @@
+<main class="page-content">
+  
+  <!-- Page header -->
+  
+  <div class="page-header">
+    <div class="container">
+      
+      <!-- Header -->
+      
+      <header>
+        <h1 class="brand-name" i18n>
+          <strong>sinapsi</strong>.xtec.cat
+        </h1>
+        <div role="contentinfo">
+          <p i18n><strong>Sinapsi</strong> collects the news published by the
+          Catalan educational centers on their websites. Makes visible most of
+          the work developed by the centers and seeks to promote synergies
+          between them.</p>
+        </div>
+      </header>
+      
+      <!-- Synapse search form -->
+      
+      <aside role="search">
+        <app-search
+          (search)="search($event)"
+          [value]="request.search">
+        </app-search>
+        
+        <app-search-toolbar
+          (input)="filter($event)"
+          [value]="request">
+        </app-search-toolbar>
+      </aside>
+      
+    </div>
+  </div>
+  
+  <!-- Contents -->
+  
+  <section *ngIf="synapse" class="page-section">
+    <div class="page-body container">
+      <div class="row">
+        <div class="col-lg-8">
+          <app-posts-browser
+            [synapse]="synapse"
+            [sections]="sections">
+          </app-posts-browser>
+        </div>
+        <div class="col-lg-4">
+          <aside role="complementary" class="synapse-blocks">
+            <ng-container *appIfCan="['update-synapse', synapse]">
+              <div class="admin-block card p-3 mb-3">
+                <a [routerLink]="['/editors/synapses', synapse.id]">
+                  <cn-icon value="edit"></cn-icon>
+                  <span class="sh" i18n>Edit synapse</span>
+                </a>
+              </div>
+            </ng-container>
+            <app-sidebar [blocks]="blocks"></app-sidebar>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

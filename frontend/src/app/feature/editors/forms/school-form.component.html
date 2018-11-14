@@ -1,0 +1,54 @@
+<fieldset [formGroup]="form">
+
+  <!-- School name -->
+
+  <ng-container *ngIf="form.get('school.name') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>School name:</span>
+        <input type="text"
+          [formControl]="control"
+           placeholder="Name of the author" i18n-placeholder
+           class="form-control">
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Full name of the school.</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Municipality -->
+
+  <ng-container *ngIf="form.get('municipality') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Municipality:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/municipalities">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Municipality of this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Territory -->
+
+  <ng-container *ngIf="form.get('territory') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Territorial service:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/territories">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Territorial service for this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+</fieldset>

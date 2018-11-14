@@ -1,0 +1,8 @@
+<div class="html-editor-box form-control" [ngClass]="state()">
+  <editor #editor
+    [init]="settings"
+    (onFocus)="focused = true"
+    (onBlur)="focused = false"
+    (onDrop)="_onDrop($event)">
+  </editor>
+</div>

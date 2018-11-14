@@ -1,0 +1,23 @@
+@import "core";
+
+// Base styles
+
+.toolbar-items-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .36rem 0 .36rem .18rem;
+  font-size: .812rem;
+  color: th-gray('600');
+  
+  .btn {
+    color: th-gray('600');
+    font-size: .812rem;
+    padding: 0;
+  }
+}
+
+.toolbar-item {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+<div *ngIf="authors" class="users-table">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead cn-sortable
+        [cnSortValue]="sort"
+        (cnSortChange)="sortChange.emit($event)">
+        <tr role="row">
+          <th cnSortBy="name" i18n>Name</th>
+          <th cnSortBy="school_id" i18n>School</th>
+          <th cnSortBy="municipality_id" i18n>Municipality</th>
+          <th *appIfCan="['manage-authors']" i18n>Disabled at</th>
+          <th *appIfCan="['manage-authors']" title="Actions" class="actions-column" i18n-title>
+            <cn-icon value="pencil"></cn-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let author of authors">
+          <td class="main-column w-50">
+            <a [routerLink]="['/authors', author.id]">
+              <span class="d-flex">
+                <img [src]="author.user.avatar_url" class="user-avatar"/>
+                {{ author.user.name }}
+              </span>
+            </a>
+          </td>
+          <td class="w-25">
+            {{ author.school?.name }}
+          </td>
+          <td class="w-25">
+            {{ author.municipality?.name }}
+          </td>
+          <td *appIfCan="['manage-authors']" class="datetime-cell">
+            <time [attr.datetime]="author.user.disabled_at"
+                  [title]="author.user.disabled_at | moment:'format':'LLLL'">
+              {{ author.user.disabled_at | moment }}
+            </time>
+          </td>
+          <td *appIfCan="['manage-authors']" class="actions-column">
+            <button
+              *appIfCan="['update-author', author]"
+              (click)="editRow.emit(author)"
+              title="Edit user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="edit"></cn-icon>
+            </button>
+            <button *ngIf="!author.user.disabled_at"
+              (click)="deleteRow.emit(author)"
+              [disabled]="!policies.can('destroy-user', author.user)"
+              title="Disable user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="lock"></cn-icon>
+            </button>
+            <button *ngIf="author.user.disabled_at"
+              (click)="restoreRow.emit(author)"
+              [disabled]="!policies.can('restore-user', author.user)"
+              title="Enable user" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="undo"></cn-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

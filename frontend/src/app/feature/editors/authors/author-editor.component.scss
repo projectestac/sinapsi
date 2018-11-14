@@ -1,0 +1,76 @@
+@import "core";
+
+// Base styles
+
+.page-section {
+  position: relative;
+  min-height: 20rem;
+}
+
+.tabs-outlet {
+  border-width: 0 1px 1px 1px;
+  border-color: th-gray('divider');
+  border-style: solid;
+  min-height: 30rem;
+  padding: 1rem;
+  margin: 0;
+}
+
+.tabs-outlet ::ng-deep input[disabled] {
+  background: #fdfbeb;
+  cursor: not-allowed;
+}
+
+.tabs-outlet ::ng-deep .form-text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.tabs-outlet ::ng-deep section {
+  padding: 0;
+}
+
+.author-editor-tabs {
+  @include media-breakpoint-down(md) {
+    ::ng-deep .nav-link {
+      font-size: 95%;
+    }
+  }
+}
+
+// Action buttons
+
+.editor-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2rem;
+
+  .form-text {
+    flex: 1;
+    margin: 0 2rem 0 0;
+  }
+
+  .form-text small {
+    font-weight: 600;
+  }
+  
+  .btn:not(:last-child) {
+    margin-right: .4rem;
+  }
+}
+
+
+// Media breakpoints
+
+@include media-breakpoint-up(lg) {
+  .tabs-outlet {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    ::ng-deep .main-column {
+      padding: 0 2rem;
+    }
+  }
+}

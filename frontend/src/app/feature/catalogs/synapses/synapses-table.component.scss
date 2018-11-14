@@ -1,0 +1,25 @@
+@import "core";
+
+a:hover, a:focus {
+  .synapse-name {
+    color: th-color('black');
+    background: th-gray('200');
+  }
+}
+
+.synapse-name {
+  color: th-color('white');
+  background: th-color('primary');
+  font-weight: 600;
+  padding: .2rem .5rem;
+  white-space: nowrap;
+}
+
+.deleted-row .actions-column {
+  opacity: .2;
+  pointer-events: none;
+}
+
+.deleted-row .synapse-name {
+  opacity: .2;
+}

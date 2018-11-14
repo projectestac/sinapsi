@@ -1,0 +1,17 @@
+<cn-overlay [open]="isOpen" [lock]="false"
+            (dismiss)="service.clear()">
+  <div class="toaster">
+    <div *ngFor="let message of service.messages" [@notify]
+         [ngClass]="'alert-' + message.type"
+          class="alert alert-dismissible"
+          role="alert">
+      <button (click)="service.dismiss(message)"
+               type="button" 
+               aria-label="Close"
+               class="close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div [innerHTML]="message.text"></div>
+    </div>
+  </div>
+</cn-overlay>

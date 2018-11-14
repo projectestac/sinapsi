@@ -1,0 +1,106 @@
+<main class="page-content">
+  <section class="container" [ngSwitch]="code">
+    <div class="row my-5">
+      <div class="col-lg-8">
+
+        <!-- Forbidden -->
+
+        <div *ngSwitchCase="401">
+          <h1 class="h2">Accés denegat</h1>
+          <p>
+            No teniu autorització per veure la pàgina que demaneu.<br>
+            Si cal podeu <a href="#" (click)="showSignin(); false">
+            canviar d'usuari</a> per accedir-hi.
+          </p>
+          <hr>
+          <h1 class="h2">Acceso denegado</h1>
+          <p>
+            No tiene autorización para ver la página que solicita.<br>
+            Si es necesario puede <a href="#" (click)="showSignin(); false">
+            cambiar de usuario</a> para acceder..
+          </p>
+          <hr>
+          <h1 class="h2">Access denied</h1>
+          <p>
+            You do not have permission to view the requested page.<br>
+            If required, you can <a href="#" (click)="showSignin(); false">
+            change to another user</a> to access it.
+          </p>
+        </div>
+
+        <!-- Unauthenticated -->
+
+        <div *ngSwitchCase="403">
+          <h1 class="h2">Àrea reservada</h1>
+          <p>
+            Àrea reservada per a usuaris registrats.<br>
+            Cal que <a href="#" (click)="session.showSignInForm(); false">
+            entreu com a usuari</a> per accedir-hi.
+          </p>
+          <hr>
+          <h1 class="h2">Área reservada</h1>
+          <p>
+            Área reservada para usuarios registrados.<br>
+            Debe <a href="#" (click)="session.showSignInForm(); false">
+            entrar como usuario</a> para acceder.
+          </p>
+          <hr>
+          <h1 class="h2">Reserved area</h1>
+          <p>
+            This area is reserved to registered users.<br>
+            You must <a href="#" (click)="session.showSignInForm(); false">
+            login as a user</a> in order to access it.
+          </p>
+        </div>
+
+        <!-- Page not found -->
+
+        <div *ngSwitchCase="404">
+          <h1 class="h2">La pàgina no s'ha trobat</h1>
+          <p>
+            No s'ha pogut trobar la pàgina que demaneu.<br>
+            Podeu utilitzar el <a routerLink="/catalogs">catàleg</a> per trobar
+            el que busqueu.
+          </p>
+          <hr>
+          <h1 class="h2">Página no encontrada</h1>
+          <p>
+            La página solicitada no se pudo encontar.<br>
+            Puede usar el <a routerLink="/catalogs">catálogo</a> para encontrar
+            lo que busca.
+          </p>
+          <hr>
+          <h1 class="h2">Page not found</h1>
+          <p>
+            The requested page could not be found.<br>
+            Use the <a routerLink="/catalogs">catalog</a> to find what you are
+            looking for.
+          </p>
+        </div>
+
+        <!-- Unexpected Error -->
+
+        <div *ngSwitchDefault>
+          <h1 class="h2">Error inesperat</h1>
+          <p>
+            S'ha produït un error inesperat.<br>
+            Podeu comunicar qualsevol incidència a <strong>{{ email }}</strong>.
+          </p>
+          <hr>
+          <h1 class="h2">Error inesperado</h1>
+          <p>
+            Se ha producido un error inesperado.<br>
+            Puede comunicar cualquier incidencia a <strong>{{ email }}</strong>.
+          </p>
+          <hr>
+          <h1 class="h2">Unexpected error</h1>
+          <p>
+            An unexpected error occurred.<br>
+            Any incidences can be reported to <strong>{{ email }}</strong>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>

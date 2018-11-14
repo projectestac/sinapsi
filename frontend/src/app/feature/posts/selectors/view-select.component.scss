@@ -1,0 +1,18 @@
+@import "core";
+
+// Base styles
+
+.btn.btn-outline-secondary {
+  padding: .25rem .4rem;
+  border-color: th-gray('200');
+  
+  &.active {
+    color: th-gray('600');
+    background-color: th-gray('200');
+    border-color: th-gray('200');
+  }
+  
+  &.active:not(:focus) {
+    box-shadow: none;
+  }
+}

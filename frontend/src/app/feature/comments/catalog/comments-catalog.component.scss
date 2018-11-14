@@ -1,0 +1,68 @@
+@import "core";
+
+// Base styles
+
+.comments-catalog {
+  position: relative;
+}
+
+.comments-catalog:not(:empty) {
+  min-height: 3rem;
+}
+
+.comment-actions {
+  display: none;
+}
+
+.comment-actions .btn {
+  padding: 0;
+  background: transparent;
+}
+
+.results-wrapper {
+  border: 1px solid th-gray('divider');
+  margin: 2rem 0 1rem 0;
+}
+
+.comment-wrapper {
+  position: relative;
+}
+
+.comment-wrapper:not(:last-child) {
+  border-bottom: 1px solid th-gray('divider');
+}
+
+.backdrop {
+  font-size: .5rem;
+  border: 1px solid th-gray('divider');
+}
+
+.load-more button {
+  color: th-gray('text');
+  border-color: th-gray('divider');
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-top: .5rem;
+}
+
+::ng-deep .state-message {
+  border: none !important;
+}
+
+
+// Editable comments
+
+.editable {
+  .comment-wrapper {
+    padding-right: 1.8rem;
+  }
+
+  .comment-actions {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: .75rem;
+  }
+}

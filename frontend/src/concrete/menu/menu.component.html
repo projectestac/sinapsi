@@ -1,0 +1,10 @@
+<cn-overlay [open]="isOpen" (dismiss)="dismiss()">
+  <div #wrapper [@show]="state" role="menu" class="cn-menu-wrapper">
+    <div class="cn-menu-backdrop"></div>
+    <div class="dropdown">
+      <div class="dropdown-menu">
+        <ng-content select="cn-menuitem, hr"></ng-content>
+      </div>
+    </div>
+  </div>
+</cn-overlay>

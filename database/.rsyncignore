@@ -1,0 +1,9 @@
+*.mwb
+*.bak
+*.marks
+.rsyncignore
+.gitattributes
+.gitignore
+.git
+.idea
+*~

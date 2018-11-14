@@ -1,0 +1,50 @@
+<fieldset #fieldset class="feeds-form">
+  <div *ngIf="form" class="form-group">
+
+    <!-- URL inputs -->
+
+    <label class="form-container-label">
+      <span i18n>Author feeds:</span>
+      <div [ngClass]="state()" class="form-group-control form-control">
+        <ng-container *ngFor="let group of form.controls">
+          <div [ngClass]="groupState(group)" class="input-group-typed">
+            <input #feedBox
+              type="text"
+              [formControl]="group.get('url')"
+              (focus)="_onGroupFocus(group)"
+              (blur)="_onGroupBlur(group)"
+              (keydown.Enter)="focusNext(); false"
+              (keydown.Shift.Enter)="focusPrevious(); false"
+              (keydown.ArrowDown)="focusNext(); false"
+              (keydown.ArrowUp)="focusPrevious(); false"
+              (keydown.PageUp)="focusFirst(); false"
+              (keydown.PageDown)="focusLast(); false"
+              [placeholder]="placeholder"
+              class="form-control"
+              i18n-placeholder>
+            <span class="input-group-icon">
+              <cn-icon value="feed"></cn-icon>
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </label>
+
+    <!-- Feedback messages -->
+
+    <small *ngIf="!form.touched || !form.invalid"
+            class="form-text text-muted">
+      <span i18n>
+        <abbr title="Really Simple Syndication">RSS</abbr> / 
+        <abbr title="Atom Syndication Format">Atom</abbr> feeds
+        for the author's synapse.
+      </span>
+    </small>
+    <small *ngIf="form.touched && form.invalid"
+            class="form-text text-danger">
+      <span i18n>
+        The provided values must be valid web addresses.
+      </span>
+    </small>
+  </div>
+</fieldset>

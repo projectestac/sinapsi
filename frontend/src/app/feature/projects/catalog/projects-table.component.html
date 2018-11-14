@@ -1,0 +1,50 @@
+<div *ngIf="authors" class="projects-table">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead cn-sortable
+        [cnSortValue]="sort"
+        (cnSortChange)="sortChange.emit($event)">
+        <tr role="row">
+          <th cnSortBy="name" i18n>Name</th>
+          <th cnSortBy="school_id" i18n>School</th>
+          <th cnSortBy="municipality_id" i18n>Municipality</th>
+          <th *appIfCan="['manage-authors']" title="Actions" class="actions-column" i18n-title>
+            <cn-icon value="pencil"></cn-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let author of authors"
+            [ngClass]="{ 'deleted-row' : author.deleted_at }">
+          <td class="main-column w-50">
+            <a [routerLink]="['/authors', author.id]">
+              {{ author.project.name }}
+            </a>
+          </td>
+          <td class="w-25">
+            {{ author.school?.name }}
+          </td>
+          <td class="w-25">
+            {{ author.municipality?.name }}
+          </td>
+          <td *appIfCan="['manage-authors']" class="actions-column">
+            <button
+              *appIfCan="['update-author', author]"
+              (click)="editRow.emit(author)"
+              title="Edit project" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="edit"></cn-icon>
+            </button>
+            <button
+              *appIfCan="['destroy-project', author.project]"
+              (click)="deleteRow.emit(author)"
+              title="Delete project" i18n-title
+              class="btn btn-sm btn-secondary">
+              <cn-icon value="remove"></cn-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

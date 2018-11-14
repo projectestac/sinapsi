@@ -1,0 +1,90 @@
+@import "core";
+
+.node-spinner {
+  display: inline-block;
+  margin-left: 1.5rem;
+  padding: .8rem;
+  color: th-gray('200');
+  
+  ::ng-deep .fa {
+    font-size: 1.3rem;
+  }
+}
+
+.synapses-tree {
+  list-style: none;
+  padding: 0;
+  
+  .synapses-tree {
+    padding-left: 1rem;
+    border-left: 1px dotted th-gray('400');
+    margin-left: .75rem;
+  }
+  
+  .synapses-node > .node-summary {
+    margin-left: 1.5rem;
+  }
+  
+  .root-node > .node-summary:first-child a {
+    font-weight: 600;
+  }
+  
+  .node-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem;
+  }
+  
+  .node-summary:hover {
+    background: th-gray('100');
+  }
+  
+  .node-slug {
+    font-size: .8rem;
+    padding: .07rem .5rem;
+    color: th-color('white');
+    background: th-gray('400');
+    border-radius: 1rem;
+    font-weight: 600;
+    
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  ::ng-deep .cn-details-header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    
+    .cn-details-marker {
+      display: inline-block;
+      font-size: .9rem;
+      width: 1rem;
+      margin-left: .5rem;
+    }
+  }
+  
+  ::ng-deep .cn-details {
+      &.open .cn-details-marker i:before {
+        content: th-icon-char('minus') !important;
+      }
+      
+      &.closed .cn-details-marker i:before {
+        content: th-icon-char('plus') !important;
+      }
+  }
+}
+
+
+// Small screens
+
+@include media-breakpoint-down(md) {
+  .synapses-taxonomy {
+    font-size: 90%;
+  }
+}
+

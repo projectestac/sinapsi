@@ -1,0 +1,54 @@
+<div class="colorpicker" [ngClass]="{ focus: focused, disabled: disabled }">
+
+  <!-- Hidden input -->
+
+  <input (focusin)="focus()" tabindex="-1">
+
+  <!-- Input box -->
+
+  <div #inputBox role="combobox"
+       (keydown.arrowdown)="activateNext(); false"
+       (keydown.arrowup)="activatePrevious(); false"
+       (keydown.enter)="choose(active); blur(); false"
+       (keydown.escape)="clear(); blur(); false"
+       (focusin)="focus()"
+       (focusout)="blur()"
+       [tabindex]="disabled ? -1 : 0"
+       [attr.disabled]="disabled ? 'true' : null"
+       [attr.aria-expanded]="focused && !disabled"
+       [attr.aria-activedescendant]="'#' + optionUID(active)"
+       [attr.aria-owns]="'#' + id + '-listbox'"
+       class="colorpicker-input custom-select">
+    <div *ngIf="value" class="color-box">
+      <span class="color-preview" [ngClass]="value.id"></span>
+      <span class="color-name">{{ value.name }}</span>
+    </div>
+    <div *ngIf="!value" class="color-box">
+      <span class="color-placeholder">{{ placeholder }}</span>
+    </div>
+  </div>
+
+  <!-- Dropdown box -->
+
+  <div (mousedown)="$event.preventDefault()"
+       class="colorpicker-dropdown">
+    <ul #listBox
+        role="listbox"
+        tabindex="-1"
+        class="list-group"
+        [id]="id + '-listbox'">
+      <li *ngFor="let color of colors"
+          (mousedown)="choose(color); blur()"
+          [ngClass]="{ active: active?.id === color.id }"
+          [attr.aria-selected]="active?.id === color.id"
+          [id]="optionUID(color)"
+          class="list-group-item list-group-item-action">
+        <div class="color-box">
+          <span class="color-preview" [ngClass]="color.id"></span>
+          <span class="color-name">{{ color.name }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

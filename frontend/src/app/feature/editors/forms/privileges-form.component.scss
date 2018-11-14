@@ -1,0 +1,50 @@
+@import 'core';
+
+// Base styles
+
+caption {
+  caption-side: top;
+  font-weight: 600;
+  color: th-gray('text');
+}
+
+.table {
+  font-size: 0.875rem;
+  border-bottom: 2px solid th-gray('divider');
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+.user-avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+.append-button {
+  padding: 0.3rem;
+}
+
+.users-typeahead {
+  flex: 1;
+  margin-right: 1rem;
+
+  ::ng-deep .typeahead-input .form-control {
+    width: 100%;
+  }
+}
+
+.btn-toggle {
+  color: white;
+  background: th-gray('200');
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: .7rem;
+  padding: 0;
+
+  &[aria-pressed="true"] {
+    background: th-color('primary');
+  }
+}

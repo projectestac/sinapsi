@@ -1,0 +1,29 @@
+<!-- No results message -->
+
+<div [hidden]="!inState('empty')" class="state-message">
+  <div class="display-4 text-center m-4">
+    <cn-icon value="search"></cn-icon>
+  </div>
+  <div class="text-center m-4">
+    <span class="h4" i18n>No results found</span>
+    <p i18n>We cannot find any item matching your search.</p>
+    <a routerLink="." i18n>
+      Clear search
+    </a>
+  </div>
+</div>
+
+<!-- Error message -->
+
+<div [hidden]="!inState('error')" class="state-message">
+  <div class="display-1 text-center m-4">
+    <cn-icon value="exclamation-triangle"></cn-icon>
+  </div>
+  <div class="text-center m-4">
+    <span class="h4" i18n>Unexpected error</span>
+    <p i18n>Could not fetch information from server.</p>
+    <a href="." (click)="reloadRoute(); false" i18n>
+      Reload this page
+    </a>
+  </div>
+</div>

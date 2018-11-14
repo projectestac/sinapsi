@@ -1,0 +1,14 @@
+<button
+  type="button"
+  [cnMenu]="selectMenu"
+  [attr.title]="section.title"
+  class="btn btn-sm btn-outline-secondary btn-secondary dropdown-toggle">
+  <span>{{ section.name }}</span>
+</button>
+<cn-menu #selectMenu>
+  <cn-menuitem *ngFor="let section of sections"
+    [icon]="section.icon"
+    (click)="select(section)" i18n>
+    {{ section.name }}
+  </cn-menuitem>
+</cn-menu>

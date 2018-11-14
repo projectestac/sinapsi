@@ -1,0 +1,41 @@
+<div class="comments-catalog" [ngClass]="{ editable: editable }">
+
+  <!-- Results table -->
+  
+  <div *ngIf="collection?.total > 0" class="results-wrapper">
+    <div [hidden]="state == 'empty' && state == 'error'">
+      <div *ngFor="let comment of collection" class="comment-wrapper">
+        <app-comment-details [comment]="comment"></app-comment-details>
+        
+        <div class="comment-actions">
+          <button type="button"
+             (click)="remove(comment)"
+             title="Delete this comment" i18n-title
+             class="btn btn-sm btn-light">
+            <cn-icon value="remove"></cn-icon>
+            <span class="sr-only" i18n>Remove</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pagination -->
+  
+  <ng-container *ngIf="collection?.total > 0">
+    <div *ngIf="collection.total > collection.to" class="load-more">
+      <button type="button"
+        (click)="fetchMore()"
+         class="btn btn-block">
+        <span i18n>Show more comments</span>
+      </button>
+    </div>
+  </ng-container>
+  
+  <!-- Progress backdrop -->
+  
+  <div *ngIf="state === 'pending'" class="backdrop">
+    <cn-spinner></cn-spinner>
+  </div>
+  
+</div>

@@ -1,0 +1,38 @@
+:host {
+  display: none !important;
+}
+
+.cn-overlay-root {
+  display: none;
+  overflow: hidden;
+  z-index: 9999;
+  
+  &, .cn-backdrop, .cn-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  
+  &.open {
+    display: block;
+  }
+  
+  &:not(.lock) {
+    pointer-events: none;
+  }
+}
+
+.cn-content {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cn-content-wrapper {
+  pointer-events: all;
+}

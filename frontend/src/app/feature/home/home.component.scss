@@ -1,0 +1,33 @@
+@import "core";
+
+// Page styles
+
+.page-header .container {
+  margin: 1rem auto;
+
+  @include media-breakpoint-up(sm) {
+    margin: 2rem auto;
+  }
+}
+
+.page-header .brand-name {
+  font-size: 3.6rem;
+  color: th-color('primary');
+  font-family: th-font-family('heading');
+  font-weight: 300;
+  
+  @include media-breakpoint-down(md) {
+    font-size: 2.25rem;
+  }
+}
+
+.admin-block {
+  a {
+    font-size: .875rem;
+    font-weight: 600;
+  }
+  
+  ::ng-deep .fa {
+    color: th-gray('text');
+  }
+}

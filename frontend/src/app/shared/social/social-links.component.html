@@ -1,0 +1,15 @@
+<div *ngIf="synapse || tag" class="btn-group"
+     aria-label="Share this page">
+  <ng-container *ngFor="let link of links">
+    <a (click)="share(link.href); false"
+       [attr.title]="link.title"
+       [ngClass]="link.class"
+       class="btn btn-sm btn-link" target="_blank">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-stack-1x fa-inverse"
+           [ngClass]="'fa-' + link.icon"></i>
+      </span>
+    </a>
+  </ng-container>
+</div>

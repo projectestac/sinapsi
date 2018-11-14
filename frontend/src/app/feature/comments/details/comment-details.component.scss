@@ -1,0 +1,43 @@
+@import "core";
+
+// Base styles
+
+.comment {
+  font-size: .8125rem;
+  padding: .75rem;
+  
+  @include media-breakpoint-down(sm) {
+    margin-left: 0;
+  }
+}
+
+.comment-header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .65rem;
+  
+  time {
+    color: th-gray('600');
+  }
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  
+  img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: .5rem;
+    border-radius: 100%;
+  }
+}
+
+.comment-text {
+  font-size: .875rem;
+  white-space: pre-line;
+  margin-left: 1.9rem;
+}

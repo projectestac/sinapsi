@@ -1,0 +1,30 @@
+// Tabs
+
+.nav-tabs {
+  background: th-gray('background');
+  border: 1px solid th-gray('200');
+  border-collapse: collapse;
+  
+  .nav-item .nav-link {
+    color: th-color('primary');
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-width: 0 1px 0 0;
+    border-color: th-gray('200');
+    border-radius: 0;
+    
+    &.active {
+      color: th-gray('800');
+      background: th-color('white');
+    }
+    
+    &.disabled {
+      cursor: not-allowed;
+      border-color: th-gray('200');
+    }
+  }
+  
+  button.nav-link {
+    background-color: transparent;
+  }
+}

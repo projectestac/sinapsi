@@ -1,0 +1,142 @@
+<div class="page-navigation">
+  <div class="container">
+    <cn-breadcrumb></cn-breadcrumb>
+  </div>
+</div>
+<article *ngIf="state !== 'empty'"  class="page-content">
+
+  <!-- Header -->
+
+  <div class="page-header">
+    <div class="container">
+      <header>
+        <h1>
+          <span class="text-muted" i18n>Editing:</span>
+          {{ author?.name }}
+        </h1>
+      </header>
+    </div>
+  </div>
+
+  <!-- Contents -->
+
+  <section *ngIf="state !== 'error'" class="page-section">
+    <div class="page-body container">
+      <form *ngIf="author" [formGroup]="form" (ngSumbit)="save()" novalidate>
+
+        <!-- Editor tabs -->
+
+        <div class="author-editor-tabs">
+          <cn-tabs [(value)]="tab">
+            <cn-tabitem value="author">
+              <span i18n>Author information</span>
+            </cn-tabitem>
+            <cn-tabitem value="synapse">
+              <span i18n>Synapse</span>
+            </cn-tabitem>
+            <cn-tabitem value="blocks">
+              <span i18n>Blocks</span>
+            </cn-tabitem>
+          </cn-tabs>
+        </div>
+
+        <!-- Editor sections -->
+
+        <div class="tabs-outlet">
+          <section [hidden]="tab !== 'author'">
+            <div class="row">
+              <div class="main-column col-lg-8">
+                <div *ngIf="owner?.name" class="form-group">
+                  <label class="form-container-label">
+                    <span i18n>Author name:</span>
+                    <input type="text"
+                       [value]="owner.name" disabled
+                       class="form-control">
+                  </label>
+                  <div class="feedback-box">
+                    <small class="form-text text-muted">
+                      <span i18n>Full name of the author.</span>
+                    </small>
+                  </div>
+                </div>
+
+                <div *ngIf="owner?.email" class="form-group">
+                  <label class="form-container-label">
+                    <span i18n>Email:</span>
+                    <input type="text"
+                       [value]="owner.email" disabled
+                       class="form-control">
+                  </label>
+                  <div class="feedback-box">
+                    <small class="form-text text-muted">
+                      <span i18n>Login email address of the user.</span>
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="main-column col-lg-4">
+                <div class="mock-up">@AuthorHelp</div>
+              </div>
+            </div>
+          </section>
+
+          <app-author-section
+            [hidden]="tab !== 'author'"
+            [form]="form.get('author')">
+          </app-author-section>
+
+          <app-user-section
+            *ngIf="author?.type === 'users'"
+            [hidden]="tab !== 'author'"
+            [form]="form.get('user')">
+          </app-user-section>
+
+          <app-synapse-section
+            [hidden]="tab !== 'synapse'"
+            [form]="form.get('synapse')">
+          </app-synapse-section>
+
+          <app-feeds-section
+            [hidden]="tab !== 'synapse'"
+            [form]="form.get('feeds')">
+          </app-feeds-section>
+
+          <app-blocks-section
+            [hidden]="tab !== 'blocks'"
+            [form]="form.get('blocks')">
+          </app-blocks-section>
+        </div>
+
+        <!-- Editor actions -->
+
+        <div class="editor-actions">
+          <div class="action-buttons">
+            <button type="button"
+              (click)="save()"
+               class="btn btn-primary">
+              <span i18n>Save changes</span>
+            </button>
+            <button type="button"
+              (click)="confirmReset()"
+               class="btn btn-secondary">
+              <span i18n>Reset</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Progress backdrop -->
+
+    <div [hidden]="state !== 'pending'" class="backdrop">
+      <cn-spinner></cn-spinner>
+    </div>
+  </section>
+</article>
+
+<!-- Error message -->
+
+<ng-container *ngIf="state === 'empty' || state === 'error'">
+  <app-errors [code]="error.status"></app-errors>
+</ng-container>

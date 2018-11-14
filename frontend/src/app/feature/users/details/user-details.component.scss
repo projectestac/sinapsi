@@ -1,0 +1,29 @@
+@import "core";
+
+.page-header .container {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 2rem;
+  }
+}
+
+.admin-block {
+  a {
+    font-size: .875rem;
+    font-weight: 600;
+  }
+  
+  ::ng-deep .fa {
+    color: th-gray('text');
+  }
+}
+
+// Hide the share form
+
+::ng-deep {
+  .share-form-article,
+  .results-toolbar .share-button {
+    display: none !important;
+  }
+}

@@ -1,0 +1,9 @@
+<div #overlay [ngClass]="{ open: isOpen, lock: isLocker }"
+     class="cn-overlay-root">
+  <div #backdrop class="cn-backdrop" (mousedown)="dismiss()"></div>
+  <div #content class="cn-content" tabindex="-1">
+    <div class="cn-content-wrapper">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,156 @@
+@import "core";
+
+// Base styles
+
+legend {
+  color: th-gray('400');
+  border-bottom: 2px dotted th-gray('200');
+  font-size: .7rem;
+  font-weight: 700;
+  margin: 0 0 .5rem 0;
+  text-transform: uppercase;
+}
+
+legend > span {
+  margin: 0 0.75rem;
+}
+
+fieldset:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.custom-radio {
+  margin: 0.375rem 0.75rem;
+}
+
+
+// Layout
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  
+  .search-tabs {
+    width: 18%;
+    z-index: 100;
+    
+    .tab-icon {
+      font-size: 1.25rem;
+    }
+    
+    @include media-breakpoint-up(sm) {
+      width: 30%;
+    }
+  }
+  
+  .tabs-outlet {
+    position: relative;
+    background: white;
+    border: 1px solid th-gray('200');
+    margin-left: -1px;
+    min-height: 24.5rem;
+    padding: 1rem;
+    width: 82%;
+    
+    @include media-breakpoint-up(sm) {
+      width: 70%;
+    }
+  }
+}
+
+
+// Tabs
+
+.search-tabs ::ng-deep {
+  
+  .search-tab-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav-tabs {
+    flex-direction: column;
+    background-color: th-gray('50');
+    border: 0;
+  }
+  
+  .nav-item, .nav-link {
+    width: 100%;
+    font-size: .875rem;
+    text-align: left;
+    font-weight: 400;
+  }
+  
+  .nav-link {
+    border-width: 1px;
+    
+    @include media-breakpoint-down(sm) {
+      padding: 0.5rem;
+    }
+  }
+
+  .nav-link.active {
+    border-width: 1px 0 1px 1px;
+  }
+
+}
+
+
+// Typeahead filters
+
+.filter-icon {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.5rem;
+  pointer-events: none;
+}
+
+.search-filters ::ng-deep .typeahead-box {
+  
+  .list-group-item {
+    border-width: 1px 0;
+  }
+  
+  .list-group-item:first-child {
+    border-top: 0;
+  }
+  
+  .typeahead-selection {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    border-bottom: 2px dotted th-gray('200') !important;
+  }
+  
+  .typeahead-input {
+    margin: .375rem 0 .875rem 0;
+  }
+
+}
+
+
+// Published at filter
+
+.date-range {
+  
+  .input-group-text {
+    font-size: .875rem;
+  }
+  
+  label {
+    flex: 1;
+    margin: 0.375rem 0.75rem;
+  }
+  
+  label:not(:last-child) {
+    margin-right: .5rem;
+  }
+  
+  button {
+    height: 2.375rem;
+    margin: 0.375rem 0.75rem;
+    align-self: flex-end;
+  }
+
+}

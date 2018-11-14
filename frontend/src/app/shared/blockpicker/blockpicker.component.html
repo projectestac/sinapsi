@@ -1,0 +1,50 @@
+<div class="blockpicker-box btn-group btn-group-toggle">
+  <button
+    (click)="choose('basic')"
+    [ngClass]="state('basic')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="paint-brush"></cn-icon>
+    <span class="sh" i18n>Color</span>
+  </button>
+  <button
+    (click)="choose('picture')"
+    [ngClass]="state('picture')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="image"></cn-icon>
+    <span class="sh" i18n>Picture</span>
+  </button>
+  <button
+    (click)="choose('card')"
+    [ngClass]="state('card')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="sticky-note-o"></cn-icon>
+    <span class="sh" i18n>Card</span>
+  </button>
+  <button
+    (click)="choose('header')"
+    [ngClass]="state('header')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="header"></cn-icon>
+    <span class="sh" i18n>Header</span>
+  </button>
+  <button
+    (click)="choose('html')"
+    [ngClass]="state('html')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="code"></cn-icon>
+    <span class="sh" i18n>HTML</span>
+  </button>
+  <button
+    (click)="choose('twitter')"
+    [ngClass]="state('twitter')"
+    [disabled]="disabled"
+    class="btn btn-link">
+    <cn-icon value="twitter"></cn-icon>
+    <span class="sh" i18n>Timeline</span>
+  </button>
+</div>

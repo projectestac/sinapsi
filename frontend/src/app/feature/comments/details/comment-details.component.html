@@ -1,0 +1,18 @@
+<article class="comment">
+  <header class="comment-header">
+    <time [attr.datetime]="comment.created_at"
+          [title]="comment.created_at | moment:'format':'LLLL'">
+      {{ comment.created_at | moment }}
+    </time>
+    <span class="comment-author">
+      <img alt="Author picture" i18n-alt [src]="comment.user.avatar_url"/>
+      <span>
+        <a [routerLink]="['/authors', comment.author.id]" rel="author">
+          {{ comment.user.name }}
+        </a>
+        <span class="sh" i18n>says:</span>
+      </span>
+    </span>
+  </header>
+  <div class="comment-text">{{ comment.content }}</div>
+</article>

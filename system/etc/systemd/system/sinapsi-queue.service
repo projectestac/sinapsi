@@ -1,0 +1,11 @@
+[Unit]
+Description=Sinapsi Queue Service
+
+[Service]
+Type=simple
+User=@user@
+ExecStart=/usr/bin/php @path@/artisan queue:listen --tries=3 --queue=default,high,low
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

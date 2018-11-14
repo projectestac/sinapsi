@@ -1,0 +1,13 @@
+@import "core";
+
+// Base styles
+
+:host ::ng-deep .btn {
+  padding: .25rem .4rem;
+  border-color: th-gray('200');
+  
+  &.active {
+    color: th-gray('600');
+    background-color: th-gray('200');
+  }
+}

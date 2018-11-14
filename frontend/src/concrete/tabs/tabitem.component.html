@@ -1,0 +1,8 @@
+<div role="tab" [attr.aria-selected]="selected" class="nav-item">
+  <button #button
+    (click)="pick()"
+    [ngClass]="{ active: selected }"
+    class="nav-link">
+    <ng-content></ng-content>
+  </button>
+</div>

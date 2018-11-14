@@ -1,0 +1,154 @@
+<fieldset [formGroup]="form">
+
+  <!-- Block type -->
+
+  <div class="form-group">
+    <label class="form-container-label">
+      <span i18n>Block type:</span>
+      <app-blockpicker
+        [formControl]="options.get('type')">
+      </app-blockpicker>
+    </label>
+  </div>
+
+  <!-- Block title -->
+
+  <div *ngIf="!typeIn(['html', 'twitter'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Title:</span>
+      <input type="text"
+        [formControl]="form.get('title')"
+         placeholder="Title of the block" i18n-placeholder
+         class="form-control">
+    </label>
+    <app-feedback
+      [control]="form.get('title')">
+      <span i18n>
+        Heading title of the block.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Block color -->
+
+  <div *ngIf="typeIn(['basic'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Background color:</span>
+      <app-colorpicker
+        [formControl]="options.get('color')"
+        placeholder="Pick a color" i18n-placeholder>
+      </app-colorpicker>
+    </label>
+    <app-feedback
+      [control]="options.get('color')">
+      <span i18n>
+        Background color of the block.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Image URL -->
+
+  <div *ngIf="typeIn(['picture'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Picture:</span>
+      <div class="input-group-typed">
+        <input type="text"
+          [formControl]="options.get('image_url')"
+           placeholder="http://www.example.org/image.png" i18n-placeholder
+           class="form-control">
+        <span class="input-group-icon">
+          <cn-icon value="image"></cn-icon>
+        </span>
+      </div>
+    </label>
+    <app-feedback
+      [control]="options.get('image_url')">
+      <span i18n>
+        The URL of an image to show on the block.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Web address -->
+
+  <div *ngIf="typeIn(['basic', 'picture'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Web address:</span>
+      <div class="input-group-typed">
+        <input type="text"
+          [formControl]="options.get('href')"
+           placeholder="http://www.example.org/" i18n-placeholder
+           class="form-control">
+        <span class="input-group-icon">
+          <cn-icon value="link"></cn-icon>
+        </span>
+      </div>
+    </label>
+    <app-feedback
+      [control]="options.get('href')">
+      <span i18n>
+        An URL to open when a user clicks on the block.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Twitter profile -->
+
+  <div *ngIf="typeIn(['twitter'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Twitter profile:</span>
+      <div class="input-group-typed">
+        <input type="text"
+          [formControl]="options.get('profile')"
+           placeholder="@username" i18n-placeholder
+           class="form-control">
+        <span class="input-group-icon">
+          <cn-icon value="twitter"></cn-icon>
+        </span>
+      </div>
+    </label>
+    <app-feedback
+      [control]="options.get('profile')">
+      <span i18n>
+        Username of an existing Twitter user.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Block content -->
+
+  <div *ngIf="!typeIn(['html', 'twitter'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Contents:</span>
+      <app-htmleditor
+        [formControl]="form.get('content')">
+      </app-htmleditor>
+    </label>
+    <app-feedback
+      [control]="form.get('content')">
+      <span i18n>
+        Text contents of the block.
+      </span>
+    </app-feedback>
+  </div>
+
+  <!-- Raw block content -->
+
+  <div *ngIf="typeIn(['html'])" class="form-group">
+    <label class="form-container-label">
+      <span i18n>Source code:</span>
+      <app-source-editor
+        [formControl]="form.get('content')">
+      </app-source-editor>
+    </label>
+    <app-feedback
+      [control]="form.get('content')">
+      <span i18n>
+        Block contents as HTML source code. Bootstrap's CSS classes
+        are supported for styling.
+      </span>
+    </app-feedback>
+  </div>
+
+</fieldset>

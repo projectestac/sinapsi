@@ -1,0 +1,113 @@
+<div class="typeahead-box" [ngClass]="{ focus: hasFocus }">
+
+  <!-- Autocomplete input box -->
+
+  <div class="typeahead-input">
+    <input #inputBox
+      type="text"
+      role="combobox"
+      [(ngModel)]="keywords"
+      (keydown.arrowdown)="activateNext(); false"
+      (keydown.arrowup)="activatePrevious(); false"
+      (keydown.pagedown)="next(); false"
+      (keydown.pageup)="previous(); false"
+      (keydown.enter)="toggle(activeValue); false"
+      (keydown.escape)="clear(); false"
+      (keyup)="search(inputBox.value); false"
+      (focus)="focus()"
+      (blur)="blur()"
+      (input)="$event.stopPropagation()"
+      (change)="$event.stopPropagation()"
+      [placeholder]="placeholder"
+      [attr.aria-expanded]="ariaExpanded()"
+      [attr.aria-activedescendant]="ariaActiveDescendant()"
+      [attr.aria-owns]="'#' + ariaOwns()"
+      aria-multiselect="true"
+      aria-autocomplete="list"
+      aria-haspopup="true"
+      class="form-control"/>
+  </div>
+
+  <!-- Choosen models -->
+
+  <div class="typeahead-selection list-group-item">
+    <div class="selection-wrapper">
+      <span class="selection-title" i18n>
+        Selection:
+      </span>
+      <button *ngFor="let model of value"
+        [title]="model.name"
+        (mousedown)="refuse(model); preventBlur($event)"
+        tabindex="-1"
+        class="btn btn-secondary-light badge">
+        <cn-icon value="times"></cn-icon>
+        <span class="sh">{{ model.name }}</span>
+      </button>
+      <span *ngIf="!(value?.length)" class="selection-footer" i18n>
+        No items selected
+      </span>
+    </div>
+  </div>
+
+  <!-- Search results -->
+
+  <div class="typeahead-results">
+    <ul *ngIf="collection"
+        [id]="ariaOwns()"
+        role="listbox"
+        class="list-group">
+      <li *ngFor="let model of collection"
+          (mousedown)="toggle(model); preventBlur($event)"
+          [attr.aria-selected]="ariaSelected(model)"
+          [ngClass]="{ active: isActive(model) }"
+          class="list-group-item list-group-item-action">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox"
+                 [id]="ariaOptionId(model)"
+                 [attr.checked]="isChoice(model) ? 'true' : null"
+                 (change)="$event.stopPropagation()"
+                 tabindex="-1"
+                 class="custom-control-input">
+          <label [for]="ariaOptionId(model)"
+                 class="custom-control-label">
+            {{ model.name }}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Pagination and footer -->
+  
+  <div class="typeahead-footer text-muted">
+    <small *ngIf="!hasResults() && request?.search" i18n>
+      No results could be found
+    </small>
+    <div *ngIf="hasResults()" class="typeahead-pagination">
+      <small i18n>
+        Showing {{ collection.from | number }} to
+        {{ collection.to | number }} of
+        {{ collection.total | number }} results
+      </small>
+      <span class="pagination-buttons">
+        <button
+          title="Previous page" i18n-title
+          (mousedown)="previous(); preventBlur($event)"
+          [disabled]="collection.from <= 1"
+          class="btn btn-sm btn-light">
+          <cn-icon value="chevron-left"></cn-icon>
+          <span class="sr-only" i18n>Previous</span>
+        </button>
+        <button
+          title="Next page" i18n-title
+          (mousedown)="next(); preventBlur($event)"
+          [disabled]="collection.total <= collection.to"
+          class="btn btn-sm btn-light">
+          <cn-icon value="chevron-right"></cn-icon>
+          <span class="sr-only" i18n>Next</span>
+        </button>
+      </span>
+    </div>
+  </div>
+
+</div>

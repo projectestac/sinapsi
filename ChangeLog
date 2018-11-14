@@ -1,0 +1,17 @@
+2018-02-26  Joan Sala   <jsala236@xtec.cat>
+
+New 2.0 series.
+
+  * Bootstrap 4
+  * Laravel 5.4
+  * Angular 6
+  * SASS stylesheets
+  * Standardized REST services
+  * Postman collection with tests
+  * New database scheme
+  * New build system
+  * Internationalization support.
+
+2017-05-02  Xavier Meler   <jmeler@xtec.cat>
+
+  * Initial release.

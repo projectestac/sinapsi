@@ -1,0 +1,56 @@
+@import "core";
+
+// Base styles
+
+.locale-links {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  
+  li {
+    display: inline-block;
+  }
+  
+  li:first-child {
+    margin-left: 0;
+  }
+  
+  a {
+    color: th-gray('400');
+    font-size: .8rem;
+    text-decoration: none;
+    
+    abbr {
+      color: th-color('white');
+      font-family: th-font-family('primary');
+      font-size: .9rem;
+      line-height: 2rem;
+    }
+    
+    &:hover, &:focus {
+      color: th-gray('600');
+    }
+    
+    &:focus abbr {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Dark background
+
+:host-context(.bg-dark) .locale-links a {
+  color: th-gray('400');
+  
+  abbr {
+    color: th-color('white');
+  }
+  
+  &:hover {
+    color: th-color('white');
+  }
+  
+  &:hover abbr {
+    color: th-color('black');
+  }
+}
