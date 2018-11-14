@@ -66,3 +66,8 @@ Installation of Sinapsi
   For example:
 
   $ sudo make install wwwdir=/opt user=httpd group=httpd
+
+  Manual installation
+  -------------------
+
+  Please see the DEPLOY file.

@@ -194,8 +194,8 @@ dist:
 	test -d $(outdir)
 	mkdir -p $(distdir)
 
-	cd $(outdir) && tar -cv \
-	-f "$(distdir)/$(name)-$(version).$(target).tar" * .[!.]*
+	cd $(outdir) && tar -cvJ \
+	-f "$(distdir)/$(name)-$(version).$(target).tar.xz" * .[!.]*
 
 
 # =============================================================================

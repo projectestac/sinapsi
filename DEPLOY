@@ -1,0 +1,127 @@
+Deployment of Sinapsi
+
+  Copyright (C) 2018 Department of Education, Government of Catalonia
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+======================================================================
+
+  Dependencies
+  ------------
+
+  This project was built using the frameworks Laravel 5.4 for the
+  backend and Angular 6.0 on the frontend.
+
+  Minimum system requirements:
+
+  * Apache >= 2.4
+  * MySQL >= 5.6
+  * PHP >= 5.6.4
+  * Mbstring PHP Extension
+  * PDO PHP Extension
+  * Tokenizer PHP Extension
+  * XML PHP Extension
+
+
+  Before installation
+  -------------------
+
+  Sinapsi uses Google Cloud Platform to authenticate users. Please,
+  create your application and credentials using the following
+  information. Where {host} is your application domain.
+
+  Authorized JavaScript origins:    https://{host}
+  Authorized redirect URIs:         https://{host}/accounts/login
+
+
+  Database creation
+  -----------------
+
+  From inside the «database» folder execute the database creation SQL
+  script «sinapsi.sql». The script assumes that no database named
+  «sinapsi» exists and creates it. Make sure your MySQL user was granted
+  the CREATE and FILE privileges before executing the script.
+
+  For example:
+
+  $ mysql -u -p --force --local-infile < sinapsi.sql
+
+
+  Install the application
+  -----------------------
+
+  Copy the files from the «application» folder to a suitable folder on
+  your server (i.e. /var/www/sinapsi) and set the required permissions
+  for the files. You can use the included PERMISSIONS file as a reference.
+
+
+  Setup the system
+  ----------------
+
+  In order to scrap the feeds automatically a cron task and the
+  queue listener service must be configured. Copy the files found on
+  the «system» folder to appropriate locations for your system and make
+  sure they have the right permissions.
+
+  If required, configure the extracted files to suit your system.
+
+  The included files are:
+
+  Cron task:            /etc/cron.d/sinapsi
+  Systemd Unit File:    /etc/systemd/system/sinapsi-queue.service
+  Virtual Host File:    /etc/apache2/sites-available/sinapsi.conf
+
+
+  Configure the application
+  -------------------------
+
+  Edit the .env file that can be found on the installation folder
+  (i.e. /var/www/sinapsi/.env) and configure it according to your system
+  settings. Change the APP_URL to point to your domain and configure the
+  database, mail and authentication sections to suit your needs.
+
+  To generate a new encryption key you can use the key:generate artisan
+  command. For example, issuing:
+
+  $ php /var/www/sinapsi/artisan key:generate
+
+
+  Configure the logs
+  ------------------
+
+  The application logs can be found on the /storage/logs folder
+  inside your application location (i.e. /var/www/sinapsi/storage/logs).
+
+  If required, you can move them to another location by creating a
+  hard link to that folder. Make sure the folder and its contents have
+  the right permissions, or else the application will not run.
+
+
+  Reload the services
+  -------------------
+
+  At this point, the cron task, the queue service and the web server
+  configuration must be reloaded. Ensure the virtual host is enabled.
+
+  For example:
+
+  $ systemctl daemon-reload
+  $ systemctl start sinapsi-queue.service
+
+  $ service cron force-reload
+
+  $ a2ensite sinapsi.conf
+  $ service apache2 reload
+
+
+  Start the application
+  ---------------------
+
+  Make sure the application is not in maintenance mode. After that
+  Sinapsi should be up and running.
+
+  For example:
+
+  $ php /var/www/sinapsi/artisan up
