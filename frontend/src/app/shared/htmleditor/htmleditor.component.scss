@@ -2,11 +2,12 @@
 
 .html-editor-box.form-control {
   padding: 0;
-  
+  height: auto;
+
   &.focused {
     border-color: th-gray('400');
   }
-  
+
   &.disabled {
     pointer-events: none;
   }
