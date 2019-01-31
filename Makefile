@@ -47,6 +47,7 @@ name	 ?= sinapsi
 apps	 ?= sinapsi embed
 locales	 ?= en ca es
 target	 ?= production
+root	 ?=
 version	 ?= $(shell date +%Y%m%d)
 
 app		 ?= sinapsi
@@ -60,12 +61,13 @@ locale	 ?= en
 define HTACCESS
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /@base@
-
+  RewriteBase @base@
+  RewriteRule ^(images/.+)$$ @root@$$1 [L]
+  RewriteRule ^(manifest\.json)$$ @root@$$1 [R=301,L]
   RewriteRule ^index\.html$$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /@base@/index.html [L]
+  RewriteRule . index.html [L]
 </IfModule>
 endef
 export HTACCESS
@@ -147,7 +149,7 @@ endif
 	$(eval args += --aot --build-optimizer)
 	$(eval args += --deploy-url=)
 	$(eval args += --project=$(app))
-	$(eval args += --base-href=/$(locale)$(base)/)
+	$(eval args += --base-href=$(root)/$(locale)$(base)/)
 	$(eval args += --configuration=$(locale))
 	$(eval args += --i18n-locale=$(locale))
 	$(eval args += --output-path=$(path))
@@ -164,7 +166,8 @@ endif
 	sed -r -i 's|<html[^>]+>|<html lang="$(locale)">|' {} \;
 
 	echo "$$HTACCESS" > $(path)/.htaccess
-	sed -i 's|@base@|$(locale)$(base)|g' $(path)/.htaccess
+	sed -i 's|@root@|$(root)/|g' $(path)/.htaccess
+	sed -i 's|@base@|$(root)/$(locale)$(base)/|g' $(path)/.htaccess
 
 
 # =============================================================================
