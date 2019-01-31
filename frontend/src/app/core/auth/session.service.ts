@@ -3,6 +3,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CnToaster } from 'concrete/toaster';
 
+import { proxy } from 'app/core/services/store.service';
 import { UserChanged } from './session.events';
 import { User } from 'app/models';
 import { _ } from 'i18n';
@@ -26,13 +27,13 @@ export class SessionService implements OnDestroy {
     private DISABLED_MESSAGE = _('Your account has been temporarily disabled.');
 
     /** Log in API path */
-    private SIGNIN_PATH = '/accounts/register';
+    private SIGNIN_PATH = proxy('/accounts/register');
 
     /** Log out API path */
-    private SIGNOUT_PATH = '/api/accounts/logout';
+    private SIGNOUT_PATH = proxy('/api/accounts/logout');
 
     /** User profile API path */
-    private PROFILE_PATH = '/api/accounts/profile';
+    private PROFILE_PATH = proxy('/api/accounts/profile');
 
     /** App location host */
     private APP_HOST: string;
@@ -121,7 +122,7 @@ export class SessionService implements OnDestroy {
 
             if (host === this.APP_HOST) {
                 clearInterval(timer);
-                
+
                 this.authWindow.close();
                 this.fetchUser().subscribe(authorized => {
                     if (authorized === false) {

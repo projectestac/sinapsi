@@ -12,16 +12,16 @@ use Illuminate\Filesystem\Filesystem;
  * Application controller.
  */
 class AppController extends Controller {
-    
-    
+
+
     /**
      * Debug web route.
      */
     public function debug() {
         return view('debug');
     }
-    
-    
+
+
     /**
      * Web app manifest.
      */
@@ -29,23 +29,24 @@ class AppController extends Controller {
         $filesystem = App::make(Filesystem::class);
         $iconsPath = public_path('images/launch/');
         $iconFiles = $filesystem->glob("$iconsPath/*.png");
-        
+
         // Obtain all the icons for the application
-        
+
         $icons = [];
-        
+
         foreach ($iconFiles as $path) {
             $size = $filesystem->name($path);
-            
+            $url = url("images/launch/$size.png");
+
             $icons[] = [
-               "src" =>     "/images/launch/$size.png",
+               "src" =>     "{$url}",
                "sizes" =>   "{$size}x{$size}",
                "type" =>    "image/png"
             ];
         }
-        
+
         // Return the web application manifest
-        
+
         $manifest = [
             "display" =>            "standalone",
             "short_name" =>         config('app.name'),
@@ -55,7 +56,7 @@ class AppController extends Controller {
             "background_color" =>   config('app.background_color'),
             "icons" =>              [ $icons ]
         ];
-        
+
         return Response::json($manifest);
     }
 

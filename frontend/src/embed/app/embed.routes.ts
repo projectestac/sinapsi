@@ -2,6 +2,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { proxy } from 'app/core/services/store.service';
 
 
 /**
@@ -28,7 +29,7 @@ const ROUTES: Routes = [{
   exports: [ RouterModule ],
   providers: [{
     provide: APP_BASE_HREF,
-    useValue:  '/' + (document.documentElement.lang || 'en')
+    useValue:  proxy('/' + (document.documentElement.lang || 'en'))
   }, {
     provide: 'PopupRoute',
     useValue: (component, route, state, nextState) => {

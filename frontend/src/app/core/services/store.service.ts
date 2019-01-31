@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpParameterCodec } from '@angular/common/http';
+import { environment } from 'environments/environment';
 
 import {
     ModelCreated,
@@ -113,8 +114,9 @@ export class StoreService implements OnDestroy {
     query(path: string, params?: Object): Observable<Collection<Model>> {
         const options = { params: toHttpParams(params) };
         const request = Object.assign({}, options.params);
+        const url = proxy(path);
 
-        return this.http.get(path, options)
+        return this.http.get(url, options)
             .catch(response => this.throw(
                 new RetrieveError(path, request, response)))
             .map(response => toCollection<Model>(response));
@@ -131,8 +133,9 @@ export class StoreService implements OnDestroy {
      */
     get(path: string, id: number): Observable<StoreResponse> {
         const request = { id: id };
+        const url = proxy(`${path}/${id}`);
 
-        return this.http.get(`${path}/${id}`)
+        return this.http.get(url)
             .catch(response => this.throw(
                 new RetrieveError(path, request, response)));
     }
@@ -148,8 +151,9 @@ export class StoreService implements OnDestroy {
      */
     delete(path: string, id: number): Observable<StoreResponse> {
         const request = { id: id };
+        const url = proxy(`${path}/${id}`);
 
-        return this.http.delete(`${path}/${id}`)
+        return this.http.delete(url)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
             .map(response => this.emit(
@@ -167,8 +171,9 @@ export class StoreService implements OnDestroy {
      */
     restore(path: string, id: number): Observable<StoreResponse> {
         const request = { id: id };
+        const url = proxy(`${path}/${id}`);
 
-        return this.http.post(`${path}/${id}`, {})
+        return this.http.post(url, {})
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
             .map(response => this.emit(
@@ -188,8 +193,9 @@ export class StoreService implements OnDestroy {
     update(path: string, id: number, params: Object): Observable<StoreResponse> {
         const options = { params: toHttpParams(params) };
         const request = Object.assign({ id: id }, options.params);
+        const url = proxy(`${path}/${id}`);
 
-        return this.http.put(`${path}/${id}`, null, options)
+        return this.http.put(url, null, options)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
             .map(response => this.emit(
@@ -207,8 +213,9 @@ export class StoreService implements OnDestroy {
      */
     create(path: string, params: Object): Observable<StoreResponse> {
         const request = Object.assign({}, params);
+        const url = proxy(path);
 
-        return this.http.post(path, params)
+        return this.http.post(url, params)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
             .map(response => this.emit(
@@ -225,7 +232,7 @@ export class StoreService implements OnDestroy {
      * @returns             Observable
      */
     batch(path: string, params: Object): Observable<any> {
-        return this.create(path, params);
+        return this.create(proxy(path), params);
     }
 
 
@@ -247,6 +254,19 @@ export class StoreService implements OnDestroy {
         return event.response;
     }
 
+}
+
+
+/**
+ * If a backend proxy URL path was set on the environment, prefixes
+ * the provided path with it.
+ *
+ * @param path                  Absolute path
+ * @return                      Prefixed request path
+ */
+export function proxy(path: string): string {
+    const base = environment.proxy;
+    return (base == null) ? path : `${base}${path}`;
 }
 
 
