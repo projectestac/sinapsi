@@ -16,6 +16,9 @@ export const environment = {
   /* Contact email */
   email: 'agora@xtec.cat',
 
+  /* Root path of the backend */
+  proxy: null,
+
   /* Supported application locales */
   locales: [
     { code: 'ca', name: 'català' },

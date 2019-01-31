@@ -11,9 +11,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="{{ config('app.theme_color') }}">
   <meta name="msapplication-TileColor" content="{{ config('app.theme_color') }}">
-  <meta name="msapplication-square150x150logo" content="/images/tile.png">
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-square150x150logo" content="images/tile.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 </body>

@@ -7,8 +7,9 @@
     RewriteCond %{REQUEST_URI} !^/(api)(/.+)?$
     RewriteCond %{REQUEST_URI} !^/(accounts)(/.+)?$
     RewriteCond %{REQUEST_URI} !^/(feeds)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/(images)(/.+)?$
     RewriteCond %{REQUEST_URI} !^/(_debugbar)(/.+)?$
-    RewriteCond %{REQUEST_URI} !^/manifest.json$
+    RewriteCond %{REQUEST_URI} !^/(manifest.json)$
     RewriteRule ^(.*)$ /en/$1  [L,R=301]
     RewriteRule ^$ /en/        [L,R=301]
 

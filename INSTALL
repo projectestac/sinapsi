@@ -38,6 +38,19 @@ Installation of Sinapsi
 
   $ make
 
+  Compilation options
+  -------------------
+
+  Useful compilation parameters are:
+
+  root     Root URL path       (default: )
+  target   Target environment  (default: production)
+  locales  Locales to build    (default: en ca es)
+
+  For example:
+
+  $ make root=/sinapsi target=production version=1.0
+
   Install the software
   --------------------
 
@@ -62,6 +75,7 @@ Installation of Sinapsi
   sitedir  Apache sites folder (default: /etc/apache2/sites-available)
   user     Apache user         (default: www-data)
   group    Apache group        (default: www-data)
+  target   Target environment  (default: production)
 
   For example:
 
