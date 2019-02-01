@@ -18601,7 +18601,7 @@ function toolbar(items) {
 /*!*********************************!*\
   !*** ./src/app/shared/index.ts ***!
   \*********************************/
-/*! exports provided: SharedModule, MomentPipe, SharedValidators */
+/*! exports provided: SharedModule, SharedValidators, MomentPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

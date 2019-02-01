@@ -47028,6 +47028,7 @@ var EditorComponent = /** @class */ /*@__PURE__*/ (function (_super) {
      */
         function (value) {
             this.initialValue = value || this.initialValue;
+            value = value || '';
             if (this.editor && this.editor.initialized && typeof value === 'string') {
                 this.editor.setContent(value);
             }

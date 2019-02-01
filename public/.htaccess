@@ -1,109 +1,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /sinapsi
 
-    # Everything that is not a route is a synapse
-    RewriteCond ${ROUTES:$1|NOT_FOUND} =NOT_FOUND
+    # Redirect routes to the frontend
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} !^/(api)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(accounts)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(feeds)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(_debugbar)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/manifest.json$
-    RewriteRule ^((?:e/)?[^/]+)(.*)$ sinapsi/$1$2 [DPI]
-
-    # Rewrite old routes and parameters
-    RewriteCond ${ROUTES:$1|NOT_FOUND} =NOT_FOUND
-    RewriteRule ^((?:e/)?[^/]+) - [S=26]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(search=1)(.*)
-    RewriteRule ^(.*)$ $1?%1search-box=true%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(ed)=(.*)
-    RewriteRule ^(.*)$ $1?%1max-published_at=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(o)=(.*)
-    RewriteRule ^(.*)$ $1?%1sort=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(pv)=(.*)
-    RewriteRule ^(.*)$ $1?%1view=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(q)=(.*)
-    RewriteRule ^(.*)$ $1?%1search=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sd)=(.*)
-    RewriteRule ^(.*)$ $1?%1min-published_at=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(t)=(.*)
-    RewriteRule ^(.*)$ $1?%1tag_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(l)=(.*)
-    RewriteRule ^(.*)$ $1?%1territory_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(s)=(.*)
-    RewriteRule ^(.*)$ $1?%1school_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(p)=(.*)
-    RewriteRule ^(.*)$ $1?%1project_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(id)=(.*)
-    RewriteRule ^(.*)$ $1?%1post_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(tag)=(.*)
-    RewriteRule ^(.*)$ $1?%1tag_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(school)=(.*)
-    RewriteRule ^(.*)$ $1?%1school_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(channels)=(.*)
-    RewriteRule ^(.*)$ $1?%1feed_id=%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(pv=medium-card)(.*)
-    RewriteRule ^(.*)$ $1?%1view=optimal%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=o)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=+published_at%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=n)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-published_at%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=v)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-like_count%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=f)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-favourite_count%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=c)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-comment_count%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=d)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-reputation%3 [DPI]
-
-    RewriteCond %{QUERY_STRING} (.*(?:^|&))(sort=a)(.*)
-    RewriteRule ^(.*)$ $1?%1sort=-created_at%3 [DPI]
-
-    RewriteRule ^((?:e/)?[^/]+)(/.+)?$ ${ROUTES:$1}$2 [DPI]
-    RewriteRule ^([^/]+)/([^/]+)/embed/? embed?synapse=$2 [QSA,DPI]
-    RewriteRule ^(.*)$ /ca/$1 [L,R=301]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-
-    #Redirect routes to the frontend
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} !^/(api)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(accounts)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(feeds)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/(_debugbar)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/manifest.json$
-    RewriteRule ^(.*)$ /ca/$1  [L,R=301]
-    RewriteRule ^$ /ca/        [L,R=301]
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(api)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(accounts)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(feeds)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(images)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(_debugbar)(/.+)?$
+    RewriteCond %{REQUEST_URI} !^/sinapsi/(manifest.json)$
+    RewriteRule ^(.*)$ /sinapsi/ca/$1  [L,R=301]
+    RewriteRule ^$ /sinapsi/ca/        [L,R=301]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    RewriteRule ^(.*)/$ $1 [L,R=301]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d

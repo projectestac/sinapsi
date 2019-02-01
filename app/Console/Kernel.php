@@ -27,13 +27,13 @@ class Kernel extends ConsoleKernel {
      */
     protected function schedule(Schedule $schedule) {
         // Scrap feeds for new content every 2 hours
-
+        
         $schedule->command('scrap:run')
             ->cron('0 */2 * * *')
             ->withoutOverlapping();
-
+        
         // Update posts reputation every 3 hours
-
+        
         $schedule->command('reputation:posts')
             ->cron('35 */3 * * *')
             ->withoutOverlapping();
