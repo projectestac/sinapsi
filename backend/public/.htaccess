@@ -1,6 +1,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Environment descriptors
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(environment\.json)$ index.php [END]
+    RewriteRule ^(manifest\.json)$ index.php [END]
+
+    # Frontend applications
+    RewriteRule ^(ca|en|es)/(embed/)?(images/.+)$ /$3 [R=301,L]
+    RewriteRule ^(ca|en|es)/(embed/)?(environment\.json)$ /$3 [R=301,L]
+    RewriteRule ^(ca|en|es)/(embed/)?(manifest\.json)$ /$3 [R=301,L]
+
+    # Proxy the frontend application
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(ca|en|es)/(.*)$ http://localhost:4200/$2 [P,L]
+    RewriteRule ^(ca|en|es)/$ http://localhost:4200/ [P,L]
+
     # Redirect routes to the frontend
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -8,7 +24,6 @@
     RewriteCond %{REQUEST_URI} !^/(accounts)(/.*)?$
     RewriteCond %{REQUEST_URI} !^/(feeds)(/.*)?$
     RewriteCond %{REQUEST_URI} !^/(_debugbar)(/.*)?$
-    RewriteCond %{REQUEST_URI} !^/manifest.json$
     RewriteRule ^(.*)$ /en/$1  [L,R=301]
     RewriteRule ^$ /en/        [L,R=301]
 

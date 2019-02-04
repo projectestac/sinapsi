@@ -55,25 +55,6 @@ locale	 ?= en
 
 
 # =============================================================================
-# Frontend applications .htaccess template
-# =============================================================================
-
-define HTACCESS
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase @base@
-  RewriteRule ^(images/.+)$$ @root@$$1 [L]
-  RewriteRule ^(manifest\.json)$$ @root@$$1 [R=301,L]
-  RewriteRule ^index\.html$$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
-</IfModule>
-endef
-export HTACCESS
-
-
-# =============================================================================
 # Compile the software
 # =============================================================================
 
@@ -138,18 +119,20 @@ frontend: dependencies
 
 	$(PRINT) "Compiling frontend: app=$(app), locale=$(locale)"
 
-ifneq ($(app),$(DEFAULT_APP))
-	$(eval base := /$(app))
+ifeq ($(app),$(DEFAULT_APP))
+	$(eval base := $(locale))
+	$(eval path := $(outdir)/public/$(locale))
+else
+	$(eval base := $(locale)/$(app))
+	$(eval path := $(outdir)/public/$(locale)/$(app))
 endif
-
-	$(eval path := $(outdir)/public/$(locale)$(base))
 
 	$(eval args += --prod)
 	$(eval args := --progress=false)
 	$(eval args += --aot --build-optimizer)
 	$(eval args += --deploy-url=)
 	$(eval args += --project=$(app))
-	$(eval args += --base-href=$(root)/$(locale)$(base)/)
+	$(eval args += --base-href=$(root)/$(base)/)
 	$(eval args += --configuration=$(locale))
 	$(eval args += --i18n-locale=$(locale))
 	$(eval args += --output-path=$(path))
@@ -164,10 +147,6 @@ endif
 
 	find $(path) -name 'index.html' -exec \
 	sed -r -i 's|<html[^>]+>|<html lang="$(locale)">|' {} \;
-
-	echo "$$HTACCESS" > $(path)/.htaccess
-	sed -i 's|@root@|$(root)/|g' $(path)/.htaccess
-	sed -i 's|@base@|$(root)/$(locale)$(base)/|g' $(path)/.htaccess
 
 
 # =============================================================================

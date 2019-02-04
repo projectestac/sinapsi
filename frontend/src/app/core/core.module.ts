@@ -1,4 +1,6 @@
 import * as moment from 'moment';
+
+import { APP_INITIALIZER } from '@angular/core';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { LOCALE_ID, Optional, SkipSelf } from '@angular/core';
 
@@ -10,6 +12,16 @@ import { LocalesModule } from './locales';
 import { Comparator } from './services';
 import { SettingsService } from './services';
 import { StoreService } from './services';
+
+
+/**
+ * Initializes the application. This factory method reads the
+ * environment.json configuration file from the server into
+ * the settings service.
+ */
+export function initialize(settings: SettingsService) {
+    return () => settings.initialize();
+}
 
 
 /**
@@ -35,7 +47,7 @@ export const LocaleProvider = {
  */
 @NgModule({
     imports: [
-        AuthModule.forRoot()
+        AuthModule
     ],
 
     exports: [
@@ -57,8 +69,13 @@ export class CoreModule {
                 Comparator,
                 LocaleProvider,
                 SettingsService,
-                StoreService
-            ]
+                StoreService,
+            {
+                provide: APP_INITIALIZER,
+                useFactory: initialize,
+                deps: [ SettingsService ],
+                multi: true
+            }]
         };
     }
 
@@ -70,9 +87,9 @@ export class CoreModule {
         if (parentModule) {
             throw new Error('CoreModule already loaded');
         }
-        
+
         // External library settings
-        
+
         moment.locale(getDocumentLocale());
     }
 }

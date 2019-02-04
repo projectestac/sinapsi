@@ -8,11 +8,15 @@ import { ConcreteModule } from 'concrete';
 import { AppComponent } from 'app/app.component';
 import { AppPolicies } from 'app/app.policies';
 import { AppRoutes } from 'app/app.routes';
+import { AuthModule } from 'app/core/auth';
 import { CoreModule } from 'app/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 
+/**
+ * Application module.
+ */
 @NgModule({
     declarations: [
         AppComponent
@@ -23,6 +27,7 @@ import { environment } from '../environments/environment';
         AppRoutes,
         BrowserAnimationsModule,
         BrowserModule,
+        AuthModule.forRoot(),
         ConcreteModule.forRoot(),
         CoreModule.forRoot(),
         DragulaModule,

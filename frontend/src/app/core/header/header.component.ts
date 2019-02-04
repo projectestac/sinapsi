@@ -1,8 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SessionService, SessionState } from 'app/core/auth';
+import { SessionService } from 'app/core/auth';
 import { SettingsService } from 'app/core/services';
-import { User } from 'app/models';
 
 
 @Component({
@@ -12,15 +11,8 @@ import { User } from 'app/models';
 })
 export class HeaderComponent {
 
-    /** Header title */
-    @Input() title: string = null;
-
     /** Toolbar links expandable menu */
     @ViewChild('linksExp') linksExp;
-
-
-    /** Available locales */
-    public locales: any = {};
 
 
     /**
@@ -28,12 +20,8 @@ export class HeaderComponent {
      */
     constructor(
         private router: Router,
-        private settings: SettingsService,
         public session: SessionService
     ) {
-        this.title = settings.get('title');
-        this.locales = settings.get('locales');
-
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.linksExp.close();

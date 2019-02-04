@@ -12,6 +12,6 @@ return [
     */
 
     'user-agent' => env('HTTP_USER_AGENT',
-        'Mozilla/5.0 (compatible; http://sinapsi.joansala.com)'),
+        'Mozilla/5.0 (compatible; http://sinapsi.localhost)'),
 
 ];

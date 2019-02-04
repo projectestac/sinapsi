@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConcreteModule } from 'concrete';
 
 import { CoreModule } from 'app/core';
+import { AuthModule } from 'app/core/auth';
 import { PostsModule } from 'app/feature/posts';
 import { SearchModule } from 'app/shared/search';
 import { AppPolicies } from 'app/app.policies';
@@ -14,6 +15,9 @@ import { EmbedRoutes } from './embed.routes';
 import { ROUTING_COMPONENTS } from './embed.routes';
 
 
+/**
+ * Embedded application module.
+ */
 @NgModule({
     declarations: [
         EmbedComponent,
@@ -25,6 +29,7 @@ import { ROUTING_COMPONENTS } from './embed.routes';
         EmbedRoutes,
         BrowserAnimationsModule,
         BrowserModule,
+        AuthModule.forRoot(),
         ConcreteModule.forRoot(),
         CoreModule.forRoot(),
         HttpClientModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Collection, StoreService } from 'app/core';
-import { SectionConfig, SectionsBuilder } from 'app/feature/posts';
+import { StoreService } from 'app/core';
+import { SectionsBuilder } from 'app/feature/posts';
 import { Synapse, Tag } from 'app/models';
 
 
@@ -37,14 +37,14 @@ export class HomeComponent implements OnInit {
      */
     ngOnInit() {
         // Obtain the search box parameter on initialization
-        
+
         this.route.queryParamMap.take(1).subscribe(params => {
             const value = params.get('search-box');
             this.hasSearchBox = (value === 'true');
         });
-        
+
         // Update the synapse on parameter changes
-        
+
         this.route.queryParamMap.subscribe(params => {
             if (this.synapse === null) {
                 if (params.has('tag')) {

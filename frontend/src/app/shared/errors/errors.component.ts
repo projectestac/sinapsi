@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SessionService, SessionState } from 'app/core';
-import { environment } from 'environments/environment';
+import { SettingsService, SessionService } from 'app/core';
 
 
 @Component({
@@ -10,7 +9,7 @@ import { environment } from 'environments/environment';
 export class ErrorsComponent {
 
     /** Contact email */
-    public email = environment['email'];
+    public email = null;
 
     /** Http error code */
     @Input() code = '404';
@@ -20,7 +19,10 @@ export class ErrorsComponent {
      * Component constructor.
      */
     constructor(
-        public session: SessionService
-    ) {}
+        public session: SessionService,
+        public settings: SettingsService
+    ) {
+        this.email = settings.get('email');
+    }
 
 }

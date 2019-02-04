@@ -87,7 +87,7 @@ Route::group([
         'auth'
     ],
 ], function () {
-    
+
     /** Authenticated user */
 
     Route::get('accounts/profile', 'Auth\AccountController@profile')
@@ -136,7 +136,7 @@ Route::group([
         'api'
     ],
 ], function () {
-    
+
     /** User authentication */
 
     Route::get('accounts/login', 'Auth\AccountController@login')
@@ -182,7 +182,7 @@ Route::group([
 
     Route::get('synapses/nodes/{id?}', 'SynapseController@nodes')
         ->name('synapses.nodes');
-    
+
     Route::resource('synapses', 'SynapseController', [
         'only' => ['index', 'show']]);
 

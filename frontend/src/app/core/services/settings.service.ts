@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 
 
 /**
  * Settings service.
  */
- @Injectable()
+@Injectable()
 export class SettingsService {
 
     /** Settings values object */
@@ -15,8 +16,22 @@ export class SettingsService {
     /**
      * Service constructor.
      */
-    constructor() {
+    constructor(private http: HttpClient) {
         Object.assign(this.values, environment);
+    }
+
+
+    /**
+     * Initializes the settings service fetching any environment
+     * parameters from the server and returning a promise that is
+     * resolved whenever the initialization completes.
+     */
+    initialize(): Promise<boolean> {
+        return new Promise(resolve => {
+            this.http.get('environment.json', {})
+                .finally(() => resolve(true))
+                .subscribe(e => Object.assign(this.values, e));
+        });
     }
 
 
