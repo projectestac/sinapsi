@@ -41,6 +41,10 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: src/app/app.routes.ts:23
+msgid "Home"
+msgstr ""
+
 #: src/app/app.routes.ts:31
 msgid "Catalogs"
 msgstr ""
@@ -405,4 +409,3 @@ msgstr ""
 #: src/app/core/auth/session.service.ts:27
 msgid "Your account has been temporarily disabled."
 msgstr ""
-

@@ -110,6 +110,9 @@ export const I18N_MESSAGES = {
     "Help":
     "Ajuda",
 
+    "Home":
+    "Inici",
+
     "Leave this page":
     "Surt de la pàgina",
 

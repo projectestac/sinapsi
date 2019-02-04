@@ -110,6 +110,9 @@ export const I18N_MESSAGES = {
     "Help":
     "Ayuda",
 
+    "Home":
+    "Inicio",
+
     "Leave this page":
     "Salir de la página",
 
@@ -297,5 +300,5 @@ export const I18N_MESSAGES = {
     "Amarillo",
 
     "Your account has been temporarily disabled.":
-    "Tu cuenta se inhabilitó temporalmente."
+    "Tu cuenta se inhabilitó temporalmente.",
 };
