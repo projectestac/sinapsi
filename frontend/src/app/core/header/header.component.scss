@@ -146,7 +146,7 @@
   }
   
   .navbar-brand {
-    background-image: url('/assets/images/logo.png');
+    background-image: $th-logo-image;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: 170px 27px;

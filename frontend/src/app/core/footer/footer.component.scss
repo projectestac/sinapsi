@@ -9,22 +9,22 @@ footer {
   overflow: hidden;
   margin-top: 1.9rem;
   padding: 0;
-  
+
   h3 {
     text-align: left;
     font-size: 1.15rem;
     margin-bottom: 10px;
   }
-  
+
   a {
     color: th-gray('600');
   }
-  
+
   .container {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  
+
   .shadow {
     position: relative;
     width: 90%;
@@ -41,7 +41,7 @@ footer {
 
 .footer-info {
   border-top: 2px solid rgba(51, 51, 51, 0.5);
-  
+
   @include media-breakpoint-up(md) {
     border-color: #ccc;
   }
@@ -51,7 +51,7 @@ footer {
   color: #999;
   min-height: 100px;
   padding: 1.5em .2em;
-  
+
   p {
     font-size: .7rem;
   }
@@ -66,7 +66,7 @@ footer {
 .legal-badges a {
   font-size: 2rem;
   line-height: 1;
-  
+
   @include media-breakpoint-down(sm) {
     font-size: 4rem;
     padding: 1rem 0.25rem;
@@ -82,9 +82,9 @@ footer {
   margin: 39px 0;
   padding: .75rem 0;
   border-top: 1px solid rgba(51, 51, 51, 0.1);
-  background: url('/assets/images/brand.png') no-repeat left center;
+  background: $th-brand-image no-repeat left center;
   background-size: 106px 27px;
-  
+
   a {
     align-items: center;
     color: rgba(51, 51, 51, 0.45);
@@ -108,12 +108,12 @@ footer {
 
 .footer-links {
   text-align: left;
-  
+
   h3 {
     font-size: 1.15rem;
     margin-bottom: 10px;
   }
-  
+
   ul {
     margin-bottom: 20px;
     margin-left: 0;
@@ -122,10 +122,10 @@ footer {
     list-style: none;
     position: relative;
   }
-  
+
   li {
     color: rgb(102, 102, 102);
-    
+
     &:before {
       content: "·";
       display: inline;
@@ -134,22 +134,22 @@ footer {
       position: absolute;
       left: 0;
     }
-    
+
     a {
       font-size: .75em;
       font-weight: 600;
       padding: 0.1rem 0;
     }
-    
+
     @include media-breakpoint-up(md) {
       line-height: 1.2;
     }
   }
-  
+
   & ::ng-deep .cn-details-marker {
     color: th-gray('600');
   }
-  
+
   & ::ng-deep .cn-details.open .cn-details-marker {
     color: th-gray('800');
   }
@@ -163,24 +163,24 @@ footer {
     .wrapper {
       padding: 8px;
     }
-    
+
     h3 {
       margin: 0;
       font-size: .9rem;
       color: th-gray('600');
     }
-    
+
     li a {
       display: block;
       font-size: .9rem;
       font-weight: 400;
-      
+
       &:active, &:focus {
         color: th-gray('800');
         background-color: th-gray('200');
       }
     }
-    
+
     & ::ng-deep .cn-details-header {
       display: flex;
       flex-direction: row;
@@ -188,11 +188,11 @@ footer {
       cursor: pointer;
       padding: 14px 3px;
       border-top: 1px solid th-gray('400');
-      
+
       .cn-details-summary {
         flex: 1;
       }
-      
+
       .cn-details-marker {
         display: inline !important;
       }
@@ -204,31 +204,31 @@ footer {
   .footer-links {
     display: flex;
     flex-direction: row;
-    
+
     & ::ng-deep .expandable,
     & ::ng-deep .cn-expandable-wrapper {
       display: block !important;
       height: auto !important;
       overflow: visible !important;
     }
-    
+
     & ::ng-deep .cn-details-header {
       outline: none;
     }
   }
-  
+
   .footer-links > * {
     flex-grow: 1;
     flex-basis: 0;
   }
-  
+
   .legal-notice {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+
     p {
-      background: url('/assets/images/brand.png') no-repeat left .2rem;
+      background: $th-brand-image no-repeat left .2rem;
       background-size: 106px 27px;
       padding-left: 140px;
       text-align: left;
