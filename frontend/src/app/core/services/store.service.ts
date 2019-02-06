@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -265,7 +265,7 @@ export class StoreService implements OnDestroy {
      */
     private throw(event: StoreEvent): Observable<any> {
         this.subject.next(event);
-        return Observable.throw(event.response);
+        return throwError(event.response);
     }
 
 
