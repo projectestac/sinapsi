@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StoreService } from 'app/core';
+import { SettingsService, StoreService } from 'app/core';
 import { SectionsBuilder } from 'app/feature/posts';
 import { Synapse, Tag } from 'app/models';
 
@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
     /** Model for this synapse */
     public synapse: Synapse = null;
 
+    /** Main application URL */
+    public appURL: string = null;
+
     /** Weather the search box is visible */
     public hasSearchBox = false;
 
@@ -28,14 +31,23 @@ export class HomeComponent implements OnInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private store: StoreService
-    ) {}
+        private store: StoreService,
+        settings: SettingsService
+    ) {
+        this.appURL = settings.get('app_url', '/');
+    }
 
 
     /**
      * Component initialization.
      */
     ngOnInit() {
+        // Navigate to the main route if required
+
+        this.router.navigate(['/'], {
+            queryParamsHandling: 'merge'
+        });
+
         // Obtain the search box parameter on initialization
 
         this.route.queryParamMap.take(1).subscribe(params => {
