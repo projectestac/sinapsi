@@ -36,6 +36,6 @@ export const SOCIAL_PROVIDERS: SocialProvider[] = [{
     id:       'feed',
     title:    _('Web syndication'),
     icon:     'feed',
-    url:      '/feeds/{href}',
+    url:      '../feeds/{href}',
     query:    'limit=20'
 }];
