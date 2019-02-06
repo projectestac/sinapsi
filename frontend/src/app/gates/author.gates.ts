@@ -1,5 +1,4 @@
 import { Author, User } from 'app/models';
-import { AuthorType } from 'app/models';
 
 
 /**

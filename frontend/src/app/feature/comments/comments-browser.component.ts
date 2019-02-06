@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
-import { SessionService, SessionState } from 'app/core';
-import { CatalogComponent, StoreQuery } from 'app/core';
-import { Collection, Model } from 'app/core';
+import { SessionService, SessionState } from 'app/auth';
 import { Post } from 'app/models';
 
 

@@ -5,7 +5,7 @@ import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 
 import { FetchState, Collection, Model } from 'app/core';
-import { PoliciesService, SessionService, UserChanged } from 'app/core';
+import { PoliciesService, SessionService, UserChanged } from 'app/auth';
 import { StoreQuery, StoreService } from 'app/core';
 import { Comment, Post } from 'app/models';
 import { CommentsMessages } from '../comments.messages';
@@ -111,7 +111,7 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
     public fetchMore() {
         const length = this.collection.length;
         const pivot = this.collection[length - 1];
-        
+
         this.request['max-id'] = (pivot.id - 1);
         this.updateCatalog();
     }
@@ -140,14 +140,14 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
     public remove(comment: Comment) {
         const confirm = CommentsMessages.RemoveConfirm(comment);
         const success = CommentsMessages.RemoveSuccess(comment);
-        
+
         this.dialog.open(confirm)
             .filter(event => event.confirmed)
             .subscribe(event => {
                this.store.delete(this.path, comment.id)
                    .subscribe((response) => {
                        const index = this.collection.indexOf(comment);
-                       
+
                        this.collection.splice(index, 1);
                        this.toaster.success(success);
                        this.deleted.emit(comment);

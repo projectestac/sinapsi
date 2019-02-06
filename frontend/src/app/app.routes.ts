@@ -17,6 +17,9 @@ export const ROUTING_COMPONENTS = [
 ];
 
 
+/**
+ * Application routes
+ */
 const ROUTES: Routes = [{
     path: '',
     component: HomeComponent,
@@ -62,6 +65,9 @@ const ROUTES: Routes = [{
 }];
 
 
+/**
+ * Router module.
+ */
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES),

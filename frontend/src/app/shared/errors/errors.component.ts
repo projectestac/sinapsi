@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SettingsService, SessionService } from 'app/core';
+import { SessionService } from 'app/auth';
+import { SettingsService } from 'app/core';
 
 
 @Component({

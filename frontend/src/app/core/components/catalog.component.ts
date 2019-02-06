@@ -3,8 +3,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 
-import { SessionService, SessionState } from 'app/core/auth';
-import { SessionEvent, UserChanged } from 'app/core/auth';
+import { SessionService, SessionState } from 'app/auth';
+import { SessionEvent, UserChanged } from 'app/auth';
 import { RequestManager, StoreService } from 'app/core/services';
 import { Collection, Model, StoreQuery } from 'app/core/services';
 import { ScrollTop } from 'app/core/core.decorators';

@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
-import { PoliciesService } from 'app/core';
-
-import {
-    AUTHOR_GATES,
-    GLOBAL_GATES,
-    PROJECT_GATES,
-    SCHOOL_GATES,
-    SYNAPSE_GATES,
-    TAG_GATES,
-    USER_GATES
-} from 'app/gates';
+import { AuthModule } from 'app/auth';
+import { AUTH_POLICIES } from 'app/auth';
+import { GLOBAL_GATES, USER_GATES } from './gates';
+import { AUTHOR_GATES, PROJECT_GATES, SCHOOL_GATES } from './gates';
+import { SYNAPSE_GATES, TAG_GATES } from './gates';
 
 
-@NgModule()
-export class AppPolicies {
+/**
+ * Authentication polices module.
+ */
+@NgModule({
+  imports: [
+    AuthModule.forRoot()
+  ],
 
-    /**
-     * Register the application policies.
-     */
-    constructor(policies: PoliciesService) {
-        policies.register(AUTHOR_GATES);
-        policies.register(GLOBAL_GATES);
-        policies.register(PROJECT_GATES);
-        policies.register(SCHOOL_GATES);
-        policies.register(SYNAPSE_GATES);
-        policies.register(TAG_GATES);
-        policies.register(USER_GATES);
-    }
+  exports: [
+    AuthModule
+  ],
 
-}
+  providers: [{
+    provide: AUTH_POLICIES,
+    useValue: [
+        AUTHOR_GATES,
+        GLOBAL_GATES,
+        PROJECT_GATES,
+        SCHOOL_GATES,
+        SYNAPSE_GATES,
+        TAG_GATES,
+        USER_GATES
+    ]
+  }],
+})
+export class AppPolicies {}

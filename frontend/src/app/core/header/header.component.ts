@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SessionService } from 'app/core/auth';
+import { SessionService } from 'app/auth';
 import { SettingsService } from 'app/core/services';
 
 

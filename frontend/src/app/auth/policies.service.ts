@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Inject, InjectionToken } from '@angular/core';
 import { User } from 'app/models';
-import { SessionService, SessionState } from './session.service';
+import { SessionService } from './session.service';
+
+
+/**
+ * Authentication policies.
+ */
+export const AUTH_POLICIES = new InjectionToken<any[]>("AUTH_POLICIES");
 
 
 /**
@@ -19,8 +26,13 @@ export class PoliciesService {
      * Service constructor.
      */
     constructor(
-        private session: SessionService
-    ) {}
+        private session: SessionService,
+        @Inject(AUTH_POLICIES) policies: any[]
+    ) {
+        policies.forEach(policy => {
+            this.register(policy);
+        });
+    }
 
 
     /**

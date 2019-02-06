@@ -6,8 +6,8 @@ import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
 import { Comparator } from 'app/core/services';
 import { StoreService } from 'app/core/services';
-import { PoliciesService } from 'app/core/auth';
-import { SessionService, UserChanged } from 'app/core/auth';
+import { PoliciesService } from 'app/auth';
+import { SessionService, UserChanged } from 'app/auth';
 import { ScrollTop } from 'app/core/core.decorators';
 
 import { FetchState } from './components.types';
