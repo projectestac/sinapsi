@@ -5,23 +5,23 @@
 .typeahead-selection {
   border-top: 0;
   padding: .355rem .55rem;
-  
+
   .selection-wrapper {
     display: flex;
     flex-flow: wrap;
     min-height: 1.65rem;
   }
-  
+
   .selection-title {
     margin: .2rem;
     font-weight: 700;
     color: th-gray('400');
   }
-  
+
   .selection-footer {
     margin: .2rem;
   }
-  
+
   .badge {
     margin: .2rem;
     font-weight: 400;
@@ -30,13 +30,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  
+
   span {
     font-size: .7rem;
     align-self: center;
     text-transform: uppercase;
   }
-  
+
   ::ng-deep .fa {
     color: th-gray('400');
   }
@@ -46,30 +46,34 @@
 .typeahead-results {
   position: relative;
   display: block;
-  
+
   .list-group {
     width: 100%;
   }
-  
+
   .list-group-item {
     padding: 0.375rem 0.75rem;
     font-size: 0.875rem;
   }
-  
+
   .list-group-item.active {
     color: inherit;
     background-color: th-gray('100');
     border-color: th-gray('200');
   }
-  
+
   .list-group-item-action {
     cursor: pointer;
   }
-  
+
   .list-group-item .custom-control {
     display: flex;
     align-items: center;
     pointer-events: none;
+  }
+
+  .custom-control-label {
+    line-height: 1.5rem;
   }
 
 }
@@ -77,19 +81,19 @@
 .typeahead-footer {
   font-size: 0.875rem;
   padding: 0.375rem 0.75rem;
-  
+
   .typeahead-pagination {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .pagination-buttons {
     white-space: nowrap;
     margin-left: 1rem;
   }
-  
+
   .pagination-buttons .btn {
     border: none;
     background: transparent;
