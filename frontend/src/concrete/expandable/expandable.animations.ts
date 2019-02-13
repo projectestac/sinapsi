@@ -8,13 +8,15 @@ import { animate, style, trigger } from '@angular/animations';
 export const ExpandTrigger = trigger('expand', [
     state('open', style({
         height: '*',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        opacity: '1'
     })),
 
     state('closed', style({
         height: '0px',
         display: 'none',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        opacity: '0'
     })),
 
     transition('open => closed',

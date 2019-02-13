@@ -205,15 +205,12 @@ footer {
     display: flex;
     flex-direction: row;
 
-    & ::ng-deep .expandable,
-    & ::ng-deep .cn-expandable-wrapper {
-      display: block !important;
-      height: auto !important;
-      overflow: visible !important;
-    }
-
     & ::ng-deep .cn-details-header {
       outline: none;
+    }
+
+    & ::ng-deep .expandable, & ::ng-deep .cn-expandable-wrapper {
+      @include expand-force-open();
     }
   }
 
