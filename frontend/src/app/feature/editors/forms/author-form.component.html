@@ -51,4 +51,21 @@
     </div>
   </ng-container>
 
+  <!-- Category -->
+
+  <ng-container *ngIf="form.get('category') as control">
+    <div class="form-group">
+      <label class="form-container-label">
+        <span i18n>Category:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/categories">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Category of this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
 </fieldset>

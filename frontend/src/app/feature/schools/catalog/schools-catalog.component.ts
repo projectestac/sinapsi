@@ -27,7 +27,7 @@ export class SchoolsCatalogComponent extends CatalogComponent {
     /** Query bindings for requests */
     @Input() bindings: StoreQuery = {
         type: 'schools',
-        with: ['municipality', 'school', 'territory'],
+        with: ['category', 'municipality', 'school', 'territory'],
         'min-school_id': 1
     };
 

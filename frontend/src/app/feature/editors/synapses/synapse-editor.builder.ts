@@ -23,6 +23,7 @@ export class SynapseFormBuilder {
      */
     static createFiltersForm = () => fb.group({
         author_id: null,
+        category_id: null,
         municipality_id: null,
         search: null,
         sort: null,

@@ -10,12 +10,13 @@ use Seidor\Foundation\FoundationModel;
  * Author model class.
  */
 class Author extends FoundationModel {
-    
+
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
         'name' =>               'string|max:550',
         'type' =>               'string|in:projects,schools,users',
+        'category_id' =>        'integer|min:1|nullable',
         'municipality_id' =>    'integer|min:1|nullable',
         'school_id' =>          'integer|min:1|nullable',
         'territory_id' =>       'integer|min:1|nullable',
@@ -25,21 +26,22 @@ class Author extends FoundationModel {
         'created_at' =>         'isodate',
         'updated_at' =>         'isodate',
     ];
-    
+
     /** Attributes that are required definitions */
     protected static $required = [
         'name' =>               'required',
         'type' =>               'required',
     ];
-    
+
     /** Constrained attributes */
     protected static $constrains = [
         'synapse_id' =>         'unique:authors',
     ];
-    
+
     /** Attributes that should be cast */
     protected $casts = [
         'id' =>                 'integer',
+        'category_id' =>        'integer',
         'municipality_id' =>    'integer',
         'project_id' =>         'integer',
         'school_id' =>          'integer',
@@ -49,14 +51,15 @@ class Author extends FoundationModel {
         'created_at' =>         'datetime',
         'updated_at' =>         'datetime',
     ];
-    
+
     /** Fields that can be searched automatically */
     protected $searchable = [
         'name' =>               'string',
     ];
-    
+
     /** Relations that can be fetched automatically */
     protected $includable = [
+        'category',
         'municipality',
         'project',
         'school',
@@ -64,13 +67,23 @@ class Author extends FoundationModel {
         'territory',
         'user',
     ];
-    
+
     /** Attributes that are not mass assignable */
     protected $guarded = [
         'id',
         'created_at',
         'updated_at',
     ];
+
+
+    /**
+     * Category for this author.
+     *
+     * @return belongsTo            Model relation
+     */
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 
 
     /**

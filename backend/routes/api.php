@@ -45,6 +45,9 @@ Route::group([
     Route::post('feeds/{id}', 'FeedController@restore')
         ->name('feeds.restore');
 
+    Route::resource('categories', 'CategoryController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
     Route::resource('municipalities', 'MunicipalityController', [
         'except' => ['index', 'show', 'create', 'edit']]);
 
@@ -153,6 +156,9 @@ Route::group([
     /** Sources */
 
     Route::resource('authors', 'AuthorController', [
+        'only' => ['index', 'show']]);
+
+    Route::resource('categories', 'CategoryController', [
         'only' => ['index', 'show']]);
 
     Route::resource('municipalities', 'MunicipalityController', [

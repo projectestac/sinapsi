@@ -1,5 +1,4 @@
 import { FormBuilder, Validators } from '@angular/forms';
-import { FormArray, FormGroup } from '@angular/forms';
 import { SharedValidators } from 'app/shared';
 import { UserRole } from 'app/models';
 import { _ } from 'i18n';
@@ -35,6 +34,7 @@ export class AuthorFormBuilder {
      * Author form group.
      */
     static createAuthorForm = () => fb.group({
+        category: null,
         municipality: null,
         territory: null,
         school: null

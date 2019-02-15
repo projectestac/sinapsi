@@ -177,6 +177,15 @@ export class AuthorEditorComponent extends EditorComponent {
             }
         }
 
+        // Make sure the category can be cleared
+
+        if (params.hasOwnProperty('category')) {
+            if (params['category'] === null) {
+                params['category_id'] = null;
+                delete params['category'];
+            }
+        }
+
         // Make sure the territory can be cleared
 
         if (params.hasOwnProperty('territory')) {

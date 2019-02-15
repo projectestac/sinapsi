@@ -7,8 +7,6 @@ import { BlockFormComponent } from './forms';
 import { FeedsFormComponent } from './forms';
 import { FiltersFormComponent } from './forms';
 import { PrivilegesFormComponent } from './forms';
-import { ProjectFormComponent } from './forms';
-import { SchoolFormComponent } from './forms';
 import { SynapseFormComponent } from './forms';
 import { UserFormComponent } from './forms';
 
@@ -33,8 +31,6 @@ import { ROUTING_COMPONENTS } from './editors.routes';
         FiltersFormComponent,
         FeedsSectionComponent,
         PrivilegesFormComponent,
-        ProjectFormComponent,
-        SchoolFormComponent,
         SynapseFormComponent,
         UserFormComponent,
         AuthorSectionComponent,

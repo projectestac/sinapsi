@@ -104,6 +104,7 @@ class Post extends FoundationModel {
 
     /** Allowed post author filters */
     protected $authorFields = [
+        'category_id',
         'municipality_id',
         'school_id',
         'territory_id',

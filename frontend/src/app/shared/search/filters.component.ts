@@ -1,11 +1,9 @@
 import { Component, Input, Output, ViewChild } from '@angular/core';
 import { EventEmitter, OnChanges, forwardRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { Collection, Model } from 'app/core';
-import { StoreQuery, StoreService } from 'app/core';
-import { DATE_PATTERN } from 'app/shared/datepicker';
+import { Model, StoreQuery, StoreService } from 'app/core';
 import { TYPEAHEAD_FIELDS, FieldConfig } from './search.fields';
 import { PUBLISH_INTERVALS, Interval } from './search.intervals';
 import { RESULTS_ORDERINGS, Ordering } from './search.orderings';
@@ -28,6 +26,7 @@ export class FiltersComponent implements OnChanges {
         sort:           'sort',
         after:          'min-published_at',
         before:         'max-published_at',
+        categories:     'category_id',
         municipalities: 'municipality_id',
         projects:       'author_id',
         schools:        'author_id',

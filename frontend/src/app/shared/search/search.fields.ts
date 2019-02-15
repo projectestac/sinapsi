@@ -33,6 +33,12 @@ export const TYPEAHEAD_FIELDS: FieldConfig[] = [{
     filters: null,
     icon:   'map-marker'
   }, {
+    id:     'categories',
+    name:   _('Categories'),
+    path:   '/api/categories',
+    filters: null,
+    icon:   'folder'
+  }, {
     id:     'schools',
     name:   _('Schools'),
     path:   '/api/authors',
