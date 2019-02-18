@@ -107,7 +107,6 @@ class Post extends FoundationModel {
         'category_id',
         'municipality_id',
         'school_id',
-        'territory_id',
         'project_id',
     ];
 
@@ -274,6 +273,24 @@ class Post extends FoundationModel {
         if ($request->has('tag_id')) {
             $tags = (array) $request->get('tag_id');
             $query->whereTagIn($tags);
+        }
+
+        // Filter by the given author territory field. Note that
+        // the territories are hierarchical and thus we must also
+        // select all the direct children of the given territories
+
+        if ($request->has('territory_id')) {
+            $ids = (array) $request->get('territory_id');
+
+            $ids = Territory::query()
+                ->whereIn('territory_id', $ids)
+                ->orWhereIn('id', $ids)
+                ->pluck('id')
+                ->toArray();
+
+            $query->whereHas('author', function($query) use ($ids) {
+                $query->whereIn('territory_id', $ids);
+            });
         }
 
         // Filter by the given author fields
