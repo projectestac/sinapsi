@@ -468,7 +468,7 @@
         <target>diu:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/comments/details/comment-details.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="50ff68990cb970d492daaec81fd154938f344526" datatype="html">
@@ -535,9 +535,9 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="be97b2ab9effe4b2520406dd963bcf331f5b8fa7" datatype="html">
-        <source>Tweets by</source>
-        <target>Tweets de</target>
+      <trans-unit id="21d5af64abcff638fddfa4fba4a446f1c9fd93cb" datatype="html">
+        <source>Tweets by </source>
+        <target>Tweets de </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/block/block.component.html</context>
           <context context-type="linenumber">50</context>
@@ -1364,7 +1364,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
@@ -1555,10 +1555,6 @@
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
@@ -1571,10 +1567,6 @@
           <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">49</context>
         </context-group>
@@ -1584,14 +1576,6 @@
         <target>Municipi:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
@@ -1607,14 +1591,6 @@
           <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">66</context>
         </context-group>
@@ -1624,14 +1600,6 @@
         <target>Servei territorial:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
@@ -1647,16 +1615,24 @@
           <context context-type="linenumber">49</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">66</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0cc1dec590ecd74bef71a865fb364779bc42a749" datatype="html">
+        <source>Category:</source>
+        <target>Categoria:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="13f44af25096b945e21d35271f1c1bd1f93f6206" datatype="html">
+        <source>Category of this author</source>
+        <target>Categoria d'aquest autor</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="61879a8027ec586e1b033dfdfa66366af824f70c" datatype="html">
@@ -2016,54 +1992,6 @@
           <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="74dec02f143725d5ca7992ed79198baca311b379" datatype="html">
-        <source>Project name:</source>
-        <target>Nom del projecte:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fdac77efd49e9dd82009c54ea00211ebf9b193eb" datatype="html">
-        <source>Name of the author</source>
-        <target>Nom de l'autor</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="39bb5340515c3f7a15ee81db7d3435afcfbce6c4" datatype="html">
-        <source>Full name of the project.</source>
-        <target>Nom complet del projecte.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d3a8c79ad75df4b4f3eb5747ec55828028e8a952" datatype="html">
-        <source>School name:</source>
-        <target>Nom del centre:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3c06ce721f4464850206d1e233b0d9b60454fc28" datatype="html">
-        <source>Full name of the school.</source>
-        <target>Nom complet del centre.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="8e9d4052d74bb5ff1c5f46ab74fa7d7664315c72" datatype="html">
         <source>Name of the synapse</source>
         <target>Nom de la sinapsi</target>
@@ -2150,6 +2078,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fdac77efd49e9dd82009c54ea00211ebf9b193eb" datatype="html">
+        <source>Name of the author</source>
+        <target>Nom de l'autor</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b434d5a4d85a20cbfbafccf60626bfcb085ad467" datatype="html">
@@ -2404,7 +2340,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1541352d44b84415a6a998bf627f3de5a9f13649" datatype="html">
@@ -2415,12 +2351,20 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="607de17c2a755f65775881c19e276e7c933bcf94" datatype="html">
+        <source>Category</source>
+        <target>Categoria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="b19f5d6a9f2dba729f5db7436b6bba756f1d8204" datatype="html">
         <source>Delete school</source>
         <target>Suprimeix el centre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="632e8b20c98e8eec4059a605a4b011bb476137af" datatype="html">

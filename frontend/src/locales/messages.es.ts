@@ -35,6 +35,9 @@ export const I18N_MESSAGES = {
     "Catalogs":
     "Catálogos",
 
+    "Categories":
+    "Categorías",
+
     "Commented":
     "Comentados",
 

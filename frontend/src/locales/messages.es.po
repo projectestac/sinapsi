@@ -56,6 +56,10 @@ msgstr "Cancelar"
 msgid "Catalogs"
 msgstr "Catálogos"
 
+#: src/app/shared/search/search.fields.ts:37
+msgid "Categories"
+msgstr "Categorías"
+
 #: src/app/feature/posts/posts.sections.ts:120
 msgid "Commented"
 msgstr "Comentados"
