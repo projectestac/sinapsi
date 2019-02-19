@@ -108,6 +108,7 @@ class Post extends FoundationModel {
         'municipality_id',
         'school_id',
         'project_id',
+        'type'
     ];
 
     /** Allowed post reaction filters */
