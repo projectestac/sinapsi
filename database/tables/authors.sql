@@ -4,6 +4,7 @@ CREATE TABLE `authors` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(550) NOT NULL,
   `type` enum('projects','schools','users') NOT NULL,
+  `category_id` int(10) unsigned DEFAULT NULL,
   `municipality_id` int(10) unsigned DEFAULT NULL,
   `territory_id` int(10) unsigned DEFAULT NULL,
   `project_id` int(10) unsigned DEFAULT NULL,
@@ -20,6 +21,8 @@ CREATE TABLE `authors` (
   KEY `authors_school_id_foreign_index` (`school_id`),
   KEY `authors_project_id_foreign_idx` (`project_id`),
   KEY `authors_user_id_foreign_idx` (`user_id`),
+  KEY `authors_category_id_foreign_idx` (`category_id`),
+  CONSTRAINT `authors_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `authors_municipality_id_foreign` FOREIGN KEY (`municipality_id`) REFERENCES `municipalities` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `authors_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `authors_school_id_foreign` FOREIGN KEY (`school_id`) REFERENCES `schools` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -28,4 +31,3 @@ CREATE TABLE `authors` (
   CONSTRAINT `authors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
