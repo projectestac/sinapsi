@@ -22,9 +22,15 @@ export const TYPEAHEAD_FIELDS: FieldConfig[] = [{
     icon:   'tag'
   }, {
     id:     'territories',
-    name:   _('Territories'),
+    name:   _('Territorial service'),
     path:   '/api/territories',
-    filters: null,
+    filters: { 'facet': true },
+    icon:   'globe'
+  }, {
+    id:     'services',
+    name:   _('Educational service'),
+    path:   '/api/territories',
+    filters: { 'not-facet': true },
     icon:   'globe'
   }, {
     id:     'municipalities',
@@ -34,7 +40,7 @@ export const TYPEAHEAD_FIELDS: FieldConfig[] = [{
     icon:   'map-marker'
   }, {
     id:     'categories',
-    name:   _('Categories'),
+    name:   _('School type'),
     path:   '/api/categories',
     filters: null,
     icon:   'folder'

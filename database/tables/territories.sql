@@ -4,6 +4,7 @@ CREATE TABLE `territories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `uuid` varchar(36) DEFAULT NULL,
+  `facet` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Facet indicator',
   `territory_id` int(10) unsigned DEFAULT NULL COMMENT 'Parent territory',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,

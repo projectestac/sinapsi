@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2019-02-04T13:18:16.705Z\n"
+"POT-Creation-Date: 2019-03-13T10:21:33.069Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Joan Sala Soler <jsala236@xtec.cat>\n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Language: ca\n"
-"X-Generator: Poedit 2.0.4\n"
 
 #: src/app/feature/help/help.routes.ts:35
 msgid "About"
@@ -53,13 +47,10 @@ msgstr "Blau"
 msgid "Cancel"
 msgstr "Cancel·la"
 
+#: src/app/app.routes.ts:33
 #: src/app/app.routes.ts:30
 msgid "Catalogs"
 msgstr "Catàlegs"
-
-#: src/app/shared/search/search.fields.ts:37
-msgid "Categories"
-msgstr "Categories"
 
 #: src/app/feature/posts/posts.sections.ts:120
 msgid "Commented"
@@ -134,8 +125,13 @@ msgstr "Voleu desactivar l'usuari «<strong>{name}</strong>»?"
 msgid "Do you want to reset the form to its initial state?"
 msgstr "Voleu restablir el formulari al seu estat inicial?"
 
-#: src/app/app.routes.ts:57
+#: src/app/shared/search/search.fields.ts:31
+msgid "Educational service"
+msgstr "Servei educatiu"
+
+#: src/app/app.routes.ts:60
 #: src/app/feature/users/users.routes.ts:28
+#: src/app/app.routes.ts:57
 msgid "Educators"
 msgstr "Docents"
 
@@ -167,10 +163,12 @@ msgstr "Gris"
 msgid "Green"
 msgstr "Verd"
 
+#: src/app/app.routes.ts:40
 #: src/app/app.routes.ts:37
 msgid "Help"
 msgstr "Ajuda"
 
+#: src/app/app.routes.ts:26
 #: src/app/app.routes.ts:23
 msgid "Home"
 msgstr "Inici"
@@ -211,6 +209,7 @@ msgstr "Més votats"
 msgid "Most voted articles"
 msgstr "Articles més votats"
 
+#: src/app/shared/search/search.fields.ts:37
 #: src/app/shared/search/search.fields.ts:31
 msgid "Municipalities"
 msgstr "Municipis"
@@ -264,8 +263,10 @@ msgstr "Introduïu un nom per crear una sinapsi per a l'etiqueta."
 msgid "Please, log in to like or favourite posts."
 msgstr "Si us plau, entreu per a marcar els articles com a favorits."
 
-#: src/app/app.routes.ts:41
+#: src/app/app.routes.ts:44
 #: src/app/feature/projects/projects.routes.ts:29
+#: src/app/shared/search/search.fields.ts:55
+#: src/app/app.routes.ts:41
 #: src/app/shared/search/search.fields.ts:43
 msgid "Projects"
 msgstr "Projectes"
@@ -303,8 +304,14 @@ msgstr "Vermell"
 msgid "Reset form"
 msgstr "Restableix el formulari"
 
-#: src/app/app.routes.ts:45
+#: src/app/shared/search/search.fields.ts:43
+msgid "School type"
+msgstr "Tipus de centre"
+
+#: src/app/app.routes.ts:48
 #: src/app/feature/schools/schools.routes.ts:29
+#: src/app/shared/search/search.fields.ts:49
+#: src/app/app.routes.ts:45
 #: src/app/shared/search/search.fields.ts:37
 msgid "Schools"
 msgstr "Centres"
@@ -325,8 +332,9 @@ msgstr "Comparteix a Twitter"
 msgid "Synapse editor"
 msgstr "Edició de sinapsis"
 
-#: src/app/app.routes.ts:49
+#: src/app/app.routes.ts:52
 #: src/app/feature/catalogs/catalogs.routes.ts:31
+#: src/app/app.routes.ts:49
 msgid "Synapses"
 msgstr "Sinapsis"
 
@@ -334,9 +342,10 @@ msgstr "Sinapsis"
 msgid "Table of contents"
 msgstr "Taula de continguts"
 
-#: src/app/app.routes.ts:53
+#: src/app/app.routes.ts:56
 #: src/app/feature/catalogs/catalogs.routes.ts:35
 #: src/app/shared/search/search.fields.ts:19
+#: src/app/app.routes.ts:53
 msgid "Tags"
 msgstr "Etiquetes"
 
@@ -349,8 +358,8 @@ msgid "Taxonomies"
 msgstr "Taxonomies"
 
 #: src/app/shared/search/search.fields.ts:25
-msgid "Territories"
-msgstr "Territoris"
+msgid "Territorial service"
+msgstr "Servei territorial"
 
 #: src/app/feature/comments/comments.messages.ts:12
 msgid "The comment «{name}» has been deleted."
@@ -366,7 +375,9 @@ msgstr "El formulari conté errors, corregiu-los abans de desar."
 
 #: src/app/core/components/editor.messages.ts:41
 msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
-msgstr "El formulari té canvis sense desar. Voleu sortir d'aquesta pàgina sense desar-los?"
+msgstr ""
+"El formulari té canvis sense desar. Voleu sortir d'aquesta pàgina sense "
+"desar-los?"
 
 #: src/app/feature/projects/projects.messages.ts:12
 msgid "The project «<strong>{name}</strong>» has been deleted."
@@ -390,7 +401,9 @@ msgstr "S'ha restaurat l'etiqueta «<strong> {name} </ strong>»."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:63
 msgid "The tag will not longer show on search results but can be restored later on."
-msgstr "L'etiqueta no es mostrarà més als resultats de la cerca, però es pot restaurar més endavant."
+msgstr ""
+"L'etiqueta no es mostrarà més als resultats de la cerca, però es pot "
+"restaurar més endavant."
 
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
@@ -402,7 +415,9 @@ msgstr "L'usuari «<strong>{name}</strong>» s'ha inhabilitat amb èxit."
 
 #: src/app/feature/users/users.messages.ts:37
 msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
-msgstr "L'usuari ja no podrà accedir a l'aplicació. Els comptes d'usuari es poden desactivar temporalment i tornar a activar-se més tard."
+msgstr ""
+"L'usuari ja no podrà accedir a l'aplicació. Els comptes d'usuari es poden "
+"desactivar temporalment i tornar a activar-se més tard."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
@@ -436,6 +451,7 @@ msgstr "Blanc"
 msgid "Yellow"
 msgstr "Groc"
 
+#: src/app/auth/session.service.ts:28
 #: src/app/core/auth/session.service.ts:28
 msgid "Your account has been temporarily disabled."
 msgstr "El vostre compte s'ha inhabilitat temporalment."

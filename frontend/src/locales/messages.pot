@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2018-05-07T15:18:58.310Z\n"
+"POT-Creation-Date: 2019-03-13T10:21:33.069Z\n"
 
 #: src/app/feature/help/help.routes.ts:35
 msgid "About"
@@ -16,8 +16,12 @@ msgstr ""
 msgid "All posts"
 msgstr ""
 
+#: src/app/app.component.ts:47
+msgid "An unexpected error happened, please try again later."
+msgstr ""
+
 #: src/app/core/components/editor.messages.ts:29
-#: src/app/core/components/editor.messages.ts:46
+#: src/app/core/components/editor.messages.ts:45
 msgid "Any changes you made to the form will be lost."
 msgstr ""
 
@@ -41,11 +45,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/app/app.routes.ts:23
-msgid "Home"
-msgstr ""
-
-#: src/app/app.routes.ts:31
+#: src/app/app.routes.ts:33
 msgid "Catalogs"
 msgstr ""
 
@@ -65,8 +65,8 @@ msgstr ""
 msgid "Create school"
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:75
-#: src/app/feature/catalogs/catalogs.messages.ts:84
+#: src/app/feature/catalogs/catalogs.messages.ts:72
+#: src/app/feature/catalogs/catalogs.messages.ts:81
 msgid "Create synapse"
 msgstr ""
 
@@ -120,7 +120,11 @@ msgstr ""
 msgid "Do you want to reset the form to its initial state?"
 msgstr ""
 
-#: src/app/app.routes.ts:58
+#: src/app/shared/search/search.fields.ts:31
+msgid "Educational service"
+msgstr ""
+
+#: src/app/app.routes.ts:60
 #: src/app/feature/users/users.routes.ts:28
 msgid "Educators"
 msgstr ""
@@ -153,8 +157,12 @@ msgstr ""
 msgid "Green"
 msgstr ""
 
-#: src/app/app.routes.ts:38
+#: src/app/app.routes.ts:40
 msgid "Help"
+msgstr ""
+
+#: src/app/app.routes.ts:26
+msgid "Home"
 msgstr ""
 
 #: src/app/core/components/editor.messages.ts:38
@@ -193,7 +201,7 @@ msgstr ""
 msgid "Most voted articles"
 msgstr ""
 
-#: src/app/shared/search/search.fields.ts:28
+#: src/app/shared/search/search.fields.ts:37
 msgid "Municipalities"
 msgstr ""
 
@@ -205,12 +213,12 @@ msgstr ""
 msgid "Name of the school"
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:76
-#: src/app/feature/catalogs/catalogs.messages.ts:85
+#: src/app/feature/catalogs/catalogs.messages.ts:73
+#: src/app/feature/catalogs/catalogs.messages.ts:82
 msgid "Name of the synapse"
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:89
+#: src/app/feature/catalogs/catalogs.messages.ts:86
 msgid "No synapse exists for the tag «<strong>{name}</strong>»."
 msgstr ""
 
@@ -234,11 +242,11 @@ msgstr ""
 msgid "Please enter a name for the new school."
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:77
+#: src/app/feature/catalogs/catalogs.messages.ts:74
 msgid "Please enter a name for the new synapse."
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:96
+#: src/app/feature/catalogs/catalogs.messages.ts:93
 msgid "Please enter a name to create a new synapse for the tag."
 msgstr ""
 
@@ -246,9 +254,9 @@ msgstr ""
 msgid "Please, log in to like or favourite posts."
 msgstr ""
 
-#: src/app/app.routes.ts:42
+#: src/app/app.routes.ts:44
 #: src/app/feature/projects/projects.routes.ts:29
-#: src/app/shared/search/search.fields.ts:38
+#: src/app/shared/search/search.fields.ts:55
 msgid "Projects"
 msgstr ""
 
@@ -285,9 +293,13 @@ msgstr ""
 msgid "Reset form"
 msgstr ""
 
-#: src/app/app.routes.ts:46
+#: src/app/shared/search/search.fields.ts:43
+msgid "School type"
+msgstr ""
+
+#: src/app/app.routes.ts:48
 #: src/app/feature/schools/schools.routes.ts:29
-#: src/app/shared/search/search.fields.ts:33
+#: src/app/shared/search/search.fields.ts:49
 msgid "Schools"
 msgstr ""
 
@@ -307,7 +319,7 @@ msgstr ""
 msgid "Synapse editor"
 msgstr ""
 
-#: src/app/app.routes.ts:50
+#: src/app/app.routes.ts:52
 #: src/app/feature/catalogs/catalogs.routes.ts:31
 msgid "Synapses"
 msgstr ""
@@ -316,9 +328,9 @@ msgstr ""
 msgid "Table of contents"
 msgstr ""
 
-#: src/app/app.routes.ts:54
+#: src/app/app.routes.ts:56
 #: src/app/feature/catalogs/catalogs.routes.ts:35
-#: src/app/shared/search/search.fields.ts:18
+#: src/app/shared/search/search.fields.ts:19
 msgid "Tags"
 msgstr ""
 
@@ -330,8 +342,8 @@ msgstr ""
 msgid "Taxonomies"
 msgstr ""
 
-#: src/app/shared/search/search.fields.ts:23
-msgid "Territories"
+#: src/app/shared/search/search.fields.ts:25
+msgid "Territorial service"
 msgstr ""
 
 #: src/app/feature/comments/comments.messages.ts:12
@@ -344,6 +356,10 @@ msgstr ""
 
 #: src/app/core/components/editor.messages.ts:16
 msgid "The form has errors, please correct them before saving."
+msgstr ""
+
+#: src/app/core/components/editor.messages.ts:41
+msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
 msgstr ""
 
 #: src/app/feature/projects/projects.messages.ts:12
@@ -366,12 +382,20 @@ msgstr ""
 msgid "The tag «<strong>{name}</strong>» has been restored."
 msgstr ""
 
+#: src/app/feature/catalogs/catalogs.messages.ts:63
+msgid "The tag will not longer show on search results but can be restored later on."
+msgstr ""
+
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
 msgstr ""
 
 #: src/app/feature/users/users.messages.ts:12
 msgid "The user «<strong>{name}</strong>» has been successfully disabled."
+msgstr ""
+
+#: src/app/feature/users/users.messages.ts:37
+msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
 msgstr ""
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
@@ -382,11 +406,11 @@ msgstr ""
 msgid "This action cannot be undone."
 msgstr ""
 
-#: src/app/feature/catalogs/catalogs.messages.ts:95
+#: src/app/feature/catalogs/catalogs.messages.ts:92
 msgid "To edit the tag, a synapse must be created."
 msgstr ""
 
-#: src/app/shared/typeahead/typeahead.component.ts:81
+#: src/app/shared/typeahead/typeahead.component.ts:80
 msgid "Type to search"
 msgstr ""
 
@@ -406,6 +430,7 @@ msgstr ""
 msgid "Yellow"
 msgstr ""
 
-#: src/app/core/auth/session.service.ts:27
+#: src/app/auth/session.service.ts:28
 msgid "Your account has been temporarily disabled."
 msgstr ""
+

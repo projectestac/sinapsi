@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2019-02-04T13:18:16.705Z\n"
+"POT-Creation-Date: 2019-03-13T10:21:33.069Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Joan Sala Soler <jsala236@xtec.cat>\n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Language: es\n"
-"X-Generator: Poedit 2.0.4\n"
 
 #: src/app/feature/help/help.routes.ts:35
 msgid "About"
@@ -52,13 +46,10 @@ msgstr "Azul"
 msgid "Cancel"
 msgstr "Cancelar"
 
+#: src/app/app.routes.ts:33
 #: src/app/app.routes.ts:30
 msgid "Catalogs"
 msgstr "Catálogos"
-
-#: src/app/shared/search/search.fields.ts:37
-msgid "Categories"
-msgstr "Categorías"
 
 #: src/app/feature/posts/posts.sections.ts:120
 msgid "Commented"
@@ -131,8 +122,13 @@ msgstr "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?
 msgid "Do you want to reset the form to its initial state?"
 msgstr "¿Desea restablecer el formulario a su estado inicial?"
 
-#: src/app/app.routes.ts:57
+#: src/app/shared/search/search.fields.ts:31
+msgid "Educational service"
+msgstr "Servicio educativo"
+
+#: src/app/app.routes.ts:60
 #: src/app/feature/users/users.routes.ts:28
+#: src/app/app.routes.ts:57
 msgid "Educators"
 msgstr "Docentes"
 
@@ -164,10 +160,12 @@ msgstr "Gris"
 msgid "Green"
 msgstr "Verde"
 
+#: src/app/app.routes.ts:40
 #: src/app/app.routes.ts:37
 msgid "Help"
 msgstr "Ayuda"
 
+#: src/app/app.routes.ts:26
 #: src/app/app.routes.ts:23
 msgid "Home"
 msgstr "Inicio"
@@ -208,6 +206,7 @@ msgstr "Más votados"
 msgid "Most voted articles"
 msgstr "Artículos más votados"
 
+#: src/app/shared/search/search.fields.ts:37
 #: src/app/shared/search/search.fields.ts:31
 msgid "Municipalities"
 msgstr "Municipios"
@@ -261,8 +260,10 @@ msgstr "Escriba un nombre para crear una nueva sinapsis para la etiqueta."
 msgid "Please, log in to like or favourite posts."
 msgstr "Por favor, entre para marcar los artículos como favoritos."
 
-#: src/app/app.routes.ts:41
+#: src/app/app.routes.ts:44
 #: src/app/feature/projects/projects.routes.ts:29
+#: src/app/shared/search/search.fields.ts:55
+#: src/app/app.routes.ts:41
 #: src/app/shared/search/search.fields.ts:43
 msgid "Projects"
 msgstr "Proyectos"
@@ -300,8 +301,14 @@ msgstr "Rojo"
 msgid "Reset form"
 msgstr "Restablecer formulario"
 
-#: src/app/app.routes.ts:45
+#: src/app/shared/search/search.fields.ts:43
+msgid "School type"
+msgstr "Tipo de centro"
+
+#: src/app/app.routes.ts:48
 #: src/app/feature/schools/schools.routes.ts:29
+#: src/app/shared/search/search.fields.ts:49
+#: src/app/app.routes.ts:45
 #: src/app/shared/search/search.fields.ts:37
 msgid "Schools"
 msgstr "Centros"
@@ -322,8 +329,9 @@ msgstr "Compartir en Twitter"
 msgid "Synapse editor"
 msgstr "Edición de sinapsis"
 
-#: src/app/app.routes.ts:49
+#: src/app/app.routes.ts:52
 #: src/app/feature/catalogs/catalogs.routes.ts:31
+#: src/app/app.routes.ts:49
 msgid "Synapses"
 msgstr "Sinapsis"
 
@@ -331,9 +339,10 @@ msgstr "Sinapsis"
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: src/app/app.routes.ts:53
+#: src/app/app.routes.ts:56
 #: src/app/feature/catalogs/catalogs.routes.ts:35
 #: src/app/shared/search/search.fields.ts:19
+#: src/app/app.routes.ts:53
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -346,8 +355,8 @@ msgid "Taxonomies"
 msgstr "Taxonomías"
 
 #: src/app/shared/search/search.fields.ts:25
-msgid "Territories"
-msgstr "Territorios"
+msgid "Territorial service"
+msgstr "Servicio territorial"
 
 #: src/app/feature/comments/comments.messages.ts:12
 msgid "The comment «{name}» has been deleted."
@@ -363,7 +372,9 @@ msgstr "El formulario tiene errores, corríjalos antes de guardarlos."
 
 #: src/app/core/components/editor.messages.ts:41
 msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
-msgstr "El formulario tiene cambios no guardados ¿Quiere salir de esta página sin guardarlos?"
+msgstr ""
+"El formulario tiene cambios no guardados ¿Quiere salir de esta página sin "
+"guardarlos?"
 
 #: src/app/feature/projects/projects.messages.ts:12
 msgid "The project «<strong>{name}</strong>» has been deleted."
@@ -387,7 +398,9 @@ msgstr "La etiqueta «<strong>{name}</strong>» ha sido restaurada."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:63
 msgid "The tag will not longer show on search results but can be restored later on."
-msgstr "La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser restaurada más adelante."
+msgstr ""
+"La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser "
+"restaurada más adelante."
 
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
@@ -399,7 +412,9 @@ msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
 
 #: src/app/feature/users/users.messages.ts:37
 msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
-msgstr "El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario pueden desactivarse temporalmente y volver a habilitarse más tarde."
+msgstr ""
+"El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario "
+"pueden desactivarse temporalmente y volver a habilitarse más tarde."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
@@ -433,6 +448,7 @@ msgstr "Blanco"
 msgid "Yellow"
 msgstr "Amarillo"
 
+#: src/app/auth/session.service.ts:28
 #: src/app/core/auth/session.service.ts:28
 msgid "Your account has been temporarily disabled."
 msgstr "Tu cuenta se inhabilitó temporalmente."

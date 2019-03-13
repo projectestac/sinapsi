@@ -89,6 +89,9 @@ export const I18N_MESSAGES = {
     "Educators":
     "Docentes",
 
+    "Educational service":
+    "Servicio educativo",
+
     "Everything":
     "Todos",
 
@@ -212,6 +215,9 @@ export const I18N_MESSAGES = {
     "Schools":
     "Centros",
 
+    "School type":
+    "Tipo de centro",
+
     "Share by Email":
     "Compartir por correo electrónico",
 
@@ -241,6 +247,9 @@ export const I18N_MESSAGES = {
 
     "Territories":
     "Territorios",
+
+    "Territorial service":
+    "Servicio territorial",
 
     "The comment «{name}» has been deleted.":
     "El comentario «{name}» ha sido eliminado.",

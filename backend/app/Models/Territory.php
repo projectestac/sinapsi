@@ -14,6 +14,7 @@ class Territory extends FoundationModel {
     protected static $fields = [
         'id' =>                 'integer|min:1',
         'name' =>               'string|max:255',
+        'facet' =>              'boolean',
         'territory_id' =>       'integer|min:1|nullable',
         'created_at' =>         'isodate',
         'updated_at' =>         'isodate',
@@ -32,6 +33,7 @@ class Territory extends FoundationModel {
     /** Attributes that should be cast */
     protected $casts = [
         'id' =>                 'integer',
+        'facet' =>              'boolean',
         'territory_id' =>       'integer',
         'created_at' =>         'datetime',
         'updated_at' =>         'datetime',

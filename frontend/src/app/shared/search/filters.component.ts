@@ -31,7 +31,8 @@ export class FiltersComponent implements OnChanges {
         projects:       'author_id',
         schools:        'author_id',
         tags:           'tag_id',
-        territories:    'territory_id'
+        territories:    'territory_id',
+        services:       'territory_id'
     };
 
     /** Form on change callback */
