@@ -46,7 +46,7 @@
 
     <div *ngSwitchCase="'twitter'" class="twitter-block">
       <app-card>
-        <div *ngIf="locked" class="block-wrapper">
+        <div *ngIf="locked" class="block-wrapper bordered-block">
           <span i18n>Tweets by </span>
           <span class="text-primary">{{ block.options?.profile }}</span>
           <div class="text-muted" i18n>
@@ -64,6 +64,24 @@
           </a>
         </div>
       </app-card>
+    </div>
+
+    <!-- Embedded content block -->
+
+    <div *ngSwitchCase="'embed'" class="embed-block">
+      <div *ngIf="locked" class="block-wrapper bordered-block">
+        <span>{{ block.options?.provider }}</span>
+        <div class="text-muted" i18n>
+          <small>The embedded contents will be shown here.</small>
+        </div>
+      </div>
+      <div *ngIf="!locked" class="block-wrapper">
+        <iframe [src]="toEmbedUrl(block)"
+                [style.height]="block.options?.height + 'px'"
+                scrolling="no" frameborder="0"
+                class="block-content">
+        </iframe>
+      </div>
     </div>
 
     <!-- Basic color block -->

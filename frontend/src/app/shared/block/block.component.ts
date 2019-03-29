@@ -1,12 +1,17 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { AfterViewInit, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Block, BlockType } from 'app/models';
+import { EmbedProvider, EMBED_PROVIDERS } from './embed.providers';
+import { _, format } from 'i18n';
 
 
 @Component({
     selector: 'app-block',
     templateUrl: 'block.component.html',
-    styleUrls: [ 'block.component.scss' ]
+    styleUrls: [ 'block.component.scss' ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlockComponent implements AfterViewInit {
 
@@ -18,6 +23,12 @@ export class BlockComponent implements AfterViewInit {
 
     /** Block wrapper element */
     @ViewChild('blockElement') blockElement;
+
+
+    /**
+     * Component constructor
+     */
+     constructor(private sanitizer: DomSanitizer) {}
 
 
     /**
@@ -44,7 +55,8 @@ export class BlockComponent implements AfterViewInit {
     /**
      * Returns this block's HREF option as an absolute URL.
      *
-     * @returns     Block URL
+     * @param value         Href string
+     * @returns             Block URL
      */
     public toAbsoluteURL(value: string): string {
         const href = value ? value.trim() : null;
@@ -61,6 +73,41 @@ export class BlockComponent implements AfterViewInit {
         } catch (e) {}
 
         return url ? url.toString().replace(/^https?:\/\//, '//') : null;
+    }
+
+
+    /**
+     * Obtains an iframe embed URL for the given block.
+     *
+     * @param block         Block instance
+     * @returns             Embed URL
+     */
+    toEmbedUrl(block: Block): SafeHtml {
+        const options = block['options'] || {};
+        const provider_id = options['provider'];
+        const provider = this.getEmbedProvider(provider_id);
+        const params = {};
+
+        Object.entries(options).forEach(([k, v]) => {
+            const key = encodeURIComponent(String(k));
+            const value = encodeURIComponent(String(v));
+            params[key] = value;
+        });
+
+        const href = format(provider.href, params);
+
+        return this.sanitizer.bypassSecurityTrustResourceUrl(href);
+    }
+
+
+    /**
+     * Obtain the embed provider with the given identifier.
+     *
+     * @param id        Provider identifier
+     * @return          Embed provider
+     */
+    private getEmbedProvider(id: string): EmbedProvider {
+        return EMBED_PROVIDERS.find(e => (id == e.id));
     }
 
 
