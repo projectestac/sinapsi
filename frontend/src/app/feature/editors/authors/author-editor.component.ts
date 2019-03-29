@@ -24,11 +24,14 @@ const OWNER_KEYS = {
 })
 export class AuthorEditorComponent extends EditorComponent {
 
-    /** Active editor tab */
-    public tab = 'author';
+    /** Default active tab */
+    private DEFAULT_TAB = 'synapse';
 
     /** Author being edited */
     private author = null;
+
+    /** Active editor tab */
+    public tab = this.DEFAULT_TAB;
 
 
     /**
@@ -48,7 +51,7 @@ export class AuthorEditorComponent extends EditorComponent {
      * {@inheritDoc}
      */
     public edit(id: number) {
-        this.tab = 'author';
+        this.tab = this.DEFAULT_TAB;
         super.edit(id);
     }
 
@@ -57,7 +60,7 @@ export class AuthorEditorComponent extends EditorComponent {
      * {@inheritDoc}
      */
     public reset() {
-        this.tab = 'author';
+        this.tab = this.DEFAULT_TAB;
         super.reset();
     }
 
@@ -115,7 +118,12 @@ export class AuthorEditorComponent extends EditorComponent {
      */
     public fetchModels(id: number): Observable<any> {
         return this.getAuthor(id)
-            .map(author => this.author = author)
+            .map(author => {
+                this.author = author;
+                author['name'] = this.owner['name'];
+                console.log(this.owner);
+                return author;
+            })
             .concatMap(author => this.authorize(author))
             .concatMap(author => Observable.forkJoin([
                 Observable.of(author),

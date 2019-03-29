@@ -34,10 +34,12 @@ export class AuthorFormBuilder {
      * Author form group.
      */
     static createAuthorForm = () => fb.group({
+        name: [ null, [V.required, V.maxLength(255)] ],
         category: null,
         municipality: null,
         territory: null,
-        school: null
+        school: null,
+        type: null
     });
 
 

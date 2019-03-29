@@ -3,7 +3,7 @@
     <cn-breadcrumb></cn-breadcrumb>
   </div>
 </div>
-<article *ngIf="state !== 'empty'"  class="page-content">
+<article *ngIf="state !== 'empty'" class="page-content">
 
   <!-- Header -->
 
@@ -28,11 +28,19 @@
 
         <div class="author-editor-tabs">
           <cn-tabs [(value)]="tab">
-            <cn-tabitem value="author">
-              <span i18n>Author information</span>
+            <cn-tabitem value="synapse"
+              [ngSwitch]="author['type']">
+              <span *ngSwitchCase="'projects'" i18n>Project synapse</span>
+              <span *ngSwitchCase="'schools'" i18n>School synapse</span>
+              <span *ngSwitchCase="'users'" i18n>User synapse</span>
+              <span *ngSwitchDefault i18n>Synapse information</span>
             </cn-tabitem>
-            <cn-tabitem value="synapse">
-              <span i18n>Synapse</span>
+            <cn-tabitem value="author"
+              [ngSwitch]="author['type']">
+              <span *ngSwitchCase="'projects'" i18n>Project information</span>
+              <span *ngSwitchCase="'schools'" i18n>School information</span>
+              <span *ngSwitchCase="'users'" i18n>User information</span>
+              <span *ngSwitchDefault i18n>Author information</span>
             </cn-tabitem>
             <cn-tabitem value="blocks">
               <span i18n>Blocks</span>
@@ -47,7 +55,18 @@
             <div class="row">
               <div class="main-column col-lg-8">
                 <div *ngIf="owner?.name" class="form-group">
-                  <label class="form-container-label">
+                  <label *ngIf="author.type != 'users'"
+                         [ngSwitch]="author['type']"
+                          class="form-container-label">
+                    <span *ngSwitchCase="'projects'" i18n>Project name:</span>
+                    <span *ngSwitchCase="'schools'" i18n>School name:</span>
+                    <span *ngSwitchDefault i18n>Author name:</span>
+                    <input type="text"
+                       [formControl]="form.get('author').get('name')"
+                       class="form-control">
+                  </label>
+                  <label *ngIf="author.type == 'users'"
+                         class="form-container-label">
                     <span i18n>Author name:</span>
                     <input type="text"
                        [value]="owner.name" disabled

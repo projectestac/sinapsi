@@ -167,4 +167,21 @@ class Author extends FoundationModel {
         return $this->belongsTo(User::class);
     }
 
+
+    /**
+     * Owner for this author. Returns the user, project or
+     * school that owns this author.
+     *
+     * @return belongsTo            Model relation
+     */
+    public function owner() {
+        if ($this->type == 'projects')
+            return $this->project();
+
+        if ($this->type == 'schools')
+            return $this->school();
+
+        return $this->user();
+    }
+
 }

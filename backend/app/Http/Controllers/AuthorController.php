@@ -79,11 +79,16 @@ class AuthorController extends Controller {
      */
     private function filterValues(array $values, Author $resource) {
         $filtered = array_intersect_key($values, [
+            'name' => null,
             'category_id' => null,
             'municipality_id' => null,
             'territory_id' => null,
             'school_id' => null
         ]);
+
+        if ($resource->type === 'users') {
+            unset($filtered['name']);
+        }
 
         if ($resource->type === 'schools') {
             unset($filtered['school_id']);

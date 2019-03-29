@@ -241,8 +241,7 @@ export class StoreService implements OnDestroy {
      * @returns             Observable
      */
     batch(path: string, params: Object): Observable<any> {
-        const url = this.proxy(path);
-        return this.create(url, params);
+        return this.create(path, params);
     }
 
 
