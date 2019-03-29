@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2019-03-13T10:21:33.069Z\n"
+"POT-Creation-Date: 2019-03-20T11:39:26.241Z\n"
 
 #: src/app/feature/help/help.routes.ts:35
 msgid "About"

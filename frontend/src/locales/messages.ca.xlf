@@ -3,9 +3,7 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="815cad6a13eee2edfed8a43dc3a64d88b1b2db27" datatype="html">
-        <source>
-        Home
-      </source>
+        <source>Home</source>
         <target>Inici</target>
         <context-group purpose="location">
           <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.html</context>
@@ -406,9 +404,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="75ba5cfc5098caa925e5200c11512fe3101b0a40" datatype="html">
-        <source>
-                      Settings
-                    </source>
+        <source>Settings</source>
         <target>Configuració</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/header/header.component.html</context>
@@ -436,9 +432,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="e761ecc698c385562f9eaa5a9b8082fd97bee81f" datatype="html">
-        <source>
-                Settings
-              </source>
+        <source>Settings</source>
         <target>Configuració</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/header/header.component.html</context>
@@ -559,6 +553,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/block/block.component.html</context>
           <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a9a8396cacbbdb9f9ba6daa6544b1c1d742ed33d" datatype="html">
+        <source>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>The embedded contents will be shown here.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+        </source>
+        <target>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>Aquí es mostraran els continguts incrustats.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8fa4d523f7b91df4390120b85ed0406138273e1a" datatype="html">
@@ -731,7 +737,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="1cccadceefca87a39effdef34c1d546493ebaede" datatype="html">
-        <source>Publish date</source>
+        <source>
+              Publish date
+            </source>
         <target>Data de publicació</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.html</context>
@@ -739,7 +747,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="13da0d916180898026702ac665c67d0530183d7a" datatype="html">
-        <source>Order by</source>
+        <source>
+              Order by
+            </source>
         <target>Ordenació</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/search/filters.component.html</context>
@@ -929,7 +939,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="f7e53f755560b3d5abe7c5b640f43c300da52d7e" datatype="html">
-        <source>Reload this page</source>
+        <source>
+      Reload this page
+    </source>
         <target>Refresca aquesta pàgina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/state/state.component.html</context>
@@ -983,9 +995,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="d6b1a79fec12aebe166f98e12bfceef1adb8fc3e" datatype="html">
-        <source>
-        Selection:
-      </source>
+        <source>Selection:</source>
         <target>Selecció:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
@@ -1117,9 +1127,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="a5a8099429d20eede216ee4a0c6a56eebf22ee31" datatype="html">
-        <source>
-            Comment
-          </source>
+        <source>Comment</source>
         <target>Comenta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
@@ -1431,20 +1439,72 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="04c87583d38ee81e73a457104ccce34f7f97e9ca" datatype="html">
+        <source>Project synapse</source>
+        <target>Sinapsi del projecte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="01079ed10b2ce434f2cda28205c58e3ea42c7fae" datatype="html">
+        <source>School synapse</source>
+        <target>Sinapsi del centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c73c5e1994da7c4d8512d41555d3711972bc94d8" datatype="html">
+        <source>User synapse</source>
+        <target>Sinapsi d'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
+        <source>Synapse information</source>
+        <target>Dades de la sinapsi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2744bdb4ade85d5852387c856ef3772a6aeac36b" datatype="html">
+        <source>Project information</source>
+        <target>Dades del projecte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="22c67c8822a6dbea2c1aecf807d022e3d1d6f515" datatype="html">
+        <source>School information</source>
+        <target>Dades del centre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e8d122924e4ca9b515d4586b42fd1c3e2b825e7" datatype="html">
+        <source>User information</source>
+        <target>Dades d'usuari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="b28910202a5f6bd9ede4b5702e8e23d285012a53" datatype="html">
         <source>Author information</source>
         <target>Dades de l'autor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7160311a32a547596628a142e8fc3ca09e029055" datatype="html">
-        <source>Synapse</source>
-        <target>Sinapsi</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
@@ -1452,11 +1512,27 @@
         <target>Blocs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="74dec02f143725d5ca7992ed79198baca311b379" datatype="html">
+        <source>Project name:</source>
+        <target>Nom del projecte:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d3a8c79ad75df4b4f3eb5747ec55828028e8a952" datatype="html">
+        <source>School name:</source>
+        <target>Nom del centre:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b2998166dd6f1cc2da0a7073dea46a67ba674c86" datatype="html">
@@ -1464,7 +1540,11 @@
         <target>Nom de l'autor:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c31eab5d26e41d74a00805798a47b17bb3ceb6f1" datatype="html">
@@ -1472,7 +1552,7 @@
         <target>Nom complet de l'autor.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="91b96d7228b6e05c238fa4e39abfc17ad51a6eef" datatype="html">
@@ -1480,7 +1560,7 @@
         <target>Correu electrònic:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
@@ -1492,7 +1572,7 @@
         <target>Adreça electrònica d'inici de sessió de l'usuari.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
@@ -1504,7 +1584,7 @@
         <target>Desa els canvis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">136</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
@@ -1516,19 +1596,11 @@
         <target>Restableix</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">141</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">84</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
-        <source>Synapse information</source>
-        <target>Dades de la sinapsi</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
-          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1298c1d2bbbb7415f5494e800f6775fdb70f4df6" datatype="html">
@@ -1595,12 +1667,20 @@
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="f16e5de77c1d6eec2722f5ad868694ca2fd7a9a7" datatype="html">
+        <source>Educational service:</source>
+        <target>Servei educatiu:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="09f313434073ffc8534c6b6cb3128c0f1a37d5d1" datatype="html">
         <source>Territorial service:</source>
         <target>Servei territorial:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
@@ -1612,7 +1692,7 @@
         <target>Servei territorial d'aquest autor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">59</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
@@ -1624,7 +1704,7 @@
         <target>Categoria:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="13f44af25096b945e21d35271f1c1bd1f93f6206" datatype="html">
@@ -1632,7 +1712,7 @@
         <target>Categoria d'aquest autor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="61879a8027ec586e1b033dfdfa66366af824f70c" datatype="html">
