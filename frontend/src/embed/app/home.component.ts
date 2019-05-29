@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Collection, StoreService } from 'app/core';
-import { SectionConfig, SectionsBuilder } from 'app/feature/posts';
+import { SettingsService, StoreService } from 'app/core';
+import { SectionsBuilder } from 'app/feature/posts';
 import { Synapse, Tag } from 'app/models';
 
 
@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
     /** Model for this synapse */
     public synapse: Synapse = null;
 
+    /** Main application URL */
+    public appURL: string = null;
+
     /** Weather the search box is visible */
     public hasSearchBox = false;
 
@@ -28,23 +31,32 @@ export class HomeComponent implements OnInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private store: StoreService
-    ) {}
+        private store: StoreService,
+        settings: SettingsService
+    ) {
+        this.appURL = settings.get('app_url', '/');
+    }
 
 
     /**
      * Component initialization.
      */
     ngOnInit() {
+        // Navigate to the main route if required
+
+        this.router.navigate(['/'], {
+            queryParamsHandling: 'merge'
+        });
+
         // Obtain the search box parameter on initialization
-        
+
         this.route.queryParamMap.take(1).subscribe(params => {
             const value = params.get('search-box');
             this.hasSearchBox = (value === 'true');
         });
-        
+
         // Update the synapse on parameter changes
-        
+
         this.route.queryParamMap.subscribe(params => {
             if (this.synapse === null) {
                 if (params.has('tag')) {

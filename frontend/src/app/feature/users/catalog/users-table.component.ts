@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Collection, Model } from 'app/core';
-import { PoliciesService } from 'app/core';
-import { Author, User } from 'app/models';
+import { PoliciesService } from 'app/auth';
+import { Collection } from 'app/core';
+import { Author } from 'app/models';
 
 
 @Component({

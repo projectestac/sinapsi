@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreQuery } from 'app/core';
-import { Synapse } from 'app/models';
+import { Synapse, SynapseType } from 'app/models';
 
 
 @Component({
@@ -37,8 +37,9 @@ export class ShareFormComponent {
         const params = { 'search-box': this.searchBox };
 
         if (this.synapse) {
-            params['synapse'] = this.synapse.slug;
-            params['type'] = this.synapse.type;
+            const type = this.synapse['type'];
+            const key = (type == SynapseType.TAGS) ? 'tag' : 'synapse';
+            params[key] = this.synapse.slug;
         }
 
         const base = document.baseURI;

@@ -1,8 +1,8 @@
 import * as moment from 'moment';
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { LOCALE_ID, Optional, SkipSelf } from '@angular/core';
 
-import { AuthModule } from './auth';
 import { FooterModule } from './footer';
 import { HeaderModule } from './header';
 import { LocalesModule } from './locales';
@@ -34,12 +34,7 @@ export const LocaleProvider = {
  * Core module.
  */
 @NgModule({
-    imports: [
-        AuthModule.forRoot()
-    ],
-
     exports: [
-        AuthModule,
         FooterModule,
         HeaderModule,
         LocalesModule
@@ -70,9 +65,9 @@ export class CoreModule {
         if (parentModule) {
             throw new Error('CoreModule already loaded');
         }
-        
+
         // External library settings
-        
+
         moment.locale(getDocumentLocale());
     }
 }

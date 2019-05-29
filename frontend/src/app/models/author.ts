@@ -1,4 +1,5 @@
 import { Model } from 'app/core';
+import { Category } from '.';
 import { Municipality } from '.';
 import { Project } from '.';
 import { School } from '.';
@@ -24,6 +25,7 @@ export class Author implements Model {
     reputation: boolean;
     slug: string;
     type: AuthorType;
+    category_id: number;
     municipality_id: number;
     project_id: number;
     school_id: number;
@@ -33,6 +35,7 @@ export class Author implements Model {
     created_at: string;
     updated_at: string;
     deleted_at?: string;
+    category?: Category;
     municipality?: Municipality;
     project?: Project;
     school?: School;

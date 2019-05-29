@@ -5,7 +5,6 @@ import { ErrorsComponent } from 'app/shared/errors';
 
 import { HomeModule } from 'app/feature/home';
 import { HomeComponent } from 'app/feature/home';
-import { environment } from 'environments/environment';
 import { _ } from 'i18n';
 
 
@@ -18,10 +17,13 @@ export const ROUTING_COMPONENTS = [
 ];
 
 
+/**
+ * Application routes
+ */
 const ROUTES: Routes = [{
     path: '',
     component: HomeComponent,
-    data: { title: environment['title'] }
+    data: { title: _('Home') }
   }, {
     path: 'authors',
     loadChildren: 'app/feature/authors/authors.module#AuthorsModule'
@@ -63,6 +65,9 @@ const ROUTES: Routes = [{
 }];
 
 
+/**
+ * Router module.
+ */
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES),

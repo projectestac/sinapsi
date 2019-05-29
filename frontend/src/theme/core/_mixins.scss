@@ -3,3 +3,14 @@
 
 @import "~bootstrap/scss/mixins/breakpoints";
 @import "~bootstrap/scss/mixins/clearfix";
+
+
+// WA: Forces a cn-expandable to display open, even when
+// the expandable is closed. 
+
+@mixin expand-force-open() {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+}

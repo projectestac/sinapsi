@@ -28,57 +28,57 @@ use Illuminate\Http\Request;
  * AngularJS and JavaScript applications in general.
  */
 abstract class FoundationModel extends Model {
-    
+
     /** Default pagination limit */
     const LIMIT = 25;
-    
+
     /** Maximum pagination limit */
     const MAX_LIMIT = 200;
-    
-    
+
+
     /**
      * Attributes validation rules
      *
      * @var array
      */
     protected static $fields = [];
-    
+
     /**
      * Required attributes validation rules
      *
      * @var array
      */
     protected static $required = [];
-    
+
     /**
      * Constrained attributes validation rules
      *
      * @var array
      */
     protected static $constrains = [];
-    
+
     /**
      * Text attributes used for searching.
      *
      * @var array
      */
     protected $searchable = [];
-    
+
     /**
      * Relations than can be fetched automatically
      *
      * @var array
      */
     protected $includable = [];
-    
+
     /**
      * Attributes that should not be updated
      *
      * @var array
      */
     protected $protected = [];
-    
-    
+
+
     /**
      * Overwrites the default model serialization method for dates.
      *
@@ -92,8 +92,8 @@ abstract class FoundationModel extends Model {
     protected function serializeDate(DateTimeInterface $date) {
         return $date->format('Y-m-d\TH:i:s.uP');
     }
-    
-    
+
+
     /**
      * Overwrites the default model deserialization method for dates.
      *
@@ -107,21 +107,21 @@ abstract class FoundationModel extends Model {
      */
     protected function asDateTime($value) {
         // Parse the value as an ISO 8601 date if possible
-        
+
         try {
             if (is_string($value)) {
                 return Carbon::createFromFormat(
                     'Y-m-d\TH:i:s.uP', $value);
             }
         } catch (Exception $e) {}
-        
+
         // Parse the value with the built-in methods, which default
         // to the current database date format
-        
+
         return parent::asDateTime($value);
     }
-    
-    
+
+
     /**
      * Validates the given array using the provided rules.
      *
@@ -136,16 +136,16 @@ abstract class FoundationModel extends Model {
      */
     protected static function validateArray(array $input, array $rules) {
         $validator = Validator::make($input, $rules);
-        
+
         if ($validator->fails()) {
             $errors = $validator->errors()->getMessages();
             $response = new JsonResponse($errors, 422);
-            
+
             throw new ValidationException($validator, $response);
         }
     }
-    
-    
+
+
     /**
      * Validates a request using the rules defined on the $contrains
      * array of the model, if defined.
@@ -157,10 +157,10 @@ abstract class FoundationModel extends Model {
     public static function validateConstrains(Request $request) {
         $input = $request->all();
         $result = [];
-        
+
         if (!empty(static::$constrains)) {
             static::validateArray($input, static::$constrains);
-            
+
             foreach (static::$constrains as $key => $rules) {
                 if ($request->exists($key)) {
                     $value = $request->get($key);
@@ -168,11 +168,11 @@ abstract class FoundationModel extends Model {
                 }
             }
         }
-        
+
         return $result;
     }
-    
-    
+
+
     /**
      * Validates a request using the rules defined on the $required
      * array of the model, if defined.
@@ -184,10 +184,10 @@ abstract class FoundationModel extends Model {
     public static function validateRequired(Request $request) {
         $input = $request->all();
         $result = [];
-        
+
         if (!empty(static::$required)) {
             static::validateArray($input, static::$required);
-            
+
             foreach (static::$required as $key => $rules) {
                 if ($request->exists($key)) {
                     $value = $request->get($key);
@@ -195,11 +195,11 @@ abstract class FoundationModel extends Model {
                 }
             }
         }
-        
+
         return $result;
     }
-    
-    
+
+
     /**
      * Validates a request using the rules defined on the $fields array
      * of the model, if defined.
@@ -216,10 +216,10 @@ abstract class FoundationModel extends Model {
     public static function validateFields(Request $request) {
         $input = $request->all();
         $result = [];
-        
+
         if (!empty(static::$fields)) {
             static::validateArray($input, static::$fields);
-            
+
             foreach (static::$fields as $key => $rules) {
                 if ($request->exists($key)) {
                     $value = $request->get($key);
@@ -227,11 +227,11 @@ abstract class FoundationModel extends Model {
                 }
             }
         }
-        
+
         return $result;
     }
-    
-    
+
+
     /**
      * Orders the query by the matched text position.
      *
@@ -247,11 +247,11 @@ abstract class FoundationModel extends Model {
             $sql = "nullif(-position(? in `$column`), 0) desc";
             $query->orderByRaw($sql, [$string]);
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Add a WHERE-LIKE clause to the query to match the provided
      * string in any position.
@@ -269,12 +269,12 @@ abstract class FoundationModel extends Model {
     public function scopeWhereContains($query, $field, $text, $boolean = 'and') {
         $value = str_replace('%', '\%', $text);
         $value = str_replace('_', '\_', $value);
-        
+
         return $query->where($field, 'like', "%$value%", $boolean);
     }
-    
-    
-    
+
+
+
     /**
      * Add an OR WHERE-LIKE clause to the query to match the provided
      * string in any position.
@@ -287,8 +287,8 @@ abstract class FoundationModel extends Model {
     public function scopeOrWhereContains($query, $field, $text) {
         return $query->whereContains($field, $text, 'or');
     }
-    
-    
+
+
     /**
      * Prevents the query from returning any results.
      *
@@ -300,8 +300,8 @@ abstract class FoundationModel extends Model {
     public function scopeCorrupt($query) {
         return $query->whereRaw('1 = 0');
     }
-    
-    
+
+
     /**
      * Adds a select clause that trims the selected text value to the
      * specified length with an ellipsis.
@@ -316,15 +316,15 @@ abstract class FoundationModel extends Model {
      */
     public function scopeSelectEllipsis($query, $field, $length) {
         $chars = intval($length);
-        
+
         return $query->selectRaw(
             "concat(left(`$field`, ?)," .
             "if(length(`$field`) > ?, '…', '')) as `$field`",
             [$chars, $chars]
         );
     }
-    
-    
+
+
     /**
      * Adds a WHERE clause to perform a MySQL full text search.
      *
@@ -339,22 +339,22 @@ abstract class FoundationModel extends Model {
      */
     public function scopeWhereText($query, $fields, $text, $boolean = 'and') {
         $searchValue = $this->sanitizeSearch(trim($text));
-        
+
         if ($searchValue == false) {
             return $query;
         }
-        
+
         $columns = implode(',', array_map(function($name) {
             return "`$name`";
         }, $fields));
-        
+
         $query->whereRaw("match($columns) against(? in boolean mode)",
             [$searchValue], $boolean);
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Sanitize a string for use in full-text searches in boolean
      * mode. Only the symbols [+-~@*"] are supported.
@@ -366,11 +366,11 @@ abstract class FoundationModel extends Model {
         $matches = [];
         $regex = '/"[^"]+"(\s+@[0-9]+)?|[-+~]?[^-+~<>\(\)"@\s]+/';
         preg_match_all($regex, $text, $matches);
-        
+
         return implode(' ', $matches[0]);
     }
-    
-    
+
+
     /**
      * Adds an OR WHERE clause to perform a MySQL full text search.
      *
@@ -382,8 +382,8 @@ abstract class FoundationModel extends Model {
     public function scopeOrWhereText($query, $fields, $text) {
         return $query->whereText($fields, $text, 'or');
     }
-    
-    
+
+
     /**
      * Restrict the query to the results related to current user.
      *
@@ -396,11 +396,11 @@ abstract class FoundationModel extends Model {
         if (Auth::check() === false) {
             return $query->corrupt();
         }
-        
+
         return $query->where('user_id', Auth::id());
     }
-    
-    
+
+
     /**
      * Scope a query to return a 'cards' representation of the data.
      *
@@ -419,20 +419,20 @@ abstract class FoundationModel extends Model {
      */
     public function scopeCards($query, $id = null, $relation = null) {
         // Select all non-hidden columns on the model
-        
+
         $query->select($this->getCardKeys());
-        
+
         // Select a single object an all of its relations
-        
+
         if (!is_null($id)) {
             $query->includeAll();
             $query->whereId($id);
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Returns the column names defined on the $fields array of the
      * model. This method ignores all the fiels marked as hidden and
@@ -444,27 +444,27 @@ abstract class FoundationModel extends Model {
         if (empty(static::$fields)) {
             return [];
         }
-        
+
         $keys = array_keys(static::$fields);
-        
+
         $keys = array_filter($keys, function($key) {
             return preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $key);
         });
-        
+
         $keys = array_diff($keys, $this->hidden, [$this->primaryKey]);
         $count = array_unshift($keys, $this->getKeyName());
-        
+
         return $keys;
     }
-    
-    
+
+
     /**
      * Filters a query by the values provided on the request object.
      *
      * This method validates the provided Request object against the model
      * $fields rules and then adds WHERE clauses to the query to scope it
      * to only the requested values.
-     * 
+     *
      * By default, the equality comparator is applied. To perform more
      * complex filters the following prefixes are allowed on the request:
      *
@@ -492,44 +492,44 @@ abstract class FoundationModel extends Model {
             'min' => [],
             'max' => []
         ];
-        
+
         // Extract and classify the filters. If the field exists on the
         // $fields array, it is an equality comparison; otherwise, we
         // classify it according to it's prefix
-        
+
         foreach ($request->all() as $field => $value) {
             if (key_exists($field, static::$fields)) {
                 $values['eqs'][$field] = $value;
                 continue;
             }
-            
+
             $match = explode('-', $field);
-            
+
             if (count($match) === 2) {
                 $prefix = $match[0];
                 $key = $match[1];
-                
+
                 if (!key_exists($prefix, $values))
                     continue;
-                
+
                 if (!key_exists($key, static::$fields))
                     continue;
-                
+
                 $values[$prefix][$key] = $value;
             }
         }
-        
+
         // Validate the input filters. For the equality filters we validate
         // each input individually since they may be arrays of values.
-        
+
         $rules = static::$fields;
-        
+
         foreach ($values as $prefix => $input) {
             if ($prefix !== 'eqs' && $prefix !== 'not') {
                 static::validateArray($input, $rules);
                 continue;
             }
-            
+
             foreach ($input as $key => $filters) {
                 if (!is_array($filters)) {
                     static::validateArray(
@@ -542,16 +542,16 @@ abstract class FoundationModel extends Model {
                 }
             }
         }
-        
+
         // Apply the filters to the query according to their classification
         // and the number of provided values
-        
+
         foreach ($values as $prefix => $input) {
             foreach ($input as $key => $value) {
                 if (empty($value)) {
                     continue;
                 }
-                
+
                 switch ($prefix) {
                     case 'has':
                         $query->whereContains($key, $value);
@@ -574,36 +574,36 @@ abstract class FoundationModel extends Model {
                 }
             }
         }
-        
+
         // If a 'search' parameter was provided, filter the query by
         // the searchable fields values; performing a full-text search
         // or a where-like search were appropriate
-        
+
         $search = $request->get('search');
         $fields = $this->searchable;
-        
+
         if (is_array($search)) {
             $search = (count($search) > 0) ? $search[0] : null;
         }
-        
+
         if (!empty($search) && !empty($fields)) {
             $query->where(function($query) use ($search, $fields) {
                 $text = rawurldecode($search);
-                
+
                 $fulltextKeys = array_keys(
                     array_filter($fields, function($value) {
                         return $value === 'text';
                     })
                 );
-                
+
                 // Full text search
-                
+
                 if (count($fulltextKeys) > 0) {
                     $query->orWhereText($fulltextKeys, $text);
                 }
-                
+
                 // Where-Like search
-                
+
                 foreach ($fields as $field => $searchType) {
                    if ($searchType === 'string') {
                        $query->orWhereContains($field, $text);
@@ -611,11 +611,11 @@ abstract class FoundationModel extends Model {
                 }
             });
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Scope a query to select related models along with the results.
      *
@@ -636,11 +636,11 @@ abstract class FoundationModel extends Model {
     public function scopeInclude($query, Request $request) {
         $this->validateArray($request->all(), ['with' =>  'array']);
         $relations = $request->get('with');
-        
+
         if (empty($relations) || empty($this->includable)) {
             return $query;
         }
-        
+
         foreach ($relations as $relation) {
             if (in_array($relation, $this->includable)) {
                 $query->with([$relation => function($query) use ($relation) {
@@ -648,11 +648,11 @@ abstract class FoundationModel extends Model {
                 }]);
             }
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Scope a query to select all the related models.
      *
@@ -665,17 +665,17 @@ abstract class FoundationModel extends Model {
         if (empty($this->includable)) {
             return $query;
         }
-        
+
         foreach ($this->includable as $relation) {
             $query->with([$relation => function($query) use ($relation) {
                 $query->cards(null, $relation);
             }]);
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Adds an ORDER BY clause to the query to sort it.
      *
@@ -704,43 +704,43 @@ abstract class FoundationModel extends Model {
     public function scopeSort($query,  Request $request) {
         $this->validateArray($request->all(), ['sort' =>  'array']);
         $fields = $request->get('sort');
-        
+
         // Set a default order for the query
-        
+
         if (empty($fields) || empty(static::$fields)) {
             return $query->orderBy($this->primaryKey, 'asc');
         }
-        
+
         // Order by the provided fields
-        
+
         $sortable = array_keys(static::$fields);
-        
+
         foreach ($fields as $field) {
             if (empty($field)) {
                 continue;
             }
-            
+
             // Set the direction and sort column
-            
+
             $sign = $field[0];
             $direction = 'asc';
             $column = $field;
-            
+
             if ($sign === '-') {
                 $direction = 'desc';
                 $column = substr($field, 1);
             } else if ($sign === '+') {
                 $column = substr($field, 1);
             }
-            
+
             // Add an order clause to the query. The signs +/- indicate
             // the direction and the sign $ orders the query by a search
             // clausule match.
-            
+
             if ($sign === '$') {
                 $column = substr($field, 1);
                 $search = $request->get('search');
-                
+
                 try {
                     if (key_exists($column, $this->searchable)) {
                         $query->orderByMatch($column, $search);
@@ -752,11 +752,11 @@ abstract class FoundationModel extends Model {
                 $query->orderBy($column, $direction);
             }
         }
-        
+
         return $query;
     }
-    
-    
+
+
     /**
      * Limit and paginate the given query.
      *
@@ -778,14 +778,32 @@ abstract class FoundationModel extends Model {
     public function scopePaginateRequest($query, Request $request) {
         $maxLimit = config('app.max_limit', static::MAX_LIMIT);
         $defLimit = config('app.limit', static::LIMIT);
-        
+
         $this->validateArray($request->all(), [
             'limit' => "integer|min:1|max:$maxLimit"
         ]);
-        
+
         $limit = $request->get('limit', $defLimit);
-        
+
         return $query->paginate($limit);
     }
-    
+
+
+    /**
+     * Calls a function while preventing any events registered on
+     * the model from being dispatched. This method may be used to
+     * temporarily prevent the model observers from firing.
+     *
+     * @param \Closure $closure     Closure instance
+     * @return                      Closure results
+     */
+    public function preventEvents(\Closure $closure) {
+        $dispatcher = static::getEventDispatcher();
+        static::unsetEventDispatcher();
+        $result = $closure();
+        static::setEventDispatcher($dispatcher);
+
+        return $result;
+    }
+
 }

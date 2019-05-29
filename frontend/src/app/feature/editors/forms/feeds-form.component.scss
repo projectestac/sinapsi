@@ -4,7 +4,7 @@
 
 .form-group-control {
   padding: 0;
-  height: 16rem;
+  height: 9.5625rem;
   overflow-y: auto;
   resize: vertical;
 
@@ -22,7 +22,7 @@
   &:last-child input.form-control {
     border-bottom: none;
   }
-  
+
   &.empty .input-group-icon {
     opacity: .3;
   }

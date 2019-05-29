@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { SettingsService } from 'app/core/services';
 import { SocialProvider } from './social.providers';
 import { SOCIAL_PROVIDERS } from './social.providers';
 import { _, format } from 'i18n';
@@ -39,24 +40,32 @@ export class SocialService {
 
 
     /**
+     * Service constructor
+     */
+    constructor(
+        private settings: SettingsService
+    ) {}
+
+
+    /**
      * Share using the given href.
      *
      * @param url      URL to open
      */
     public share(url: URL | string) {
         const href = url.toString();
-        
+
         if (href.startsWith('http') === false) {
             this.openPopup(href, '_self');
             return;
         }
-        
+
         if (this.shareWindow && !this.shareWindow.closed) {
             this.shareWindow.location.href = href;
             this.shareWindow.focus();
             return;
         }
-        
+
         this.shareWindow = this.openPopup(href, 'ShareWindow');
     }
 
@@ -69,6 +78,9 @@ export class SocialService {
         const link = new URL(sharable.href, baseHref).toString();
         const params = { link: encodeURIComponent(link) };
         const baseUrl = `${provider.url}?${provider.query}`;
+
+        const api_key = `${provider.id}_app_id`;
+        params[api_key] = this.settings.get(api_key);
 
         Object.entries(sharable).forEach(([key, value]) => {
             params[key] = (key === 'href') ?

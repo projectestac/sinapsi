@@ -20,6 +20,7 @@ USE sinapsi;
 
 SOURCE tables/authors.sql;
 SOURCE tables/blocks.sql;
+SOURCE tables/categories.sql;
 SOURCE tables/comments.sql;
 SOURCE tables/failed_jobs.sql;
 SOURCE tables/feeds.sql;
@@ -52,6 +53,7 @@ LOAD DATA LOCAL INFILE 'seeds/users.txt' INTO TABLE users;
 -- === Load other data if it was provided =====================================
 
 LOAD DATA LOCAL INFILE 'seeds/blocks.txt' INTO TABLE blocks;
+LOAD DATA LOCAL INFILE 'seeds/categories.txt' INTO TABLE categories;
 LOAD DATA LOCAL INFILE 'seeds/comments.txt' INTO TABLE comments;
 LOAD DATA LOCAL INFILE 'seeds/feeds.txt' INTO TABLE feeds;
 LOAD DATA LOCAL INFILE 'seeds/municipalities.txt' INTO TABLE municipalities;

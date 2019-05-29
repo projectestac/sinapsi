@@ -52,7 +52,7 @@ export class AppComponent implements OnDestroy, OnInit {
         // Update the page title when the primary route changes
 
         this.breadcrumbService.breadcrumb.subscribe(breadcrumb => {
-            const title: string = this.settings.get('title');
+            const title: string = this.settings.get('name', 'Sinapsi');
 
             const sections: string = breadcrumb.filter(e => e.title)
                 .map(e => e.title).reverse().join('. ');

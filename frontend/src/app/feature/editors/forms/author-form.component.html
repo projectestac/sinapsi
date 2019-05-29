@@ -38,7 +38,17 @@
 
   <ng-container *ngIf="form.get('territory') as control">
     <div class="form-group">
-      <label class="form-container-label">
+      <label *ngIf="hasType('projects')"
+             class="form-container-label">
+        <span i18n>Educational service:</span>
+        <app-typeahead
+          [formControl]="control"
+          [filters]="{ 'not-facet': true }"
+           path="/api/territories">
+        </app-typeahead>
+      </label>
+      <label *ngIf="!hasType('projects')"
+             class="form-container-label">
         <span i18n>Territorial service:</span>
         <app-typeahead
           [formControl]="control"
@@ -47,6 +57,23 @@
       </label>
       <app-feedback [control]="control">
         <span i18n>Territorial service for this author</span>
+      </app-feedback>
+    </div>
+  </ng-container>
+
+  <!-- Category -->
+
+  <ng-container *ngIf="form.get('category') as control">
+    <div *ngIf="!hasType('projects')" class="form-group">
+      <label class="form-container-label">
+        <span i18n>School type:</span>
+        <app-typeahead
+          [formControl]="control"
+           path="/api/categories">
+        </app-typeahead>
+      </label>
+      <app-feedback [control]="control">
+        <span i18n>Category of this author</span>
       </app-feedback>
     </div>
   </ng-container>

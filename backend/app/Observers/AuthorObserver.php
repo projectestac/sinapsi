@@ -7,7 +7,7 @@ use App\Models\Author;
 
 
 class AuthorObserver {
-    
+
     /**
      * Listen to the model saving events. Suffixes the author name with
      * the school name or the author municipality name.
@@ -15,12 +15,27 @@ class AuthorObserver {
      * @param School $model
      */
     public function saving(Author $author) {
-        $name = $this->ownerName($author);
+        $hasDirtyName = $author->isDirty('name');
+
         $suffix = $this->authorQualifier($author);
+        $name = $hasDirtyName ? $author->name : $this->ownerName($author);
         $author->name = is_null($suffix) ? $name : "$name ($suffix)";
+
+        // If the author name was updated, update also the owner name.
+        // Notice that there is some intended redundancy on the database:
+        // we store the owner name twice, with and without the qualifier.
+
+        if ($hasDirtyName === true) {
+            $owner = $author->owner();
+            $model = $owner->getRelated();
+
+            $model->preventEvents(function() use ($owner, $name) {
+                $owner->update(['name' => $name]);
+            });
+        }
     }
-    
-    
+
+
     /**
      * Returns the name of the object owning this author.
      *
@@ -28,25 +43,13 @@ class AuthorObserver {
      * @return string           Owner name or null
      */
     private function ownerName(Author $author) {
-        if ($author->isDirty('name'))
-            return $author->name;
-        
-        if ($author->type === 'schools')
-            return $author->school()->value('name');
-        
-        if ($author->type === 'projects')
-            return $author->project()->value('name');
-        
-        if ($author->type === 'users')
-            return $author->user()->value('name');
-        
-        return null;
+        return $author->owner()->value('name');
     }
-    
-    
+
+
     /**
-     * Returns the qualifier name of this author. That is, the school,
-     * municipality or territopry name.
+     * Returns the qualifier name of this author. That is, the school
+     * or municipality of the author.
      *
      * @param Author $author    Author object
      * @return string           Qualifier name or null
@@ -55,14 +58,11 @@ class AuthorObserver {
         if ($author->type === 'schools') {
             if (!is_null($author->municipality_id))
                 return $author->municipality()->value('name');
-            
-            if (!is_null($author->territory_id))
-                return $author->territory()->value('name');
         } else {
             if (!is_null($author->school_id))
                 return $author->school()->value('name');
         }
-        
+
         return null;
     }
 

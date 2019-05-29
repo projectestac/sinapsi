@@ -4,10 +4,8 @@ import { Router } from '@angular/router';
 import { CnToaster } from 'concrete/toaster';
 import { CnExpandState } from 'concrete/expandable';
 
-import { ModelCreated, ModelDeleted } from 'app/core';
-import { StoreQuery, StoreService, SessionService } from 'app/core';
-import { Collection, Model } from 'app/core';
-import { ScrollTop } from 'app/core';
+import { SessionService } from 'app/auth';
+import { Model, ScrollTop, StoreService } from 'app/core';
 import { Comment, Post, Reaction, Synapse } from 'app/models';
 import { PostsView } from '../posts.types';
 import { PostsMessages } from '../posts.messages';
@@ -253,7 +251,7 @@ export class PostDetailsComponent {
         const id = this.post.id;
         const path = this.reactionsPath;
         const request = { [name]: value };
-        
+
         return this.store.update(path, id, request)
             .map((response) => value).take(1);
     }
@@ -268,7 +266,7 @@ export class PostDetailsComponent {
     private toggleReaction(name: string): Observable<boolean> {
         const reaction = this.post['reaction'];
         const value = !(reaction && reaction[name]);
-        
+
         return this.updateReaction(name, value);
     }
 

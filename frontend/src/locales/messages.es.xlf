@@ -3,12 +3,10 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="815cad6a13eee2edfed8a43dc3a64d88b1b2db27" datatype="html">
-        <source>
-        Home
-      </source>
+        <source>Home</source>
         <target>Inicio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -16,7 +14,7 @@
         <source>Back: Home</source>
         <target>Volver a: Inicio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -24,7 +22,7 @@
         <source>Back: <x id="INTERPOLATION" equiv-text="{{ crumb.title }}"/></source>
         <target>Volver a: <x id="INTERPOLATION" equiv-text="{{ crumb.title }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.ts</context>
+          <context context-type="sourcefile">concrete/breadcrumb/breadcrumb.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -32,7 +30,7 @@
         <source>Toggle</source>
         <target>Conmutar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/details/details.component.ts</context>
+          <context context-type="sourcefile">concrete/details/details.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
@@ -43,7 +41,7 @@
     </source>
         <target>Página <x id="INTERPOLATION" equiv-text="{{ collection.current_page | number }}"/> de <x id="INTERPOLATION_1" equiv-text="{{ collection.last_page | number }}"/> páginas</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -51,7 +49,7 @@
         <source>First page</source>
         <target>Primera página</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
@@ -59,7 +57,7 @@
         <source>previous</source>
         <target>anterior</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -67,15 +65,15 @@
         <source>Previous page</source>
         <target>Página anterior</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
@@ -83,7 +81,7 @@
         <source>Page</source>
         <target>Página</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
@@ -91,7 +89,7 @@
         <source>next</source>
         <target>siguiente</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
@@ -99,15 +97,15 @@
         <source>Next page</source>
         <target>Página siguiente</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">68</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
@@ -115,7 +113,7 @@
         <source>Last page</source>
         <target>Última página</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/pagination/pagination.component.ts</context>
+          <context context-type="sourcefile">concrete/pagination/pagination.component.html</context>
           <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
@@ -123,7 +121,7 @@
         <source>Type to search</source>
         <target>Escriba para buscar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -131,15 +129,15 @@
         <source>Search</source>
         <target>Buscar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/searchbox/searchbox.component.ts</context>
+          <context context-type="sourcefile">concrete/searchbox/searchbox.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/search.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/search.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -147,7 +145,7 @@
         <source>Loading...</source>
         <target>Cargando…</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/spinner/spinner.component.ts</context>
+          <context context-type="sourcefile">concrete/spinner/spinner.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
@@ -155,11 +153,11 @@
         <source>Other languages</source>
         <target>Otras lenguas</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/locales/locales.component.ts</context>
+          <context context-type="sourcefile">app/core/locales/locales.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
@@ -167,7 +165,7 @@
         <source>Footer Navigation</source>
         <target>Navegación de pie de página</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -175,7 +173,7 @@
         <source>Portals</source>
         <target>Portales</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -183,7 +181,7 @@
         <source>Department of Education</source>
         <target>Departamento de educación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -191,7 +189,7 @@
         <source>Web services and software</source>
         <target>Servicios web y software</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
@@ -199,11 +197,11 @@
         <source>Help</source>
         <target>Ayuda</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
@@ -211,7 +209,7 @@
         <source>Table of contents</source>
         <target>Tabla de contenidos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -219,11 +217,11 @@
         <source>About Sinapsi</source>
         <target>Sobre Sinapsi</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/help/help-about.component.ts</context>
+          <context context-type="sourcefile">app/feature/help/help-about.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -231,7 +229,7 @@
         <source>Advanced search</source>
         <target>Búsqueda avanzada</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -241,7 +239,7 @@
             </source>
         <target>Aviso legal</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
@@ -249,7 +247,7 @@
         <source>http://web.gencat.cat/en/menu-ajuda/ajuda/avis_legal/</source>
         <target>http://web.gencat.cat/es/menu-ajuda/ajuda/avis_legal/</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
@@ -263,7 +261,7 @@
             </source>
         <target>De acuerdo con el artículo 17.1 de la Ley 19/2014, la © Generalitat de Cataluña permite la reutilización de los contenidos y de los datos siempre que se cite la fuente y la fecha de actualización y que no se desnaturalice la información (artículo 8 de la Ley 37/2007) y también que no se contradiga con una licencia específica.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
@@ -271,7 +269,7 @@
         <source>GitHub Repository</source>
         <target>Repositorio de GitHub</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
@@ -279,11 +277,11 @@
         <source>Back to top</source>
         <target>Volver arriba</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/footer/footer.component.ts</context>
+          <context context-type="sourcefile">app/core/footer/footer.component.html</context>
           <context context-type="linenumber">86</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
@@ -291,7 +289,7 @@
         <source>Close</source>
         <target>Cerrar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="sourcefile">concrete/dialog/dialog.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -299,7 +297,7 @@
         <source>Cancel</source>
         <target>Cancelar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="sourcefile">concrete/dialog/dialog.component.html</context>
           <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
@@ -307,7 +305,7 @@
         <source>Ok</source>
         <target>De acuerdo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">concrete/dialog/dialog.component.ts</context>
+          <context context-type="sourcefile">concrete/dialog/dialog.component.html</context>
           <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
@@ -315,7 +313,7 @@
         <source>Toggle navigation</source>
         <target>Conmutar la navegación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -323,7 +321,7 @@
         <source>Home</source>
         <target>Inicio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
@@ -331,15 +329,15 @@
         <source>Synapses</source>
         <target>Sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">51</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
@@ -347,11 +345,11 @@
         <source>Schools</source>
         <target>Centros</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -359,11 +357,11 @@
         <source>Projects</source>
         <target>Proyectos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">59</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -371,11 +369,11 @@
         <source>Educators</source>
         <target>Docentes</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">63</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -383,15 +381,15 @@
         <source>Log in</source>
         <target>Entre</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">71</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">115</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       <note>comments login</note></trans-unit>
@@ -401,17 +399,15 @@
                     </source>
         <target>Perfil de usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="75ba5cfc5098caa925e5200c11512fe3101b0a40" datatype="html">
-        <source>
-                      Settings
-                    </source>
+        <source>Settings</source>
         <target>Configuración</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
@@ -421,7 +417,7 @@
                     </source>
         <target>Cerrar sesión</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
@@ -431,17 +427,15 @@
               </source>
         <target>Perfil de usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e761ecc698c385562f9eaa5a9b8082fd97bee81f" datatype="html">
-        <source>
-                Settings
-              </source>
+        <source>Settings</source>
         <target>Configuración</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
@@ -451,7 +445,7 @@
               </source>
         <target>Cerrar sesión</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/core/header/header.component.ts</context>
+          <context context-type="sourcefile">app/core/header/header.component.html</context>
           <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
@@ -459,7 +453,7 @@
         <source>Author picture</source>
         <target>Imagen del autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -467,15 +461,15 @@
         <source>says:</source>
         <target>dice:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">app/feature/comments/details/comment-details.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="50ff68990cb970d492daaec81fd154938f344526" datatype="html">
         <source>Join the discussion</source>
         <target>Únase a la discusión</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
@@ -483,7 +477,7 @@
         <source>Add a comment…</source>
         <target>Añada un comentario…</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -491,7 +485,7 @@
         <source><x id="INTERPOLATION" equiv-text="{{ charsLeft }}"/> characters left</source>
         <target><x id="INTERPOLATION" equiv-text="{{ charsLeft }}"/> caracteres restantes</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
@@ -499,7 +493,7 @@
         <source>Send comment</source>
         <target>Enviar comentario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/editor/comment-editor.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
@@ -507,7 +501,7 @@
         <source>to post a comment.</source>
         <target>para añadir comentarios.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/comments-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/comments-browser.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -515,7 +509,7 @@
         <source>Remove</source>
         <target>Eliminar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
@@ -523,7 +517,7 @@
         <source>Delete this comment</source>
         <target>Elimina este comentario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -531,19 +525,19 @@
         <source>Show more comments</source>
         <target>Mostrar más comentarios</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/comments/catalog/comments-catalog.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="be97b2ab9effe4b2520406dd963bcf331f5b8fa7" datatype="html">
-        <source>Tweets by</source>
+      <trans-unit id="21d5af64abcff638fddfa4fba4a446f1c9fd93cb" datatype="html">
+        <source>Tweets by </source>
         <target>Tweets de</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
           <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
@@ -553,15 +547,31 @@
            </source>
         <target><x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>La cronología del usuario se mostrará aquí. <x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/block/block.component.ts</context>
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
           <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a9a8396cacbbdb9f9ba6daa6544b1c1d742ed33d" datatype="html">
+        <source>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>The embedded contents will be shown here.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+        </source>
+        <target>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>Los contenidos incrustados se mostrarán aquí.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/block/block.component.html</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8fa4d523f7b91df4390120b85ed0406138273e1a" datatype="html">
         <source>Color</source>
         <target>Color</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -569,7 +579,7 @@
         <source>Picture</source>
         <target>Imagen</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
@@ -577,7 +587,7 @@
         <source>Card</source>
         <target>Tarjeta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
@@ -585,7 +595,7 @@
         <source>Header</source>
         <target>Cabecera</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -593,7 +603,7 @@
         <source>HTML</source>
         <target>HTML</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
@@ -601,7 +611,7 @@
         <source>Timeline</source>
         <target>Cronología</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.ts</context>
+          <context context-type="sourcefile">app/shared/blockpicker/blockpicker.component.html</context>
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
@@ -611,7 +621,7 @@
       </source>
         <target>El valor de este campo debe ser una dirección de correo electrónico válida.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -621,7 +631,7 @@
       </source>
         <target>El valor de este campo debe ser una dirección web válida.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -632,7 +642,7 @@
       </source>
         <target>El valor de este campo debe ser inferior o igual a <x id="INTERPOLATION" equiv-text="{{ error.value['max'] }}"/>.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -643,7 +653,7 @@
       </source>
         <target>El valor de este campo no puede ser más largo de <x id="INTERPOLATION" equiv-text="{{ error.value['requiredLength'] }}"/> caracteres.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
@@ -654,7 +664,7 @@
       </source>
         <target>El valor de este campo debe ser mayor o igual a <x id="INTERPOLATION" equiv-text="{{ error.value['min'] }}"/>.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
@@ -665,7 +675,7 @@
       </source>
         <target>El valor de este campo debe tener una longitud de al menos <x id="INTERPOLATION" equiv-text="{{ error.value['requiredLength'] }}"/> caracteres.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
@@ -675,7 +685,7 @@
       </source>
         <target>Se requiere un valor para este campo.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -686,7 +696,7 @@
       </source>
         <target>Un slug solo puede contener letras minúsculas y números, separados opcionalmente por guiones.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -696,7 +706,7 @@
       </source>
         <target>El valor de este campo debe ser un nombre de usuario válido.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
@@ -706,7 +716,7 @@
       </source>
         <target>El valor de este campo no es válido.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/feedback/feedback.component.ts</context>
+          <context context-type="sourcefile">app/shared/feedback/feedback.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -714,7 +724,7 @@
         <source>Delete this block</source>
         <target>Eliminar este bloque</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
@@ -722,7 +732,7 @@
         <source>Drag to reorder</source>
         <target>Arrastra para reordenar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.ts</context>
+          <context context-type="sourcefile">app/shared/sidebar/sidebar.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -730,7 +740,7 @@
         <source>Publish date</source>
         <target>Fecha de publicación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
@@ -738,7 +748,7 @@
         <source>Order by</source>
         <target>Ordenación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -746,7 +756,7 @@
         <source>Published at</source>
         <target>Publicación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
@@ -754,7 +764,7 @@
         <source>Between two dates</source>
         <target>Entre dos fechas</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
@@ -762,7 +772,7 @@
         <source>Published after</source>
         <target>Publicado después</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
@@ -770,7 +780,7 @@
         <source>Published before</source>
         <target>Publicado antes</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
@@ -778,7 +788,7 @@
         <source>Apply</source>
         <target>Aplicar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
@@ -786,7 +796,7 @@
         <source>Apply date range</source>
         <target>Aplicar rango de fechas</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
@@ -794,7 +804,7 @@
         <source>Results ordering</source>
         <target>Ordenación de resultados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/filters.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/filters.component.html</context>
           <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
@@ -802,7 +812,7 @@
         <source>Filter by one or more keywords</source>
         <target>Filtrar por una o más palabras clave</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/search.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/search.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
@@ -812,7 +822,7 @@
         </source>
         <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Se han filtrado los resultados<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/toolbar.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -820,7 +830,7 @@
         <source>Clear</source>
         <target>Limpiar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/toolbar.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -828,7 +838,7 @@
         <source>Clear filters</source>
         <target>Limpiar los filtros</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/toolbar.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -836,7 +846,7 @@
         <source>Refine search</source>
         <target>Refinar la búsqueda</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/search/toolbar.component.ts</context>
+          <context context-type="sourcefile">app/shared/search/toolbar.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
@@ -844,7 +854,7 @@
         <source>Embed in web page</source>
         <target>Incrustación en una página web</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="sourcefile">app/shared/share/share-form.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -852,7 +862,7 @@
         <source>Include a search form</source>
         <target>Incluir un formulario de búsqueda</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="sourcefile">app/shared/share/share-form.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -860,7 +870,7 @@
         <source>Height in pixels:</source>
         <target>Altura en píxeles:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="sourcefile">app/shared/share/share-form.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -868,7 +878,7 @@
         <source>Embed code</source>
         <target>Código de incrustación</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="sourcefile">app/shared/share/share-form.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
@@ -878,7 +888,7 @@
       </source>
         <target>Copie este código para insertar la sinapsis actual en su página web</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/share/share-form.component.ts</context>
+          <context context-type="sourcefile">app/shared/share/share-form.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
@@ -886,7 +896,7 @@
         <source>No results found</source>
         <target>Sin resultados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -894,7 +904,7 @@
         <source>We cannot find any item matching your search.</source>
         <target>No se ha encontrado ningún elemento que coincida con su búsqueda.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -904,7 +914,7 @@
     </source>
         <target>Borrar la búsqueda</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -912,7 +922,7 @@
         <source>Unexpected error</source>
         <target>Error inesperado</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
@@ -920,15 +930,17 @@
         <source>Could not fetch information from server.</source>
         <target>No se pudo obtener la información del servidor.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f7e53f755560b3d5abe7c5b640f43c300da52d7e" datatype="html">
-        <source>Reload this page</source>
+        <source>
+      Reload this page
+    </source>
         <target>Refrescar esta página</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/state/state.component.ts</context>
+          <context context-type="sourcefile">app/shared/state/state.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
@@ -938,7 +950,7 @@
         </source>
         <target>No se encontraron resultados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
@@ -950,7 +962,7 @@
           </source>
         <target>Resultados <x id="INTERPOLATION" equiv-text="{{ collection.from | number }}"/> a <x id="INTERPOLATION_1" equiv-text="{{ collection.to | number }}"/> de <x id="INTERPOLATION_2" equiv-text="{{ collection.total | number }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
@@ -958,11 +970,11 @@
         <source>Previous</source>
         <target>Anterior</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
@@ -970,21 +982,19 @@
         <source>Next</source>
         <target>Siguiente</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/typeahead.component.html</context>
           <context context-type="linenumber">73</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d6b1a79fec12aebe166f98e12bfceef1adb8fc3e" datatype="html">
-        <source>
-        Selection:
-      </source>
+        <source>Selection:</source>
         <target>Selección:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
@@ -994,7 +1004,7 @@
       </source>
         <target>Sin elementos seleccionados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
@@ -1004,7 +1014,7 @@
     </source>
         <target>No se encontraron resultados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
@@ -1016,7 +1026,7 @@
       </source>
         <target>Resultados <x id="INTERPOLATION" equiv-text="{{ collection.from | number }}"/> a <x id="INTERPOLATION_1" equiv-text="{{ collection.to | number }}"/> de <x id="INTERPOLATION_2" equiv-text="{{ collection.total | number }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.ts</context>
+          <context context-type="sourcefile">app/shared/typeahead/multiselect.component.html</context>
           <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
@@ -1024,7 +1034,7 @@
         <source><x id="INTERPOLATION" equiv-text="{{ section.name }}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{ section.name }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/selectors/section-select.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
@@ -1032,7 +1042,7 @@
         <source>Permalink</source>
         <target>Enlace permanente</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
@@ -1040,7 +1050,7 @@
         <source>deleted</source>
         <target>eliminado</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
@@ -1048,7 +1058,7 @@
         <source>This post was deleted</source>
         <target>Este artículo fue eliminado</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
@@ -1056,7 +1066,7 @@
         <source>Post image</source>
         <target>Imagen del artículo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -1064,7 +1074,7 @@
         <source>Like</source>
         <target>Me gusta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
@@ -1072,7 +1082,7 @@
         <source>Favorite</source>
         <target>Añadir a favoritos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
@@ -1080,11 +1090,11 @@
         <source>Share</source>
         <target>Compartir</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">110</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -1092,7 +1102,7 @@
         <source>Restore post</source>
         <target>Restaurar artículo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
@@ -1100,7 +1110,7 @@
         <source>Remove post</source>
         <target>Eliminar artículo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
@@ -1108,17 +1118,15 @@
         <source>comments</source>
         <target>comentarios</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a5a8099429d20eede216ee4a0c6a56eebf22ee31" datatype="html">
-        <source>
-            Comment
-          </source>
+        <source>Comment</source>
         <target>Comentar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">148</context>
         </context-group>
       </trans-unit>
@@ -1126,7 +1134,7 @@
         <source>Comment</source>
         <target>Comentar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/details/post-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/details/post-details.component.html</context>
           <context context-type="linenumber">140</context>
         </context-group>
       </trans-unit>
@@ -1134,7 +1142,7 @@
         <source><x id="INTERPOLATION" equiv-text="{{ area.name }}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{ area.name }}"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/posts-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/posts-browser.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
@@ -1142,7 +1150,7 @@
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{ collection.total | number }}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> results found</source>
         <target>Se encontraron <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{ collection.total | number }}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> resultados</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -1150,7 +1158,7 @@
         <source>Share this synapse</source>
         <target>Compartir esta sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/catalog/posts-catalog.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
@@ -1158,11 +1166,11 @@
         <source>Optimal view</source>
         <target>Visualización óptima</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -1170,11 +1178,11 @@
         <source>List view</source>
         <target>Visualización de lista</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
@@ -1182,11 +1190,11 @@
         <source>Gallery view</source>
         <target>Visualización de galería</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
@@ -1194,7 +1202,7 @@
         <source>View options</source>
         <target>Opciones de visualización</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.ts</context>
+          <context context-type="sourcefile">app/feature/posts/selectors/view-select.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
@@ -1204,11 +1212,11 @@
         </source>
         <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.xtec.cat</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="sourcefile">app/feature/home/home.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">embed/app/home.component.ts</context>
+          <context context-type="sourcefile">embed/app/home.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
@@ -1219,7 +1227,7 @@
           between them.</source>
         <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Sinapsi<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> recoge las noticias que publican los centros educativos catalanes en sus páginas web. Hace visible la mayor parte del trabajo desarrollado por los centros y busca promover sinergias entre ellos.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="sourcefile">app/feature/home/home.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -1227,23 +1235,23 @@
         <source>Edit synapse</source>
         <target>Editar la sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/home/home.component.ts</context>
+          <context context-type="sourcefile">app/feature/home/home.component.html</context>
           <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/synapses/details/synapse-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/synapses/details/synapse-details.component.html</context>
           <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/tags/details/tag-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/tags/details/tag-details.component.html</context>
           <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
@@ -1251,7 +1259,7 @@
         <source>New synapse</source>
         <target>Nueva sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
@@ -1259,7 +1267,7 @@
         <source>Create a new synapse</source>
         <target>Crear una nueva sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
@@ -1267,19 +1275,19 @@
         <source>Search by keyword</source>
         <target>Buscar por palabra clave</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-catalog.component.html</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
@@ -1287,7 +1295,7 @@
         <source>Taxonomies</source>
         <target>Taxonomías</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
@@ -1295,7 +1303,7 @@
         <source>Tags</source>
         <target>Etiquetas</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/catalog-browser.component.html</context>
           <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
@@ -1303,27 +1311,27 @@
         <source>Name</source>
         <target>Nombre</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -1331,11 +1339,11 @@
         <source>Description</source>
         <target>Descripción</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -1343,27 +1351,27 @@
         <source>Actions</source>
         <target>Acciones</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
@@ -1371,7 +1379,7 @@
         <source>Delete synapse</source>
         <target>Eliminar la sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/synapses/synapses-table.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -1379,7 +1387,7 @@
         <source>Posts</source>
         <target>Artículos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -1387,7 +1395,7 @@
         <source>Create synapse</source>
         <target>Crear una sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
@@ -1395,7 +1403,7 @@
         <source>Delete tag</source>
         <target>Eliminar la etiqueta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
@@ -1403,7 +1411,7 @@
         <source>Restore tag</source>
         <target>Restaurar etiqueta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/tags/tags-table.component.html</context>
           <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
@@ -1411,7 +1419,7 @@
         <source>Loading</source>
         <target>Cargando</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/catalogs/taxonomies/taxonomies-tree.component.ts</context>
+          <context context-type="sourcefile">app/feature/catalogs/taxonomies/taxonomies-tree.component.html</context>
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
@@ -1419,67 +1427,139 @@
         <source>Editing:</source>
         <target>Editando:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04c87583d38ee81e73a457104ccce34f7f97e9ca" datatype="html">
+        <source>Project synapse</source>
+        <target>Sinapsis del proyecto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="01079ed10b2ce434f2cda28205c58e3ea42c7fae" datatype="html">
+        <source>School synapse</source>
+        <target>Sinapsis del centro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c73c5e1994da7c4d8512d41555d3711972bc94d8" datatype="html">
+        <source>User synapse</source>
+        <target>Sinapsis de usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
+        <source>Synapse information</source>
+        <target>Datos de la sinapsis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2744bdb4ade85d5852387c856ef3772a6aeac36b" datatype="html">
+        <source>Project information</source>
+        <target>Datos del proyecto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="22c67c8822a6dbea2c1aecf807d022e3d1d6f515" datatype="html">
+        <source>School information</source>
+        <target>Datos del centro</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4e8d122924e4ca9b515d4586b42fd1c3e2b825e7" datatype="html">
+        <source>User information</source>
+        <target>Datos de usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b28910202a5f6bd9ede4b5702e8e23d285012a53" datatype="html">
         <source>Author information</source>
         <target>Datos del autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7160311a32a547596628a142e8fc3ca09e029055" datatype="html">
-        <source>Synapse</source>
-        <target>Sinapsis</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
         <source>Blocks</source>
         <target>Bloques</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="74dec02f143725d5ca7992ed79198baca311b379" datatype="html">
+        <source>Project name:</source>
+        <target>Nombre del proyecto:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d3a8c79ad75df4b4f3eb5747ec55828028e8a952" datatype="html">
+        <source>School name:</source>
+        <target>Nombre del centro:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b2998166dd6f1cc2da0a7073dea46a67ba674c86" datatype="html">
         <source>Author name:</source>
         <target>Nombre del autor:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c31eab5d26e41d74a00805798a47b17bb3ceb6f1" datatype="html">
         <source>Full name of the author.</source>
         <target>Nombre completo del autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="91b96d7228b6e05c238fa4e39abfc17ad51a6eef" datatype="html">
         <source>Email:</source>
         <target>Correo electrónico:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
@@ -1487,11 +1567,11 @@
         <source>Login email address of the user.</source>
         <target>Dirección de correo electrónico de inicio de sesión del usuario.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -1499,11 +1579,11 @@
         <source>Save changes</source>
         <target>Guardar cambios</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">136</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
@@ -1511,27 +1591,19 @@
         <source>Reset</source>
         <target>Restablecer</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.ts</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="sourcefile">app/feature/editors/authors/author-editor.component.html</context>
+          <context context-type="linenumber">141</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">84</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="45c46651bec0bf0d43d241b75cc922be4a4a2d63" datatype="html">
-        <source>Synapse information</source>
-        <target>Datos de la sinapsis</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
-          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1298c1d2bbbb7415f5494e800f6775fdb70f4df6" datatype="html">
         <source>Filters</source>
         <target>Filtros</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
@@ -1539,7 +1611,7 @@
         <source>Privileges</source>
         <target>Privilegios</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/synapses/synapse-editor.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -1547,15 +1619,11 @@
         <source>School:</source>
         <target>Centro:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
@@ -1563,15 +1631,11 @@
         <source>Educational center of this author.</source>
         <target>Centro educativo de este autor.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
@@ -1579,19 +1643,11 @@
         <source>Municipality:</source>
         <target>Municipio:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
@@ -1599,39 +1655,31 @@
         <source>Municipality of this author</source>
         <target>Municipio de este autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f16e5de77c1d6eec2722f5ad868694ca2fd7a9a7" datatype="html">
+        <source>Educational service:</source>
+        <target>Servicio educativo:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="09f313434073ffc8534c6b6cb3128c0f1a37d5d1" datatype="html">
         <source>Territorial service:</source>
         <target>Servicio territorial:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
@@ -1639,27 +1687,35 @@
         <source>Territorial service for this author</source>
         <target>Servicio territorial de este autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">59</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">66</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6cfeae214167983801931143d0b7ec0722b67049" datatype="html">
+        <source>School type:</source>
+        <target>Tipo de centro:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="13f44af25096b945e21d35271f1c1bd1f93f6206" datatype="html">
+        <source>Category of this author</source>
+        <target>Categoría de este autor</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/author-form.component.html</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="61879a8027ec586e1b033dfdfa66366af824f70c" datatype="html">
         <source>Block type:</source>
         <target>Tipo de bloque:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -1667,11 +1723,11 @@
         <source>Title:</source>
         <target>Título:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -1679,7 +1735,7 @@
         <source>Title of the block</source>
         <target>Título del bloque</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
@@ -1689,7 +1745,7 @@
       </source>
         <target>Título de cabecera del bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
@@ -1697,7 +1753,7 @@
         <source>Background color:</source>
         <target>Color de fondo:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
@@ -1705,7 +1761,7 @@
         <source>Pick a color</source>
         <target>Elige un color</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
@@ -1715,7 +1771,7 @@
       </source>
         <target>Color de fondo del bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
@@ -1723,7 +1779,7 @@
         <source>Picture:</source>
         <target>Imagen:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
@@ -1731,7 +1787,7 @@
         <source>http://www.example.org/image.png</source>
         <target>http://www.example.org/imagen.png</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
@@ -1741,7 +1797,7 @@
       </source>
         <target>La URL de una imagen para mostrar en el bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
@@ -1749,7 +1805,7 @@
         <source>Web address:</source>
         <target>Dirección web:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
@@ -1757,7 +1813,7 @@
         <source>http://www.example.org/</source>
         <target>http://www.example.org/</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
@@ -1767,7 +1823,7 @@
       </source>
         <target>Una URL para abrir cuando un usuario hace clic en el bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
@@ -1775,7 +1831,7 @@
         <source>Twitter profile:</source>
         <target>Perfil de Twitter:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
@@ -1783,7 +1839,7 @@
         <source>@username</source>
         <target>@usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
@@ -1793,7 +1849,7 @@
       </source>
         <target>Nombre de usuario de Twitter.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
@@ -1801,7 +1857,7 @@
         <source>Contents:</source>
         <target>Contenidos:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">123</context>
         </context-group>
       </trans-unit>
@@ -1811,7 +1867,7 @@
       </source>
         <target>Contenidos de texto del bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">130</context>
         </context-group>
       </trans-unit>
@@ -1819,7 +1875,7 @@
         <source>Source code:</source>
         <target>Código fuente:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">140</context>
         </context-group>
       </trans-unit>
@@ -1830,7 +1886,7 @@
       </source>
         <target>Contenido del bloque como código fuente HTML. Es compatible con las clases CSS de Bootstrap.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/block-form.component.html</context>
           <context context-type="linenumber">147</context>
         </context-group>
       </trans-unit>
@@ -1838,19 +1894,19 @@
         <source>Author feeds:</source>
         <target>Hilos del autor:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5ec38d518c25a47b169d88df7c8446c673074a3f" datatype="html">
         <source>
-        <x id="START_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>RSS<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> / 
+        <x id="START_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>RSS<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> /
         <x id="START_TAG_ABBR_1" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>Atom<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> feeds
         for the author's synapse.
       </source>
         <target>Hilos <x id="START_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>RSS<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> / <x id="START_TAG_ABBR_1" ctype="x-abbr" equiv-text="&lt;abbr&gt;"/>Atom<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> para la sinapsis del autor.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.html</context>
           <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
@@ -1860,7 +1916,7 @@
       </source>
         <target>Los valores proporcionados deben ser direcciones web válidas.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/feeds-form.component.html</context>
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
@@ -1868,7 +1924,7 @@
         <source>Search keywords:</source>
         <target>Palabras clave de búsqueda:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -1876,7 +1932,7 @@
         <source>Search keywords</source>
         <target>Palabras clave de búsqueda:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
@@ -1888,7 +1944,7 @@
         </source>
         <target>Restringe los artículos de sinapsis a aquellos que coincidan con estas palabras clave. Es compatible con <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>operadores de búsqueda<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> booleanos.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -1896,7 +1952,7 @@
         <source>Default view:</source>
         <target>Vista predeterminada:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -1904,7 +1960,7 @@
         <source>Title and extract of the articles</source>
         <target>Título y extracto de los artículos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -1912,7 +1968,7 @@
         <source>Condensed view of the articles' titles</source>
         <target>Vista concisa de los títulos de los artículos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
@@ -1920,7 +1976,7 @@
         <source>Thumbnails of the articles' pictures</source>
         <target>Miniaturas de las imágenes de los artículos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
@@ -1928,7 +1984,7 @@
         <source>Search filters:</source>
         <target>Filtros de búsqueda:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/filters-form.component.html</context>
           <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
@@ -1936,7 +1992,7 @@
         <source>Append users:</source>
         <target>Añadir usuarios:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -1944,11 +2000,11 @@
         <source>Append user</source>
         <target>Añadir usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -1958,7 +2014,7 @@
       </source>
         <target>Seleccione el usuario que quiere añadir a la sinapsis.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
@@ -1968,7 +2024,7 @@
       </source>
         <target>Usuarios actuales de esta sinapsis:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
@@ -1976,7 +2032,7 @@
         <source>Editor</source>
         <target>Editor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
@@ -1984,7 +2040,7 @@
         <source>Manager</source>
         <target>Gestor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
@@ -1992,7 +2048,7 @@
         <source>Toggle edition rights</source>
         <target>Conmutar los derechos de edición</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
@@ -2000,7 +2056,7 @@
         <source>Toggle management rights</source>
         <target>Conmutar los derechos de gestión</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
@@ -2008,63 +2064,15 @@
         <source>Remove user</source>
         <target>Eliminar usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/privileges-form.component.html</context>
           <context context-type="linenumber">82</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="74dec02f143725d5ca7992ed79198baca311b379" datatype="html">
-        <source>Project name:</source>
-        <target>Nombre del proyecto:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="fdac77efd49e9dd82009c54ea00211ebf9b193eb" datatype="html">
-        <source>Name of the author</source>
-        <target>Nombre del autor</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="39bb5340515c3f7a15ee81db7d3435afcfbce6c4" datatype="html">
-        <source>Full name of the project.</source>
-        <target>Nombre completo del proyecto.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/project-form.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d3a8c79ad75df4b4f3eb5747ec55828028e8a952" datatype="html">
-        <source>School name:</source>
-        <target>Nombre del centro:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3c06ce721f4464850206d1e233b0d9b60454fc28" datatype="html">
-        <source>Full name of the school.</source>
-        <target>Nombre completo del centro</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/school-form.component.ts</context>
-          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8e9d4052d74bb5ff1c5f46ab74fa7d7664315c72" datatype="html">
         <source>Name of the synapse</source>
         <target>Nombre de la sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
@@ -2072,7 +2080,7 @@
         <source>Descriptive name of the synapse.</source>
         <target>Nombre descriptivo de la sinapsis.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -2080,7 +2088,7 @@
         <source>Parent synapse:</source>
         <target>Sinapsis padre:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
@@ -2088,7 +2096,7 @@
         <source>Parent node on the synapse's taxonomy.</source>
         <target>Nodo padre en la taxonomía de sinapsis.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
@@ -2096,7 +2104,7 @@
         <source>Synapse slug:</source>
         <target>Slug de la sinapsis:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
@@ -2104,7 +2112,7 @@
         <source>example-url-slug</source>
         <target>ejemplo-de-slug</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
@@ -2112,7 +2120,7 @@
         <source>Unique identifier of this synapse.</source>
         <target>Identificador único de esta sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
@@ -2120,7 +2128,7 @@
         <source>Short description:</source>
         <target>Descripción breve:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
@@ -2128,7 +2136,7 @@
         <source>Description of the synapse</source>
         <target>Descripción de la sinapsis</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
@@ -2136,7 +2144,7 @@
         <source>Short description of the synapse contents.</source>
         <target>Breve descripción de los contenidos de la sinapsis.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/synapse-form.component.html</context>
           <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
@@ -2144,15 +2152,24 @@
         <source>Name:</source>
         <target>Nombre:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fdac77efd49e9dd82009c54ea00211ebf9b193eb" datatype="html">
+        <source>Name of the author</source>
+        <target>Nombre del autor</target>
+        <target></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b434d5a4d85a20cbfbafccf60626bfcb085ad467" datatype="html">
         <source>Full name of the user.</source>
         <target>Nombre completo del usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
@@ -2160,7 +2177,7 @@
         <source>Email of the author</source>
         <target>Correo electrónico del autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
@@ -2168,11 +2185,11 @@
         <source>Role:</source>
         <target>Rol:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">93</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
@@ -2180,11 +2197,11 @@
         <source>Author</source>
         <target>Autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">103</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
@@ -2192,11 +2209,11 @@
         <source>Restricted control of the author's pages</source>
         <target>Control restringido de las páginas del autor</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">105</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
@@ -2204,11 +2221,11 @@
         <source>Administrator</source>
         <target>Administrador</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">117</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
@@ -2216,11 +2233,11 @@
         <source>Full access and control of the site</source>
         <target>Acceso completo y control del sitio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/forms/user-form.component.html</context>
           <context context-type="linenumber">119</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/user-section.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -2228,7 +2245,7 @@
         <source>Add to sidebar</source>
         <target>Añadir a la barra lateral</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -2236,7 +2253,7 @@
         <source>Block preview:</source>
         <target>Previsualización del bloque</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
@@ -2246,7 +2263,7 @@
         </source>
         <target>Así es cómo se verá el bloque en la barra lateral.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
@@ -2254,7 +2271,7 @@
         <source>Current sidebar:</source>
         <target>Barra lateral actual:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
@@ -2265,7 +2282,7 @@
         </source>
         <target>Arrastre y suelte los bloques para reordenarlos o pulse el botón de supresión para eliminar un bloque.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
@@ -2275,15 +2292,32 @@
         </source>
         <target>La barra lateral no contiene ningún bloque todavía.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.ts</context>
+          <context context-type="sourcefile">app/feature/editors/sections/blocks-section.component.html</context>
           <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e36a835f1c001c050536a3da556ba87fc42e15af" datatype="html">
+        <source>
+          Sinapsi (Synapse) is a news aggregator focused on the Catalan
+          education ecosystem. The main objective of Sinapsi is to make
+          visible all that schools do and to favor synergies amongst them.
+        </source>
+        <target>
+          Sinapsi (Synapse) es un agregador de noticias centrado en el
+          ecosistema educativo catalán. El principal objetivo de Sinapsi es
+          hacer visible todo lo que hacen las escuelas y favorecer sinergias
+          entre ellas.
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/help/help-about.component.html</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="632476f072cc8007d0fd769265b1dd21675f9b19" datatype="html">
         <source>Table of Contents</source>
         <target>Tabla de contenidos</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/help/help-index.component.ts</context>
+          <context context-type="sourcefile">app/feature/help/help-index.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -2291,7 +2325,7 @@
         <source>Advanced Search</source>
         <target>Búsqueda avanzada</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/help/help-search.component.ts</context>
+          <context context-type="sourcefile">app/feature/help/help-search.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -2299,7 +2333,7 @@
         <source>New project</source>
         <target>Nuevo proyecto</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -2307,7 +2341,7 @@
         <source>Create a new project</source>
         <target>Crear un proyecto nuevo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-catalog.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -2315,11 +2349,11 @@
         <source>Edit project</source>
         <target>Editar el proyecto</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/details/project-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/details/project-details.component.html</context>
           <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
@@ -2327,11 +2361,11 @@
         <source>School</source>
         <target>Centro</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
@@ -2339,15 +2373,15 @@
         <source>Municipality</source>
         <target>Municipio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
@@ -2355,7 +2389,7 @@
         <source>Delete project</source>
         <target>Eliminar el proyecto</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/projects/catalog/projects-table.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -2363,7 +2397,7 @@
         <source>New school</source>
         <target>Nuevo centro</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
@@ -2371,7 +2405,7 @@
         <source>Create a new school</source>
         <target>Crea un nuevo centro</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-catalog.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
@@ -2379,39 +2413,47 @@
         <source>Edit school</source>
         <target>Editar el centro</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/details/school-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/details/school-details.component.html</context>
           <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1541352d44b84415a6a998bf627f3de5a9f13649" datatype="html">
         <source>Territory</source>
         <target>Territorio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
           <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="607de17c2a755f65775881c19e276e7c933bcf94" datatype="html">
+        <source>Category</source>
+        <target>Categoría</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b19f5d6a9f2dba729f5db7436b6bba756f1d8204" datatype="html">
         <source>Delete school</source>
         <target>Eliminar el centro</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="sourcefile">app/feature/schools/catalog/schools-table.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="632e8b20c98e8eec4059a605a4b011bb476137af" datatype="html">
         <source>Edit user</source>
         <target>Editar usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/details/user-details.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/details/user-details.component.html</context>
           <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
@@ -2419,7 +2461,7 @@
         <source>Disabled at</source>
         <target>Desactivado</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
@@ -2427,7 +2469,7 @@
         <source>Disable user</source>
         <target>Desactivar usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
@@ -2435,7 +2477,7 @@
         <source>Enable user</source>
         <target>Activar usuario</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.ts</context>
+          <context context-type="sourcefile">app/feature/users/catalog/users-table.component.html</context>
           <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>

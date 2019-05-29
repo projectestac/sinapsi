@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Model, Collection } from 'app/core/services';
 import { RequestManager, StoreQuery, StoreService } from 'app/core/services';
-import { SessionService, SessionState} from 'app/core/auth';
-import { SessionEvent, UserChanged } from 'app/core/auth';
+import { SessionService, SessionState} from 'app/auth';
+import { SessionEvent, UserChanged } from 'app/auth';
 import { ScrollTop } from 'app/core/core.decorators';
 import { Block, Synapse } from 'app/models';
 import { FetchState } from './components.types';

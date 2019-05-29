@@ -8,6 +8,7 @@
           <th cnSortBy="name" i18n>Name</th>
           <th cnSortBy="municipality_id" i18n>Municipality</th>
           <th cnSortBy="territory_id" i18n>Territory</th>
+          <th cnSortBy="category_id" i18n>Category</th>
           <th *appIfCan="['manage-authors']" title="Actions" class="actions-column" i18n-title>
             <cn-icon value="pencil"></cn-icon>
           </th>
@@ -16,7 +17,7 @@
       <tbody>
         <tr *ngFor="let author of authors"
             [ngClass]="{ 'deleted-row' : author.deleted_at }">
-          <td class="main-column w-50">
+          <td class="main-column w-25">
             <a [routerLink]="['/authors', author.id]">
               {{ author.school?.name }}
             </a>
@@ -26,6 +27,9 @@
           </td>
           <td class="w-25">
             {{ author.territory?.name }}
+          </td>
+          <td class="w-25">
+            {{ author.category?.name }}
           </td>
           <td *appIfCan="['manage-authors']" class="actions-column">
             <button

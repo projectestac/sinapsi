@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sinapsi\n"
-"POT-Creation-Date: 2018-05-07T19:30:53.336Z\n"
+"POT-Creation-Date: 2019-03-13T10:21:33.069Z\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Joan Sala Soler <jsala236@xtec.cat>\n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Language: es\n"
-"X-Generator: Poedit 2.0.4\n"
 
 #: src/app/feature/help/help.routes.ts:35
 msgid "About"
@@ -23,13 +17,12 @@ msgstr "Búsqueda avanzada"
 msgid "All posts"
 msgstr "Todos los artículos"
 
-#: src/app/app.component.ts:48
+#: src/app/app.component.ts:47
 msgid "An unexpected error happened, please try again later."
 msgstr "Se produjo un error inesperado. Inténtelo de nuevo más tarde."
 
 #: src/app/core/components/editor.messages.ts:29
 #: src/app/core/components/editor.messages.ts:45
-#: src/app/core/components/editor.messages.ts:46
 msgid "Any changes you made to the form will be lost."
 msgstr "Cualquier cambio que hay realizado en el formulario se perderá."
 
@@ -38,7 +31,6 @@ msgid "Any time"
 msgstr "En cualquier momento"
 
 #: src/app/feature/editors/editors.routes.ts:32
-#: src/app/feature/authors/authors.routes.ts:25
 msgid "Author editor"
 msgstr "Edición de autores"
 
@@ -51,16 +43,11 @@ msgid "Blue"
 msgstr "Azul"
 
 #: src/app/feature/users/users.messages.ts:26
-#: src/app/feature/catalogs/catalogs.messages.ts:26
-#: src/app/feature/catalogs/catalogs.messages.ts:45
-#: src/app/feature/comments/comments.messages.ts:19
-#: src/app/feature/projects/projects.messages.ts:19
-#: src/app/feature/schools/schools.messages.ts:19
-#: src/app/feature/users/users.messages.ts:19
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/app/app.routes.ts:31 src/app/app.routes.ts:30
+#: src/app/app.routes.ts:33
+#: src/app/app.routes.ts:30
 msgid "Catalogs"
 msgstr "Catálogos"
 
@@ -82,8 +69,6 @@ msgstr "Crear centro"
 
 #: src/app/feature/catalogs/catalogs.messages.ts:72
 #: src/app/feature/catalogs/catalogs.messages.ts:81
-#: src/app/feature/catalogs/catalogs.messages.ts:75
-#: src/app/feature/catalogs/catalogs.messages.ts:84
 msgid "Create synapse"
 msgstr "Crear sinapsis"
 
@@ -106,17 +91,14 @@ msgid "Delete comment"
 msgstr "Suprime el comentario"
 
 #: src/app/feature/catalogs/catalogs.messages.ts:34
-#: src/app/feature/catalogs/catalogs.messages.ts:27
 msgid "Delete synapse"
 msgstr "Suprime la sinapsis"
 
 #: src/app/feature/catalogs/catalogs.messages.ts:53
-#: src/app/feature/catalogs/catalogs.messages.ts:46
 msgid "Delete tag"
 msgstr "Suprime la etiqueta"
 
 #: src/app/feature/users/users.messages.ts:27
-#: src/app/feature/users/users.messages.ts:20
 msgid "Disable user"
 msgstr "Deshabilitar el usuario"
 
@@ -125,8 +107,6 @@ msgstr "Deshabilitar el usuario"
 #: src/app/feature/comments/comments.messages.ts:24
 #: src/app/feature/projects/projects.messages.ts:24
 #: src/app/feature/schools/schools.messages.ts:24
-#: src/app/feature/catalogs/catalogs.messages.ts:31
-#: src/app/feature/catalogs/catalogs.messages.ts:50
 msgid "Do you want to delete «<strong>{name}</strong>»?"
 msgstr "¿Seguro que quieres suprimir  «<strong>{name}</strong>»?"
 
@@ -135,7 +115,6 @@ msgid "Do you want to delete this block?"
 msgstr "¿Quieres suprimir este bloque?"
 
 #: src/app/feature/users/users.messages.ts:31
-#: src/app/feature/users/users.messages.ts:24
 msgid "Do you want to disable the user «<strong>{name}</strong>»?"
 msgstr "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?"
 
@@ -143,8 +122,13 @@ msgstr "¿Seguro que quieres desactivar el usuario  «<strong>{name}</strong>»?
 msgid "Do you want to reset the form to its initial state?"
 msgstr "¿Desea restablecer el formulario a su estado inicial?"
 
-#: src/app/app.routes.ts:58 src/app/feature/users/users.routes.ts:28
-#: src/app/app.routes.ts:54
+#: src/app/shared/search/search.fields.ts:31
+msgid "Educational service"
+msgstr "Servicio educativo"
+
+#: src/app/app.routes.ts:60
+#: src/app/feature/users/users.routes.ts:28
+#: src/app/app.routes.ts:57
 msgid "Educators"
 msgstr "Docentes"
 
@@ -176,9 +160,15 @@ msgstr "Gris"
 msgid "Green"
 msgstr "Verde"
 
-#: src/app/app.routes.ts:38 src/app/app.routes.ts:34
+#: src/app/app.routes.ts:40
+#: src/app/app.routes.ts:37
 msgid "Help"
 msgstr "Ayuda"
+
+#: src/app/app.routes.ts:26
+#: src/app/app.routes.ts:23
+msgid "Home"
+msgstr "Inicio"
 
 #: src/app/core/components/editor.messages.ts:38
 msgid "Leave this page"
@@ -216,7 +206,8 @@ msgstr "Más votados"
 msgid "Most voted articles"
 msgstr "Artículos más votados"
 
-#: src/app/shared/search/search.fields.ts:28
+#: src/app/shared/search/search.fields.ts:37
+#: src/app/shared/search/search.fields.ts:31
 msgid "Municipalities"
 msgstr "Municipios"
 
@@ -230,13 +221,10 @@ msgstr "Nombre del centro"
 
 #: src/app/feature/catalogs/catalogs.messages.ts:73
 #: src/app/feature/catalogs/catalogs.messages.ts:82
-#: src/app/feature/catalogs/catalogs.messages.ts:76
-#: src/app/feature/catalogs/catalogs.messages.ts:85
 msgid "Name of the synapse"
 msgstr "Nombre de la sinapsis"
 
 #: src/app/feature/catalogs/catalogs.messages.ts:86
-#: src/app/feature/catalogs/catalogs.messages.ts:89
 msgid "No synapse exists for the tag «<strong>{name}</strong>»."
 msgstr "No existe ninguna sinapsis para la etiqueta «<strong>{name}</strong>»."
 
@@ -261,12 +249,10 @@ msgid "Please enter a name for the new school."
 msgstr "Escriba un nombre para el nuevo centro."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:74
-#: src/app/feature/catalogs/catalogs.messages.ts:77
 msgid "Please enter a name for the new synapse."
 msgstr "Escriba un nombre para la nueva sinapsis."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:93
-#: src/app/feature/catalogs/catalogs.messages.ts:96
 msgid "Please enter a name to create a new synapse for the tag."
 msgstr "Escriba un nombre para crear una nueva sinapsis para la etiqueta."
 
@@ -274,8 +260,11 @@ msgstr "Escriba un nombre para crear una nueva sinapsis para la etiqueta."
 msgid "Please, log in to like or favourite posts."
 msgstr "Por favor, entre para marcar los artículos como favoritos."
 
-#: src/app/app.routes.ts:42 src/app/feature/projects/projects.routes.ts:29
-#: src/app/shared/search/search.fields.ts:38 src/app/app.routes.ts:38
+#: src/app/app.routes.ts:44
+#: src/app/feature/projects/projects.routes.ts:29
+#: src/app/shared/search/search.fields.ts:55
+#: src/app/app.routes.ts:41
+#: src/app/shared/search/search.fields.ts:43
 msgid "Projects"
 msgstr "Proyectos"
 
@@ -312,8 +301,15 @@ msgstr "Rojo"
 msgid "Reset form"
 msgstr "Restablecer formulario"
 
-#: src/app/app.routes.ts:46 src/app/feature/schools/schools.routes.ts:29
-#: src/app/shared/search/search.fields.ts:33 src/app/app.routes.ts:42
+#: src/app/shared/search/search.fields.ts:43
+msgid "School type"
+msgstr "Tipo de centro"
+
+#: src/app/app.routes.ts:48
+#: src/app/feature/schools/schools.routes.ts:29
+#: src/app/shared/search/search.fields.ts:49
+#: src/app/app.routes.ts:45
+#: src/app/shared/search/search.fields.ts:37
 msgid "Schools"
 msgstr "Centros"
 
@@ -330,12 +326,12 @@ msgid "Share on Twitter"
 msgstr "Compartir en Twitter"
 
 #: src/app/feature/editors/editors.routes.ts:37
-#: src/app/feature/synapses/synapses.routes.ts:29
 msgid "Synapse editor"
 msgstr "Edición de sinapsis"
 
-#: src/app/app.routes.ts:50 src/app/feature/catalogs/catalogs.routes.ts:31
-#: src/app/app.routes.ts:46
+#: src/app/app.routes.ts:52
+#: src/app/feature/catalogs/catalogs.routes.ts:31
+#: src/app/app.routes.ts:49
 msgid "Synapses"
 msgstr "Sinapsis"
 
@@ -343,8 +339,10 @@ msgstr "Sinapsis"
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: src/app/app.routes.ts:54 src/app/feature/catalogs/catalogs.routes.ts:35
-#: src/app/shared/search/search.fields.ts:18 src/app/app.routes.ts:50
+#: src/app/app.routes.ts:56
+#: src/app/feature/catalogs/catalogs.routes.ts:35
+#: src/app/shared/search/search.fields.ts:19
+#: src/app/app.routes.ts:53
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -356,9 +354,9 @@ msgstr "Mandarina"
 msgid "Taxonomies"
 msgstr "Taxonomías"
 
-#: src/app/shared/search/search.fields.ts:23
-msgid "Territories"
-msgstr "Territorios"
+#: src/app/shared/search/search.fields.ts:25
+msgid "Territorial service"
+msgstr "Servicio territorial"
 
 #: src/app/feature/comments/comments.messages.ts:12
 msgid "The comment «{name}» has been deleted."
@@ -374,7 +372,9 @@ msgstr "El formulario tiene errores, corríjalos antes de guardarlos."
 
 #: src/app/core/components/editor.messages.ts:41
 msgid "The form has unsaved changes. Do you want to leave this page without saving them?"
-msgstr "El formulario tiene cambios no guardados ¿Quiere salir de esta página sin guardarlos?"
+msgstr ""
+"El formulario tiene cambios no guardados ¿Quiere salir de esta página sin "
+"guardarlos?"
 
 #: src/app/feature/projects/projects.messages.ts:12
 msgid "The project «<strong>{name}</strong>» has been deleted."
@@ -398,7 +398,9 @@ msgstr "La etiqueta «<strong>{name}</strong>» ha sido restaurada."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:63
 msgid "The tag will not longer show on search results but can be restored later on."
-msgstr "La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser restaurada más adelante."
+msgstr ""
+"La etiqueta no se mostrará en los resultados de búsqueda, pero puede ser "
+"restaurada más adelante."
 
 #: src/app/feature/users/users.messages.ts:19
 msgid "The user «<strong>{name}</strong>» has been re-enabled."
@@ -410,30 +412,27 @@ msgstr "El usuario «<strong>{name}</strong>» ha sido desactivado con éxito."
 
 #: src/app/feature/users/users.messages.ts:37
 msgid "The user will no longer be able to access the application. User accounts can be temporarily disabled and re-enabled again later."
-msgstr "El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario pueden desactivarse temporalmente y volver a habilitarse más tarde."
+msgstr ""
+"El usuario ya no podrá acceder a la aplicación. Las cuentas de usuario "
+"pueden desactivarse temporalmente y volver a habilitarse más tarde."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:44
 #: src/app/feature/comments/comments.messages.ts:30
 #: src/app/feature/projects/projects.messages.ts:30
 #: src/app/feature/schools/schools.messages.ts:30
 #: src/app/shared/sidebar/sidebar.messages.ts:17
-#: src/app/feature/catalogs/catalogs.messages.ts:37
 msgid "This action cannot be undone."
 msgstr "Esta acción no puede deshacerse."
 
 #: src/app/feature/catalogs/catalogs.messages.ts:92
-#: src/app/feature/catalogs/catalogs.messages.ts:95
 msgid "To edit the tag, a synapse must be created."
 msgstr "Para editar la etiqueta, primero debe crearse una sinapsis."
 
-#: src/app/shared/typeahead/typeahead.component.ts:81
+#: src/app/shared/typeahead/typeahead.component.ts:80
 msgid "Type to search"
 msgstr "Escriba para buscar"
 
 #: src/app/feature/editors/sections/blocks-section.builder.ts:38
-#: src/app/feature/authors/editor/author-editor.forms.ts:19
-#: src/app/feature/synapses/editor/synapse-editor.forms.ts:31
-#: src/app/feature/synapses/editor/synapse-editor.forms.ts:25
 msgid "Untitled block"
 msgstr "Bloque sin título"
 
@@ -449,8 +448,7 @@ msgstr "Blanco"
 msgid "Yellow"
 msgstr "Amarillo"
 
-#: src/app/core/auth/session.service.ts:27
-#: src/app/core/services/session.service.ts:142
-#: src/app/core/services/session.service.ts:141
+#: src/app/auth/session.service.ts:28
+#: src/app/core/auth/session.service.ts:28
 msgid "Your account has been temporarily disabled."
 msgstr "Tu cuenta se inhabilitó temporalmente."

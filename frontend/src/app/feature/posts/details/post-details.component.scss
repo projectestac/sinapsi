@@ -282,7 +282,7 @@
   
   .post-image-wrapper {
     background: th-gray('50');
-    background-image: url('/assets/images/post-image-96.png');
+    background-image: $th-post-image-small;
     background-size: cover;
     min-height: 4rem;
     min-width: 4rem;
@@ -350,7 +350,7 @@
   .post-image-wrapper {
     display: inline-block;
     background: th-gray('50');
-    background-image: url('/assets/images/post-image-192.png');
+    background-image: $th-post-image-medium;
     background-size: cover;
     min-height: 10rem;
     min-width: 10rem;

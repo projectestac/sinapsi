@@ -16,6 +16,11 @@
   font-size: .875rem;
 }
 
+.bordered-block {
+  border: 1px solid th-gray('divider');
+  padding: 1rem;
+}
+
 
 // Header block
 
@@ -32,19 +37,19 @@
   color: th-color('white');
   background: th-color('secondary');
   min-height: 4rem;
-  
+
   & > a {
     color: th-color('white');
     text-decoration: none;
     display: block;
     padding: .625rem 1.5rem;
   }
-  
+
   .block-title {
     font-size: 1.56rem;
     margin: .38rem 0 .625rem;
   }
-  
+
   @each $name, $color in $th-theme-colors {
     &.#{$name} {
       background: $color;
@@ -68,7 +73,7 @@
     border: 1px solid th-gray('divider');
     min-height: 4rem;
   }
-  
+
   .block-title {
     font-size: 1rem;
     font-weight: 400;
@@ -76,7 +81,7 @@
     border-bottom: 1px solid th-gray('divider');
     padding: .65rem 1rem;
   }
-  
+
   .block-content {
     padding: 1rem;
   }
@@ -87,21 +92,21 @@
 
 .picture-block {
   min-height: 8rem;
-  
+
   & > a {
     color: th-color('white');
   }
-  
+
   & > a:hover .block-title {
     text-decoration: underline;
   }
-  
+
   .block-picture {
     display: block;
     max-width: 100%;
     height: auto;
   }
-  
+
   .block-wrapper {
     position: absolute;
     padding: 30% 1rem .625rem 1rem;
@@ -113,7 +118,7 @@
       rgba(51, 51, 51, 1) 100%
     );
   }
-  
+
   .block-title {
     font-size: 1rem;
     font-weight: 700;
@@ -127,19 +132,25 @@
   a.twitter-timeline {
     font-weight: 600;
   }
-  
+
   a.twitter-timeline span {
     font-weight: 400;
     color: th-gray('text');
   }
-  
+
   .block-wrapper {
     border: 1px solid th-gray('divider');
     padding: 1rem;
     min-height: 4rem;
   }
-  
+
   .block-wrapper, iframe {
     max-height: 35rem;
   }
+}
+
+// Embed block
+
+.embed-block iframe {
+  width: 100%;
 }

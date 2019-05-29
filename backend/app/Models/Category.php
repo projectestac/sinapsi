@@ -6,16 +6,14 @@ use Seidor\Foundation\FoundationModel;
 
 
 /**
- * Territory model class.
+ * Category model class.
  */
-class Territory extends FoundationModel {
+class Category extends FoundationModel {
 
     /** Attribute definitions */
     protected static $fields = [
         'id' =>                 'integer|min:1',
         'name' =>               'string|max:255',
-        'facet' =>              'boolean',
-        'territory_id' =>       'integer|min:1|nullable',
         'created_at' =>         'isodate',
         'updated_at' =>         'isodate',
     ];
@@ -33,8 +31,6 @@ class Territory extends FoundationModel {
     /** Attributes that should be cast */
     protected $casts = [
         'id' =>                 'integer',
-        'facet' =>              'boolean',
-        'territory_id' =>       'integer',
         'created_at' =>         'datetime',
         'updated_at' =>         'datetime',
     ];
@@ -53,32 +49,12 @@ class Territory extends FoundationModel {
 
 
     /**
-     * Authors for this territory.
+     * Authors for this category.
      *
      * @return hasMany              Model relation
      */
     public function authors() {
         return $this->hasMany(Author::class);
-    }
-
-
-    /**
-     * Parent territory for this territory.
-     *
-     * @return belongsTo            Model relation
-     */
-    public function territory() {
-        return $this->belongsTo(Territory::class, 'territory_id');
-    }
-
-
-    /**
-     * Child territories for this territory.
-     *
-     * @return belongsTo            Model relation
-     */
-    public function childs() {
-        return $this->hasMany(Territory::class, 'territory_id');
     }
 
 }

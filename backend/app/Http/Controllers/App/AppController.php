@@ -60,4 +60,35 @@ class AppController extends Controller {
         return Response::json($manifest);
     }
 
+
+    /**
+     * Applicaton environment manifest.
+     */
+    public function environment() {
+        return [
+            'name' => config('app.name'),
+            'email' => config('mail.support.address'),
+            'app_url' => config('app.url'),
+            'api_url' => config('app.url'),
+            'locales' => $this->locales(),
+            'facebook_app_id' => config('app.facebook_app_id')
+        ];
+    }
+
+
+    /**
+     * Maps the application locales to a JSON array representation.
+     */
+    private function locales() {
+        $locales = config('app.locales');
+
+        return array_map(
+            function($key, $value) {
+                return ['code' => $key, 'name' => $value];
+            },
+            array_keys($locales),
+            $locales
+        );
+    }
+
 }

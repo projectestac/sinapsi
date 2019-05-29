@@ -25,7 +25,7 @@ export const SOCIAL_PROVIDERS: SocialProvider[] = [{
     title:    _('Share on Facebook'),
     icon:     'facebook',
     url:      'https://www.facebook.com/dialog/feed',
-    query:    'link={link}&app_id=1991565897726387'
+    query:    'link={link}&app_id={facebook_app_id}'
   }, {
     id:       'email',
     title:    _('Share by Email'),
@@ -36,6 +36,6 @@ export const SOCIAL_PROVIDERS: SocialProvider[] = [{
     id:       'feed',
     title:    _('Web syndication'),
     icon:     'feed',
-    url:      '/feeds/{href}',
+    url:      '../feeds/{href}',
     query:    'limit=20'
 }];

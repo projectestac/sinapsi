@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ConcreteModule } from 'concrete';
 
-import { AuthModule } from 'app/core/auth';
+import { AuthModule } from 'app/auth';
 import { BlockModule } from './block';
 import { BlockpickerModule } from './blockpicker';
 import { CardModule } from './card';

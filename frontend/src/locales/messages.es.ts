@@ -35,6 +35,9 @@ export const I18N_MESSAGES = {
     "Catalogs":
     "Catálogos",
 
+    "Categories":
+    "Categorías",
+
     "Commented":
     "Comentados",
 
@@ -86,6 +89,9 @@ export const I18N_MESSAGES = {
     "Educators":
     "Docentes",
 
+    "Educational service":
+    "Servicio educativo",
+
     "Everything":
     "Todos",
 
@@ -109,6 +115,9 @@ export const I18N_MESSAGES = {
 
     "Help":
     "Ayuda",
+
+    "Home":
+    "Inicio",
 
     "Leave this page":
     "Salir de la página",
@@ -206,6 +215,9 @@ export const I18N_MESSAGES = {
     "Schools":
     "Centros",
 
+    "School type":
+    "Tipo de centro",
+
     "Share by Email":
     "Compartir por correo electrónico",
 
@@ -235,6 +247,9 @@ export const I18N_MESSAGES = {
 
     "Territories":
     "Territorios",
+
+    "Territorial service":
+    "Servicio territorial",
 
     "The comment «{name}» has been deleted.":
     "El comentario «{name}» ha sido eliminado.",
@@ -297,5 +312,5 @@ export const I18N_MESSAGES = {
     "Amarillo",
 
     "Your account has been temporarily disabled.":
-    "Tu cuenta se inhabilitó temporalmente."
+    "Tu cuenta se inhabilitó temporalmente.",
 };

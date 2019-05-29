@@ -4,12 +4,12 @@
 
 .navbar {
   padding: 0;
-  
+
   .container {
     flex-wrap: wrap;
     position: relative;
   }
-  
+
   @include media-breakpoint-up(sm) {
     border-bottom: 4px solid th-color('white');
   }
@@ -29,7 +29,7 @@
   border: 0;
   font-size: 1rem;
   margin: 0.5rem;
-  
+
   &:hover, &:focus, &:active {
     background: rgba(255, 255, 255, 0.1);
   }
@@ -48,7 +48,7 @@
   .brand-name {
     padding-right: 2.8rem;
   }
-  
+
   .navbar-brand {
     flex: 1;
     text-align: center;
@@ -58,50 +58,50 @@
     margin: 0 1rem;
     padding: 0;
   }
-  
+
   .main-navbar {
     overflow-x: hidden;
   }
-  
+
   .main-navbar > .nav-item {
     border-bottom: 1px solid th-gray('400');
-    
+
     .nav-link {
       padding: 10px;
       margin-left: 10px;
       color: th-color('white');
     }
-    
+
     &, &.active > .nav-link {
       background: linear-gradient(
         to bottom, #6d6d6d 0, #5e5e5e 100%);
     }
-    
+
     &.active {
       background: linear-gradient(
         to bottom, #a3a3a3 0, #787878 100%);
     }
-    
+
     &:hover, &:focus, & > .nav-link:hover, & > .nav-link:focus {
       background: linear-gradient(
         to bottom, #a7a7a7 0, #787878 100%);
     }
   }
-  
+
   .main-navbar > .nav-item .nav-item {
     background: th-gray('background');
-    
+
     .nav-link {
       color: th-gray('text');
       border-top: 1px solid th-gray('divider');
       font-weight: 400;
     }
-    
+
     .nav-link:hover, .nav-link:focus {
       font-weight: 600;
     }
   }
-  
+
   .main-navbar ::ng-deep .cn-details-header {
     display: flex;
     flex-direction: row;
@@ -110,21 +110,21 @@
     margin-left: 10px;
     padding: 10px 15px 10px 10px;
     color: th-color('white');
-    
+
     &:active, &:focus {
       background: linear-gradient(
         to bottom, #a7a7a7 0, #787878 100%);
     }
-    
+
     .cn-details-summary {
       flex: 1;
     }
-    
+
     .cn-details-marker {
       display: inline !important;
     }
   }
-  
+
   .main-navbar ::ng-deep .cn-details.closed {
     .cn-details-marker {
       color: th-gray('200');
@@ -140,13 +140,13 @@
     margin-top: .55rem;
     flex-basis: 100%;
   }
-  
+
   .brand-name {
     display: none;
   }
-  
+
   .navbar-brand {
-    background-image: url('/assets/images/logo.png');
+    background-image: $th-logo-image;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: 170px 27px;
@@ -156,36 +156,32 @@
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
   }
-  
+
   .navbar-nav .nav-item {
     border-left: 1px solid th-color('white');
-    
+
     &.active .nav-link {
       color: th-gray('800');
       background-color: th-color('white');
     }
   }
-  
+
   .navbar-nav .nav-link {
     padding: 0.5rem 1.15rem;
     line-height: 1.25;
-    
+
     &:hover {
       color: th-gray('800');
       background-color: th-gray('400');
     }
-    
+
     &:focus {
       text-decoration: underline;
     }
   }
-  
-  // WA: Force the expandable to show open even when collapsed
-  
+
   #toolbar-links, :host ::ng-deep .cn-expandable-wrapper {
-    display: block !important;
-    height: auto !important;
-    overflow: visible !important;
+    @include expand-force-open();
   }
 }
 
@@ -201,7 +197,7 @@
 
 .user-navigation {
   margin-left: auto;
-  
+
   a, .btn-link {
     display: inline-block;
     color: #eee;
@@ -216,20 +212,20 @@
     white-space: nowrap;
     border: none;
   }
-  
+
   a:focus, .btn-link:focus {
     text-decoration: none;
     outline: 1px dotted;
   }
-  
+
   a:hover, .btn-link:hover {
     text-decoration: none;
   }
-  
+
   a span, .btn-link span {
     border-bottom: 1px dotted;
   }
-  
+
   .user-avatar {
     width: 16px;
     height: 16px;
@@ -243,7 +239,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    
+
     a {
       padding: 0;
     }

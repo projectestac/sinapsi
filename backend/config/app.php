@@ -51,7 +51,18 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://sinapsi.joansala.com'),
+    'url' => env('APP_URL', 'http://sinapsi.localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Social sharing settings
+    |--------------------------------------------------------------------------
+    |
+    | Social sharing APP identifiers.
+    */
+
+    'facebook_app_id' => env('FACEBOOK_APP_ID', null),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -62,10 +73,10 @@ return [
     | templates and manifests for the application.
     |
     */
-    
+
     'theme_color' => '#333',
     'background_color' => '#fff',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -129,7 +140,7 @@ return [
     | method 'setlocale'.
     |
     */
-    
+
     'LC_ALL' => 'ca_ES.utf8',
 
     /*
