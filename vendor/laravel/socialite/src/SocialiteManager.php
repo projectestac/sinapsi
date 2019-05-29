@@ -3,9 +3,11 @@
 namespace Laravel\Socialite;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Support\Manager;
 use Laravel\Socialite\Two\GithubProvider;
+use Laravel\Socialite\Two\GitlabProvider;
 use Laravel\Socialite\Two\GoogleProvider;
 use Laravel\Socialite\One\TwitterProvider;
 use Laravel\Socialite\Two\FacebookProvider;
@@ -97,6 +99,20 @@ class SocialiteManager extends Manager implements Contracts\Factory
     }
 
     /**
+     * Create an instance of the specified driver.
+     *
+     * @return \Laravel\Socialite\Two\AbstractProvider
+     */
+    protected function createGitlabDriver()
+    {
+        $config = $this->app['config']['services.gitlab'];
+
+        return $this->buildProvider(
+            GitlabProvider::class, $config
+        );
+    }
+
+    /**
      * Build an OAuth 2 provider instance.
      *
      * @param  string  $provider
@@ -107,7 +123,7 @@ class SocialiteManager extends Manager implements Contracts\Factory
     {
         return new $provider(
             $this->app['request'], $config['client_id'],
-            $config['client_secret'], value($config['redirect']),
+            $config['client_secret'], $this->formatRedirectUrl($config),
             Arr::get($config, 'guzzle', [])
         );
     }
@@ -137,8 +153,23 @@ class SocialiteManager extends Manager implements Contracts\Factory
         return array_merge([
             'identifier' => $config['client_id'],
             'secret' => $config['client_secret'],
-            'callback_uri' => value($config['redirect']),
+            'callback_uri' => $this->formatRedirectUrl($config),
         ], $config);
+    }
+
+    /**
+     * Format the callback URL, resolving a relative URI if needed.
+     *
+     * @param  array  $config
+     * @return string
+     */
+    protected function formatRedirectUrl(array $config)
+    {
+        $redirect = value($config['redirect']);
+
+        return Str::startsWith($redirect, '/')
+                    ? $this->app['url']->to($redirect)
+                    : $redirect;
     }
 
     /**

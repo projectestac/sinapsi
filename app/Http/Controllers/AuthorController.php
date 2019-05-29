@@ -13,8 +13,8 @@ use App\Models\Author;
  * Author controller.
  */
 class AuthorController extends Controller {
-    
-    
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,15 +22,15 @@ class AuthorController extends Controller {
      */
     public function index(Request $request) {
         $query = Author::cards();
-        
+
         $query->filter($request);
         $query->include($request);
         $query->sort($request);
-        
+
         return $query->paginateRequest($request);
     }
-    
-    
+
+
     /**
      * Display the specified resource.
      *
@@ -52,7 +52,7 @@ class AuthorController extends Controller {
         $values = Author::validateFields($request);
         $resource = Author::whereId($id)->firstOrFail();
         $this->authorize('update', $resource);
-        
+
         try {
             $values = $this->filterValues($values, $resource);
             $resource->update($values);
@@ -60,7 +60,7 @@ class AuthorController extends Controller {
             Author::validateConstrains($request);
             abort(400, 'Invalid request');
         }
-        
+
         return ['id' => intval($id)];
     }
 
@@ -79,15 +79,21 @@ class AuthorController extends Controller {
      */
     private function filterValues(array $values, Author $resource) {
         $filtered = array_intersect_key($values, [
+            'name' => null,
+            'category_id' => null,
             'municipality_id' => null,
             'territory_id' => null,
             'school_id' => null
         ]);
-        
+
+        if ($resource->type === 'users') {
+            unset($filtered['name']);
+        }
+
         if ($resource->type === 'schools') {
             unset($filtered['school_id']);
         }
-        
+
         return $filtered;
     }
 

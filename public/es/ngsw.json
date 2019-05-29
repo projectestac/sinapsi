@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "index": "/sinapsi/es/./index.html",
+  "index": "/es/./index.html",
   "assetGroups": [
     {
       "name": "app",

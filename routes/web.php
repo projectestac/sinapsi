@@ -34,3 +34,8 @@ Route::get('feeds/tags/{slug}', 'Atom\SyndicationController@tagIndex');
 /* Web application manifest */
 
 Route::get('/manifest.json', 'App\AppController@manifest');
+
+
+/* Backend environment settings */
+
+Route::get('/environment.json', 'App\AppController@environment');

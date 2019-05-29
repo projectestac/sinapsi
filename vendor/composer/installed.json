@@ -1296,17 +1296,17 @@
     },
     {
         "name": "laravel/socialite",
-        "version": "v3.0.7",
-        "version_normalized": "3.0.7.0",
+        "version": "3.0.x-dev",
+        "version_normalized": "3.0.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/socialite.git",
-            "reference": "d79174513dbf14359b53e44394cf71373ae03433"
+            "reference": "79316f36641f1916a50ab14d368acdf1d97e46de"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/socialite/zipball/d79174513dbf14359b53e44394cf71373ae03433",
-            "reference": "d79174513dbf14359b53e44394cf71373ae03433",
+            "url": "https://api.github.com/repos/laravel/socialite/zipball/79316f36641f1916a50ab14d368acdf1d97e46de",
+            "reference": "79316f36641f1916a50ab14d368acdf1d97e46de",
             "shasum": ""
         },
         "require": {
@@ -1315,13 +1315,13 @@
             "illuminate/http": "~5.4",
             "illuminate/support": "~5.4",
             "league/oauth1-client": "~1.0",
-            "php": ">=5.4.0"
+            "php": ">=5.6.4"
         },
         "require-dev": {
             "mockery/mockery": "~0.9",
             "phpunit/phpunit": "~4.0|~5.0"
         },
-        "time": "2017-07-22T14:44:37+00:00",
+        "time": "2018-12-21T14:06:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1353,6 +1353,7 @@
             }
         ],
         "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
+        "homepage": "https://laravel.com",
         "keywords": [
             "laravel",
             "oauth"

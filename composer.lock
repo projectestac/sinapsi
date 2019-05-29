@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ba2b76da43052560afbbfc19ec69a69",
+    "content-hash": "b679ad9cb5d1f9496214b48d42ba870d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -709,16 +709,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v3.0.7",
+            "version": "3.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "d79174513dbf14359b53e44394cf71373ae03433"
+                "reference": "79316f36641f1916a50ab14d368acdf1d97e46de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/d79174513dbf14359b53e44394cf71373ae03433",
-                "reference": "d79174513dbf14359b53e44394cf71373ae03433",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/79316f36641f1916a50ab14d368acdf1d97e46de",
+                "reference": "79316f36641f1916a50ab14d368acdf1d97e46de",
                 "shasum": ""
             },
             "require": {
@@ -727,7 +727,7 @@
                 "illuminate/http": "~5.4",
                 "illuminate/support": "~5.4",
                 "league/oauth1-client": "~1.0",
-                "php": ">=5.4.0"
+                "php": ">=5.6.4"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
@@ -763,11 +763,12 @@
                 }
             ],
             "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
+            "homepage": "https://laravel.com",
             "keywords": [
                 "laravel",
                 "oauth"
             ],
-            "time": "2017-07-22T14:44:37+00:00"
+            "time": "2018-12-21T14:06:32+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -4501,7 +4502,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "laravel/socialite": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

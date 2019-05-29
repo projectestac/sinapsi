@@ -45,6 +45,9 @@ Route::group([
     Route::post('feeds/{id}', 'FeedController@restore')
         ->name('feeds.restore');
 
+    Route::resource('categories', 'CategoryController', [
+        'except' => ['index', 'show', 'create', 'edit']]);
+
     Route::resource('municipalities', 'MunicipalityController', [
         'except' => ['index', 'show', 'create', 'edit']]);
 
@@ -87,7 +90,7 @@ Route::group([
         'auth'
     ],
 ], function () {
-    
+
     /** Authenticated user */
 
     Route::get('accounts/profile', 'Auth\AccountController@profile')
@@ -136,7 +139,7 @@ Route::group([
         'api'
     ],
 ], function () {
-    
+
     /** User authentication */
 
     Route::get('accounts/login', 'Auth\AccountController@login')
@@ -153,6 +156,9 @@ Route::group([
     /** Sources */
 
     Route::resource('authors', 'AuthorController', [
+        'only' => ['index', 'show']]);
+
+    Route::resource('categories', 'CategoryController', [
         'only' => ['index', 'show']]);
 
     Route::resource('municipalities', 'MunicipalityController', [
@@ -182,7 +188,7 @@ Route::group([
 
     Route::get('synapses/nodes/{id?}', 'SynapseController@nodes')
         ->name('synapses.nodes');
-    
+
     Route::resource('synapses', 'SynapseController', [
         'only' => ['index', 'show']]);
 
