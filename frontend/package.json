@@ -59,7 +59,7 @@
     "karma-coverage-istanbul-reporter": "^1.4.3",
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "popper.js": "^1.14.6",
     "protractor": "^5.4.2",
     "ts-node": "~5.0.1",
