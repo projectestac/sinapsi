@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { CnDialog } from 'concrete/dialog';
 import { StoreService } from 'app/core';
 import { Synapse } from 'app/models';
@@ -9,7 +10,7 @@ import { CatalogMessages } from './catalogs.messages';
 
 @Component({
     templateUrl: 'catalog-browser.component.html',
-    styleUrls: [ 'catalog-browser.component.scss' ]
+    styleUrls: ['catalog-browser.component.scss']
 })
 export class CatalogBrowserComponent {
 
@@ -95,14 +96,14 @@ export class CatalogBrowserComponent {
         const prompt = CatalogMessages.CreateSynapsePrompt();
 
         this.dialog.open(prompt)
-            .filter(event => event.confirmed)
-            .filter(event => !!event.value.trim())
+            .pipe(filter(event => event.confirmed))
+            .pipe(filter(event => !!event.value.trim()))
             .subscribe(event => {
                 const params = { name: event.value };
                 const path = '/api/synapses';
 
                 this.store.create(path, params)
-                    .subscribe(s => this.edit(<Synapse> s));
+                    .subscribe(s => this.edit(<Synapse>s));
             });
     }
 

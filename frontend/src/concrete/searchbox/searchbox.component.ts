@@ -3,6 +3,7 @@
 import { Component, Input, Output } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy, SimpleChanges } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 
 
@@ -69,8 +70,8 @@ export class CnSearchboxComponent implements OnInit, OnChanges, OnDestroy {
      */
     ngOnInit() {
         const delay = CnSearchboxComponent.DEBOUNCE_DELAY;
-        
-        this.keyUp.debounceTime(delay)
+
+        this.keyUp.pipe(debounceTime(delay))
             .subscribe(value => this.emitValue(value));
     }
 

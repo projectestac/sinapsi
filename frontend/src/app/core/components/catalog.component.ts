@@ -2,6 +2,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
+import { takeUntil, filter } from 'rxjs/operators';
 
 import { SessionService, SessionState } from 'app/auth';
 import { SessionEvent, UserChanged } from 'app/auth';
@@ -16,7 +17,7 @@ import { FetchState } from './components.types';
  */
 @Component({
     template: '@CatalogComponent',
-    providers: [ RequestManager ]
+    providers: [RequestManager]
 })
 export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
 
@@ -57,7 +58,7 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
         protected manager: RequestManager,
         protected dialog: CnDialog,
         protected toaster: CnToaster
-    ) {}
+    ) { }
 
 
     /**
@@ -67,19 +68,19 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
         // Update the component state on changes
 
         this.states
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(state => this.state = state);
 
         // Update the catalog when the request changes
 
         this.requests
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(request => this.updateCatalog(request));
 
         // Create requests from the manager queries
 
         this.manager.requests
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(query => {
                 const request = this.createRequest(query);
                 this.requests.next(request);
@@ -88,8 +89,8 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
         // Update the catalog when the user signs in/out
 
         this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
+            .pipe(takeUntil(this.unsubscribe))
+            .pipe(filter(e => e instanceof UserChanged))
             .subscribe(e => this.requests.next(this.request));
     }
 

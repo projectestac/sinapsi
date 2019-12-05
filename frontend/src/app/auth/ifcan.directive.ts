@@ -2,6 +2,7 @@ import { Subject } from 'rxjs';
 import { Directive, Input } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { TemplateRef, ViewContainerRef } from '@angular/core';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { PoliciesService } from './policies.service';
 import { SessionService } from './session.service';
@@ -11,7 +12,7 @@ import { UserChanged } from './session.events';
 /**
  * Conditionally includes a template if the given policy is authorized.
  */
-@Directive({ selector : '[appIfCan]' })
+@Directive({ selector: '[appIfCan]' })
 export class IfCanDirective implements OnInit, OnChanges, OnDestroy {
 
     /** Unsubscribe subject */
@@ -29,7 +30,7 @@ export class IfCanDirective implements OnInit, OnChanges, OnDestroy {
         private policies: PoliciesService,
         private session: SessionService,
         private template: TemplateRef<any>
-    ) {}
+    ) { }
 
 
     /**
@@ -37,8 +38,8 @@ export class IfCanDirective implements OnInit, OnChanges, OnDestroy {
      */
     ngOnInit() {
         this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
+            .pipe(takeUntil(this.unsubscribe))
+            .pipe(filter(e => e instanceof UserChanged))
             .subscribe(e => this.updateDOM());
 
         this.updateDOM();

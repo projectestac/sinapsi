@@ -5,7 +5,7 @@ import { EventEmitter, ViewChild } from '@angular/core';
 @Component({
     selector: 'cn-details',
     templateUrl: 'details.component.html',
-    styleUrls: [ 'details.component.scss' ]
+    styleUrls: ['details.component.scss']
 })
 export class CnDetailsComponent {
 
@@ -22,7 +22,7 @@ export class CnDetailsComponent {
     @Output('toggle') toggleEvent: EventEmitter<boolean>;
 
     /** Expandable container */
-    @ViewChild('expandable') expandable;
+    @ViewChild('expandable', { static: false }) expandable;
 
 
     /**

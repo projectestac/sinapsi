@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { SettingsService, StoreService } from 'app/core';
 import { SectionsBuilder } from 'app/feature/posts';
 import { Synapse, Tag } from 'app/models';
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
 
         // Obtain the search box parameter on initialization
 
-        this.route.queryParamMap.take(1).subscribe(params => {
+        this.route.queryParamMap.pipe(take(1)).subscribe(params => {
             const value = params.get('search-box');
             this.hasSearchBox = (value === 'true');
         });
@@ -64,7 +65,7 @@ export class HomeComponent implements OnInit {
                 } else if (params.has('synapse')) {
                     this.fetchSynapse(params.get('synapse'));
                 } else {
-                    this.synapse = <Synapse> { id: null };
+                    this.synapse = <Synapse>{ id: null };
                 }
             }
         });
@@ -97,7 +98,7 @@ export class HomeComponent implements OnInit {
         this.store.query('/api/synapses', params)
             .subscribe(collection => {
                 if (collection.length > 0) {
-                    this.synapse = <Synapse> collection[0];
+                    this.synapse = <Synapse>collection[0];
                 }
             });
     }
@@ -114,7 +115,7 @@ export class HomeComponent implements OnInit {
         this.store.query('/api/tags', params)
             .subscribe(collection => {
                 if (collection.length > 0) {
-                    const tag = <Tag> collection[0];
+                    const tag = <Tag>collection[0];
 
                     this.synapse = tag['synapse'] ?
                         tag.synapse :
@@ -131,7 +132,7 @@ export class HomeComponent implements OnInit {
      * @returns         Synapse object
      */
     private createSynapse(tag: Tag): Synapse {
-        return <Synapse> {
+        return <Synapse>{
             id: null,
             blocks: null,
             description: null,

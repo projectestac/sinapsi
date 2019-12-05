@@ -13,11 +13,11 @@ import { EDITOR_SETTINGS } from './sourceeditor.settings';
 @Component({
     selector: 'app-source-editor',
     templateUrl: 'sourceeditor.component.html',
-    styleUrls: [ 'sourceeditor.component.scss' ],
+    styleUrls: ['sourceeditor.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SourceEditorComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => SourceEditorComponent),
+        multi: true
     }]
 })
 export class SourceEditorComponent implements
@@ -50,7 +50,7 @@ export class SourceEditorComponent implements
     };
 
     /** Textarea element element */
-    @ViewChild('editorArea') editorArea;
+    @ViewChild('editorArea', { static: false }) editorArea;
 
 
     /**
@@ -58,7 +58,7 @@ export class SourceEditorComponent implements
      */
     constructor(
         private sanitizer: DomSanitizer
-    ) {}
+    ) { }
 
 
     /**
@@ -67,7 +67,7 @@ export class SourceEditorComponent implements
     ngOnInit() {
         // Replace the text are with the editor and bind
         // the editor events
-        
+
         try {
 
             this.editor = CodeMirror.fromTextArea(

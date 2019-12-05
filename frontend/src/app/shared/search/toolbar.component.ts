@@ -7,7 +7,7 @@ import { StoreQuery } from 'app/core';
 @Component({
     selector: 'app-search-toolbar',
     templateUrl: 'toolbar.component.html',
-    styleUrls: [ 'toolbar.component.scss' ]
+    styleUrls: ['toolbar.component.scss']
 })
 export class SearchToolbarComponent implements AfterViewInit {
 
@@ -24,10 +24,10 @@ export class SearchToolbarComponent implements AfterViewInit {
     @Output('input') input = new EventEmitter<StoreQuery>();
 
     /** Filters expandable */
-    @ViewChild('expandable') expandable;
+    @ViewChild('expandable', { static: false }) expandable;
 
     /** Filters component */
-    @ViewChild('filters') filters;
+    @ViewChild('filters', { static: false }) filters;
 
 
     /**
@@ -57,7 +57,7 @@ export class SearchToolbarComponent implements AfterViewInit {
         return this._filtered;
     }
 
-    
+
     /**
      * Toggles the toolbar expandables.
      */

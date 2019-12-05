@@ -12,7 +12,7 @@ export class CnMenuItemComponent {
     @Input() icon: string = null;
 
     /** This menuitem button */
-    @ViewChild('button') button;
+    @ViewChild('button', { static: false }) button;
 
 
     /**

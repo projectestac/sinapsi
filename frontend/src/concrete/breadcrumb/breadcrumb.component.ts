@@ -1,5 +1,6 @@
 import { Subject } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 import { CnBreadcrumbService, CnCrumb } from './breadcrumb.service';
 
 
@@ -19,7 +20,7 @@ export class CnBreadcrumbComponent implements OnInit, OnDestroy {
     /**
      * Component constructor.
      */
-    constructor(private service: CnBreadcrumbService) {}
+    constructor(private service: CnBreadcrumbService) { }
 
 
     /**
@@ -27,7 +28,7 @@ export class CnBreadcrumbComponent implements OnInit, OnDestroy {
      */
     ngOnInit() {
         this.service.breadcrumb
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(breadcrumb => {
                 this.breadcrumb = breadcrumb;
             });

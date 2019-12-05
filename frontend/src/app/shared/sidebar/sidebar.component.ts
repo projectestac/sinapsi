@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Component, Input, Output, SimpleChanges } from '@angular/core';
 import { EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { DragulaService } from 'ng2-dragula';
 import { CnDialog } from 'concrete/dialog';
 import { Collection } from 'app/core';
@@ -17,7 +18,7 @@ let uid = 0;
 @Component({
     selector: 'app-sidebar',
     templateUrl: 'sidebar.component.html',
-    styleUrls: [ 'sidebar.component.scss' ]
+    styleUrls: ['sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
 
@@ -55,7 +56,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     constructor(
         private dragula: DragulaService,
         private dialog: CnDialog
-    ) {}
+    ) { }
 
 
     /**
@@ -84,9 +85,9 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if ('editable' in changes) {
             if (changes['editable'].currentValue) {
-               this.initDraggable();
+                this.initDraggable();
             } else {
-               this.destroyDraggable();
+                this.destroyDraggable();
             }
         }
     }
@@ -97,7 +98,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
      */
     public toggleEditable() {
         this.editable = !this.editable;
-        
+
         if (this.editable) {
             this.initDraggable();
         } else {
@@ -115,7 +116,7 @@ export class SidebarComponent implements OnInit, OnDestroy, OnChanges {
         const confirm = SidebarMessages.RemoveConfirm();
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
+            .pipe(filter(event => event.confirmed))
             .subscribe(event => {
                 const i = this.blocks.findIndex(e => e === block);
                 this.blocks.splice(i, 1);

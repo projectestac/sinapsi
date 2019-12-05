@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { RequestManager, StoreQuery } from 'app/core';
 import { CatalogComponent } from 'app/core';
 import { Synapse, Tag } from 'app/models';
@@ -8,8 +9,8 @@ import { CatalogMessages } from '../catalogs.messages';
 @Component({
     selector: 'app-tags-catalog',
     templateUrl: 'tags-catalog.component.html',
-    styleUrls: [ 'tags-catalog.component.scss' ],
-    providers: [ RequestManager ]
+    styleUrls: ['tags-catalog.component.scss'],
+    providers: [RequestManager]
 })
 export class TagsCatalogComponent extends CatalogComponent {
 
@@ -62,8 +63,8 @@ export class TagsCatalogComponent extends CatalogComponent {
         const prompt = CatalogMessages.CreateTagPrompt(tag);
 
         this.dialog.open(prompt)
-            .filter(event => event.confirmed)
-            .filter(event => !!event.value.trim())
+            .pipe(filter(event => event.confirmed))
+            .pipe(filter(event => !!event.value.trim()))
             .subscribe(event => {
                 const params = { name: event.value };
                 const createPath = `/api/synapses/tags/${tag.id}`;
@@ -85,17 +86,17 @@ export class TagsCatalogComponent extends CatalogComponent {
     public remove(tag: Tag) {
         const confirm = CatalogMessages.RemoveTagConfirm(tag);
         const success = CatalogMessages.RemoveTagSuccess(tag);
-        
+
         this.dialog.open(confirm)
-            .filter(e => e.confirmed)
+            .pipe(filter(e => e.confirmed))
             .subscribe(() => {
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.path, tag.id)
-                   .subscribe(() => {
-                       tag.deleted_at = deleted_at;
-                       this.toaster.success(success);
-                   });
+                    .subscribe(() => {
+                        tag.deleted_at = deleted_at;
+                        this.toaster.success(success);
+                    });
             });
     }
 
@@ -107,10 +108,10 @@ export class TagsCatalogComponent extends CatalogComponent {
         const success = CatalogMessages.RestoreTagSuccess(tag);
 
         this.store.restore(this.path, tag.id)
-           .subscribe(event => {
-               tag.deleted_at = null;
-               this.toaster.success(success);
-           });
+            .subscribe(event => {
+                tag.deleted_at = null;
+                this.toaster.success(success);
+            });
     }
 
 }

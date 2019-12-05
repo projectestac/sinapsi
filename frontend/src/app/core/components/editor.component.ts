@@ -9,6 +9,7 @@ import { StoreService } from 'app/core/services';
 import { PoliciesService } from 'app/auth';
 import { SessionService, UserChanged } from 'app/auth';
 import { ScrollTop } from 'app/core/core.decorators';
+import { takeUntil, filter, map, catchError } from 'rxjs/operators';
 
 import { FetchState } from './components.types';
 import { EditorMessages } from './editor.messages';
@@ -54,7 +55,7 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
         protected session: SessionService,
         protected store: StoreService,
         protected toaster: CnToaster
-    ) {}
+    ) { }
 
 
     /**
@@ -70,20 +71,20 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
         // Update the component state on changes
 
         this.states
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(state => this.state = state);
 
         // Refresh the page when the URL changes
 
         this.route.params
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(params => this.edit(params.id));
 
         // Refresh when the logged in user changes
 
         this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
+            .pipe(takeUntil(this.unsubscribe))
+            .pipe(filter(e => e instanceof UserChanged))
             .subscribe(e => this.edit(this.route.snapshot.params.id));
     }
 
@@ -134,7 +135,7 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
      */
     public confirmReset() {
         this.dialog.open(EditorMessages.ResetConfirm())
-            .filter(event => event.confirmed)
+            .pipe(filter(event => event.confirmed))
             .subscribe(event => this.reset());
     }
 
@@ -149,7 +150,7 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
         if (this.state === FetchState.READY) {
             if (Comparator.differ(this.form.value, this.models)) {
                 const confirm = EditorMessages.DeactivateConfirm();
-                return this.dialog.open(confirm).map(e => e.confirmed);
+                return this.dialog.open(confirm).pipe(map(e => e.confirmed));
             }
         }
 
@@ -190,10 +191,10 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
             this.form.value, this.models);
 
         this.updateModels(changes)
-            .catch(errors => {
+            .pipe(catchError(errors => {
                 this.states.next(FetchState.READY);
                 return throwError(errors);
-            })
+            }))
             .subscribe(response => {
                 this.refresh(this.route.snapshot.params.id);
                 this.toaster.success(success);
@@ -211,12 +212,12 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
         this.states.next(FetchState.PENDING);
 
         this.fetchModels(id)
-            .catch(error => {
+            .pipe(catchError(error => {
                 this.error = error;
                 this.states.next(error.status === 404 ?
                     FetchState.EMPTY : FetchState.ERROR);
                 return throwError(error);
-            })
+            }))
             .subscribe(models => {
                 this.patch(models);
                 this.states.next(FetchState.READY);
@@ -263,9 +264,9 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
 
         if ('controls' in control) {
             Object.values(control['controls'])
-                  .forEach((c: AbstractControl) => {
-                      this.touch(c);
-                  });
+                .forEach((c: AbstractControl) => {
+                    this.touch(c);
+                });
         }
     }
 

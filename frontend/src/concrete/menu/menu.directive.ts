@@ -1,4 +1,5 @@
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Directive, Input, OnInit, OnDestroy } from '@angular/core';
 import { ElementRef, HostListener } from '@angular/core';
 import { CnMenuComponent } from './menu.component';
@@ -19,7 +20,7 @@ export class CnMenuDirective implements OnInit, OnDestroy {
     /**
      * Directive constructor.
      */
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef) { }
 
 
     /**
@@ -27,7 +28,7 @@ export class CnMenuDirective implements OnInit, OnDestroy {
      */
     ngOnInit() {
         this.menu.dismissEvent
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(() => {
                 const element = this.elementRef.nativeElement;
                 setTimeout(() => element.focus());

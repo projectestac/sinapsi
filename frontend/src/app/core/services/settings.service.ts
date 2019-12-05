@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/finally';
+
 import { environment } from 'environments/environment';
+
 
 
 /**

@@ -3,6 +3,7 @@ import { Component, Input, Output } from '@angular/core';
 import { EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CnDialog } from 'concrete/dialog';
 import { CnToaster } from 'concrete/toaster';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { FetchState, Collection, Model } from 'app/core';
 import { PoliciesService, SessionService, UserChanged } from 'app/auth';
@@ -14,7 +15,7 @@ import { CommentsMessages } from '../comments.messages';
 @Component({
     selector: 'app-comments-catalog',
     templateUrl: 'comments-catalog.component.html',
-    styleUrls: [ 'comments-catalog.component.scss' ]
+    styleUrls: ['comments-catalog.component.scss']
 })
 export class CommentsCatalogComponent implements OnInit, OnDestroy {
 
@@ -56,7 +57,7 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
         protected session: SessionService,
         protected store: StoreService,
         protected toaster: CnToaster
-    ) {}
+    ) { }
 
 
     /**
@@ -69,8 +70,8 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
         this.updateCatalog();
 
         this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
+            .pipe(takeUntil(this.unsubscribe))
+            .pipe(filter(e => e instanceof UserChanged))
             .subscribe(e => this.updateEditable());
     }
 
@@ -142,17 +143,17 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
         const success = CommentsMessages.RemoveSuccess(comment);
 
         this.dialog.open(confirm)
-            .filter(event => event.confirmed)
+            .pipe(filter(event => event.confirmed))
             .subscribe(event => {
-               this.store.delete(this.path, comment.id)
-                   .subscribe((response) => {
-                       const index = this.collection.indexOf(comment);
+                this.store.delete(this.path, comment.id)
+                    .subscribe((response) => {
+                        const index = this.collection.indexOf(comment);
 
-                       this.collection.splice(index, 1);
-                       this.toaster.success(success);
-                       this.deleted.emit(comment);
-                   });
-           });
+                        this.collection.splice(index, 1);
+                        this.toaster.success(success);
+                        this.deleted.emit(comment);
+                    });
+            });
     }
 
 

@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs';
 import { Directive, Input, OnInit, OnDestroy } from '@angular/core';
 import { ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 
 import { CnSortService } from './sort.service';
 
@@ -47,7 +48,7 @@ export class CnSortByDirective implements OnInit, OnDestroy {
         // Update the element style when the sort changes
 
         this.sortService.events
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(event => this.updateElement());
     }
 

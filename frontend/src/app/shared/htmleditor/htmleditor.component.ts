@@ -11,11 +11,11 @@ import { EDITOR_SETTINGS } from './htmleditor.settings';
 @Component({
     selector: 'app-htmleditor',
     templateUrl: 'htmleditor.component.html',
-    styleUrls: [ 'htmleditor.component.scss' ],
+    styleUrls: ['htmleditor.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => HTMLEditorComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => HTMLEditorComponent),
+        multi: true
     }]
 })
 export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
@@ -41,7 +41,7 @@ export class HTMLEditorComponent implements ControlValueAccessor, OnChanges {
     };
 
     /** TinyMCE editor element */
-    @ViewChild('editor') editor;
+    @ViewChild('editor', { static: false }) editor;
 
 
     /**

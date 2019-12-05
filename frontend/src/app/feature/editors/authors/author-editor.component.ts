@@ -3,14 +3,17 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Comparator, EditorComponent, Model } from 'app/core';
 import { Author, AuthorType, Synapse } from 'app/models';
+import { of } from 'rxjs';
+import { map, concatMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs'
 import { AuthorFormBuilder } from './author-editor.builder';
 
 
 /** Author owners map */
 const OWNER_KEYS = {
     'projects': 'project',
-    'schools':  'school',
-    'users':    'user'
+    'schools': 'school',
+    'users': 'user'
 };
 
 
@@ -20,7 +23,7 @@ const OWNER_KEYS = {
 @Component({
     selector: 'app-author-editor',
     templateUrl: 'author-editor.component.html',
-    styleUrls: [ 'author-editor.component.scss' ]
+    styleUrls: ['author-editor.component.scss']
 })
 export class AuthorEditorComponent extends EditorComponent {
 
@@ -109,7 +112,7 @@ export class AuthorEditorComponent extends EditorComponent {
             }
         }
 
-        return Observable.of(author);
+        return of(author);
     }
 
 
@@ -118,27 +121,27 @@ export class AuthorEditorComponent extends EditorComponent {
      */
     public fetchModels(id: number): Observable<any> {
         return this.getAuthor(id)
-            .map(author => {
+            .pipe(map(author => {
                 this.author = author;
                 author['name'] = this.owner['name'];
                 console.log(this.owner);
                 return author;
-            })
-            .concatMap(author => this.authorize(author))
-            .concatMap(author => Observable.forkJoin([
-                Observable.of(author),
+            }))
+            .pipe(concatMap(author => this.authorize(author)))
+            .pipe(concatMap(author => forkJoin([
+                of(author),
                 this.getFeeds(author),
-                Observable.of(author['synapse']),
+                of(author['synapse']),
                 this.getBlocks(author['synapse']),
-                Observable.of(author['user'])
-            ]))
-            .map(values => ({
+                of(author['user'])
+            ])))
+            .pipe(map(values => ({
                 author: values[0],
                 feeds: values[1],
                 synapse: values[2],
                 blocks: values[3],
                 user: values[4]
-            }));
+            })));
     }
 
 
@@ -146,12 +149,12 @@ export class AuthorEditorComponent extends EditorComponent {
      * {@inheritDoc}
      */
     public updateModels(changes: any): Observable<any> {
-        return Observable.of(null)
-            .concatMap(v => this.updateBlocks(changes))
-            .concatMap(v => this.updateSynapse(changes))
-            .concatMap(v => this.updateAuthor(changes))
-            .concatMap(v => this.updateUser(changes))
-            .concatMap(v => this.updateFeeds(changes));
+        return of(null)
+            .pipe(concatMap(v => this.updateBlocks(changes)))
+            .pipe(concatMap(v => this.updateSynapse(changes)))
+            .pipe(concatMap(v => this.updateAuthor(changes)))
+            .pipe(concatMap(v => this.updateUser(changes)))
+            .pipe(concatMap(v => this.updateFeeds(changes)));
     }
 
 
@@ -167,7 +170,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // Update only if the author changed
 
         if (!changes.hasOwnProperty('author')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Convert any models to their ID properties an then
@@ -226,7 +229,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // Update only if the synapse changed
 
         if (!changes.hasOwnProperty('user')) {
-            return Observable.of(null);
+            return of(null);
         }
 
         // Update the user information
@@ -250,7 +253,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // Update only if the synapse changed
 
         if (!changes.hasOwnProperty('synapse')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Convert any models to their ID properties an then
@@ -287,7 +290,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // Update the blocks only if they have changed
 
         if (!changes.hasOwnProperty('blocks')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Obtain the blocks to remove and those to create
@@ -316,20 +319,20 @@ export class AuthorEditorComponent extends EditorComponent {
 
         if (entries.length < 1) {
             const ids = news.map(v => v.id);
-            this.assignChanges(changes, { synapse: { blocks: ids }});
+            this.assignChanges(changes, { synapse: { blocks: ids } });
 
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Create the batch update observable and map the responses
         // into the changes array so the order is preserved
 
         return this.store.batch('/api/$batch', { entries: entries })
-            .map(responses => {
+            .pipe(map(responses => {
                 const vs = responses.map(v => v.id).slice(remove.length);
                 const ids = news.map(v => v.id ? v.id : vs.shift());
                 this.assignChanges(changes, { synapse: { blocks: ids } });
-            });
+            }));
     }
 
 
@@ -346,7 +349,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // Update the blocks only if they have changed
 
         if (!changes.hasOwnProperty('feeds')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Obtain the blocks to remove and those to create
@@ -379,7 +382,7 @@ export class AuthorEditorComponent extends EditorComponent {
         // If no feeds where created or removed, simply return
 
         if (entries.length < 1) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Create the batch update observable
@@ -430,11 +433,11 @@ export class AuthorEditorComponent extends EditorComponent {
         const ids = synapse['blocks'];
 
         if (!Array.isArray(ids) || !ids.length) {
-            return Observable.of([]);
+            return of([]);
         }
 
         return this.store.query('/api/blocks', { id: ids })
-            .map(blocks => this.sortByIndex(ids, blocks));
+            .pipe(map(blocks => this.sortByIndex(ids, blocks)));
     }
 
 

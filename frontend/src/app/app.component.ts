@@ -1,4 +1,5 @@
 import { Observable, Subject } from 'rxjs';
+import { map, tap, takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -13,7 +14,7 @@ import { _ } from 'i18n';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [ CnBreadcrumbService ]
+    providers: [CnBreadcrumbService]
 })
 export class AppComponent implements OnDestroy, OnInit {
 
@@ -30,7 +31,7 @@ export class AppComponent implements OnDestroy, OnInit {
         private settings: SettingsService,
         private store: StoreService,
         private toaster: CnToaster
-    ) {}
+    ) { }
 
 
     /**
@@ -40,14 +41,14 @@ export class AppComponent implements OnDestroy, OnInit {
         // Subscribe to storage events and show any errors
 
         this.store.events
-           .takeUntil(this.unsubscribe)
-           .subscribe(event => {
-               if (event instanceof StoreErrorEvent) {
-                   if (event.response['status'] !== 404) {
-                       this.toaster.error(_('An unexpected error happened, please try again later.'));
-                   }
-               }
-           });
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe(event => {
+                if (event instanceof StoreErrorEvent) {
+                    if (event.response['status'] !== 404) {
+                        this.toaster.error(_('An unexpected error happened, please try again later.'));
+                    }
+                }
+            });
 
         // Update the page title when the primary route changes
 

@@ -2,6 +2,7 @@ import { Subject } from 'rxjs';
 import { Component, Input, Output } from '@angular/core';
 import { OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { EventEmitter, SimpleChanges } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 
 import { CnKeySorted, CnSortEvent } from './sort.events';
 import { CnSortService } from './sort.service';
@@ -13,8 +14,8 @@ import { CnSortService } from './sort.service';
 @Component({
     selector: 'cn-sortable, [cn-sortable]',
     template: '<ng-content></ng-content>',
-    styleUrls: [ 'sortable.component.scss' ],
-    providers: [ CnSortService ]
+    styleUrls: ['sortable.component.scss'],
+    providers: [CnSortService]
 })
 export class CnSortableComponent implements OnInit, OnChanges, OnDestroy {
 
@@ -42,7 +43,7 @@ export class CnSortableComponent implements OnInit, OnChanges, OnDestroy {
      */
     ngOnInit() {
         this.sortService.events
-            .takeUntil(this.unsubscribe)
+            .pipe(takeUntil(this.unsubscribe))
             .subscribe(event => {
                 if (event instanceof CnKeySorted) {
                     this.sortChange.emit(event);

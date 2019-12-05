@@ -2,14 +2,15 @@ import { Component, Input } from '@angular/core';
 import { RequestManager, StoreQuery } from 'app/core';
 import { CatalogComponent } from 'app/core';
 import { Author, Project } from 'app/models';
+import { filter } from 'rxjs/operators';
 import { ProjectMessages } from '../projects.messages';
 
 
 @Component({
     selector: 'app-projects-catalog',
     templateUrl: 'projects-catalog.component.html',
-    styleUrls: [ 'projects-catalog.component.scss' ],
-    providers: [ RequestManager ]
+    styleUrls: ['projects-catalog.component.scss'],
+    providers: [RequestManager]
 })
 export class ProjectsCatalogComponent extends CatalogComponent {
 
@@ -47,13 +48,13 @@ export class ProjectsCatalogComponent extends CatalogComponent {
         const prompt = ProjectMessages.CreatePrompt();
 
         this.dialog.open(prompt)
-            .filter(event => event.confirmed)
-            .filter(event => !!event.value.trim())
+            .pipe(filter(event => event.confirmed))
+            .pipe(filter(event => !!event.value.trim()))
             .subscribe(event => {
                 const params = { name: event.value };
 
                 this.store.create(this.projectsPath, params)
-                    .subscribe(response => this.edit(<Author> {
+                    .subscribe(response => this.edit(<Author>{
                         id: response['author_id']
                     }));
             });
@@ -68,16 +69,16 @@ export class ProjectsCatalogComponent extends CatalogComponent {
         const success = ProjectMessages.RemoveSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(e => e.confirmed)
+            .pipe(filter(e => e.confirmed))
             .subscribe(() => {
                 const id = author.project_id;
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.projectsPath, id)
-                   .subscribe(() => {
-                       author.deleted_at = deleted_at;
-                       this.toaster.success(success);
-                   });
+                    .subscribe(() => {
+                        author.deleted_at = deleted_at;
+                        this.toaster.success(success);
+                    });
             });
     }
 
