@@ -84,9 +84,10 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
         // Refresh the synapse when the user signs in/out
 
         this.session.events
-            .pipe(takeUntil(this.unsubscribe))
-            .pipe(filter(e => e instanceof UserChanged))
-            .subscribe(event => {
+            .pipe(
+                takeUntil(this.unsubscribe),
+                filter(e => e instanceof UserChanged)
+            ).subscribe(event => {
                 if (this.slug !== null) {
                     this.clear();
                     this.fetchSynapse(this.slug);

@@ -136,8 +136,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
         // Search new results on each key up of the input box
 
         this.keyUp
-            .pipe(debounceTime(400))
-            .pipe(takeUntil(this.unsubscribe))
+            .pipe(
+                debounceTime(400),
+                takeUntil(this.unsubscribe)
+            )
             .subscribe(keywords => this.fetch(keywords));
 
         // Autofocus the contorl if requested

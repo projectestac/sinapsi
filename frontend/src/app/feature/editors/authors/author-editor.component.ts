@@ -121,27 +121,29 @@ export class AuthorEditorComponent extends EditorComponent {
      */
     public fetchModels(id: number): Observable<any> {
         return this.getAuthor(id)
-            .pipe(map(author => {
-                this.author = author;
-                author['name'] = this.owner['name'];
-                console.log(this.owner);
-                return author;
-            }))
-            .pipe(concatMap(author => this.authorize(author)))
-            .pipe(concatMap(author => forkJoin([
-                of(author),
-                this.getFeeds(author),
-                of(author['synapse']),
-                this.getBlocks(author['synapse']),
-                of(author['user'])
-            ])))
-            .pipe(map(values => ({
-                author: values[0],
-                feeds: values[1],
-                synapse: values[2],
-                blocks: values[3],
-                user: values[4]
-            })));
+            .pipe(
+                map(author => {
+                    this.author = author;
+                    author['name'] = this.owner['name'];
+                    console.log(this.owner);
+                    return author;
+                }),
+                concatMap(author => this.authorize(author)),
+                concatMap(author => forkJoin([
+                    of(author),
+                    this.getFeeds(author),
+                    of(author['synapse']),
+                    this.getBlocks(author['synapse']),
+                    of(author['user'])
+                ])),
+                map(values => ({
+                    author: values[0],
+                    feeds: values[1],
+                    synapse: values[2],
+                    blocks: values[3],
+                    user: values[4]
+                }))
+            );
     }
 
 
@@ -150,11 +152,13 @@ export class AuthorEditorComponent extends EditorComponent {
      */
     public updateModels(changes: any): Observable<any> {
         return of(null)
-            .pipe(concatMap(v => this.updateBlocks(changes)))
-            .pipe(concatMap(v => this.updateSynapse(changes)))
-            .pipe(concatMap(v => this.updateAuthor(changes)))
-            .pipe(concatMap(v => this.updateUser(changes)))
-            .pipe(concatMap(v => this.updateFeeds(changes)));
+            .pipe(
+                concatMap(v => this.updateBlocks(changes)),
+                concatMap(v => this.updateSynapse(changes)),
+                concatMap(v => this.updateAuthor(changes)),
+                concatMap(v => this.updateUser(changes)),
+                concatMap(v => this.updateFeeds(changes))
+            );
     }
 
 

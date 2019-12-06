@@ -71,7 +71,8 @@ export class CnSearchboxComponent implements OnInit, OnChanges, OnDestroy {
     ngOnInit() {
         const delay = CnSearchboxComponent.DEBOUNCE_DELAY;
 
-        this.keyUp.pipe(debounceTime(delay))
+        this.keyUp
+            .pipe(debounceTime(delay))
             .subscribe(value => this.emitValue(value));
     }
 

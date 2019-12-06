@@ -38,9 +38,10 @@ export class IfCanDirective implements OnInit, OnChanges, OnDestroy {
      */
     ngOnInit() {
         this.session.events
-            .pipe(takeUntil(this.unsubscribe))
-            .pipe(filter(e => e instanceof UserChanged))
-            .subscribe(e => this.updateDOM());
+            .pipe(
+                takeUntil(this.unsubscribe),
+                filter(e => e instanceof UserChanged)
+            ).subscribe(e => this.updateDOM());
 
         this.updateDOM();
     }

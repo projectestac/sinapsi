@@ -254,8 +254,10 @@ export class PostDetailsComponent {
         const request = { [name]: value };
 
         return this.store.update(path, id, request)
-            .pipe(map((response) => value))
-            .pipe(take(1));
+            .pipe(
+                map((response) => value),
+                take(1)
+            );
     }
 
 

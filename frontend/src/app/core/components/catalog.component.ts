@@ -89,9 +89,10 @@ export /*abstract*/ class CatalogComponent implements OnInit, OnDestroy {
         // Update the catalog when the user signs in/out
 
         this.session.events
-            .pipe(takeUntil(this.unsubscribe))
-            .pipe(filter(e => e instanceof UserChanged))
-            .subscribe(e => this.requests.next(this.request));
+            .pipe(
+                takeUntil(this.unsubscribe),
+                filter(e => e instanceof UserChanged)
+            ).subscribe(e => this.requests.next(this.request));
     }
 
 

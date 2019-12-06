@@ -70,8 +70,10 @@ export class CommentsCatalogComponent implements OnInit, OnDestroy {
         this.updateCatalog();
 
         this.session.events
-            .pipe(takeUntil(this.unsubscribe))
-            .pipe(filter(e => e instanceof UserChanged))
+            .pipe(
+                takeUntil(this.unsubscribe),
+                filter(e => e instanceof UserChanged)
+            )
             .subscribe(e => this.updateEditable());
     }
 

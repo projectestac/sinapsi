@@ -99,18 +99,20 @@ export class SynapseEditorComponent extends EditorComponent {
      */
     public fetchModels(id: number): Observable<any> {
         return this.getSynapse(id)
-            .pipe(map(synapse => this.synapse = synapse))
-            .pipe(concatMap(synapse => this.authorize(synapse)))
-            .pipe(concatMap(synapse => forkJoin([
-                of(synapse),
-                this.getBlocks(synapse),
-                this.getPrivileges(synapse)
-            ])))
-            .pipe(map(values => ({
-                synapse: values[0],
-                blocks: values[1],
-                privileges: values[2]
-            })));
+            .pipe(
+                map(synapse => this.synapse = synapse),
+                concatMap(synapse => this.authorize(synapse)),
+                concatMap(synapse => forkJoin([
+                    of(synapse),
+                    this.getBlocks(synapse),
+                    this.getPrivileges(synapse)
+                ])),
+                map(values => ({
+                    synapse: values[0],
+                    blocks: values[1],
+                    privileges: values[2]
+                }))
+            );
     }
 
 
@@ -119,9 +121,11 @@ export class SynapseEditorComponent extends EditorComponent {
      */
     public updateModels(changes: any): Observable<any> {
         return of(null)
-            .pipe(concatMap(v => this.updateBlocks(changes)))
-            .pipe(concatMap(v => this.updateSynapse(changes)))
-            .pipe(concatMap(v => this.updatePrivileges(changes)));
+            .pipe(
+                concatMap(v => this.updateBlocks(changes)),
+                concatMap(v => this.updateSynapse(changes)),
+                concatMap(v => this.updatePrivileges(changes))
+            );
     }
 
 

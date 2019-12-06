@@ -83,9 +83,10 @@ export /*abstract*/ class EditorComponent implements OnDestroy, OnInit {
         // Refresh when the logged in user changes
 
         this.session.events
-            .pipe(takeUntil(this.unsubscribe))
-            .pipe(filter(e => e instanceof UserChanged))
-            .subscribe(e => this.edit(this.route.snapshot.params.id));
+            .pipe(
+                takeUntil(this.unsubscribe),
+                filter(e => e instanceof UserChanged)
+            ).subscribe(e => this.edit(this.route.snapshot.params.id));
     }
 
 

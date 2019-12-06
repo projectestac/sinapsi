@@ -96,8 +96,10 @@ export class CatalogBrowserComponent {
         const prompt = CatalogMessages.CreateSynapsePrompt();
 
         this.dialog.open(prompt)
-            .pipe(filter(event => event.confirmed))
-            .pipe(filter(event => !!event.value.trim()))
+            .pipe(
+                filter(event => event.confirmed),
+                filter(event => !!event.value.trim())
+            )
             .subscribe(event => {
                 const params = { name: event.value };
                 const path = '/api/synapses';

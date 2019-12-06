@@ -63,8 +63,10 @@ export class TagsCatalogComponent extends CatalogComponent {
         const prompt = CatalogMessages.CreateTagPrompt(tag);
 
         this.dialog.open(prompt)
-            .pipe(filter(event => event.confirmed))
-            .pipe(filter(event => !!event.value.trim()))
+            .pipe(
+                filter(event => event.confirmed),
+                filter(event => !!event.value.trim())
+            )
             .subscribe(event => {
                 const params = { name: event.value };
                 const createPath = `/api/synapses/tags/${tag.id}`;
