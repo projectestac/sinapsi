@@ -129,7 +129,6 @@ endif
 
 	$(eval args += --prod)
 	$(eval args := --progress=false)
-	$(eval args += --aot --build-optimizer)
 	$(eval args += --deploy-url=)
 	$(eval args += --project=$(app))
 	$(eval args += --base-href=$(root)/$(base)/)
