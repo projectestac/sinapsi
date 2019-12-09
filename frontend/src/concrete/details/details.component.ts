@@ -22,7 +22,7 @@ export class CnDetailsComponent {
     @Output('toggle') toggleEvent: EventEmitter<boolean>;
 
     /** Expandable container */
-    @ViewChild('expandable', { static: false }) expandable;
+    @ViewChild('expandable', { static: undefined }) expandable;
 
 
     /**

@@ -61,38 +61,39 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
     ngOnInit() {
         // Update the component state on changes
 
-        this.states
-            .pipe(takeUntil(this.unsubscribe))
-            .subscribe(state => this.state = state);
+        if (this.states)
+            this.states
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(state => this.state = state);
 
         // Get hold of request queries
-
-        this.manager.requests
-            .pipe(takeUntil(this.unsubscribe))
-            .subscribe(query => this.request = query);
+        if (this.manager && this.manager.requests)
+            this.manager.requests
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(query => this.request = query);
 
         // Refresh the synapse when the URL params change
-
-        this.route.params
-            .pipe(takeUntil(this.unsubscribe))
-            .subscribe(params => {
-                this.clear();
-                this.fetchSynapse(params.slug);
-                this.slug = params.slug;
-            });
+        if (this.route && this.route.params)
+            this.route.params
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(params => {
+                    this.clear();
+                    this.fetchSynapse(params.slug);
+                    this.slug = params.slug;
+                });
 
         // Refresh the synapse when the user signs in/out
-
-        this.session.events
-            .pipe(
-                takeUntil(this.unsubscribe),
-                filter(e => e instanceof UserChanged)
-            ).subscribe(event => {
-                if (this.slug !== null) {
-                    this.clear();
-                    this.fetchSynapse(this.slug);
-                }
-            });
+        if (this.session && this.session.events)
+            this.session.events
+                .pipe(
+                    takeUntil(this.unsubscribe),
+                    filter(e => e instanceof UserChanged)
+                ).subscribe(event => {
+                    if (this.slug !== null) {
+                        this.clear();
+                        this.fetchSynapse(this.slug);
+                    }
+                });
     }
 
 

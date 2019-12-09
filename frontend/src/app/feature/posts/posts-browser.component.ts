@@ -54,13 +54,13 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
         }
 
         // Modify the request before it is sent to the server
-
-        this.catalog.requests
-            .takeUntil(this.unsubscribe)
-            .subscribe(request => {
-                this.interceptRequest(request);
-                setTimeout(() => this.request = request);
-            });
+        if (this.catalog && this.catalog.requests)
+            this.catalog.requests
+                .takeUntil(this.unsubscribe)
+                .subscribe(request => {
+                    this.interceptRequest(request);
+                    setTimeout(() => this.request = request);
+                });
     }
 
 
