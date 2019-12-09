@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Resolve, Router } from '@angular/router';
 import { StoreService } from 'app/core';
 import { Author } from 'app/models';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthorsResolver implements Resolve<Author> {
     constructor(
         private router: Router,
         private store: StoreService
-    ) {}
+    ) { }
 
 
     /**
@@ -26,13 +27,13 @@ export class AuthorsResolver implements Resolve<Author> {
         const params = { id: id, limit: 1, with: ['synapse'] };
 
         return this.store.query('/api/authors', params)
-            .map(collection => {
+            .pipe(map(collection => {
                 if (collection.length <= 0) {
                     this.router.navigate(['/404']);
                     return null;
                 }
 
-                const author = <Author> collection[0];
+                const author = <Author>collection[0];
 
                 this.router.navigate([
                     author.type,
@@ -40,10 +41,10 @@ export class AuthorsResolver implements Resolve<Author> {
                 ]);
 
                 return author;
-            })
+            }))
             .catch(error => {
                 this.router.navigate(['/', error.status]);
-                return Observable.of(null);
+                return of(null);
             });
     }
 

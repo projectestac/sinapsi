@@ -12,7 +12,7 @@ import { SettingsService } from 'app/core/services';
 export class HeaderComponent {
 
     /** Toolbar links expandable menu */
-    @ViewChild('linksExp') linksExp;
+    @ViewChild('linksExp', {static: false}) linksExp;
 
 
     /**

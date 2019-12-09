@@ -10,8 +10,8 @@ import { PostsSection, PostsView } from './posts.types';
 @Component({
     selector: 'app-posts-browser',
     templateUrl: 'posts-browser.component.html',
-    styleUrls: [ 'posts-browser.component.scss' ],
-    providers: [ RequestManager ]
+    styleUrls: ['posts-browser.component.scss'],
+    providers: [RequestManager]
 })
 export class PostsBrowserComponent implements OnDestroy, OnInit {
 
@@ -34,7 +34,7 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
     @Input() synapse: Synapse = null;
 
     /** Catalog component */
-    @ViewChild('catalog') catalog;
+    @ViewChild('catalog', { static: false }) catalog;
 
 
     /**
@@ -42,7 +42,7 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
      */
     constructor(
         protected manager: RequestManager
-    ) {}
+    ) { }
 
 
     /**
@@ -50,17 +50,17 @@ export class PostsBrowserComponent implements OnDestroy, OnInit {
      */
     ngOnInit() {
         if (!(Array.isArray(this.sections) && this.sections.length > 0)) {
-           throw new Error("Attribute 'sections' is required");
+            throw new Error("Attribute 'sections' is required");
         }
 
         // Modify the request before it is sent to the server
-
-        this.catalog.requests
-            .takeUntil(this.unsubscribe)
-            .subscribe(request => {
-                this.interceptRequest(request);
-                setTimeout(() => this.request = request);
-            });
+        if (this.catalog && this.catalog.requests)
+            this.catalog.requests
+                .takeUntil(this.unsubscribe)
+                .subscribe(request => {
+                    this.interceptRequest(request);
+                    setTimeout(() => this.request = request);
+                });
     }
 
 

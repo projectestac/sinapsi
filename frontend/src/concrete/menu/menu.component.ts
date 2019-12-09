@@ -9,7 +9,7 @@ import { CnMenuItemComponent } from './menuitem.component';
     selector: 'cn-menu',
     templateUrl: 'menu.component.html',
     styleUrls: ['menu.component.scss'],
-    animations: [ ShowTrigger ]
+    animations: [ShowTrigger]
 })
 export class CnMenuComponent implements AfterViewInit {
 
@@ -25,7 +25,7 @@ export class CnMenuComponent implements AfterViewInit {
     @Output('dismiss') dismissEvent: EventEmitter<boolean>;
 
     /** Menu wrapper */
-    @ViewChild('wrapper') wrapper;
+    @ViewChild('wrapper', { static: false }) wrapper;
 
     /** Registered child menu items */
     private items: Array<CnMenuItemComponent> = [];

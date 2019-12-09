@@ -12,27 +12,27 @@ import { RESULTS_ORDERINGS, Ordering } from './search.orderings';
 @Component({
     selector: 'app-filters',
     templateUrl: 'filters.component.html',
-    styleUrls: [ 'filters.component.scss' ],
+    styleUrls: ['filters.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FiltersComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => FiltersComponent),
+        multi: true
     }]
 })
 export class FiltersComponent implements OnChanges {
 
     /** Maps the controls to their query keys */
     private readonly CONTROLS_MAPPING = {
-        sort:           'sort',
-        after:          'min-published_at',
-        before:         'max-published_at',
-        categories:     'category_id',
+        sort: 'sort',
+        after: 'min-published_at',
+        before: 'max-published_at',
+        categories: 'category_id',
         municipalities: 'municipality_id',
-        projects:       'author_id',
-        schools:        'author_id',
-        tags:           'tag_id',
-        territories:    'territory_id',
-        services:       'territory_id'
+        projects: 'author_id',
+        schools: 'author_id',
+        tags: 'tag_id',
+        territories: 'territory_id',
+        services: 'territory_id'
     };
 
     /** Form on change callback */
@@ -75,7 +75,7 @@ export class FiltersComponent implements OnChanges {
     @Output('change') changeEvent = new EventEmitter<StoreQuery>();
 
     /** Root element */
-    @ViewChild('fieldset') fieldset;
+    @ViewChild('fieldset', { static: false }) fieldset;
 
 
     /**
@@ -278,7 +278,7 @@ export class FiltersComponent implements OnChanges {
      */
     private buildForm(): FormGroup {
         const controls = {
-            after:  null,
+            after: null,
             before: null,
             sort: null
         };
@@ -355,7 +355,7 @@ export class FiltersComponent implements OnChanges {
 
                     this.patchModels(field, ids);
                 } else {
-                    this.form.patchValue({[name]: values});
+                    this.form.patchValue({ [name]: values });
                 }
             });
 
@@ -390,7 +390,7 @@ export class FiltersComponent implements OnChanges {
         const newIds = ids.filter(id => !values.find(v => id === v.id));
 
         if (newIds.length < 1) {
-            this.form.patchValue({[field.id]: values});
+            this.form.patchValue({ [field.id]: values });
         } else {
             const request = { id: newIds, ...field.filters };
 
@@ -398,7 +398,8 @@ export class FiltersComponent implements OnChanges {
                 .subscribe(results => {
                     values.push.apply(values, results);
 
-                    this.form.patchValue({ [field.id]:
+                    this.form.patchValue({
+                        [field.id]:
                         (values.length > 0) ? values : null
                     });
                 });
@@ -432,7 +433,7 @@ export class FiltersComponent implements OnChanges {
 
         return this.intervals.find(i => {
             return (mb === this.toMilliseconds(i.before)) &&
-                   (ma === this.toMilliseconds(i.after));
+                (ma === this.toMilliseconds(i.after));
         }) || null;
     }
 

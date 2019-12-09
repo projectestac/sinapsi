@@ -9,7 +9,7 @@ import { _, format } from 'i18n';
 @Component({
     selector: 'app-social-menu',
     templateUrl: 'social-menu.component.html',
-    styleUrls: [ 'social-menu.component.scss' ]
+    styleUrls: ['social-menu.component.scss']
 })
 export class SocialMenuComponent implements OnChanges {
 
@@ -24,7 +24,7 @@ export class SocialMenuComponent implements OnChanges {
     public links: any[];
 
     /** Social menu */
-    @ViewChild('menu') menu;
+    @ViewChild('menu', { static: false }) menu;
 
     /** Post to share */
     @Input() post: Post = null;
@@ -35,7 +35,7 @@ export class SocialMenuComponent implements OnChanges {
      */
     constructor(
         private social: SocialService
-    ) {}
+    ) { }
 
 
     /**

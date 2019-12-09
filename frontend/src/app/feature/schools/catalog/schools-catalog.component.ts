@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { RequestManager, StoreQuery } from 'app/core';
 import { CatalogComponent } from 'app/core';
 import { Author, School } from 'app/models';
@@ -8,8 +9,8 @@ import { SchoolMessages } from '../schools.messages';
 @Component({
     selector: 'app-schools-catalog',
     templateUrl: 'schools-catalog.component.html',
-    styleUrls: [ 'schools-catalog.component.scss' ],
-    providers: [ RequestManager ]
+    styleUrls: ['schools-catalog.component.scss'],
+    providers: [RequestManager]
 })
 export class SchoolsCatalogComponent extends CatalogComponent {
 
@@ -32,7 +33,7 @@ export class SchoolsCatalogComponent extends CatalogComponent {
     };
 
     /** Author creator dialog */
-    @ViewChild('creator') creator;
+    @ViewChild('creator', { static: false }) creator;
 
 
     /**
@@ -50,13 +51,15 @@ export class SchoolsCatalogComponent extends CatalogComponent {
         const prompt = SchoolMessages.CreatePrompt();
 
         this.dialog.open(prompt)
-            .filter(event => event.confirmed)
-            .filter(event => !!event.value.trim())
+            .pipe(
+                filter(event => event.confirmed),
+                filter(event => !!event.value.trim())
+            )
             .subscribe(event => {
                 const params = { name: event.value };
 
                 this.store.create(this.schoolsPath, params)
-                    .subscribe(response => this.edit(<Author> {
+                    .subscribe(response => this.edit(<Author>{
                         id: response['author_id']
                     }));
             });
@@ -71,16 +74,16 @@ export class SchoolsCatalogComponent extends CatalogComponent {
         const success = SchoolMessages.RemoveSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(e => e.confirmed)
+            .pipe(filter(e => e.confirmed))
             .subscribe(() => {
                 const id = author.school_id;
                 const deleted_at = (new Date()).toISOString();
 
                 this.store.delete(this.schoolsPath, id)
-                   .subscribe(() => {
-                       author.deleted_at = deleted_at;
-                       this.toaster.success(success);
-                   });
+                    .subscribe(() => {
+                        author.deleted_at = deleted_at;
+                        this.toaster.success(success);
+                    });
             });
     }
 

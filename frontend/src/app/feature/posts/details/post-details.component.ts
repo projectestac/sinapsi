@@ -3,6 +3,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CnToaster } from 'concrete/toaster';
 import { CnExpandState } from 'concrete/expandable';
+import { map, take } from 'rxjs/operators';
 
 import { SessionService } from 'app/auth';
 import { Model, ScrollTop, StoreService } from 'app/core';
@@ -15,7 +16,7 @@ import { _ } from 'i18n';
 @Component({
     selector: 'app-post-details',
     templateUrl: 'post-details.component.html',
-    styleUrls: [ 'post-details.component.scss' ]
+    styleUrls: ['post-details.component.scss']
 })
 export class PostDetailsComponent {
 
@@ -43,16 +44,16 @@ export class PostDetailsComponent {
     };
 
     /** This posts article element */
-    @ViewChild('article') article;
+    @ViewChild('article', { static: false }) article;
 
     /** This posts footer element */
-    @ViewChild('footer') footer;
+    @ViewChild('footer', { static: false }) footer;
 
     /** Footer expandable */
-    @ViewChild('expandable') expandable;
+    @ViewChild('expandable', { static: false }) expandable;
 
     /** Administration menu */
-    @ViewChild('adminMenu') adminMenu;
+    @ViewChild('adminMenu', { static: false }) adminMenu;
 
 
     /**
@@ -73,7 +74,7 @@ export class PostDetailsComponent {
         protected store: StoreService,
         protected session: SessionService,
         protected toaster: CnToaster
-    ) {}
+    ) { }
 
 
     /**
@@ -253,7 +254,10 @@ export class PostDetailsComponent {
         const request = { [name]: value };
 
         return this.store.update(path, id, request)
-            .map((response) => value).take(1);
+            .pipe(
+                map((response) => value),
+                take(1)
+            );
     }
 
 

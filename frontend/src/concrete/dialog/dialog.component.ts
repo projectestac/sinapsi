@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-
+import { take } from 'rxjs/operators';
 import { ShowTrigger } from './dialog.animations';
 import { CnDialogEvent } from './dialog.events';
 import { CnDialogConfirmed, CnDialogRefused } from './dialog.events';
@@ -14,7 +14,7 @@ class CnStackedMessage {
     constructor(
         public message: CnDialogMessage,
         public subject: ReplaySubject<CnDialogEvent>
-    ) {}
+    ) { }
 }
 
 
@@ -22,7 +22,7 @@ class CnStackedMessage {
     selector: 'cn-dialog',
     templateUrl: 'dialog.component.html',
     styleUrls: ['dialog.component.scss'],
-    animations: [ ShowTrigger ]
+    animations: [ShowTrigger]
 })
 export class CnDialogComponent {
 
@@ -36,7 +36,7 @@ export class CnDialogComponent {
     private subject: ReplaySubject<CnDialogEvent> = null;
 
     /** Prompt input box */
-    @ViewChild('inputBox') inputBox;
+    @ViewChild('inputBox', { static: false }) inputBox;
 
 
     /**
@@ -82,7 +82,7 @@ export class CnDialogComponent {
             this.stack.push(stackable);
         }
 
-        return subject.asObservable().take(1);
+        return subject.asObservable().pipe(take(1));
     }
 
 

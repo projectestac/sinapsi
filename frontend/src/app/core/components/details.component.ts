@@ -1,10 +1,11 @@
 import { ReplaySubject, Subject } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntil, map, filter } from 'rxjs/operators';
 
 import { Model, Collection } from 'app/core/services';
 import { RequestManager, StoreQuery, StoreService } from 'app/core/services';
-import { SessionService, SessionState} from 'app/auth';
+import { SessionService, SessionState } from 'app/auth';
 import { SessionEvent, UserChanged } from 'app/auth';
 import { ScrollTop } from 'app/core/core.decorators';
 import { Block, Synapse } from 'app/models';
@@ -16,7 +17,7 @@ import { FetchState } from './components.types';
  */
 @Component({
     template: '@CatalogComponent',
-    providers: [ RequestManager ]
+    providers: [RequestManager]
 })
 export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
 
@@ -51,7 +52,7 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
         protected router: Router,
         protected session: SessionService,
         protected store: StoreService
-    ) {}
+    ) { }
 
 
     /**
@@ -60,37 +61,39 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
     ngOnInit() {
         // Update the component state on changes
 
-        this.states
-            .takeUntil(this.unsubscribe)
-            .subscribe(state => this.state = state);
+        if (this.states)
+            this.states
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(state => this.state = state);
 
         // Get hold of request queries
-
-        this.manager.requests
-            .takeUntil(this.unsubscribe)
-            .subscribe(query => this.request = query);
+        if (this.manager && this.manager.requests)
+            this.manager.requests
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(query => this.request = query);
 
         // Refresh the synapse when the URL params change
-
-        this.route.params
-            .takeUntil(this.unsubscribe)
-            .subscribe(params => {
-                this.clear();
-                this.fetchSynapse(params.slug);
-                this.slug = params.slug;
-            });
+        if (this.route && this.route.params)
+            this.route.params
+                .pipe(takeUntil(this.unsubscribe))
+                .subscribe(params => {
+                    this.clear();
+                    this.fetchSynapse(params.slug);
+                    this.slug = params.slug;
+                });
 
         // Refresh the synapse when the user signs in/out
-
-        this.session.events
-            .takeUntil(this.unsubscribe)
-            .filter(e => e instanceof UserChanged)
-            .subscribe(event => {
-               if (this.slug !== null) {
-                   this.clear();
-                   this.fetchSynapse(this.slug);
-               }
-            });
+        if (this.session && this.session.events)
+            this.session.events
+                .pipe(
+                    takeUntil(this.unsubscribe),
+                    filter(e => e instanceof UserChanged)
+                ).subscribe(event => {
+                    if (this.slug !== null) {
+                        this.clear();
+                        this.fetchSynapse(this.slug);
+                    }
+                });
     }
 
 
@@ -162,7 +165,7 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
             .subscribe(
                 collection => {
                     if (collection.length > 0) {
-                        this.synapse = <Synapse> collection[0];
+                        this.synapse = <Synapse>collection[0];
                         this.states.next(FetchState.READY);
 
                         if (Array.isArray(this.synapse.blocks)) {
@@ -190,7 +193,7 @@ export /*abstract*/ class DetailsComponent implements OnDestroy, OnInit {
             this.blocks = null;
         } else {
             this.store.query('/api/blocks', { id: ids })
-                .map(blocks => this.sortByIndex(ids, blocks))
+                .pipe(map(blocks => this.sortByIndex(ids, blocks)))
                 .subscribe(blocks => {
                     this.blocks = blocks as Collection<Block>;
                 });

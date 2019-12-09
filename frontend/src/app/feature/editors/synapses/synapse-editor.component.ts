@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Comparator, EditorComponent, Model } from 'app/core';
 import { Block, Privilege, Synapse } from 'app/models';
+import { of } from 'rxjs';
+import { map, concatMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs'
 import { SynapseFormBuilder } from './synapse-editor.builder';
 import { GENERAL_SLUG } from 'app/models';
 
@@ -13,7 +16,7 @@ import { GENERAL_SLUG } from 'app/models';
 @Component({
     selector: 'app-synapse-editor',
     templateUrl: 'synapse-editor.component.html',
-    styleUrls: [ 'synapse-editor.component.scss' ]
+    styleUrls: ['synapse-editor.component.scss']
 })
 export class SynapseEditorComponent extends EditorComponent {
 
@@ -87,7 +90,7 @@ export class SynapseEditorComponent extends EditorComponent {
             this.form.get('blocks').disable();
         }
 
-        return Observable.of(synapse);
+        return of(synapse);
     }
 
 
@@ -96,18 +99,20 @@ export class SynapseEditorComponent extends EditorComponent {
      */
     public fetchModels(id: number): Observable<any> {
         return this.getSynapse(id)
-            .map(synapse => this.synapse = synapse)
-            .concatMap(synapse => this.authorize(synapse))
-            .concatMap(synapse => Observable.forkJoin([
-                Observable.of(synapse),
-                this.getBlocks(synapse),
-                this.getPrivileges(synapse)
-            ]))
-            .map(values => ({
-                synapse: values[0],
-                blocks: values[1],
-                privileges: values[2]
-            }));
+            .pipe(
+                map(synapse => this.synapse = synapse),
+                concatMap(synapse => this.authorize(synapse)),
+                concatMap(synapse => forkJoin([
+                    of(synapse),
+                    this.getBlocks(synapse),
+                    this.getPrivileges(synapse)
+                ])),
+                map(values => ({
+                    synapse: values[0],
+                    blocks: values[1],
+                    privileges: values[2]
+                }))
+            );
     }
 
 
@@ -115,10 +120,12 @@ export class SynapseEditorComponent extends EditorComponent {
      * {@inheritDoc}
      */
     public updateModels(changes: any): Observable<any> {
-        return Observable.of(null)
-            .concatMap(v => this.updateBlocks(changes))
-            .concatMap(v => this.updateSynapse(changes))
-            .concatMap(v => this.updatePrivileges(changes));
+        return of(null)
+            .pipe(
+                concatMap(v => this.updateBlocks(changes)),
+                concatMap(v => this.updateSynapse(changes)),
+                concatMap(v => this.updatePrivileges(changes))
+            );
     }
 
 
@@ -134,7 +141,7 @@ export class SynapseEditorComponent extends EditorComponent {
         // Update only if the synapse changed
 
         if (!changes.hasOwnProperty('synapse')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Convert any models to their ID properties an then
@@ -171,7 +178,7 @@ export class SynapseEditorComponent extends EditorComponent {
         // Update the blocks only if they have changed
 
         if (!changes.hasOwnProperty('blocks')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Obtain the blocks to remove and those to create
@@ -200,20 +207,20 @@ export class SynapseEditorComponent extends EditorComponent {
 
         if (entries.length < 1) {
             const ids = news.map(v => v.id);
-            this.assignChanges(changes, { synapse: { blocks: ids }});
+            this.assignChanges(changes, { synapse: { blocks: ids } });
 
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Create the batch update observable and map the responses
         // into the changes array so the order is preserved
 
         return this.store.batch('/api/$batch', { entries: entries })
-            .map(responses => {
+            .pipe(map(responses => {
                 const vs = responses.map(v => v.id).slice(remove.length);
                 const ids = news.map(v => v.id ? v.id : vs.shift());
                 this.assignChanges(changes, { synapse: { blocks: ids } });
-            });
+            }));
     }
 
 
@@ -230,7 +237,7 @@ export class SynapseEditorComponent extends EditorComponent {
         // Update the privileges only if they have changed
 
         if (!changes.hasOwnProperty('privileges')) {
-            return Observable.of({ id: id });
+            return of({ id: id });
         }
 
         // Obtain the privileges to remove, create or update
@@ -270,7 +277,7 @@ export class SynapseEditorComponent extends EditorComponent {
         // Make sure there are entries to update
 
         if (entries.length < 1) {
-            return Observable.of(null);
+            return of(null);
         }
 
         // Create the batch update observable
@@ -310,11 +317,11 @@ export class SynapseEditorComponent extends EditorComponent {
         const ids = synapse['blocks'];
 
         if (!Array.isArray(ids) || !ids.length) {
-            return Observable.of([]);
+            return of([]);
         }
 
         return this.store.query('/api/blocks', { id: ids })
-            .map(blocks => this.sortByIndex(ids, blocks));
+            .pipe(map(blocks => this.sortByIndex(ids, blocks)));
     }
 
 

@@ -1,5 +1,6 @@
-import { Observable, throwError } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import { Observable, throwError, Subject } from 'rxjs';
+import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpParameterCodec } from '@angular/common/http';
@@ -128,7 +129,7 @@ export class StoreService implements OnDestroy {
         return this.http.get(url, options)
             .catch(response => this.throw(
                 new RetrieveError(path, request, response)))
-            .map(response => toCollection<Model>(response));
+            .pipe(map(response => toCollection<Model>(response)))
     }
 
 
@@ -165,8 +166,8 @@ export class StoreService implements OnDestroy {
         return this.http.delete(url)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
-            .map(response => this.emit(
-                new ModelDeleted(path, request, response)));
+            .pipe(map(response => this.emit(
+                new ModelDeleted(path, request, response))));
     }
 
 
@@ -185,8 +186,8 @@ export class StoreService implements OnDestroy {
         return this.http.post(url, {})
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
-            .map(response => this.emit(
-                new ModelRestored(path, request, response)));
+            .pipe(map(response => this.emit(
+                new ModelRestored(path, request, response))));
     }
 
 
@@ -207,8 +208,8 @@ export class StoreService implements OnDestroy {
         return this.http.put(url, null, options)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
-            .map(response => this.emit(
-                new ModelUpdated(path, request, response)));
+            .pipe(map(response => this.emit(
+                new ModelUpdated(path, request, response))));
     }
 
 
@@ -227,8 +228,8 @@ export class StoreService implements OnDestroy {
         return this.http.post(url, params)
             .catch(response => this.throw(
                 new UpdateError(path, request, response)))
-            .map(response => this.emit(
-                new ModelCreated(path, request, response)));
+            .pipe(map(response => this.emit(
+                new ModelCreated(path, request, response))));
     }
 
 
@@ -337,7 +338,7 @@ function serializeObject(object: any): string {
         return null;
     }
 
-    Object.keys(object).forEach(function(key) {
+    Object.keys(object).forEach(function (key) {
         const value: any = object[key];
         const param: string = encodeURL(key);
 
@@ -346,7 +347,7 @@ function serializeObject(object: any): string {
         }
 
         if (Array.isArray(value) && value.length > 0) {
-            value.forEach(function(item) {
+            value.forEach(function (item) {
                 const v: string = serializeValue(item);
                 parts.push(`${param}[]=${encodeURL(v)}`);
             });
@@ -393,7 +394,7 @@ function toHttpParams(params: any): HttpParams {
 function toCollection<T>(response: any): Collection<T> {
     const data: Collection<T> = response['data'];
 
-    Object.keys(response).forEach(function(key) {
+    Object.keys(response).forEach(function (key) {
         if (key !== 'data') {
             data[key] = response[key];
         }

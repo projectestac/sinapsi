@@ -5,6 +5,7 @@ import { EventEmitter, SimpleChanges } from '@angular/core';
 import { ViewChild, forwardRef } from '@angular/core';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { Collection, Model } from 'app/core';
 import { StoreQuery, StoreService } from 'app/core';
@@ -18,11 +19,11 @@ let numIntances = 0;
 @Component({
     selector: 'app-typeahead',
     templateUrl: 'typeahead.component.html',
-    styleUrls: [ 'typeahead.component.scss' ],
+    styleUrls: ['typeahead.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TypeaheadComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => TypeaheadComponent),
+        multi: true
     }]
 })
 export class TypeaheadComponent implements ControlValueAccessor,
@@ -111,7 +112,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
     @Output('focus') focusEvent = new EventEmitter<Element>();
 
     /** Search input box */
-    @ViewChild('inputBox') inputBox;
+    @ViewChild('inputBox', { static: false }) inputBox;
 
 
     /**
@@ -119,7 +120,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
      */
     constructor(
         protected store: StoreService
-    ) {}
+    ) { }
 
 
     /**
@@ -135,8 +136,10 @@ export class TypeaheadComponent implements ControlValueAccessor,
         // Search new results on each key up of the input box
 
         this.keyUp
-            .debounceTime(400)
-            .takeUntil(this.unsubscribe)
+            .pipe(
+                debounceTime(400),
+                takeUntil(this.unsubscribe)
+            )
             .subscribe(keywords => this.fetch(keywords));
 
         // Autofocus the contorl if requested
@@ -469,7 +472,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
     public hasResults() {
         if (Array.isArray(this.collection)) {
             return (this.collection['total'] > 0) &&
-                   (this.collection.length > 0);
+                (this.collection.length > 0);
         }
 
         return false;
@@ -585,12 +588,12 @@ export class TypeaheadComponent implements ControlValueAccessor,
         const request = { ...this.request, page: page };
 
         this.store.query(this.path, request)
-                .subscribe(collection => {
-                    this.request = request;
-                    this.collection = collection;
-                    this.refreshValue();
-                    this.refreshActiveValue();
-                });
+            .subscribe(collection => {
+                this.request = request;
+                this.collection = collection;
+                this.refreshValue();
+                this.refreshActiveValue();
+            });
     }
 
 
@@ -605,7 +608,8 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
         const filters = Object.assign({
             limit: this.DEFAULT_LIMIT,
-            sort: this.DEFAULT_SORT },
+            sort: this.DEFAULT_SORT
+        },
             this.filters
         );
 
@@ -615,7 +619,7 @@ export class TypeaheadComponent implements ControlValueAccessor,
 
         // Fetch new results if the new request differs from
         // the current one
-        
+
         if (!this.requestsEqual(request, this.request)) {
             this.store.query(this.path, request)
                 .subscribe(collection => {

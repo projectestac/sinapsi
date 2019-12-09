@@ -21,10 +21,10 @@ export class CnOverlayComponent implements AfterViewInit, OnDestroy {
     private inerts: Array<Element> = [];
 
     /** Overlay root container */
-    @ViewChild('overlay') overlay;
+    @ViewChild('overlay', { static: undefined }) overlay;
 
     /** Overlay content container */
-    @ViewChild('content') content;
+    @ViewChild('content', { static: undefined }) content;
 
     /** Emitted on overlay dismission */
     @Output('dismiss') dismissEvent: EventEmitter<boolean>;

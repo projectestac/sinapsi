@@ -7,7 +7,7 @@ import { Post } from 'app/models';
 @Component({
     selector: 'app-comments-browser',
     templateUrl: 'comments-browser.component.html',
-    styleUrls: [ 'comments-browser.component.scss' ]
+    styleUrls: ['comments-browser.component.scss']
 })
 export class CommentsBrowserComponent {
 
@@ -15,7 +15,7 @@ export class CommentsBrowserComponent {
     @Input() post: Post = null;
 
     /** Comments catalog element */
-    @ViewChild('catalog') catalog;
+    @ViewChild('catalog', { static: false }) catalog;
 
     /** Comment creation event */
     @Output() created = new EventEmitter<number>();
@@ -29,7 +29,7 @@ export class CommentsBrowserComponent {
      */
     constructor(
         public session: SessionService
-    ) {}
+    ) { }
 
 
     /**

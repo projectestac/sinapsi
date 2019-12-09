@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { RequestManager, StoreQuery } from 'app/core';
 import { CatalogComponent } from 'app/core';
 import { Author, User } from 'app/models';
@@ -8,8 +9,8 @@ import { UserMessages } from '../users.messages';
 @Component({
     selector: 'app-users-catalog',
     templateUrl: 'users-catalog.component.html',
-    styleUrls: [ 'users-catalog.component.scss' ],
-    providers: [ RequestManager ]
+    styleUrls: ['users-catalog.component.scss'],
+    providers: [RequestManager]
 })
 export class UsersCatalogComponent extends CatalogComponent {
 
@@ -48,16 +49,16 @@ export class UsersCatalogComponent extends CatalogComponent {
         const success = UserMessages.DisableSuccess(author);
 
         this.dialog.open(confirm)
-            .filter(e => e.confirmed)
+            .pipe(filter(e => e.confirmed))
             .subscribe(() => {
                 const id = author.user_id;
                 const disabled_at = (new Date()).toISOString();
 
                 this.store.delete(this.usersPath, id)
-                   .subscribe(() => {
-                       author.user.disabled_at = disabled_at;
-                       this.toaster.success(success);
-                   });
+                    .subscribe(() => {
+                        author.user.disabled_at = disabled_at;
+                        this.toaster.success(success);
+                    });
             });
     }
 
@@ -70,10 +71,10 @@ export class UsersCatalogComponent extends CatalogComponent {
         const success = UserMessages.RestoreSuccess(author);
 
         this.store.restore(this.usersPath, id)
-           .subscribe(() => {
-               author.user.disabled_at = null;
-               this.toaster.success(success);
-           });
+            .subscribe(() => {
+                author.user.disabled_at = null;
+                this.toaster.success(success);
+            });
     }
 
 }

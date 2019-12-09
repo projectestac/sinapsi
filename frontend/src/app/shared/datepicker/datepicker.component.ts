@@ -14,11 +14,11 @@ export const DATE_PATTERN = new RegExp(
 @Component({
     selector: 'app-datepicker',
     templateUrl: 'datepicker.component.html',
-    styleUrls: [ 'datepicker.component.scss' ],
+    styleUrls: ['datepicker.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatepickerComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => DatepickerComponent),
+        multi: true
     }]
 })
 export class DatepickerComponent implements ControlValueAccessor {
@@ -64,7 +64,7 @@ export class DatepickerComponent implements ControlValueAccessor {
     @Output('focus') focusEvent = new EventEmitter<Element>();
 
     /** Search input box */
-    @ViewChild('inputBox') inputBox;
+    @ViewChild('inputBox', { static: false }) inputBox;
 
 
     /**

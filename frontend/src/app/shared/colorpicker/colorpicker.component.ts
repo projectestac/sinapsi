@@ -18,11 +18,11 @@ let uid = 0;
 @Component({
     selector: 'app-colorpicker',
     templateUrl: 'colorpicker.component.html',
-    styleUrls: [ 'colorpicker.component.scss' ],
+    styleUrls: ['colorpicker.component.scss'],
     providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ColorpickerComponent),
-      multi: true
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => ColorpickerComponent),
+        multi: true
     }]
 })
 export class ColorpickerComponent implements ControlValueAccessor {
@@ -80,10 +80,10 @@ export class ColorpickerComponent implements ControlValueAccessor {
     @Output('focus') focusEvent = new EventEmitter<Element>();
 
     /** Search input box */
-    @ViewChild('inputBox') inputBox;
+    @ViewChild('inputBox', { static: false }) inputBox;
 
     /** Dropdown list */
-    @ViewChild('listBox') listBox;
+    @ViewChild('listBox', { static: false }) listBox;
 
 
     /**
@@ -239,7 +239,7 @@ export class ColorpickerComponent implements ControlValueAccessor {
         if (!value) {
             this.clear();
         } else if (!this.equals(value, this._value)) {
-            this._value = {...value};
+            this._value = { ...value };
             this._active = this._value;
             this.emitInputEvent();
         }
@@ -372,7 +372,7 @@ export class ColorpickerComponent implements ControlValueAccessor {
         const id = (typeof value === 'object') ? value['id'] : value;
         const color = this.colors.find(c => id === c.id);
 
-        return color ? {...color} : null;
+        return color ? { ...color } : null;
     }
 
 

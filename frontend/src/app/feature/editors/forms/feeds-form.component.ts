@@ -18,7 +18,7 @@ const fb = new FormBuilder();
 @Component({
     selector: 'app-feeds-form',
     templateUrl: 'feeds-form.component.html',
-    styleUrls: [ 'feeds-form.component.scss' ]
+    styleUrls: ['feeds-form.component.scss']
 })
 export class FeedsFormComponent implements OnInit {
 
@@ -38,7 +38,7 @@ export class FeedsFormComponent implements OnInit {
     @ViewChildren('feedBox') inputs;
 
     /** This component's root element */
-    @ViewChild('fieldset') fieldset;
+    @ViewChild('fieldset', { static: false }) fieldset;
 
 
     /**
@@ -69,7 +69,7 @@ export class FeedsFormComponent implements OnInit {
      */
     private createForm(): FormArray {
         return this.createGroups(25, {
-           url: [ null, [V.maxLength(512), SV.http(true)] ]
+            url: [null, [V.maxLength(512), SV.http(true)]]
         });
     }
 
@@ -189,7 +189,7 @@ export class FeedsFormComponent implements OnInit {
      */
     public _firstEmpty(): FormGroup {
         const controls = this.form.controls;
-        return <FormGroup> controls.find(c => !c.value['url']);
+        return <FormGroup>controls.find(c => !c.value['url']);
     }
 
 

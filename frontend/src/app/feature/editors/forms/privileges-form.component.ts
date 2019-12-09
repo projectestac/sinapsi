@@ -7,7 +7,7 @@ import { User, Privilege, PrivilegeRole } from 'app/models';
 @Component({
     selector: 'app-privileges-form',
     templateUrl: 'privileges-form.component.html',
-    styleUrls: [ 'privileges-form.component.scss' ]
+    styleUrls: ['privileges-form.component.scss']
 })
 export class PrivilegesFormComponent implements OnInit {
 
@@ -21,7 +21,7 @@ export class PrivilegesFormComponent implements OnInit {
     @Input('control') control: FormControl;
 
     /** User typeahead box */
-    @ViewChild('userBox') userBox;
+    @ViewChild('userBox', { static: false }) userBox;
 
 
     /**
@@ -76,8 +76,8 @@ export class PrivilegesFormComponent implements OnInit {
             }
 
             const privilege = {
-               user: user,
-               role: PrivilegeRole.VIEWER
+                user: user,
+                role: PrivilegeRole.VIEWER
             };
 
             this.control.value.push(privilege);

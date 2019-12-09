@@ -10,7 +10,7 @@ import { _, format } from 'i18n';
 @Component({
     selector: 'app-block',
     templateUrl: 'block.component.html',
-    styleUrls: [ 'block.component.scss' ],
+    styleUrls: ['block.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlockComponent implements AfterViewInit {
@@ -22,13 +22,13 @@ export class BlockComponent implements AfterViewInit {
     @Input() locked = false;
 
     /** Block wrapper element */
-    @ViewChild('blockElement') blockElement;
+    @ViewChild('blockElement', { static: false }) blockElement;
 
 
     /**
      * Component constructor
      */
-     constructor(private sanitizer: DomSanitizer) {}
+    constructor(private sanitizer: DomSanitizer) { }
 
 
     /**
@@ -70,7 +70,7 @@ export class BlockComponent implements AfterViewInit {
             const base = document.baseURI;
             const hasProtocol = /^https?:\/\//.test(href);
             url = hasProtocol ? new URL(href) : new URL(`${base}/${href}`);
-        } catch (e) {}
+        } catch (e) { }
 
         return url ? url.toString().replace(/^https?:\/\//, '//') : null;
     }
