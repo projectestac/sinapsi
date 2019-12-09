@@ -73,3 +73,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  */
 // import 'intl/locale-data/jsonp/en';
 
+/**
+ * See Angular-CLI bug #8160
+ */
+(window as any).global = window;
