@@ -4,3 +4,11 @@
 *.bak
 *.marks
 ~$
+.env
+.env.development
+.env.production
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
