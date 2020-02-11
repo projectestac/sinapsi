@@ -44,7 +44,8 @@ export class ShareFormComponent {
 
         const base = document.baseURI;
         const request = Object.assign(params, this.request);
-        const path = this.serializeUrl(['/embed/'], request);
+        // Patch 'serializeUrl' output, forcing a trailing slash
+        const path = this.serializeUrl(['/embed'], request).replace(/embed\?/, 'embed/?');
 
         return `${base}${path}`;
     }
