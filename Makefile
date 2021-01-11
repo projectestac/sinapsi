@@ -38,10 +38,10 @@ outdir	 ?= $(srcdir)/build
 distdir	 ?= $(srcdir)/packages
 i18ndir	 ?= $(srcdir)/locales
 
-wwwdir	 ?= /var/www
+wwwdir	 ?= /dades/html
 sitedir	 ?= /etc/apache2/sites-available
-user	 ?= www-data
-group	 ?= www-data
+user	 ?= vagrant
+group	 ?= vagrant
 
 name	 ?= sinapsi
 apps	 ?= sinapsi embed
@@ -94,8 +94,8 @@ backend: dependencies
 	cp $(srcdir)/settings/$(target).env $(outdir)/.env
 	cp $(srcdir)/settings/$(target).htaccess $(outdir)/public/.htaccess
 
-	cd $(outdir) && $(COMPOSER) install
-	cd $(outdir) && $(COMPOSER) dump-autoload
+#	cd $(outdir) && $(COMPOSER) install
+#	cd $(outdir) && $(COMPOSER) dump-autoload
 	cd $(outdir) && $(PHP) artisan clear-compiled
 	cd $(outdir) && $(PHP) artisan cache:clear
 	cd $(outdir) && $(PHP) artisan route:cache
@@ -188,7 +188,7 @@ install:
 	test -d $(outdir)
 	test -d $(wwwdir)
 
-	$(eval path := $(wwwdir)/$(name))
+	$(eval path := $(wwwdir))
 
 	$(PRINT) "Installing application"
 
@@ -207,6 +207,7 @@ install:
 
 	$(PRINT) "Cron tasks, services and hosts"
 
+    # Cron install in /etc/cron.d/
 	cd $(srcdir)/system && find * -type f -exec $(INSTALL) -m 644 ./{} /{} \;
 	cd $(srcdir)/system && find * -type f -exec sed -i 's|@user@|$(user)|g' /{} \;
 	cd $(srcdir)/system && find * -type f -exec sed -i 's|@path@|$(path)|g' /{} \;
@@ -215,15 +216,15 @@ install:
 	systemctl start sinapsi-queue.service
 	service cron force-reload
 
-	$(INSTALL) -m 644 $(srcdir)/settings/$(target).virtualhost \
+#	$(INSTALL) -m 644 $(srcdir)/settings/$(target).virtualhost \
 	/$(sitedir)/sinapsi.conf
 
-	a2ensite sinapsi.conf
-	service apache2 reload
+#	a2ensite sinapsi.conf
+#	service apache2 reload
 
-	$(PRINT) "Creating database"
+#	$(PRINT) "Creating database"
 
-	. $(path)/.env && cd $(srcdir)/database && \
+#	. $(path)/.env && cd $(srcdir)/database && \
 	$(MYSQL) --force --local-infile \
 	--user=$$DB_USERNAME --password=$$DB_PASSWORD < sinapsi.sql
 
