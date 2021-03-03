@@ -84,6 +84,9 @@ class ScrapRun extends Command {
                 ScrapFeed::dispatch($feed, $force);
             }
         });
+
+        // Remove lock file
+        unlink('../storage/scrap_lock.txt');
     }
 
 }
