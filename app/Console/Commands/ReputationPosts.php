@@ -44,6 +44,9 @@ class ReputationPosts extends Command {
     public function handle() {
         $force = $this->option('force');
         RankPosts::dispatch($force);
+
+        // Remove lock file
+        unlink('../storage/score_lock.txt');
     }
 
 }
